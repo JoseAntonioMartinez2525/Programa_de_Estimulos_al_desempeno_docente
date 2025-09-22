@@ -84,20 +84,25 @@ $user_identity = $user->id;
                         <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                         <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                         </th>
-                        <th class="table-ajust" scope="col">Observaciones</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <thead>
                         <tr>
-                            <th id="seccion3_6" colspan=1 class="punto3_6" scope=col style="padding:30px;">3.6
+                            <th id="seccion3_6" colspan="3" class="punto3_6" scope=col>3.6
                                 Capacitación y
                                 actualización
                                 pedagógica recibida </th>
-                            <td class="punto3_6">Factor</td>
-                            <td class="punto3_6">Horas</td>
                             <td id="score3_6" for="">0</td>
                             <td id="comision3_6">0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"></td>
+                            <td class="punto3_6">Factor</td>
+                            <td class="punto3_6">Horas</td>
+                            <td colspan="2"></td>
+                            <td class="obsv table-ajust2" scope="col">Observaciones</td>
                         </tr>
                     </thead>
                     <thead>

@@ -519,7 +519,6 @@ margin-left: 40px;
 }
 
 
-
 .actividades{border-right: black;}
 
 #cantidadForm3_1{
@@ -1078,6 +1077,9 @@ body.dark-mode .btn-outline-primary{
     font-size: 1rem;
 }
 
+.obsv{
+    text-align: center;
+}
 
 
 
