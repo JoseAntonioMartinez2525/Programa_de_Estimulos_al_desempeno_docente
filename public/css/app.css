@@ -1096,7 +1096,7 @@ th.obsv.cd , th.seccion3_9{
 }
 
 input#obsInicioFinancimientoExt, input#obsInicioInvInterno, input#obsReporteFinanciamExt, input#obsReporteInvInt, input#obsCongresoInt, input#obsCongresoNac,
-input#obsCongresoLoc, input#obsPatentes, input#obsPrototipos{
+input#obsCongresoLoc, input#obsPatentes, input#obsPrototipos, input#obsArbInt, input#obsArbNac, input#obsPubInt, input#obsPubNac, input#obsRevInt, input#obsRevNac, input#obsRevista{
     padding-top: 20px;
 }
 

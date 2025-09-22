@@ -89,6 +89,10 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         content: "Página " counter(page) " de 33";
     }
 }
+
+td{
+    font-size: 1rem;
+}
     </style>
 </head>
 
