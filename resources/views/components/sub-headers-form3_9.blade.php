@@ -8,25 +8,21 @@
     <th class="table-ajust" scope="col"></th>
     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-    <th class="table-ajust cd" scope="col">Observaciones</th>
+
 </tr>
 </thead>
 <thead>
 <tr>
-    <th class="seccion3_9" scope="col" class="p3_9" colspan=9>3.9 Trabajos dirigidos
-        para la
-        titulación de estudiantes
-    </th>
-</tr>
-<tr>
-    <th class="table-ajust" scope="col"></th>
-    <th class="table-ajust" scope="col"></th>
-    <th class="table-ajust" scope="col"></th>
-    <th class="table-ajust" scope="col"></th>
-    <th class="table-ajust" scope="col"></th>
-    <th class="table-ajust" scope="col"></th>
+    <th class="seccion3_9" scope="col" class="p3_9" colspan="6">3.9 Trabajos dirigidos para la titulación de estudiantes</th>
     <th class="score3_9" id="score3_9_{{ $componentIndex }}">0</th>
     <th class="comision3_9" id="comision3_9_{{ $componentIndex }}">0</th>
+</tr>
+<tr>
+    <th class="table-ajust" scope="col" colspan="6"></th>
+
+
+
+
 </tr>
 </thead>
 <thead>
@@ -39,6 +35,8 @@
     <th class="acreditacion">Cantidad</th>
     <th class="acreditacion">Subtotal</th>
     <th class="table-ajust" scope="col"></th>
+ 
+    <th class="obsv cd" scope="col">Observaciones</th>
     
 </tr>
 </thead>
