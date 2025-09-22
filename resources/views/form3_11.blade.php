@@ -81,7 +81,7 @@ $user_identity = $user->id;
                         <th></th>
                         <th id="score3_11">0</th>
                         <th id="comision3_11">0</th>
-                        <th class="acreditacion" scope="col">Observaciones</th>
+                        
                     </tr>
                 </thead>
                 <thead>
@@ -91,18 +91,18 @@ $user_identity = $user->id;
                         <th class="acreditacion">Actividad</th>
                         <th class="acreditacion">Puntaje</th>
                         <th class="acreditacion">Cantidad</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th colspan="2"></th>
                         <th class="acreditacion">Subtotal</th>
+                        <th colspan="2"></th>
+                        <th class="obsv acreditacion" scope="col">Observaciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!--3_11 Asesoria a estudiantes incisos-->
                     <tr>
                         <td>a)</td>
-                        <td>Asesorías académicas</td>
-                        <td>Por alumno(a), por semestre</td>
+                        <td class="td_3_11">Asesorías académicas</td>
+                        <td class="td_3_11">Por alumno(a), por semestre</td>
                         <td id="academica">5</td>
                         <td id="cantAsesoria"></td>
                         <td></td>
@@ -127,8 +127,8 @@ $user_identity = $user->id;
                     </tr>
                     <tr>
                         <td>b)</td>
-                        <td>Servicio social*</td>
-                        <td>Por alumno(a), por semestre</td>
+                        <td class="td_3_11">Servicio social*</td>
+                        <td class="td_3_11">Por alumno(a), por semestre</td>
                         <td id="servicio">20</td>
                         <td id="cantServicio"></td>
                         <td></td>
@@ -153,8 +153,8 @@ $user_identity = $user->id;
                     </tr>
                     <tr>
                         <td>c)</td>
-                        <td>Prácticas profesionales</td>
-                        <td>Por alumno(a), por semestre</td>
+                        <td class="td_3_11">Prácticas profesionales</td>
+                        <td class="td_3_11">Por alumno(a), por semestre</td>
                         <td id="practicas">20</td>
                         <td id="cantPracticas"></td>
                         <td></td>

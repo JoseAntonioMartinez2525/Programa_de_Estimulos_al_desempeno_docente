@@ -1075,7 +1075,7 @@ body.dark-mode .btn-outline-primary{
 
 }
 
-#seccion3_2, td.td_3_10{
+#seccion3_2, td.td_3_10, td.td_3_11{
     font-size: 1rem;
 }
 
@@ -1094,5 +1094,7 @@ input#obs3_8_1_1 {
 th.obsv.cd , th.seccion3_9{
     font-weight: normal;
 }
+
+
 
 
