@@ -17,6 +17,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
    <style>
     #piedepagina { display: none; }
 
+    td{
+    font-size: 1rem
+    }
     @media print {
         #piedepagina{
             display: block !important;
@@ -130,12 +133,7 @@ $user_identity = $user->id;
             <table class="table table-sm tutorias">
                 <thead>
                     <tr>
-                        <th>
-                            <h3></h3>
-                        </th>
-                        <th>
-                            <h3></h3>
-                        </th>
+                        <th colspan="2"></th>
                         <th>
                             <h3 style="width: 350px;" id="cuerpos_colegiados">Cuerpos Colegiados</h3>
                         </th>
@@ -153,12 +151,18 @@ $user_identity = $user->id;
                         <th id="seccion3_17" class="acreditacion" colspan=3> 3.17 Proyectos académicos de
                             extensión y
                             difusión</th>
-                        <th class="acreditacion" colspan="1">Puntaje</th>
-                        <th class="acreditacion">Cantidad</th>
-                        <th></th>
+
+                        <th colspan="3"></th>
                         <th id="score3_17">0</th>
                         <th id="comision3_17">0</th>
-                        <th class="acreditacion" scope="col">Observaciones</th>
+
+                    </tr>
+                    <tr>
+                        <th colspan="3"></th>
+                        <th class="acreditacion" colspan="1">Puntaje</th>
+                        <th class="acreditacion">Cantidad</th>
+                        <th colspan="3"></th>
+                        <th class="obsv acreditacion" scope="col">Observaciones</th>
                     </tr>
                 </thead>
                 <tbody>

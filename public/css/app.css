@@ -1083,7 +1083,7 @@ body.dark-mode .btn-outline-primary{
     text-align: center;
 }
 
-td#score3_8, td#comision3_8, td#score3_2, td#comision3_2 , th#score3_12_0, th#comision3_12_0, th#score3_12_1, th#comision3_12_1, th#score3_14, th#comision3_14{
+td#score3_8, td#comision3_8, td#score3_2, td#comision3_2 , th#score3_12_0, th#comision3_12_0, th#score3_12_1, th#comision3_12_1, th#score3_14, th#comision3_14, th#score3_18_0, th#comision3_18_0, th#score3_18_1, th#comision3_18_1{
     padding-bottom: 20px;
 }
 
@@ -1096,7 +1096,10 @@ th.obsv.cd , th.seccion3_9{
 }
 
 input#obsInicioFinancimientoExt, input#obsInicioInvInterno, input#obsReporteFinanciamExt, input#obsReporteInvInt, input#obsCongresoInt, input#obsCongresoNac,
-input#obsCongresoLoc, input#obsPatentes, input#obsPrototipos, input#obsArbInt, input#obsArbNac, input#obsPubInt, input#obsPubNac, input#obsRevInt, input#obsRevNac, input#obsRevista{
+input#obsCongresoLoc, input#obsPatentes, input#obsPrototipos, input#obsArbInt, input#obsArbNac, input#obsPubInt, input#obsPubNac, input#obsRevInt, input#obsRevNac, input#obsRevista,
+input#obsDifusionExt, input#obsDifusionInt, input#obsRepDifusionExt, input#obsRepDifusionInt, input#obsComOrgInt, input#obsComOrgNac, input#obsComOrgReg, input#obsComApoyoInt, input#obsComApoyoNac, input#obsComApoyoReg,
+input#obsCicloComOrgInt, input#obsCicloComOrgNac, input#obsCicloComOrgReg, input#obsCicloComApoyoInt, input#obsCicloComApoyoNac, input#obsCicloComApoyoReg{
+
     padding-top: 20px;
 }
 

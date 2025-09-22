@@ -17,22 +17,22 @@
             institucionales del
             área
             de conocimiento de la o el Docente</th>
-        <th></th>
-        <th></th>
+        <th colspan="2"></th>
         <th class="score3_18" id="score3_18_{{ $componentIndex }}">0</th>
         <th class="comision3_18" id="comision3_18_{{ $componentIndex }}">0</th>
-        <th class="acreditacion" scope="col">Observaciones</th>
+       
     </tr>
 </thead>
 <thead>
     <tr>
         <th class="acreditacion">Incisos</th>
-        <th class="acreditacion" colspan=1 style="padding-left: 170px;">Actividad</th>
-        <th></th>
+        <th class="acreditacion" colspan="2" style="padding-left: 170px;">Actividad</th>
         <th class="acreditacion">Nivel</th>
         <th class="acreditacion">Puntaje</th>
         <th class="acreditacion">Cantidad</th>
         <th></th>
         <th class="acreditacion">Subtotal</th>
+        <th colspan="1"></th>
+        <th class="acreditacion" scope="col">Observaciones</th>
     </tr>
 </thead>
