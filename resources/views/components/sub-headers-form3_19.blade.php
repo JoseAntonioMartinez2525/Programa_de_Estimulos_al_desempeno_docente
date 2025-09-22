@@ -13,14 +13,12 @@
 </thead>
 <thead>
     <tr>
-        <th id="seccion3_19" class="acreditacion" colspan=5> 3.19 Participación en
+        <th id="seccion3_19" class="acreditacion" colspan="7"> 3.19 Participación en
             cuerpos colegiados
         </th>
-        <th></th>
-        <th></th>
         <th class="score3_19" id="score3_19_{{ $componentIndex }}">0</th>
         <th class="comision3_19" id="comision3_19_{{ $componentIndex }}">0</th>
-        <th class="acreditacion" scope="col">Observaciones</th>
+
     </tr>
 </thead>
 <thead>
@@ -34,5 +32,7 @@
         <th class="acreditacion">Cantidad</th>
         <th></th>
         <th class="acreditacion">Subtotal</th>
+        <th colspan="1"></th>
+        <th class="obsv acreditacion" scope="col">Observaciones</th>
     </tr>
 </thead>

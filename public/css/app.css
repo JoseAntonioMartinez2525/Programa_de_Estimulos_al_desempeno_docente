@@ -1098,7 +1098,10 @@ th.obsv.cd , th.seccion3_9{
 input#obsInicioFinancimientoExt, input#obsInicioInvInterno, input#obsReporteFinanciamExt, input#obsReporteInvInt, input#obsCongresoInt, input#obsCongresoNac,
 input#obsCongresoLoc, input#obsPatentes, input#obsPrototipos, input#obsArbInt, input#obsArbNac, input#obsPubInt, input#obsPubNac, input#obsRevInt, input#obsRevNac, input#obsRevista,
 input#obsDifusionExt, input#obsDifusionInt, input#obsRepDifusionExt, input#obsRepDifusionInt, input#obsComOrgInt, input#obsComOrgNac, input#obsComOrgReg, input#obsComApoyoInt, input#obsComApoyoNac, input#obsComApoyoReg,
-input#obsCicloComOrgInt, input#obsCicloComOrgNac, input#obsCicloComOrgReg, input#obsCicloComApoyoInt, input#obsCicloComApoyoNac, input#obsCicloComApoyoReg{
+input#obsCicloComOrgInt, input#obsCicloComOrgNac, input#obsCicloComOrgReg, input#obsCicloComApoyoInt, input#obsCicloComApoyoNac, input#obsCicloComApoyoReg,
+input#obsCGUtitular, input#obsCGUespecial, input#obsCGUpermanente, input#obsCAACtitular, input#obsCAACintegCom, input#obsComDepart,
+input#obsComPEDPD, input#obsComPartPos, input#obsRespPos, input#obsRespCarrera, input#obsRespProd, input#obsRespLab, input#obsExamProf, input#obsExamAcademicos,
+input#obsPRODEPformResp, input#obsPRODEPformInteg, input#obsPRODEPenconsResp, input#obsPRODEPenconsInteg, input#obsPRODEPconsResp, input#obsPRODEPconsInteg{
 
     padding-top: 20px;
 }

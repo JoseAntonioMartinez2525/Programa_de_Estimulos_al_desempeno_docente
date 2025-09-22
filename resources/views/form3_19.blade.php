@@ -190,6 +190,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
     }
 
+    td{
+        font-size: 1rem;
+    }
 
 </style>
 
