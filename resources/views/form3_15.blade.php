@@ -63,40 +63,38 @@ $user_identity = $user->id;
             <thead>
                 <tr>
                     <th scope="col" colspan=3>Actividad</th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col" colspan="5"></th>
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
                 </tr>
             </thead>
             <thead>
                 <tr>
-                    <th id="seccion3_15" class="acreditacion" colspan=2>3.15 Registro de patentes y
+                    <th id="seccion3_15" class="acreditacion" colspan="8">3.15 Registro de patentes y
                         productos de
                         investigación
                         tecnológica
                         y educativa</th>
-                    <th class="acreditacion">Puntaje</th>
-                    <th class="acreditacion">Cantidad</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
                     <th id="score3_15">0</th>
                     <th id="comision3_15">0</th>
-                    <th class="acreditacion" scope="col">Observaciones</th>
+                    
+                </tr>
+                <tr>
+                    <th colspan="2"></th>
+                    <th class="acreditacion">Puntaje</th>
+                    <th class="acreditacion">Cantidad</th>
+                    <th colspan="6"></th>
+                    <th class="obsv acreditacion" scope="col">Observaciones</th>
+              
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>a)</td>
-                    <td>Registro de patentes</td>
+                    <td class="td_3_15">Registro de patentes</td>
                     <td id="puntajePatentes"><b>60</b></td>
                     <td id="cantPatentes"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="4"></td>
                     <td id="subtotalPatentes">0</td>
                     <td>
                         @if($userType == 'dictaminador')
@@ -115,12 +113,10 @@ $user_identity = $user->id;
                 </tr>
                 <tr>
                     <td>b)</td>
-                    <td>Desarrollo de prototipos</td>
+                    <td class="td_3_15">Desarrollo de prototipos</td>
                     <td id="puntajePrototipos"><b>30</b></td>
                     <td id="cantPrototipos"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="4"></td>
                     <td id="subtotalPrototipos">0</td>
                     <td>
                         @if($userType == 'dictaminador')

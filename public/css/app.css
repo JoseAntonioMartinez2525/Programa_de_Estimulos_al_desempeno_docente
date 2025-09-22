@@ -1075,7 +1075,7 @@ body.dark-mode .btn-outline-primary{
 
 }
 
-#seccion3_2, td.td_3_10, td.td_3_11, td.td_3_13, td.td_3_14{
+#seccion3_2, td.td_3_10, td.td_3_11, td.td_3_13, td.td_3_14, td.td_3_15{
     font-size: 1rem;
 }
 
@@ -1096,8 +1096,7 @@ th.obsv.cd , th.seccion3_9{
 }
 
 input#obsInicioFinancimientoExt, input#obsInicioInvInterno, input#obsReporteFinanciamExt, input#obsReporteInvInt, input#obsCongresoInt, input#obsCongresoNac,
-input#obsCongresoLoc
- {
+input#obsCongresoLoc, input#obsPatentes, input#obsPrototipos{
     padding-top: 20px;
 }
 
