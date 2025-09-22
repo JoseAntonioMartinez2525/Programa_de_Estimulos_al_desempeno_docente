@@ -1070,7 +1070,7 @@ body.dark-mode nav.nav.flex-column a:hover {
 }
 
 body.dark-mode .btn-outline-primary{
-        background-color: #2c3777;
+        background-color: #2c3777!important;
         border-color: transparent;
 
 }
