@@ -164,8 +164,8 @@ $user_identity = $user->id;
                         <th class="table-ajust" scope="col"></th>
                         <th class="table-ajust" scope="col"></th>
                         <th class="table-ajust" scope="col"></th>
-                        <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                        <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                        <th class="table-ajust2 cd" scope="col">Puntaje a evaluar</th>
+                        <th class="table-ajust2 cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
                         
                     </tr>
                 </thead>

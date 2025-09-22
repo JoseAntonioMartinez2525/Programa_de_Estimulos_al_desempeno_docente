@@ -95,28 +95,32 @@ $user_identity = $user->id;
             <table class="table table-sm">
                 <thead>
                     <tr>
-                        <th scope="col">Actividad</th>
-                        <th class="table-ajust" scope="col"></th>
-                        <th class="table-ajust" scope="col"></th>
-                        <th class="table-ajust" scope="col"></th>
+                        <th scope="col" colspan="4">Actividad</th>
+
             
                         <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                         <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                         </th>
-                        <th class="table-ajust" scope="col">Observaciones</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <thead>
                         <tr>
-                            <th id="seccion3_5" colspan=2 class="punto3_5" scope=col style="padding:30px;">3.5
+                            <td id="seccion3_5" colspan=4  class="punto3_5" scope=col>3.5
                                 Asistencia, puntualidad y
                                 permanencia en el desempeño docente, evaluada por el JD y por CAAC
-                            </th>
-                            <td class="punto3_5">Puntaje</td>
-                            <td class="punto3_5">Cantidad</td>
+                            </td>
                             <td id="score3_5">0</td>
                             <td id="comision3_5">0</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td class="punto3_5">Puntaje</td>
+                            <td class="punto3_5">Cantidad</td>
+                            <td colspan="2"></td>
+                            <td class="table-ajust" scope="col">Observaciones</td>
+
                         </tr>
                     </thead>
                     <thead>
