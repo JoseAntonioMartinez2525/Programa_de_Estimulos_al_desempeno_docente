@@ -20,7 +20,7 @@
         <th></th>
         <th class="score3_12" id="score3_12_{{ $componentIndex }}">0</th>
         <th class="comision3_12" id="comision3_12_{{ $componentIndex }}">0</th>
-        <th class="acreditacion" scope="col">Observaciones</th>
+        
     </tr>
 </thead>
 <thead>
@@ -34,5 +34,7 @@
         <th></th>
         <th></th>
         <th class="acreditacion">Subtotal</th>
+        <th colspan="1"></th>
+        <th class="obsv acreditacion" scope="col">Observaciones</th>
     </tr>
 </thead>

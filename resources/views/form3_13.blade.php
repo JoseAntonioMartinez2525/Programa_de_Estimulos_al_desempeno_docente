@@ -76,7 +76,7 @@ $user_identity = $user->id;
                     investigación</th>
                 <th id="score3_13">0</th>
                 <th id="comision3_13">0</th>
-                <th class="acreditacion" scope="col">Observaciones</th>
+                
             </tr>
             </thead>
             <thead>
@@ -85,17 +85,17 @@ $user_identity = $user->id;
                     <th class="acreditacion">Documento</th>
                     <th class="acreditacion">Puntaje</th>
                     <th class="acreditacion">Cantidad</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th colspan="3"></th>
                     <th class="acreditacion">Subtotal</th>
+                    <th colspan="1"></th>
+                    <th class="obsv acreditacion" scope="col">Observaciones</th>
                 </tr>
             </thead>
             <tbody>
                 <!--Incisos 3.13-->
                 <tr>
                     <td>a)</td>
-                    <td>Inicio de proyecto de investigación con financiamiento externo</td>
+                    <td class="td_3_13">Inicio de proyecto de investigación con financiamiento externo</td>
                     <td id="puntajeInicioFinanExt">50</td>
                     <td id="cantInicioFinanExt" class="cantidad">
                     </td>
@@ -121,7 +121,7 @@ $user_identity = $user->id;
                 </tr>
                 <tr>
                     <td>b)</td>
-                    <td>Inicio de proyecto de investigación interno, aprobado por CAAC</td>
+                    <td class="td_3_13">Inicio de proyecto de investigación interno, aprobado por CAAC</td>
                     <td id="puntajeInicioInvInterno">25</td>
                     <td id="cantInicioInvInterno" class="cantidad"></td>
                     <td></td>
@@ -145,7 +145,7 @@ $user_identity = $user->id;
                 </tr>
                 <tr>
                     <td>c)</td>
-                    <td>Reporte cumplido del periodo anual del proyecto de investigación con
+                    <td class="td_3_13">Reporte cumplido del periodo anual del proyecto de investigación con
                         financiamiento externo
                     </td>
                     <td id="puntajeReporteFinanciamExt">100</td>
@@ -170,7 +170,7 @@ $user_identity = $user->id;
                 </tr>
                 <tr>
                     <td>d)</td>
-                    <td>Reporte cumplido del periodo anual del proyecto de investigación interno,
+                    <td class="td_3_13">Reporte cumplido del periodo anual del proyecto de investigación interno,
                         aprobado por CAAC
                     </td>
                     <td id="puntajeReporteInvInt">50</td>
