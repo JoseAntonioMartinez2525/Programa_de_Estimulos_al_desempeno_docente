@@ -592,6 +592,7 @@ text-align: right;
 /*Puntaje de la Comision Dictaminadora*/
 .cd{
    width: 100px; 
+   text-align: center;
    
 }
 
@@ -1073,6 +1074,9 @@ body.dark-mode .btn-outline-primary{
 
 }
 
+#seccion3_2{
+    font-size: 1rem;
+}
 
 
 

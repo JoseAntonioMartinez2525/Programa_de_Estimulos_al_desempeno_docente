@@ -318,7 +318,8 @@ $user_identity = $user->id;
             <td>Actividad</td>
             <td>Puntaje</td>
             <td class="cantidad">Cantidad</td>
-            <td>SubTotal</td>
+            <td colspan="2">SubTotal</td>
+            <td class="table-ajust2" scope="col">Observaciones</td>
         </tr>
         <!-- Primera tabla: Incisos a) y b) -->
         <tr>
