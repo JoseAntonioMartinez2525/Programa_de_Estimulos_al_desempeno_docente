@@ -81,7 +81,7 @@ $user_identity = $user->id;
                             del Área de Conocimiento o afines del docente</th>
                         <th id="score3_14">0</th>
                         <th id="comision3_14">0</th>
-                        <th class="acreditacion" scope="col">Observaciones</th>
+                        
                     </tr>
                 </thead>
                 <thead>
@@ -89,22 +89,20 @@ $user_identity = $user->id;
                         <th class="acreditacion" colspan=2>Congresos y eventos académicos</th>
                         <th class="acreditacion">Puntaje</th>
                         <th class="acreditacion">Cantidad</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th colspan="3"></th>
                         <th class="acreditacion">Subtotal</th>
+                        <th colspan="1"></th>
+                        <th class="obsv acreditacion" scope="col">Observaciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!--Incisos 3.14-->
                     <tr>
                         <td>a)</td>
-                        <td>Internacional</td>
+                        <td class="td_3_14">Internacional</td>
                         <td id="puntajeCongresoInt"><b>25</b></td>
                         <td id="cantCongresoInt"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3"></td>
                         <td id="subtotalCongresoInt">0</td>
                         <td>
                         @if($userType == 'dictaminador')                                            
@@ -116,7 +114,7 @@ $user_identity = $user->id;
                         @endif        
 
                         </td>
-                        <td>
+                        <td class="obsv_3_14">
                         @if($userType == 'dictaminador')   
                             <input class="table-header" type="text" id="obsCongresoInt">
                         @else
@@ -126,12 +124,10 @@ $user_identity = $user->id;
                     </tr>
                     <tr>
                         <td>b)</td>
-                        <td>Nacional</td>
+                        <td class="td_3_14">Nacional</td>
                         <td id="puntajeCongresoNac"><b>20</b></td>
                         <td id="cantCongresoNac"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3"></td>
                         <td id="subtotalCongresoNac">0</td>
                         <td>
                         @if($userType == 'dictaminador')
@@ -142,7 +138,7 @@ $user_identity = $user->id;
                         @endif        
                         
                         </td>
-                        <td>
+                        <td class="obsv_3_14">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsCongresoNac">
                         @else
@@ -152,12 +148,10 @@ $user_identity = $user->id;
                     </tr>
                     <tr>
                         <td>c)</td>
-                        <td>Local</td>
+                        <td class="td_3_14">Local</td>
                         <td id="puntajeCongresoLoc"><b>10</b></td>
                         <td id="cantCongresoLoc"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="3"></td>
                         <td id="subtotalCongresoLoc">0</td>
                         <td>
                         @if($userType == 'dictaminador')
@@ -169,7 +163,7 @@ $user_identity = $user->id;
                         @endif        
                         
                         </td>
-                        <td>
+                        <td class="obsv_3_14">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsCongresoLoc">
                         @else                                           

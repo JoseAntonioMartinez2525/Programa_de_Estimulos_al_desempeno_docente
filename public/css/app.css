@@ -1075,7 +1075,7 @@ body.dark-mode .btn-outline-primary{
 
 }
 
-#seccion3_2, td.td_3_10, td.td_3_11, td.td_3_13{
+#seccion3_2, td.td_3_10, td.td_3_11, td.td_3_13, td.td_3_14{
     font-size: 1rem;
 }
 
@@ -1083,7 +1083,7 @@ body.dark-mode .btn-outline-primary{
     text-align: center;
 }
 
-td#score3_8, td#comision3_8, td#score3_2, td#comision3_2 , th#score3_12_0, th#comision3_12_0, th#score3_12_1, th#comision3_12_1{
+td#score3_8, td#comision3_8, td#score3_2, td#comision3_2 , th#score3_12_0, th#comision3_12_0, th#score3_12_1, th#comision3_12_1, th#score3_14, th#comision3_14{
     padding-bottom: 20px;
 }
 
@@ -1095,10 +1095,13 @@ th.obsv.cd , th.seccion3_9{
     font-weight: normal;
 }
 
-input#obsInicioFinancimientoExt, input#obsInicioInvInterno, input#obsReporteFinanciamExt, input#obsReporteInvInt
+input#obsInicioFinancimientoExt, input#obsInicioInvInterno, input#obsReporteFinanciamExt, input#obsReporteInvInt, input#obsCongresoInt, input#obsCongresoNac,
+input#obsCongresoLoc
  {
     padding-top: 20px;
 }
+
+
 
 
 
