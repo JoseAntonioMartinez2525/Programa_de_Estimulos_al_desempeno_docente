@@ -170,19 +170,28 @@ $user_identity = $user->id;
                             <th class="table-ajust" scope="col"></th>
                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                            <th class="table-ajust" scope="col">Observaciones</th>
+                            {{-- <th class="table-ajust" scope="col">Observaciones</th> --}}
                         </tr>
                     </thead>
                     <thead>
                         <tr>
-                            <td id="seccion3_2" style="height: 80px; width: 200px;">3.2 Calidad del desempeño
+                            <td id="seccion3_2" colspan="3" style="height: 50px; width: 200px;">3.2 Calidad del desempeño
                                 docente
                                 evaluada por el alumnado
                             </td>
-                            <td>Puntaje</td>
-                            <td style="text-align:left;">Cantidad</td>
                             <td id="score3_2" for="">0</td>
                             <td id="comision3_2">0</td>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                              <td></td>
+                            <td>Puntaje</td>
+                            <td style="text-align:left;">Cantidad</td>
+                            <td></td>
+                            <td></td>
+                            <td class="table-ajust" scope="col">Observaciones</td>
+                            
                         </tr>
                     </thead>
                     <thead>
