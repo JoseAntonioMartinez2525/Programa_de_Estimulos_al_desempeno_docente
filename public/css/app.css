@@ -892,6 +892,8 @@ input[id^="rc"]{
     font-size: 1rem;
 }
 
+
+
 }
 
 #puntajeArbitrajeInt,
@@ -1081,9 +1083,13 @@ body.dark-mode .btn-outline-primary{
     text-align: center;
 }
 
+td#score3_8, td#comision3_8, td#score3_2, td#comision3_2 {
+    padding-bottom: 20px;
+}
 
-
-
+input#obs3_8_1_1 {
+    padding-right: 200px;
+}
 
 
 
