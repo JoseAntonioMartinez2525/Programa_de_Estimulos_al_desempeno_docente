@@ -74,16 +74,17 @@ $user_identity = $user->id;
                 </thead>
                 <thead>
                     <tr>
-                        <th id="seccion3_10" class="acreditacion" colspan=2>3.10 Tutorías a estudiantes</th>
-                        <th class="acreditacion">Puntaje</th>
-                        <th class="acreditacion">cantidad</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th id="seccion3_10" class="acreditacion" colspan="8">3.10 Tutorías a estudiantes</th>
                         <th id="score3_10">0</th>
                         <th id="comision3_10">0</th>
-                        <th class="acreditacion" scope="col">Observaciones</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th class="acreditacion">Puntaje</th>
+                        <th class="acreditacion">Cantidad</th>
+                        <th colspan="6"></th>
+
+                        <th class="obsv acreditacion" scope="col">Observaciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,7 +92,7 @@ $user_identity = $user->id;
                         <tr>
                             <!--Tutorias a estudantes 3_10 individuales, grupales -->
                             <td>a)</td>
-                            <td>Por alumno(a) por semestre, grupales</td>
+                            <td class="td_3_10">Por alumno(a) por semestre, grupales</td>
                             <td id="puntajeGrupales"><b>3</b> </td>
                             <td id="grupalesCant"></td>
                             <td></td>
@@ -118,7 +119,7 @@ $user_identity = $user->id;
                         </tr>
                         <tr>
                             <td>b)</td>
-                            <td>Por alumno(a) por semestre, individuales</td>
+                            <td class="td_3_10">Por alumno(a) por semestre, individuales</td>
                             <td id="puntajeIndividual"><b>6</b></td>
                             <td id="individualCant"></td>
                             <td></td>
