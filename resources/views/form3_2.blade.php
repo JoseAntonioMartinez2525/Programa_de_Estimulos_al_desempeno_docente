@@ -94,7 +94,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 }
     body.dark-mode #r1, body.dark-mode #r2, body.dark-mode #r3, body.dark-mode #prom90_100, 
     body.dark-mode #prom80_90, body.dark-mode #prom70_80 {
-        color: black;
+        color: white;
+        background-color: transparent;
     }
 
     body.dark-mode [id^="obs3_2"] {
@@ -201,9 +202,9 @@ $user_identity = $user->id;
                                 <center>Promedio 90-100</center>
                             </td>
                             <td id="ran1"><b>50</b></td>
-                            <td class="elabinput" style="background-color: #c1cfd3;text-align:right;"><span id="r1" name="r1"></span></td>
+                            <td class="elabInput" style="background-color: #c1cfd3;text-align:right;"><span id="r1" name="r1"></span></td>
                             <td id="cant1" name="cant1">0</td>
-                            <td>
+                            <td class="td_obs">
                             @if($userType == 'dictaminador')
                                 <input id="prom90_100" type="number" step="0.01"
                                     oninput="onActv3_2Comision()" value="{{ oldValueOrDefault('prom90_100') }}">
@@ -211,7 +212,7 @@ $user_identity = $user->id;
                             <span id="prom90_100" name="prom90_100"></span>
                             @endif
                             </td>
-                            <td>
+                            <td class="td_obs">
                             @if($userType == 'dictaminador')
                                 <input id="obs3_2_1" name="obs3_2_1" class="table-header" type="text">
                             @else
@@ -229,7 +230,7 @@ $user_identity = $user->id;
                             <td class="elabInput" style="background-color: #c1cfd3;"><span id="r2" name="r2"></span></td>
                             <td id="cant2" name="cant2">0</td>
 
-                            <td>
+                            <td class="td_obs">
                              @if($userType == 'dictaminador')   
                                 <input id="prom80_90" type="number" step="0.01"
                                     oninput="onActv3_2Comision()" value="{{ oldValueOrDefault('prom80_90') }}">
@@ -237,7 +238,7 @@ $user_identity = $user->id;
                                 <span id="prom80_90" name="prom80_90"></span>
                             @endif
                             </td>
-                            <td>
+                            <td class="td_obs">
                             @if($userType == 'dictaminador')    
                                 <input id="obs3_2_2" name="obs3_2_2" class="table-header" type="text">
                             @else
@@ -255,7 +256,7 @@ $user_identity = $user->id;
                                 <span id="r3" name="r3"></span>
                             </td>
                             <td id="cant3">0</td>
-                            <td>
+                            <td class="td_obs">
                             @if($userType == 'dictaminador')  
                                 <input id="prom70_80" placeholder="0" type="number" step="0.01"
                                         oninput="onActv3_2Comision()" value="{{ oldValueOrDefault('prom70_80') }}">
@@ -263,7 +264,7 @@ $user_identity = $user->id;
                             <span id="prom70_80" name="prom70_80"></span>
                             @endif
                             </td>
-                            <td>
+                            <td class="td_obs">
                             @if($userType == 'dictaminador')  
                                 <input id="obs3_2_3"  name="obs3_2_3" class="table-header" type="text">
                             @else

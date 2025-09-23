@@ -1122,7 +1122,7 @@ body.dark-mode td.td_obs, body.dark-mode td.comision.actv, body.dark-mode td.com
     border-color: white;
 }
 
-body.dark-mode td.cantidad{
+body.dark-mode td.cantidad, body.dark-mode td.elabInput {
     background-color: #9b9a9a!important;
 }
 
@@ -1141,8 +1141,8 @@ body.dark-mode span.comIncisoA, body.dark-mode span.comIncisoB, body.dark-mode s
 
 body.dark-mode [id^="rc"], body.dark-mode span.obs3_3_1, body.dark-mode span.obs3_3_2, body.dark-mode span.obs3_3_3, body.dark-mode span.obs3_3_4,
 body.dark-mode #comInternacional, body.dark-mode #comNacional, body.dark-mode #comRegional, body.dark-mode #comPreparacion, body.dark-mode [id^="obs3_5_"],
- body.dark-mode [id^="comisionDict3_"], body.dark-mode span#obs3_6_1, body.dark-mode [id^="obs3_"]
- {
+ body.dark-mode [id^="comisionDict3_"], body.dark-mode span#obs3_6_1, body.dark-mode [id^="obs3_"],body.dark-mode #prom90_100, body.dark-mode #prom80_90, body.dark-mode #prom70_80
+{
     color: white!important;
     background-color: transparent!important;
 }
@@ -1153,6 +1153,14 @@ td.cantidad2{
 }
 
 span#obs3_8_1_1 {
+    text-align: center;
+}
+
+th.obsv.cd {
+    font-size: 16px;
+}
+
+[id^="tutorias"]{
     text-align: center;
 }
 
