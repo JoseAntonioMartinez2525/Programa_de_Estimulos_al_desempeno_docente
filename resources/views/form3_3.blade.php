@@ -228,7 +228,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 }
 }
 
-body.dark-mode [id^="rc"], body.dark-mode [class^="obs3_3_"]{
+ body.dark-mode [class^="obs3_3_"]{
     color: black
 }
 
@@ -317,7 +317,7 @@ $user_identity = $user->id;
             <td class="obra">Obra</td>
             <td>Actividad</td>
             <td>Puntaje</td>
-            <td class="cantidad">Cantidad</td>
+            <td class="cantidad2">Cantidad</td>
             <td colspan="2">SubTotal</td>
             <td class="table-ajust2" scope="col">Observaciones</td>
         </tr>
@@ -339,7 +339,7 @@ $user_identity = $user->id;
                     <span name="comIncisoA" class="comIncisoA"></span>
                 @endif
             </td>
-            <td>
+            <td class="td_obs">
                 @if($userType == 'dictaminador')
                     <input class="obs3_3_1" type="text">
                 @else
@@ -364,7 +364,7 @@ $user_identity = $user->id;
                     <span class="comIncisoB"></span>
                 @endif
             </td>
-            <td>
+            <td class="td_obs">
                 @if($userType == 'dictaminador')
                     <input class="obs3_3_2" type="text">
                 @else
@@ -415,7 +415,7 @@ $user_identity = $user->id;
             <td class="obra">Obra</td>
             <td>Actividad</td>
             <td>Puntaje</td>
-            <td class="cantidad">Cantidad</td>
+            <td class="cantidad2">Cantidad</td>
             <td>SubTotal</td>
         </tr>
         <!-- Segunda tabla: Incisos c) y d) -->
@@ -436,7 +436,7 @@ $user_identity = $user->id;
                     <span class="comIncisoC"></span>
                 @endif
             </td>
-            <td>
+            <td class="td_obs">
                 @if($userType == 'dictaminador')
                     <input class="obs3_3_3" type="text">
                 @else
@@ -461,7 +461,7 @@ $user_identity = $user->id;
                     <span class="comIncisoD"></span>
                 @endif
             </td>
-            <td>
+            <td class="td_obs">
                 @if($userType == 'dictaminador')
                     <input class="obs3_3_4" type="text">
                 @else

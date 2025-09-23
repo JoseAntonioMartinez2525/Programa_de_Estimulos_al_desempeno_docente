@@ -1131,6 +1131,24 @@ body.dark-mode td.puntajeEvaluar2{
     background-color: #333333;
 }
 
-body.dark-mode label#dse2, body.dark-mode label#dse{
+body.dark-mode label#dse2, body.dark-mode label#dse, body.dark-mode [id^="rc"]{
     color: white;
 }
+
+body.dark-mode span.comIncisoA, body.dark-mode span.comIncisoB, body.dark-mode span.comIncisoC, body.dark-mode span.comIncisoD{
+    background-color: transparent;
+    color: white;
+}
+
+body.dark-mode [id^="rc"], body.dark-mode span.obs3_3_1, body.dark-mode span.obs3_3_2, body.dark-mode span.obs3_3_3, body.dark-mode span.obs3_3_4,
+body.dark-mode #comInternacional, body.dark-mode #comNacional, body.dark-mode #comRegional, body.dark-mode #comPreparacion{
+    color: white!important;
+    background-color: transparent!important;
+}
+
+td.cantidad2{
+    text-align: center;
+    padding-inline-start: 30px
+}
+
+

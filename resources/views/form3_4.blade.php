@@ -87,13 +87,13 @@ footer {
 
 }
 
-body.dark-mode #cantInternacional, body.dark-mode #cantNacional, body.dark-mode #cantidadRegional, body.dark-mode #cantPreparacion,
-body.dark-mode #comInternacional, body.dark-mode #comNacional, body.dark-mode #comRegional, body.dark-mode #comPreparacion{
+body.dark-mode #cantInternacional, body.dark-mode #cantNacional, body.dark-mode #cantidadRegional, body.dark-mode #cantPreparacion{
     color: black;
 }
 
 body.dark-mode [id^="obs3_4_"]{
-    color: black;
+    color: white;
+    background-color: transparent!important;
 }
 
 #btn3_4{
@@ -191,13 +191,15 @@ $user_identity = $user->id;
                             <span id="cantInternacional" name="cantInternacional"></span>
                         </td>
                         <td id="cantInternacional2"></td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs">
+                        @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comInternacional" oninput="onActv3Comision3_4()" value="{{ oldValueOrDefault('comInternacional') }}">
                         @else
                             <span id="comInternacional" name="comInternacional"></span>
                             @endif
                         </td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
                             <input id="obs3_4_1" name="obs3_4_1" class="table-header" type="text">
                         @else
                             <span id="obs3_4_1" name="obs3_4_1" class="table-header"></span>
@@ -210,13 +212,15 @@ $user_identity = $user->id;
                         <td id="p30Nac"><b>30</b></td>
                         <td><span type="number" step="0.01" id="cantNacional"></span></td>
                         <td id="cantNacional2"></td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comNacional"name="comNacional" oninput="onActv3Comision3_4()" value="{{ oldValueOrDefault('comNacional') }}">
-                        @else
+                             @else
                             <span id="comNacional" name="comNacional"></span>
                             @endif
                         </td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
                             <input id="obs3_4_2" name="obs3_4_2" class="table-header" type="text">
                             @else
                                 <span id="obs3_4_2" name="obs3_4_2" class="table-header"></span>
@@ -231,13 +235,15 @@ $user_identity = $user->id;
                             <span id="cantidadRegional"></span>
                         </td>
                         <td id="cantidadRegional2"></td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comRegional" name="comRegional" oninput="onActv3Comision3_4()" value="{{ oldValueOrDefault('comRegional') }}">
-                        @else
+                            @else
                             <span id="comRegional" name="comRegional"></span>
                             @endif
                         </td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs"> 
+                            @if($userType == 'dictaminador')
                             <input id="obs3_4_3" name="obs3_4_3" class="table-header" type="text">
                             @else
                             <span id="obs3_4_3" name="obs3_4_3" class="table-header"></span>
@@ -252,13 +258,14 @@ $user_identity = $user->id;
                             <span id="cantPreparacion"></span>
                         </td>
                         <td id="cantPreparacion2"></td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comPreparacion"  oninput="onActv3Comision3_4()" value="{{ oldValueOrDefault('comPreparacion') }}">
-                        @else
+                            @else
                             <span id="comPreparacion" name="comPreparacion"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if($userType == 'dictaminador')
                             <input id="obs3_4_4" name="obs3_4_4" class="table-header" type="text">
                             @else
