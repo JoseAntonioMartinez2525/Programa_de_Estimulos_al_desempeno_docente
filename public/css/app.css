@@ -316,7 +316,7 @@ margin-left: 900px;
     background-color: #ced4da;
     margin-bottom: 3px;
     width: 100%;
-    /* Make the input fields 100% width */
+
 }
 
 /* Target the options within the select element with class 'input-header' */
@@ -1162,6 +1162,26 @@ th.obsv.cd {
 
 [id^="tutorias"]{
     text-align: center;
+}
+
+button.btn.btn-outline-primary.w-100.form-option:active {
+    background-color: #63758b;
+    border-color: transparent;
+}
+
+.valor{
+    background-color: #ced4da;
+    text-align: center;
+
+}
+
+span#convocatoria2, span#periodo2, span#area2, span#departamento2{
+    background-color: #ced4da;
+    text-align: center;
+}
+
+body.dark-mode .valor{
+    background-color: transparent;
 }
 
 

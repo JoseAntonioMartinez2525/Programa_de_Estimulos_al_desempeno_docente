@@ -48,7 +48,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 }
 
 body.dark-mode #obs1, body.dark-mode #comision1 {
-    color:black;
+    color:white;
+    background-color: transparent;
+}
+
+td{
+    font-size: 1rem;
 }
 
   
@@ -157,7 +162,7 @@ $user_identity = $user->id;
                         <td class="puntajeEvaluar">
                             <span id="puntajeEvaluarText">0</span>
                         </td>
-                        <td class="table-header comision">
+                        <td class="td_obs table-header comision">
                             <div class="filled">
                         @if($userType == 'dictaminador')
                             <!-- Mostrar input si es 'dictaminador' -->
@@ -169,7 +174,7 @@ $user_identity = $user->id;
                         @endif
                              </div>
                         </td>
-                        <td>
+                        <td class="td_obs">
                             <div class="filled">
                         @if($userType == 'dictaminador')
                             <!-- Mostrar input si es 'dictaminador' -->
