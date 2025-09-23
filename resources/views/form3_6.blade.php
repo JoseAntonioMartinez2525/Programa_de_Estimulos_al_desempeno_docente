@@ -111,14 +111,14 @@ $user_identity = $user->id;
                             <td id="pMedio">0.5</td>
                             <td id="puntaje3_6" ></td>
                             <td id="puntajeHoras3_6"></td>
-                            <td style="text-align: right;">
+                            <td class="td_obs" style="text-align: right;">
                                 @if($userType == 'dictaminador')
                                     <input type="number"  step="0.01" id="comisionDict3_6" name="comisionDict3_6" oninput="onActv3Comision3_6()" value="{{ oldValueOrDefault('comisionDict3_6') }}">
                                 @else
                                 <span id="comisionDict3_6" name="comisionDict3_6"></span>
                                 @endif
                             </td>
-                            <td>
+                            <td class="td_obs">
                                 @if($userType == 'dictaminador')
                                 <input id="obs3_6_1" name="obs3_6_1" class="table-header" type="text">
                                 @else

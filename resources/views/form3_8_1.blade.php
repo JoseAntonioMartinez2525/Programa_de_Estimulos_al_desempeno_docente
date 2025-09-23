@@ -124,7 +124,7 @@ $user_identity = $user->id;
                             <td id="p3_8_1_1">1</td>
                             <td id="puntaje3_8_1"></td>
                             <td id="puntajeHoras3_8_1" class="rightSelect"></td>
-                            <td class="rightSelect">
+                            <td class="td_obs rightSelect">
                                 @if ($userType == 'dictaminador')
                                     <input type="number" step="0.01" id="comisionDict3_8_1" name="comisionDict3_8_1"
                                         oninput="onActv3Comision3_8_1()"
@@ -134,7 +134,7 @@ $user_identity = $user->id;
                                 @endif
 
                             </td>
-                            <td>
+                            <td class="td_obs text-center">
                                 @if ($userType == 'dictaminador')
                                     <input class="table-header" id="obs3_8_1_1" name="obs3_8_1_1" type="text">
                                 @else

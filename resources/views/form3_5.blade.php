@@ -32,7 +32,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     }
 
     body.dark-mode [id^="obs3_5"]{
-        color: black;
+        color: white;
     }
 
 [id^="btn3_"]{
@@ -130,13 +130,15 @@ $user_identity = $user->id;
                         <td id="cantDA" name="cantDA">
                         </td>
                         <td id="cantDA2"></td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comDA" placeholder="0" oninput="onActv3Comision3_5()" value="{{ oldValueOrDefault('comDA') }}">
-                        @else
+                            @else
                             <span id="comDA" name="comDA"></span>
                             @endif
                         </td>
-                        <td>@if($userType == 'dictaminador')
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
                             <input id="obs3_5_1" name="obs3_5_1" class="table-header" type="text">
                             @else
                             <span id="obs3_5_1" name="obs3_5_1" class="table-header"></span>
@@ -151,14 +153,16 @@ $user_identity = $user->id;
                             <td id="pCAAC40"><b>40</b></td>
                             <td id="cantCAAC" name="cantCAAC"></td>
                             <td id="cantCAAC2" name="cantCAAC2"></td>
-                            <td>@if($userType == 'dictaminador')
+                            <td class="td_obs">
+                                @if($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comNCAA"
                                 oninput="onActv3Comision3_5()" value="{{ oldValueOrDefault('comNCAA') }}">
-                            @else
+                                @else
                                 <span id="comNCAA" name="comNCAA"></span>
                                 @endif
                             </td>
-                            <td>@if($userType == 'dictaminador')
+                            <td class="td_obs">
+                                @if($userType == 'dictaminador')
                                 <input id="obs3_5_2" name="obs3_5_2" class="table-header" type="text">
                                 @else
                                 <span id="obs3_5_2" name="obs3_5_2" class="table-header"></span>
