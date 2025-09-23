@@ -1106,7 +1106,31 @@ input#obsPRODEPformResp, input#obsPRODEPformInteg, input#obsPRODEPenconsResp, in
     padding-top: 20px;
 }
 
+td.cantidad {
+    background-color: #e2e2e2;
+}
 
+td.td_obs, td.comision.actv{
+    background-color: #d6fff7;
+    border-color: white;
+    border-right-style: solid;
+    border-width: thin;
+}
 
+body.dark-mode td.td_obs, body.dark-mode td.comision.actv, body.dark-mode td.comEstilos{
+    background-color: #82bdb2!important;
+    border-width: thin;
+    border-color: white;
+}
 
+body.dark-mode td.cantidad{
+    background-color: #9b9a9a!important;
+}
 
+body.dark-mode td.puntajeEvaluar2{
+    background-color: #333333;
+}
+
+body.dark-mode label#dse2, body.dark-mode label#dse{
+    color: white;
+}

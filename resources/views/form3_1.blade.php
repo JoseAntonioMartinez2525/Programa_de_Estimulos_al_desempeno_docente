@@ -351,7 +351,7 @@ $user_identity = $user->id;
                     <label id="comisionIncisoA"></label>
                 @endif
             </td>
-            <td class="comEstilos">
+            <td class="comision actv comEstilos">
                 @if($userType == 'dictaminador')
                     <input id="obs3_1_1" name="obs3_1_1" class="table-header" type="text">
                 @else
@@ -368,7 +368,7 @@ $user_identity = $user->id;
             <td><span id="puntaje40"><b>40</b></span></td>
             <td class="elabInput"><span id="elaboracion2">0</span></td>
             <td><span id="elaboracionSubTotal2" for="" type="text"></span></td>
-            <td class="comEstilos">
+            <td class="comision actv comEstilos">
                 @if($userType == 'dictaminador')
                     <input id="comisionIncisoB" type="number" step="0.01" oninput="onActv3Comision()"
                         value="{{ oldValueOrDefault('comisionIncisoB') }}">
@@ -376,7 +376,7 @@ $user_identity = $user->id;
                     <label id="comisionIncisoB"></label>
                 @endif
             </td>
-            <td>
+            <td class="comision actv comEstilos">
                 @if($userType == 'dictaminador')
                     <input id="obs3_1_2" name="obs3_1_2" type="text">
                 @else
@@ -430,7 +430,7 @@ $user_identity = $user->id;
                     <label id="comisionIncisoC" name="comisionIncisoC"></label>
                 @endif
             </td>
-            <td class="comEstilos">
+            <td class="comision actv comEstilos">
                 @if($userType == 'dictaminador')
                     <input id="obs3_1_3" name="obs3_1_3" class="table-header" type="text">
                 @else
@@ -452,7 +452,7 @@ $user_identity = $user->id;
                     <label id="comisionIncisoD" name="comisionIncisoD"></label>
                 @endif
             </td>
-            <td class="comEstilos">
+            <td class="comision actv comEstilos">
                 @if($userType == 'dictaminador')
                     <input id="obs3_1_4" name="obs3_1_4" class="table-header" type="text">
                 @else
@@ -474,7 +474,7 @@ $user_identity = $user->id;
                     <label id="comisionIncisoE" name="comisionIncisoE"></label>
                 @endif
             </td>
-            <td class="comEstilos">
+            <td class="comision actv comEstilos">
                 @if($userType == 'dictaminador')
                     <input id="obs3_1_5" name="obs3_1_5" class="table-header" type="text">
                 @else

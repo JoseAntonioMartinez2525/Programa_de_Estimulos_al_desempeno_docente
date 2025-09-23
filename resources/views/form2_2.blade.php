@@ -78,80 +78,86 @@ $user_identity = $user->id;
             <table class="table table-sm">
                 <thead>
                     <tr>
-                        <th scope="col">Actividad</th>
-                        <th class="table-ajust" scope="col">Horas</th>
+                        <th colspan="2" scope="col">Actividad</th>
+
                         <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                         <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                        <th class="table-ajust" scope="col">Observaciones</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><b>2. Dedicación en el Desempeño docente</b></td>
-                        <td for=""></td>
+                        <td colspan="2"><b>2. Dedicación en el Desempeño docente</b></td>
+
                         <td id="hours" name="hours" for=""><label id="hoursText" for="">0</label></td>
                         <td id="actv2Comision" for=""></td>
-                        </tr>
-                        <tr>
-                            <td><label for="">a) Posgrado</label>
-                                <label for="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Semestre </label>
-                            </td>
-                            <td class="cantidad"><span id="horasPosgrado" name="horasPosgrado" class="horasActv2"></span>
-                            </td>
-                            <td class="puntajeEvaluar2"><label id="dse" name="dse" class="puntajeEvaluar" type="text"></label></td>
-                             @if($userType == 'dictaminador')
-                                    <td class="comision actv filled">
-                                        <input type="number" step="0.01" id="comisionPosgrado" name="comisionPosgrado" for="" oninput="onActv2Comision()"
-                                        value="{{ oldValueOrDefault('comisionPosgrado') }}">
-                                    </input>
-                                    </td>
-                                <td class="filled"><input id="obs2" name="obs2" class="table-header" type="text"></td>
-
-                            @else
-                                <td class="comision actv"><span id="comisionPosgrado" name="comisionPosgrado"></span></td>
-                                <td><span id="obs2" name="obs2" class="table-header"></span></td>
-
-                            @endif
-
-                        </tr>
-                        <tr>
-                            <td>b) Licenciatura y TSU
-                                <label for="">&nbsp &nbsp &nbsp &nbsp Horas </label>
-                            </td>
-                            <td class="cantidad"><span id="horasSemestre" name="horasSemestre" class="horasActv2"></span>
-                            </td>
-                            <td class="puntajeEvaluar2"><label id="dse2" name="dse2" class="puntajeEvaluar" type="text"></label></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1"></td>
+                        <td class="table-ajust text-center" scope="col">Horas</td>
+                        <td colspan="2"></td>
+                        <td class="obsv table-ajust" scope="col">Observaciones</td>
+                    </tr>
+                    <tr>
+                        <td><label for="">a) Posgrado</label>
+                            <label for="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Semestre </label>
+                        </td>
+                        <td class="cantidad"><span id="horasPosgrado" name="horasPosgrado" class="horasActv2"></span>
+                        </td>
+                        <td class="puntajeEvaluar2"><label id="dse" name="dse" class="puntajeEvaluar" type="text"></label></td>
                             @if($userType == 'dictaminador')
-                                <td class="comision actv"><input type="number" step="0.01" id="comisionLic" name="comisionLic" oninput="onActv2Comision()" 
-                                value="{{ oldValueOrDefault('comisionLic') }}"></input>
+                                <td class="comision actv filled">
+                                    <input type="number" step="0.01" id="comisionPosgrado" name="comisionPosgrado" for="" oninput="onActv2Comision()"
+                                    value="{{ oldValueOrDefault('comisionPosgrado') }}">
+                                </input>
                                 </td>
-                                <td><input id="obs2_2" name="obs2_2" class="table-header" type="text"></input></td>
-                            @else
-                            <td class="comision actv"><span id="comisionLic" name="comisionLic"></span>
+                            <td class="filled"><input id="obs2" name="obs2" class="table-header" type="text"></td>
+
+                        @else
+                            <td class="comision actv"><span id="comisionPosgrado" name="comisionPosgrado"></span></td>
+                            <td class="td_obs"><span id="obs2" name="obs2" class="table-header"></span></td>
+
+                        @endif
+
+                    </tr>
+                    <tr>
+                        <td>b) Licenciatura y TSU
+                            <label for="">&nbsp &nbsp &nbsp &nbsp Horas </label>
+                        </td>
+                        <td class="cantidad"><span id="horasSemestre" name="horasSemestre" class="horasActv2"></span>
+                        </td>
+                        <td class="puntajeEvaluar2"><label id="dse2" name="dse2" class="puntajeEvaluar" type="text"></label></td>
+                        @if($userType == 'dictaminador')
+                            <td class="comision actv"><input type="number" step="0.01" id="comisionLic" name="comisionLic" oninput="onActv2Comision()" 
+                            value="{{ oldValueOrDefault('comisionLic') }}"></input>
                             </td>
-                            <td><span id="obs2_2" name="obs2_2" class="table-header"></span></td>
-                            @endif
-                        </tr>
-                        </tbody>
-                        </table>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th style="font-weight: normal; text-size: 20px;" scope="col">Acreditacion: </th>
-                                    <th style="width:60px;padding-left: 100px;">DSE/DIIP</th>
-                                    <th style="font-weight: normal; padding-left: 100px;">8.5 puntos por cada hora/semana/año en cada
-                                        caso
-                                    </th>
-                                    <th>
-                                        @if($userType != '')
-                                            <button type="submit" class="btn custom-btn printButtonClass" id="form2_2Button">Enviar</button>
-                                        @endif
-                                    </th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </form>
-                </main>
+                            <td><input id="obs2_2" name="obs2_2" class="table-header" type="text"></input></td>
+                        @else
+                        <td class="comision actv"><span id="comisionLic" name="comisionLic"></span>
+                        </td>
+                        <td class="td_obs"><span id="obs2_2" name="obs2_2" class="table-header"></span></td>
+                        @endif
+                    </tr>
+                    </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="font-weight: normal; text-size: 20px;" scope="col">Acreditacion: </th>
+                                <th style="width:60px;padding-left: 100px;">DSE/DIIP</th>
+                                <th style="font-weight: normal; padding-left: 100px;">8.5 puntos por cada hora/semana/año en cada
+                                    caso
+                                </th>
+                                <th>
+                                    @if($userType != '')
+                                        <button type="submit" class="btn custom-btn printButtonClass" id="form2_2Button">Enviar</button>
+                                    @endif
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </form>
+            </main>
 <center>
     <footer>
         <center>
