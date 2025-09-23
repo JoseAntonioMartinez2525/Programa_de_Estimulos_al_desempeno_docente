@@ -62,6 +62,7 @@ Fecha de creación: 2024-06-03
                             <select  id="registerUsertype" name="registerUsertype" class="form-control" >
                                 <option value=""></option>
                                 <option value="dictaminador">Dictaminador</option>
+                                {{-- *unica firma del dictaminador, segun si es dictaminador --}}
                                 <option value="docente">Docente</option>
                             </select>
                             <label class="form-label" for="registerUsertype" id="labelRegister">Usuario (Haz click aquí y selecciona)</label>
