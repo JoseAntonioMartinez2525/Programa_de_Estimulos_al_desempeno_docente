@@ -162,10 +162,9 @@ $user_identity = $user->id;
                         <td>Internacional</td>
                         <td id="puntajeArbInt"><b>30</b></td>
                         <td id="cantArbInt"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
                         <td id="subtotalArbInt"></td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionArbInt" value="{{ oldValueOrDefault('comisionArbInt') }}"
                                 oninput="onActv3Comision3_16()">
@@ -173,7 +172,7 @@ $user_identity = $user->id;
                             <span id="comisionArbInt"></span>
                         @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsArbInt">
                         @else
@@ -187,10 +186,10 @@ $user_identity = $user->id;
                         <td>Nacional</td>
                         <td id="puntajeArbINac"><b>25</b></td>
                         <td id="cantArbNac"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                       
                         <td id="subtotalArbNac"></td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionArbNac" value="{{ oldValueOrDefault('comisionArbNac') }}"
                                 oninput="onActv3Comision3_16()">
@@ -199,7 +198,7 @@ $user_identity = $user->id;
                         @endif
                         
                         </td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsArbNac">
                         @else
@@ -213,10 +212,10 @@ $user_identity = $user->id;
                         <td>Internacional</td>
                         <td id="puntajePubInt"><b>20</b></td>
                         <td id="cantPubInt"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                        
                         <td id="subtotalPubInt"></td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionPubInt" value="{{ oldValueOrDefault('comisionPubInt') }}"
                                 oninput="onActv3Comision3_16()"></td>
@@ -224,7 +223,7 @@ $user_identity = $user->id;
                         <span id="comisionPubInt"></span>
 
                         @endif
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsPubInt">
                         @else
@@ -258,10 +257,10 @@ $user_identity = $user->id;
                         <td>Nacional</td>
                         <td id="puntajePubINac"><b>10</b></td>
                         <td id="cantPubNac"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                       
                         <td id="subtotalPubNac"></td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionPubNac" value="{{ oldValueOrDefault('comisionPubNac') }}"
                                 oninput="onActv3Comision3_16()">
@@ -269,7 +268,7 @@ $user_identity = $user->id;
                             <span id="comisionPubNac"></span>
                         @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsPubNac">
                         @else
@@ -283,17 +282,17 @@ $user_identity = $user->id;
                         <td>Internacional</td>
                         <td id="puntajeRevInt"><b>30</b></td>
                         <td id="cantRevInt"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                       
                         <td id="subtotalRevInt"></td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionRevInt" value="{{ oldValueOrDefault('comisionRevInt') }}"
                                 oninput="onActv3Comision3_16()"></td>
                         @else
                             <span id="comisionRevInt"> </span>
                         @endif
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsRevInt">
                         @else
@@ -307,17 +306,17 @@ $user_identity = $user->id;
                         <td>Nacional</td>
                         <td id="puntajeRevINac"><b>25</b></td>
                         <td id="cantRevNac"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                        
                         <td id="subtotalRevNac"></td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionRevNac" value="{{ oldValueOrDefault('comisionRevNac') }}"
                                 oninput="onActv3Comision3_16()"></td>
                         @else
                             <span id="comisionRevNac"> </span>
                         @endif
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsRevNac">
                         @else
@@ -331,17 +330,17 @@ $user_identity = $user->id;
                         <td>----</td>
                         <td id="puntajeRevista"><b>10</b></td>
                         <td id="cantRevista"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                        
                         <td id="subtotalRevista"></td>
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionRevista" value="{{ oldValueOrDefault('comisionRevista') }}"
                                 oninput="onActv3Comision3_16()"></td>
                         @else
                             <span id="comisionRevista"> </span>
                         @endif
-                        <td>
+                        <td class="td_obs">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsRevista">
                         @else

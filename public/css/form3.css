@@ -123,9 +123,7 @@ nav {
     text-align: center;
 }
 
-#comisionArbInt,
-#comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, 
-#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista,
+
 #obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteInvInt,  #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt, #comisionDifusionExt,
 #comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
 #comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg,
@@ -140,7 +138,9 @@ nav {
     text-align: right;
 }
 
-#comisionInicioFinancimientoExt, #comisionInicioInvInterno, #comisionReporteFinanciamExt, #comisionReporteInvInt{
+#comisionInicioFinancimientoExt, #comisionInicioInvInterno, #comisionReporteFinanciamExt, #comisionReporteInvInt, #comisionArbInt,
+#comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, 
+#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista{
     background-color: transparent;
     border-color: transparent;
     text-align: center;
@@ -212,6 +212,12 @@ td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subt
 td#subtotalCientificos, td#subtotalDivulgacion, 
 td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subtotalSinInt, td#subtotalSinNac, td#subtotalAutor, td#subtotalEditor, td#subtotalWeb{
     padding-inline-start: 5px; 
+}
+
+#comisionArbInt,
+#comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, 
+#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista{
+    padding-inline-start: 65px; 
 }
 
 /* #comisionCientificos, #comisionDivulgacion, #comisionTraduccion, #comisionArbitrajeInt, #comisionArbitrajeNac, #comisionSinInt, #comisionSinNac, #comisionAutor, #comisionEditor, #comisionWeb{
