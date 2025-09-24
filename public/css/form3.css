@@ -185,5 +185,11 @@ td[id^="form3_17_"] {
 width: 200px;
 }
 
+body.dark-mode td#comisionAsesoria, body.dark-mode td#comisionServicio, body.dark-mode td#comisionPracticas,
+body.dark-mode td#obsAsesoria, body.dark-mode td#obsServicio, body.dark-mode td#obsPracticas{
+    background-color: #82bdb2!important;
+
+
+}
 
         

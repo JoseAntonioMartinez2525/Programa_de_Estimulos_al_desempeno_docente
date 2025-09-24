@@ -95,12 +95,10 @@ $user_identity = $user->id;
                             <td class="td_3_10">Por alumno(a) por semestre, grupales</td>
                             <td id="puntajeGrupales"><b>3</b> </td>
                             <td id="grupalesCant"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="4"></td>
+
                             <td id="evaluarGrupales"></td>
-                            <td id="comisionGrupal">
+                            <td class="td_obs" id="comisionGrupal">
                             @if ($userType == 'dictaminador')
 
                                 <input type="number" step="0.01" id="comisionGrupal" name="comisionGrupal" oninput="onActv3Comision3_10()"
@@ -109,7 +107,7 @@ $user_identity = $user->id;
                                 <span id="comisionGrupal" name="comisionGrupal"></span>
                             @endif    
                             </td>
-                            <td id="obsGrupal">
+                            <td class="td_obs" id="obsGrupal">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsGrupal" name="obsGrupal">
                             @else
@@ -122,12 +120,10 @@ $user_identity = $user->id;
                             <td class="td_3_10">Por alumno(a) por semestre, individuales</td>
                             <td id="puntajeIndividual"><b>6</b></td>
                             <td id="individualCant"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="4"></td>
+
                             <td id="evaluarIndividual"></td>
-                            <td id="comisionIndividual">
+                            <td class="td_obs" id="comisionIndividual">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionIndividual" name="comisionIndividual" oninput="onActv3Comision3_10()"
                                         value="{{ oldValueOrDefault('comisionIndividual') }}"> 
@@ -135,7 +131,7 @@ $user_identity = $user->id;
                                 <span id="comisionIndividual"  name="comisionIndividual"></span>
                             @endif    
                             </td>
-                            <td id="obsIndividual">
+                            <td class="td_obs" id="obsIndividual">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsIndividual" name="obsIndividual">
                             @else

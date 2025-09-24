@@ -163,10 +163,9 @@ $user_identity = $user->id;
                         <td>--</td>
                         <td id="puntajeCientificos">100</td>
                         <td id="cantCientifico"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
                         <td id="subtotalCientificos"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionCientificos" name="comisionCientificos"
                                     value="{{ oldValueOrDefault('comisionCientificos') }}" oninput="onActv3Comision3_12()">
@@ -174,7 +173,7 @@ $user_identity = $user->id;
                                 <span id="comisionCientificos" name="comisionCientificos" class="form3_19_dark"></span>
                             @endif                         
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsCientificos">
                             @else
@@ -189,17 +188,16 @@ $user_identity = $user->id;
                         <td>--</td>
                         <td id="puntajeDivulgacion">50</td>
                         <td id="cantDivulgacion"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2" ></td>   
                         <td id="subtotalDivulgacion"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionDivulgacion" name="comisionDivulgacion"
                                     value="{{ oldValueOrDefault('comisionDivulgacion') }}" oninput="onActv3Comision3_12()">
                             @else
                                 <span id="comisionDivulgacion" name="comisionDivulgacion" class="form3_19_dark"></span>
                             @endif                          </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsDivulgacion">
                             @else
@@ -214,10 +212,9 @@ $user_identity = $user->id;
                         <td>--</td>
                         <td id="puntajeTraduccion">40</td>
                         <td id="cantTraduccion"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
                         <td id="subtotalTraduccion"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionTraduccion" name="comisionTraduccion"
                                     value="{{ oldValueOrDefault('comisionTraduccion') }}" oninput="onActv3Comision3_12()">
@@ -226,7 +223,7 @@ $user_identity = $user->id;
                             @endif  
  
                      </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsTraduccion">
                             @else
@@ -241,10 +238,9 @@ $user_identity = $user->id;
                         <td>Internacional</td>
                         <td id="puntajeArbitrajeInt">60</td>
                         <td id="cantArbitrajeInt"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
                         <td id="subtotalArbitrajeInt"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionArbitrajeInt" name="comisionArbitrajeInt"
                                     value="{{ oldValueOrDefault('comisionArbitrajeInt') }}" oninput="onActv3Comision3_12()">
@@ -253,7 +249,7 @@ $user_identity = $user->id;
                             @endif  
   
                     </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsArbitrajeInt">
                             @else
@@ -268,10 +264,9 @@ $user_identity = $user->id;
                         <td>Nacional</td>
                         <td id="puntajeArbitrajeNac">30</td>
                         <td id="cantArbitrajeNac"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
                         <td id="subtotalArbitrajeNac"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionArbitrajeNac" name="comisionArbitrajeNac"
                                     value="{{ oldValueOrDefault('comisionArbitrajeNac') }}" oninput="onActv3Comision3_12()">
@@ -280,7 +275,7 @@ $user_identity = $user->id;
                             @endif  
  
                      </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsArbitrajeNac">
                             @else
@@ -317,10 +312,9 @@ $user_identity = $user->id;
                         <td>Internacional</td>
                         <td id="puntajeSinInt">15</td>
                         <td id="cantSinInt"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
                         <td id="subtotalSinInt"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionSinInt" name="comisionSinInt"
                                     value="{{ oldValueOrDefault('comisionSinInt') }}" oninput="onActv3Comision3_12()">
@@ -328,8 +322,8 @@ $user_identity = $user->id;
                                 <span id="comisionSinInt" name="comisionSinInt" class="form3_19_dark"></span>
                             @endif  
       
-                </td>
-                        <td>
+                        </td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsSinInt">
                             @else
@@ -344,10 +338,10 @@ $user_identity = $user->id;
                         <td>Nacional</td>
                         <td id="puntajeSinNac">10</td>
                         <td id="cantSinNac"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                        
                         <td id="subtotalSinNac"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionSinNac" name="comisionSinNac"
                                     value="{{ oldValueOrDefault('comisionSinNac') }}" oninput="onActv3Comision3_12()">
@@ -355,8 +349,8 @@ $user_identity = $user->id;
                                 <span id="comisionSinNac" name="comisionSinNac" class="form3_19_dark"></span>
                             @endif  
               
-        </td>
-                        <td>
+                        </td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsSinNac">
                             @else
@@ -371,10 +365,10 @@ $user_identity = $user->id;
                         <td>--</td>
                         <td id="puntajeAutor">25</td>
                         <td id="cantAutor"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                        
                         <td id="subtotalAutor"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionAutor" name="comisionAutor"
                                     value="{{ oldValueOrDefault('comisionAutor') }}" oninput="onActv3Comision3_12()">
@@ -382,8 +376,8 @@ $user_identity = $user->id;
                                 <span id="comisionAutor" name="comisionAutor" class="form3_19_dark"></span>
                             @endif  
         
-              </td>
-                        <td>
+                        </td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsAutor">
                             @else
@@ -398,10 +392,10 @@ $user_identity = $user->id;
                         <td>--</td>
                         <td id="puntajeEditor">25</td>
                         <td id="cantEditor"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                        
                         <td id="subtotalEditor"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionEditor" name="comisionEditor"
                                     value="{{ oldValueOrDefault('comisionEditor') }}" oninput="onActv3Comision3_12()">
@@ -409,8 +403,8 @@ $user_identity = $user->id;
                                 <span id="comisionEditor" name="comisionEditor" class="form3_19_dark"></span>
                             @endif  
    
-                   </td>
-                        <td>
+                        </td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsEditor">
                             @else
@@ -425,10 +419,10 @@ $user_identity = $user->id;
                         <td>--</td>
                         <td id="puntajeWeb">20</td>
                         <td id="cantWeb"></td>
-                        <td></td>
-                        <td></td>
+                        <td colspan="2"></td>
+                        
                         <td id="subtotalWeb"></td>
-                        <td class="rightSelect">
+                        <td class="td_obs rightSelect">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionWeb" name="comisionWeb"
                                     value="{{ oldValueOrDefault('comisionWeb') }}" oninput="onActv3Comision3_12()">
@@ -436,8 +430,8 @@ $user_identity = $user->id;
                                 <span id="comisionWeb" name="comisionWeb" class="form3_19_dark"></span>
                             @endif  
           
-            </td>
-                        <td>
+                        </td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsWeb">
                             @else

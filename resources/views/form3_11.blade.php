@@ -91,9 +91,9 @@ $user_identity = $user->id;
                         <th class="acreditacion">Actividad</th>
                         <th class="acreditacion">Puntaje</th>
                         <th class="acreditacion">Cantidad</th>
-                        <th colspan="2"></th>
+                        <th colspan="3"></th>
                         <th class="acreditacion">Subtotal</th>
-                        <th colspan="2"></th>
+                        <th colspan="1"></th>
                         <th class="obsv acreditacion" scope="col">Observaciones</th>
                     </tr>
                 </thead>

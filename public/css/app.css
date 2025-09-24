@@ -949,19 +949,14 @@ body.dark-mode [id^="tutoriasComision"]{
     background-color: transparent;
 }
 
-body.dark-mode #grupalesCant, body.dark-mode #comisionGrupal, body.dark-mode #obsGrupal, 
-body.dark-mode #individualCant, body.dark-mode #comisionIndividual, body.dark-mode #obsIndividual,
-body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas, body.dark-mode #comisionAsesoria, body.dark-mode #comisionServicio, 
-body.dark-mode #comisionPracticas, body.dark-mode #obsAsesoria, body.dark-mode #obsServicio, body.dark-mode #obsPracticas{
+body.dark-mode #grupalesCant, 
+body.dark-mode #individualCant,
+body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas{
     color:black
 }
 
 body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, 
-body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb, body.dark-mode #comisionCientifico, 
-body.dark-mode #comisionDivulgacion, body.dark-mode #comisionTraduccion, body.dark-mode #comisionArbitrajeInt, body.dark-mode #comisionArbitrajeNac, body.dark-mode #comisionSinInt, 
-body.dark-mode #comisionSinNac, body.dark-mode #comisionAutor, body.dark-mode #comisionEditor, body.dark-mode #comisionWeb, body.dark-mode #obsCientifico, body.dark-mode #obsDivulgacion, 
-body.dark-mode #obsTraduccion, body.dark-mode #obsArbitrajeInt, body.dark-mode #obsArbitrajeNac, body.dark-mode #obsSinInt, body.dark-mode #obsSinNac, body.dark-mode #obsAutor, body.dark-mode #obsEditor, body.dark-mode #obsWeb,
-body.dark-mode #comisionCientificos, body.dark-mode #obsCientificos{
+body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb{
     color:black
 }
 
@@ -992,7 +987,7 @@ body.dark-mode #obsDifusionInt, body.dark-mode #comisionRepDifusionExt, body.dar
 }
 
 /* cantComOrgInt, cantComOrgNac, cantComOrgReg */
-body.dark-mode td.cantidad_form_3_18, body.dark-mode .form3_18_dark, body.dark-mode .form3_19_dark{
+body.dark-mode td.cantidad_form_3_18, body.dark-mode .form3_18_dark{
     color: black;
 }
 
@@ -1130,7 +1125,13 @@ body.dark-mode td.puntajeEvaluar2{
     background-color: #333333;
 }
 
-body.dark-mode label#dse2, body.dark-mode label#dse, body.dark-mode [id^="rc"]{
+body.dark-mode label#dse2, body.dark-mode label#dse, body.dark-mode [id^="rc"], body.dark-mode #comisionGrupal, body.dark-mode #comisionIndividual, body.dark-mode #obsGrupal, body.dark-mode #obsIndividual,
+body.dark-mode #comisionAsesoria, body.dark-mode #comisionServicio, body.dark-mode #comisionPracticas, body.dark-mode #obsAsesoria, body.dark-mode #obsServicio, 
+body.dark-mode #obsPracticas, body.dark-mode #comisionCientifico, 
+body.dark-mode #comisionDivulgacion, body.dark-mode #comisionTraduccion, body.dark-mode #comisionArbitrajeInt, body.dark-mode #comisionArbitrajeNac, body.dark-mode #comisionSinInt, 
+body.dark-mode #comisionSinNac, body.dark-mode #comisionAutor, body.dark-mode #comisionEditor, body.dark-mode #comisionWeb, body.dark-mode #obsCientifico, body.dark-mode #obsDivulgacion, 
+body.dark-mode #obsTraduccion, body.dark-mode #obsArbitrajeInt, body.dark-mode #obsArbitrajeNac, body.dark-mode #obsSinInt, body.dark-mode #obsSinNac, body.dark-mode #obsAutor, body.dark-mode #obsEditor, body.dark-mode #obsWeb,
+body.dark-mode #comisionCientificos, body.dark-mode #obsCientificos{
     color: white;
 }
 
@@ -1180,8 +1181,14 @@ span#convocatoria2, span#periodo2, span#area2, span#departamento2{
     text-align: center;
 }
 
-body.dark-mode .valor{
-    background-color: transparent;
+body.dark-mode .valor, body.dark-mode span#comisionGrupal, body.dark-mode span#comisionIndividual, body.dark-mode span#obsGrupal, body.dark-mode span#obsIndividual,
+body.dark-mode span#comisionAsesoria, body.dark-mode span#comisionServicio, body.dark-mode span#comisionPracticas, body.dark-mode span#obsAsesoria, body.dark-mode span#obsServicio,
+body.dark-mode span#obsPracticas, body.dark-mode span#comisionCientificos, body.dark-mode span#comisionDivulgacion, body.dark-mode span#comisionTraduccion,body.dark-mode span#comisionArbitrajeInt,
+body.dark-mode span#comisionArbitrajeNac, body.dark-mode span#comisionSinInt, body.dark-mode span#comisionSinNac, body.dark-mode span#comisionAutor, body.dark-mode span#comisionEditor, body.dark-mode span#comisionWeb,
+body.dark-mode span#obsCientificos, body.dark-mode span#obsDivulgacion, body.dark-mode span#obsTraduccion, body.dark-mode span#obsArbitrajeInt, body.dark-mode span#obsArbitrajeNac,
+body.dark-mode span#obsSinInt, body.dark-mode span#obsSinNac, body.dark-mode span#obsAutor, body.dark-mode span#obsEditor, body.dark-mode span#obsWeb{
+    color: white!important;
+    background-color: transparent!important;
 }
 
 
