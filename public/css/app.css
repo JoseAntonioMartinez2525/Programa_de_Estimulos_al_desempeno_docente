@@ -954,7 +954,9 @@ body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cant
 body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb, body.dark-mode td.cantidad, body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLocal,
 body.dark-mode #cantArbInt, body.dark-mode #cantArbNac, body.dark-mode #cantArbInt, body.dark-mode #cantPubInt, body.dark-mode #cantPubNac, body.dark-mode #cantRevInt, body.dark-mode #cantRevNac, body.dark-mode #cantRevista, body.dark-mode #comisionArbInt, 
 body.dark-mode #comisionArbNac, body.dark-mode #comisionPubInt, body.dark-mode #comisionPubNac, body.dark-mode #comisionRevInt, body.dark-mode #comisionRevNac, body.dark-mode #comisionRevista, body.dark-mode #obsArbInt,
-body.dark-mode #obsArbNac, body.dark-mode #obsPubInt, body.dark-mode #obsPubNac, body.dark-mode #obsRevInt, body.dark-mode #obsRevNac, body.dark-mode #obsRevista{
+body.dark-mode #obsArbNac, body.dark-mode #obsPubInt, body.dark-mode #obsPubNac, body.dark-mode #obsRevInt, body.dark-mode #obsRevNac, body.dark-mode #obsRevista,
+body.dark-mode #cantDifusionExt, body.dark-mode #cantDifusionInt, body.dark-mode #cantRepDifusionExt, body.dark-mode #cantRepDifusionInt, body.dark-mode #comisionDifusionExt, body.dark-mode #comisionDifusionInt, body.dark-mode #obsDifusionExt,
+body.dark-mode #obsDifusionInt, body.dark-mode #comisionRepDifusionExt, body.dark-mode #obsRepDifusionExt, body.dark-mode #comisionRepDifusionInt, body.dark-mode #obsRepDifusionInt{
     color:white
 }
 
@@ -967,11 +969,6 @@ body.dark-mode #obsReporteInvInt{
     color:white;
 }
 
-
-body.dark-mode #cantDifusionExt, body.dark-mode #cantDifusionInt, body.dark-mode #cantRepDifusionExt, body.dark-mode #cantRepDifusionInt, body.dark-mode #comisionDifusionExt, body.dark-mode #comisionDifusionInt, body.dark-mode #obsDifusionExt,
-body.dark-mode #obsDifusionInt, body.dark-mode #comisionRepDifusionExt, body.dark-mode #obsRepDifusionExt, body.dark-mode #comisionRepDifusionInt, body.dark-mode #obsRepDifusionInt{
-    color:black;
-}
 
 /* cantComOrgInt, cantComOrgNac, cantComOrgReg */
 body.dark-mode td.cantidad_form_3_18, body.dark-mode .form3_18_dark{
@@ -1060,7 +1057,7 @@ body.dark-mode .btn-outline-primary{
     font-size: 1rem;
 }
 
-.obsv{
+.obsv, td#subtotalDifusionExt, td#subtotalDifusionInt, td#subtotalRepDifusionExt, td#subtotalRepDifusionInt{
     text-align: center;
 }
 
@@ -1110,10 +1107,15 @@ body.dark-mode td#puntaje3_7, body.dark-mode td#puntaje3_8, body.dark-mode td#pu
 body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas,
 body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, 
 body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb,  body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLoc,
-body.dark-mode #cantPatentes, body.dark-mode #cantPrototipos, body.dark-mode #cantArbInt, body.dark-mode #cantArbNac, body.dark-mode #cantPubInt, body.dark-mode #cantPubNac, body.dark-mode #cantRevInt, body.dark-mode #cantRevNac, body.dark-mode #cantRevista
-{
+body.dark-mode #cantPatentes, body.dark-mode #cantPrototipos, body.dark-mode #cantArbInt, body.dark-mode #cantArbNac, body.dark-mode #cantPubInt, body.dark-mode #cantPubNac, body.dark-mode #cantRevInt, body.dark-mode #cantRevNac, body.dark-mode #cantRevista,
+body.dark-mode #cantDifusionExt, body.dark-mode #cantDifusionInt, body.dark-mode #cantRepDifusionExt, body.dark-mode #cantRepDifusionInt,
+body.dark-mode td#cantComOrgInt, body.dark-mode td#cantCicloComApoyoReg, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantCicloComApoyoNac, body.dark-mode td#cantComOrgNac, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantComApoyoInt, 
+body.dark-mode td#cantComApoyoNac, body.dark-mode td#cantComApoyoReg, body.dark-mode td#cantCicloComOrgInt, body.dark-mode td#cantCicloComOrgNac, body.dark-mode td#cantCicloComOrgReg,
+ body.dark-mode td#cantCicloComApoyoInt{
     background-color: #9b9a9a!important;
+    color: white;
 }
+
 
 body.dark-mode td.puntajeEvaluar2{
     background-color: #333333;

@@ -173,14 +173,14 @@ $user_identity = $user->id;
                         <td id="cantDifusionExt"></td>
                         <td></td>
                         <td id="subtotalDifusionExt"></td>
-                        <td>
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionDifusionExt" value="{{ oldValueOrDefault('comisionDifusionExt') }}" oninput="onActv3Comision3_17()">
                         @else
                             <span id="comisionDifusionExt"></span>
                         @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsDifusionExt">
                         @else
@@ -196,14 +196,14 @@ $user_identity = $user->id;
                         <td id="cantDifusionInt"></td>
                         <td></td>
                         <td id="subtotalDifusionInt"></td>
-                        <td>
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')    
                             <input type="number" step="0.01" id="comisionDifusionInt" value="{{ oldValueOrDefault('comisionDifusionInt') }}" oninput="onActv3Comision3_17()">
                         @else
                              <span id="comisionDifusionInt"></span>
                         @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')      
                             <input class="table-header" type="text" id="obsDifusionInt">
                         @else
@@ -221,14 +221,14 @@ $user_identity = $user->id;
                         <td id="cantRepDifusionExt" ></td>
                         <td></td>
                         <td id="subtotalRepDifusionExt"></td>
-                        <td>
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')  
                             <input type="number" step="0.01" id="comisionRepDifusionExt" value="{{ oldValueOrDefault('comisionRepDifusionExt') }}" oninput="onActv3Comision3_17()">
                         @else
                             <span id="comisionRepDifusionExt"></span>
                         @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')  
                             <input class="table-header" type="text" id="obsRepDifusionExt">
                         @else
@@ -246,14 +246,14 @@ $user_identity = $user->id;
                         </td>
                         <td></td>
                         <td id="subtotalRepDifusionInt"></td>
-                        <td>
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')      
                             <input type="number" step="0.01" id="comisionRepDifusionInt" value="{{ oldValueOrDefault('comisionRepDifusionInt') }}" oninput="onActv3Comision3_17()">
                         @else
                             <span id="comisionRepDifusionInt"></span>
                         @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')      
                             <input class="table-header" type="text" id="obsRepDifusionInt">
                         @else

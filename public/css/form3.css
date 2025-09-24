@@ -124,9 +124,7 @@ nav {
 }
 
 
-#obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteInvInt,  #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt, #comisionDifusionExt,
-#comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
-#comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg,
+#obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteInvInt,  #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt,
 #comCGUtitular, #comCGUespecial, #comCGUpermanente, #comCAACtitular, #comCAACintegCom, #comComDepart, #comComPEDPD, #comComPartPos, #comRespPos, #comRespCarrera, #comRespProd, #comRespLab,
 #comExamProf, #comExamAcademicos, #comPRODEPformResp, #comPRODEPformInteg, #comPRODEPenconsResp, #comPRODEPenconsInteg, #comPRODEPconsResp, #comPRODEPconsInteg, 
 #obsComOrgInt, #obsComOrgNac, #obsComOrgReg, #obsComApoyoInt, #obsComApoyoNac, #obsComApoyoReg, #obsCicloComOrgInt, #obsCicloComOrgNac, #obsCicloComOrgReg, #obsCicloComApoyoInt, #obsCicloComApoyoNac, #obsCicloComApoyoReg,
@@ -140,7 +138,9 @@ nav {
 
 #comisionInicioFinancimientoExt, #comisionInicioInvInterno, #comisionReporteFinanciamExt, #comisionReporteInvInt, #comisionArbInt,
 #comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, 
-#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista{
+#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista, #comisionDifusionExt,
+#comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
+#comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg{
     background-color: transparent;
     border-color: transparent;
     text-align: center;
@@ -205,7 +205,8 @@ span#comDA, span#comNCAA
 #comisionAsesoria, #obsAsesoria,
 #comisionServicio, #obsServicio,
 #comisionPracticas,#obsPracticas, td#subtotalCientificos, td#subtotalDivulgacion, 
-td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subtotalSinInt, td#subtotalSinNac, td#subtotalAutor, td#subtotalEditor, td#subtotalWeb
+td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subtotalSinInt, td#subtotalSinNac, td#subtotalAutor, td#subtotalEditor, td#subtotalWeb,
+td#subtotalComOrgInt, td#subtotalComOrgNac, td#subtotalComOrgReg, td#subtotalComApoyoInt, td#subtotalComApoyoNac, td#subtotalComApoyoReg, td#subtotalCicloComOrgInt, td#subtotalCicloComOrgNac, td#subtotalCicloComOrgReg, td#subtotalCicloComApoyoInt, td#subtotalCicloComApoyoNac, td#subtotalCicloComApoyoReg
 {
     text-align: center;
 }
@@ -216,12 +217,19 @@ td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subt
 
 #comisionArbInt,
 #comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, 
-#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista{
+#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista, #comisionDifusionExt,
+#comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
+#comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg{
     padding-inline-start: 65px; 
 }
 
 /* #comisionCientificos, #comisionDivulgacion, #comisionTraduccion, #comisionArbitrajeInt, #comisionArbitrajeNac, #comisionSinInt, #comisionSinNac, #comisionAutor, #comisionEditor, #comisionWeb{
     padding-inline-start: 5px; 
 } */
-    
-        
+
+/* #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, #comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg */
+   
+body.dark-mode span#comisionComOrgInt, body.dark-mode span#comisionComOrgNac, body.dark-mode span#comisionComOrgReg, body.dark-mode span#comisionComApoyoInt, body.dark-mode span#comisionComApoyoNac, body.dark-mode span#comisionComApoyoReg, body.dark-mode span#comisionCicloComOrgInt, body.dark-mode span#comisionCicloComOrgNac, body.dark-mode span#comisionCicloComOrgReg, body.dark-mode span#comisionCicloComApoyoInt, body.dark-mode span#comisionCicloComApoyoNac, body.dark-mode span#comisionCicloComApoyoReg{
+    color: white;
+}
+     
