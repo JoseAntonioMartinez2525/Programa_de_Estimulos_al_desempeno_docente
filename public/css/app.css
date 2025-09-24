@@ -951,13 +951,8 @@ body.dark-mode [id^="tutoriasComision"]{
 body.dark-mode #grupalesCant, 
 body.dark-mode #individualCant,
 body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas, body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, 
-body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb{
+body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb, body.dark-mode td.cantidad, body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLocal{
     color:white
-}
-
-
-body.dark-mode td.cantidad, body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLoc{
-    color:black
 }
 
 body.dark-mode #comisionInicioFinancimientoExt, body.dark-mode #comisionInicioInvInterno, body.dark-mode #comisionReporteFinanciamExt, body.dark-mode #comisionReporteInvInt,
@@ -1116,7 +1111,7 @@ body.dark-mode td.cantidad, body.dark-mode td.elabInput, body.dark-mode td.td_fo
 body.dark-mode td#puntaje3_7, body.dark-mode td#puntaje3_8, body.dark-mode td#puntaje3_8_1, body.dark-mode td[id^="puntaje3_9_"], body.dark-mode td#individualCant, body.dark-mode td#grupalesCant,
 body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas,
 body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, 
-body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb
+body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb,  body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLoc
 {
     background-color: #9b9a9a!important;
 }
@@ -1161,7 +1156,8 @@ th.obsv.cd {
     font-size: 16px;
 }
 
-[id^="tutorias"],  td.obsv_3_14, #comisionPatententes, #comisionPrototipos, #obsPatentes, #obsPrototipos{
+[id^="tutorias"],  td.obsv_3_14, #comisionPatententes, #comisionPrototipos, #obsPatentes, #obsPrototipos,
+td#subtotalInicioFinanExt ,td#subtotalInicioInvInterno, td#subtotalReporteFinanciamExt, td#subtotalReporteInvInt{
     text-align: center;
 }
 
