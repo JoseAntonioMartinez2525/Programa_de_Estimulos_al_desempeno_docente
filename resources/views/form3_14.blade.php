@@ -104,7 +104,7 @@ $user_identity = $user->id;
                         <td id="cantCongresoInt"></td>
                         <td colspan="3"></td>
                         <td id="subtotalCongresoInt">0</td>
-                        <td>
+                        <td class="obsv_3_14">
                         @if($userType == 'dictaminador')                                            
                             <input type="number" step="0.01" id="comisionCongresoInt" value="{{ oldValueOrDefault('comisionCongresoInt') }}"
                                 oninput="onActv3Comision3_14()">
@@ -129,7 +129,7 @@ $user_identity = $user->id;
                         <td id="cantCongresoNac"></td>
                         <td colspan="3"></td>
                         <td id="subtotalCongresoNac">0</td>
-                        <td>
+                        <td class="obsv_3_14">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionCongresoNac" value="{{ oldValueOrDefault('comisionCongresoNac') }}"
                                 oninput="onActv3Comision3_14()">
@@ -153,7 +153,7 @@ $user_identity = $user->id;
                         <td id="cantCongresoLoc"></td>
                         <td colspan="3"></td>
                         <td id="subtotalCongresoLoc">0</td>
-                        <td>
+                        <td class="obsv_3_14">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionCongresoLoc" value="{{ oldValueOrDefault('comisionCongresoLoc') }}"
                                 oninput="onActv3Comision3_14()">

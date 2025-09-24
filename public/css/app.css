@@ -960,9 +960,7 @@ body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAuto
     color:black
 }
 
-body.dark-mode td.cantidad, body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLoc, body.dark-mode #comisionCongresoLoc, body.dark-mode #comisionCongresoInt, body.dark-mode #comisionCongresoNac,
-body.dark-mode #comisionCongresoReg, body.dark-mode #obsCongresoLoc, body.dark-mode #obsCongresoInt, body.dark-mode #obsCongresoNac, body.dark-mode #cantPatentes, body.dark-mode #comisionPatententes, body.dark-mode #obsPatentes, 
-body.dark-mode #cantPrototipos, body.dark-mode #comisionPrototipos, body.dark-mode #obsPrototipos{
+body.dark-mode td.cantidad, body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLoc{
     color:black
 }
 
@@ -1111,7 +1109,7 @@ td.td_obs, td.comision.actv{
     border-width: thin;
 }
 
-body.dark-mode td.td_obs, body.dark-mode td.comision.actv, body.dark-mode td.comEstilos{
+body.dark-mode td.td_obs, body.dark-mode td.comision.actv, body.dark-mode td.comEstilos, body.dark-mode td.comision3_13, body.dark-mode td.obsv_3_14{
     background-color: #82bdb2!important;
     border-width: thin;
     border-color: white;
@@ -1161,7 +1159,7 @@ th.obsv.cd {
     font-size: 16px;
 }
 
-[id^="tutorias"]{
+[id^="tutorias"],  td.obsv_3_14{
     text-align: center;
 }
 
@@ -1186,9 +1184,15 @@ body.dark-mode span#comisionAsesoria, body.dark-mode span#comisionServicio, body
 body.dark-mode span#obsPracticas, body.dark-mode span#comisionCientificos, body.dark-mode span#comisionDivulgacion, body.dark-mode span#comisionTraduccion,body.dark-mode span#comisionArbitrajeInt,
 body.dark-mode span#comisionArbitrajeNac, body.dark-mode span#comisionSinInt, body.dark-mode span#comisionSinNac, body.dark-mode span#comisionAutor, body.dark-mode span#comisionEditor, body.dark-mode span#comisionWeb,
 body.dark-mode span#obsCientificos, body.dark-mode span#obsDivulgacion, body.dark-mode span#obsTraduccion, body.dark-mode span#obsArbitrajeInt, body.dark-mode span#obsArbitrajeNac,
-body.dark-mode span#obsSinInt, body.dark-mode span#obsSinNac, body.dark-mode span#obsAutor, body.dark-mode span#obsEditor, body.dark-mode span#obsWeb{
+body.dark-mode span#obsSinInt, body.dark-mode span#obsSinNac, body.dark-mode span#obsAutor, body.dark-mode span#obsEditor, body.dark-mode span#obsWeb, body.dark-mode #comisionCongresoLoc, body.dark-mode #comisionCongresoInt, body.dark-mode #comisionCongresoNac,
+body.dark-mode #comisionCongresoReg, body.dark-mode #obsCongresoLoc, body.dark-mode #obsCongresoInt, body.dark-mode #obsCongresoNac, body.dark-mode #cantPatentes, body.dark-mode #comisionPatententes, body.dark-mode #obsPatentes, 
+body.dark-mode #cantPrototipos, body.dark-mode #comisionPrototipos, body.dark-mode #obsPrototipos{
     color: white!important;
     background-color: transparent!important;
+}
+
+td.comision3_13, td.obsv_3_14{
+    background-color: #d6fff7;
 }
 
 

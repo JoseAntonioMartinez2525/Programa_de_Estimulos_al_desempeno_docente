@@ -99,9 +99,7 @@ $user_identity = $user->id;
                     <td id="puntajeInicioFinanExt">50</td>
                     <td id="cantInicioFinanExt" class="cantidad">
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="3"></td>
                     <td id="subtotalInicioFinanExt"></td>
                     <td class="comision3_13">
                     @if ($userType == 'dictaminador')
@@ -124,9 +122,7 @@ $user_identity = $user->id;
                     <td class="td_3_13">Inicio de proyecto de investigación interno, aprobado por CAAC</td>
                     <td id="puntajeInicioInvInterno">25</td>
                     <td id="cantInicioInvInterno" class="cantidad"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="3"></td>
                     <td id="subtotalInicioInvInterno"></td>
                     <td class="comision3_13">
                      @if ($userType == 'dictaminador')   
@@ -150,9 +146,8 @@ $user_identity = $user->id;
                     </td>
                     <td id="puntajeReporteFinanciamExt">100</td>
                     <td id="cantReporteFinanciamExt" class="cantidad"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="3"></td>
+
                     <td id="subtotalReporteFinanciamExt"></td>
                     <td class="comision3_13">
                      @if ($userType == 'dictaminador')     
@@ -161,7 +156,7 @@ $user_identity = $user->id;
                     <span id="comisionReporteFinanciamExt" name="comisionReporteFinanciamExt"></span>
                     @endif
                     </td class="comision3_13">
-                    <td>
+                    <td class="comision3_13">
                     @if ($userType == 'dictaminador')      
                         <input class="table-header" type="text" id="obsReporteFinanciamExt"></td>
                     @else
@@ -175,9 +170,8 @@ $user_identity = $user->id;
                     </td>
                     <td id="puntajeReporteInvInt">50</td>
                     <td id="cantReporteInvInt" class="cantidad"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="3"></td>
+
                     <td id="subtotalReporteInvInt"></td>
                     <td class="comision3_13">
                     @if ($userType == 'dictaminador')      
