@@ -91,39 +91,33 @@ nav {
 
 #puntajeIndividual, #individualCant, #evaluarIndividual ,#comisionIndividual ,#obsIndividual,
 #puntajeGrupales ,#grupalesCant ,#evaluarGrupales ,#comisionGrupal ,#obsGrupal,
-#cantAsesoria, #subtotalAsesoria, #comisionAsesoria, #obsAsesoria, #cantServicio, #subtotalServicio,
-#comisionServicio, #obsServicio, #cantPracticas, #subtotalPracticas, #comisionPracticas,
-#obsPracticas {
+#cantAsesoria, #subtotalAsesoria, #cantServicio, #subtotalServicio,
+ #cantPracticas, #subtotalPracticas {
     text-align: right;
 }
 
 #individualCant, #grupalesCant, 
-#cantAsesoria, #cantServicio, #cantPracticas,
-#cantCientifico, #cantDivulgacion, #cantTraduccion, #cantArbitrajeInt, #cantArbitrajeNac, #cantSinInt, #cantSinNac, #cantAutor, #cantEditor, #cantWeb, .cantidad,
+#cantAsesoria, #cantServicio, #cantPracticas, .cantidad,
 #cantCongresoInt, #cantCongresoNac, #cantCongresoLoc, 
 #cantDifusionExt, #cantDifusionInt, #cantRepDifusionExt, #cantRepDifusionInt, #cantDA, #cantCAAC, #puntaje3_7,
-#cantInicioFinanExt, #cantInicioInvInterno, #cantReporteFinanciamExt, #cantReporteInvInt{
+#cantInicioFinanExt, #cantInicioInvInterno, #cantReporteFinanciamExt, #cantReporteInvInt, [id^="puntaje3_9_"], #puntaje3_8, #puntaje3_6, #puntaje3_8_1, #cantCientifico, #cantDivulgacion, #cantTraduccion, #cantArbitrajeInt, #cantArbitrajeNac, #cantSinInt, #cantSinNac, #cantAutor, #cantEditor, #cantWeb{
     border-color: transparent;
     background-color: #c1cfd3;
     text-align: right;
 }
 
-[id^="puntaje3_9_"], #puntaje3_8, #puntaje3_6, #puntaje3_8_1{
-        background-color: #c1cfd3;
-        text-align: right;
-        border-color:transparent;
-}
 
-#comisionIndividual, #comisionGrupal, #obsGrupal, #obsIndividual{
+
+#comisionIndividual, #comisionGrupal, #obsGrupal, #obsIndividual, #comisionAsesoria,
+#obsAsesoria, #comisionServicio, #obsServicio, #comisionPracticas, #obsPracticas,
+#obsCientificos, #obsDivulgacion, #obsTraduccion, #obsArbitrajeInt, #obsArbitrajeNac, #obsSinInt, #obsSinNac, #obsAutor, #obsEditor, #obsWeb,
+#comisionCientificos, #comisionDivulgacion, #comisionTraduccion, #comisionArbitrajeInt, #comisionArbitrajeNac, #comisionSinInt, #comisionSinNac, #comisionAutor, #comisionEditor, #comisionWeb{
     background-color: #d6fff7;
     border-color: transparent;
     text-align: center;
 }
 
-#comisionAsesoria,
-#obsAsesoria, #comisionServicio, #obsServicio, #comisionPracticas, #obsPracticas,
-#obsCientificos, #obsDivulgacion, #obsTraduccion, #obsArbitrajeInt, #obsArbitrajeNac, #obsSinInt, #obsSinNac, #obsAutor, #obsEditor, #obsWeb,
-#comisionCientificos, #comisionDivulgacion, #comisionTraduccion, #comisionArbitrajeInt, #comisionArbitrajeNac, #comisionSinInt, #comisionSinNac, #comisionAutor, #comisionEditor, #comisionWeb, .comision3_13{
+.comision3_13{
     background-color: #d6fff7;
     border-color: transparent;
     text-align: right;
@@ -209,4 +203,21 @@ span#comDA, span#comNCAA
     text-align: center;
     padding-inline-start: 50px;
 }
+
+#comisionAsesoria, #obsAsesoria,
+#comisionServicio, #obsServicio,
+#comisionPracticas,#obsPracticas, td#subtotalCientificos, td#subtotalDivulgacion, 
+td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subtotalSinInt, td#subtotalSinNac, td#subtotalAutor, td#subtotalEditor, td#subtotalWeb
+{
+    text-align: center;
+}
+td#subtotalCientificos, td#subtotalDivulgacion, 
+td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subtotalSinInt, td#subtotalSinNac, td#subtotalAutor, td#subtotalEditor, td#subtotalWeb{
+    padding-inline-start: 5px; 
+}
+
+#comisionCientificos, #comisionDivulgacion, #comisionTraduccion, #comisionArbitrajeInt, #comisionArbitrajeNac, #comisionSinInt, #comisionSinNac, #comisionAutor, #comisionEditor, #comisionWeb{
+    padding-inline-start: 5px; 
+}
+    
         

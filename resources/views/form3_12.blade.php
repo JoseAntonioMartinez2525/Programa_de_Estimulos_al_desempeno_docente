@@ -165,7 +165,7 @@ $user_identity = $user->id;
                         <td id="cantCientifico"></td>
                         <td colspan="2"></td>
                         <td id="subtotalCientificos"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionCientificos" name="comisionCientificos"
                                     value="{{ oldValueOrDefault('comisionCientificos') }}" oninput="onActv3Comision3_12()">
@@ -190,7 +190,7 @@ $user_identity = $user->id;
                         <td id="cantDivulgacion"></td>
                         <td colspan="2" ></td>   
                         <td id="subtotalDivulgacion"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionDivulgacion" name="comisionDivulgacion"
                                     value="{{ oldValueOrDefault('comisionDivulgacion') }}" oninput="onActv3Comision3_12()">
@@ -214,7 +214,7 @@ $user_identity = $user->id;
                         <td id="cantTraduccion"></td>
                         <td colspan="2"></td>
                         <td id="subtotalTraduccion"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionTraduccion" name="comisionTraduccion"
                                     value="{{ oldValueOrDefault('comisionTraduccion') }}" oninput="onActv3Comision3_12()">
@@ -240,7 +240,7 @@ $user_identity = $user->id;
                         <td id="cantArbitrajeInt"></td>
                         <td colspan="2"></td>
                         <td id="subtotalArbitrajeInt"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionArbitrajeInt" name="comisionArbitrajeInt"
                                     value="{{ oldValueOrDefault('comisionArbitrajeInt') }}" oninput="onActv3Comision3_12()">
@@ -266,7 +266,7 @@ $user_identity = $user->id;
                         <td id="cantArbitrajeNac"></td>
                         <td colspan="2"></td>
                         <td id="subtotalArbitrajeNac"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionArbitrajeNac" name="comisionArbitrajeNac"
                                     value="{{ oldValueOrDefault('comisionArbitrajeNac') }}" oninput="onActv3Comision3_12()">
@@ -314,7 +314,7 @@ $user_identity = $user->id;
                         <td id="cantSinInt"></td>
                         <td colspan="2"></td>
                         <td id="subtotalSinInt"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionSinInt" name="comisionSinInt"
                                     value="{{ oldValueOrDefault('comisionSinInt') }}" oninput="onActv3Comision3_12()">
@@ -341,7 +341,7 @@ $user_identity = $user->id;
                         <td colspan="2"></td>
                         
                         <td id="subtotalSinNac"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionSinNac" name="comisionSinNac"
                                     value="{{ oldValueOrDefault('comisionSinNac') }}" oninput="onActv3Comision3_12()">
@@ -368,7 +368,7 @@ $user_identity = $user->id;
                         <td colspan="2"></td>
                         
                         <td id="subtotalAutor"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionAutor" name="comisionAutor"
                                     value="{{ oldValueOrDefault('comisionAutor') }}" oninput="onActv3Comision3_12()">
@@ -395,7 +395,7 @@ $user_identity = $user->id;
                         <td colspan="2"></td>
                         
                         <td id="subtotalEditor"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionEditor" name="comisionEditor"
                                     value="{{ oldValueOrDefault('comisionEditor') }}" oninput="onActv3Comision3_12()">
@@ -422,7 +422,7 @@ $user_identity = $user->id;
                         <td colspan="2"></td>
                         
                         <td id="subtotalWeb"></td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs text-center">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comisionWeb" name="comisionWeb"
                                     value="{{ oldValueOrDefault('comisionWeb') }}" oninput="onActv3Comision3_12()">
