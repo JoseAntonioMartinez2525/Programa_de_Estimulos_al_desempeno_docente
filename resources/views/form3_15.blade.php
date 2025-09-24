@@ -70,11 +70,7 @@ $user_identity = $user->id;
             </thead>
             <thead>
                 <tr>
-                    <th id="seccion3_15" class="acreditacion" colspan="8">3.15 Registro de patentes y
-                        productos de
-                        investigación
-                        tecnológica
-                        y educativa</th>
+                    <th id="seccion3_15" class="acreditacion" colspan="8">3.15 Registro de patentes y productos de investigación tecnológica y educativa</th>
                     <th id="score3_15">0</th>
                     <th id="comision3_15">0</th>
                     
@@ -83,7 +79,10 @@ $user_identity = $user->id;
                     <th colspan="2"></th>
                     <th class="acreditacion">Puntaje</th>
                     <th class="acreditacion">Cantidad</th>
-                    <th colspan="6"></th>
+
+                    <th colspan="4"></th>
+                    <th class="acreditacion">Subtotal</th>
+                    <th colspan="1"></th>
                     <th class="obsv acreditacion" scope="col">Observaciones</th>
               
                 </tr>
@@ -96,14 +95,14 @@ $user_identity = $user->id;
                     <td id="cantPatentes"></td>
                     <td colspan="4"></td>
                     <td id="subtotalPatentes">0</td>
-                    <td>
+                    <td class="td_form3_15">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionPatententes" value="{{ oldValueOrDefault('comisionPatententes') }}" oninput="onActv3Comision3_15()">
                         @else
                             <span id="comisionPatententes"></span>
                         @endif               
                     </td>
-                    <td>
+                    <td class="td_form3_15">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsPatentes">
                         @else
@@ -118,14 +117,14 @@ $user_identity = $user->id;
                     <td id="cantPrototipos"></td>
                     <td colspan="4"></td>
                     <td id="subtotalPrototipos">0</td>
-                    <td>
+                    <td class="td_form3_15">
                         @if($userType == 'dictaminador')
                             <input type="number" step="0.01" id="comisionPrototipos" value="{{ oldValueOrDefault('comisionPrototipos') }}" oninput="onActv3Comision3_15()">
                         @else
                             <span id="comisionPrototipos"></span>
                         @endif
                     </td>
-                    <td>
+                    <td class="td_form3_15">
                         @if($userType == 'dictaminador')
                             <input class="table-header" type="text" id="obsPrototipos">
                         @else

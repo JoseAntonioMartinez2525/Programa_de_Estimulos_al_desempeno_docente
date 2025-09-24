@@ -88,7 +88,7 @@ footer {
 }
 
 body.dark-mode #cantInternacional, body.dark-mode #cantNacional, body.dark-mode #cantidadRegional, body.dark-mode #cantPreparacion{
-    color: black;
+    color: white;
 }
 
 body.dark-mode [id^="obs3_4_"]{
@@ -187,7 +187,7 @@ $user_identity = $user->id;
                         <td class="punto3_4">a)</td>
                         <td>Internacional</td>
                         <td id="p60"><b>60</b></td>
-                        <td>
+                        <td class="td_form3_4">
                             <span id="cantInternacional" name="cantInternacional"></span>
                         </td>
                         <td id="cantInternacional2"></td>
@@ -210,7 +210,9 @@ $user_identity = $user->id;
                         <td class="punto3_4">b)</td>
                         <td>Nacional</td>
                         <td id="p30Nac"><b>30</b></td>
-                        <td><span type="number" step="0.01" id="cantNacional"></span></td>
+                        <td class="td_form3_4">
+                            <span type="number" step="0.01" id="cantNacional"></span>
+                        </td>
                         <td id="cantNacional2"></td>
                         <td class="td_obs">
                             @if($userType == 'dictaminador')
@@ -231,7 +233,7 @@ $user_identity = $user->id;
                         <td class="punto3_4">c)</td>
                         <td>Regional o estatal</td>
                         <td id="p20"><b>20</b></td>
-                        <td>
+                        <td class="td_form3_4">
                             <span id="cantidadRegional"></span>
                         </td>
                         <td id="cantidadRegional2"></td>
@@ -254,7 +256,7 @@ $user_identity = $user->id;
                         <td class="punto3_4">d)</td>
                         <td>Preparación de grupos de alumnado para olimpiadas competencias académicas o exámenes generales.</td>
                         <td id="p30Prep"><b>30</b></td>
-                        <td>
+                        <td class="td_form3_4">
                             <span id="cantPreparacion"></span>
                         </td>
                         <td id="cantPreparacion2"></td>

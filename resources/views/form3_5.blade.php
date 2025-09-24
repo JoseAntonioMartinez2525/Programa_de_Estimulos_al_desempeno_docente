@@ -23,15 +23,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             /* Ejemplo de estilo específico para Chrome */
         }
     }
-    body.dark-mode #cantDA, body.dark-mode #cantCAAC {
-        color:black;
-    }
+
 
     body.dark-mode #comDA, body.dark-mode #comNCAA{
         background-color: transparent;
     }
 
-    body.dark-mode [id^="obs3_5"]{
+    body.dark-mode [id^="obs3_5"], body.dark-mode #cantDA, body.dark-mode #cantCAAC{
         color: white;
     }
 
