@@ -22,13 +22,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <x-head-resources />
-<style>
-    #comisionIncisoB {
-        margin-left: -10px;
-    }
 
-
-</style>
 </head>
 @if (Route::has('login'))
         @csrf
@@ -159,7 +153,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <th class="actividades">Documento</th>
                                             <th class="actividades">Actividad</th>
                                             <th class="actividades">Puntaje</th>
-                                            <th class="actividades">Cantidad</th>
+                                            <th class="text-center actividades">Cantidad</th>
                                             <th class="actividades">Subtotal</th>
 
                                         </tr>
@@ -178,10 +172,10 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
                                             <td class="elabInput"><input id="elaboracion" name="elaboracion" type="number"
                                                     oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion') }}"></td>
-                                            <td><label id="elaboracionSubTotal1" for="" type="text"></label></td>
+                                            <td><label id="elaboracionSubTotal1" for="" type="text" placeholder="Comenta aqui"></label></td>
                                             <td class="comision actv"><input id="comisionIncisoA" placeholder="0"
                                                     for="" oninput="onActv3Comision()"></input></td>
-                                            <td class="td_obs"><input id="obs3_1_1" class="table-header" type="text"></td>
+                                            <td class="td_obs"><input id="obs3_1_1" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
                                           </tr>   
                                             <tr>
                                                 <td>b)</td>
@@ -190,12 +184,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><span id="puntaje40"><b>40</b></span></td>
                                                 <td class="elabInput"><input id="elaboracion2" name="elaboracion2" type="number"
                                                         oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion2') }}"></td>
-                                                <td><label id="elaboracionSubTotal2" for="" type="text"></label>
+                                                <td><label id="elaboracionSubTotal2" for="" type="text" placeholder="Comenta aqui"></label>
                                                 </td>
                                                 <td class="comision actv"><input id="comisionIncisoB"
                                                         placeholder="0" for=""
                                                         oninput="onActv3Comision()"></input></td>
-                                                <td class="td_obs"><input id="obs3_1_2" class="table-header" type="text"></td>
+                                                <td class="td_obs"><input id="obs3_1_2" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
                                             </tr>
                                             <tr>
                                                 <td>c)</td>
@@ -204,12 +198,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><label id="puntaje10" for=""><b>10</b></label></td>
                                                 <td class="elabInput"><input id="elaboracion3" name="elaboracion3" type="number"
                                                         oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion3') }}"></td>
-                                                <td><label id="elaboracionSubTotal3" for="" type="text"></label>
+                                                <td><label id="elaboracionSubTotal3" for="" type="text" placeholder="Comenta aqui"></label>
                                                 </td>
                                                 <td class="comision actv"><input id="comisionIncisoC"
                                                         placeholder="0" for=""
                                                         oninput="onActv3Comision()"></input></td>
-                                                <td class="td_obs"><input id="obs3_1_3" class="table-header" type="text"></td>
+                                                <td class="td_obs"><input id="obs3_1_3" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
                                             </tr>
 
                                             <tr>
@@ -219,12 +213,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><label id="puntaje20" for=""><b>20</b></label></td>
                                             <td class="elabInput"><input id="elaboracion4" name="elaboracion4" type="number"
                                                     oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion4') }}"></td>
-                                            <td><label id="elaboracionSubTotal4" for="" type="text"></label>
+                                            <td><label id="elaboracionSubTotal4" for="" type="text" placeholder="Comenta aqui"></label>
                                             </td>
                                             <td class="comision actv"><input id="comisionIncisoD"
                                                     placeholder="0" for=""
                                                     oninput="onActv3Comision()"></input></td>
-                                            <td class="td_obs"><input id="obs3_1_4" class="table-header" type="text"></td>
+                                            <td class="td_obs"><input id="obs3_1_4" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
                                             </tr>
                                             <tr>
                                             <td>e)</td>
@@ -233,12 +227,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><label id="p10" for=""><b>10</b></label></td>
                                             <td class="elabInput"><input id="elaboracion5" name="elaboracion5" type="number"
                                                     oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion5') }}"></td>
-                                            <td><label id="elaboracionSubTotal5" for="" type="text"></label>
+                                            <td><label id="elaboracionSubTotal5" for="" type="text" placeholder="Comenta aqui"></label>
                                             </td>
                                             <td class="comision actv"><input id="comisionIncisoE"
                                                     placeholder="0" for=""
                                                     oninput="onActv3Comision()"></input></td>
-                                            <td class="td_obs"><input id="obs3_1_5" class="table-header" type="text"></td>
+                                            <td class="td_obs"><input id="obs3_1_5" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                     </tbody>
                                 </table>
@@ -305,7 +299,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="cant1">0</td>
                                             <td class="td_obs"><input id="prom90_100" type="value" placeholder="0"
                                                     oninput="onActv3_2Comision()"></td>
-                                            <td class="td_obs"><input id="obs3_2_1" class="table-header" type="text"></td>
+                                            <td class="td_obs"><input id="obs3_2_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                         </tr>
                                         <!--prom80-90-->
                                         <tr>
@@ -318,7 +312,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="cant2">0</td>
                                             <td class="td_obs"><input id="prom80_90" placeholder="0" type="value"
                                                     oninput="onActv3_2Comision()"></td>
-                                            <td class="td_obs"><input id="obs3_2_2" class="table-header" type="text"></td>
+                                            <td class="td_obs"><input id="obs3_2_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                         </tr>
                                         <!--prom70-80-->
                                         <tr>
@@ -331,7 +325,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="cant3">0</td>
                                             <td class="td_obs"><input id="prom70_80" placeholder="0" type="value"
                                                     oninput="onActv3_2Comision()"></td>
-                                            <td class="td_obs"><input id="obs3_2_3" class="table-header" type="text"></td>
+                                            <td class="td_obs"><input id="obs3_2_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                         </tr>
                                     </thead>
                                     </table>
@@ -409,7 +403,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="stotal1"></td>
                                                 <td class="td_obs comision actv"><input id="comIncisoA" placeholder="0" for=""
                                                         oninput="onActv3Comision3()"></input></td>
-                                                <td class="td_obs"><input id="obs3_3_1" class="table-header" type="text"></td>
+                                                <td class="td_obs"><input id="obs3_3_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                             <tr>
                                                 <td>b)</td>
@@ -424,7 +418,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="stotal2"></td>
                                                 <td class="td_obs comision actv"><input id="comIncisoB" placeholder="0" for=""
                                                         oninput="onActv3Comision3()"></input></td>
-                                                <td class="td_obs"><input id="obs3_3_2" class="table-header" type="text"></td>
+                                                <td class="td_obs"><input id="obs3_3_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                             <tr>
                                                 <td>c)</td>
@@ -441,7 +435,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="stotal3"></td>
                                                 <td class="td_obs comision actv"><input id="comIncisoC" placeholder="0" for=""
                                                         oninput="onActv3Comision3()"></input></td>
-                                                <td class="td_obs"><input id="obs3_3_3" class="table-header" type="text"></td>
+                                                <td class="td_obs"><input id="obs3_3_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                             <tr>
                                                 <td>d)</td>
@@ -458,7 +452,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="stotal4"></td>
                                                 <td class="td_obs comision actv"><input id="comIncisoD" placeholder="0" for=""
                                                         oninput="onActv3Comision3()"></input></td>
-                                                <td class="td_obs"><input id="obs3_3_4" class="table-header" type="text"></td>
+                                                <td class="td_obs"><input id="obs3_3_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                         </thead>
                                     </tbody>
@@ -512,7 +506,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td class="td_docente_cantidad"><input type="number" id="cantInternacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantInternacional') }}"></td>
                     <td id="cantInternacional2"></td>
                     <td class="td_obs"><input type="number" id="comInternacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                    <td class="td_obs"><input id="obs3_4_1" class="table-header" type="text"></td>
+                    <td class="td_obs"><input id="obs3_4_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td class="punto3_4">b)</td>
@@ -521,7 +515,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td class="td_docente_cantidad"><input type="number" id="cantNacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantNacional') }}"></td>
                     <td id="cantNacional2"></td>
                     <td class="td_obs"><input type="number" id="comNacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                    <td class="td_obs"><input id="obs3_4_2" class="table-header" type="text"></td>
+                    <td class="td_obs"><input id="obs3_4_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td class="punto3_4">c)</td>
@@ -530,7 +524,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td class="td_docente_cantidad"><input type="number" id="cantidadRegional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantidadRegional') }}"></td>
                     <td id="cantidadRegional2"></td>
                     <td class="td_obs"><input type="number" id="comRegional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                    <td class="td_obs"><input id="obs3_4_3" class="table-header" type="text"></td>
+                    <td class="td_obs"><input id="obs3_4_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td class="punto3_4">d)</td>
@@ -539,7 +533,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td class="td_docente_cantidad"><input type="number" id="cantPreparacion" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantPreparacion') }}"></td>
                     <td id="cantPreparacion2"></td>
                     <td class="td_obs"><input type="number" id="comPreparacion" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                    <td class="td_obs"><input id="obs3_4_4" class="table-header" type="text"></td>
+                    <td class="td_obs"><input id="obs3_4_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
                 </tr>
             </tbody>
         </table>
@@ -600,7 +594,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td id="cantDA2"></td>
                     <td class="td_obs"><input type="value" id="comDA" placeholder="0"
                             oninput="onActv3Comision3_5()"></td>
-                    <td class="td_obs"><input id="obs3_5_1" class="table-header" type="text"></td>
+                    <td class="td_obs"><input id="obs3_5_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
                     </tr>
                 </thead>
                 <thead>
@@ -611,9 +605,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                         <td><input type="number" id="cantCAAC"
                                 oninput="onActv3SubTotal3_5()" value="{{ oldValueOrDefault('cantCAAC') }}"></td>
                         <td id="cantCAAC2""></td>
-                <td><input type=" value" id="comNCAA" placeholder="0"
+                        <td class="td_obs"><input type=" value" id="comNCAA" placeholder="0"
                             oninput="onActv3Comision3_5()"></td>
-                        <td><input id="obs3_5_2" class="table-header" type="text"></td>
+                        <td class="td_obs"><input id="obs3_5_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
                     </tr>
                 </thead>
             </tbody>
@@ -630,618 +624,615 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             </thead>
         </table>
     </form>
-                                <form id="form3_6" method="POST"
-                                    onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store36', 'form3_6');">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                    @csrf
-                                    <div>
-                                        <!-- 3.6 Capacitación y actualización pedagógica recibida  -->
-                                        <h4>Puntaje máximo
-                                            <label class="bg-black text-white px-4 mt-3" for="">40</label>
-                                        </h4>
-                                    </div>
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Actividad</th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
+    <form id="form3_6" method="POST"
+        onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store36', 'form3_6');">
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+        @csrf
+        <div>
+            <!-- 3.6 Capacitación y actualización pedagógica recibida  -->
+            <h4>Puntaje máximo
+                <label class="bg-black text-white px-4 mt-3" for="">40</label>
+            </h4>
+        </div>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Actividad</th>
+                    <th colspan="2" class="table-ajust" scope="col"></th>
+                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                    </th>
+                    <th class="table-ajust" scope="col">Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <thead>
+                    <tr>
+                        <th id="seccion3_6" colspan=1 class="punto3_6" scope=col
+                            style="padding:30px;">3.6
+                            Capacitación y
+                            actualización
+                            pedagógica recibida </th>
+                        <td class="punto3_6">Factor</td>
+                        <td class="punto3_6">Horas</td>
+                        <td id="score3_6" for="">0</td>
+                        <td id="comision3_6">0</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>0.5 por cada hora</td>
+                        <td id="pMedio">0.5</td>
+                        <td class="td_docente_cantidad"><input type="number" id="puntaje3_6"
+                                oninput="onActv3SubTotal3_6()" value="{{ oldValueOrDefault('puntaje3_6') }}"></td>
+                        <td id="puntajeHoras3_6"></td>
+                        <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_6"
+                                oninput="onActv3Comision3_6()">
+                        </td>
+                        <td class="td_obs"><input id="obs3_6" id="obs3_6" class="table-header" type="text" placeholder="Comenta aqui">
+                        </td>
+                    </tr>
+                </thead>
+                <!--Tabla informativa Acreditacion Actividad 3.6-->
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                                </th>
-                                                <th class="table-ajust" scope="col">Observaciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <thead>
-                                                <tr>
-                                                    <th id="seccion3_6" colspan=1 class="punto3_6" scope=col
-                                                        style="padding:30px;">3.6
-                                                        Capacitación y
-                                                        actualización
-                                                        pedagógica recibida </th>
-                                                    <td class="punto3_6">Factor</td>
-                                                    <td class="punto3_6">Horas</td>
-                                                    <td id="score3_6" for="">0</td>
-                                                    <td id="comision3_6">0</td>
-                                                </tr>
-                                            </thead>
-                                            <thead>
-                                                <tr>
-                                                    <td>0.5 por cada hora</td>
-                                                    <td id="pMedio">0.5</td>
-                                                    <td><input type="number" id="puntaje3_6"
-                                                            oninput="onActv3SubTotal3_6()" value="{{ oldValueOrDefault('puntaje3_6') }}"></td>
-                                                    <td id="puntajeHoras3_6"></td>
-                                                    <td><input type="text" placeholder="0" id="comisionDict3_6"
-                                                            oninput="onActv3Comision3_6()">
-                                                    </td>
-                                                    <td><input id="obs3_6" id="obs3_6" class="table-header" type="text">
-                                                    </td>
-                                                </tr>
-                                            </thead>
-                                            <!--Tabla informativa Acreditacion Actividad 3.6-->
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+                            <th class="descripcion"><b>DDIE</b>
 
-                                                        <th class="descripcion"><b>DDIE</b>
+                            <th><button id="btn3_6" type="submit" class="btn custom-btn printButtonClass">Enviar
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </tbody>
+        </table>
+    </form>
+    <form id="form3_7" method="POST"
+        onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store37', 'form3_7');">
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+        @csrf
+        <div>
+            <!-- 3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento  -->
+            <h4>Puntaje máximo
+                <label class="bg-black text-white px-4 mt-3" for="">40</label>
+            </h4>
+        </div>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Actividad</th>
+                    <th colspan="2" class="table-ajust" scope="col"></th>
 
-                                                        <th><button id="btn3_6" type="submit" class="btn custom-btn printButtonClass">Enviar
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </tbody>
-                                    </table>
-                                </form>
-                                <form id="form3_7" method="POST"
-                                    onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store37', 'form3_7');">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                    @csrf
-                                    <div>
-                                        <!-- 3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento  -->
-                                        <h4>Puntaje máximo
-                                            <label class="bg-black text-white px-4 mt-3" for="">40</label>
-                                        </h4>
-                                    </div>
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Actividad</th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                    </th>
+                    <th class="table-ajust" scope="col">Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <thead>
+                    <tr>
+                        <th id="seccion3_7" colspan=1 class="punto3_7" scope=col
+                            style="padding:30px;">3.7
+                            Cursos de actualización
+                            disciplinaria recibidos dentro de su área de conocimiento </th>
+                        <td class="punto3_7">Factor</td>
+                        <td class="punto3_7">Horas</td>
+                        <td id="score3_7" for="">0</td>
+                        <td id="comision3_7">0</td>
 
-                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                                </th>
-                                                <th class="table-ajust" scope="col">Observaciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <thead>
-                                                <tr>
-                                                    <th id="seccion3_7" colspan=1 class="punto3_7" scope=col
-                                                        style="padding:30px;">3.7
-                                                        Cursos de actualización
-                                                        disciplinaria recibidos dentro de su área de conocimiento </th>
-                                                    <td class="punto3_7">Factor</td>
-                                                    <td class="punto3_7">Horas</td>
-                                                    <td id="score3_7" for="">0</td>
-                                                    <td id="comision3_7">0</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>0.5 por cada hora</td>
+                        <td id="pMedio2">0.5</td>
+                        <td><input type="number" placeholder="0" id="puntaje3_7"
+                                oninput="onActv3SubTotal3_7()" value="{{ oldValueOrDefault('puntaje3_7') }}"></td>
+                        <td id="puntajeHoras3_7"></td>
+                        <td><input type="number" placeholder="0" id="comisionDict3_7"
+                                oninput="onActv3Comision3_7()">
+                        </td>
+                        <td><input id="obs3_7" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                    </tr>
+                </thead>
+                <!--Tabla informativa Acreditacion Actividad 3.7-->
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="acreditacion" scope="col">Acreditacion: </th>
+                            <th class="descripcion"><b>JD,CAAC, instancia que organiza</b></th>
+                            <th><button id="btn3_7" type="submit" class="btn custom-btn printButtonClass">Enviar
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </tbody>
+        </table>
+    </form>
+    <form id="form3_8" method="POST"
+        onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store38', 'form3_8');">
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+        @csrf
+        <div>
+            <!--3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente-->
+            <h4>Puntaje máximo
+                <label class="bg-black text-white px-4 mt-3" for="">40</label>
+            </h4>
+        </div>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Actividad</th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
 
-                                                </tr>
-                                            </thead>
-                                            <thead>
-                                                <tr>
-                                                    <td>0.5 por cada hora</td>
-                                                    <td id="pMedio2">0.5</td>
-                                                    <td><input type="number" placeholder="0" id="puntaje3_7"
-                                                            oninput="onActv3SubTotal3_7()" value="{{ oldValueOrDefault('puntaje3_7') }}"></td>
-                                                    <td id="puntajeHoras3_7"></td>
-                                                    <td><input type="text" placeholder="0" id="comisionDict3_7"
-                                                            oninput="onActv3Comision3_7()">
-                                                    </td>
-                                                    <td><input id="obs3_7" class="table-header" type="text"></td>
-                                                </tr>
-                                            </thead>
-                                            <!--Tabla informativa Acreditacion Actividad 3.7-->
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
-                                                        <th class="descripcion"><b>JD,CAAC, instancia que organiza</b></th>
-                                                        <th><button id="btn3_7" type="submit" class="btn custom-btn printButtonClass">Enviar
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </tbody>
-                                    </table>
-                                </form>
-                                <form id="form3_8" method="POST"
-                                    onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store38', 'form3_8');">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                    @csrf
-                                    <div>
-                                        <!--3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente-->
-                                        <h4>Puntaje máximo
-                                            <label class="bg-black text-white px-4 mt-3" for="">40</label>
-                                        </h4>
-                                    </div>
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Actividad</th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                    </th>
+                    <th class="table-ajust" scope="col">Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <thead>
+                    <tr>
+                        <th id="seccion3_8" colspan=1 class="punto3_8" scope=col
+                            style="padding:30px;">3.8
+                            Impartición de cursos,
+                            diplomados, seminarios, talleres extracurriculares, de educación,
+                            continua o de formación y
+                            capacitación docente </th>
+                        <td class="punto3_8">Factor</td>
+                        <td class="punto3_8">Horas</td>
+                        <td id="score3_8" for="">0</td>
+                        <td id="comision3_8">0</td>
 
-                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                                </th>
-                                                <th class="table-ajust" scope="col">Observaciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <thead>
-                                                <tr>
-                                                    <th id="seccion3_8" colspan=1 class="punto3_8" scope=col
-                                                        style="padding:30px;">3.8
-                                                        Impartición de cursos,
-                                                        diplomados, seminarios, talleres extracurriculares, de educación,
-                                                        continua o de formación y
-                                                        capacitación docente </th>
-                                                    <td class="punto3_8">Factor</td>
-                                                    <td class="punto3_8">Horas</td>
-                                                    <td id="score3_8" for="">0</td>
-                                                    <td id="comision3_8">0</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>1 por cada hora</td>
+                        <td id="p3_8">1</td>
+                        <td><input type="number" placeholder="0" id="puntaje3_8"
+                                oninput="onActv3SubTotal3_8()" value="{{ oldValueOrDefault('puntaje3_8') }}"></td>
+                        <td id="puntajeHoras3_8"></td>
+                        <td><input type="number" placeholder="0" id="comisionDict3_8"
+                                oninput="onActv3Comision3_8()">
+                        </td>
+                        <td><input class="table-header" id="obs3_8" type="text" placeholder="Comenta aqui"></td>
+                    </tr>
+                </thead>
+                <!--Tabla informativa Acreditacion Actividad 3.8-->
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                                </tr>
-                                            </thead>
-                                            <thead>
-                                                <tr>
-                                                    <td>1 por cada hora</td>
-                                                    <td id="p3_8">1</td>
-                                                    <td><input type="number" placeholder="0" id="puntaje3_8"
-                                                            oninput="onActv3SubTotal3_8()" value="{{ oldValueOrDefault('puntaje3_8') }}"></td>
-                                                    <td id="puntajeHoras3_8"></td>
-                                                    <td><input type="text" placeholder="0" id="comisionDict3_8"
-                                                            oninput="onActv3Comision3_8()">
-                                                    </td>
-                                                    <td><input class="table-header" id="obs3_8" type="text"></td>
-                                                </tr>
-                                            </thead>
-                                            <!--Tabla informativa Acreditacion Actividad 3.8-->
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+                            <th class="descripcion"><b>*JD,CAAC, DDCE, DDIE, SA,DIIP, según
+                                    corresponda. Cuando sea en
+                                    instituciones externas, presentar constancia de la
+                                    institución y el convenio acuerdo con
+                                    la
+                                    UABCS.</b> 
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </tbody>
+        </table>
+        <button id="btn3_8" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+    </form>
+    <form id="form3_8_1" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store381', 'form3_8_1');">
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+        @csrf
+        <div>
+            <!--3.8.1 RSU -->
+            <h4>Puntaje máximo 
+            @if($userType != '') <!-- fetch puntajeMaximo form3_8_1 -->
+                <span class="bg-black text-white px-4 mt-3" id="puntajeMaximo" for="">40</span>
+            @endif
+            </h4>
+        </div>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Actividad</th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
 
-                                                        <th class="descripcion"><b>*JD,CAAC, DDCE, DDIE, SA,DIIP, según
-                                                                corresponda. Cuando sea en
-                                                                instituciones externas, presentar constancia de la
-                                                                institución y el convenio acuerdo con
-                                                                la
-                                                                UABCS.</b> 
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </tbody>
-                                    </table>
-                                    <button id="btn3_8" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
-                                </form>
-                                <form id="form3_8_1" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store381', 'form3_8_1');">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                    @csrf
-                                    <div>
-                                        <!--3.8.1 RSU -->
-                                        <h4>Puntaje máximo 
-                                        @if($userType != '') <!-- fetch puntajeMaximo form3_8_1 -->
-                                            <span class="bg-black text-white px-4 mt-3" id="puntajeMaximo" for="">40</span>
-                                        @endif
-                                        </h4>
-                                    </div>
-                                    <table class="table table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Actividad</th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                    </th>
+                    <th class="table-ajust" scope="col">Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <thead>
+                    <tr>
+                        <th id="seccion3_8_1" colspan=1 class="punto3_8_1" scope=col style="padding:30px;">3.8.1 RSU</th>
+                        <td class="punto3_8_1">Factor</td>
+                        <td class="punto3_8_1">Horas</td>
+                        <td id="score3_8_1" for="">0</td>
+                        <td id="comision3_8_1">0</td>
 
-                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                                </th>
-                                                <th class="table-ajust" scope="col">Observaciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <thead>
-                                                <tr>
-                                                    <th id="seccion3_8_1" colspan=1 class="punto3_8_1" scope=col style="padding:30px;">3.8.1 RSU</th>
-                                                    <td class="punto3_8_1">Factor</td>
-                                                    <td class="punto3_8_1">Horas</td>
-                                                    <td id="score3_8_1" for="">0</td>
-                                                    <td id="comision3_8_1">0</td>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td>1 por cada hora</td>
+                        <td id="p3_8_1">1</td>
+                        <td><input type="number" placeholder="0" id="puntaje3_8_1" oninput="onActv3SubTotal3_8_1()"
+                                value="{{ oldValueOrDefault('puntaje3_8_1') }}"></td>
+                        <td id="puntajeHoras3_8_1"></td>
+                        <td><input type="number" placeholder="0" id="comisionDict3_8_1" oninput="onActv3Comision3_8_1()">
+                        </td>
+                        <td><input class="table-header" id="obs3_8_1" type="text" placeholder="Comenta aqui"></td>
+                    </tr>
+                </thead>
+                <!--Tabla informativa Acreditacion Actividad 3.8-->
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                                </tr>
-                                            </thead>
-                                            <thead>
-                                                <tr>
-                                                    <td>1 por cada hora</td>
-                                                    <td id="p3_8_1">1</td>
-                                                    <td><input type="number" placeholder="0" id="puntaje3_8_1" oninput="onActv3SubTotal3_8_1()"
-                                                            value="{{ oldValueOrDefault('puntaje3_8_1') }}"></td>
-                                                    <td id="puntajeHoras3_8_1"></td>
-                                                    <td><input type="text" placeholder="0" id="comisionDict3_8_1" oninput="onActv3Comision3_8_1()">
-                                                    </td>
-                                                    <td><input class="table-header" id="obs3_8_1" type="text"></td>
-                                                </tr>
-                                            </thead>
-                                            <!--Tabla informativa Acreditacion Actividad 3.8-->
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+                            <th class="descripcion"><b>*RSU</b> </th>
+                            <th><button id="btn3_8_1" type="submit" class="btn custom-btn printButtonClass">Enviar
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </tbody>
+        </table>
+    </form>
+    <form id="form3_9" method="POST"onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store39', 'form3_9');">
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+        @csrf
+        <div>
+            <!--3.9 Trabajos dirigidos para la titulación de estudiantes-->
+            <h4>Puntaje máximo
+                <label class="bg-black text-white px-4 mt-3" for="">200</label>
+            </h4>
+        </div>
+        <table class="table table-sm tutorias">
+            <thead>
+                <tr>
+                    <th>
+                        <h3></h3>
+                    </th>
+                    <th>
+                        <h3></h3>
+                    </th>
+                    <th>
+                        <h3></h3>
+                    </th>
+                    <th>
+                        <h3></h3>
+                    </th>
+                    <th>
+                        <h3></h3>
+                    </th>
+                    <th>
+                        <h3>Tutorias</h3>
+                    </th>
 
-                                                        <th class="descripcion"><b>*RSU</b> </th>
-                                                        <th><button id="btn3_8_1" type="submit" class="btn custom-btn printButtonClass">Enviar
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </tbody>
-                                    </table>
-                                </form>
-                                <form id="form3_9" method="POST"onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store39', 'form3_9');">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                    @csrf
-                                    <div>
-                                        <!--3.9 Trabajos dirigidos para la titulación de estudiantes-->
-                                        <h4>Puntaje máximo
-                                            <label class="bg-black text-white px-4 mt-3" for="">200</label>
-                                        </h4>
-                                    </div>
-                                    <table class="table table-sm tutorias">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <h3></h3>
-                                                </th>
-                                                <th>
-                                                    <h3></h3>
-                                                </th>
-                                                <th>
-                                                    <h3></h3>
-                                                </th>
-                                                <th>
-                                                    <h3></h3>
-                                                </th>
-                                                <th>
-                                                    <h3></h3>
-                                                </th>
-                                                <th>
-                                                    <h3>Tutorias</h3>
-                                                </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th scope="col">Actividad</th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                    </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th id="seccion3_9" scope="col" class="p3_9" colspan=9>3.9 Trabajos dirigidos
+                        para la
+                        titulación de estudiantes
+                    </th>
+                </tr>
+                <tr>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th id="score3_9">0</th>
+                    <th id="comision3_9">0</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th class="acreditacion">Incisos</th>
+                    <th class="acreditacion">Actividad</th>
+                    <th class="acreditacion">Obra</th>
+                    <th class="acreditacion">Nivel</th>
+                    <th class="acreditacion">Puntaje</th>
+                    <th class="acreditacion">Cantidad</th>
+                    <th class="acreditacion">Subtotal</th>
+                    <th class="table-ajust" scope="col"></th>
+                    <th class="acreditacion">Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>a)</td>
+                    <td>Revisión de</td>
+                    <td>Tesis</td>
+                    <td>Doctorado</td>
+                    <td id="puntajeTutorias20_1">20</td>
+                    <td><input type="number" id="puntaje3_9_1"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_1') }}"></td>
+                    <td id="tutorias1">0</td>
+                    <td><input type="value" id="tutoriasComision1" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_1" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>b)</td>
+                    <td>Proyecto de</td>
+                    <td>Tesis</td>
+                    <td>Maestría</td>
+                    <td id="puntajeTutorias15_1">15</td>
+                    <td><input type="number" id="puntaje3_9_2"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_2') }}"></td>
+                    <td id="tutorias2">0</td>
+                    <td><input type="value" id="tutoriasComision2" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_2" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>c)</td>
+                    <td>Proyecto de</td>
+                    <td>Tesis y otras</td>
+                    <td>TSU, Lic y especialidad</td>
+                    <td id="puntajeTutorias10_1">10</td>
+                    <td><input type="number" id="puntaje3_9_3"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_3') }}"></td>
+                    <td id="tutorias3">0</td>
+                    <td><input type="value" id="tutoriasComision3" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_3" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>d)</td>
+                    <td>Dirección trabajo en realización</td>
+                    <td>Tesis</td>
+                    <td>Doctorado</td>
+                    <td id="puntajeTutorias55">55</td>
+                    <td><input type="number" id="puntaje3_9_4"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_4') }}"></td>
+                    <td id="tutorias4">0</td>
+                    <td><input type="value" id="tutoriasComision4" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_4" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>e)</td>
+                    <td>Dirección trabajo en realización</td>
+                    <td>Tesis</td>
+                    <td>Maestria</td>
+                    <td id="puntajeTutorias45">45</td>
+                    <td><input type="number" id="puntaje3_9_5"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_5') }}"></td>
+                    <td id="tutorias5">0</td>
+                    <td><input type="value" id="tutoriasComision5" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_5" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>f)</td>
+                    <td>Dirección trabajo en realización</td>
+                    <td>Tesis y otras</td>
+                    <td>TSU, Lic y especialidad</td>
+                    <td id="puntajeTutorias35">35</td>
+                    <td><input type="number" id="puntaje3_9_6"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_6') }}"></td>
+                    <td id="tutorias6">0</td>
+                    <td><input type="value" id="tutoriasComision6" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_6" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>g)</td>
+                    <td>Dirección trabajo terminado</td>
+                    <td>Tesis</td>
+                    <td>Doctorado</td>
+                    <td id="puntajeTutorias70">70</td>
+                    <td><input type="number" id="puntaje3_9_7"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_7') }}"></td>
+                    <td id="tutorias7">0</td>
+                    <td><input type="value" id="tutoriasComision7" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_7" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>h)</td>
+                    <td>Dirección trabajo terminado</td>
+                    <td>Tesis</td>
+                    <td>Maestría</td>
+                    <td id="puntajeTutorias60">60</td>
+                    <td><input type="number" id="puntaje3_9_8"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_8') }}"></td>
+                    <td id="tutorias8">0</td>
+                    <td><input type="value" id="tutoriasComision8" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_8" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>i)</td>
+                    <td>Dirección trabajo terminado</td>
+                    <td>Tesis y otras</td>
+                    <td>TSU, Lic y especialidad</td>
+                    <td id="puntajeTutorias50">50</td>
+                    <td><input type="number" id="puntaje3_9_9"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_9') }}"></td>
+                    <td id="tutorias9">0</td>
+                    <td><input type="value" id="tutoriasComision9" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_9" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>j)</td>
+                    <td>Revisión de trabajo terminado</td>
+                    <td>Tesis</td>
+                    <td>Doctorado</td>
+                    <td id="puntajeTutorias30_1">30</td>
+                    <td><input type="number" id="puntaje3_9_10" 
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_10') }}"></td>
+                    <td id="tutorias10">0</td>
+                    <td><input type="value" id="tutoriasComision10" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_10" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>k)</td>
+                    <td>Revisión de trabajo terminado</td>
+                    <td>Tesis</td>
+                    <td>Maestría</td>
+                    <td id="puntajeTutorias20_2">50</td>
+                    <td><input type="number" id="puntaje3_9_11"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_11') }}"></td>
+                    <td id="tutorias11">0</td>
+                    <td><input type="value" id="tutoriasComision11" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_11" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>l)</td>
+                    <td>Revisión de trabajo terminado</td>
+                    <td>Tesis y otras</td>
+                    <td>TSU, Lic y especialidad</td>
+                    <td id="puntajeTutorias15_2">15</td>
+                    <td><input type="number" id="puntaje3_9_12"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_12') }}"></td>
+                    <td id="tutorias12">0</td>
+                    <td><input type="value" id="tutoriasComision12" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_12" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>m)</td>
+                    <td>Sinodalía</td>
+                    <td>Examen</td>
+                    <td>Doctorado</td>
+                    <td id="puntajeTutorias30_2">30</td>
+                    <td><input type="number" id="puntaje3_9_13"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_13') }}"></td>
+                    <td id="tutorias13">0</td>
+                    <td><input type="value" id="tutoriasComision13" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_13" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>n)</td>
+                    <td>Sinodalía</td>
+                    <td>Examen</td>
+                    <td>Maestría</td>
+                    <td id="puntajeTutorias20_3">15</td>
+                    <td><input type="number" id="puntaje3_9_14"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_14') }}"></td>
+                    <td id="tutorias14">0</td>
+                    <td><input type="value" id="tutoriasComision14" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_14" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>o)</td>
+                    <td>Sinodalía</td>
+                    <td>Examen</td>
+                    <td>TSU, Lic y especialidad</td>
+                    <td id="puntajeTutorias15_3">15</td>
+                    <td><input type="number" id="puntaje3_9_15"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_15') }}"></td>
+                    <td id="tutorias15">0</td>
+                    <td><input type="value" id="tutoriasComision15" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_15" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>p)</td>
+                    <td>Distinciones</td>
+                    <td></td>
+                    <td>Doctorado</td>
+                    <td id="puntajeTutorias15_4">15</td>
+                    <td><input type="number" id="puntaje3_9_16"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_16') }}"></td>
+                    <td id="tutorias16">0</td>
+                    <td><input type="value" id="tutoriasComision16" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_16" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <tr>
+                    <td>q)</td>
+                    <td>Distinciones</td>
+                    <td></td>
+                    <td>Maestría</td>
+                    <td id="puntajeTutorias10_2">10</td>
+                    <td><input type="number" id="puntaje3_9_17"
+                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_17') }}"></td>
+                    <td id="tutorias17">0</td>
+                    <td><input type="value" id="tutoriasComision17" placeholder="0"
+                            oninput="onActv3Comision3_9()">
+                    </td>
+                    <td><input class="table-header" id="obs3_9_17" type="text" placeholder="Comenta aqui"></td>
+                </tr>
+                <!--Tabla informativa Acreditacion Actividad 3.9-->
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Actividad</th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th id="seccion3_9" scope="col" class="p3_9" colspan=9>3.9 Trabajos dirigidos
-                                                    para la
-                                                    titulación de estudiantes
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th id="score3_9">0</th>
-                                                <th id="comision3_9">0</th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th class="acreditacion">Incisos</th>
-                                                <th class="acreditacion">Actividad</th>
-                                                <th class="acreditacion">Obra</th>
-                                                <th class="acreditacion">Nivel</th>
-                                                <th class="acreditacion">Puntaje</th>
-                                                <th class="acreditacion">Cantidad</th>
-                                                <th class="acreditacion">Subtotal</th>
-                                                <th class="table-ajust" scope="col"></th>
-                                                <th class="acreditacion">Observaciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>a)</td>
-                                                <td>Revisión de</td>
-                                                <td>Tesis</td>
-                                                <td>Doctorado</td>
-                                                <td id="puntajeTutorias20_1">20</td>
-                                                <td><input type="number" id="puntaje3_9_1"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_1') }}"></td>
-                                                <td id="tutorias1">0</td>
-                                                <td><input type="value" id="tutoriasComision1" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_1" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>b)</td>
-                                                <td>Proyecto de</td>
-                                                <td>Tesis</td>
-                                                <td>Maestría</td>
-                                                <td id="puntajeTutorias15_1">15</td>
-                                                <td><input type="number" id="puntaje3_9_2"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_2') }}"></td>
-                                                <td id="tutorias2">0</td>
-                                                <td><input type="value" id="tutoriasComision2" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_2" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>c)</td>
-                                                <td>Proyecto de</td>
-                                                <td>Tesis y otras</td>
-                                                <td>TSU, Lic y especialidad</td>
-                                                <td id="puntajeTutorias10_1">10</td>
-                                                <td><input type="number" id="puntaje3_9_3"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_3') }}"></td>
-                                                <td id="tutorias3">0</td>
-                                                <td><input type="value" id="tutoriasComision3" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_3" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>d)</td>
-                                                <td>Dirección trabajo en realización</td>
-                                                <td>Tesis</td>
-                                                <td>Doctorado</td>
-                                                <td id="puntajeTutorias55">55</td>
-                                                <td><input type="number" id="puntaje3_9_4"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_4') }}"></td>
-                                                <td id="tutorias4">0</td>
-                                                <td><input type="value" id="tutoriasComision4" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_4" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>e)</td>
-                                                <td>Dirección trabajo en realización</td>
-                                                <td>Tesis</td>
-                                                <td>Maestria</td>
-                                                <td id="puntajeTutorias45">45</td>
-                                                <td><input type="number" id="puntaje3_9_5"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_5') }}"></td>
-                                                <td id="tutorias5">0</td>
-                                                <td><input type="value" id="tutoriasComision5" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_5" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>f)</td>
-                                                <td>Dirección trabajo en realización</td>
-                                                <td>Tesis y otras</td>
-                                                <td>TSU, Lic y especialidad</td>
-                                                <td id="puntajeTutorias35">35</td>
-                                                <td><input type="number" id="puntaje3_9_6"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_6') }}"></td>
-                                                <td id="tutorias6">0</td>
-                                                <td><input type="value" id="tutoriasComision6" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_6" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>g)</td>
-                                                <td>Dirección trabajo terminado</td>
-                                                <td>Tesis</td>
-                                                <td>Doctorado</td>
-                                                <td id="puntajeTutorias70">70</td>
-                                                <td><input type="number" id="puntaje3_9_7"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_7') }}"></td>
-                                                <td id="tutorias7">0</td>
-                                                <td><input type="value" id="tutoriasComision7" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_7" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>h)</td>
-                                                <td>Dirección trabajo terminado</td>
-                                                <td>Tesis</td>
-                                                <td>Maestría</td>
-                                                <td id="puntajeTutorias60">60</td>
-                                                <td><input type="number" id="puntaje3_9_8"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_8') }}"></td>
-                                                <td id="tutorias8">0</td>
-                                                <td><input type="value" id="tutoriasComision8" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_8" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>i)</td>
-                                                <td>Dirección trabajo terminado</td>
-                                                <td>Tesis y otras</td>
-                                                <td>TSU, Lic y especialidad</td>
-                                                <td id="puntajeTutorias50">50</td>
-                                                <td><input type="number" id="puntaje3_9_9"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_9') }}"></td>
-                                                <td id="tutorias9">0</td>
-                                                <td><input type="value" id="tutoriasComision9" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_9" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>j)</td>
-                                                <td>Revisión de trabajo terminado</td>
-                                                <td>Tesis</td>
-                                                <td>Doctorado</td>
-                                                <td id="puntajeTutorias30_1">30</td>
-                                                <td><input type="number" id="puntaje3_9_10" 
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_10') }}"></td>
-                                                <td id="tutorias10">0</td>
-                                                <td><input type="value" id="tutoriasComision10" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_10" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>k)</td>
-                                                <td>Revisión de trabajo terminado</td>
-                                                <td>Tesis</td>
-                                                <td>Maestría</td>
-                                                <td id="puntajeTutorias20_2">50</td>
-                                                <td><input type="number" id="puntaje3_9_11"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_11') }}"></td>
-                                                <td id="tutorias11">0</td>
-                                                <td><input type="value" id="tutoriasComision11" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_11" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>l)</td>
-                                                <td>Revisión de trabajo terminado</td>
-                                                <td>Tesis y otras</td>
-                                                <td>TSU, Lic y especialidad</td>
-                                                <td id="puntajeTutorias15_2">15</td>
-                                                <td><input type="number" id="puntaje3_9_12"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_12') }}"></td>
-                                                <td id="tutorias12">0</td>
-                                                <td><input type="value" id="tutoriasComision12" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_12" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>m)</td>
-                                                <td>Sinodalía</td>
-                                                <td>Examen</td>
-                                                <td>Doctorado</td>
-                                                <td id="puntajeTutorias30_2">30</td>
-                                                <td><input type="number" id="puntaje3_9_13"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_13') }}"></td>
-                                                <td id="tutorias13">0</td>
-                                                <td><input type="value" id="tutoriasComision13" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_13" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>n)</td>
-                                                <td>Sinodalía</td>
-                                                <td>Examen</td>
-                                                <td>Maestría</td>
-                                                <td id="puntajeTutorias20_3">15</td>
-                                                <td><input type="number" id="puntaje3_9_14"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_14') }}"></td>
-                                                <td id="tutorias14">0</td>
-                                                <td><input type="value" id="tutoriasComision14" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_14" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>o)</td>
-                                                <td>Sinodalía</td>
-                                                <td>Examen</td>
-                                                <td>TSU, Lic y especialidad</td>
-                                                <td id="puntajeTutorias15_3">15</td>
-                                                <td><input type="number" id="puntaje3_9_15"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_15') }}"></td>
-                                                <td id="tutorias15">0</td>
-                                                <td><input type="value" id="tutoriasComision15" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_15" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>p)</td>
-                                                <td>Distinciones</td>
-                                                <td></td>
-                                                <td>Doctorado</td>
-                                                <td id="puntajeTutorias15_4">15</td>
-                                                <td><input type="number" id="puntaje3_9_16"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_16') }}"></td>
-                                                <td id="tutorias16">0</td>
-                                                <td><input type="value" id="tutoriasComision16" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_16" type="text"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>q)</td>
-                                                <td>Distinciones</td>
-                                                <td></td>
-                                                <td>Maestría</td>
-                                                <td id="puntajeTutorias10_2">10</td>
-                                                <td><input type="number" id="puntaje3_9_17"
-                                                        oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_17') }}"></td>
-                                                <td id="tutorias17">0</td>
-                                                <td><input type="value" id="tutoriasComision17" placeholder="0"
-                                                        oninput="onActv3Comision3_9()">
-                                                </td>
-                                                <td><input class="table-header" id="obs3_9_17" type="text"></td>
-                                            </tr>
-                                            <!--Tabla informativa Acreditacion Actividad 3.9-->
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
-
-                                                        <th class="descripcion"><b>DSE para pregrado, DIIP para posgrado</b>
-                                                        </th>
-                                                        <th><button id="btn3_9" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </tbody>
-                                    </table>
-                                </form>
+                            <th class="descripcion"><b>DSE para pregrado, DIIP para posgrado</b>
+                            </th>
+                            <th><button id="btn3_9" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+                        </tr>
+                    </thead>
+                </table>
+            </tbody>
+        </table>
+    </form>
                                 <form id="form3_10" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store310', 'form3_10');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
                                     @csrf
-                                <!--3.10 Trabajos dirigidos para la titulación de estudiantes-->
+                                <!--3.9 Trabajos dirigidos para la titulación de estudiantes-->
                                 <h4>Puntaje máximo
                                     <label class="bg-black text-white px-4 mt-3" for="">115</label>
                                 </h4>
@@ -1249,11 +1240,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <thead>
                                         <tr>
                                             <th scope="col" colspan=3>Actividad</th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
+                                            <th colspan="5" class="table-ajust" scope="col"></th>
                                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                                             </th>
@@ -1262,15 +1249,17 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <thead>
                                         <tr>
                                             <th id="seccion3_10" class="acreditacion" colspan=2>3.10 Tutorías a estudiantes</th>
-                                            <th class="acreditacion">Puntaje</th>
-                                            <th class="acreditacion">cantidad</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
+                                            <th colspan="6"></th>
                                             <th id="score3_10">0</th>
                                             <th id="comision3_10">0</th>
-                                            <th class="acreditacion" scope="col">Observaciones</th>
+
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2"></th>
+                                            <th class="acreditacion">Puntaje</th>
+                                            <th class="text-center acreditacion">Cantidad</th>
+                                            <th colspan="6"></th>
+                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1283,15 +1272,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="number" id="grupalesCant" oninput="onActv3SubTotal3_10()"
                                                         value="{{ oldValueOrDefault('grupalesCant') }}">
                                                 </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td colspan="4"></td>
+
                                                 <td id="evaluarGrupales"></td>
                                                 <td><input type="value" id="comisionGrupal" oninput="onActv3Comision3_10()"
                                                         placeholder="0">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsGrupal"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsGrupal"></td>
                                             </tr>
                                             <tr>
                                                 <td>b)</td>
@@ -1300,15 +1287,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="number" id="individualCant" oninput="onActv3SubTotal3_10()"
                                                         value="{{ oldValueOrDefault('individualCant') }}">
                                                 </td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td colspan="4"></td>
                                                 <td id="evaluarIndividual"></td>
                                                 <td><input type="value" id="comisionIndividual" oninput="onActv3Comision3_10()"
                                                         placeholder="0">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsIndividual"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsIndividual"></td>
                                             </tr>
                                         </thead>
                                         </tbody> 
@@ -1391,7 +1375,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionAsesoria" placeholder="0"
                                                     oninput="onActv3Comision3_11()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsAsesoria"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsAsesoria"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
@@ -1407,7 +1391,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionServicio" placeholder="0"
                                                     oninput="onActv3Comision3_11()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsServicio"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsServicio"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -1423,7 +1407,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionPracticas" placeholder="0"
                                                     oninput="onActv3Comision3_11()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsPracticas"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPracticas"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1506,7 +1490,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCientificos" placeholder="0"
                                                     oninput="onActv3Comision3_12()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCientificos"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCientificos"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
@@ -1522,7 +1506,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionDivulgacion" placeholder="0"
                                                     oninput="onActv3Comision3_12()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsDivulgacion"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDivulgacion"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -1538,7 +1522,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionTraduccion" placeholder="0"
                                                     oninput="onActv3Comision3_12()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsTraduccion"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsTraduccion"></td>
                                         </tr>
                                         <tr>
                                             <td>d)</td>
@@ -1555,7 +1539,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionArbitrajeInt" placeholder="0"
                                                     oninput="onActv3Comision3_12()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsArbitrajeInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbitrajeInt"></td>
                                         </tr>
                                         <tr>
                                             <td>e)</td>
@@ -1572,7 +1556,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionArbitrajeNac" placeholder="0"
                                                     oninput="onActv3Comision3_12()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsArbitrajeNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbitrajeNac"></td>
                                         </tr>
                                         <tr>
                                             <td>f)</td>
@@ -1587,7 +1571,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalSinInt"></td>
                                             <td><input type="value" id="comisionSinInt" placeholder="0"
                                                     oninput="onActv3Comision3_12()"></td>
-                                            <td><input class="table-header" type="text" id="obsSinInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsSinInt"></td>
                                         </tr>
                                         <tr>
                                             <td>g)</td>
@@ -1602,7 +1586,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalSinNac"></td>
                                             <td><input type="value" id="comisionSinNac" placeholder="0"
                                                     oninput="onActv3Comision3_12()"></td>
-                                            <td><input class="table-header" type="text" id="obsSinNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsSinNac"></td>
                                         </tr>
                                         <tr>
                                             <td>h)</td>
@@ -1617,7 +1601,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalAutor"></td>
                                             <td><input type="value" id="comisionAutor" placeholder="0"
                                                     oninput="onActv3Comision3_12()"></td>
-                                            <td><input class="table-header" type="text" id="obsAutor"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsAutor"></td>
                                         </tr>
                                         <tr>
                                             <td>i)</td>
@@ -1632,7 +1616,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalEditor"></td>
                                             <td><input type="value" id="comisionEditor" placeholder="0"
                                                     oninput="onActv3Comision3_12()"></td>
-                                            <td><input class="table-header" type="text" id="obsEditor"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsEditor"></td>
                                         </tr>
                                         <tr>
                                             <td>j)</td>
@@ -1647,7 +1631,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalWeb"></td>
                                             <td><input type="value" id="comisionWeb" placeholder="0"
                                                     oninput="onActv3Comision3_12()"></td>
-                                            <td><input class="table-header" type="text" id="obsWeb"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsWeb"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1720,7 +1704,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionInicioFinancimientoExt" placeholder="0"
                                                     oninput="onActv3Comision3_13()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsInicioFinancimientoExt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioFinancimientoExt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
@@ -1736,7 +1720,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionInicioInvInterno" placeholder="0"
                                                     oninput="onActv3Comision3_13()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsInicioInvInterno"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioInvInterno"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -1754,7 +1738,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionReporteFinanciamExt" placeholder="0"
                                                     oninput="onActv3Comision3_13()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsReporteFinanciamExt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteFinanciamExt"></td>
                                         </tr>
                                         <tr>
                                             <td>d)</td>
@@ -1772,7 +1756,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionReporteInvInt" placeholder="0"
                                                     oninput="onActv3Comision3_13()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsReporteInvInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteInvInt"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1848,7 +1832,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCongresoInt" placeholder="0"
                                                     oninput="onActv3Comision3_14()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCongresoInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoInt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
@@ -1863,7 +1847,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCongresoNac" placeholder="0"
                                                     oninput="onActv3Comision3_14()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCongresoNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoNac"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -1878,7 +1862,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCongresoLoc" placeholder="0"
                                                     oninput="onActv3Comision3_14()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCongresoLoc"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoLoc"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1948,7 +1932,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionPatententes" placeholder="0"
                                                     oninput="onActv3Comision3_15()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsPatentes"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPatentes"></td>
                                         </tr>
                                         </thead>
                                         <thead>
@@ -1965,7 +1949,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionPrototipos" placeholder="0"
                                                     oninput="onActv3Comision3_15()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsPrototipos"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPrototipos"></td>
                                         </tr>
                                     </thead>
                                     </tbody>
@@ -2054,7 +2038,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalArbInt"></td>
                                             <td><input type="value" id="comisionArbInt" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" id="obsArbInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbInt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
@@ -2068,7 +2052,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalArbNac"></td>
                                             <td><input type="value" id="comisionArbNac" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" id="obsArbNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbNac"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -2082,7 +2066,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalPubInt"></td>
                                             <td><input type="value" id="comisionPubInt" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" id="obsPubInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPubInt"></td>
                                         </tr>
                                         <tr>
                                             <td>d)</td>
@@ -2096,7 +2080,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalPubNac"></td>
                                             <td><input type="value" id="comisionPubNac" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" id="obsPubNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPubNac"></td>
                                         </tr>
                                         <tr>
                                             <td>e)</td>
@@ -2110,7 +2094,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalRevInt"></td>
                                             <td><input type="value" id="comisionRevInt" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" id="obsRevInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevInt"></td>
                                         </tr>
                                         <tr>
                                             <td>f)</td>
@@ -2124,7 +2108,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalRevNac"></td>
                                             <td><input type="value" id="comisionRevNac" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" id="obsRevNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevNac"></td>
                                         </tr>
                                         <tr>
                                             <td>g)</td>
@@ -2138,7 +2122,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td id="subtotalRevista"></td>
                                             <td><input type="value" id="comisionRevista" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" id="obsRevista"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevista"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2219,7 +2203,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionDifusionExt" placeholder="0"
                                                     oninput="onActv3Comision3_17()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsDifusionExt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionExt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
@@ -2235,7 +2219,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionDifusionInt" placeholder="0"
                                                     oninput="onActv3Comision3_17()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsDifusionInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionInt"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -2253,7 +2237,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionRepDifusionExt" placeholder="0"
                                                     oninput="onActv3Comision3_17()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsRepDifusionExt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionExt"></td>
                                         </tr>
                                         <tr>
                                             <td>d)</td>
@@ -2270,7 +2254,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionRepDifusionInt" placeholder="0"
                                                     oninput="onActv3Comision3_17()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsRepDifusionInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionInt"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2349,7 +2333,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionComOrgInt" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsComOrgInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComOrgInt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
@@ -2364,7 +2348,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionComOrgNac" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsComOrgNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComOrgNac"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -2379,7 +2363,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionComOrgReg" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsComOrgReg"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComOrgReg"></td>
                                         </tr>
                                         <tr>
                                             <td>d)</td>
@@ -2395,7 +2379,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionComApoyoInt" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsComApoyoInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComApoyoInt"></td>
                                         </tr>
                                         <tr>
                                             <td>e)</td>
@@ -2411,7 +2395,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionComApoyoNac" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsComApoyoNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComApoyoNac"></td>
                                         </tr>
                                         <tr>
                                             <td>f)</td>
@@ -2427,7 +2411,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionComApoyoReg" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsComApoyoReg"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComApoyoReg"></td>
                                         </tr>
                                         <tr>
                                             <td>g)</td>
@@ -2443,7 +2427,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCicloComOrgInt" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCicloComOrgInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComOrgInt"></td>
                                         </tr>
                                         <tr>
                                             <td>h)</td>
@@ -2459,7 +2443,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCicloComOrgNac" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCicloComOrgNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComOrgNac"></td>
                                         </tr>
                                         <tr>
                                             <td>i)</td>
@@ -2475,7 +2459,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCicloComOrgReg" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCicloComOrgReg"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComOrgReg"></td>
                                         </tr>
                                         <tr>
                                             <td>j)</td>
@@ -2491,7 +2475,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCicloComApoyoInt" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCicloComApoyoInt"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComApoyoInt"></td>
                                         </tr>
                                         <tr>
                                             <td>k)</td>
@@ -2507,7 +2491,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCicloComApoyoNac" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCicloComApoyoNac"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComApoyoNac"></td>
                                         </tr>
                                         <tr>
                                             <td>l)</td>
@@ -2523,7 +2507,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="value" id="comisionCicloComApoyoReg" placeholder="0"
                                                     oninput="onActv3Comision3_18()">
                                             </td>
-                                            <td><input class="table-header" type="text" id="obsCicloComApoyoReg"></td>
+                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComApoyoReg"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2606,7 +2590,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="subtotalCGUtitular"></td>
                                                 <td><input type="value" id="comCGUtitular" placeholder="0"
                                                         oninput="onActv3Comision3_19()"></td>
-                                                <td><input class="table-header" type="text" id="obsCGUtitular"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUtitular"></td>
                                             </tr>
                                             <tr>
                                                 <td>b)</td>
@@ -2622,7 +2606,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comCGUespecial" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsCGUespecial"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUespecial"></td>
                                             </tr>
                                             <tr>
                                                 <td>c)</td>
@@ -2638,7 +2622,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comCGUpermanente" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsCGUpermanente"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUpermanente"></td>
                                             </tr>
                                             <tr>
                                                 <td>d)</td>
@@ -2654,7 +2638,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comCAACtitular" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsCAACtitular"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCAACtitular"></td>
                                             </tr>
                                             <tr>
                                                 <td>e)</td>
@@ -2670,7 +2654,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comCAACintegCom" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsCAACintegCom"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCAACintegCom"></td>
                                             </tr>
                                             <tr>
                                                 <td>f)</td>
@@ -2684,7 +2668,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="subtotalComDepart"></td>
                                                 <td><input type="value" id="comComDepart" placeholder="0"
                                                         oninput="onActv3Comision3_19()"></td>
-                                                <td><input class="table-header" type="text" id="obsComDepart"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComDepart"></td>
                                             </tr>
                                             <tr>
                                                 <td>g)</td>
@@ -2698,7 +2682,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="subtotalComPEDPD"></td>
                                                 <td><input type="value" id="comComPEDPD" placeholder="0"
                                                         oninput="onActv3Comision3_19()"></td>
-                                                <td><input class="table-header" type="text" id="obsComPEDPD"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComPEDPD"></td>
                                             </tr>
                                             <tr>
                                                 <td>h)</td>
@@ -2713,7 +2697,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="subtotalComPartPos"></td>
                                                 <td><input type="value" id="comComPartPos" placeholder="0"
                                                         oninput="onActv3Comision3_19()"></td>
-                                                <td><input class="table-header" type="text" id="obsComPartPos"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComPartPos"></td>
                                             </tr>
                                             <tr>
                                                 <td>i)</td>
@@ -2727,7 +2711,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="subtotalRespPos"></td>
                                                 <td><input type="value" id="comRespPos" placeholder="0"
                                                         oninput="onActv3Comision3_19()"></td>
-                                                <td><input class="table-header" type="text" id="obsRespPos"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespPos"></td>
                                             </tr>
                                             <tr>
                                                 <td>j)</td>
@@ -2743,7 +2727,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comRespCarrera" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsRespCarrera"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespCarrera"></td>
                                             </tr>
                                             <tr>
                                                 <td>k)</td>
@@ -2757,7 +2741,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="subtotalRespProd"></td>
                                                 <td><input type="value" id="comRespProd" placeholder="0"
                                                         oninput="onActv3Comision3_19()"></td>
-                                                <td><input class="table-header" type="text" id="obsRespProd"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespProd"></td>
                                             </tr>
                                             <tr>
                                                 <td>l)</td>
@@ -2771,7 +2755,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="subtotalRespLab"></td>
                                                 <td><input type="value" id="comRespLab" placeholder="0"
                                                         oninput="onActv3Comision3_19()"></td>
-                                                <td><input class="table-header" type="text" id="obsRespLab"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespLab"></td>
                                             </tr>
                                             <tr>
                                                 <td>m)</td>
@@ -2785,7 +2769,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="subtotalExamProf"></td>
                                                 <td><input type="value" id="comExamProf" placeholder="0"
                                                         oninput="onActv3Comision3_19()"></td>
-                                                <td><input class="table-header" type="text" id="obsExamProf"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsExamProf"></td>
                                             </tr>
                                             <tr>
                                                 <td>n)</td>
@@ -2801,7 +2785,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comExamAcademicos" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsExamAcademicos"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsExamAcademicos"></td>
                                             </tr>
                                             <tr>
                                                 <td>o1)</td>
@@ -2817,7 +2801,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comPRODEPformResp" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsPRODEPformResp"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPformResp"></td>
                                             </tr>
                                             <tr>
                                                 <td>o2)</td>
@@ -2833,7 +2817,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comPRODEPformInteg" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsPRODEPformInteg"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPformInteg"></td>
                                             </tr>
                                             <tr>
                                                 <td>p1)</td>
@@ -2849,7 +2833,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comPRODEPenconsResp" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsPRODEPenconsResp"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPenconsResp"></td>
                                             </tr>
                                             <tr>
                                                 <td>p2)</td>
@@ -2865,7 +2849,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comPRODEPenconsInteg" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsPRODEPenconsInteg"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPenconsInteg"></td>
                                             </tr>
                                             <tr>
                                                 <td>q1)</td>
@@ -2881,7 +2865,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comPRODEPconsResp" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsPRODEPconsResp"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPconsResp"></td>
                                             </tr>
                                             <tr>
                                                 <td>q2)</td>
@@ -2897,7 +2881,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="value" id="comPRODEPconsInteg" placeholder="0"
                                                         oninput="onActv3Comision3_19()">
                                                 </td>
-                                                <td><input class="table-header" type="text" id="obsPRODEPconsInteg"></td>
+                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPconsInteg"></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -2928,6 +2912,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             </div>
 
             <script>
+
+                const placeholderObs = "Escribe tu comentario aquí";
 
                 const A40 = 6.25;
                 const B56 = 17;

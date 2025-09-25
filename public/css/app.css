@@ -422,7 +422,7 @@ body.dark-mode #comIncisoA, body.dark-mode #comIncisoB, body.dark-mode #comIncis
 }
 
 .actv input {
-    text-align: right;
+    text-align: center;
     border: none;
     width: 100%;
     height: 100%;
@@ -483,9 +483,6 @@ body.dark-mode #comIncisoA, body.dark-mode #comIncisoB, body.dark-mode #comIncis
     background-color: #d6fff7;
 }
 
-#comisionIncisoB{
-margin-left: 40px;
-}
 
 #docencia ,#docencia2 {
     background-color: #002b4e;
@@ -521,7 +518,9 @@ margin-left: 40px;
 }
 
 
-.actividades{border-right: black;}
+.actividades{
+    font-weight: normal;
+}
 
 #cantidadForm3_1{
     text-align: center;
@@ -824,8 +823,8 @@ body.dark-mode #form2_2Button:hover{
 }
 
 [id^="obs3_1_"]{
-    width: 140px;
-    text-align: right;
+    width: 180px;
+    text-align: center;
     border-color: transparent;
     background-color: transparent;
 }
@@ -1121,6 +1120,13 @@ body.dark-mode td#cantComApoyoNac, body.dark-mode td#cantComApoyoReg, body.dark-
     color: white!important;
 }
 
+input#comDA, input#comNCAA{
+text-align: center;
+background-color: transparent;
+border-color: transparent;
+
+}
+
 
 body.dark-mode td.puntajeEvaluar2{
     background-color: #333333;
@@ -1227,6 +1233,8 @@ input#cantInternacional, input#cantNacional, input#cantidadRegional, input#cantP
     text-align: center;
     border-color: transparent;
 }
+
+
 
  
 

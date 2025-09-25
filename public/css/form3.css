@@ -89,21 +89,40 @@ nav {
     text-align: right;
 }
 
-#puntajeIndividual, #individualCant, #evaluarIndividual ,#comisionIndividual ,#obsIndividual,
-#puntajeGrupales ,#grupalesCant ,#evaluarGrupales ,#comisionGrupal ,#obsGrupal,
+#puntajeIndividual, #individualCant ,#comisionIndividual ,#obsIndividual,
+#puntajeGrupales ,#grupalesCant ,#comisionGrupal ,#obsGrupal,
 #cantAsesoria, #subtotalAsesoria, #cantServicio, #subtotalServicio,
  #cantPracticas, #subtotalPracticas {
     text-align: right;
 }
 
+#evaluarIndividual, #evaluarGrupales
+{
+    text-align: center;
+}
 #individualCant, #grupalesCant, 
 #cantAsesoria, #cantServicio, #cantPracticas, .cantidad,
 #cantCongresoInt, #cantCongresoNac, #cantCongresoLoc, 
-#cantDifusionExt, #cantDifusionInt, #cantRepDifusionExt, #cantRepDifusionInt, #cantDA, #cantCAAC, #puntaje3_7,
+#cantDifusionExt, #cantDifusionInt, #cantRepDifusionExt, #cantRepDifusionInt, #puntaje3_7,
 #cantInicioFinanExt, #cantInicioInvInterno, #cantReporteFinanciamExt, #cantReporteInvInt, [id^="puntaje3_9_"], #puntaje3_8, #puntaje3_6, #puntaje3_8_1, #cantCientifico, #cantDivulgacion, #cantTraduccion, #cantArbitrajeInt, #cantArbitrajeNac, #cantSinInt, #cantSinNac, #cantAutor, #cantEditor, #cantWeb{
     border-color: transparent;
     background-color: #c1cfd3;
     text-align: right;
+}
+
+td.punto3_5, #cantDA, #cantCAAC{
+    text-align: center;
+}
+
+#cantDA, #cantCAAC{
+    border-color: transparent;
+    background-color: #c1cfd3;
+}
+
+ body.dark-mode input#cantDA, body.dark-mode input#cantCAAC 
+{
+    background-color: #9b9a9a!important;
+    color: white!important;
 }
 
 
