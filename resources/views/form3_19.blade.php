@@ -252,7 +252,7 @@ $page_counter = 28;
                         <td id="cantCGUtitular" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalCGUtitular"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comCGUtitular" name="comCGUtitular"
                                     value="{{ oldValueOrDefault('comCGUtitular') }}" oninput="onActv3Comision3_19()">
@@ -260,7 +260,7 @@ $page_counter = 28;
                                 <span id="comCGUtitular" name="comCGUtitular" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsCGUtitular" name="obsCGUtitular">
                             @else
@@ -277,7 +277,7 @@ $page_counter = 28;
                         <td id="cantCGUespecial" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalCGUespecial"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comCGUespecial" name="comCGUespecial"
                                     value="{{ oldValueOrDefault('comCGUespecial') }}" oninput="onActv3Comision3_19()">
@@ -285,7 +285,7 @@ $page_counter = 28;
                                 <span id="comCGUespecial" name="comCGUespecial" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsCGUespecial" name="obsCGUespecial">
                             @else
@@ -302,7 +302,7 @@ $page_counter = 28;
                         <td id="cantCGUpermanente" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalCGUpermanente"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comCGUpermanente" name="comCGUpermanente"
                                     value="{{ oldValueOrDefault('comCGUpermanente') }}" oninput="onActv3Comision3_19()">
@@ -310,7 +310,7 @@ $page_counter = 28;
                                 <span id="comCGUpermanente" name="comCGUpermanente" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsCGUpermanente" name="obsCGUpermanente">
                             @else
@@ -327,7 +327,7 @@ $page_counter = 28;
                         <td id="cantCAACtitular" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalCAACtitular"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comCAACtitular" name="comCAACtitular"
                                     value="{{ oldValueOrDefault('comCAACtitular') }}" oninput="onActv3Comision3_19()">
@@ -335,7 +335,7 @@ $page_counter = 28;
                                 <span id="comCAACtitular" name="comCAACtitular" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsCAACtitular" name="obsCAACtitular">
                             @else
@@ -352,7 +352,7 @@ $page_counter = 28;
                         <td id="cantCAACintegCom" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalCAACintegCom"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comCAACintegCom" name="comCAACintegCom"
                                     value="{{ oldValueOrDefault('comCAACintegCom') }}" oninput="onActv3Comision3_19()">
@@ -360,7 +360,7 @@ $page_counter = 28;
                                 <span id="comCAACintegCom" name="comCAACintegCom" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsCAACintegCom" name="obsCAACintegCom">
                             @else
@@ -397,7 +397,7 @@ $page_counter = 28;
                         <td id="cantComDepart" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalComDepart"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comComDepart" name="comComDepart"
                                     value="{{ oldValueOrDefault('comComDepart') }}" oninput="onActv3Comision3_19()">
@@ -405,7 +405,7 @@ $page_counter = 28;
                                 <span id="comComDepart" name="comComDepart" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsComDepart" name="obsComDepart">
                             @else
@@ -422,7 +422,7 @@ $page_counter = 28;
                         <td id="cantComPEDPD" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalComPEDPD"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comComPEDPD" name="comComPEDPD"
                                     value="{{ oldValueOrDefault('comComPEDPD') }}" oninput="onActv3Comision3_19()">
@@ -430,7 +430,7 @@ $page_counter = 28;
                                 <span id="comComPEDPD" name="comComPEDPD" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsComPEDPD" name="obsComPEDPD">
                             @else
@@ -447,7 +447,7 @@ $page_counter = 28;
                         <td id="cantComPartPos" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalComPartPos"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comComPartPos" name="comComPartPos"
                                     value="{{ oldValueOrDefault('comComPartPos') }}" oninput="onActv3Comision3_19()">
@@ -455,7 +455,7 @@ $page_counter = 28;
                                 <span id="comComPartPos" name="comComPartPos" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsComPartPos" name="obsComPartPos">
                             @else
@@ -472,7 +472,7 @@ $page_counter = 28;
                         <td id="cantRespPos" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalRespPos"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comRespPos" name="comRespPos"
                                     value="{{ oldValueOrDefault('comRespPos') }}" oninput="onActv3Comision3_19()">
@@ -480,7 +480,7 @@ $page_counter = 28;
                                 <span id="comRespPos" name="comRespPos" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsRespPos" name="obsRespPos">
                             @else
@@ -497,7 +497,7 @@ $page_counter = 28;
                         <td id="cantRespCarrera" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalRespCarrera"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comRespCarrera" name="comRespCarrera"
                                     value="{{ oldValueOrDefault('comRespCarrera') }}" oninput="onActv3Comision3_19()">
@@ -505,7 +505,7 @@ $page_counter = 28;
                                 <span id="comRespCarrera" name="comRespCarrera" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsRespCarrera" name="obsRespCarrera">
                             @else
@@ -522,7 +522,7 @@ $page_counter = 28;
                         <td id="cantRespProd" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalRespProd"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comRespProd" name="comRespProd"
                                     value="{{ oldValueOrDefault('comRespProd') }}" oninput="onActv3Comision3_19()">
@@ -530,7 +530,7 @@ $page_counter = 28;
                                 <span id="comRespProd" name="comRespProd" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsRespProd" name="obsRespProd">
                             @else
@@ -547,7 +547,7 @@ $page_counter = 28;
                         <td id="cantRespLab" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalRespLab"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comRespLab" name="comRespLab"
                                     value="{{ oldValueOrDefault('comRespLab') }}" oninput="onActv3Comision3_19()">
@@ -555,7 +555,7 @@ $page_counter = 28;
                                 <span id="comRespLab" name="comRespLab" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsRespLab" name="obsRespLab">
                             @else
@@ -572,7 +572,7 @@ $page_counter = 28;
                         <td id="cantExamProf" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalExamProf"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comExamProf" name="comExamProf"
                                     value="{{ oldValueOrDefault('comExamProf') }}" oninput="onActv3Comision3_19()">
@@ -580,7 +580,7 @@ $page_counter = 28;
                                 <span id="comExamProf" name="comExamProf" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsExamProf" name="obsExamProf">
                             @else
@@ -597,7 +597,7 @@ $page_counter = 28;
                         <td id="cantExamAcademicos" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalExamAcademicos"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comExamAcademicos" name="comExamAcademicos"
                                     value="{{ oldValueOrDefault('comExamAcademicos') }}" oninput="onActv3Comision3_19()">
@@ -605,7 +605,7 @@ $page_counter = 28;
                                 <span id="comExamAcademicos" name="comExamAcademicos" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsExamAcademicos" name="obsExamAcademicos">
                             @else
@@ -630,10 +630,10 @@ $page_counter = 28;
                     class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
                     Página 29 de 33
                 </div>
-            </div><br><br>
+            </div><br><br><br>
 
             <!--Tabla 3-->
-            <table>
+            <table class="table table-sm tutorias">
                 <x-sub-headers-form3_19 :componentIndex="2" />
                 <tbody data-page="30">
                     <tr>
@@ -645,7 +645,7 @@ $page_counter = 28;
                         <td id="cantPRODEPformResp" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalPRODEPformResp"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comPRODEPformResp" name="comPRODEPformResp"
                                     value="{{ oldValueOrDefault('comPRODEPformResp') }}" oninput="onActv3Comision3_19()">
@@ -653,7 +653,7 @@ $page_counter = 28;
                                 <span id="comPRODEPformResp" name="comPRODEPformResp" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsPRODEPformResp" name="obsPRODEPformResp">
                             @else
@@ -670,7 +670,7 @@ $page_counter = 28;
                         <td id="cantPRODEPformInteg" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalPRODEPformInteg"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comPRODEPformInteg" name="comPRODEPformInteg"
                                     value="{{ oldValueOrDefault('comPRODEPformInteg') }}" oninput="onActv3Comision3_19()">
@@ -678,7 +678,7 @@ $page_counter = 28;
                                 <span id="comPRODEPformInteg" name="comPRODEPformInteg" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsPRODEPformInteg" name="obsPRODEPformInteg">
                             @else
@@ -695,7 +695,7 @@ $page_counter = 28;
                         <td id="cantPRODEPenconsResp" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalPRODEPenconsResp"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comPRODEPenconsResp" name="comPRODEPenconsResp"
                                     value="{{ oldValueOrDefault('comPRODEPenconsResp') }}" oninput="onActv3Comision3_19()">
@@ -703,7 +703,7 @@ $page_counter = 28;
                                 <span id="comPRODEPenconsResp" name="comPRODEPenconsResp" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsPRODEPenconsResp" name="obsPRODEPenconsResp">
                             @else
@@ -720,7 +720,7 @@ $page_counter = 28;
                         <td id="cantPRODEPenconsInteg" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalPRODEPenconsInteg"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comPRODEPenconsInteg" name="comPRODEPenconsInteg"
                                     value="{{ oldValueOrDefault('comPRODEPenconsInteg') }}" oninput="onActv3Comision3_19()">
@@ -728,7 +728,7 @@ $page_counter = 28;
                                 <span id="comPRODEPenconsInteg" name="comPRODEPenconsInteg" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsPRODEPenconsInteg"
                                     name="obsPRODEPenconsInteg">
@@ -746,7 +746,7 @@ $page_counter = 28;
                         <td id="cantPRODEPconsResp" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalPRODEPconsResp"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comPRODEPconsResp" name="comPRODEPconsResp"
                                     value="{{ oldValueOrDefault('comPRODEPconsResp') }}" oninput="onActv3Comision3_19()">
@@ -754,7 +754,7 @@ $page_counter = 28;
                                 <span id="comPRODEPconsResp" name="comPRODEPconsResp" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsPRODEPconsResp" name="obsPRODEPconsResp">
                             @else
@@ -771,7 +771,7 @@ $page_counter = 28;
                         <td id="cantPRODEPconsInteg" class="form3_19_dark"></td>
                         <td></td>
                         <td id="subtotalPRODEPconsInteg"></td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="comPRODEPconsInteg" name="comPRODEPconsInteg"
                                     value="{{ oldValueOrDefault('comPRODEPconsInteg') }}" oninput="onActv3Comision3_19()">
@@ -779,7 +779,7 @@ $page_counter = 28;
                                 <span id="comPRODEPconsInteg" name="comPRODEPconsInteg" class="form3_19_dark"></span>
                             @endif
                         </td>
-                        <td>
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input class="table-header" type="text" id="obsPRODEPconsInteg" name="obsPRODEPconsInteg">
                             @else

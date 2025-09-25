@@ -124,9 +124,8 @@ nav {
 }
 
 
-#obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteInvInt,  #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt,
-#comCGUtitular, #comCGUespecial, #comCGUpermanente, #comCAACtitular, #comCAACintegCom, #comComDepart, #comComPEDPD, #comComPartPos, #comRespPos, #comRespCarrera, #comRespProd, #comRespLab,
-#comExamProf, #comExamAcademicos, #comPRODEPformResp, #comPRODEPformInteg, #comPRODEPenconsResp, #comPRODEPenconsInteg, #comPRODEPconsResp, #comPRODEPconsInteg
+#obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteInvInt,  #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt
+
 {
     background-color: transparent;
     border-color: transparent;
@@ -233,11 +232,6 @@ body.dark-mode span#comisionComOrgInt, body.dark-mode span#comisionComOrgNac, bo
     color: white;
 }
 
-/* , 
-#obsComOrgInt, #obsComOrgNac, #obsComOrgReg, #obsComApoyoInt, #obsComApoyoNac, #obsComApoyoReg, #obsCicloComOrgInt, #obsCicloComOrgNac, #obsCicloComOrgReg, #obsCicloComApoyoInt, #obsCicloComApoyoNac, #obsCicloComApoyoReg,
-#obsCGUtitular, #obsCGUespecial, #obsCGUpermanente, #obsCAACtitular, #obsCAACintegCom, #obsComDepart, #obsComPEDPD, #obsComPartPos, #obsRespPos, #obsRespCarrera, #obsRespProd, #obsRespLab,
-#obsExamProf, #obsExamAcademicos, #obsPRODEPformResp, #obsPRODEPformInteg, #obsPRODEPenconsResp, #obsPRODEPenconsInteg, #obsPRODEPconsResp, #obsPRODEPconsInteg
-      */
 body.darl-mode span#obsComOrgInt, body.dark-mode span#obsComOrgNac, body.dark-mode span#obsComOrgReg, body.dark-mode span#obsComApoyoInt, body.dark-mode span#obsComApoyoNac, body.dark-mode span#obsComApoyoReg, body.dark-mode span#obsCicloComOrgInt, body.dark-mode span#obsCicloComOrgNac, body.dark-mode span#obsCicloComOrgReg, body.dark-mode span#obsCicloComApoyoInt, body.dark-mode span#obsCicloComApoyoNac, body.dark-mode span#obsCicloComApoyoReg,
 body.dark-mode span#obsCGUtitular, body.dark-mode span#obsCGUespecial, body.dark-mode span#obsCGUpermanente, body.dark-mode span#obsCAACtitular, body.dark-mode span#obsCAACintegCom, body.dark-mode span#obsComDepart, body.dark-mode span#obsComPEDPD, body.dark-mode span#obsComPartPos, body.dark-mode span#obsRespPos, body.dark-mode span#obsRespCarrera, body.dark-mode span#obsRespProd, body.dark-mode span#obsRespLab,
 body.dark-mode span#obsExamProf, body.dark-mode span#obsExamAcademicos, body.dark-mode span#obsPRODEPformResp, body.dark-mode span#obsPRODEPformInteg, body.dark-mode span#obsPRODEPenconsResp, body.dark-mode span#obsPRODEPenconsInteg, body.dark-mode span#obsPRODEPconsResp, body.dark-mode span#obsPRODEPconsInteg, body.dark-mode span#obsComOrgInt
@@ -245,4 +239,28 @@ body.dark-mode span#obsExamProf, body.dark-mode span#obsExamAcademicos, body.dar
     background-color: transparent!important;
     color: white!important;
 }      
+
+#comCGUtitular, #comCGUespecial, #comCGUpermanente, #comCAACtitular, #comCAACintegCom, #comComDepart, #comComPEDPD, #comComPartPos, #comRespPos, #comRespCarrera, #comRespProd, #comRespLab,
+#comExamProf, #comExamAcademicos, #comPRODEPformResp, #comPRODEPformInteg, #comPRODEPenconsResp, #comPRODEPenconsInteg, #comPRODEPconsResp, #comPRODEPconsInteg{
+    padding-inline-start: 55px;
+    border-color: transparent;
+    text-align: center;
+}
+
+/* #cantCGUtitular, #cantCGUespecial, #cantCGUpermanente, #cantCAACtitular, #cantCAACintegCom, #cantComDepart, 
+#cantComPEDPD, #cantComPartPos, #cantRespPos, #cantRespCarrera, #cantRespProd, #cantRespLab, #cantExamProf, 
+#cantExamAcademicos, #cantPRODEPformResp, #cantPRODEPformInteg, #cantPRODEPenconsResp, #cantPRODEPenconsInteg, 
+#cantPRODEPconsResp, #cantPRODEPconsInteg */
+
+body.dark-mode td#cantCGUtitular, body.dark-mode td#cantCGUespecial, body.dark-mode td#cantCGUpermanente, 
+body.dark-mode td#cantCAACtitular, body.dark-mode td#cantCAACintegCom, body.dark-mode td#cantComDepart, 
+body.dark-mode td#cantComPEDPD, body.dark-mode td#cantComPartPos, body.dark-mode td#cantRespPos, body.dark-mode td#cantRespCarrera, 
+body.dark-mode td#cantRespProd, body.dark-mode td#cantRespLab, body.dark-mode td#cantExamProf, body.dark-mode td#cantExamAcademicos, 
+body.dark-mode td#cantPRODEPformResp, body.dark-mode td#cantPRODEPformInteg, body.dark-mode td#cantPRODEPenconsResp, body.dark-mode td#cantPRODEPenconsInteg, 
+body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg
+{
+    background-color: #9b9a9a!important;
+    color: white!important;
+}
+
 
