@@ -2305,7 +2305,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 </form>
                                 <br>
 
-                                <form id="form3_18" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/formato-evaluacion/store318', 'form3_18');">
+                                <form id="form3_18" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store318', 'form3_18');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">

@@ -126,10 +126,7 @@ nav {
 
 #obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteInvInt,  #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt,
 #comCGUtitular, #comCGUespecial, #comCGUpermanente, #comCAACtitular, #comCAACintegCom, #comComDepart, #comComPEDPD, #comComPartPos, #comRespPos, #comRespCarrera, #comRespProd, #comRespLab,
-#comExamProf, #comExamAcademicos, #comPRODEPformResp, #comPRODEPformInteg, #comPRODEPenconsResp, #comPRODEPenconsInteg, #comPRODEPconsResp, #comPRODEPconsInteg, 
-#obsComOrgInt, #obsComOrgNac, #obsComOrgReg, #obsComApoyoInt, #obsComApoyoNac, #obsComApoyoReg, #obsCicloComOrgInt, #obsCicloComOrgNac, #obsCicloComOrgReg, #obsCicloComApoyoInt, #obsCicloComApoyoNac, #obsCicloComApoyoReg,
-#obsCGUtitular, #obsCGUespecial, #obsCGUpermanente, #obsCAACtitular, #obsCAACintegCom, #obsComDepart, #obsComPEDPD, #obsComPartPos, #obsRespPos, #obsRespCarrera, #obsRespProd, #obsRespLab,
-#obsExamProf, #obsExamAcademicos, #obsPRODEPformResp, #obsPRODEPformInteg, #obsPRODEPenconsResp, #obsPRODEPenconsInteg, #obsPRODEPconsResp, #obsPRODEPconsInteg
+#comExamProf, #comExamAcademicos, #comPRODEPformResp, #comPRODEPformInteg, #comPRODEPenconsResp, #comPRODEPenconsInteg, #comPRODEPconsResp, #comPRODEPconsInteg
 {
     background-color: transparent;
     border-color: transparent;
@@ -140,7 +137,10 @@ nav {
 #comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, 
 #obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista, #comisionDifusionExt,
 #comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
-#comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg{
+#comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg, 
+#obsComOrgInt, #obsComOrgNac, #obsComOrgReg, #obsComApoyoInt, #obsComApoyoNac, #obsComApoyoReg, #obsCicloComOrgInt, #obsCicloComOrgNac, #obsCicloComOrgReg, #obsCicloComApoyoInt, #obsCicloComApoyoNac, #obsCicloComApoyoReg,
+#obsCGUtitular, #obsCGUespecial, #obsCGUpermanente, #obsCAACtitular, #obsCAACintegCom, #obsComDepart, #obsComPEDPD, #obsComPartPos, #obsRespPos, #obsRespCarrera, #obsRespProd, #obsRespLab,
+#obsExamProf, #obsExamAcademicos, #obsPRODEPformResp, #obsPRODEPformInteg, #obsPRODEPenconsResp, #obsPRODEPenconsInteg, #obsPRODEPconsResp, #obsPRODEPconsInteg{
     background-color: transparent;
     border-color: transparent;
     text-align: center;
@@ -232,4 +232,17 @@ td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subt
 body.dark-mode span#comisionComOrgInt, body.dark-mode span#comisionComOrgNac, body.dark-mode span#comisionComOrgReg, body.dark-mode span#comisionComApoyoInt, body.dark-mode span#comisionComApoyoNac, body.dark-mode span#comisionComApoyoReg, body.dark-mode span#comisionCicloComOrgInt, body.dark-mode span#comisionCicloComOrgNac, body.dark-mode span#comisionCicloComOrgReg, body.dark-mode span#comisionCicloComApoyoInt, body.dark-mode span#comisionCicloComApoyoNac, body.dark-mode span#comisionCicloComApoyoReg{
     color: white;
 }
-     
+
+/* , 
+#obsComOrgInt, #obsComOrgNac, #obsComOrgReg, #obsComApoyoInt, #obsComApoyoNac, #obsComApoyoReg, #obsCicloComOrgInt, #obsCicloComOrgNac, #obsCicloComOrgReg, #obsCicloComApoyoInt, #obsCicloComApoyoNac, #obsCicloComApoyoReg,
+#obsCGUtitular, #obsCGUespecial, #obsCGUpermanente, #obsCAACtitular, #obsCAACintegCom, #obsComDepart, #obsComPEDPD, #obsComPartPos, #obsRespPos, #obsRespCarrera, #obsRespProd, #obsRespLab,
+#obsExamProf, #obsExamAcademicos, #obsPRODEPformResp, #obsPRODEPformInteg, #obsPRODEPenconsResp, #obsPRODEPenconsInteg, #obsPRODEPconsResp, #obsPRODEPconsInteg
+      */
+body.darl-mode span#obsComOrgInt, body.dark-mode span#obsComOrgNac, body.dark-mode span#obsComOrgReg, body.dark-mode span#obsComApoyoInt, body.dark-mode span#obsComApoyoNac, body.dark-mode span#obsComApoyoReg, body.dark-mode span#obsCicloComOrgInt, body.dark-mode span#obsCicloComOrgNac, body.dark-mode span#obsCicloComOrgReg, body.dark-mode span#obsCicloComApoyoInt, body.dark-mode span#obsCicloComApoyoNac, body.dark-mode span#obsCicloComApoyoReg,
+body.dark-mode span#obsCGUtitular, body.dark-mode span#obsCGUespecial, body.dark-mode span#obsCGUpermanente, body.dark-mode span#obsCAACtitular, body.dark-mode span#obsCAACintegCom, body.dark-mode span#obsComDepart, body.dark-mode span#obsComPEDPD, body.dark-mode span#obsComPartPos, body.dark-mode span#obsRespPos, body.dark-mode span#obsRespCarrera, body.dark-mode span#obsRespProd, body.dark-mode span#obsRespLab,
+body.dark-mode span#obsExamProf, body.dark-mode span#obsExamAcademicos, body.dark-mode span#obsPRODEPformResp, body.dark-mode span#obsPRODEPformInteg, body.dark-mode span#obsPRODEPenconsResp, body.dark-mode span#obsPRODEPenconsInteg, body.dark-mode span#obsPRODEPconsResp, body.dark-mode span#obsPRODEPconsInteg, body.dark-mode span#obsComOrgInt
+{
+    background-color: transparent!important;
+    color: white!important;
+}      
+
