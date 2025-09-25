@@ -221,12 +221,6 @@ td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subt
 #comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg{
     padding-inline-start: 65px; 
 }
-
-/* #comisionCientificos, #comisionDivulgacion, #comisionTraduccion, #comisionArbitrajeInt, #comisionArbitrajeNac, #comisionSinInt, #comisionSinNac, #comisionAutor, #comisionEditor, #comisionWeb{
-    padding-inline-start: 5px; 
-} */
-
-/* #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, #comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg */
    
 body.dark-mode span#comisionComOrgInt, body.dark-mode span#comisionComOrgNac, body.dark-mode span#comisionComOrgReg, body.dark-mode span#comisionComApoyoInt, body.dark-mode span#comisionComApoyoNac, body.dark-mode span#comisionComApoyoReg, body.dark-mode span#comisionCicloComOrgInt, body.dark-mode span#comisionCicloComOrgNac, body.dark-mode span#comisionCicloComOrgReg, body.dark-mode span#comisionCicloComApoyoInt, body.dark-mode span#comisionCicloComApoyoNac, body.dark-mode span#comisionCicloComApoyoReg{
     color: white;
@@ -247,10 +241,6 @@ body.dark-mode span#obsExamProf, body.dark-mode span#obsExamAcademicos, body.dar
     text-align: center;
 }
 
-/* #cantCGUtitular, #cantCGUespecial, #cantCGUpermanente, #cantCAACtitular, #cantCAACintegCom, #cantComDepart, 
-#cantComPEDPD, #cantComPartPos, #cantRespPos, #cantRespCarrera, #cantRespProd, #cantRespLab, #cantExamProf, 
-#cantExamAcademicos, #cantPRODEPformResp, #cantPRODEPformInteg, #cantPRODEPenconsResp, #cantPRODEPenconsInteg, 
-#cantPRODEPconsResp, #cantPRODEPconsInteg */
 
 body.dark-mode td#cantCGUtitular, body.dark-mode td#cantCGUespecial, body.dark-mode td#cantCGUpermanente, 
 body.dark-mode td#cantCAACtitular, body.dark-mode td#cantCAACintegCom, body.dark-mode td#cantComDepart, 
