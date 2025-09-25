@@ -132,7 +132,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <th class="table-ajust2" scope="col" colspan="4"></th>
                                             <th class="table-ajust2 cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust2 cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                                            <th class="table-ajust2" scope="col">Observaciones</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -155,6 +155,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <th class="actividades">Puntaje</th>
                                             <th class="text-center actividades">Cantidad</th>
                                             <th class="actividades">Subtotal</th>
+                                            <th colspan="1"></th>
+                                            <th class="text-center fw-normal table-ajust2" scope="col">Observaciones</th>
 
                                         </tr>
                                                         <!-- Contenido -->
@@ -272,19 +274,21 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <th class="table-ajust" scope="col" colspan="2"></th>
                                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                                            <th class="table-ajust" scope="col">Observaciones</th>
+                                            
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr>
-                                            <td id="seccion3_2" style="height: 80px; width: 200px;">3.2 Calidad del desempeño
-                                                docente
-                                                evaluada por el alumnado
-                                            </td>
-                                            <td>Puntaje</td>
-                                            <td style="text-align:left;">Cantidad</td>
+                                            <td colspan="3" id="seccion3_2" style="height: 80px; width: 300px;">3.2 Calidad del desempeño docente evaluada por el alumnado</td>
                                             <td id="score3_2" for="">0</td>
                                             <td id="comision3_2">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="1"></td>
+                                            <td>Puntaje</td>
+                                            <td class="text-center">Cantidad</td>
+                                            <td colspan="2"></td>
+                                            <td class="text-center table-ajust" scope="col">Observaciones</td>
                                         </tr>
                                     </thead>
                                     <thead>
@@ -362,7 +366,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                                             </th>
-                                            <th class="table-ajust" scope="col">Observaciones</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -387,6 +391,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td>Puntaje</td>
                                                 <td id="cantidadform3_3">Cantidad</td>
                                                 <td>SubTotal</td>
+                                                <td colspan="1"></td>
+                                                <td class="text-center table-ajust" scope="col">Observaciones</td>
 
                                             </tr>
                                         </thead>
