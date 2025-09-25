@@ -493,17 +493,23 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <th colspan="3" class="table-ajust" scope="col"></th>
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                    <th class="table-ajust" scope="col">Observaciones</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th id="seccion3_4" colspan="2" class="punto3_4" scope="col" style="padding:30px;">3.4 Distinciones
                         académicas recibidas por el docente</th>
+                    <th colspan="2"></th>
+                    <th id="score3_4">0</th>
+                    <th id="comision3_4">0</th>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
                     <td class="punto3_4">Puntaje</td>
-                    <td class="punto3_4">Cantidad</td>
-                    <td id="score3_4">0</td>
-                    <td id="comision3_4">0</td>
+                    <td class="text-center punto3_4">Cantidad</td>
+                    <td colspan="2"></td>
+                    <td class="text-center table-ajust" scope="col">Observaciones</td>
                 </tr>
                 <tr>
                     <td class="punto3_4">a)</td>
