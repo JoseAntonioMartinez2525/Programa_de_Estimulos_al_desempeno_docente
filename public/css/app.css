@@ -22,11 +22,6 @@ body {
     }
 }
 
-@media (min-width: 1024px) {
-    body {
-        font-size: .8rem;
-    }
-}
 
 @media (max-width: 767px) {
     body {
@@ -187,7 +182,7 @@ body {
 
 @media (min-width: 1024px) {
     body {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 }
 
@@ -366,6 +361,13 @@ margin-left: 900px;
     padding: 0 40px;
 
 }
+
+/* #comIncisoA,#comIncisoB,#comIncisoC,#comIncisoD */
+body.dark-mode #comIncisoA, body.dark-mode #comIncisoB, body.dark-mode #comIncisoC, body.dark-mode #comIncisoD{
+    background-color: transparent;
+    color: white;
+}
+
 
 #cant1, #cant2, #cant3 {
     text-align: right;
@@ -825,7 +827,7 @@ body.dark-mode #form2_2Button:hover{
     width: 140px;
     text-align: right;
     border-color: transparent;
-    background-color: #d6fff7;
+    background-color: transparent;
 }
 
 #comisionDict3_6, #comisionDict3_7, #obs3_6_1, #obs3_7_1, #comisionDict3_8, #comisionDict3_8_1, #obs3_8_1, #obs3_8_1_1{
@@ -873,7 +875,7 @@ td[id^="puntaje3_9_"]{
 }
 #cantidadActv, #cantidadform3_3{
     margin-left: 350px;
-    text-align: right;
+    text-align: center;
 }
 
 
@@ -881,9 +883,6 @@ td[id^="puntaje3_9_"]{
 #elaboracion3,
 #elaboracion4,
 #elaboracion5{
-    margin-left: -250px;
-}
-input[id^="rc"]{
     margin-left: -250px;
 }
 
@@ -1202,9 +1201,34 @@ td.comision3_13, td.obsv_3_14{
 }
 
 /* color de cantidad en modo claro */
-td.td_form3_4, td.elabInput{
+td.td_form3_4, td.elabInput, input#cantInternacional, input#cantNacional, input#cantidadRegional, input#cantPreparacion{
 background-color: #c1cfd3;
 }
+
+/* #elaboracion, #elaboracion2, #elaboracion3, #elaboracion4, #elaboracion5, #rCant1, #r1, #r2, #r3, input#cantInternacional, input#cantNacional, input#cantidadRegional, input#cantPreparacion */
+body.dark-mode input#elaboracion, body.dark-mode input#elaboracion2, body.dark-mode input#elaboracion3, body.dark-mode input#elaboracion4, 
+body.dark-mode input#elaboracion5, body.dark-mode input#rCant1, body.dark-mode input#r1, body.dark-mode input#r2, body.dark-mode input#r3, 
+body.dark-mode input[id^="comisionInciso"]{
+    background-color: transparent!important;
+    color: white!important;
+}
+
+body.dark-mode td.elabInput, body.dark-mode td.td_docente_cantidad, body.dark-mode input#cantInternacional, body.dark-mode input#cantNacional, body.dark-mode input#cantidadRegional, body.dark-mode input#cantPreparacion{
+    background-color: #9b9a9a!important;
+    color: white!important;
+}
+
+input[id^="rc"]{
+padding-inline-start: -20px;
+}
+
+input#cantInternacional, input#cantNacional, input#cantidadRegional, input#cantPreparacion{
+    width: 100px;
+    text-align: center;
+    border-color: transparent;
+}
+
+ 
 
 
 
