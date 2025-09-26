@@ -267,7 +267,7 @@ body.dark-mode span#obsExamProf, body.dark-mode span#obsExamAcademicos, body.dar
 
 #comCGUtitular, #comCGUespecial, #comCGUpermanente, #comCAACtitular, #comCAACintegCom, #comComDepart, #comComPEDPD, #comComPartPos, #comRespPos, #comRespCarrera, #comRespProd, #comRespLab,
 #comExamProf, #comExamAcademicos, #comPRODEPformResp, #comPRODEPformInteg, #comPRODEPenconsResp, #comPRODEPenconsInteg, #comPRODEPconsResp, #comPRODEPconsInteg{
-    padding-inline-start: 55px;
+    padding-inline-start: 7px;
     border-color: transparent;
     text-align: center;
 }

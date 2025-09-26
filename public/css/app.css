@@ -1229,7 +1229,9 @@ body.dark-mode span#comisionArbitrajeNac, body.dark-mode span#comisionSinInt, bo
 body.dark-mode span#obsCientificos, body.dark-mode span#obsDivulgacion, body.dark-mode span#obsTraduccion, body.dark-mode span#obsArbitrajeInt, body.dark-mode span#obsArbitrajeNac,
 body.dark-mode span#obsSinInt, body.dark-mode span#obsSinNac, body.dark-mode span#obsAutor, body.dark-mode span#obsEditor, body.dark-mode span#obsWeb, body.dark-mode #comisionCongresoLoc, body.dark-mode #comisionCongresoInt, body.dark-mode #comisionCongresoNac,
 body.dark-mode #comisionCongresoReg, body.dark-mode #obsCongresoLoc, body.dark-mode #obsCongresoInt, body.dark-mode #obsCongresoNac, body.dark-mode #comisionPatententes, body.dark-mode #obsPatentes, 
-body.dark-mode #comisionPrototipos, body.dark-mode #obsPrototipos{
+body.dark-mode #comisionPrototipos, body.dark-mode #obsPrototipos, body.dark-mode input#cantComOrgInt, body.dark-mode input#cantCicloComApoyoReg, body.dark-mode input#cantComOrgReg, body.dark-mode input#cantCicloComApoyoNac, body.dark-mode input#cantComOrgNac, 
+body.dark-mode input#cantComOrgReg, body.dark-mode input#cantComApoyoInt, body.dark-mode input#cantComApoyoNac, body.dark-mode input#cantComApoyoReg, body.dark-mode input#cantCicloComOrgInt, body.dark-mode input#cantCicloComOrgNac, body.dark-mode input#cantCicloComOrgReg,
+body.dark-mode input#cantCicloComApoyoInt{
     color: white!important;
     background-color: transparent!important;
 }
