@@ -189,6 +189,9 @@ body {
         padding: -20px 0 0 0;
     }
 
+    button#btn3_15{
+        margin-left: 484px!important;
+    }
     
 }
 
@@ -278,7 +281,11 @@ body.dark-mode [id^="btn3_"]:hover , body.dark-mode .dynamicBtn:hover{
     
 }
 
-#btn3_15, #btn3_19{
+button#btn3_15 {
+    margin-left: 300px!important;
+}
+
+#btn3_19{
     margin-left: 950px;
 }
 
@@ -1131,14 +1138,12 @@ body.dark-mode td.cantidad, body.dark-mode td.elabInput, body.dark-mode td.td_fo
 body.dark-mode td#puntaje3_7, body.dark-mode td#puntaje3_8, body.dark-mode td#puntaje3_8_1, body.dark-mode td[id^="puntaje3_9_"], body.dark-mode td#individualCant, body.dark-mode td#grupalesCant,
 body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas,
 body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, 
-body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb,  body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLoc,
-body.dark-mode #cantPatentes, body.dark-mode #cantPrototipos, body.dark-mode #cantArbInt, body.dark-mode #cantArbNac, body.dark-mode #cantPubInt, body.dark-mode #cantPubNac, body.dark-mode #cantRevInt, body.dark-mode #cantRevNac, body.dark-mode #cantRevista,
+body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode input#cantAutor, body.dark-mode input#cantEditor, body.dark-mode input#cantWeb,  body.dark-mode input#cantCongresoInt, body.dark-mode input#cantCongresoNac, body.dark-mode input#cantCongresoLoc,
+body.dark-mode input#cantPatentes, body.dark-mode input#cantPrototipos, body.dark-mode input#cantArbInt, body.dark-mode input#cantArbNac, body.dark-mode input#cantPubInt, body.dark-mode input#cantPubNac, body.dark-mode input#cantRevInt, body.dark-mode input#cantRevNac, body.dark-mode input#cantRevista,
 body.dark-mode #cantDifusionExt, body.dark-mode #cantDifusionInt, body.dark-mode #cantRepDifusionExt, body.dark-mode #cantRepDifusionInt,
 body.dark-mode td#cantComOrgInt, body.dark-mode td#cantCicloComApoyoReg, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantCicloComApoyoNac, body.dark-mode td#cantComOrgNac, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantComApoyoInt, 
 body.dark-mode td#cantComApoyoNac, body.dark-mode td#cantComApoyoReg, body.dark-mode td#cantCicloComOrgInt, body.dark-mode td#cantCicloComOrgNac, body.dark-mode td#cantCicloComOrgReg,
- body.dark-mode td#cantCicloComApoyoInt,
-/* #cantComOrgInt, #cantCicloComApoyoReg, #cantComOrgReg, #cantCicloComApoyoNac, #cantComOrgNac, #cantComOrgReg, #cantComApoyoInt, #cantComApoyoNac, #cantComApoyoReg, #cantCicloComOrgInt, #cantCicloComOrgNac, #cantCicloComOrgReg, #cantCicloComApoyoInt, #cantArbInt, #cantArbNac, #cantPubInt, #cantPubNac, #cantRevInt, #cantRevNac, #cantRevista, #cantPatentes, #cantPrototipos */ */
- body.dark-mode td#cantCGUtitular, body.dark-mode td#cantCGUespecial, body.dark-mode td#cantCGUpermanente, body.dark-mode td#cantCAACtitular, body.dark-mode td#cantCAACintegCom, body.dark-mode td#cantComDepart, body.dark-mode td#cantComPEDPD, body.dark-mode td#cantComPartPos, 
+ body.dark-mode td#cantCicloComApoyoInt, body.dark-mode td#cantCGUtitular, body.dark-mode td#cantCGUespecial, body.dark-mode td#cantCGUpermanente, body.dark-mode td#cantCAACtitular, body.dark-mode td#cantCAACintegCom, body.dark-mode td#cantComDepart, body.dark-mode td#cantComPEDPD, body.dark-mode td#cantComPartPos, 
  body.dark-mode td#cantRespPos, body.dark-mode td#cantRespCarrera, body.dark-mode td#cantRespProd, body.dark-mode td#cantRespLab, body.dark-mode td#cantExamProf, body.dark-mode td#cantExamAcademicos, body.dark-mode td#cantPRODEPformResp, body.dark-mode td#cantPRODEPformInteg, 
  body.dark-mode td#cantPRODEPenconsResp, body.dark-mode td#cantPRODEPenconsInteg, body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg, body.dark-mode td#cantPRODEPenconsResp, body.dark-mode td#cantPRODEPenconsInteg, body.dark-mode td#cantPRODEPconsResp, 
  body.dark-mode td#cantPRODEPconsInteg,  body.dark-mode td#cantComOrgInt, body.dark-mode td#cantCicloComApoyoReg, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantCicloComApoyoNac, body.dark-mode td#cantComOrgNac, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantComApoyoInt
@@ -1187,7 +1192,7 @@ td.cantidad2{
     padding-inline-start: 30px
 }
 
-span#obs3_8_1_1, td.td_form3_15, #comisionIndividual, #comisionGrupal, #obsGrupal, #obsIndividual {
+span#obs3_8_1_1, td.td_form3_15, #comisionIndividual, #comisionGrupal, #obsGrupal, #obsIndividual, td#subtotalPatentes,td#subtotalPrototipos {
     text-align: center;
 }
 
@@ -1276,7 +1281,7 @@ textarea.textAreaForms{
  body.dark-mode #comisionAsesoria, body.dark-mode #comisionServicio, body.dark-mode #comisionPracticas, body.dark-mode #obsAsesoria, body.dark-mode #obsServicio, body.dark-mode #obsPracticas, body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, 
  body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb, body.dark-mode #obsCientifico, body.dark-mode #obsDivulgacion, body.dark-mode #obsTraduccion, 
  body.dark-mode #obsArbitrajeInt, body.dark-mode #obsArbitrajeNac, body.dark-mode #obsSinInt, body.dark-mode #obsSinNac, body.dark-mode #obsAutor, body.dark-mode #obsEditor, body.dark-mode #obsWeb, body.dark-mode #comisionCientificos, body.dark-mode #obsCientificos,
- body.dark-mode #comisionDivulgacion, body.dark-mode #comisionTraduccion, body.dark-mode #comisionArbitrajeInt, body.dark-mode #comisionArbitrajeNac, body.dark-mode #comisionSinInt, body.dark-mode #comisionSinNac, body.dark-mode #comisionAutor, body.dark-mode #comisionEditor, body.dark-mode #comisionWeb{
+ body.dark-mode #comisionDivulgacion, body.dark-mode #comisionTraduccion, body.dark-mode #comisionArbitrajeInt, body.dark-mode #comisionArbitrajeNac, body.dark-mode #comisionSinInt, body.dark-mode #comisionSinNac, body.dark-mode #comisionAutor, body.dark-mode #comisionEditor, body.dark-mode #comisionWeb, input#comisionPatententes, input#comisionPrototipos{
     background-color: transparent!important;
  }
 
@@ -1290,9 +1295,11 @@ th.text-right.acreditacion.cantidad3_14{
     color: white !important;
 }
 
-input#comisionCongresoInt, input#comisionCongresoNac, input#comisionCongresoLoc{
+input#comisionCongresoInt, input#comisionCongresoNac, input#comisionCongresoLoc, input#comisionPatententes, input#comisionPrototipos{
     text-align: center;
     border-color: transparent;
 }
+
+
 
 

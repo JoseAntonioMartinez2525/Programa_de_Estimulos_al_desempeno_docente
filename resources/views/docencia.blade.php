@@ -1850,29 +1850,30 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <thead>
                                         <tr>
                                             <th scope="col" colspan=3>Actividad</th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
+                                            <th colspan="4" class="table-ajust" scope="col"></th>
+
                                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr>
-                                            <th id="seccion3_15" class="acreditacion" colspan=2>3.15 Registro de patentes y
+                                            <th id="seccion3_15" class="acreditacion" colspan="7">3.15 Registro de patentes y
                                                 productos de
                                                 investigación
                                                 tecnológica
                                                 y educativa</th>
-                                            <th class="acreditacion">Puntaje</th>
-                                            <th class="acreditacion">Cantidad</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
+
                                             <th id="score3_15">0</th>
                                             <th id="comision3_15">0</th>
-                                            <th class="acreditacion" scope="col">Observaciones</th>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2"></th>
+                                            <th class="acreditacion">Puntaje</th>
+                                            <th class="text-center acreditacion">Cantidad</th>
+                                            <th colspan="5"></th>
+                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1881,16 +1882,15 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td>a)</td>
                                             <td>Registro de patentes</td>
                                             <td id="puntajePatentes"><b>60</b></td>
-                                            <td><input type="number" id="cantPatentes" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantPatentes" 
                                                     oninput="onActv3SubTotal3_15()" value="{{ oldValueOrDefault('puntajePatentes') }}"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
+
                                             <td id="subtotalPatentes">0</td>
-                                            <td><input type="value" id="comisionPatententes" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionPatententes" placeholder="0"
                                                     oninput="onActv3Comision3_15()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPatentes"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPatentes"></td>
                                         </tr>
                                         </thead>
                                         <thead>
@@ -1898,16 +1898,14 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td>b)</td>
                                             <td>Desarrollo de prototipos</td>
                                             <td id="puntajePrototipos"><b>30</b></td>
-                                            <td><input type="number" id="cantPrototipos" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantPrototipos" 
                                                     oninput="onActv3SubTotal3_15()" value="{{ oldValueOrDefault('cantPrototipos') }}"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
                                             <td id="subtotalPrototipos">0</td>
-                                            <td><input type="value" id="comisionPrototipos" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionPrototipos" placeholder="0"
                                                     oninput="onActv3Comision3_15()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPrototipos"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPrototipos"></td>
                                         </tr>
                                     </thead>
                                     </tbody>
