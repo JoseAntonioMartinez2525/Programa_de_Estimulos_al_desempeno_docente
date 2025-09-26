@@ -1752,35 +1752,32 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <thead>
                                         <tr>
                                             <th scope="col" colspan=3>Actividad</th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
+                                            <th  colspan="4" class="table-ajust" scope="col"></th>
                                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr>
-                                            <th id="seccion3_14" class="acreditacion" colspan=7>3.14 Participación como ponente
+                                            <th id="seccion3_14" class="acreditacion" colspan="7">3.14 Participación como ponente
                                                 en congresos
                                                 o eventos
                                                 académicos
                                                 del Área de Conocimiento o afines del docente</th>
                                             <th id="score3_14">0</th>
                                             <th id="comision3_14">0</th>
-                                            <th class="acreditacion" scope="col">Observaciones</th>
+                                            
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr>
                                             <th class="acreditacion" colspan=2>Congresos y eventos académicos</th>
                                             <th class="acreditacion">Puntaje</th>
-                                            <th class="acreditacion">Cantidad</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
+                                            <th class="text-right acreditacion cantidad3_14">Cantidad</th>
+                                            <th colspan="3"></th>
                                             <th class="acreditacion">Subtotal</th>
+                                            <th colspan="1"></th>
+                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1789,46 +1786,41 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td>a)</td>
                                             <td>Internacional</td>
                                             <td id="puntajeCongresoInt"><b>25</b></td>
-                                            <td><input type="number" id="cantCongresoInt"
+                                            <td class="td_docente_cantidad"><input type="number" id="cantCongresoInt"
                                                     oninput="onActv3SubTotal3_14()" value="{{ oldValueOrDefault('cantCongresoInt') }}"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
+
                                             <td id="subtotalCongresoInt">0</td>
-                                            <td><input type="value" id="comisionCongresoInt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionCongresoInt" placeholder="0"
                                                     oninput="onActv3Comision3_14()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoInt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoInt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
                                             <td>Nacional</td>
                                             <td id="puntajeCongresoNac"><b>20</b></td>
-                                            <td><input type="number" id="cantCongresoNac"
+                                            <td class="td_docente_cantidad"><input type="number" id="cantCongresoNac"
                                                     oninput="onActv3SubTotal3_14()" value="{{ oldValueOrDefault('cantCongresoNac') }}"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
                                             <td id="subtotalCongresoNac">0</td>
-                                            <td><input type="value" id="comisionCongresoNac" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionCongresoNac" placeholder="0"
                                                     oninput="onActv3Comision3_14()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoNac"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoNac"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
                                             <td>Local</td>
                                             <td id="puntajeCongresoLoc"><b>10</b></td>
-                                            <td><input type="number" id="cantCongresoLoc"
+                                            <td class="td_docente_cantidad"><input type="number" id="cantCongresoLoc"
                                                     oninput="onActv3SubTotal3_14()" value="{{ oldValueOrDefault('cantCongresoLoc') }}"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
                                             <td id="subtotalCongresoLoc">0</td>
-                                            <td><input type="value" id="comisionCongresoLoc" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionCongresoLoc" placeholder="0"
                                                     oninput="onActv3Comision3_14()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoLoc"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoLoc"></td>
                                         </tr>
                                     </tbody>
                                 </table>
