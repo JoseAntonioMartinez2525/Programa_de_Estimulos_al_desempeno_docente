@@ -1270,7 +1270,11 @@ textarea.textAreaForms{
 }
 
  /* background-color transparente */
- body.dark-mode #grupalesCant, body.dark-mode #individualCant, body.dark-mode #comisionGrupal, body.dark-mode #comisionIndividual, body.dark-mode #obsGrupal, body.dark-mode #obsIndividual{
+ body.dark-mode #grupalesCant, body.dark-mode #individualCant, body.dark-mode #comisionGrupal, body.dark-mode #comisionIndividual, body.dark-mode #obsGrupal, body.dark-mode #obsIndividual, body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas,
+ body.dark-mode #comisionAsesoria, body.dark-mode #comisionServicio, body.dark-mode #comisionPracticas, body.dark-mode #obsAsesoria, body.dark-mode #obsServicio, body.dark-mode #obsPracticas, body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, 
+ body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb, body.dark-mode #obsCientifico, body.dark-mode #obsDivulgacion, body.dark-mode #obsTraduccion, 
+ body.dark-mode #obsArbitrajeInt, body.dark-mode #obsArbitrajeNac, body.dark-mode #obsSinInt, body.dark-mode #obsSinNac, body.dark-mode #obsAutor, body.dark-mode #obsEditor, body.dark-mode #obsWeb, body.dark-mode #comisionCientificos, body.dark-mode #obsCientificos,
+ body.dark-mode #comisionDivulgacion, body.dark-mode #comisionTraduccion, body.dark-mode #comisionArbitrajeInt, body.dark-mode #comisionArbitrajeNac, body.dark-mode #comisionSinInt, body.dark-mode #comisionSinNac, body.dark-mode #comisionAutor, body.dark-mode #comisionEditor, body.dark-mode #comisionWeb{
     background-color: transparent!important;
  }
 
