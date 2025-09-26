@@ -1612,7 +1612,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         </tr>
                                     </tbody>
                                 </table>
-                                <!--Tabla informativa Acreditacion Actividad 3.12-->
+                                <!--Tabla informativa Acreditacion Actividad 3.13-->
                                 <table>
                                     <thead>
                                         <tr>
@@ -1637,20 +1637,17 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <thead>
                                         <tr>
                                             <th scope="col" colspan=3>Actividad</th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
+                                            <th colspan="4" class="table-ajust" scope="col"></th>
                                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
                                         </tr>
                                     </thead>
                                     <tr>
-                                        <th id="seccion3_13" class="acreditacion" colspan=7>3.13 Proyectos académicos de
+                                        <th id="seccion3_13" class="acreditacion" colspan="7">3.13 Proyectos académicos de
                                             investigación</th>
                                         <th id="score3_13">0</th>
                                         <th id="comision3_13">0</th>
-                                        <th class="acreditacion" scope="col">Observaciones</th>
+                                        
                                     </tr>
                                     </thead>
                                     <thead>
@@ -1658,11 +1655,11 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <th class="acreditacion">Incisos</th>
                                             <th class="acreditacion">Documento</th>
                                             <th class="acreditacion">Puntaje</th>
-                                            <th class="acreditacion">Cantidad</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
+                                            <th class="text-center acreditacion">Cantidad</th>
+                                            <th colspan="3"></th>
                                             <th class="acreditacion">Subtotal</th>
+                                            <th colspan="1"></th>
+                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1671,33 +1668,29 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td>a)</td>
                                             <td>Inicio de proyecto de investigación con financiamiento externo</td>
                                             <td id="puntajeInicioFinanExt">50</td>
-                                            <td><input type="number" id="cantInicioFinanExt"
+                                            <td class="td_docente_cantidad"><input type="number" id="cantInicioFinanExt"
                                                     oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantInicioFinanExt') }}">
                                             </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
                                             <td id="subtotalInicioFinanExt"></td>
-                                            <td><input type="value" id="comisionInicioFinancimientoExt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionInicioFinancimientoExt" placeholder="0"
                                                     oninput="onActv3Comision3_13()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioFinancimientoExt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioFinancimientoExt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
                                             <td>Inicio de proyecto de investigación interno, aprobado por CAAC</td>
                                             <td id="puntajeInicioInvInterno">25</td>
-                                            <td><input type="number" id="cantInicioInvInterno"
+                                            <td class="td_docente_cantidad"><input type="number" id="cantInicioInvInterno"
                                                     oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantInicioInvInterno') }}">
                                             </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
                                             <td id="subtotalInicioInvInterno"></td>
-                                            <td><input type="value" id="comisionInicioInvInterno" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionInicioInvInterno" placeholder="0"
                                                     oninput="onActv3Comision3_13()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioInvInterno"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioInvInterno"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -1705,17 +1698,15 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 financiamiento externo
                                             </td>
                                             <td id="puntajeReporteFinanciamExt">100</td>
-                                            <td><input type="number" id="cantReporteFinanciamExt"
+                                            <td class="td_docente_cantidad"><input type="number" id="cantReporteFinanciamExt"
                                                     oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantReporteFinanciamExt') }}">
                                             </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
                                             <td id="subtotalReporteFinanciamExt"></td>
-                                            <td><input type="value" id="comisionReporteFinanciamExt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionReporteFinanciamExt" placeholder="0"
                                                     oninput="onActv3Comision3_13()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteFinanciamExt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteFinanciamExt"></td>
                                         </tr>
                                         <tr>
                                             <td>d)</td>
@@ -1723,17 +1714,15 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 aprobado por CAAC
                                             </td>
                                             <td id="puntajeReporteInvInt">50</td>
-                                            <td><input type="number" id="cantReporteInvInt"
+                                            <td class="td_docente_cantidad"><input type="number" id="cantReporteInvInt"
                                                     oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantReporteInvInt') }}">
                                             </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="3"></td>
                                             <td id="subtotalReporteInvInt"></td>
-                                            <td><input type="value" id="comisionReporteInvInt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionReporteInvInt" placeholder="0"
                                                     oninput="onActv3Comision3_13()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteInvInt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteInvInt"></td>
                                         </tr>
                                     </tbody>
                                 </table>

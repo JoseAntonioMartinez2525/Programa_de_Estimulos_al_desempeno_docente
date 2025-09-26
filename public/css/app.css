@@ -1241,7 +1241,8 @@ background-color: #c1cfd3;
 /* #elaboracion, #elaboracion2, #elaboracion3, #elaboracion4, #elaboracion5, #rCant1, #r1, #r2, #r3, input#cantInternacional, input#cantNacional, input#cantidadRegional, input#cantPreparacion */
 body.dark-mode input#elaboracion, body.dark-mode input#elaboracion2, body.dark-mode input#elaboracion3, body.dark-mode input#elaboracion4, 
 body.dark-mode input#elaboracion5, body.dark-mode input#rCant1, body.dark-mode input#r1, body.dark-mode input#r2, body.dark-mode input#r3, 
-body.dark-mode input[id^="comisionInciso"]{
+body.dark-mode input[id^="comisionInciso"], body.dark-mode input#cantInicioFinanExt, body.dark-mode input#cantInicioInvInterno,body.dark-mode input#cantReporteFinanciamExt,body.dark-mode input#cantReporteInvInt
+{
     background-color: transparent!important;
     color: white!important;
 }
