@@ -180,10 +180,16 @@ td.punto3_5, #cantDA, #cantCAAC{
 #cantRespPos, #cantRespCarrera, #cantRespProd, #cantRespLab, #cantExamProf, #cantExamAcademicos, #cantPRODEPformResp, #cantPRODEPformInteg, #cantPRODEPenconsResp,
 #cantPRODEPenconsInteg, #cantPRODEPconsResp, #cantPRODEPconsInteg, #cantComOrgInt, #cantCicloComApoyoReg, #cantComOrgReg, #cantCicloComApoyoNac,
 #cantComOrgNac, #cantComOrgReg, #cantComApoyoInt, #cantComApoyoNac, #cantComApoyoReg, #cantCicloComOrgInt, #cantCicloComOrgNac, #cantCicloComOrgReg, #cantCicloComApoyoInt,
-#cantArbInt, #cantArbNac, #cantPubInt,#cantPubNac,#cantRevInt, #cantRevNac,#cantRevista, #cantPatentes, #cantPrototipos, #r1, #r2, #r3, .elabInput{
+#cantPatentes, #cantPrototipos, #r1, #r2, #r3, .elabInput{
     background-color: #c1cfd3;
     text-align: right;
     border-color:transparent;
+}
+
+#cantArbInt, #cantArbNac, #cantPubInt,#cantPubNac,#cantRevInt, #cantRevNac,#cantRevista{
+      background-color: #c1cfd3;
+    text-align: center;
+    border-color:transparent;  
 }
 
 #actvCant, #cantidadTd{
@@ -234,12 +240,16 @@ td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subt
     padding-inline-start: 5px; 
 }
 
-#comisionArbInt,
-#comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, 
-#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista, #comisionDifusionExt,
-#comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
+ 
+#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
 #comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg{
     padding-inline-start: 65px; 
+}
+
+
+#comisionArbInt,
+#comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, #comisionDifusionExt, #comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt{
+    padding-inline-start: 9px;
 }
    
 body.dark-mode span#comisionComOrgInt, body.dark-mode span#comisionComOrgNac, body.dark-mode span#comisionComOrgReg, body.dark-mode span#comisionComApoyoInt, body.dark-mode span#comisionComApoyoNac, body.dark-mode span#comisionComApoyoReg, body.dark-mode span#comisionCicloComOrgInt, body.dark-mode span#comisionCicloComOrgNac, body.dark-mode span#comisionCicloComOrgReg, body.dark-mode span#comisionCicloComApoyoInt, body.dark-mode span#comisionCicloComApoyoNac, body.dark-mode span#comisionCicloComApoyoReg,

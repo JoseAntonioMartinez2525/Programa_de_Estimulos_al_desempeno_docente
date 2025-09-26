@@ -1936,13 +1936,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 <table class="table table-sm tutorias">
                                     <thead>
                                         <tr>
-                                            <th>
-                                                <h3></h3>
-                                            </th>
-                                            <th>
-                                                <h3></h3>
-                                            </th>
-                                            <th>
+
+                                            <th colspan="5" class="text-center">
                                                 <h3>Investigación</h3>
                                             </th>
                                         </tr>
@@ -1950,10 +1945,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <thead>
                                         <tr>
                                             <th scope="col" colspan=3>Actividad</th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
+                                            <th colspan="4" class="table-ajust" scope="col"></th>
+
                                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
                                         </tr>
@@ -1966,7 +1959,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </th>
                                             <th id="score3_16">0</th>
                                             <th id="comision3_16">0</th>
-                                            <th class="acreditacion" scope="col">Observaciones</th>
+                                            
                                         </tr>
                                     </thead>
                                     <thead>
@@ -1975,10 +1968,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <th class="acreditacion">Actividad</th>
                                             <th class="acreditacion">Nivel</th>
                                             <th class="acreditacion">Puntaje</th>
-                                            <th class="acreditacion">Cantidad</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th class="text-center acreditacion">Cantidad</th>
+                                            <th colspan="2" ></th>
+                                            
                                             <th class="acreditacion">Subtotal</th>
+                                            <th></th>
+                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1987,98 +1982,93 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td>Arbitraje a proyectos de investigación</td>
                                             <td>Internacional</td>
                                             <td id="puntajeArbInt"><b>30</b></td>
-                                            <td><input type="number" id="cantArbInt" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantArbInt" 
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantArbInt') }}"></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2"></td>
+                                            
                                             <td id="subtotalArbInt"></td>
-                                            <td><input type="value" id="comisionArbInt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionArbInt" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbInt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbInt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
                                             <td>Arbitraje a proyectos de investigación</td>
                                             <td>Nacional</td>
                                             <td id="puntajeArbINac"><b>25</b></td>
-                                            <td><input type="number" id="cantArbNac" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantArbNac" 
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantArbNac') }}"></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2"></td>
+                                            
                                             <td id="subtotalArbNac"></td>
-                                            <td><input type="value" id="comisionArbNac" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionArbNac" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbNac"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbNac"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
                                             <td>Arbitraje de publicaciones</td>
                                             <td>Internacional</td>
                                             <td id="puntajePubInt"><b>20</b></td>
-                                            <td><input type="number" id="cantPubInt" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantPubInt" 
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantPubInt') }}"></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2"></td>
                                             <td id="subtotalPubInt"></td>
-                                            <td><input type="value" id="comisionPubInt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionPubInt" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPubInt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPubInt"></td>
                                         </tr>
                                         <tr>
                                             <td>d)</td>
                                             <td>Arbitraje de publicaciones</td>
                                             <td>Nacional</td>
                                             <td id="puntajePubINac"><b>10</b></td>
-                                            <td><input type="number" id="cantPubNac" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantPubNac" 
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantPubNac') }}"></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2"></td>
                                             <td id="subtotalPubNac"></td>
-                                            <td><input type="value" id="comisionPubNac" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionPubNac" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPubNac"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPubNac"></td>
                                         </tr>
                                         <tr>
                                             <td>e)</td>
                                             <td>Revisor(a) de libros, corrector(a)</td>
                                             <td>Internacional</td>
                                             <td id="puntajeRevInt"><b>30</b></td>
-                                            <td><input type="number" id="cantRevInt" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantRevInt" 
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantRevInt') }}"></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2"></td>
                                             <td id="subtotalRevInt"></td>
-                                            <td><input type="value" id="comisionRevInt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionRevInt" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevInt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevInt"></td>
                                         </tr>
                                         <tr>
                                             <td>f)</td>
                                             <td>Revisor(a) de libros, corrector(a)</td>
                                             <td>Nacional</td>
                                             <td id="puntajeRevINac"><b>25</b></td>
-                                            <td><input type="number" id="cantRevNac" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantRevNac" 
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantRevNac') }}"></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2"></td>
                                             <td id="subtotalRevNac"></td>
-                                            <td><input type="value" id="comisionRevNac" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionRevNac" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevNac"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevNac"></td>
                                         </tr>
                                         <tr>
                                             <td>g)</td>
                                             <td>Consejo editorial de revista, edición de revista</td>
                                             <td>----</td>
                                             <td id="puntajeRevista"><b>10</b></td>
-                                            <td><input type="number" id="cantRevista" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantRevista" 
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantRevista') }}"></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2"></td>
                                             <td id="subtotalRevista"></td>
-                                            <td><input type="value" id="comisionRevista" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionRevista" placeholder="0"
                                                     oninput="onActv3Comision3_16()"></td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevista"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevista"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -2110,39 +2100,38 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 <table class="table table-sm tutorias">
                                     <thead>
                                         <tr>
-                                            <th>
-                                                <h3></h3>
-                                            </th>
-                                            <th>
-                                                <h3></h3>
-                                            </th>
-                                            <th>
-                                                <h3 style="width: 50px;">Cuerpos Colegiados</h3>
+
+                                            <th colspan="6" class="text-center">
+                                                <h3>Cuerpos Colegiados</h3>
                                             </th>
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr>
                                             <th scope="col" colspan=2>Actividad</th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust" scope="col"></th>
+                                            <th colspan="4" class="table-ajust" scope="col"></th>
+
                                             <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                                             <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr>
-                                            <th id="seccion3_17" class="acreditacion" colspan=3> 3.17 Proyectos académicos de
+                                            <th id="seccion3_17" class="acreditacion" colspan="5"> 3.17 Proyectos académicos de
                                                 extensión y
                                                 difusión</th>
-                                            <th class="acreditacion">Puntaje</th>
-                                            <th class="acreditacion">Cantidad</th>
+
                                             <th></th>
                                             <th id="score3_17">0</th>
                                             <th id="comision3_17">0</th>
-                                            <th class="acreditacion" scope="col">Observaciones</th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3"></th>
+                                            <th class="acreditacion">Puntaje</th>
+                                            <th class="text-center acreditacion">Cantidad</th>
+                                            <th colspan="3"></th>
+                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -2151,15 +2140,15 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td>Inicio de proyectos de extensión y difusión con financiamiento externo</td>
                                             <td></td>
                                             <td id="puntajeDifusionExt"><b>15</b></td>
-                                            <td><input type="number" id="cantDifusionExt" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantDifusionExt" 
                                                     oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantDifusionExt') }}">
                                             </td>
                                             <td></td>
                                             <td id="subtotalDifusionExt"></td>
-                                            <td><input type="value" id="comisionDifusionExt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionDifusionExt" placeholder="0"
                                                     oninput="onActv3Comision3_17()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionExt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionExt"></td>
                                         </tr>
                                         <tr>
                                             <td>b)</td>
@@ -2167,15 +2156,15 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="puntajeDifusionInt"><b>10</b></td>
-                                            <td><input type="number" id="cantDifusionInt" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantDifusionInt" 
                                                     oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantDifusionInt') }}">
                                             </td>
                                             <td></td>
                                             <td id="subtotalDifusionInt"></td>
-                                            <td><input type="value" id="comisionDifusionInt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionDifusionInt" placeholder="0"
                                                     oninput="onActv3Comision3_17()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionInt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionInt"></td>
                                         </tr>
                                         <tr>
                                             <td>c)</td>
@@ -2185,15 +2174,15 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="puntajeRepDifusionExt"><b>35</b></td>
-                                            <td><input type="number" id="cantRepDifusionExt" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantRepDifusionExt" 
                                                     oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantRepDifusionExt') }}">
                                             </td>
                                             <td></td>
                                             <td id="subtotalRepDifusionExt"></td>
-                                            <td><input type="value" id="comisionRepDifusionExt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionRepDifusionExt" placeholder="0"
                                                     oninput="onActv3Comision3_17()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionExt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionExt"></td>
                                         </tr>
                                         <tr>
                                             <td>d)</td>
@@ -2202,15 +2191,15 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 CAAC</td>
                                             <td></td>
                                             <td id="puntajeRepDifusionInt"><b>20</b></td>
-                                            <td><input type="number" id="cantRepDifusionInt" 
+                                            <td class="td_docente_cantidad"><input type="number" id="cantRepDifusionInt" 
                                                     oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantRepDifusionInt') }}">
                                             </td>
                                             <td></td>
                                             <td id="subtotalRepDifusionInt"></td>
-                                            <td><input type="value" id="comisionRepDifusionInt" placeholder="0"
+                                            <td class="td_obs"><input type="value" id="comisionRepDifusionInt" placeholder="0"
                                                     oninput="onActv3Comision3_17()">
                                             </td>
-                                            <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionInt"></td>
+                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionInt"></td>
                                         </tr>
                                     </tbody>
                                 </table>
