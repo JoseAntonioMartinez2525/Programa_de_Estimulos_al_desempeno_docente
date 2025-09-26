@@ -372,9 +372,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <tbody>
                                         <thead>
                                             <tr>
-                                                <td id="seccion3_3">3.3 Publicaciones relacionadas con la docencia</td>
-                                                <td colspan="4"></td>
-
+                                                <td  colspan="5"id="seccion3_3">3.3 Publicaciones relacionadas con la docencia</td>
+                                                
                                                 <td id="score3_3" for="">0</td>
                                                 <td id="comision3_3">0</td>
                                             </tr>
@@ -428,9 +427,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </tr>
                                             <tr>
                                                 <td>c)</td>
-                                                <td>1. Capítulo de libro, 2. Elaboración de Manuales de laboratorio o
-                                                    instructivos, 3. Diseño y construcción de equipo de laboratorio, 4. Elaboración de material
-                                                    audiovisual, 5. Elaboración de software educativo, 6. Notas de curso, 7. Antología comentada, 8.Monografía.</td>
+                                                <td>
+                                                    <textarea name="" class="textAreaForms" cols="30" rows="10">1. Capítulo de libro, 2. Elaboración de Manuales de laboratorio o instructivos, 3. Diseño y construcción de equipo de laboratorio, 4. Elaboración de material audiovisual, 5. Elaboración de software educativo, 6. Notas de curso, 7. Antología comentada, 8.Monografía.</textarea>
+                                                </td>
                                                 <td>Autor(a)</td>
                                                 <td id="p30">
                                                     <center><b>30</b></center>
@@ -582,7 +581,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                     </th>
-                    <th class="table-ajust" scope="col">Observaciones</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -591,10 +590,16 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                         <th id="seccion3_5" colspan=2 class="punto3_5" scope=col
                             style="padding:30px;">3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC
                         </th>
-                        <td class="punto3_5">Puntaje</td>
-                        <td class="punto3_5">Cantidad</td>
+                        <td colspan="2"></td>
                         <td id="score3_5" for="">0</td>
                         <td id="comision3_5">0</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="punto3_5">Puntaje</td>
+                        <td class="punto3_5">Cantidad</td>
+                        <td colspan="2"></td>
+                        <td class="text-center table-ajust" scope="col">Observaciones</td>
                     </tr>
                 </thead>
                 <thead>

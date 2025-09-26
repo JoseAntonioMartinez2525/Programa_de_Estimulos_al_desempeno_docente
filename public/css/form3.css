@@ -241,8 +241,9 @@ td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subt
     padding-inline-start: 65px; 
 }
    
-body.dark-mode span#comisionComOrgInt, body.dark-mode span#comisionComOrgNac, body.dark-mode span#comisionComOrgReg, body.dark-mode span#comisionComApoyoInt, body.dark-mode span#comisionComApoyoNac, body.dark-mode span#comisionComApoyoReg, body.dark-mode span#comisionCicloComOrgInt, body.dark-mode span#comisionCicloComOrgNac, body.dark-mode span#comisionCicloComOrgReg, body.dark-mode span#comisionCicloComApoyoInt, body.dark-mode span#comisionCicloComApoyoNac, body.dark-mode span#comisionCicloComApoyoReg{
-    color: white;
+body.dark-mode span#comisionComOrgInt, body.dark-mode span#comisionComOrgNac, body.dark-mode span#comisionComOrgReg, body.dark-mode span#comisionComApoyoInt, body.dark-mode span#comisionComApoyoNac, body.dark-mode span#comisionComApoyoReg, body.dark-mode span#comisionCicloComOrgInt, body.dark-mode span#comisionCicloComOrgNac, body.dark-mode span#comisionCicloComOrgReg, body.dark-mode span#comisionCicloComApoyoInt, body.dark-mode span#comisionCicloComApoyoNac, body.dark-mode span#comisionCicloComApoyoReg,
+body.dark-mode input#comDA, body.dark-mode input#comNCAA{
+    color: white!important;
 }
 
 body.darl-mode span#obsComOrgInt, body.dark-mode span#obsComOrgNac, body.dark-mode span#obsComOrgReg, body.dark-mode span#obsComApoyoInt, body.dark-mode span#obsComApoyoNac, body.dark-mode span#obsComApoyoReg, body.dark-mode span#obsCicloComOrgInt, body.dark-mode span#obsCicloComOrgNac, body.dark-mode span#obsCicloComOrgReg, body.dark-mode span#obsCicloComApoyoInt, body.dark-mode span#obsCicloComApoyoNac, body.dark-mode span#obsCicloComApoyoReg,
@@ -272,4 +273,14 @@ body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg
     color: white!important;
 }
 
+button#toggle-dark-mode {
+    position: fixed;
+}
 
+th#seccion3_5 {
+    padding: 0px !important;
+}
+
+input#obs3_5_1, input#obs3_5_2{
+    text-align: center!important;
+}
