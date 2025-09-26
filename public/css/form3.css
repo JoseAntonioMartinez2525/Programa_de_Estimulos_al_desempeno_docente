@@ -89,6 +89,7 @@ nav {
     text-align: right;
 }
 
+
 #puntajeIndividual, #individualCant ,#comisionIndividual ,#obsIndividual,
 #puntajeGrupales ,#grupalesCant ,#comisionGrupal ,#obsGrupal,
 #cantAsesoria, #subtotalAsesoria, #cantServicio, #subtotalServicio,
@@ -107,7 +108,7 @@ nav {
 #cantInicioFinanExt, #cantInicioInvInterno, #cantReporteFinanciamExt, #cantReporteInvInt, [id^="puntaje3_9_"], #puntaje3_8, #puntaje3_6, #puntaje3_8_1, #cantCientifico, #cantDivulgacion, #cantTraduccion, #cantArbitrajeInt, #cantArbitrajeNac, #cantSinInt, #cantSinNac, #cantAutor, #cantEditor, #cantWeb{
     border-color: transparent;
     background-color: #c1cfd3;
-    text-align: right;
+    text-align: center;
 }
 
 td.punto3_5, #cantDA, #cantCAAC{
@@ -261,13 +262,13 @@ body.dark-mode span#obsExamProf, body.dark-mode span#obsExamAcademicos, body.dar
     text-align: center;
 }
 
-
+/* color de 'cantidad' en modo obscuro */
 body.dark-mode td#cantCGUtitular, body.dark-mode td#cantCGUespecial, body.dark-mode td#cantCGUpermanente, 
 body.dark-mode td#cantCAACtitular, body.dark-mode td#cantCAACintegCom, body.dark-mode td#cantComDepart, 
 body.dark-mode td#cantComPEDPD, body.dark-mode td#cantComPartPos, body.dark-mode td#cantRespPos, body.dark-mode td#cantRespCarrera, 
 body.dark-mode td#cantRespProd, body.dark-mode td#cantRespLab, body.dark-mode td#cantExamProf, body.dark-mode td#cantExamAcademicos, 
 body.dark-mode td#cantPRODEPformResp, body.dark-mode td#cantPRODEPformInteg, body.dark-mode td#cantPRODEPenconsResp, body.dark-mode td#cantPRODEPenconsInteg, 
-body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg
+body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg, body.dark-mode input#puntaje3_6
 {
     background-color: #9b9a9a!important;
     color: white!important;
@@ -281,6 +282,28 @@ th#seccion3_5 {
     padding: 0px !important;
 }
 
-input#obs3_5_1, input#obs3_5_2{
+input#obs3_5_1, input#obs3_5_2, input#obs3_6, td.punto3_6, td.punto3_7{
     text-align: center!important;
 }
+
+
+
+input#obs3_6 {
+    padding-right: 150px;
+    padding-inline-start: 150px;
+}
+
+button#btn3_6{
+    margin-left: 276px!important;
+}
+
+td.text-right.punto3_8_1.centerSelect{
+    padding-inline-start: 70px;
+}
+
+
+
+
+
+
+

@@ -661,21 +661,22 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                     </th>
-                    <th class="table-ajust" scope="col">Observaciones</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <thead>
                     <tr>
-                        <th id="seccion3_6" colspan=1 class="punto3_6" scope=col
-                            style="padding:30px;">3.6
-                            Capacitación y
-                            actualización
-                            pedagógica recibida </th>
-                        <td class="punto3_6">Factor</td>
-                        <td class="punto3_6">Horas</td>
+                        <th id="seccion3_6" colspan="3" class="punto3_6" scope=col>3.6 Capacitación y actualización pedagógica recibida </th>
                         <td id="score3_6" for="">0</td>
                         <td id="comision3_6">0</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="punto3_6">Factor</td>
+                        <td class="punto3_6">Horas</td>
+                        <td colspan="1"></td>
+                        <td class="text-center table-ajust" scope="col">Observaciones</td>
                     </tr>
                 </thead>
                 <thead>
@@ -729,34 +730,37 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                     </th>
-                    <th class="table-ajust" scope="col">Observaciones</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <thead>
                     <tr>
-                        <th id="seccion3_7" colspan=1 class="punto3_7" scope=col
-                            style="padding:30px;">3.7
-                            Cursos de actualización
-                            disciplinaria recibidos dentro de su área de conocimiento </th>
-                        <td class="punto3_7">Factor</td>
-                        <td class="punto3_7">Horas</td>
+                        <th id="seccion3_7" colspan="3" class="punto3_7" scope=col>3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento </th>
+
                         <td id="score3_7" for="">0</td>
                         <td id="comision3_7">0</td>
 
+                    </tr>
+                    <tr>
+                        <td colspan="1"></td>
+                        <td class="punto3_7">Factor</td>
+                        <td class="punto3_7">Horas</td>
+                        <td colspan="2"></td>
+                        <td class="text-center table-ajust" scope="col">Observaciones</td>
                     </tr>
                 </thead>
                 <thead>
                     <tr>
                         <td>0.5 por cada hora</td>
                         <td id="pMedio2">0.5</td>
-                        <td><input type="number" placeholder="0" id="puntaje3_7"
+                        <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_7"
                                 oninput="onActv3SubTotal3_7()" value="{{ oldValueOrDefault('puntaje3_7') }}"></td>
                         <td id="puntajeHoras3_7"></td>
-                        <td><input type="number" placeholder="0" id="comisionDict3_7"
+                        <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_7"
                                 oninput="onActv3Comision3_7()">
                         </td>
-                        <td><input id="obs3_7" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                        <td class="td_obs"><input id="obs3_7" class="table-header" type="text" placeholder="Comenta aqui"></td>
                     </tr>
                 </thead>
                 <!--Tabla informativa Acreditacion Actividad 3.7-->
@@ -789,42 +793,42 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             <thead>
                 <tr>
                     <th scope="col">Actividad</th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
+                    <th colspan="2" class="table-ajust" scope="col"></th>
 
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                     </th>
-                    <th class="table-ajust" scope="col">Observaciones</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <thead>
                     <tr>
-                        <th id="seccion3_8" colspan=1 class="punto3_8" scope=col
-                            style="padding:30px;">3.8
-                            Impartición de cursos,
-                            diplomados, seminarios, talleres extracurriculares, de educación,
-                            continua o de formación y
-                            capacitación docente </th>
-                        <td class="punto3_8">Factor</td>
-                        <td class="punto3_8">Horas</td>
+                        <th id="seccion3_8" colspan="3" class="punto3_8" scope=col>3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua ó de formación y capacitación docente </th>
+
                         <td id="score3_8" for="">0</td>
                         <td id="comision3_8">0</td>
 
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="text-center punto3_8">Factor</td>
+                        <td class="text-center punto3_8">Horas</td>
+                        <td colspan="1"></td>
+                        <td class="text-center table-ajust" scope="col">Observaciones</td>
                     </tr>
                 </thead>
                 <thead>
                     <tr>
                         <td>1 por cada hora</td>
                         <td id="p3_8">1</td>
-                        <td><input type="number" placeholder="0" id="puntaje3_8"
+                        <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_8"
                                 oninput="onActv3SubTotal3_8()" value="{{ oldValueOrDefault('puntaje3_8') }}"></td>
                         <td id="puntajeHoras3_8"></td>
-                        <td><input type="number" placeholder="0" id="comisionDict3_8"
+                        <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_8"
                                 oninput="onActv3Comision3_8()">
                         </td>
-                        <td><input class="table-header" id="obs3_8" type="text" placeholder="Comenta aqui"></td>
+                        <td class="td_obs"><input class="table-header" id="obs3_8" type="text" placeholder="Comenta aqui"></td>
                     </tr>
                 </thead>
                 <!--Tabla informativa Acreditacion Actividad 3.8-->
@@ -864,36 +868,41 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             <thead>
                 <tr>
                     <th scope="col">Actividad</th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-
+                    <th colspan="2" class="table-ajust" scope="col"></th>
+                    
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                     </th>
-                    <th class="table-ajust" scope="col">Observaciones</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <thead>
                     <tr>
-                        <th id="seccion3_8_1" colspan=1 class="punto3_8_1" scope=col style="padding:30px;">3.8.1 RSU</th>
-                        <td class="punto3_8_1">Factor</td>
-                        <td class="punto3_8_1">Horas</td>
+                        <th id="seccion3_8_1" colspan="3" class="punto3_8_1" scope=col title="Responsabilidad Social Universitaria">3.8.1 RSU</th>
+
                         <td id="score3_8_1" for="">0</td>
                         <td id="comision3_8_1">0</td>
 
+                    </tr>
+                    <tr>
+                        <td colspan="1"></td>
+                        <td class="text-left punto3_8_1">Factor</td>
+                        <td class="text-right punto3_8_1 centerSelect">Horas</td>
+                        <td colspan="2"></td>
+                        <td class="text-center table-ajust" scope="col">Observaciones</td>
                     </tr>
                 </thead>
                 <thead>
                     <tr>
                         <td>1 por cada hora</td>
                         <td id="p3_8_1">1</td>
-                        <td><input type="number" placeholder="0" id="puntaje3_8_1" oninput="onActv3SubTotal3_8_1()"
+                        <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_8_1" oninput="onActv3SubTotal3_8_1()"
                                 value="{{ oldValueOrDefault('puntaje3_8_1') }}"></td>
                         <td id="puntajeHoras3_8_1"></td>
-                        <td><input type="number" placeholder="0" id="comisionDict3_8_1" oninput="onActv3Comision3_8_1()">
+                        <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_8_1" oninput="onActv3Comision3_8_1()">
                         </td>
-                        <td><input class="table-header" id="obs3_8_1" type="text" placeholder="Comenta aqui"></td>
+                        <td class="td_obs"><input class="table-header" id="obs3_8_1" type="text" placeholder="Comenta aqui"></td>
                     </tr>
                 </thead>
                 <!--Tabla informativa Acreditacion Actividad 3.8-->
@@ -925,22 +934,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         <table class="table table-sm tutorias">
             <thead>
                 <tr>
-                    <th>
-                        <h3></h3>
-                    </th>
-                    <th>
-                        <h3></h3>
-                    </th>
-                    <th>
-                        <h3></h3>
-                    </th>
-                    <th>
-                        <h3></h3>
-                    </th>
-                    <th>
-                        <h3></h3>
-                    </th>
-                    <th>
+                    <th colspan="7" class="text-center">
                         <h3>Tutorias</h3>
                     </th>
 
@@ -949,11 +943,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             <thead>
                 <tr>
                     <th scope="col">Actividad</th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
+                    <th colspan="5" class="table-ajust" scope="col"></th>
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
                     <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
                     </th>
@@ -961,20 +951,15 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             </thead>
             <thead>
                 <tr>
-                    <th id="seccion3_9" scope="col" class="p3_9" colspan=9>3.9 Trabajos dirigidos
+                    <th id="seccion3_9" scope="col" class="p3_9" colspan="6">3.9 Trabajos dirigidos
                         para la
                         titulación de estudiantes
                     </th>
-                </tr>
-                <tr>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="table-ajust" scope="col"></th>
                     <th id="score3_9">0</th>
                     <th id="comision3_9">0</th>
+                </tr>
+                <tr>
+
                 </tr>
             </thead>
             <thead>
@@ -984,10 +969,10 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <th class="acreditacion">Obra</th>
                     <th class="acreditacion">Nivel</th>
                     <th class="acreditacion">Puntaje</th>
-                    <th class="acreditacion">Cantidad</th>
+                    <th class="text-center acreditacion">Cantidad</th>
                     <th class="acreditacion">Subtotal</th>
                     <th class="table-ajust" scope="col"></th>
-                    <th class="acreditacion">Observaciones</th>
+                    <th class="text-center acreditacion">Observaciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -997,13 +982,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias20_1">20</td>
-                    <td><input type="number" id="puntaje3_9_1"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_1"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_1') }}"></td>
                     <td id="tutorias1">0</td>
-                    <td><input type="value" id="tutoriasComision1" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision1" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_1" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_1" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>b)</td>
@@ -1011,13 +996,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias15_1">15</td>
-                    <td><input type="number" id="puntaje3_9_2"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_2"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_2') }}"></td>
                     <td id="tutorias2">0</td>
-                    <td><input type="value" id="tutoriasComision2" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision2" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_2" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_2" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>c)</td>
@@ -1025,13 +1010,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias10_1">10</td>
-                    <td><input type="number" id="puntaje3_9_3"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_3"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_3') }}"></td>
                     <td id="tutorias3">0</td>
-                    <td><input type="value" id="tutoriasComision3" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision3" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_3" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_3" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>d)</td>
@@ -1039,13 +1024,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias55">55</td>
-                    <td><input type="number" id="puntaje3_9_4"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_4"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_4') }}"></td>
                     <td id="tutorias4">0</td>
-                    <td><input type="value" id="tutoriasComision4" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision4" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_4" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_4" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>e)</td>
@@ -1053,13 +1038,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis</td>
                     <td>Maestria</td>
                     <td id="puntajeTutorias45">45</td>
-                    <td><input type="number" id="puntaje3_9_5"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_5"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_5') }}"></td>
                     <td id="tutorias5">0</td>
-                    <td><input type="value" id="tutoriasComision5" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision5" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_5" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_5" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>f)</td>
@@ -1067,13 +1052,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias35">35</td>
-                    <td><input type="number" id="puntaje3_9_6"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_6"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_6') }}"></td>
                     <td id="tutorias6">0</td>
-                    <td><input type="value" id="tutoriasComision6" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision6" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_6" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_6" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>g)</td>
@@ -1081,13 +1066,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias70">70</td>
-                    <td><input type="number" id="puntaje3_9_7"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_7"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_7') }}"></td>
                     <td id="tutorias7">0</td>
-                    <td><input type="value" id="tutoriasComision7" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision7" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_7" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_7" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>h)</td>
@@ -1095,13 +1080,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias60">60</td>
-                    <td><input type="number" id="puntaje3_9_8"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_8"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_8') }}"></td>
                     <td id="tutorias8">0</td>
-                    <td><input type="value" id="tutoriasComision8" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision8" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_8" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_8" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>i)</td>
@@ -1109,13 +1094,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias50">50</td>
-                    <td><input type="number" id="puntaje3_9_9"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_9"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_9') }}"></td>
                     <td id="tutorias9">0</td>
-                    <td><input type="value" id="tutoriasComision9" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision9" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_9" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_9" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>j)</td>
@@ -1123,13 +1108,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias30_1">30</td>
-                    <td><input type="number" id="puntaje3_9_10" 
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_10" 
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_10') }}"></td>
                     <td id="tutorias10">0</td>
-                    <td><input type="value" id="tutoriasComision10" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision10" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_10" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_10" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>k)</td>
@@ -1137,13 +1122,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias20_2">50</td>
-                    <td><input type="number" id="puntaje3_9_11"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_11"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_11') }}"></td>
                     <td id="tutorias11">0</td>
-                    <td><input type="value" id="tutoriasComision11" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision11" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_11" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_11" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>l)</td>
@@ -1151,13 +1136,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias15_2">15</td>
-                    <td><input type="number" id="puntaje3_9_12"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_12"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_12') }}"></td>
                     <td id="tutorias12">0</td>
-                    <td><input type="value" id="tutoriasComision12" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision12" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_12" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_12" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>m)</td>
@@ -1165,13 +1150,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Examen</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias30_2">30</td>
-                    <td><input type="number" id="puntaje3_9_13"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_13"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_13') }}"></td>
                     <td id="tutorias13">0</td>
-                    <td><input type="value" id="tutoriasComision13" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision13" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_13" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_13" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>n)</td>
@@ -1179,13 +1164,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Examen</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias20_3">15</td>
-                    <td><input type="number" id="puntaje3_9_14"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_14"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_14') }}"></td>
                     <td id="tutorias14">0</td>
-                    <td><input type="value" id="tutoriasComision14" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision14" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_14" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_14" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>o)</td>
@@ -1193,13 +1178,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td>Examen</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias15_3">15</td>
-                    <td><input type="number" id="puntaje3_9_15"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_15"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_15') }}"></td>
                     <td id="tutorias15">0</td>
-                    <td><input type="value" id="tutoriasComision15" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision15" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_15" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_15" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>p)</td>
@@ -1207,13 +1192,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td></td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias15_4">15</td>
-                    <td><input type="number" id="puntaje3_9_16"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_16"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_16') }}"></td>
                     <td id="tutorias16">0</td>
-                    <td><input type="value" id="tutoriasComision16" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision16" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_16" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_16" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <tr>
                     <td>q)</td>
@@ -1221,13 +1206,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <td></td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias10_2">10</td>
-                    <td><input type="number" id="puntaje3_9_17"
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_17"
                             oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_17') }}"></td>
                     <td id="tutorias17">0</td>
-                    <td><input type="value" id="tutoriasComision17" placeholder="0"
+                    <td class="td_obs"><input type="value" id="tutoriasComision17" placeholder="0"
                             oninput="onActv3Comision3_9()">
                     </td>
-                    <td><input class="table-header" id="obs3_9_17" type="text" placeholder="Comenta aqui"></td>
+                    <td class="td_obs"><input class="table-header" id="obs3_9_17" type="text" placeholder="Comenta aqui"></td>
                 </tr>
                 <!--Tabla informativa Acreditacion Actividad 3.9-->
                 <table>
@@ -1286,30 +1271,30 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td>a)</td>
                                                 <td>Por alumno(a) por semestre, grupales</td>
                                                 <td id="puntajeGrupales">3</td>
-                                                <td><input type="number" id="grupalesCant" oninput="onActv3SubTotal3_10()"
+                                                <td class="td_docente_cantidad"><input type="number" id="grupalesCant" oninput="onActv3SubTotal3_10()"
                                                         value="{{ oldValueOrDefault('grupalesCant') }}">
                                                 </td>
                                                 <td colspan="4"></td>
 
                                                 <td id="evaluarGrupales"></td>
-                                                <td><input type="value" id="comisionGrupal" oninput="onActv3Comision3_10()"
+                                                <td class="td_obs"><input type="value" id="comisionGrupal" oninput="onActv3Comision3_10()"
                                                         placeholder="0">
                                                 </td>
-                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsGrupal"></td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsGrupal"></td>
                                             </tr>
                                             <tr>
                                                 <td>b)</td>
                                                 <td>Por alumno(a) por semestre, individuales</td>
                                                 <td id="puntajeIndividual">6</td>
-                                                <td><input type="number" id="individualCant" oninput="onActv3SubTotal3_10()"
+                                                <td class="td_docente_cantidad"><input type="number" id="individualCant" oninput="onActv3SubTotal3_10()"
                                                         value="{{ oldValueOrDefault('individualCant') }}">
                                                 </td>
                                                 <td colspan="4"></td>
                                                 <td id="evaluarIndividual"></td>
-                                                <td><input type="value" id="comisionIndividual" oninput="onActv3Comision3_10()"
+                                                <td class="td_obs"><input type="value" id="comisionIndividual" oninput="onActv3Comision3_10()"
                                                         placeholder="0">
                                                 </td>
-                                                <td><input class="table-header" type="text" placeholder="Comenta aqui" id="obsIndividual"></td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsIndividual"></td>
                                             </tr>
                                         </thead>
                                         </tbody> 

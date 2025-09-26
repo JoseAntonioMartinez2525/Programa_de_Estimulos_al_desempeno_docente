@@ -188,6 +188,8 @@ body {
     #seccion3_2{
         padding: -20px 0 0 0;
     }
+
+    
 }
 
 @media (max-width: 767px) {
@@ -619,10 +621,8 @@ text-align: right;
     font-weight: normal;
 }
 
-.punto3_8{
-    white-space: pre;
+.punto3_8, .punto3_8_1 {
     width: 1%;
-    height: 20px;
     font-weight: normal;
 }
 
@@ -852,11 +852,11 @@ input[id^="obs3_2_"]{
     
 
 }
-#comisionDict3_6, #comisionDict3_7, #comisionDict3_8, #comisionDict3_8_1, .rightSelect{
+.rightSelect{
     text-align: right;
 }
 
-#obs3_6_1{
+#obs3_6_1, #comisionDict3_6, #comisionDict3_7, #comisionDict3_8, #comisionDict3_8_1{
     text-align: center;
 }
 
@@ -886,6 +886,7 @@ td[id^="puntaje3_9_"]{
     
 }
 
+
 #puntaje40, #puntaje10, #puntaje20, #p10{
     margin-left: 5px;
 }
@@ -902,7 +903,7 @@ td[id^="puntaje3_9_"]{
     margin-left: -250px;
 }
 
-#seccion3_8{
+#seccion3_8, #seccion3_8_1{
     font-size: 1rem;
 }
 
@@ -959,8 +960,12 @@ body.dark-mode [id^="comisionDict3_"]{
     color: white;
 }
 
-body.dark-mode [id^="tutoriasComision"]{
-    background-color: transparent;
+body.dark-mode [id^="tutoriasComision"], body.dark-mode  [id^="puntaje3_"], [id^="tutorias"]{
+    background-color: transparent!important;
+}
+
+[id^="tutorias"]{
+    border-color: transparent;
 }
 
 body.dark-mode #grupalesCant, 
@@ -1136,7 +1141,7 @@ body.dark-mode td#cantComApoyoNac, body.dark-mode td#cantComApoyoReg, body.dark-
  body.dark-mode td#cantCGUtitular, body.dark-mode td#cantCGUespecial, body.dark-mode td#cantCGUpermanente, body.dark-mode td#cantCAACtitular, body.dark-mode td#cantCAACintegCom, body.dark-mode td#cantComDepart, body.dark-mode td#cantComPEDPD, body.dark-mode td#cantComPartPos, 
  body.dark-mode td#cantRespPos, body.dark-mode td#cantRespCarrera, body.dark-mode td#cantRespProd, body.dark-mode td#cantRespLab, body.dark-mode td#cantExamProf, body.dark-mode td#cantExamAcademicos, body.dark-mode td#cantPRODEPformResp, body.dark-mode td#cantPRODEPformInteg, 
  body.dark-mode td#cantPRODEPenconsResp, body.dark-mode td#cantPRODEPenconsInteg, body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg, body.dark-mode td#cantPRODEPenconsResp, body.dark-mode td#cantPRODEPenconsInteg, body.dark-mode td#cantPRODEPconsResp, 
- body.dark-mode td#cantPRODEPconsInteg,  body.dark-mode td#cantComOrgInt, body.dark-mode td#cantCicloComApoyoReg, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantCicloComApoyoNac, body.dark-mode td#cantComOrgNac, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantComApoyoInt 
+ body.dark-mode td#cantPRODEPconsInteg,  body.dark-mode td#cantComOrgInt, body.dark-mode td#cantCicloComApoyoReg, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantCicloComApoyoNac, body.dark-mode td#cantComOrgNac, body.dark-mode td#cantComOrgReg, body.dark-mode td#cantComApoyoInt
 {
     background-color: #9b9a9a!important;
     color: white!important;
@@ -1264,7 +1269,10 @@ textarea.textAreaForms{
     height: 56px;
 }
 
- 
+ /* background-color transparente */
+ body.dark-mode #grupalesCant, body.dark-mode #individualCant, body.dark-mode #comisionGrupal, body.dark-mode #comisionIndividual, body.dark-mode #obsGrupal, body.dark-mode #obsIndividual{
+    background-color: transparent!important;
+ }
 
 
 
