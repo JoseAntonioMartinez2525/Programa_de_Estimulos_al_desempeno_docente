@@ -94,7 +94,7 @@ nav {
 #puntajeGrupales ,#grupalesCant ,#comisionGrupal ,#obsGrupal,
 #cantAsesoria, #subtotalAsesoria, #cantServicio, #subtotalServicio,
  #cantPracticas, #subtotalPracticas {
-    text-align: right;
+    text-align: center;
 }
 
 #evaluarIndividual, #evaluarGrupales
@@ -136,6 +136,9 @@ td.punto3_5, #cantDA, #cantCAAC{
     border-color: transparent;
     text-align: center;
 }
+
+/* border-width: thin;
+    border-color: white; */
 
 
 #academica , #servicio , #practicas{
@@ -192,6 +195,7 @@ td.punto3_5, #cantDA, #cantCAAC{
     border-color:transparent;  
 }
 
+
 #actvCant, #cantidadTd{
     text-align: right;
 }
@@ -208,10 +212,18 @@ td[id^="form3_17_"] {
 width: 200px;
 }
 
+td#comisionAsesoria, td#comisionServicio, td#comisionPracticas,
+td#obsAsesoria, td#obsServicio,  td#obsPracticas{
+    border-width: thin;
+    border-color: white;
+
+}
+
 body.dark-mode td#comisionAsesoria, body.dark-mode td#comisionServicio, body.dark-mode td#comisionPracticas,
 body.dark-mode td#obsAsesoria, body.dark-mode td#obsServicio, body.dark-mode td#obsPracticas, body.dark-mode td.td_form3_15{
     background-color: #82bdb2!important;
-
+    border-width: thin;
+    border-color: white;
 
 }
 
@@ -246,6 +258,11 @@ td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subt
     padding-inline-start: 65px; 
 }
 
+body.dark-mode #comisionComOrgInt, body.dark-mode #comisionComOrgNac, body.dark-mode #comisionComOrgReg, body.dark-mode #comisionComApoyoInt, body.dark-mode #comisionComApoyoNac, body.dark-mode #comisionComApoyoReg, 
+body.dark-mode #comisionCicloComOrgInt, body.dark-mode #comisionCicloComOrgNac, body.dark-mode #comisionCicloComOrgReg, body.dark-mode #comisionCicloComApoyoInt, body.dark-mode #comisionCicloComApoyoNac, body.dark-mode #comisionCicloComApoyoReg{
+    color: white;
+}
+
 
 #comisionArbInt,
 #comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, #comisionDifusionExt, #comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt{
@@ -270,6 +287,7 @@ body.dark-mode span#obsExamProf, body.dark-mode span#obsExamAcademicos, body.dar
     padding-inline-start: 7px;
     border-color: transparent;
     text-align: center;
+    background-color: #d6fff7;
 }
 
 /* color de 'cantidad' en modo obscuro */
@@ -278,7 +296,12 @@ body.dark-mode td#cantCAACtitular, body.dark-mode td#cantCAACintegCom, body.dark
 body.dark-mode td#cantComPEDPD, body.dark-mode td#cantComPartPos, body.dark-mode td#cantRespPos, body.dark-mode td#cantRespCarrera, 
 body.dark-mode td#cantRespProd, body.dark-mode td#cantRespLab, body.dark-mode td#cantExamProf, body.dark-mode td#cantExamAcademicos, 
 body.dark-mode td#cantPRODEPformResp, body.dark-mode td#cantPRODEPformInteg, body.dark-mode td#cantPRODEPenconsResp, body.dark-mode td#cantPRODEPenconsInteg, 
-body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg, body.dark-mode input#puntaje3_6
+body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg, body.dark-mode input#puntaje3_6,
+body.dark-mode #cantArbNac, body.dark-mode #cantArbInt, body.dark-mode #cantPubInt, body.dark-mode #cantPubNac, body.dark-mode #cantRevInt, body.dark-mode #cantRevNac,
+body.dark-mode #cantRevista, body.dark-mode #cantPatentes, body.dark-mode #cantPrototipos, body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLoc,
+body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, 
+body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb,  body.dark-mode #cantAsesoria, 
+body.dark-mode #cantServicio, body.dark-mode #cantPracticas
 {
     background-color: #9b9a9a!important;
     color: white!important;
@@ -309,6 +332,22 @@ button#btn3_6{
 
 td.text-right.punto3_8_1.centerSelect{
     padding-inline-start: 70px;
+}
+
+ body.dark-mode #cantCGUtitular , body.dark-mode #cantCGUespecial, body.dark-mode #cantCGUpermanente, body.dark-mode #cantCAACtitular, body.dark-mode #cantCAACintegCom, body.dark-mode #cantComDepart, body.dark-mode #cantComPEDPD, body.dark-mode #cantComPartPos, body.dark-mode #cantRespPos, body.dark-mode #cantRespCarrera, 
+ body.dark-mode #cantRespProd, body.dark-mode #cantRespLab, body.dark-mode #cantExamProf, body.dark-mode #cantExamAcademicos, body.dark-mode #cantPRODEPformResp, body.dark-mode #cantPRODEPformInteg, body.dark-mode #cantPRODEPenconsResp, body.dark-mode #cantPRODEPenconsInteg, body.dark-mode #cantPRODEPconsResp, body.dark-mode #cantPRODEPconsInteg,
+ body.dark-mode #comCGUtitular, body.dark-mode #comCGUespecial, body.dark-mode #comCGUpermanente, body.dark-mode #comCAACtitular, body.dark-mode #comCAACintegCom, body.dark-mode #comComDepart, 
+ body.dark-mode #comComPEDPD, body.dark-mode #comComPartPos, body.dark-mode #comRespPos, body.dark-mode #comRespCarrera, body.dark-mode #comRespProd, body.dark-mode #comRespLab, body.dark-mode #comExamProf, 
+ body.dark-mode #comExamAcademicos, body.dark-mode #comPRODEPformResp, body.dark-mode #comPRODEPformInteg, body.dark-mode #comPRODEPenconsResp, body.dark-mode #comPRODEPenconsInteg, 
+ body.dark-mode #comPRODEPconsResp, body.dark-mode #comPRODEPconsInteg {
+    background-color: transparent!important;
+    color: white!important;
+    
+ }
+
+ body.light-mode{
+    background-color: #f8f9fa;
+    color: #000000;
 }
 
 

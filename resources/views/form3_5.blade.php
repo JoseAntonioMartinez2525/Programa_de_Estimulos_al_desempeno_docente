@@ -117,7 +117,7 @@ $user_identity = $user->id;
                             <td class="punto3_5">Puntaje</td>
                             <td class="punto3_5">Cantidad</td>
                             <td colspan="2"></td>
-                            <td class="table-ajust" scope="col">Observaciones</td>
+                            <td class="text-center table-ajust" scope="col">Observaciones</td>
 
                         </tr>
                     </thead>
