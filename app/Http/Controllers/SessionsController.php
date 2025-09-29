@@ -25,6 +25,13 @@ class SessionsController extends Controller
         return view('login');
     }
 
+    // Simulación de lista física de dictaminadores
+protected $dictaminadores = [
+    'dictaminador1@uabcs.mx',
+    'dictaminador2@uabcs.mx',
+    // ...agrega más correos aquí
+];
+
     public function login(Request $request)
     {
         $email = strtolower(trim($request->input('email')));
@@ -119,5 +126,7 @@ class SessionsController extends Controller
         // Verifica si el modo oscuro está habilitado para este usuario
         return view('auth.login', ['darkMode' => session('dark_mode', false)]);
     }
+
+    
 
 }
