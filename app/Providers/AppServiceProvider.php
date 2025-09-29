@@ -7,7 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,9 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         Schema::defaultStringLength(255);
+        if ($this->app->environment() !== 'production') {
+                $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            }
         //
     }
 
@@ -31,9 +35,9 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(255);
 
         //convocatoria
-         
-        if (auth()->check()) {
-            $convocatoria = UsersResponseForm1::where('user_id', auth()->id())->latest()->first();
+         // @php-intel-disable-next-line
+        if (\Illuminate\Support\Facades\Auth::check()) {
+            $convocatoria = UsersResponseForm1::where('user_id', Auth::id())->latest()->first();
             if ($convocatoria) {
                 view()->share('convocatoria', $convocatoria->convocatoria);
             }

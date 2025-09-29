@@ -30,6 +30,7 @@ use App\Models\UsersResponseForm1;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
 class TransferResponses extends Command
 {
@@ -145,8 +146,9 @@ class TransferResponses extends Command
             }
         }
 
-        \Log::info('Upserting consolidated data:', $data);
+       
         foreach ($consolidatedData as $data) {
+            \Log::info('Upserting consolidated data:', $data);
             DB::table('consolidated_responses')->upsert($data, ['user_id'], [
         'user_email', 'user_type',
         'comision1', 'actv2Comision', 'actv3Comision',
