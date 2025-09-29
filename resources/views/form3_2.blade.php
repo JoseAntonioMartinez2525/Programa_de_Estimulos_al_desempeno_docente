@@ -188,10 +188,10 @@ $user_identity = $user->id;
                         <tr>
                               <td></td>
                             <td>Puntaje</td>
-                            <td style="text-align:left;">Cantidad</td>
-                            <td></td>
-                            <td></td>
-                            <td class="table-ajust" scope="col">Observaciones</td>
+                            <td class="text-center">Cantidad</td>
+                            <td colspan="2"></td>
+                            
+                            <td class="text-center table-ajust" scope="col">Observaciones</td>
                             
                         </tr>
                     </thead>
@@ -214,9 +214,9 @@ $user_identity = $user->id;
                             </td>
                             <td class="td_obs">
                             @if($userType == 'dictaminador')
-                                <input id="obs3_2_1" name="obs3_2_1" class="table-header" type="text">
+                                <input id="obs3_2_1" name="obs3_2_1" type="text">
                             @else
-                                <span id="obs3_2_1" name="obs3_2_1" class="table-header"></span>
+                                <span id="obs3_2_1" name="obs3_2_1"></span>
                             @endif
 
                             </td>
@@ -240,9 +240,9 @@ $user_identity = $user->id;
                             </td>
                             <td class="td_obs">
                             @if($userType == 'dictaminador')    
-                                <input id="obs3_2_2" name="obs3_2_2" class="table-header" type="text">
+                                <input id="obs3_2_2" name="obs3_2_2" type="text">
                             @else
-                                <span id="obs3_2_2" name="obs3_2_2" class="table-header"></span>
+                                <span id="obs3_2_2" name="obs3_2_2"></span>
                             @endif
                             </td>
                         </tr>
@@ -266,9 +266,9 @@ $user_identity = $user->id;
                             </td>
                             <td class="td_obs">
                             @if($userType == 'dictaminador')  
-                                <input id="obs3_2_3"  name="obs3_2_3" class="table-header" type="text">
+                                <input id="obs3_2_3"  name="obs3_2_3" type="text">
                             @else
-                                <span id="obs3_2_3" name="obs3_2_3" class="table-header"></span>
+                                <span id="obs3_2_3" name="obs3_2_3"></span>
                             @endif
                             </td>
                         </tr>

@@ -99,8 +99,8 @@ continua o de formación y capacitación docente </td>
                             <td>1 por cada hora</td>
                             <td id="p3_8">1</td>
                             <td id="puntaje3_8"></td>
-                            <td id="puntajeHoras3_8" class="rightSelect"></td>
-                            <td class="td_obs rightSelect">
+                            <td id="puntajeHoras3_8"></td>
+                            <td class="td_obs">
                                 @if ($userType == 'dictaminador')
                                     <input type="number" step="0.01" id="comisionDict3_8" name="comisionDict3_8" oninput="onActv3Comision3_8()" value="{{ oldValueOrDefault('comisionDict3_8') }}">
                                 @else

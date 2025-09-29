@@ -105,7 +105,7 @@ $user_identity = $user->id;
                     <thead>
                         <tr>
                             <td id="seccion3_8_1" colspan="3" class="punto3_8_1" scope=col style="padding:-60px;" title="Responsabilidad Social Universitaria">
-                                <b>3.8.1</b> RSU</td>
+                                3.8.1 RSU</td>
                             <td id="score3_8_1" for="">0</td>
                             <td id="comision3_8_1">0</td>
                         </tr>

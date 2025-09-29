@@ -203,7 +203,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias20_1">20</td>
                         <td id="puntaje3_9_1"></td>
                         <td id="tutorias1">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision1" name="tutoriasComision1" 
                                 oninput="onActv3Comision3_9()" value="{{ oldValueOrDefault('tutoriasComision1') }}">    
@@ -227,7 +227,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias15_1">15</td>
                         <td id="puntaje3_9_2"></td>
                         <td id="tutorias2">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="tutoriasComision2" name="tutoriasComision2" oninput="onActv3Comision3_9()" value="{{ oldValueOrDefault('tutoriasComision2') }}">
                             @else
@@ -250,7 +250,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias10_1">10</td>
                         <td id="puntaje3_9_3"></td>
                         <td id="tutorias3">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="tutoriasComision3" name="tutoriasComision3" value="{{ oldValueOrDefault('tutoriasComision3') }}" oninput="onActv3Comision3_9()">
                             @else
@@ -273,7 +273,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias55">55</td>
                         <td id="puntaje3_9_4"></td>
                         <td id="tutorias4">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="tutoriasComision4" name="tutoriasComision4" value="{{ oldValueOrDefault('tutoriasComision4') }}" oninput="onActv3Comision3_9()">
                             @else
@@ -296,7 +296,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias45">45</td>
                         <td id="puntaje3_9_5"></td>
                         <td id="tutorias5">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="tutoriasComision5" name="tutoriasComision5" value="{{ oldValueOrDefault('tutoriasComision5') }}" oninput="onActv3Comision3_9()">
                             @else
@@ -319,7 +319,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias35">35</td>
                         <td id="puntaje3_9_6"></td>
                         <td id="tutorias6">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="tutoriasComision6" name="tutoriasComision6" value="{{ oldValueOrDefault('tutoriasComision6') }}" oninput="onActv3Comision3_9()">
                             @else
@@ -342,7 +342,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias70">70</td>
                         <td id="puntaje3_9_7"></td>
                         <td id="tutorias7">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="tutoriasComision7" name="tutoriasComision7" value="{{ oldValueOrDefault('tutoriasComision7') }}" oninput="onActv3Comision3_9()">
                             @else
@@ -386,7 +386,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias60">60</td>
                         <td id="puntaje3_9_8"></td>
                         <td id="tutorias8">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="tutoriasComision8" name="tutoriasComision8"
                                     value="{{ oldValueOrDefault('tutoriasComision8') }}" oninput="onActv3Comision3_9()">
@@ -410,7 +410,7 @@ $user_identity = $user->id;
                         <td id="puntajeTutorias50">50</td>
                         <td id="puntaje3_9_9"></td>
                         <td id="tutorias9">0</td>
-                        <td class="td_obs rightSelect">
+                        <td class="td_obs">
                             @if ($userType == 'dictaminador')
                                 <input type="number" step="0.01" id="tutoriasComision9" name="tutoriasComision9" value="{{ oldValueOrDefault('tutoriasComision9') }}" oninput="onActv3Comision3_9()">
                             @else
@@ -433,7 +433,7 @@ $user_identity = $user->id;
                     <td id="puntajeTutorias30_1">30</td>
                     <td id="puntaje3_9_10">0</td>
                     <td id="tutorias10">0</td>
-                    <td class="td_obs rightSelect">
+                    <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision10" name="tutoriasComision10" value="{{ oldValueOrDefault('tutoriasComision10') }}" oninput="onActv3Comision3_9()">
                         @else
@@ -456,7 +456,7 @@ $user_identity = $user->id;
                     <td id="puntajeTutorias20_2">50</td>
                     <td id="puntaje3_9_11">0</td>
                     <td id="tutorias11">0</td>
-                    <td class="td_obs rightSelect">
+                    <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision11" name="tutoriasComision11" value="{{ oldValueOrDefault('tutoriasComision11') }}" oninput="onActv3Comision3_9()">
                         @else
@@ -479,7 +479,7 @@ $user_identity = $user->id;
                     <td id="puntajeTutorias15_2">15</td>
                     <td id="puntaje3_9_12">0</td>
                     <td id="tutorias12">0</td>
-                    <td class="td_obs rightSelect">
+                    <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision12" name="tutoriasComision12" value="{{ oldValueOrDefault('tutoriasComision12') }}" oninput="onActv3Comision3_9()">
                         @else
@@ -502,7 +502,7 @@ $user_identity = $user->id;
                     <td id="puntajeTutorias30_2">30</td>
                     <td id="puntaje3_9_13">0</td>
                     <td id="tutorias13">0</td>
-                    <td class="td_obs rightSelect">
+                    <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision13" name="tutoriasComision13" value="{{ oldValueOrDefault('tutoriasComision13') }}" oninput="onActv3Comision3_9()">
                         @else
@@ -525,7 +525,7 @@ $user_identity = $user->id;
                     <td id="puntajeTutorias20_3">15</td>
                     <td id="puntaje3_9_14">0</td>
                     <td id="tutorias14">0</td>
-                    <td class="td_obs rightSelect">
+                    <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision14" name="tutoriasComision14" value="{{ oldValueOrDefault('tutoriasComision14') }}" oninput="onActv3Comision3_9()">
                         @else
@@ -548,7 +548,7 @@ $user_identity = $user->id;
                     <td id="puntajeTutorias15_3">15</td>
                     <td id="puntaje3_9_15">0</td>
                     <td id="tutorias15">0</td>
-                    <td class="td_obs rightSelect">
+                    <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision15" name="tutoriasComision15" value="{{ oldValueOrDefault('tutoriasComision15') }}" oninput="onActv3Comision3_9()">
                         @else
@@ -571,7 +571,7 @@ $user_identity = $user->id;
                     <td id="puntajeTutorias15_4">15</td>
                     <td id="puntaje3_9_16">0</td>
                     <td id="tutorias16">0</td>
-                    <td class="td_obs rightSelect">
+                    <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision16" name="tutoriasComision16" value="{{ oldValueOrDefault('tutoriasComision16') }}" oninput="onActv3Comision3_9()">
                         @else
@@ -594,7 +594,7 @@ $user_identity = $user->id;
                     <td id="puntajeTutorias10_2">10</td>
                     <td id="puntaje3_9_17">0</td>
                     <td id="tutorias17">0</td>
-                    <td class="td_obs rightSelect">
+                    <td class="td_obs">
                         @if ($userType == 'dictaminador')
                             <input type="number" step="0.01" id="tutoriasComision17" name="tutoriasComision17" value="{{ oldValueOrDefault('tutoriasComision17') }}" oninput="onActv3Comision3_9()">
                         @else

@@ -1133,7 +1133,9 @@ td.td_obs, td.comision.actv, td.td_form3_15{
     border-width: thin;
 }
 
-body.dark-mode td.td_obs, body.dark-mode td.comision.actv, body.dark-mode td.comEstilos, body.dark-mode td.comision3_13, body.dark-mode td.obsv_3_14{
+body.dark-mode td.td_obs, body.dark-mode td.comision.actv, body.dark-mode td.comEstilos, body.dark-mode td.comision3_13, body.dark-mode td.obsv_3_14,
+body.dark-mode td#evaluarGrupales, body.dark-mode td#evaluarIndividual, body.dark-mode #comisionGrupal, body.dark-mode #comisionIndividual, body.dark-mode #obsGrupal, body.dark-mode #obsIndividual
+{
     background-color: #82bdb2!important;
     border-width: thin;
     border-color: white;
@@ -1198,7 +1200,8 @@ td.cantidad2{
     padding-inline-start: 30px
 }
 
-span#obs3_8_1_1, td.td_form3_15, #comisionIndividual, #comisionGrupal, #obsGrupal, #obsIndividual, td#subtotalPatentes,td#subtotalPrototipos {
+span#obs3_8_1_1, td.td_form3_15, #comisionIndividual, #comisionGrupal, #obsGrupal, #obsIndividual, td#subtotalPatentes,td#subtotalPrototipos,
+td#puntajeHoras3_6{
     text-align: center;
 }
 
@@ -1292,7 +1295,7 @@ textarea.textAreaForms{
  }
 
  /* background-color transparente body.dark-mode */
- body.dark-mode #grupalesCant, body.dark-mode #individualCant, body.dark-mode #comisionGrupal, body.dark-mode #comisionIndividual, body.dark-mode #obsGrupal, body.dark-mode #obsIndividual, body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas,
+ body.dark-mode #grupalesCant, body.dark-mode #individualCant, body.dark-mode #cantAsesoria, body.dark-mode #cantServicio, body.dark-mode #cantPracticas,
  body.dark-mode #comisionAsesoria, body.dark-mode #comisionServicio, body.dark-mode #comisionPracticas, body.dark-mode #obsAsesoria, body.dark-mode #obsServicio, body.dark-mode #obsPracticas, body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, 
  body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb, body.dark-mode #obsCientifico, body.dark-mode #obsDivulgacion, body.dark-mode #obsTraduccion, 
  body.dark-mode #obsArbitrajeInt, body.dark-mode #obsArbitrajeNac, body.dark-mode #obsSinInt, body.dark-mode #obsSinNac, body.dark-mode #obsAutor, body.dark-mode #obsEditor, body.dark-mode #obsWeb, body.dark-mode #comisionCientificos, body.dark-mode #obsCientificos,
@@ -1326,6 +1329,30 @@ input#comisionCongresoInt, input#comisionCongresoNac, input#comisionCongresoLoc,
 body.light-mode{
     background-color: #f8f9fa;
     color: #000000;
+}
+
+
+span[id^="tutorias"]{
+    padding-inline-start: 45%
+}
+
+td#puntajeHoras3_8, #comisionDict3_8{
+    text-align: center;
+    padding-inline-start: 1%;
+}
+
+#comisionDict3_8{
+    text-align: center;
+    padding-inline-start: 33%;
+}
+
+#comisionDict3_7, #comisionDict3_6{
+    text-align: center;
+    padding-inline-start: 38%;  
+}
+
+#obs3_6_1, [id^="obs3_2_"]{
+    padding-inline-start: 30%;
 }
 
 

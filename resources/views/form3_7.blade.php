@@ -111,8 +111,8 @@ $user_identity = $user->id;
                             <td>0.5 por cada hora</td>
                             <td id="pMedio2">0.5</td>
                             <td id="puntaje3_7" name="puntaje3_7"></td>
-                            <td style="text-align: right;" id="puntajeHoras3_7"></td>
-                            <td class="td_obs" style="text-align: right;">
+                            <td class="text-center" id="puntajeHoras3_7"></td>
+                            <td class="td_obs" class="text-center">
                                 @if ($userType == 'dictaminador')
                                     <input type="number" step="0.01" id="comisionDict3_7" name="comisionDict3_7" oninput="onActv3Comision3_7()" value="{{ oldValueOrDefault('comisionDict3_7') }}">
                                 @else
