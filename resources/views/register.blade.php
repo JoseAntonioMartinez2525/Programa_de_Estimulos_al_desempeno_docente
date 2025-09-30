@@ -57,19 +57,7 @@ Fecha de creación: 2024-06-03
                                 </div>
                             @enderror
                         </div>
-                        <!-- Usertype input -->
-                        <div data-mdb-input-init class="form-outline mb-4">
-                            <select  id="registerUsertype" name="registerUsertype" class="form-control" >
-                                <option value=""></option>
-                                <option value="dictaminador">Dictaminador</option>
-                                {{-- *unica firma del dictaminador, segun si es dictaminador --}}
-                                <option value="docente">Docente</option>
-                            </select>
-                            <label class="form-label" for="registerUsertype" id="labelRegister">Usuario (Haz click aquí y selecciona)</label>
-                                @error('registerUsertype')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                        </div>
+                        
                         <!-- Email input -->
                         <div data-mdb-input-init class="mb-4">
                             <input type="email" id="registerEmail" name="registerEmail" class="form-control" />
@@ -115,7 +103,7 @@ Fecha de creación: 2024-06-03
         document.getElementById('registerForm').addEventListener('submit', function (event) {
             console.log('Formulario enviado');
             console.log('Nombre:', document.getElementById('registerName').value);
-            console.log('Usuario:', document.getElementById('registerUsertype').value);
+            //console.log('Usuario:', document.getElementById('registerUsertype').value);
             console.log('Email:', document.getElementById('registerEmail').value);
            
         });

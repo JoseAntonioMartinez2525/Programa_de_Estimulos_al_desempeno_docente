@@ -1,5 +1,13 @@
 @php
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
+    $allowedEmails = [
+        'joma_18@alu.uabcs.mx',
+        'oa.campillo@uabcs.mx',
+        'rluna@uabcs.mx',
+        'v.andrade@uabcs.mx',
+    ];
+    $dictaminadores = config('dictaminadores.emails');
+    $autoLoginEmails = array_merge($allowedEmails, $dictaminadores);
 @endphp
 <!DOCTYPE html>
 <!--
@@ -115,12 +123,8 @@ input:-webkit-autofill {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
     <script>
     function checkAllowedEmail() {
-        const allowedEmails = [
-            'joma_18@alu.uabcs.mx',
-            'oa.campillo@uabcs.mx',
-            'rluna@uabcs.mx',
-            'v.andrade@uabcs.mx'
-        ];
+        
+        const allowedEmails = @json($autoLoginEmails);
         const emailInput = document.getElementById('email');
         if (!emailInput) return;
         const email = emailInput.value.trim().toLowerCase();

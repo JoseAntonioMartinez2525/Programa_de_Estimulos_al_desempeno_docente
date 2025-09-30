@@ -504,7 +504,7 @@ async function submitForm(url, formId) {
 
                 // Enviar el puntaje máximo al backend
                 // Enviar el puntaje máximo al backend
-                fetch('/update-puntaje-maximo', {
+                fetch('/formato-evaluacion/update-puntaje-maximo', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

@@ -1022,7 +1022,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                             }
                             
-                            if (userType === '') { // Only proceed if user type is empty (presumably for evaluators)
+                            if (userType === '') { // Only proceed if user type is empty 
                                 axios.get('/formato-evaluacion/get-evaluator-signature', {
                                     params: {
                                         user_id: userId,

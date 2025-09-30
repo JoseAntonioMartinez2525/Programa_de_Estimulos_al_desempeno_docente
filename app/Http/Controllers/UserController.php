@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User; // Import the User model
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash; // Import Hash facade
 
@@ -28,13 +29,14 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
-            'user_type' => $request->user_type,
+            'user_type' => 'docente',
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
         if ($user) {
-            return back()->with("correcto", "¡Usuario registrado correctamente!");
+            Auth::login($user);
+            return redirect()->route('welcome');
         } else {
             return back()->with("incorrecto", "Error al registrar un usuario, por favor verifique la información.");
         }

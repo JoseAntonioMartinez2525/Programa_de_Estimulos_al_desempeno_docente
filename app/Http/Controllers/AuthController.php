@@ -23,12 +23,12 @@ class AuthController extends Controller
         //dd($request->all());
         $request->validate([
             'registerName' => 'required|string|max:255',
-            'registerUsertype' => 'required|in:dictaminador,docente',
+            //'registerUsertype' => 'required|in:dictaminador,docente',
             'registerEmail' => 'required|string|email|max:255|unique:users,email',
             'registerPassword' => 'required|string|min:6|confirmed',
         ],[
             'registerName.required' => 'El nombre es obligatorio.',
-            'registerUsertype.required' => 'El tipo de usuario es obligatorio.',
+            //'registerUsertype.required' => 'El tipo de usuario es obligatorio.',
             'registerEmail.required' => 'El correo electrónico es obligatorio.',
             'registerPassword.required' => 'La contraseña es obligatoria.',
             'registerPassword.min' => 'La contraseña debe tener al menos 6 caracteres.',
@@ -39,7 +39,7 @@ class AuthController extends Controller
         // Create the new user
         $user = new User();
         $user->name = $request->registerName;
-        $user->user_type = $request->registerUsertype;
+        //$user->user_type = $request->registerUsertype;
         $user->email = $request->registerEmail;
         $user->password = Hash::make($request->registerPassword);
         // Use Hash to encrypt the password

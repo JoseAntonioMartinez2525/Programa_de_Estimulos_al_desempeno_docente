@@ -33,7 +33,8 @@ class EvaluatorSignature extends Model
 
 public function hasAvailableSignatureSlot()
 {
-    return $this->signature_path_1 === null || $this->signature_path_2 === null || $this->signature_path_3 === null;
+    return $this->signature_path_1 === null 
+    || $this->signature_path_2 === null || $this->signature_path_3 === null;
 }
 
     public function hasAvailableEvaluatorName()

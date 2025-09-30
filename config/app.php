@@ -144,6 +144,7 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+        App\Providers\ViewServiceProvider::class,
 
     ])->toArray(),
 

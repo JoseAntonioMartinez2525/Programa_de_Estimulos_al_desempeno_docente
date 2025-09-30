@@ -43,10 +43,6 @@ class AppServiceProvider extends ServiceProvider
             }
         }
 
-        //Puntaje máximo global
-        View::share('puntajeMaximoGlobal', DB::table('puntajes_maximos')
-            ->where('clave', 'puntajeMaximo')
-            ->value('valor'));
         
     }
 }

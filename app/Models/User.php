@@ -62,4 +62,9 @@ class User extends Authenticatable
 
         return parent::__call($method, $parameters);
     }
+
+    public function dictaminadorSignature()
+    {
+        return $this->hasOne(DictaminadorSignature::class, 'user_id');
+    }
 }

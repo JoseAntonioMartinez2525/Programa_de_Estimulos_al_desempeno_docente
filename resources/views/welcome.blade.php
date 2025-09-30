@@ -29,7 +29,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
   <div class="bg-gray-50 text-black/50">
     <div class="relative min-h-screen flex flex-col items-center justify-center">
       @if (Route::has('login'))
-        @if (Auth::check() && Auth::user()->user_type === 'docente')
+        @if (Auth::check())
         <x-nav-docentes :user="Auth::user()" />
         @endif
         <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
