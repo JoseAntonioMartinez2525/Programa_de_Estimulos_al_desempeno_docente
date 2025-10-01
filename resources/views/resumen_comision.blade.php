@@ -219,11 +219,18 @@ body.dark-mode img.imgFirma{
             <th>
             @if($userType === 'dictaminador')
                 @if(empty($firma))
-                    <input type="file" class="form-control" id="firma1" name="firma1" accept="image/*">
+                    <button class="btnFile" onclick="document.getElementById('firma1').click()">Subir firma electrónica</button>
+                    <input type="file" class="d-none files" id="firma1" name="firma1" accept="image/*">
+                    <small class="text-muted">(solo formatos con extension .png)</small>
+                    
                 @elseif(empty($firma2))
-                    <input type="file" class="form-control" id="firma2" name="firma2" accept="image/*">
+                    <button class="btnFile" onclick="document.getElementById('firma2').click()">Subir firma electrónica</button>
+                    <input type="file" class="d-none files" id="firma2" name="firma2" accept="image/*">
+                    <small class="text-muted">(solo formatos con extension .png)</small>
                 @elseif(empty($firma3))
-                    <input type="file" class="form-control" id="firma3" name="firma3" accept="image/*">
+                    <button class="btnFile" onclick="document.getElementById('firma3').click()">Subir firma electrónica</button>
+                    <input type="file" class="d-none files" id="firma3" name="firma3" accept="image/*">
+                    <small class="text-muted">(solo formatos con extension .png)</small>
                 @else
                     <span>Ya se han completado las firmas requeridas.</span>
                 @endif
@@ -264,11 +271,10 @@ body.dark-mode img.imgFirma{
             </tr>
             <tr>
                 {{-- <td class="p-2 nombreLabel">Nombre de la persona evaluadora</td> --}}
-
-                <td class="p-2"><span id="firmaTexto">Firma</span>
+                <td></td>
+                <td class="p-2"><span id="firmaTexto"></span>
                     @if($userType === 'dictaminador')
                         <small class="text-muted">Tamaño máximo permitido: 2MB</small>
-                        <small style="margin-left: 250px;font-size:12px;" class="text-muted">(solo formatos .png ó .jpg)</small>
                     @endif
                 </td>
             </tr>
@@ -358,6 +364,12 @@ body.dark-mode img.imgFirma{
     </div>
 
     <script>
+
+        $(".files").change(function() {
+        filename = this.files[0].name;
+        console.log(filename);
+        });
+
     window.addEventListener('beforeprint', () => {
         const printElements = document.querySelectorAll('.print-only');
         printElements.forEach(el => {

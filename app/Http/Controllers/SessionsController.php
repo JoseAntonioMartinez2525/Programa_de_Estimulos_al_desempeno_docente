@@ -115,7 +115,7 @@ private function redirectByUserType($user)
             ->header('Pragma', $pragmaNoCache)
             ->header('Expires', $expiresZero);
     } else {
-        return redirect()->intended('welcome')
+        return redirect()->route('welcome')
             ->header('Cache-Control', $noCache)
             ->header('Pragma', $pragmaNoCache)
             ->header('Expires', $expiresZero);

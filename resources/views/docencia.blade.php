@@ -3201,7 +3201,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 break;
 
                             case 'form3_4':
-                                let score3_4Label = form.querySelector('td[id="score3_4"]');
+                                let score3_4Label = form.querySelector('th[id="score3_4"]');
                                 formData['cantInternacional'] = document.getElementById('cantInternacional').value;
                                 formData['cantNacional'] = document.getElementById('cantNacional').value;
                                 formData['cantidadRegional'] = document.getElementById('cantidadRegional').value;
@@ -3212,8 +3212,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 formData['cantPreparacion2'] = document.getElementById('cantPreparacion2').textContent;
 
                                 formData['score3_4'] = parseInt(score3_4Label.innerText, 10) || 0; 
-                                formData  
-
+                               
                                 //observaciones3_4_1 a observaciones3_4_4
 
 
