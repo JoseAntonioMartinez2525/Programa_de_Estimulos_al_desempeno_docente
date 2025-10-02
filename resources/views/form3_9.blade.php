@@ -168,8 +168,8 @@ $user_identity = $user->id;
     <div class="container mt-4" id="seleccionDocente">
         @if($userType !== 'docente')
             <!-- Select para dictaminador seleccionando docentes -->
-            <label for="docenteSelect">Seleccionar Docente:</label>
-            <select id="docenteSelect" class="form-select"> <!--name="docentes[]" multiple-->
+            <label for="docenteSearch">Seleccionar Docente:</label>
+            <select id="docenteSearch" class="form-select"> <!--name="docentes[]" multiple-->
                 <option value="">Seleccionar un docente</option>
                 <!-- Aquí se llenarán los docentes con JavaScript -->
             </select>
@@ -670,9 +670,9 @@ $user_identity = $user->id;
     document.addEventListener('DOMContentLoaded', async () => {
         const userType = @json($userType);  // Inject user type from backend to JS
         const user_identity = @json($user_identity);
-        const docenteSelect = document.getElementById('docenteSelect');
+        const docenteSearch = document.getElementById('docenteSearch');
 
-        if (docenteSelect) {
+        if (docenteSearch) {
             // Cuando el usuario es dictaminador
             if (userType === 'dictaminador') {
                 try {
@@ -683,10 +683,10 @@ $user_identity = $user->id;
                         const option = document.createElement('option');
                         option.value = docente.email;
                         option.textContent = docente.email;
-                        docenteSelect.appendChild(option);
+                        docenteSearch.appendChild(option);
                     });
 
-                    docenteSelect.addEventListener('change', async (event) => {
+                    docenteSearch.addEventListener('change', async (event) => {
                         const email = event.target.value;
 
                         if (email) {
@@ -758,10 +758,10 @@ $user_identity = $user->id;
                         const option = document.createElement('option');
                         option.value = docente.email;
                         option.textContent = docente.email;
-                        docenteSelect.appendChild(option);
+                        docenteSearch.appendChild(option);
                     });
 
-                    docenteSelect.addEventListener('change', async (event) => {
+                    docenteSearch.addEventListener('change', async (event) => {
                         const email = event.target.value;
 
                         if (email) {

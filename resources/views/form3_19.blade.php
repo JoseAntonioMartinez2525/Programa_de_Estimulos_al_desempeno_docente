@@ -219,8 +219,8 @@ $page_counter = 28;
     <div class="container mt-4" id="seleccionDocente">
         @if($userType !== 'docente')
             <!-- Select para dictaminador seleccionando docentes -->
-            <label for="docenteSelect">Seleccionar Docente:</label>
-            <select id="docenteSelect" class="form-select"> <!--name="docentes[]" multiple-->
+            <label for="docenteSearch">Seleccionar Docente:</label>
+            <select id="docenteSearch" class="form-select"> <!--name="docentes[]" multiple-->
                 <option value="">Seleccionar un docente</option>
                 <!-- Aquí se llenarán los docentes con JavaScript -->
             </select>
@@ -895,9 +895,9 @@ $page_counter = 28;
         document.addEventListener('DOMContentLoaded', async () => {
             const userType = @json($userType);  // Inject user type from backend to JS
             const user_identity = @json($user_identity);
-            const docenteSelect = document.getElementById('docenteSelect');
+            const docenteSearch = document.getElementById('docenteSearch');
 
-            if (docenteSelect) {
+            if (docenteSearch) {
                 // Cuando el usuario es dictaminador
                 if (userType === 'dictaminador') {
                     try {
@@ -908,10 +908,10 @@ $page_counter = 28;
                             const option = document.createElement('option');
                             option.value = docente.email;
                             option.textContent = docente.email;
-                            docenteSelect.appendChild(option);
+                            docenteSearch.appendChild(option);
                         });
 
-                        docenteSelect.addEventListener('change', async (event) => {
+                        docenteSearch.addEventListener('change', async (event) => {
                             const email = event.target.value;
 
                             if (email) {
@@ -1019,10 +1019,10 @@ $page_counter = 28;
                             const option = document.createElement('option');
                             option.value = docente.email;
                             option.textContent = docente.email;
-                            docenteSelect.appendChild(option);
+                            docenteSearch.appendChild(option);
                         });
 
-                        docenteSelect.addEventListener('change', async (event) => {
+                        docenteSearch.addEventListener('change', async (event) => {
                             const email = event.target.value;
 
                             if (email) {
@@ -1296,9 +1296,9 @@ $page_counter = 28;
         async function generatePdf() {
             const userType = @json($userType);  // Inject user type from backend to JS
             const user_identity = @json($user_identity);
-            const docenteSelect = document.getElementById('docenteSelect');
+            const docenteSearch = document.getElementById('docenteSearch');
 
-            const email = docenteSelect.value; // Get selected docente email
+            const email = docenteSearch.value; // Get selected docente email
 
             if (email) {
                 try {
@@ -1311,7 +1311,7 @@ $page_counter = 28;
                     }
 
                     const formData = new FormData();
-                    formData.append('email', email); // Use the email from docenteSelect
+                    formData.append('email', email); // Use the email from docenteSearch
                     formData.append('user_id', data.form3_19.user_id);
                     formData.append('user_type', data.form3_19.user_type);
 
@@ -1334,7 +1334,7 @@ $page_counter = 28;
                             { text: `ID: ${data.form3_19.id}`, fontSize: 12 },
                             { text: `Dictaminador ID: ${data.form3_19.dictaminador_id}`, fontSize: 12 },
                             { text: `User ID: ${data.form3_19.user_id}`, fontSize: 12 },
-                            { text: `Email: ${email}`, fontSize: 12 }, // Match email from docenteSelect
+                            { text: `Email: ${email}`, fontSize: 12 }, // Match email from docenteSearch
                             { text: `Score: ${data.form3_19.score3_19}`, fontSize: 12 },
                             { text: `Cantidad CGU Titular: ${data.form3_19.cantCGUtitular}`, fontSize: 12 },
                             { text: `Subtotal CGU Titular: ${data.form3_19.subtotalCGUtitular}`, fontSize: 12 },

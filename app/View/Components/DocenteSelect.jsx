@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const DocenteSelect = () => {
+const docenteSearch = () => {
     const [docentes, setDocentes] = useState([]);
     const [selectedDocente, setSelectedDocente] = useState('');
     const [convocatoria, setConvocatoria] = useState('');
@@ -190,7 +190,7 @@ const DocenteSelect = () => {
 
     return (
         <div>
-            <select id="docenteSelect" value={selectedDocente} onChange={handleDocenteChange}>
+            <select id="docenteSearch" value={selectedDocente} onChange={handleDocenteChange}>
                 <option value="">Select Docente</option>
                 {docentes.map(docente => (
                     <option key={docente.email} value={docente.email}>
@@ -203,4 +203,4 @@ const DocenteSelect = () => {
     );
 };
 
-export default DocenteSelect;
+export default docenteSearch;

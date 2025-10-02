@@ -77,14 +77,14 @@ $user_identity = $user->id;
 <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 <div class="container mt-4 printButtonClass">
     @if($userType !== 'docente')
-        <!-- Select para dictaminador seleccionando docentes -->
-        <label for="docenteSelect">Seleccionar Docente:</label>
-        <select id="docenteSelect" class="form-select"> <!--name="docentes[]" multiple-->
-            <option value="">Seleccionar un docente</option>
-            <!-- Aquí se llenarán los docentes con JavaScript -->
+        <label for="docenteSearch">Buscar Docente:</label>
+        <select id="docenteSearch" class="form-select select2">
+            <option value="">Escribe el nombre o correo del docente...</option>
+            <!-- Las opciones se llenan dinámicamente -->
         </select>
     @endif
 </div>
+
 
 <div class="mostrar">
     <main class="container">
@@ -232,24 +232,53 @@ $user_identity = $user->id;
     document.addEventListener('DOMContentLoaded', async () => {
     const userType = @json($userType);  // Inject user type from backend to JS
     const user_identity = @json($user_identity); 
-    const docenteSelect = document.getElementById('docenteSelect');
+    const $docenteSearch = $('#docenteSearch');
 
-        if (docenteSelect) {
-            // Cuando el usuario es dictaminador
+
+                if ($docenteSearch.length > 0) {
+                // Inicializar Select2
+                $docenteSearch.select2({
+                    placeholder: 'Buscar docente por nombre ó correo',
+                    allowClear: true,
+                    matcher: function (params, data) {
+                    if (!params.term || !data.text) {
+                        return data;
+                    }
+
+                    const term = params.term.toLowerCase();
+                    const text = data.text.toLowerCase();
+                    const email = $(data.element).data('email')?.toLowerCase() || '';
+
+                    if (text.includes(term) || email.includes(term)) {
+                        return data;
+                    }
+
+                    return null;
+            },
+                    templateResult: function (data) {
+                        if (!data.id) return data.text;
+                        const email = $(data.element).data('email');
+                        return $(`<span>${data.text} <small class="text-muted">(${email})</small></span>`);
+                    },
+                    templateSelection: function (data) {
+                        return data.text;
+                    }
+                });
+
             if (userType === 'dictaminador') {
                 try {
                     const response = await fetch('/formato-evaluacion/get-docentes');
                     const docentes = await response.json();
 
                     docentes.forEach(docente => {
-                        const option = document.createElement('option');
-                        option.value = docente.email;
-                        option.textContent = docente.email;
-                        docenteSelect.appendChild(option);
+                        const text = docente.nombre || docente.email;
+                        const option = new Option(text, docente.email, false, false);
+                        $(option).attr('data-email', docente.email);
+                        $docenteSearch.append(option);
                     });
 
-                    docenteSelect.addEventListener('change', async (event) => {
-                        const email = event.target.value;
+                    $docenteSearch.on('change', async function () {
+                         const email = $(this).val();
 
                         if (email) {
                             axios.get('/formato-evaluacion/get-docente-data', { params: { email } })
@@ -304,14 +333,15 @@ $user_identity = $user->id;
                     const docentes = await response.json();
 
                     docentes.forEach(docente => {
-                        const option = document.createElement('option');
-                        option.value = docente.email;
-                        option.textContent = docente.email;
-                        docenteSelect.appendChild(option);
+                        const text = docente.nombre || docente.email;
+                        const option = new Option(text, docente.email, false, false);
+                        $(option).attr('data-email', docente.email);
+                        $docenteSearch.append(option);
                     });
 
-                    docenteSelect.addEventListener('change', async (event) => {
-                        const email = event.target.value;
+
+                    $docenteSearch.on('change', async function () {
+                         const email = $(this).val();
 
                         if (email) {
                             axios.get('/formato-evaluacion/get-docente-data', { params: { email } })

@@ -288,7 +288,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 document.addEventListener('DOMContentLoaded', () => {
     const formGrid = document.getElementById('formGrid');
     const formContainer = document.getElementById('formContainer');
-    const docenteSelect = document.getElementById('teacherSelect');
+    const docenteSearch = document.getElementById('teacherSelect');
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     // Cargar la lista de docentes 
@@ -296,14 +296,14 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(docentes => {
             // Limpiar opciones existentes
-            docenteSelect.innerHTML = '<option value="">Seleccionar un docente</option>';
+            docenteSearch.innerHTML = '<option value="">Seleccionar un docente</option>';
             
             // CORREGIDO: Solo mostrar el email del docente como texto de la opción
             docentes.forEach(docente => {
                 const option = document.createElement('option');
                 option.value = docente.email;
                 option.textContent = docente.email; // Solo el email, sin mostrar "undefined"
-                docenteSelect.appendChild(option);
+                docenteSearch.appendChild(option);
             });
         })
         .catch(error => {
@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     // Evento al cambiar docente
-    docenteSelect.addEventListener('change', function() {
+    docenteSearch.addEventListener('change', function() {
         const selectedDocente = this.value;
         const selectedForm = null;
         const selectedFormId = formGrid.options[formGrid.selectedIndex].getAttribute('data-id');
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedForm = event.target.getAttribute('data-value');
             const selectedFormId = null; // Si usas data-id, agregalo en el botón
 
-            const selectedDocente = docenteSelect ? docenteSelect.value : null;
+            const selectedDocente = docenteSearch ? docenteSearch.value : null;
 
                 // Lógica igual que antes
                 if (selectedForm && selectedDocente) {

@@ -137,8 +137,8 @@ body.dark-mode img.imgFirma{
             <div class="container mt-4" id="seleccionDocente">
             @if($userType !== 'docente')
             <!-- Select para dictaminador seleccionando docentes -->
-            <label for="docenteSelect">Buscar Docente:</label>
-            <select id="docenteSelect" class="form-select"> <!--name="docentes[]" multiple-->
+            <label for="docenteSearch">Buscar Docente:</label>
+            <select id="docenteSearch" class="form-select"> <!--name="docentes[]" multiple-->
             <option value="">Seleccionar un docente</option>
             <!-- Aquí se llenarán los docentes con JavaScript -->
             </select>
@@ -593,12 +593,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const userType = @json($userType); 
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const user_identity = @json($user_identity);
-    const docenteSelect = document.getElementById('docenteSelect');
+    const docenteSearch = document.getElementById('docenteSearch');
     const dictaminadorSelect = document.getElementById('dictaminadorSelect');
     const formContainer = document.getElementById('formContainer');
     const dataContainer = document.getElementById('data');
 
-    if (docenteSelect) {
+    if (docenteSearch) {
         
         try {
            const response = await fetch('/formato-evaluacion/get-docentes');
@@ -608,10 +608,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const option = document.createElement('option');
                 option.value = docente.email;
                 option.textContent = docente.email;
-                docenteSelect.appendChild(option);
+                docenteSearch.appendChild(option);
             });
 
-            docenteSelect.addEventListener('change', async (event) => {
+            docenteSearch.addEventListener('change', async (event) => {
                 const email = event.target.value;
                 const dataContainer = document.getElementById('data'); // Get the tbody container
 
@@ -1131,7 +1131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         
     }else{
-        console.warn("El elemento docenteSelect no se encontró en el DOM.");
+        console.warn("El elemento docenteSearch no se encontró en el DOM.");
     }
 });
 
