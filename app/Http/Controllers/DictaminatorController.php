@@ -47,6 +47,9 @@ class DictaminatorController extends Controller
 
     public function getDocenteData(Request $request)
     {
+
+        Log::error('Mensaje de prueba de Log::error');
+        
         $email = $request->query('email');
         $docente = User::where('email', $email)->first();
 

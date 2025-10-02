@@ -71,6 +71,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DictaminatorController;
 use App\Http\Controllers\PuntajeMaximosController;
 
+
+Route::get('/forzar-error', function () {
+    throw new \Exception("Este es un error de prueba");
+});
+
 Route::get('/', function () {
     return view('login');
 });
