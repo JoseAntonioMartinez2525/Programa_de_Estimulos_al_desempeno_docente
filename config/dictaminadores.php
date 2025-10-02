@@ -3,7 +3,7 @@
 return [
     'emails' => [
         'brendaran@uabcs.mx',
-        'dictaminador2@uabcs.mx',
+        'juanco@uabcs.mx',
     ],
     'nombres' => [
         'Dra. Brenda Elizabeth Ramiréz Díaz',
