@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\TransferResponses::class,
         // Agrega aquí otros comandos Artisan que hayas creado
+        \App\Console\Commands\RouteListOverride::class,
     ];
 
     /**

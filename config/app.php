@@ -161,8 +161,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-            'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
-            'Dompdf' => Barryvdh\DomPDF\Facade\Pdf::class,
+            'SnappyPdf' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+            'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
     ])->toArray(),
 
 ];
