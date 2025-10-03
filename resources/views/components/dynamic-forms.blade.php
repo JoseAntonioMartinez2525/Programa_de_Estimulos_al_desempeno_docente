@@ -1,4 +1,4 @@
-//Llenado de los campos
+{{-- Llenado de los campos --}}
 <h3>Ingrese los nuevos campos</h3>
 <form action=""><input type="text" placeholder="nombre del formulario">
 <div>

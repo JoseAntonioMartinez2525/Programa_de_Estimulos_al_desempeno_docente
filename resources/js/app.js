@@ -5,8 +5,10 @@
  */
 
 import './bootstrap';
-import { createApp } from 'vue';
 
+import ExampleComponent from './components/ExampleComponent.vue';
+import DocenteSearch from './components/DocenteSearch.vue';
+import PdfGenerator from './components/PdfGenerator';
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -15,9 +17,10 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
+
+
 app.component('example-component', ExampleComponent);
-import PdfGenerator from './components/PdfGenerator';
+app.component('docente-search', DocenteSearch);
 
 /**
  * The following block of code may be used to automatically register your

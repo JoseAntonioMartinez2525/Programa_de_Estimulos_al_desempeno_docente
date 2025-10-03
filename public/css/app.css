@@ -1387,6 +1387,12 @@ td#puntajeHoras3_8, #comisionDict3_8{
     border-color: transparent;
 }
 
+    .select2-container--default .select2-selection--single {
+        height: 38px;
+        padding: 5px 10px;
+        border: 1px solid #ced4da;
+    }
+
 
 
 
