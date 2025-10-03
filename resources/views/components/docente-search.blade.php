@@ -1,73 +1,19 @@
-<div>
-  <label for="docente-search">Buscar Docente:</label>
-  <input
-    id="docente-search"
-    type="text"
-    class="form-control"
-    placeholder="Nombre o correo del docente"
-    autocomplete="off"
-  />
-  <ul id="docente-results" class="list-group mt-2" style="display: none; max-height: 200px; overflow-y: auto;"></ul>
+<div class="search-wrapper">
+    <div class="search-box" id="docente-search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="docenteSearchInput" class="form-control search-input" placeholder="Escriba el nombre ó correo del docente a buscar">
+        <ul id="docenteSearchResults" class="list-group position-absolute w-100 mt-1" style="z-index: 999;"></ul>
+    </div>
 </div>
-
-@push('scripts')
+@push('script')
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const searchInput = document.getElementById('docente-search');
-    const resultsList = document.getElementById('docente-results');
-    let timeout = null;
-
-    searchInput.addEventListener('input', function () {
-      const query = this.value.trim();
-
-      clearTimeout(timeout);
-      if (query.length < 2) {
-        resultsList.style.display = 'none';
-        resultsList.innerHTML = '';
-        return;
-      }
-
-      // Debounce de 300ms
-      timeout = setTimeout(() => {
-        axios.get('/api/docentes/search', { params: { query } })
-          .then(response => {
-            const docentes = response.data;
+            // Cerrar la lista si se hace clic fuera
+    document.addEventListener('click', function(event) {
+        if (!document.getElementById('docente-search-box').contains(event.target)) {
             resultsList.innerHTML = '';
-
-            if (docentes.length > 0) {
-              docentes.forEach(docente => {
-                const li = document.createElement('li');
-                li.className = 'list-group-item list-group-item-action';
-                li.textContent = docente.nombre;
-                li.style.cursor = 'pointer';
-                li.addEventListener('click', function () {
-                  searchInput.value = docente.nombre;
-                  resultsList.style.display = 'none';
-                  resultsList.innerHTML = '';
-
-                  // Aquí llamas tu función global
-                  if (typeof handleDocenteSelected === 'function') {
-                    handleDocenteSelected(docente);
-                  }
-                });
-                resultsList.appendChild(li);
-              });
-              resultsList.style.display = 'block';
-            } else {
-              resultsList.style.display = 'none';
-            }
-          })
-          .catch(error => {
-            console.error('Error buscando docentes:', error);
-          });
-      }, 300);
+        }
     });
-
-    document.addEventListener('click', function (e) {
-      if (!resultsList.contains(e.target) && e.target !== searchInput) {
-        resultsList.style.display = 'none';
-      }
-    });
-  });
 </script>
+    
 @endpush
+
