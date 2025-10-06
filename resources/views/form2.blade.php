@@ -77,16 +77,8 @@ $user_identity = $user->id;
 <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 <div class="container mt-4 printButtonClass">
     @if($userType !== 'docente')
-        <!-- Select para dictaminador seleccionando docentes -->
-            <div class="mb-3 position-relative">
-                <label for="docenteSearch" class="form-label fw-bold">Buscar docente</label>
-                <input type="text" id="docenteSearch" class="form-control" placeholder="Escribe nombre o correo del docente...">
-                <ul id="docenteSuggestions" class="list-group position-absolute w-100 mt-1 shadow-sm" style="z-index: 1000; display: none;"></ul>
-            </div>
-
-            <!-- Campo oculto para almacenar el ID o email seleccionado -->
-            <input type="hidden" id="selectedDocenteEmail" name="email">
-
+        <!-- Buscando docentes -->
+        <x-docente-search />
 
     @endif
 </div>
@@ -229,7 +221,7 @@ $user_identity = $user->id;
 
         <div id="piedepagina" style="margin-left: 500px; margin-top: 10px;">
 
-<x-form-renderer :forms="[['view' => 'form2', 'startPage' => 1, 'endPage' => 1]]" />
+    <x-form-renderer :forms="[['view' => 'form2', 'startPage' => 1, 'endPage' => 1]]" />
         </div>
     </footer>
 </center>

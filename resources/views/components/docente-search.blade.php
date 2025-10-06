@@ -1,19 +1,9 @@
-<div class="search-wrapper">
-    <div class="search-box" id="docente-search-box">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="docenteSearchInput" class="form-control search-input" placeholder="Escriba el nombre ó correo del docente a buscar">
-        <ul id="docenteSearchResults" class="list-group position-absolute w-100 mt-1" style="z-index: 999;"></ul>
-    </div>
+<div class="mb-3 position-relative">
+    <label for="docenteSearch" class="form-label fw-bold">Buscar docente</label>
+    <input type="text" id="docenteSearch" class="form-control" placeholder="Escribe nombre o correo del docente...">
+    <ul id="docenteSuggestions" class="list-group position-absolute w-100 mt-1 shadow-sm" style="z-index: 1000; display: none;"></ul>
 </div>
-@push('script')
-<script>
-            // Cerrar la lista si se hace clic fuera
-    document.addEventListener('click', function(event) {
-        if (!document.getElementById('docente-search-box').contains(event.target)) {
-            resultsList.innerHTML = '';
-        }
-    });
-</script>
-    
-@endpush
+
+<!-- Campo oculto para almacenar el ID o email seleccionado -->
+<input type="hidden" id="selectedDocenteEmail" name="email">
 
