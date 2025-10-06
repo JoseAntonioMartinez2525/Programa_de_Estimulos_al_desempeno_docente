@@ -38,17 +38,23 @@ use Intervention\Image\Facades\Image;
 
 class DictaminatorController extends Controller
 {
-    public function getDocentes()
-    {
-        $docentes = User::where('user_type', 'docente')
-            ->get([
-                'name as nombre', 
-                'email'
-            ]);
+    public function getDocentes(Request $request)
+{
+    $search = $request->query('search');
 
-        \Log::info('Docentes:', $docentes->toArray());
-        return response()->json($docentes);
+    $query = User::where('user_type', 'docente');
+
+    if (!empty($search)) {
+        $query->where(function ($q) use ($search) {
+            $q->where('name', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%");
+        });
     }
+
+    $docentes = $query->get(['name as nombre', 'email']);
+
+    return response()->json($docentes);
+}
 
     public function getDocenteData(Request $request)
     {
@@ -63,10 +69,7 @@ class DictaminatorController extends Controller
         }
 
         $formData1 = UsersResponseForm1::where('user_id', $docente->id)->first();
-        $convocatoria = UsersResponseForm1::where('user_id', $docente->id)->first();
-        $periodo = UsersResponseForm1::where('user_id', $docente->id)->first();
-        $nombre = UsersResponseForm1::where('user_id', $docente->id)->first();
-        $area = UsersResponseForm1::where('user_id', $docente->id)->first();
+
         $departamento = UsersResponseForm1::where('user_id', $docente->id)->first();
         $form2Data = UsersResponseForm2::where('user_id', $docente->id)->first();
         $form2_2Data = UsersResponseForm2_2::where('user_id', $docente->id)->first();
@@ -96,10 +99,10 @@ class DictaminatorController extends Controller
             'docente' => [
                 'id' => $docente->id,
                 'email' => $docente->email,
-                'convocatoria'=>$convocatoria->convocatoria,
-                'periodo'=>$periodo->periodo,
-                'nombre'=>$nombre->nombre,
-                'area'=>$area->area,
+                'convocatoria'=>$formData1?->convocatoria,
+                'periodo'=>$formData1?->periodo,
+                'nombre'=>$formData1?->nombre,
+                'area'=>$formData1?->area,
                 'departamento'=>$departamento->departamento,
             ],
             'form1'=>$formData1,
