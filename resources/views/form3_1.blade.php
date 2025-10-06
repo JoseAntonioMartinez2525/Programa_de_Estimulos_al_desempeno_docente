@@ -643,7 +643,7 @@ document.addEventListener('docenteSelected', async (e) => {
 
 
             // Obtener datos de UsersResponseForm3_1
-             const res = await fetch(`/formato-evaluacion/getFormData31?email=${encodeURIComponent(email)}`);
+             const res = await fetch(`/formato-evaluacion/get-docente-data`);
                 const scoreElements = document.querySelectorAll('.score3_1');
                     scoreElements.forEach(element => {
                         element.textContent = docenteData.form3_1.score3_1 || '0';

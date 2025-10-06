@@ -5,6 +5,26 @@ namespace App\Http\Controllers;
 use App\Events\EvaluationCompleted;
 use App\Models\DictaminatorsResponseForm3_1;
 use App\Models\UsersResponseForm3_1;
+use App\Models\DictaminatorsResponseForm3_2;
+use App\Models\UsersResponseForm3_10;
+use App\Models\UsersResponseForm3_11;
+use App\Models\UsersResponseForm3_12;
+use App\Models\UsersResponseForm3_13;
+use App\Models\UsersResponseForm3_14;
+use App\Models\UsersResponseForm3_15;
+use App\Models\UsersResponseForm3_16;
+use App\Models\UsersResponseForm3_17;
+use App\Models\UsersResponseForm3_18;
+use App\Models\UsersResponseForm3_19;
+use App\Models\UsersResponseForm3_2;
+use App\Models\UsersResponseForm3_3;
+use App\Models\UsersResponseForm3_4;
+use App\Models\UsersResponseForm3_5;
+use App\Models\UsersResponseForm3_6;
+use App\Models\UsersResponseForm3_7;
+use App\Models\UsersResponseForm3_8;
+use App\Models\UsersResponseForm3_8_1;
+use App\Models\UsersResponseForm3_9;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -178,7 +198,7 @@ class DictaminatorForm3_1Controller extends TransferController
     public function injectPageNumbers(Dompdf $dompdf): void
     {
         $canvas = $dompdf->getCanvas();
-        $pdf = $canvas->get_cpdf();
+        // $pdf = $canvas->get_cpdf();
         $totalPages = 31;
         for ($pageNumber = 1; $pageNumber <= $totalPages; $pageNumber++) {
             $canvas->page_text(520, 820, "Page $pageNumber of $totalPages", null, 31, array(0, 0, 0));
