@@ -414,7 +414,7 @@ document.addEventListener('docenteSelected', async (e) => {
         
 
             // Obtener datos de UsersResponseForm3_2
-             const res = await fetch(`/formato-evaluacion/get-docente-data`);
+             const res = await fetch(`/formato-evaluacion/get-data-32`);
             //  const scoreElements = document.querySelectorAll('.score3_2');
              
                     
@@ -434,28 +434,7 @@ document.addEventListener('docenteSelected', async (e) => {
 
 
             if (userType === '') {
-            // Obtener un solo registro de DictaminatorsResponseForm2_2
-            const res = await fetch(`/formato-evaluacion/getFormData32?dictaminador_id=${encodeURIComponent(email)}`);
-            const result = await res.json();
-
-            if (result.success && result.data) {
-                const data = result.data;
-                    document.getElementById('r1').textContent = data.form3_2.r1 || '0';
-                    document.getElementById('r2').textContent = data.form3_2.r2 || '0';
-                    document.getElementById('r3').textContent = data.form3_2.r3 || '0';
-                    document.getElementById('cant1').textContent = data.form3_2.cant1 || '0';
-                    document.getElementById('cant2').textContent = data.form3_2.cant2 || '0';
-                    document.getElementById('cant3').textContent = data.form3_2.cant3 || '0';
-
-
-                    // Populate hidden inputs
-                    document.querySelector('input[name="user_id"]').value = data.form3_2.user_id || '';
-                    document.querySelector('input[name="email"]').value = data.form3_2.email || '';
-                    document.querySelector('input[name="user_type"]').value = data.form3_2.user_type || '';
-            } else {
-                console.warn('No se encontraron datos de DictaminatorsResponseForm2');
-            }
-
+           
             // Obtener todas las respuestas de dictaminadores
             // Lógica para obtener datos de DictaminatorsResponseForm3_2
                 try {
@@ -569,6 +548,29 @@ document.addEventListener('docenteSelected', async (e) => {
             // Gather all related information from the form
             formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
             formData['user_id'] = form.querySelector('input[name="user_id"]').value;
+
+             // --- SAFEGUARD: ensure we actually capture the email (with fallbacks) ---
+            const emailInput = form.querySelector('input[name="email"]');
+            let email = emailInput ? (emailInput.value || '').trim() : '';
+
+            // fallback 1: hidden element set by the autocomplete
+            if (!email) {
+                const hiddenEmailElem = document.getElementById('selectedDocenteEmail');
+                if (hiddenEmailElem && hiddenEmailElem.value) {
+                    email = hiddenEmailElem.value.trim();
+                    if (emailInput) emailInput.value = email; // put back into form
+                }
+            }
+
+            // fallback 2: parse docenteSearch value like "Name (email@host)"
+            if (!email) {
+                const searchVal = document.getElementById('docenteSearch')?.value || '';
+                const m = searchVal.match(/\(([^)@]+@[^)\s]+)\)/);
+                if (m) {
+                    email = m[1].trim();
+                    if (emailInput) emailInput.value = email;
+                }
+            }
             formData['email'] = form.querySelector('input[name="email"]').value;
             formData['user_type'] = form.querySelector('input[name="user_type"]').value;
             formData['r1'] = document.getElementById('r1').textContent;

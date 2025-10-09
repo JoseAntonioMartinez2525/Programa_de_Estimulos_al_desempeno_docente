@@ -164,9 +164,14 @@ class DictaminatorForm3_1Controller extends TransferController
         // Buscar el registro de UsersResponseForm2 correspondiente y actualizar comision1
         \Log::info('Buscando registro en UsersResponseForm3_1 para user_id: ' . $userId);
 
-        $userResponse = UsersResponseForm3_1::where('user_id', $userId)->first();
+                DB::transaction(function () use ($userId, $comisionValue) {
+            // Actualiza/crea el registro específico del formulario de usuario
+            $userResponse = UsersResponseForm3_2::updateOrCreate(
+                ['user_id' => $userId],
+                ['comision3_2' => $comisionValue]
+            );
 
-        if ($userResponse) {
+            if ($userResponse) {
             $userResponse->actv3Comision = $comisionValue;
             $userResponse->save();
             \Log::info('Registro actualizado en UsersResponseForm3_1 para user_id: ' . $userId);
@@ -174,6 +179,16 @@ class DictaminatorForm3_1Controller extends TransferController
         } else {
             \Log::warning('No se encontró registro en UsersResponseForm3_1 para user_id: ' . $userId);
         }
+        // Actualiza o inserta la fila consolidada (solo el campo de comision3_2)
+                    DB::table('consolidated_responses')->updateOrInsert(
+                        ['user_id' => $userId],
+                        [
+                            'comision3_2' => (float) $comisionValue,
+                            'updated_at'  => now()
+                        ]
+                    );
+                });
+
     }
 
     public function showForm31(Request $request)
@@ -208,50 +223,91 @@ class DictaminatorForm3_1Controller extends TransferController
     public function getTotalDocencia(Request $request)
     {
         $user_id = $request->input('user_id');
-        $consolidatedResponses = DB::table('consolidated_responses')->where('user_id', $user_id)->get();
+        $rows = DB::table('consolidated_responses')->where('user_id', $user_id)->get();
 
-        $subtotal3_1To3_8_1 = $consolidatedResponses->reduce(function ($carry, $response) {
-            return $carry
-                + ($response->actv3Comision ?? 0)
-                + ($response->comision3_2 ?? 0)
-                + ($response->comision3_3 ?? 0)
-                + ($response->comision3_4 ?? 0)
-                + ($response->comision3_5 ?? 0)
-                + ($response->comision3_6 ?? 0)
-                + ($response->comision3_7 ?? 0)
-                + ($response->comision3_8 ?? 0)
-                + ($response->comision3_8_1 ?? 0);
-        }, 0);
+        if ($rows->isEmpty()) {
+            return response()->json([
+                'totalDocencia' => 0,
+                'rowsCount' => 0,
+                'breakdown' => []
+            ]);
+        }
 
-        $subtotal3_9To3_11 = $consolidatedResponses->reduce(function ($carry, $response) {
-            return $carry
-                + ($response->comision3_9 ?? 0)
-                + ($response->comision3_10 ?? 0)
-                + ($response->comision3_11 ?? 0);
-        }, 0);
+                // Sumar campos asegurando cast a float
+        $sum = function ($field) use ($rows) {
+            return $rows->reduce(function ($carry, $row) use ($field) {
+                return $carry + (float) ($row->{$field} ?? 0);
+            }, 0.0);
+        };
 
-        $subtotal3_12To3_16 = $consolidatedResponses->reduce(function ($carry, $response) {
-            return $carry
-                + ($response->comision3_12 ?? 0)
-                + ($response->comision3_13 ?? 0)
-                + ($response->comision3_14 ?? 0)
-                + ($response->comision3_15 ?? 0)
-                + ($response->comision3_16 ?? 0);
-        }, 0);
 
-        $subtotal3_17To3_19 = $consolidatedResponses->reduce(function ($carry, $response) {
-            return $carry
-                + ($response->comision3_17 ?? 0)
-                + ($response->comision3_18 ?? 0)
-                + ($response->comision3_19 ?? 0);
-        }, 0);
+        $actv3Comision = $sum('actv3Comision');
+        $com3_2 = $sum('comision3_2');
+        $com3_3 = $sum('comision3_3');
+        $com3_4 = $sum('comision3_4');
+        $com3_5 = $sum('comision3_5');
+        $com3_6 = $sum('comision3_6');
+        $com3_7 = $sum('comision3_7');
+        $com3_8 = $sum('comision3_8');
+        $com3_8_1 = $sum('comision3_8_1');
 
-        $total = min(
-            $subtotal3_1To3_8_1 + $subtotal3_9To3_11 + $subtotal3_12To3_16 + $subtotal3_17To3_19,
-            700
-        );
+        $sub1 = $actv3Comision + $com3_2 + $com3_3 + $com3_4 + $com3_5 + $com3_6 + $com3_7 + $com3_8 + $com3_8_1;
 
-        return response()->json(['totalDocencia' => $total]);
+        $com3_9 = $sum('comision3_9');
+        $com3_10 = $sum('comision3_10');
+        $com3_11 = $sum('comision3_11');
+        $sub2 = $com3_9 + $com3_10 + $com3_11;
+
+        $com3_12 = $sum('comision3_12');
+        $com3_13 = $sum('comision3_13');
+        $com3_14 = $sum('comision3_14');
+        $com3_15 = $sum('comision3_15');
+        $com3_16 = $sum('comision3_16');
+        $sub3 = $com3_12 + $com3_13 + $com3_14 + $com3_15 + $com3_16;
+
+        $com3_17 = $sum('comision3_17');
+        $com3_18 = $sum('comision3_18');
+        $com3_19 = $sum('comision3_19');
+        $sub4 = $com3_17 + $com3_18 + $com3_19;
+
+        $rawTotal = $sub1 + $sub2 + $sub3 + $sub4;
+        $total = min(round($rawTotal, 2), 700);
+
+
+        return response()->json([
+            'totalDocencia' => $total,
+            'rawTotal' => round($rawTotal, 2),
+            'rowsCount' => $rows->count(),
+            'subtotals' => [
+                'subtotal3_1To3_8_1' => round($sub1, 2),
+                'subtotal3_9To3_11' => round($sub2, 2),
+                'subtotal3_12To3_16' => round($sub3, 2),
+                'subtotal3_17To3_19' => round($sub4, 2),
+            ],
+            'components' => [
+                'actv3Comision' => round($actv3Comision, 2),
+                'comision3_2' => round($com3_2, 2),
+                'comision3_3' => round($com3_3, 2),
+                'comision3_4' => round($com3_4, 2),
+                'comision3_5' => round($com3_5, 2),
+                'comision3_6' => round($com3_6, 2),
+                'comision3_7' => round($com3_7, 2),
+                'comision3_8' => round($com3_8, 2),
+                'comision3_8_1' => round($com3_8_1, 2),
+                'comision3_9' => round($com3_9, 2),
+                'comision3_10' => round($com3_10, 2),
+                'comision3_11' => round($com3_11, 2),
+                'comision3_12' => round($com3_12, 2),
+                'comision3_13' => round($com3_13, 2),
+                'comision3_14' => round($com3_14, 2),
+                'comision3_15' => round($com3_15, 2),
+                'comision3_16' => round($com3_16, 2),
+                'comision3_17' => round($com3_17, 2),
+                'comision3_18' => round($com3_18, 2),
+                'comision3_19' => round($com3_19, 2),
+            ],
+            'rows' => $rows, // para inspección en el cliente
+        ]);
     }
 
     public function getTotalDocenciaEvaluar(Request $request)
@@ -266,7 +322,7 @@ class DictaminatorForm3_1Controller extends TransferController
     $total += (UsersResponseForm3_5::where('user_id', $user_id)->value('score3_5') ?? 0);
     $total += (UsersResponseForm3_6::where('user_id', $user_id)->value('score3_6') ?? 0);
     $total += (UsersResponseForm3_7::where('user_id', $user_id)->value('score3_7') ?? 0);
-    $total  += (UsersResponseForm3_8::where('user_id', $user_id)->value('score3_8') ?? 0);
+    $total += (UsersResponseForm3_8::where('user_id', $user_id)->value('score3_8') ?? 0);
     $total += (UsersResponseForm3_8_1::where('user_id', $user_id)->value('score3_8_1') ?? 0);
     $total += (UsersResponseForm3_9::where('user_id', $user_id)->value('score3_9') ?? 0);
     $total += (UsersResponseForm3_10::where('user_id', $user_id)->value('score3_10') ?? 0);

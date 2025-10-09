@@ -103,7 +103,7 @@ class DictaminatorController extends Controller
                 'periodo'=>$formData1?->periodo,
                 'nombre'=>$formData1?->nombre,
                 'area'=>$formData1?->area,
-                'departamento'=>$departamento->departamento,
+                'departamento'=>$formData1?->departamento,
             ],
             'form1'=>$formData1,
             'form2' => $form2Data,    // existing fields can still be accessed

@@ -12,6 +12,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @include('components.partials.partials')
 
     <x-head-resources />  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -540,7 +541,7 @@ $user_identity = $user->id;
     };
 
 
-       document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('docenteSearch');
     const suggestionsBox = document.getElementById('docenteSuggestions');
     const hiddenEmail = document.getElementById('selectedDocenteEmail');
@@ -626,7 +627,7 @@ document.addEventListener('docenteSelected', async (e) => {
         }
 
         const user_id = docenteData.form3_1.user_id; 
-            axios.get('/formato-evaluacion/get-total-docencia-evaluar', { params: { user_id } })
+            axios.get(window.ENDPOINTS.getTotalDocenciaEvaluar, { params: { user_id } })
             .then(response => {
             const total = parseFloat(response.data.totalDocencia ?? '0');
             document.querySelectorAll('#docencia, #docencia2').forEach(el => {
@@ -643,7 +644,7 @@ document.addEventListener('docenteSelected', async (e) => {
 
 
             // Obtener datos de UsersResponseForm3_1
-             const res = await fetch(`/formato-evaluacion/get-docente-data`);
+             const res = await fetch(`/formato-evaluacion/get-data-31`);
                 const scoreElements = document.querySelectorAll('.score3_1');
                     scoreElements.forEach(element => {
                         element.textContent = docenteData.form3_1.score3_1 || '0';
@@ -669,32 +670,7 @@ document.addEventListener('docenteSelected', async (e) => {
 
 
             if (userType === '') {
-            // Obtener un solo registro de DictaminatorsResponseForm2_2
-            const res = await fetch(`/formato-evaluacion/get-form-data31?dictaminador_id=${encodeURIComponent(email)}`);
-            const result = await res.json();
-
-            if (result.success && result.data) {
-                const data = result.data;
-                    document.getElementById('elaboracion').textContent = data.form3_1.elaboracion || '0';
-                    document.getElementById('elaboracionSubTotal1').textContent = data.form3_1.elaboracionSubTotal1 || '0';
-                    document.getElementById('elaboracion2').textContent = data.form3_1.elaboracion2 || '0';
-                    document.getElementById('elaboracionSubTotal2').textContent = data.form3_1.elaboracionSubTotal2 || '0';
-                    document.getElementById('elaboracion3').textContent = data.form3_1.elaboracion3 || '0';
-                    document.getElementById('elaboracionSubTotal3').textContent = data.form3_1.elaboracionSubTotal3 || '0';
-                    document.getElementById('elaboracion4').textContent = data.form3_1.elaboracion4 || '0';
-                    document.getElementById('elaboracionSubTotal4').textContent = data.form3_1.elaboracionSubTotal4 || '0';
-                    document.getElementById('elaboracion5').textContent = data.form3_1.elaboracion5 || '0';
-                    document.getElementById('elaboracionSubTotal5').textContent = data.form3_1.elaboracionSubTotal5 || '0';
-                    //document.getElementById('actv3Comision').textContent = data.form3_1.actv3Comision || '0';
-
-                    // Populate hidden inputs
-                    document.querySelector('input[name="user_id"]').value = data.form3_1.user_id || '';
-                    document.querySelector('input[name="email"]').value = data.form3_1.email || '';
-                    document.querySelector('input[name="user_type"]').value = data.form3_1.user_type || '';
-            } else {
-                console.warn('No se encontraron datos de DictaminatorsResponseForm2');
-            }
-
+           
             // (Opcional) Obtener todas las respuestas de dictaminadores
             // Lógica para obtener datos de DictaminatorsResponseForm3_1
             try {

@@ -149,13 +149,14 @@ class TransferResponses extends Command
        
         foreach ($consolidatedData as $data) {
             \Log::info('Upserting consolidated data:', $data);
-            DB::table('consolidated_responses')->upsert($data, ['user_id'], [
-        'user_email', 'user_type',
-        'comision1', 'actv2Comision', 'actv3Comision',
-        'comision3_2', 'comision3_3', 'comision3_4', 'comision3_5', 'comision3_6', 'comision3_7', 'comision3_8', 'comision3_8_1',
-        'comision3_9', 'comision3_10', 'comision3_11', 'comision3_12', 'comision3_13', 'comision3_14', 'comision3_15', 'comision3_16',
-        'comision3_17', 'comision3_18', 'comision3_19'
-    ]);
+                // Construir la lista de columnas a actualizar a partir de las claves de $data,
+                // excluyendo la clave única 'user_id'
+                $updateColumns = array_keys($data);
+                $updateColumns = array_filter($updateColumns, function ($c) {
+                    return $c !== 'user_id';
+                });
+                DB::table('consolidated_responses')->upsert($data, ['user_id'], $updateColumns);
+
         }
 
         } catch (\Exception $e) {
