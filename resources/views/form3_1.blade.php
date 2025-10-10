@@ -627,7 +627,7 @@ document.addEventListener('docenteSelected', async (e) => {
         }
 
         const user_id = docenteData.form3_1.user_id; 
-            axios.get(window.ENDPOINTS.getTotalDocenciaEvaluar, { params: { user_id } })
+            axios.get(window.ENDPOINTS.getTotalDocencia, { params: { user_id } })
             .then(response => {
             const total = parseFloat(response.data.totalDocencia ?? '0');
             document.querySelectorAll('#docencia, #docencia2').forEach(el => {
@@ -766,6 +766,8 @@ document.addEventListener('docenteSelected', async (e) => {
         console.error('Error general al procesar datos del docente:', error);
     }
 });
+
+
 
            const pages = document.querySelectorAll(".page-break");
             const isPrinting = window.matchMedia('print').matches;
