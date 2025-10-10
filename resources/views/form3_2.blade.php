@@ -2,6 +2,54 @@
 $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
+
+ $docenteConfig = [
+        'formKey' => 'form3_2',
+        'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data', 
+        'docentesEndpoint' => '/formato-evaluacion/get-docentes',
+        'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
+        'dictCollectionKey' => 'form3_2',
+        'userTypeForDict' => '',
+        'docenteMappings' => [
+            'score3_2' => 'score3_2',
+            'r1' => 'r1',
+            'r2' => 'r2',
+            'r3' => 'r3',
+            'cant1' => 'cant1',
+            'cant2' => 'cant2',
+            'cant3' => 'cant3',
+        ],
+        'dictMappings' => [
+            'comision3_2' => 'comision3_2',
+            'prom90_100' => 'prom90_100',
+            'prom80_90' => 'prom80_90',
+            'prom70_80' => 'prom70_80',
+            'obs3_2_1' => 'obs3_2_1',
+            'obs3_2_2' => 'obs3_2_2',
+            'obs3_2_3' => 'obs3_2_3',
+            'score3_2' => 'score3_2',
+            'r1' => 'r1',
+            'r2' => 'r2',
+            'r3' => 'r3',
+            'cant1' => 'cant1',
+            'cant2' => 'cant2',
+            'cant3' => 'cant3',
+        ],
+        'fillHiddenFrom' => [
+            'user_id' => 'user_id',
+            'email' => 'email',
+            'user_type' => 'user_type',
+        ],
+        'fillHiddenFromDict' => [
+            'dictaminador_id' => 'dictaminador_id',
+            'user_id' => 'user_id',
+            'email' => 'email',
+            'user_type' => 'user_type',
+        ],
+        'resetOnNotFound' => true,
+        'resetValues' => [],
+        'printPagePairs' => [[3,4]],
+    ];
 @endphp
 <!DOCTYPE html>
 <html lang="">
@@ -14,6 +62,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <x-head-resources />
+    {{-- partial blade para autocompletar datos--}}
+    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
 <style>
     body.chrome @media print {
         #convocatoria {
@@ -327,214 +377,6 @@ $user_identity = $user->id;
 
         };   
             
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('docenteSearch');
-    const suggestionsBox = document.getElementById('docenteSuggestions');
-    const hiddenEmail = document.getElementById('selectedDocenteEmail');
-
-    const userType = @json($userType);
-    const userIdentity = @json($user_identity);
-
-    let debounceTimer;
-
-    // Autocompletado: Buscar docentes mientras se escribe
-    searchInput.addEventListener('input', function () {
-        const query = this.value.trim();
-        clearTimeout(debounceTimer);
-
-        if (query.length < 2) {
-            suggestionsBox.style.display = 'none';
-            return;
-        }
-
-        debounceTimer = setTimeout(async () => {
-            try {
-                const response = await fetch(`/formato-evaluacion/get-docentes?search=${encodeURIComponent(query)}`);
-                const docentes = await response.json();
-
-                suggestionsBox.innerHTML = '';
-                if (docentes.length > 0) {
-                    docentes.forEach(d => {
-                        const li = document.createElement('li');
-                        li.classList.add('list-group-item', 'list-group-item-action');
-                        li.innerHTML = `<strong>${d.nombre}</strong><br><small>${d.email}</small>`;
-                        li.addEventListener('click', () => {
-                            searchInput.value = `${d.nombre} (${d.email})`;
-                            hiddenEmail.value = d.email;
-                            suggestionsBox.style.display = 'none';
-
-                            // Disparar evento personalizado
-                            const selectedEvent = new CustomEvent('docenteSelected', { detail: d });
-                            document.dispatchEvent(selectedEvent);
-                        });
-                        suggestionsBox.appendChild(li);
-                    });
-                    suggestionsBox.style.display = 'block';
-                } else {
-                    suggestionsBox.style.display = 'none';
-                }
-            } catch (error) {
-                console.error('Error buscando docentes:', error);
-            }
-        }, 300);
-    });
-
-    // Ocultar sugerencias al hacer clic fuera
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('#docenteSearch') && !e.target.closest('#docenteSuggestions')) {
-            suggestionsBox.style.display = 'none';
-        }
-    });
-
-    // Evento cuando se selecciona un docente
-document.addEventListener('docenteSelected', async (e) => {
-    const docente = e.detail;
-    const email = docente.email;
-
-    try {
-        // === Comunes: cargar datos de docente ===
-        const axiosResponse = await axios.get('/formato-evaluacion/get-docente-data', { params: { email } });
-        const docenteData = axiosResponse.data;
-
-        if (docenteData.docente) {
-            // Actualizar convocatoria
-            const convocatoriaElement = document.getElementById('convocatoria');
-            if (convocatoriaElement) {
-                if (docenteData.form1) {
-                    convocatoriaElement.textContent = docenteData.form1.convocatoria || '';
-                } else {
-                    console.error('form1 no está definido en la respuesta.');
-                }
-            } else {
-                console.error('Elemento con ID "convocatoria" no encontrado.');
-            }
-        }
-
-        const user_id = docenteData.form3_2.user_id; 
-        
-
-            // Obtener datos de UsersResponseForm3_2
-             const res = await fetch(`/formato-evaluacion/get-data-32`);
-            //  const scoreElements = document.querySelectorAll('.score3_2');
-             
-                    
-                        document.getElementById('score3_2').textContent = docenteData.form3_2.score3_2 || '0';
-                        document.getElementById('r1').textContent = docenteData.form3_2.r1 || '0';
-                        document.getElementById('r2').textContent = docenteData.form3_2.r2 || '0';
-                        document.getElementById('r3').textContent = docenteData.form3_2.r3 || '0';
-                        document.getElementById('cant1').textContent = docenteData.form3_2.cant1 || '0';
-                        document.getElementById('cant2').textContent = docenteData.form3_2.cant2 || '0';
-                        document.getElementById('cant3').textContent = docenteData.form3_2.cant3 || '0';
-
-
-                        // Populate hidden inputs
-                        document.querySelector('input[name="user_id"]').value = docenteData.form3_2.user_id || '';
-                        document.querySelector('input[name="email"]').value = docenteData.form3_2.email || '';
-                        document.querySelector('input[name="user_type"]').value = docenteData.form3_2.user_type || '';
-
-
-            if (userType === '') {
-           
-            // Obtener todas las respuestas de dictaminadores
-            // Lógica para obtener datos de DictaminatorsResponseForm3_2
-                try {
-                    const response = await fetch('/formato-evaluacion/get-dictaminators-responses');
-                    const dictaminatorResponses = await response.json();
-                    // Filtrar la entrada correspondiente al email seleccionado
-                    const selectedResponseForm3_2 = dictaminatorResponses.form3_2.find(res => res.email === email);
-                    if (selectedResponseForm3_2) {
-
-                        document.querySelector('input[name="dictaminador_id"]').value = selectedResponseForm3_2.dictaminador_id || '0';
-                        document.querySelector('input[name="user_id"]').value = selectedResponseForm3_2.user_id || '';
-                        document.querySelector('input[name="email"]').value = selectedResponseForm3_2.email || '';
-                        document.querySelector('input[name="user_type"]').value = selectedResponseForm3_2.user_type || '';
-
-                        document.getElementById('score3_2').textContent = selectedResponseForm3_2.score3_2 || '0';
-                        document.getElementById('r1').textContent = selectedResponseForm3_2.r1 || '0';
-                        document.getElementById('r2').textContent = selectedResponseForm3_2.r2 || '0';
-                        document.getElementById('r3').textContent = selectedResponseForm3_2.r3 || '0';
-                        document.getElementById('cant1').textContent = selectedResponseForm3_2.cant1 || '0';
-                        document.getElementById('cant2').textContent = selectedResponseForm3_2.cant2 || '0';
-                        document.getElementById('cant3').textContent = selectedResponseForm3_2.cant3 || '0';
-                        document.getElementById('comision3_2').textContent = selectedResponseForm3_2.comision3_2 || '0';
-                        document.querySelector('span[name="prom90_100"]').textContent = selectedResponseForm3_2.prom90_100 || '0';
-                        document.querySelector('span[name="prom80_90"]').textContent = selectedResponseForm3_2.prom80_90 || '0';
-                        document.querySelector('span[name="prom70_80"]').textContent = selectedResponseForm3_2.prom70_80 || '0';
-                        document.querySelector('span[name="obs3_2_1"]').textContent = selectedResponseForm3_2.obs3_2_1 || '';
-                        document.querySelector('span[name="obs3_2_2"]').textContent = selectedResponseForm3_2.obs3_2_2 || '';
-                        document.querySelector('span[name="obs3_2_3"]').textContent = selectedResponseForm3_2.obs3_2_3 || '';
-
-
-                    } else {
-
-                        console.error('No form3_2 data found for the selected dictaminador.');
-                        // Reset input values if no data found
-                        document.querySelector('input[name="dictaminador_id"]').value = '0';
-                        document.querySelector('input[name="user_id"]').value = '0';
-                        document.querySelector('input[name="email"]').value = '';
-                        document.querySelector('input[name="user_type"]').value = '';
-                        document.getElementById('r1').textContent = '0';
-                        document.getElementById('r2').textContent = '0';
-                        document.getElementById('r3').textContent = '0';
-                        document.getElementById('cant1').textContent = '0';
-                        document.getElementById('cant2').textContent = '0';
-                        document.getElementById('cant3').textContent = '0';
-                        document.getElementById('comision3_2').textContent = '0';
-                        document.querySelector('span[name="prom90_100"]').textContent = '0';
-                        document.querySelector('span[name="prom80_90"]').textContent = '0';
-                        document.querySelector('span[name="prom70_80"]').textContent = '0';
-                        document.querySelector('span[name="obs3_2_1"]').textContent = '';
-                        document.querySelector('span[name="obs3_2_2"]').textContent = '';
-                        document.querySelector('span[name="obs3_2_3"]').textContent = '';
-                    }
-                } catch (error) {
-                    console.error('Error fetching dictaminators responses:', error);
-                }
-        }
-
-    } catch (error) {
-        console.error('Error general al procesar datos del docente:', error);
-    }
-});
-
-           const pages = document.querySelectorAll(".page-break");
-            const isPrinting = window.matchMedia('print').matches;
-
-            if (isPrinting) {
-                const firstFooter = document.querySelector('.first-page-footer');
-                const secondFooter = document.querySelector('.second-page-footer');
-
-                // Ocultar/mostrar los pies de página según el contenido visible
-                pages.forEach((page) => {
-                    if (page.dataset.page === "3") {
-                        firstFooter.style.display = 'table-footer-group';
-                        secondFooter.style.display = 'none';
-                    } else if (page.dataset.page === "4") {
-                        firstFooter.style.display = 'none';
-                        secondFooter.style.display = 'table-footer-group';
-                    }
-                });
-            }
-
-                    window.addEventListener('beforeprint', () => {
-                const pages = document.querySelectorAll(".page-break");
-
-                pages.forEach(page => {
-                    const pageNumber = page.getAttribute('data-page');
-                    const firstFooter = page.querySelector('.first-page-footer');
-                    const secondFooter = page.querySelector('.second-page-footer');
-
-                    if (firstFooter) {
-                        firstFooter.style.display = pageNumber === '3' ? 'table-footer-group' : 'none';
-                    }
-
-                    if (secondFooter) {
-                        secondFooter.style.display = pageNumber === '4' ? 'table-footer-group' : 'none';
-                    }
-                });
-            });
-});
-
         // Function to handle form submission
         async function submitForm(url, formId) {
             const formData = {};
