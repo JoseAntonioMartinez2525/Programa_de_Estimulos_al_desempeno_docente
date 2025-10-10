@@ -24,6 +24,10 @@ $docenteConfig = [
         'stotal2' => 'stotal2',
         'stotal3' => 'stotal3',
         'stotal4' => 'stotal4',
+        // comisiones y sus copias (puedes usar clase o id)
+        '.comision3_3' => 'comision3_3',
+        '.comision3_3_copy' => 'comision3_3',
+        '#comision3_3_copy' => 'comision3_3',
         ],
         // Mapeos para respuestas de dictaminadores (si aplica)
     'dictMappings' => [
@@ -174,7 +178,7 @@ $docenteConfig = [
         left: 0;
         right: 0;
         text-align: center;
-        font-size: 12px;
+        font-size: 10px;
         background-color: white;
         padding: 10px 0;
         border-top: 1px solid #ccc;
@@ -297,9 +301,10 @@ $docenteConfig = [
 }
 
 .dictaminador-style#piedepagina_copy {
-    margin-left: 800px;
+    margin-left: 0px;
     margin-top: 10px;
     font-weight: normal!important;
+
 }
 
 /* Estilo para secretaria o userType vacío */
@@ -313,7 +318,8 @@ $docenteConfig = [
 }
 
  body.dark-mode [class^="obs3_3_"]{
-    color: black
+    color: white;
+    background-color: transparent;
 }
 
 body.dark-mode .comIncisoA, body.dark-mode .comIncisoB, body.dark-mode .comIncisoC,
@@ -568,7 +574,6 @@ $user_identity = $user->id;
     @if ($userType != '')
         <button id="btn3_3" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
     @endif
-<div class="espaciadoConvocatoria">
 
 
 <div id="piedepagina_copy"
