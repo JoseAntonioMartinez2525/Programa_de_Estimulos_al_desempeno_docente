@@ -24,10 +24,6 @@ $docenteConfig = [
         'stotal2' => 'stotal2',
         'stotal3' => 'stotal3',
         'stotal4' => 'stotal4',
-        // comisiones y sus copias (puedes usar clase o id)
-        '.comision3_3' => 'comision3_3',
-        '.comision3_3_copy' => 'comision3_3',
-        '#comision3_3_copy' => 'comision3_3',
         ],
         // Mapeos para respuestas de dictaminadores (si aplica)
     'dictMappings' => [
