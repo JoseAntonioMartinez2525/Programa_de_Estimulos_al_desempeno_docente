@@ -318,6 +318,46 @@ document.addEventListener('docenteSelected', async (e) => {
             document.querySelector('input[name="email"]').value = form2Data.email || '';
             document.querySelector('input[name="user_type"]').value = form2Data.user_type || '';
             
+if (docenteData) {
+    // Volcar score3_1..score3_19 desde la respuesta al objeto data y al DOM
+    for (let i = 1; i <= 19; i++) {
+        const key = `score3_${i}`;
+        if (docenteData.hasOwnProperty(key)) {
+            const val = parseFloat(docenteData[key]);
+            data[key] = isNaN(val) ? 0 : val;
+            const el = document.getElementById(key);
+            if (el) {
+                // si es input usar .value, si es span/div usar textContent
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.value = data[key];
+                else el.textContent = data[key];
+            }
+        }
+    }
+
+    // Volcar comision3_1..comision3_16 si vienen
+    for (let i = 1; i <= 16; i++) {
+        const key = `comision3_${i}`;
+        if (docenteData.hasOwnProperty(key)) {
+            const val = parseFloat(docenteData[key]);
+            data[key] = isNaN(val) ? 0 : val;
+            const el = document.getElementById(key);
+            if (el) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.value = data[key];
+                else el.textContent = data[key];
+            }
+        }
+    }
+
+    // Asegurar que data.docencia refleje lo guardado / recalculado
+    if (docenteData.hasOwnProperty('docencia')) {
+        const v = parseFloat(docenteData.docencia);
+        data.docencia = isNaN(v) ? 0 : v;
+    }
+
+    // Forzar recálculo/lectura y actualizar #docencia
+    if (typeof scheduleInitializeFromDOM === 'function') scheduleInitializeFromDOM(50);
+    else if (typeof updateDocencia === 'function') updateDocencia();
+}
 
         } else if (userType === 'secretaria') {
             // Obtener un solo registro de DictaminatorsResponseForm2

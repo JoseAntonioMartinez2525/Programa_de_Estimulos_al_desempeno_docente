@@ -1,6 +1,125 @@
 //Puntajes a Evaluar
 
+// Asegurarse de que exista el objeto data
+if (typeof data === 'undefined' || data === null) {
+    var data = {};
+}
 let docencia = 0;
+function updateDocencia() {
+    const keys = [];
+    for (let i = 1; i <= 19; i++) keys.push(`score3_${i}`);
+    let total = 0;
+    keys.forEach(k => {
+        const v = parseFloat(data[k]);
+        if (!isNaN(v)) total += v;
+    });
+    // Límite global
+    docencia = Math.min(total, 700);
+    const el = document.getElementById("docencia");
+    if (el) el.innerText = docencia;
+    data.docencia = docencia;
+}
+
+function initializeDataFromDOM() {
+    for (let i = 1; i <= 19; i++) {
+        const id = `score3_${i}`;
+        const el = document.getElementById(id);
+        let raw = null;
+        if (el) {
+            // input elements have .value, spans/divs have textContent
+            raw = (el.value !== undefined && el.value !== '') ? el.value : el.textContent;
+        }
+        const parsed = parseFloat(raw);
+        data[id] = isNaN(parsed) ? (data[id] || 0) : parsed;
+    }
+
+    // Además intenta leer comisiones/números que puedan influir (si tienes ids distintos)
+    // Por ejemplo: leer comision3_1..comision3_16 si existen
+    for (let i = 1; i <= 16; i++) {
+        const cid = `comision3_${i}`;
+        const cel = document.getElementById(cid);
+        if (cel) {
+            const raw = (cel.value !== undefined && cel.value !== '') ? cel.value : cel.textContent;
+            const v = parseFloat(raw);
+            data[cid] = isNaN(v) ? (data[cid] || 0) : v;
+        }
+    }
+
+    updateDocencia();
+}
+
+// Debounce para evitar recalcular muy frecuentemente
+let __initDebounceTimer = null;
+function scheduleInitializeFromDOM(ms = 100) {
+    if (__initDebounceTimer) clearTimeout(__initDebounceTimer);
+    __initDebounceTimer = setTimeout(initializeDataFromDOM, ms);
+}
+
+// Adjunta listeners a inputs y elementos relevantes para forzar recalculo
+function attachInputsRecalcListeners() {
+    // inputs y textareas
+    document.querySelectorAll('input[type="number"], input[type="text"], input:not([type]) , textarea, select').forEach(inp => {
+        if (inp.__recalcAttached) return;
+        inp.__recalcAttached = true;
+        inp.addEventListener('input', () => scheduleInitializeFromDOM(50));
+        inp.addEventListener('change', () => scheduleInitializeFromDOM(50));
+    });
+
+    // elementos con ids score3_* o comision3_* pueden cambiar por JS: observar atributos/value
+    const specialSelector = Array.from({ length: 19 }, (_, i) => `#score3_${i+1}`).join(',') +
+                            ',' + Array.from({ length: 16 }, (_, i) => `#comision3_${i+1}`).join(',');
+    try {
+        const specialNodes = document.querySelectorAll(specialSelector);
+        specialNodes.forEach(node => {
+            if (node.__recalcAttached) return;
+            node.__recalcAttached = true;
+            // si es input, ya está cubierto; si es span/div, reaccionaremos con observer global
+            node.addEventListener('DOMSubtreeModified', () => scheduleInitializeFromDOM(50));
+        });
+    } catch (e) {
+        // selector puede fallar si no existen los nodos; no es crítico
+    }
+}
+
+// Observador global para cambios en DOM que no emitan eventos input/change
+let __globalMutationObserver = null;
+function startGlobalMutationObserver() {
+    if (typeof MutationObserver === 'undefined') return;
+    if (__globalMutationObserver) return;
+
+    __globalMutationObserver = new MutationObserver((mutations) => {
+        // Si hay cambios en texto o en atributos value, re-inicializar (debounced)
+        let shouldSchedule = false;
+        for (const m of mutations) {
+            if (m.type === 'characterData' || m.type === 'childList' || (m.type === 'attributes' && m.attributeName === 'value')) {
+                shouldSchedule = true;
+                break;
+            }
+        }
+        if (shouldSchedule) scheduleInitializeFromDOM(60);
+    });
+
+    __globalMutationObserver.observe(document.body, {
+        subtree: true,
+        childList: true,
+        characterData: true,
+        attributes: true,
+        attributeFilter: ['value', 'class', 'style']
+    });
+}
+
+// Exponer funciones globales para llamadas desde vistas (form2.blade.php llama scheduleInitializeFromDOM)
+window.scheduleInitializeFromDOM = scheduleInitializeFromDOM;
+window.updateDocencia = updateDocencia;
+window.initializeDataFromDOM = initializeDataFromDOM;
+
+// Inicialización al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    attachInputsRecalcListeners();
+    startGlobalMutationObserver();
+    scheduleInitializeFromDOM(50);
+});
+
     function calculateSubtotal1() {
         // Get the values of each span element, parse them as float and sum them up
         const values = [
@@ -125,6 +244,9 @@ if(docencia>=60){
  document.getElementById("docencia").innerHTML = docencia;
  data.score3_1=score3_1;
  
+ // asigna y recalcula el total (no acumular)
+  data.score3_1 = isNaN(score3_1) ? 0 : score3_1;
+  updateDocencia();
 
 }
 
@@ -174,6 +296,8 @@ if (!isNaN(score3_2)) {
    console.log("docencia:", docencia);
     document.getElementById("docencia").innerHTML = docencia;
   data.score3_2=score3_2;
+  data.score3_2 = isNaN(score3_2) ? 0 : score3_2;
+  updateDocencia();
   
 }
 
@@ -226,8 +350,9 @@ if(docencia>=700){
   document.getElementById("docencia").innerHTML = 700;
 }
  document.getElementById("docencia").innerHTML = docencia;
- data.score3_3=score3_3;
-  
+  data.score3_3=score3_3;
+  data.score3_3 = isNaN(score3_3) ? 0 : score3_3;
+  updateDocencia();  
 }
 
 
@@ -279,7 +404,8 @@ if(docencia>=700){
 }
  document.getElementById("docencia").innerHTML = docencia;
  data.score3_4 = score3_4;
-
+ data.score3_4 = isNaN(score3_4) ? 0 : score3_4;
+ updateDocencia();
 
 }
 
@@ -321,7 +447,8 @@ if(docencia>=700){
 }
  document.getElementById("docencia").innerHTML = docencia;
  data.score3_5 = score3_5;
-
+ data.score3_5 = isNaN(score3_5) ? 0 : score3_5;
+ updateDocencia();
 
 }
 
@@ -350,6 +477,8 @@ if (!isNaN(score3_6)) {
 }
  data.score3_6 = score3_6;
 data.docencia  = docencia;
+data.score3_6 = isNaN(score3_6) ? 0 : score3_6;
+updateDocencia();
 console.log("docencia 3:", docencia);
 
 }
@@ -382,6 +511,8 @@ if (!isNaN(score3_7)) {
 }
 
 data.docencia  = docencia;
+data.score3_7 = isNaN(score3_7) ? 0 : score3_7;
+updateDocencia();
 console.log("docencia 3:", docencia);
 }
 
@@ -409,6 +540,8 @@ if (!isNaN(score3_8)) {
 }
  document.getElementById("docencia").innerHTML = docencia;
  data.score3_8 = score3_8;
+  data.score3_8 = isNaN(score3_8) ? 0 : score3_8;
+  updateDocencia();
 }
 
 function onActv3SubTotal3_8_1(){
@@ -439,6 +572,8 @@ if (!isNaN(score3_8_1)) {
 }
  document.getElementById("docencia").innerHTML = docencia;
  data.score3_8_1 = score3_8_1;
+  data.score3_8_1 = isNaN(score3_8_1) ? 0 : score3_8_1;
+  updateDocencia();
 }
 
 
@@ -588,6 +723,8 @@ if (!isNaN(score3_9)) {
  data.score3_9 = score3_9;
  data.docencia  = docencia;
 console.log("docencia 3:", docencia);
+  data.score3_9 = isNaN(score3_9) ? 0 : score3_9;
+  updateDocencia();
 }
 
 function onActv3SubTotal3_10(){
@@ -627,6 +764,10 @@ console.log("🚀 ~ onActv3SubTotal3_10 ~ evaluarGrupales:", evaluarGrupales)
 
 
   data.score3_10 = score3_10;
+  data.docencia  = docencia;
+  console.log("docencia 3:", docencia);
+  data.score3_10 = isNaN(score3_10) ? 0 : score3_10;
+  updateDocencia();
 }
 
 function onActv3SubTotal3_11(){
@@ -672,6 +813,10 @@ if (!isNaN(score3_11)) {
 }
 
 data.score3_11 = score3_11;
+data.docencia  = docencia;
+console.log("docencia 3:", docencia);
+data.score3_11 = isNaN(score3_11) ? 0 : score3_11;
+updateDocencia();
 
 }
 
@@ -776,6 +921,10 @@ console.log("Subtotal Diseño Web:", subtotalWeb);
 
 
   data.score3_12 = score3_12;
+  data.docencia  = docencia;
+  console.log("docencia 3:", docencia);
+  data.score3_12 = isNaN(score3_12) ? 0 : score3_12;
+  updateDocencia();
 
 }
 
@@ -841,6 +990,10 @@ console.log("Subtotal Arbitraje Internacional: ",subtotalReporteInvInt );
 }
 
   data.score3_13 = score3_13;
+  data.docencia  = docencia;
+  console.log("docencia 3:", docencia);
+  data.score3_13 = isNaN(score3_13) ? 0 : score3_13;
+  updateDocencia();
 
 
 
@@ -902,6 +1055,10 @@ console.log("SubTotal Congreso Local: ", subtotalCongresoLoc) ;
 }
  
   data.score3_14 = score3_14;
+  data.docencia  = docencia;
+  console.log("docencia 3:", docencia);
+  data.score3_14 = isNaN(score3_14) ? 0 : score3_14;
+  updateDocencia();
 
 }
 
@@ -954,6 +1111,10 @@ console.log("SubTotal Desarrollo de Prototipos: ", subtotalPrototipos);
 
  console.log("onActv3SubTotal3_15 ~ docencia:", docencia);
   data.score3_15 = score3_15;
+  data.docencia  = docencia;
+  console.log("docencia 3:", docencia);
+  data.score3_15 = isNaN(score3_15) ? 0 : score3_15;
+  updateDocencia();
 
 }
 
@@ -1034,6 +1195,10 @@ console.log("SubTotal Consejo editorial de revista, edición de revista: ", subt
 }
    console.log("onActv3SubTotal3_16 ~ docencia:", docencia);
   data.score3_16 = score3_16;
+  data.docencia  = docencia;
+  console.log("docencia 3:", docencia);
+  data.score3_16 = isNaN(score3_16) ? 0 : score3_16;
+  updateDocencia();
 
 }
 
@@ -1087,18 +1252,23 @@ console.log("Reporte cumplido del periodo anual de proyecto de extensión y difu
   document.getElementById( "score3_17" ).innerHTML= score3_17;
   console.log ("Puntaje de las Evaluaciones 3.17: "), score3_17;
 
-  /*  
+ 
   if (!isNaN(score3_17)) {
     docencia += score3_17;
     if(docencia>=700){
 
-  //document.getElementById("docencia").innerHTML = 700;
+  document.getElementById("docencia").innerHTML = 700;
 } 
     
 }
  //document.getElementById("docencia").innerHTML = docencia;
   data.score3_17 = score3_17;
-*/
+  data.docencia  = docencia;
+  console.log("docencia 3:", docencia);
+  data.score3_17 = isNaN(score3_17) ? 0 : score3_17;
+  updateDocencia();
+
+
 }
 
 
@@ -1210,7 +1380,13 @@ console.log("l)  Ciclo de conferencias, simposio, coloquio, etc. Internacional, 
     if(docencia>=700){
 
   document.getElementById("docencia").innerHTML = 700;
+
 }
+
+    data.score3_18 = isNaN(score3_18) ? 0 : score3_18;
+    updateDocencia();
+    data.docencia = data.docencia || 0;
+    console.log("docencia 3:", docencia);
 }
 
 
@@ -1392,10 +1568,15 @@ console.log("q2) Cuerpo académico registrado ante PRODEP Consolidado Integrante
   document.getElementById("docencia").innerHTML = 700;
 }
 data.docencia  = docencia;
+data.score3_19 = isNaN(score3_19) ? 0 : score3_19;
+updateDocencia();
+data.docencia = data.docencia || 0;
 console.log("docencia 3:", docencia);
 
 
 }
+
+
 /*
         if (/WebKit/.test(navigator.userAgent)) {
             document.body.classList.add('webkit-print');
