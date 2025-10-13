@@ -273,7 +273,7 @@ document.addEventListener('docenteSelected', async (e) => {
             document.querySelector('input[name="email"]').value = docenteData.form2_2.email || '';
             document.querySelector('input[name="user_type"]').value = docenteData.form2_2.user_type || '';
 
-            if (userType === '') {
+            if (userType === 'secretaria') {
             // Obtener un solo registro de DictaminatorsResponseForm2_2
             const res = await fetch(`/formato-evaluacion/get-form-data2?dictaminador_id=${encodeURIComponent(email)}`);
             const result = await res.json();

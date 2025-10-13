@@ -69,7 +69,7 @@ return new class extends Migration
             $table->string('obs3_9_15')->nullable();
             $table->string('obs3_9_16')->nullable();
             $table->string('obs3_9_17')->nullable();
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             $table->timestamps();
         });
 

@@ -49,8 +49,14 @@ class ResponseForm2_2Controller extends Controller
 
         UsersResponseForm2_2::create($validatedData);
 
-            // Disparar evento después de la creación del registro
-            event(new EvaluationCompleted($validatedData['user_id']));
+            // Intentar disparar el evento pero no permitir que cualquier error posterior impida la respuesta de éxito
+            try {
+                event(new EvaluationCompleted($validatedData['user_id']));
+            } catch (\Exception $e) {
+                \Log::error('Post-save processing failed for store3 user_id '.$validatedData['user_id'].': '.$e->getMessage());
+                // No rethrow
+            }
+
             return response()->json([
                 'success' => true,
                 'message' => 'Form submitted successfully!',

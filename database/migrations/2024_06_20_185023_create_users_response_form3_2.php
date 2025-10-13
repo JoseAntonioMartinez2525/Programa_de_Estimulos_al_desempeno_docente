@@ -26,7 +26,7 @@ return new class extends Migration {
             $table->string('obs3_2_1')->nullable(); // Allow null values
             $table->string('obs3_2_2')->nullable(); // Allow null values
             $table->string('obs3_2_3')->nullable(); // Allow null values
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             $table->timestamps();
         });
 

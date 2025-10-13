@@ -43,7 +43,7 @@
                                         @endif
                                     </li>
                                     <!-- Funcionalidad en caso de nuevos formularios
-                                    @if(Auth::user()->user_type === '')
+                                    @if(Auth::user()->user_type === 'secretaria')
                                     <li class="nav-item">
                                         <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('dynamic_forms') }}">Añadir nuevo formulario</a>
                                     </li>

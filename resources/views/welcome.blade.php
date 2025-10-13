@@ -44,6 +44,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
         <form id="form1" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store', 'form1');">
 
+          <br>
         <label for="convocatoria" class="label">Convocatoria</label>
         <input name="convocatoria" type="text" class="input-header mb-3" id="convocatoria"></input>
 
@@ -528,17 +529,29 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             body: JSON.stringify(formData),
           });
 
-          /*
-          const responseText = await response.text(); // Obtener la respuesta como texto
-          console.log('Raw response from server:', responseText); // Ver qué se devuelve
-            */
-          if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
+          // Read response body as text and attempt to parse JSON (so we can show server error messages)
+          const responseText = await response.text();
+          let responseData;
+          try {
+            responseData = responseText ? JSON.parse(responseText) : {};
+          } catch (err) {
+            responseData = { success: false, message: responseText || 'Invalid JSON response from server' };
           }
 
-          let data = await response.json(); // Esto será seguro de usar si estás seguro de que la respuesta es JSON
-          console.log('Response received from server:', data);
-          showMessage('Formulario enviado', 'green');
+          if (!response.ok) {
+            console.error('Server responded with an error:', responseData);
+            // Mostrar el mensaje de error devuelto por el servidor si existe
+            showMessage(responseData.message || `Server error (${response.status})`, 'red');
+            return;
+          }
+
+        // Solo mostrar éxito si el servidor marca success === true
+          if (responseData && responseData.success === true) {
+            showMessage('Formulario enviado', 'green');
+          } else {
+            console.error('Submission failed:', responseData);
+            showMessage(responseData.message || 'Formulario no enviado', 'red');
+          }
 
         } catch (error) {
           console.error('There was a problem with the fetch operation:', error);

@@ -152,7 +152,7 @@ body.dark-mode nav.nav.flex-column a:hover {
       <a class="nav-link active enlaceSN" style="width: 300px;font-size: 20px;"
       href="{{ route('comision_dictaminadora') }}" title="Formato de Evaluación docente"><i class="fa-solid fa-align-justify"></i>&nbspEvaluación</a>
       
-      @elseif(Auth::user()->user_type === '')
+      @elseif(Auth::user()->user_type === 'secretaria')
       <a class="nav-link active enlaceSN" style="width: 250px;font-size: 20px;"  title="Formato de Evaluación docente"href="{{ route('secretaria') }}"><i class="fa-solid fa-align-justify"></i>&nbspEvaluación</a>
       --}}
       @if (Auth::user()->user_type === 'docente') 
@@ -161,7 +161,7 @@ body.dark-mode nav.nav.flex-column a:hover {
       </li>
        </ul>
     <!-- Fucntionalidad en caso de necesitar realizar un nuevo formulario 
- if(Auth::user()->user_type === '')
+ if(Auth::user()->user_type === 'secretaria')
       <li class="nav-item">
       <a class="nav-link active enlaceSN" style="width: 300px;" href="{{route('dynamic_forms')}}"
       title="Ingresar nuevo formulario"><i class="fa-solid fa-folder-plus"></i>&nbspIngresar nuevo</a>

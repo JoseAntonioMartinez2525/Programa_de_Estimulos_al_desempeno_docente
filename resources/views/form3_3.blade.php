@@ -468,7 +468,7 @@ $user_identity = $user->id;
                 <span style="margin-right: 700px; display: inline-block;">
                     <h1>Convocatoria: </h1>
                 </span>
-            @elseif($userType == '')
+            @elseif($userType == 'secretaria')
                 <span style="margin-right: 60px; margin-left: 100px; display:nonek;padding-right: 12px; text-align:left;">
                     <h1>Convocatoria: </h1>
                 </span>
@@ -577,7 +577,7 @@ $user_identity = $user->id;
 
 
 <div id="piedepagina_copy"
-    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
+    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
     Página 7 de 33
 </div>
 
@@ -646,6 +646,7 @@ $user_identity = $user->id;
             formData['comision3_3'] = document.querySelector('.comision3_3').textContent;
 
             // Observations
+            
             formData['obs3_3_1'] = form.querySelector('input[class="obs3_3_1"]').textContent;
             formData['obs3_3_2'] = form.querySelector('input[class="obs3_3_2"]').textContent;
             formData['obs3_3_3'] = form.querySelector('input[class="obs3_3_3"]').textContent;

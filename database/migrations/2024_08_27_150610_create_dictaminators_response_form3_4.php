@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('obs3_4_2')->default('sin comentarios'); // Default value
             $table->string('obs3_4_3')->default('sin comentarios'); // Default value 
             $table->string('obs3_4_4')->default('sin comentarios'); // Default
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             $table->timestamps();
         });
     }

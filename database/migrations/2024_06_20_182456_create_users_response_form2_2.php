@@ -24,7 +24,7 @@ class CreateUsersResponseForm22 extends Migration {
             $table->decimal('dse2', 8, 2);
             $table->string('obs2')->nullable();
             $table->string('obs2_2')->nullable();
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             
             $table->timestamps();
         });

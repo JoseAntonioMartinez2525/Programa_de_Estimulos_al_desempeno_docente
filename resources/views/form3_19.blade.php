@@ -380,7 +380,7 @@ $page_counter = 28;
                     @endif
                 </div>
                 <div id="piedepagina1"
-                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
+                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
                     Página 28 de 33
                 </div>
             </div><br><br>
@@ -627,7 +627,7 @@ $page_counter = 28;
                 </div>
 
                 <div id="piedepagina2"
-                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
+                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
                     Página 29 de 33
                 </div>
             </div><br><br><br>
@@ -820,13 +820,13 @@ $page_counter = 28;
 
 
                 <div id="piedepagina3"
-                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
+                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
                     Página 30 de 33
                 </div>
             </div>
         </form>
         <!--
-                @if ($userType == '')
+                @if ($userType == 'secretaria')
                     <form action="{{ route('generate.pdf') }}" id="button3_19" method="POST" onsubmit="generatePdf('button3_19');">
                         @csrf
                         <input type="hidden" name="email" value="{{ Auth::user()->email }}">
@@ -1008,7 +1008,7 @@ $page_counter = 28;
                     }
                 }
                 // Cuando el userType está vacío
-                else if (userType === '') {
+                else if (userType === 'secretaria') {
 
                     try {
                        const response = await fetch('/formato-evaluacion/get-docentes');

@@ -238,7 +238,7 @@ if (docenteSearch) {
         }
     }
     // Cuando el userType está vacío
-    else if (userType === '') {
+    else if (userType === 'secretaria') {
 
         try {
            const response = await fetch('/formato-evaluacion/get-docentes');

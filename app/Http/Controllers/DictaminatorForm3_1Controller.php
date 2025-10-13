@@ -77,11 +77,13 @@ class DictaminatorForm3_1Controller extends TransferController
             if (!isset($validatedData['score3_1'])) {
                 $validatedData['score3_1'] = 0;
             }
-            $validatedData['obs3_1_1'] = $validatedData['obs3_1_1'] ?? 'sin comentarios';
-            $validatedData['obs3_1_2'] = $validatedData['obs3_1_2'] ?? 'sin comentarios';
-            $validatedData['obs3_1_3'] = $validatedData['obs3_1_3'] ?? 'sin comentarios';
-            $validatedData['obs3_1_4'] = $validatedData['obs3_1_4'] ?? 'sin comentarios';
-            $validatedData['obs3_1_5'] = $validatedData['obs3_1_5'] ?? 'sin comentarios';
+            
+            $campos = ['obs3_1_1', 'obs3_1_2', 'obs3_1_3', 'obs3_1_4', 'obs3_1_5'];
+
+            foreach ($campos as $campo) {
+                $validatedData[$campo] = trim($validatedData[$campo]) !== '' ? $validatedData[$campo] : 'sin comentarios';
+            }
+
 
             
             $response = DictaminatorsResponseForm3_1::create($validatedData);

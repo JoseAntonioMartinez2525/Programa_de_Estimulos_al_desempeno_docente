@@ -32,7 +32,7 @@ body.dark-mode .nav {
                         </li>
                     @endif --}}
                     @if($user->user_type != 'docente')
-                        @if($user->user_type === '')
+                        @if($user->user_type === 'secretaria')
                         <li class="nav-item">
                             <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('resumen_comision') }}" title="A ser llenado por la Comisión del PEDPD""><i class="fas fa-list"></i>&nbspResumen</a>
                         </li><br>
@@ -50,7 +50,7 @@ body.dark-mode .nav {
                         @if($user->user_type === 'dictaminador')
                             <a class="nav-link active enlaceSN" style="width: 200px;"
                                 href="{{ route('comision_dictaminadora') }}"><i class="fa-regular fa-folder-open"></i>&nbspBuscar evaluaciones</a>
-                        @elseif($user->user_type === '')
+                        @elseif($user->user_type === 'secretaria')
                             <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('secretaria') }}"><i class="fa-regular fa-folder-open"></i>&nbspBuscar evaluaciones</a>
                         @endif
                     </li>

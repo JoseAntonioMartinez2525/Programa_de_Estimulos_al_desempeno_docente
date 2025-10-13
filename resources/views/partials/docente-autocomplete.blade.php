@@ -141,6 +141,8 @@
                 // se usa axios (por preferencia del proyecto)
                 const axiosResp = await axios.get(docenteDataEndpoint, { params: { email } });
                 const docenteData = axiosResp.data;
+                console.log('Datos recibidos:', docenteData);
+
 
                 // actualizar convocatoria si existe form1
                 if (docenteData && docenteData.form1) {
@@ -174,19 +176,24 @@
                     try { window.__docenteUpdateFooters(); } catch (e) { /* ignore */ }
                 }               
 
-                // si corresponde, obtener respuestas de dictaminadores y mapear
-                if (userType === (config.userTypeForDict ?? '')) {
+             // Ejecutar para secretaria (userType === 'secretaria') y para el tipo configurado de dictaminador
+                if (userType === 'secretaria' || userType === (config.userTypeForDict ?? '')) {
                     try {
                         const dictRespUrl = config.dictEndpoint || '/formato-evaluacion/get-dictaminators-responses';
                         const resp = await fetch(dictRespUrl);
                         const dictData = await resp.json();
-                        const collectionKey = config.dictCollectionKey || config.formKey || 'form3_2';
+                        console.log('>> Dictaminadores:', dictData.form3_3);
+                        console.log('>> Buscando dictaminador para email:', email);
+
+                        const collectionKey = config.dictCollectionKey || config.formKey;
                         const collection = dictData[collectionKey] || [];
                         const selected = collection.find(r => r.email === email);
                         if (selected && config.dictMappings) {
+                            console.log('>> Dictaminador encontrado:', selected);
                             Object.entries(config.dictMappings).forEach(([target, propPath]) => {
                                 setValue(target, readProp(selected, propPath));
                             });
+
                             if (config.fillHiddenFromDict) {
                                 Object.entries(config.fillHiddenFromDict).forEach(([inputName, propPath]) => {
                                     const input = document.querySelector(`input[name="${inputName}"]`);
@@ -195,9 +202,12 @@
                             }
                         } else if (config.resetOnNotFound && config.dictMappings) {
                             Object.keys(config.dictMappings).forEach(target => setValue(target, config.resetValues?.[target] ?? ''));
-                        }
-                    } catch (err) { console.error('Error fetching dictaminators responses:', err); }
-                }
+                        } else {
+                            console.warn('>> No se encontró dictaminador para:', email);                            console.warn('>> Datos disponibles:', collection);
+                       }
+                  } catch (err) { console.error('Error fetching dictaminators responses:', err); }
+               }
+                
 
             } catch (err) {
                 console.error('Error al obtener datos del docente:', err);

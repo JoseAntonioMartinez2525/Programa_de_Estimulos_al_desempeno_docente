@@ -73,7 +73,7 @@ $user_identity = $user->id;
                 <br>
                 <!--3.8.1 RSU-->
                 <h4>Puntaje máximo
-                    @if($userType == '') <!-- usuario secretaria -->
+                    @if($userType == 'secretaria') <!-- usuario secretaria -->
                         @if($mostrarSoloSpan)
                             <span id="PuntajeMaximo">40</span>
                         @else
@@ -264,7 +264,7 @@ $user_identity = $user->id;
                     }
                 }
                 // Cuando el userType está vacío
-                else if (userType === '') {
+                else if (userType === 'secretaria') {
 
                     try {
                        const response = await fetch('/formato-evaluacion/get-docentes');
@@ -364,7 +364,7 @@ $user_identity = $user->id;
 
         // Function to handle form submission
 async function submitForm(url, formId) {
-    if (userType === '') return; 
+    if (userType === 'secretaria') return; 
     const formData = {};
     const form = document.getElementById(formId);
 

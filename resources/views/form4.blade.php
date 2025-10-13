@@ -84,7 +84,7 @@ $subtotalAdded = false;
     <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
     <div class="container mt-4 printButtonClass">
-       @if($userType == '')
+       @if($userType == 'secretaria')
             <!--//Select para usuario con user_type vacío seleccionando dictaminadores-->
             <label for="dictaminadorSelect">Seleccionar Dictaminador:</label>
             <select id="dictaminadorSelect" class="form-select">
@@ -224,7 +224,7 @@ $subtotalAdded = false;
                                 <tr>
                                     <th>
                                     <!--*Implementacion en caso que el usuario sea vacio-->
-                                        @if($userType === '')
+                                        @if($userType === 'secretaria')
                                         <span class="personaEvaluadora1" type="text" id="personaEvaluadora1"></span>
                                         @else
                                         <input class="personaEvaluadora1" type="text" id="personaEvaluadora1">

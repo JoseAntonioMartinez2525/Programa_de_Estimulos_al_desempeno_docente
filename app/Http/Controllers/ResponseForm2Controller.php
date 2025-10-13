@@ -45,20 +45,23 @@ class ResponseForm2Controller extends Controller
             UsersResponseForm2::create($validatedData);
 
 
-            // Disparar evento después de la creación del registro
-            event(new EvaluationCompleted($validatedData['user_id']));
+             // Intentar operaciones posteriores (evento / consolidado) pero no dejar que arrojen error al cliente
+            try {
+                event(new EvaluationCompleted($validatedData['user_id']));
 
-            $consolidatedData = DB::table('consolidated_responses')
-                ->where('user_id', $validatedData['user_id'])
-                ->first();
+                $consolidatedData = DB::table('consolidated_responses')
+                    ->where('user_id', $validatedData['user_id'])
+                    ->first();
 
-            if ($consolidatedData) {
-                // Actualiza el registro del docente con la comision1
-                UsersResponseForm2::where('user_id', $validatedData['user_id'])
-                    ->update(['comision1' => $consolidatedData->comision1]);
+                if ($consolidatedData) {
+                    // Actualiza el registro del docente con la comision1
+                    UsersResponseForm2::where('user_id', $validatedData['user_id'])
+                        ->update(['comision1' => $consolidatedData->comision1]);
+                }
+            } catch (\Exception $e) {
+                \Log::error('Post-save processing failed for store2 user_id '.$validatedData['user_id'].': '.$e->getMessage());
+                // No rethrow: el registro del docente ya fue guardado correctamente
             }
-
-   
 
             return response()->json([
                 'success' => true,

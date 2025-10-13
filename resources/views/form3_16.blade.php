@@ -244,7 +244,7 @@ $user_identity = $user->id;
                     @endif
                 </div>
                 <div id="piedepagina1"
-                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
+                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
                     Página 23 de 33
                 </div>
             </div><br>
@@ -382,7 +382,7 @@ $user_identity = $user->id;
                 </div>
 
                 <div id="piedepagina2"
-                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
+                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
                     Página 24 de 33
                 </div>
             </div>
@@ -488,7 +488,7 @@ $user_identity = $user->id;
                 }
             }
             // Cuando el userType está vacío
-            else if (userType === '') {
+            else if (userType === 'secretaria') {
 
                 try {
                    const response = await fetch('/formato-evaluacion/get-docentes');

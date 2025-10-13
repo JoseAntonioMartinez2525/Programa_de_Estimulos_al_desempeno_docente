@@ -32,7 +32,7 @@ return new class extends Migration {
             $table->string('obsAsesoria')->default('sin comentarios'); // Default value
             $table->string('obsServicio')->default('sin comentarios'); // Default value
             $table->string('obsPracticas')->default('sin comentarios'); // Default value
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             $table->timestamps();
         });
 

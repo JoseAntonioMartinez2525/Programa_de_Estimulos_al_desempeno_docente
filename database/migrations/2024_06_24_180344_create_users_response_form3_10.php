@@ -24,7 +24,7 @@ return new class extends Migration
             $table->decimal('individualCant', 8, 2);
             $table->string('obsGrupal')->nullable();
             $table->string('obsIndividual')->nullable();
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             $table->timestamps();
         });
 

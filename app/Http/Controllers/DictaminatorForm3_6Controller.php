@@ -34,7 +34,8 @@ class DictaminatorForm3_6Controller extends TransferController
             if (!isset($validatedData['score3_6'])) {
                 $validatedData['score3_6'] = 0;
             }
-            $validatedData['obs3_6_1'] = $validatedData['obs3_6_1'] ?? 'sin comentarios';
+            $validatedData['obs3_6_1'] = trim($validatedData['obs3_6_1']) !== '' ? $validatedData['obs3_6_1'] : 'sin comentarios';
+
 
 
             $response = DictaminatorsResponseForm3_6::create($validatedData);

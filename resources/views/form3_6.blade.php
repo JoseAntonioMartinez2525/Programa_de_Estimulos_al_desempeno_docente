@@ -16,8 +16,6 @@ $docenteConfig =  $docenteConfig ?? [
         // cantidades y subtotales
         'puntaje3_6' => 'puntaje3_6',
         'puntajeHoras3_6' => 'puntajeHoras3_6',
-        // comisiones y sus copias (puedes usar clase o id)
-        '#comision3_6' => 'comision3_6',
         ],
         // Mapeos para respuestas de dictaminadores (si aplica)
     'dictMappings' => [
@@ -57,7 +55,7 @@ $docenteConfig =  $docenteConfig ?? [
         'score3_6' => '0',
         '#comision3_6' => '0',
         '#obs3_6_1' => '',
-        '#obs3_6_2' => '',
+
 
     ],
 
@@ -240,89 +238,99 @@ $user_identity = $user->id;
 
         };          
 
-        // Function to handle form submission
-        async function submitForm(url, formId) {
-const form = document.getElementById(formId);
-    if (!form) { console.error(`Form ${formId} not found`); return; }
+    // Function to handle form submission
+    async function submitForm(url, formId) {
+        const form = document.getElementById(formId);
+        if (!form) { console.error(`Form ${formId} not found`); return; }
 
-    // Garantizar que email y user_id estén presentes
-    const hiddenEmailInput = form.querySelector('input[name="email"]');
-    const hiddenUserIdInput = form.querySelector('input[name="user_id"]');
-    const selectedDocenteEmailInput = document.getElementById('selectedDocenteEmail'); // partial usa este id por defecto
-    const docenteSearch = document.getElementById('docenteSearch');
+        // Garantizar que email y user_id estén presentes
+        const hiddenEmailInput = form.querySelector('input[name="email"]');
+        const hiddenUserIdInput = form.querySelector('input[name="user_id"]');
+        const selectedDocenteEmailInput = document.getElementById('selectedDocenteEmail'); // partial usa este id por defecto
+        const docenteSearch = document.getElementById('docenteSearch');
 
-    // 1) resolver email (varias fuentes)
-    let email = (hiddenEmailInput && hiddenEmailInput.value && hiddenEmailInput.value.trim()) ||
-                (selectedDocenteEmailInput && selectedDocenteEmailInput.value && selectedDocenteEmailInput.value.trim()) ||
-                (docenteSearch && typeof docenteSearch.value === 'string' && (docenteSearch.value.match(/\(([^)]+)\)$/) || [])[1]) ||
-                '';
+        // 1) resolver email (varias fuentes)
+        let email = (hiddenEmailInput && hiddenEmailInput.value && hiddenEmailInput.value.trim()) ||
+                    (selectedDocenteEmailInput && selectedDocenteEmailInput.value && selectedDocenteEmailInput.value.trim()) ||
+                    (docenteSearch && typeof docenteSearch.value === 'string' && (docenteSearch.value.match(/\(([^)]+)\)$/) || [])[1]) ||
+                    '';
 
-    if (!email) {
-        alert('Seleccione un docente antes de enviar (email ausente).');
-        return;
-    }
-    // asegurar hidden input actualizado
-    if (hiddenEmailInput) hiddenEmailInput.value = email;
-
-    // 2) resolver user_id si hace falta
-    let userId = hiddenUserIdInput && hiddenUserIdInput.value && hiddenUserIdInput.value.trim();
-    if (!userId) {
-        try {
-            const resp = await fetch(`/formato-evaluacion/get-user-id?email=${encodeURIComponent(email)}`);
-            if (resp.ok) {
-                const json = await resp.json();
-                userId = json.user_id || '';
-                if (hiddenUserIdInput) hiddenUserIdInput.value = userId;
-            }
-        } catch (err) {
-            console.warn('No se pudo obtener user_id desde el servidor:', err);
-        }
-    }
-
-    // si aún no hay user_id, opcional: bloquear envío
-    if (!userId) {
-        const ok = confirm('No se pudo resolver user_id. Desea enviar de todos modos?');
-        if (!ok) return;
-    }
-
-    // Recolectar resto de campos (ajusta según tu form)
-    const formData = {
-        dictaminador_id: form.querySelector('input[name="dictaminador_id"]').value || '',
-        user_id: hiddenUserIdInput ? hiddenUserIdInput.value : userId,
-        email: email,
-        user_type: form.querySelector('input[name="user_type"]')?.value || '',
-        // campos específicos de form3_6 (ejemplo)
-        score3_6: document.getElementById('score3_6')?.textContent || '0',
-        puntaje3_6: document.getElementById('puntaje3_6')?.textContent || '0',
-        puntajeHoras3_6: document.getElementById('puntajeHoras3_6')?.textContent || '0',
-        comision3_6: document.getElementById('comision3_6')?.textContent || '0',
-        comisionDict3_6: document.querySelector('span[name="comisionDict3_6"]')?.textContent || '0',
-        obs3_6_1: document.querySelector('span[name="obs3_6_1"]')?.textContent || '',
-    };
-
-    console.log('Submitting form3_6 data:', formData);
-
-    try {
-        const resp = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-
-        const json = await resp.json();
-        if (!resp.ok) {
-            console.error('Server error:', json);
-            showMessage(json.message || 'Error al enviar', 'red');
+        if (!email) {
+            alert('Seleccione un docente antes de enviar (email ausente).');
             return;
         }
-        showMessage(json.message || 'Enviado', 'green');
-    } catch (err) {
-        console.error('Network error:', err);
-        showMessage('Problema de red al enviar', 'red');
-    }
+        // asegurar hidden input actualizado
+        if (hiddenEmailInput) hiddenEmailInput.value = email;
+
+        // 2) resolver user_id si hace falta
+        let userId = hiddenUserIdInput && hiddenUserIdInput.value && hiddenUserIdInput.value.trim();
+        if (!userId) {
+            try {
+                const resp = await fetch(`/formato-evaluacion/get-user-id?email=${encodeURIComponent(email)}`);
+                if (resp.ok) {
+                    const json = await resp.json();
+                    userId = json.user_id || '';
+                    if (hiddenUserIdInput) hiddenUserIdInput.value = userId;
+                }
+            } catch (err) {
+                console.warn('No se pudo obtener user_id desde el servidor:', err);
+            }
+        }
+
+        // si aún no hay user_id, opcional: bloquear envío
+        if (!userId) {
+            const ok = confirm('No se pudo resolver user_id. Desea enviar de todos modos?');
+            if (!ok) return;
+        }
+
+        // Recolectar resto de campos (ajusta según tu form)
+        const formData = {
+            dictaminador_id: form.querySelector('input[name="dictaminador_id"]').value || '',
+            user_id: hiddenUserIdInput ? hiddenUserIdInput.value : userId,
+            email: email,
+            user_type: form.querySelector('input[name="user_type"]')?.value || '',
+            // campos específicos de form3_6 (ejemplo)
+            score3_6: document.getElementById('score3_6')?.textContent || '0',
+            puntaje3_6: document.getElementById('puntaje3_6')?.textContent || '0',
+            puntajeHoras3_6: document.getElementById('puntajeHoras3_6')?.textContent || '0',
+            comision3_6: document.getElementById('comision3_6')?.textContent || '0',
+
+            comisionDict3_6: (
+                document.querySelector('input[name="comisionDict3_6"]')?.value ||
+                document.querySelector('span[name="comisionDict3_6"]')?.textContent ||
+                '0'
+
+            ), 
+            obs3_6_1: (
+                document.querySelector('input[name="obs3_6_1"]')?.value ||
+                document.querySelector('span[name="obs3_6_1"]')?.textContent ||
+                ''
+            ),
+        };
+
+        console.log('Submitting form3_6 data:', formData);
+
+        try {
+            const resp = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const json = await resp.json();
+            if (!resp.ok) {
+                console.error('Server error:', json);
+                showMessage(json.message || 'Error al enviar', 'red');
+                return;
+            }
+            showMessage(json.message || 'Enviado', 'green');
+        } catch (err) {
+            console.error('Network error:', err);
+            showMessage('Problema de red al enviar', 'red');
+        }
         }
         function minWithSum(value1, value2) {
             const sum = value1 + value2;

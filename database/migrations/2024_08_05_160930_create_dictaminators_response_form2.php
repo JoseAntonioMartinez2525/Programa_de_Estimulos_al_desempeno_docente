@@ -16,7 +16,7 @@ class CreateDictaminatorsResponseForm2 extends Migration
             $table->unsignedBigInteger('user_id');
             $table->primary('id');
             $table->string('email');
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             $table->decimal('horasActv2', 8, 2);
             $table->decimal('puntajeEvaluar', 8, 2);
             $table->decimal('comision1', 8, 2);

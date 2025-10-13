@@ -50,7 +50,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             <li class="nav-item">
             @if(Auth::user()->user_type === 'dictaminador')
                 <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('comision_dictaminadora') }}">Selección de Formatos</a>
-            @elseif(Auth::user()->user_type === '')
+            @elseif(Auth::user()->user_type === 'secretaria')
                 <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('secretaria') }}">Selección de Formatos</a>
             @endif
             </li>

@@ -202,7 +202,7 @@ body.dark-mode img.imgFirma{
         <thead>
             <tr id="eva1">
             <th class="evaluadores">
-                @if($userType === '')
+                @if($userType === 'secretaria')
                         <center><span class="personaEvaluadora" type="text" id="personaEvaluadora"></span></center>
 
                 @elseif($userType === 'dictaminador')
@@ -237,7 +237,7 @@ body.dark-mode img.imgFirma{
             @endif
             </th>
             <th>
-        @if($userType === '')
+        @if($userType === 'secretaria')
             @if(!empty($signature_path))
                 <img id="signature_path" src="{{ asset('storage/' . $signature_path) }}" alt="Firma 1" class="imgFirma">
             @else
@@ -278,7 +278,7 @@ body.dark-mode img.imgFirma{
                     @endif
                 </td>
             </tr>
-            @if($userType === '')
+            @if($userType === 'secretaria')
                 <tr id=eva2>
                     <th class="evaluadores">
                             <center><span class="personaEvaluadora2" type="text" id="personaEvaluadora2"></span></center>
@@ -294,13 +294,13 @@ body.dark-mode img.imgFirma{
                 </tr>
             @endif
             <tr>
-                @if($userType === '')
+                @if($userType === 'secretaria')
                     <td class="p-2 nombreLabel">Nombre de la persona evaluadora</td>
 
                     <td class="p-2"><span id="firmaTexto2">Firma</span>
                 @endif
             </tr>
-            @if($userType === '')
+            @if($userType === 'secretaria')
                 <tr id="eva3">
                     <th class="evaluadores">
                     <center><span class="personaEvaluadora3" type="text" id="personaEvaluadora3"></span></center>
@@ -315,7 +315,7 @@ body.dark-mode img.imgFirma{
                 </th>
             </tr>@endif
             <tr>
-                @if($userType === '')
+                @if($userType === 'secretaria')
                     <td class="p-2 mr-2 nombreLabel">Nombre de la persona evaluadora</td>
 
                     <td class="p-2"><span id="firmaTexto3">Firma</span>
@@ -1034,7 +1034,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                             }
                             
-                            if (userType === '') { // Only proceed if user type is empty 
+                            if (userType === 'secretaria') { // Only proceed if user type is empty 
                                 axios.get('/formato-evaluacion/get-evaluator-signature', {
                                     params: {
                                         user_id: userId,

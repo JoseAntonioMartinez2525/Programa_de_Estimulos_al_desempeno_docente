@@ -47,11 +47,12 @@ class DictaminatorForm3_3Controller extends TransferController
             if (!isset($validatedData['score3_3'])) {
                 $validatedData['score3_3'] = 0;
             }
-            $validatedData['obs3_3_1'] = $validatedData['obs3_3_1'] ?? 'sin comentarios';
-            $validatedData['obs3_3_2'] = $validatedData['obs3_3_2'] ?? 'sin comentarios';
-            $validatedData['obs3_3_3'] = $validatedData['obs3_3_3'] ?? 'sin comentarios';
-            $validatedData['obs3_3_4'] = $validatedData['obs3_3_4'] ?? 'sin comentarios';
 
+            $campos = ['obs3_3_1', 'obs3_3_2', 'obs3_3_3', 'obs3_3_4'];
+
+            foreach ($campos as $campo) {
+                $validatedData[$campo] = trim($validatedData[$campo]) !== '' ? $validatedData[$campo] : 'sin comentarios';
+            }
 
             $response = DictaminatorsResponseForm3_3::create($validatedData);
             // Actualizar automáticamente el modelo docente con la comision

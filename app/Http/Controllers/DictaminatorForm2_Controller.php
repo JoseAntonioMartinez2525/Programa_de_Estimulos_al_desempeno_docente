@@ -33,9 +33,7 @@ class DictaminatorForm2_Controller extends TransferController
             if (!isset($validatedData['puntajeEvaluar'])) {
                 $validatedData['puntajeEvaluar'] = 0;
             }
-            if (!isset($validatedData['obs1'])) {
-                $validatedData['obs1'] = "sin comentarios";
-            }
+            $validatedData['obs1'] = trim($validatedData['obs1']) !== '' ? $validatedData['obs1'] : 'sin comentarios';
 
             $response = DictaminatorsResponseForm2::create($validatedData);
 

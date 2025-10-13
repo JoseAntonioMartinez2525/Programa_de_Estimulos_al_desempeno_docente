@@ -394,7 +394,7 @@ $user_identity = $user->id;
         @endif
     </div>
     <div id="piedepagina1"
-        class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
+        class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
         Página 3 de 33
     </div>
 </div><br>
@@ -508,7 +508,7 @@ $user_identity = $user->id;
                 </div>
 
                 <div id="piedepagina2"
-                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === '' ? 'secretaria-style' : '') }}">
+                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
                     Página 4 de 33
                 </div>
             </div>
@@ -669,7 +669,7 @@ document.addEventListener('docenteSelected', async (e) => {
                     document.querySelector('input[name="user_type"]').value = docenteData.form3_1.user_type || '';
 
 
-            if (userType === '') {
+            if (userType === 'secretaria') {
            
             // (Opcional) Obtener todas las respuestas de dictaminadores
             // Lógica para obtener datos de DictaminatorsResponseForm3_1

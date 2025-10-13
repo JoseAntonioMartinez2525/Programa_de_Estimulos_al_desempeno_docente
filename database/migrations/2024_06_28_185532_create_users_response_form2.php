@@ -16,7 +16,7 @@ class CreateUsersResponseForm2 extends Migration
             $table->integer('horasActv2');
             $table->decimal('puntajeEvaluar', 8, 2);
             $table->string('obs1')->nullable();
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             $table->timestamps();
         });
         

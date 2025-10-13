@@ -49,7 +49,7 @@ class ResumenComisionController extends Controller
         \Log::info('User ID recibido:', ['user_id' => $user_id]);
 
         // Obtener el tipo de usuario autenticado
-        $userType = auth()->user()->user_type;
+        $userType = auth()->User->user_type;
 
         // Si el usuario es 'dictaminador', obtenemos la convocatoria a través del docente relacionado
         if ($userType === 'dictaminador') {
@@ -73,7 +73,7 @@ class ResumenComisionController extends Controller
         }
 
         // Si el usuario es del tipo vacío (''), buscar los datos del dictaminador por defecto
-        if ($userType === '') {
+        if ($userType === 'secretaria') {
             // Aquí asumimos que el usuario '' tiene una relación o acceso por defecto al dictaminador
             // Debes definir cómo se obtiene el dictaminador en este caso. Asumo que tienes alguna manera de obtenerlo.
 

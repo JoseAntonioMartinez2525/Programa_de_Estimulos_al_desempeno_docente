@@ -57,7 +57,7 @@ return new class extends Migration {
 
             $table->decimal('comision3_16', 8, 2);
 
-            $table->enum('user_type', ['docente', 'dictaminador', ''])->nullable();
+            $table->enum('user_type', ['docente', 'dictaminador', 'secretaria'])->nullable();
             $table->timestamps();
         });
     }
