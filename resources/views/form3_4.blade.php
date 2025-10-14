@@ -68,7 +68,7 @@ $docenteConfig = [
     ],
 
     // comportamiento al no encontrar respuesta de dictaminador
-    'resetOnNotFound' => true,
+    'resetOnNotFound' => false,
     'resetValues' => [
         // opcional: valores por defecto explícitos para targets 
         'score3_4' => '0',
@@ -383,6 +383,7 @@ $user_identity = $user->id;
     </center>
 
     <script>
+    let selectedEmail = null;
      window.onload = function () {
             const footerHeight = document.querySelector('footer').offsetHeight;
             const elements = document.querySelectorAll('.prevent-overlap');
@@ -413,7 +414,7 @@ $user_identity = $user->id;
             // Gather all related information from the form
             formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
             formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = form.querySelector('input[name="email"]').value;
+            formData['email'] = selectedEmail;
             formData['user_type'] = form.querySelector('input[name="user_type"]').value;
             formData['cantInternacional'] = document.getElementById('cantInternacional').textContent;
             formData['cantNacional'] = document.getElementById('cantNacional').textContent;
@@ -455,16 +456,20 @@ $user_identity = $user->id;
                 const responseData = await response.json();
                 console.log('Response received from server:', responseData);
 
-                // Mensaje al usuario
-                if (responseData.success) {
+                    // Mensaje al usuario
+                // Solo mostrar éxito si el servidor marca success === true
+                if (responseData && responseData.success === true) {
                     showMessage('Formulario enviado', 'green');
                 } else {
-                    showMessage('Formulario no enviado', 'red');
+                    console.error('Submission failed:', responseData);
+                    showMessage(responseData.message || 'Formulario no enviado', 'red');
                 }
-                
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
+
+        } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+        showMessage('Formulario no enviado', 'red');
+
+        }
         }
         function minWithSum(value1, value2) {
             const sum = value1 + value2;
