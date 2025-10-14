@@ -222,6 +222,7 @@ $user_identity = $user->id;
 </footer>
 
     <script>
+    let selectedEmail = null;
         window.onload = function () {
             const footerHeight = document.querySelector('footer').offsetHeight;
             const elements = document.querySelectorAll('.prevent-overlap');
@@ -287,7 +288,7 @@ $user_identity = $user->id;
         const formData = {
             dictaminador_id: form.querySelector('input[name="dictaminador_id"]').value || '',
             user_id: hiddenUserIdInput ? hiddenUserIdInput.value : userId,
-            email: email,
+            email: selectedEmail,
             user_type: form.querySelector('input[name="user_type"]')?.value || '',
             // campos específicos de form3_6 (ejemplo)
             score3_6: document.getElementById('score3_6')?.textContent || '0',
