@@ -175,7 +175,7 @@ $user_identity = $user->id;
     </footer>
 </center>
     <script>
-
+let selectedEmail = null;
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('docenteSearch');
     const suggestionsBox = document.getElementById('docenteSuggestions');
@@ -239,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('docenteSelected', async (e) => {
     const docente = e.detail;
     const email = docente.email;
+    selectedEmail = email; // actualizar variable global
 
     try {
         // === Comunes: cargar datos de docente ===
@@ -350,7 +351,7 @@ document.addEventListener('docenteSelected', async (e) => {
         // Gather relevant information from the form
         formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
         formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-        formData['email'] = form.querySelector('input[name="email"]').value;
+        formData['email'] = selectedEmail;
         formData['hours'] = document.getElementById('hoursText').textContent;
         formData['horasPosgrado'] = document.getElementById('horasPosgrado').textContent;
         formData['horasSemestre'] = document.getElementById('horasSemestre').textContent;
@@ -382,13 +383,19 @@ document.addEventListener('docenteSelected', async (e) => {
             let responseData = await response.json();
             console.log('Response received from server:', responseData);
             
-            if (responseData.success) {
-                showMessage('Formulario enviado', 'green');
-            } else {
-                showMessage('Formulario no enviado', 'red');
-            }
+                //Mensaje al usuario
+                // Solo mostrar éxito si el servidor marca success === true
+                if (responseData && responseData.success === true) {
+                    showMessage('Formulario enviado', 'green');
+                } else {
+                    console.error('Submission failed:', responseData);
+                    showMessage(responseData.message || 'Formulario no enviado', 'red');
+                }
+
         } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
+        console.error('There was a problem with the fetch operation:', error);
+        showMessage('Formulario no enviado', 'red');
+
         }
     }
 

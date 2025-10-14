@@ -290,6 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('docenteSelected', async (e) => {
     const docente = e.detail;
     const email = docente.email;
+    selectedEmail = email;
 
     try {
         // === Comunes: cargar datos de docente ===
@@ -318,6 +319,7 @@ document.addEventListener('docenteSelected', async (e) => {
             document.querySelector('input[name="email"]').value = form2Data.email || '';
             document.querySelector('input[name="user_type"]').value = form2Data.user_type || '';
             
+            console.log('docenteData', docenteData)
 if (docenteData) {
     // Volcar score3_1..score3_19 desde la respuesta al objeto data y al DOM
     for (let i = 1; i <= 19; i++) {
@@ -403,6 +405,8 @@ if (docenteData) {
 });
 });
 
+let selectedEmail = null;
+
 
         async function submitForm(url, formId) {
             const user_identity = @json($user_identity); 
@@ -416,12 +420,17 @@ if (docenteData) {
 
             formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
             formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = form.querySelector('input[name="email"]').value;
+            formData['email'] = selectedEmail;
             formData['horasActv2'] = document.getElementById('horasActv2').textContent;
             formData['puntajeEvaluar'] = document.getElementById('puntajeEvaluarText').textContent;
             formData['comision1'] = form.querySelector('input[name="comision1"]').value;
             formData['obs1'] = form.querySelector('input[name="obs1"]').value;
             formData['user_type'] = form.querySelector('input[name="user_type"]').value;
+
+            if (!formData['email']) {
+            showMessage('No se ha seleccionado un docente.', 'red');
+            return;
+            }
 
             console.log('Form data:', formData);
 

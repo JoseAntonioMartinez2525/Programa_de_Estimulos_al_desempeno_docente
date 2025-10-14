@@ -46,8 +46,17 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             'email' => 'email',
             'user_type' => 'user_type',
         ],
-        'resetOnNotFound' => true,
-        'resetValues' => [],
+// comportamiento al no encontrar respuesta de dictaminador
+    'resetOnNotFound' => false,
+    'resetValues' => [
+        // opcional: valores por defecto explícitos para targets 
+        'score3_2' => '0',
+        '#comision3_2' => '0',
+        '#obs3_2_1' => '',
+        '#obs3_2_2' => '',
+
+
+    ],
         'printPagePairs' => [[3,4]],
     ];
 @endphp
@@ -375,7 +384,8 @@ $user_identity = $user->id;
                 }
             });
 
-        };   
+        };  
+        let selectedEmail = null;
             
         // Function to handle form submission
         async function submitForm(url, formId) {
@@ -413,7 +423,8 @@ $user_identity = $user->id;
                     if (emailInput) emailInput.value = email;
                 }
             }
-            formData['email'] = form.querySelector('input[name="email"]').value;
+            formData['email'] = selectedEmail;
+
             formData['user_type'] = form.querySelector('input[name="user_type"]').value;
             formData['r1'] = document.getElementById('r1').textContent;
             formData['prom90_100'] = document.getElementById('prom90_100').value; // Ensure input value is fetched
@@ -435,6 +446,10 @@ $user_identity = $user->id;
             formData['obs3_2_2'] = form.querySelector('input[name="obs3_2_2"]').value;
             formData['obs3_2_3'] = form.querySelector('input[name="obs3_2_3"]').value;
 
+            if (!formData['email']) {
+            showMessage('No se ha seleccionado un docente.', 'red');
+            return;
+            }
 
             console.log('Form data:', formData);
 
@@ -456,16 +471,21 @@ $user_identity = $user->id;
                 console.log('Response received from server:', responseData);
 
                 //Mensaje al usuario
-                if (responseData.success) {
+                // Solo mostrar éxito si el servidor marca success === true
+                if (responseData && responseData.success === true) {
                     showMessage('Formulario enviado', 'green');
                 } else {
-                    showMessage('Formulario no enviado', 'red');
+                    console.error('Submission failed:', responseData);
+                    showMessage(responseData.message || 'Formulario no enviado', 'red');
                 }
-                
-            } catch (error) {
+
+                } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
-            }
+                showMessage('Formulario no enviado', 'red');
+
+                }
         }
+
         function minWithSum(value1, value2) {
             const sum = value1 + value2;
             return Math.min(sum, 200);

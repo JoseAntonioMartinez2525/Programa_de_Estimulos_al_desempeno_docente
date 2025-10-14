@@ -136,6 +136,7 @@
         document.addEventListener('docenteSelected', async (e) => {
             const docente = e.detail;
             const email = docente.email;
+            selectedEmail = email; // actualizar variable global
             try {
                 const docenteDataEndpoint = config.docenteDataEndpoint || '/formato-evaluacion/get-docente-data';
                 // se usa axios (por preferencia del proyecto)

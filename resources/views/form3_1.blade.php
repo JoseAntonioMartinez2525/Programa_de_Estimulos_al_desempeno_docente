@@ -517,7 +517,7 @@ $user_identity = $user->id;
             </div>
     </main>
     <script>
-
+let selectedEmail = null;
     window.onload = function () {
 
                 function preventOverlap() {
@@ -604,6 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('docenteSelected', async (e) => {
     const docente = e.detail;
     const email = docente.email;
+    selectedEmail = email;
 
     try {
         // === Comunes: cargar datos de docente ===
@@ -663,6 +664,10 @@ document.addEventListener('docenteSelected', async (e) => {
                     document.getElementById('elaboracionSubTotal5').textContent = docenteData.form3_1.elaboracionSubTotal5 || '0';
                     //document.getElementById('actv3Comision').textContent = data.form3_1.actv3Comision || '0';
 
+                    // forzar relectura y recálculo 
+                    if (typeof scheduleInitializeFromDOM === 'function') { scheduleInitializeFromDOM(50); 
+                    } else if (typeof updateDocencia === 'function') { updateDocencia(); }
+
                     // Populate hidden inputs
                     document.querySelector('input[name="user_id"]').value = docenteData.form3_1.user_id || '';
                     document.querySelector('input[name="email"]').value = docenteData.form3_1.email || '';
@@ -716,6 +721,10 @@ document.addEventListener('docenteSelected', async (e) => {
                     document.querySelector('label[id="obs3_1_3"]').textContent = selectedResponseForm3_1.obs3_1_3 || 'sin comentarios';
                     document.querySelector('label[id="obs3_1_4"]').textContent = selectedResponseForm3_1.obs3_1_4 || 'sin comentarios';
                     document.querySelector('label[id="obs3_1_5"]').textContent = selectedResponseForm3_1.obs3_1_5 || 'sin comentarios';
+
+                    // forzar relectura y recálculo 
+                    if (typeof scheduleInitializeFromDOM === 'function') { scheduleInitializeFromDOM(50); 
+                    } else if (typeof updateDocencia === 'function') { updateDocencia(); }
 
                 } else {
                     document.querySelectorAll('#docencia, #docencia2').forEach(el => {
@@ -821,7 +830,7 @@ document.addEventListener('docenteSelected', async (e) => {
             // Gather all related information from the form
             formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
             formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = form.querySelector('input[name="email"]').value;
+            formData['email'] = selectedEmail;
             formData['user_type'] = form.querySelector('input[name="user_type"]').value;
 
             formData['elaboracion'] = document.getElementById('elaboracion').textContent;
@@ -845,7 +854,8 @@ document.addEventListener('docenteSelected', async (e) => {
             formData['comisionIncisoE'] = form.querySelector('input[id="comisionIncisoE"]').value;  
             
             // Selecciona todos los elementos con la clase 'score3_1' 
-                const score3_1Element = document.querySelector('.score3_1');                formData['score3_1'] = score3_1Element ? score3_1Element.textContent : null;
+                const score3_1Element = document.querySelector('.score3_1');               
+                 formData['score3_1'] = score3_1Element ? score3_1Element.textContent : null;
 
                 formData['score3_1'] = score3_1Element ? score3_1Element.textContent : null;
 
@@ -879,14 +889,19 @@ document.addEventListener('docenteSelected', async (e) => {
             const responseData = await response.json();
             console.log('Response received from server:', responseData);
 
-                if (responseData.success) {
+                // Mensaje al usuario
+                // Solo mostrar éxito si el servidor marca success === true
+                if (responseData && responseData.success === true) {
                     showMessage('Formulario enviado', 'green');
                 } else {
-                    showMessage('Formulario no enviado', 'red');
+                    console.error('Submission failed:', responseData);
+                    showMessage(responseData.message || 'Formulario no enviado', 'red');
                 }
 
         } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
+        console.error('There was a problem with the fetch operation:', error);
+        showMessage('Formulario no enviado', 'red');
+
         }
     }
         function minWithSum(value1, value2) {

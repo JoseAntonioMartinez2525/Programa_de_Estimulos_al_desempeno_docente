@@ -1,5 +1,4 @@
 //Puntajes a Evaluar
-
 // Asegurarse de que exista el objeto data
 if (typeof data === 'undefined' || data === null) {
     var data = {};
@@ -15,8 +14,17 @@ function updateDocencia() {
     });
     // Límite global
     docencia = Math.min(total, 700);
-    const el = document.getElementById("docencia");
-    if (el) el.innerText = docencia;
+
+    // Actualiza ambos elementos si existen
+    const els = document.querySelectorAll('#docencia, #docencia2');
+    els.forEach(el => {
+        // si es un input, usar value; si es span/td, usar innerText
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.value = docencia.toFixed(2);
+        } else {
+            el.innerText = docencia.toFixed(2);
+        }
+    });
     data.docencia = docencia;
 }
 
@@ -28,14 +36,29 @@ function initializeDataFromDOM() {
         if (el) {
             // input elements have .value, spans/divs have textContent
             raw = (el.value !== undefined && el.value !== '') ? el.value : el.textContent;
+        }else {
+            // fallback: buscar por clase .score3_<i>
+            const cls = document.querySelectorAll(`.score3_${i}`);
+            if (cls && cls.length > 0) {
+                // tomar el primer nodo con contenido numérico
+                let found = null;
+                cls.forEach(node => {
+                    const candidate = (node.value !== undefined && node.value !== '') ? node.value : node.textContent;
+                    if (candidate !== null && candidate !== undefined && candidate.toString().trim() !== '') {
+                        found = candidate;
+                    }
+                });
+                raw = found;
+            }
         }
+
         const parsed = parseFloat(raw);
         data[id] = isNaN(parsed) ? (data[id] || 0) : parsed;
     }
 
     // Además intenta leer comisiones/números que puedan influir (si tienes ids distintos)
-    // Por ejemplo: leer comision3_1..comision3_16 si existen
-    for (let i = 1; i <= 16; i++) {
+    // Por ejemplo: leer comision3_1..comision3_19 si existen
+    for (let i = 1; i <= 19; i++) {
         const cid = `comision3_${i}`;
         const cel = document.getElementById(cid);
         if (cel) {
@@ -1581,6 +1604,3 @@ console.log("docencia 3:", docencia);
         if (/WebKit/.test(navigator.userAgent)) {
             document.body.classList.add('webkit-print');
         }*/
-
-
-

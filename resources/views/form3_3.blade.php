@@ -72,7 +72,7 @@ $docenteConfig = [
     ],
 
     // comportamiento al no encontrar respuesta de dictaminador
-    'resetOnNotFound' => true,
+    'resetOnNotFound' => false,
     'resetValues' => [
         // opcional: valores por defecto explícitos para targets 
         'score3_3' => '0',
@@ -585,7 +585,7 @@ $user_identity = $user->id;
 </form>
     </main>
     <script>
-
+let selectedEmail = null;
 
     window.onload = function () {
 
@@ -624,7 +624,7 @@ $user_identity = $user->id;
             // Gather all related information from the form
             formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
             formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = form.querySelector('input[name="email"]').value;
+            formData['email'] = selectedEmail;
             formData['user_type'] = form.querySelector('input[name="user_type"]').value;
             formData['rc1'] = document.getElementById('rc1').textContent;
             formData['comIncisoA'] = document.getElementById('comIncisoA').value; // Ensure input value is fetched
@@ -672,16 +672,22 @@ $user_identity = $user->id;
                 console.log('Response received from server:', responseData);
 
                 // Mensaje al usuario
-                if (responseData.success) {
+                // Solo mostrar éxito si el servidor marca success === true
+                if (responseData && responseData.success === true) {
                     showMessage('Formulario enviado', 'green');
                 } else {
-                    showMessage('Formulario no enviado', 'red');
+                    console.error('Submission failed:', responseData);
+                    showMessage(responseData.message || 'Formulario no enviado', 'red');
                 }
-                
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
+
+        } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+        showMessage('Formulario no enviado', 'red');
+
         }
+        }
+
+        
         function minWithSum(value1, value2) {
             const sum = value1 + value2;
             return Math.min(sum, 200);

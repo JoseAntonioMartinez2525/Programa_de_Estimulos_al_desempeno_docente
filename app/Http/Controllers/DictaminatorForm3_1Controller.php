@@ -168,7 +168,7 @@ class DictaminatorForm3_1Controller extends TransferController
 
                 DB::transaction(function () use ($userId, $comisionValue) {
             // Actualiza/crea el registro específico del formulario de usuario
-            $userResponse = UsersResponseForm3_2::updateOrCreate(
+            $userResponse = UsersResponseForm3_1::updateOrCreate(
                 ['user_id' => $userId],
                 ['comision3_2' => $comisionValue]
             );
