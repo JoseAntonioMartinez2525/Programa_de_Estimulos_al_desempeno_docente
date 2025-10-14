@@ -553,7 +553,7 @@ $user_identity = $user->id;
                         <th class="acreditacion" style="padding-left: 100px;">Acreditacion:</th>
                         <th class="descripcion"><b>Instancia que lo otorga</b></th>
                         <th>
-                            @if ($userType != '')
+                            @if ($userType != 'secretaria')
                                 <button id="btn3_18" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
                             @endif
 

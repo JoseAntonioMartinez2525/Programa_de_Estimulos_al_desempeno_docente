@@ -449,7 +449,7 @@ $user_identity = $user->id;
 
                         <th class="descripcion"><b>Instancia que la otorga</b> </th>
                         <th>
-                            @if ($userType != '')
+                            @if ($userType != 'secretaria')
                                 <button id="btn3_12" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
                             @endif
                         </th>

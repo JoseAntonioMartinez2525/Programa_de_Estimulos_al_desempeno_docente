@@ -32,7 +32,7 @@ class DictaminatorForm3_8_1Controller extends TransferController
             if (!isset($validatedData['score3_8_1'])) {
                 $validatedData['score3_8_1'] = 0;
             }
-            $validatedData['obs3_8_1_1'] = $validatedData['obs3_8_1_1'] ?? 'sin comentarios';
+             $validatedData['obs3_8_1_1'] = trim($validatedData['obs3_8_1_1'])!== '' ? $validatedData['obs_3_8_1_1'] : 'sin comentarios';
 
             $validatedData['form_type'] = 'form3_8_1';
 

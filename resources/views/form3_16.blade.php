@@ -361,7 +361,7 @@ $user_identity = $user->id;
                                 JD.</b>
                         </th>
                         <th>
-                            @if($userType != '')
+                            @if($userType != 'secretaria')
                             <button id="btn3_16" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
                             @endif   
                         </th>

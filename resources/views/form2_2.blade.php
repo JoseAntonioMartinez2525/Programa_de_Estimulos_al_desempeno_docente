@@ -145,7 +145,7 @@ $user_identity = $user->id;
                                     caso
                                 </th>
                                 <th>
-                                    @if($userType != '')
+                                    @if($userType != 'secretaria')
                                         <button type="submit" class="btn custom-btn printButtonClass" id="form2_2Button">Enviar</button>
                                     @endif
                                 </th>

@@ -337,7 +337,7 @@ $user_identity = $user->id;
 
                             <th class="descripcionDDIE"><b>DDIE</b>
                             <th> 
-                            @if($userType != '')     
+                            @if($userType != 'secretaria')     
                                 <button id="btn3_2" type="submit" class="btn custom-btn printButtonClass">Enviar
                             @endif
                             </th>

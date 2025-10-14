@@ -492,7 +492,7 @@ $user_identity = $user->id;
         </tr>
     </thead>
             </table>
-        @if ($userType != '')
+        @if ($userType != 'secretaria')
             <button id="btn3_1" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
         @endif
 <!--Convocatoria 2-->

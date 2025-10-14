@@ -154,7 +154,7 @@ $user_identity = $user->id;
                                         *JD,CAAC, DDCE, DDIE, SA,DIIP, según
                                         corresponda. </b> </th>
                                 <th>
-                                    @if ($userType != '')
+                                    @if ($userType != 'secretaria')
                                         <button id="btn3_8_1_1" type="submit"
                                             class="btn custom-btn printButtonClass">Enviar</button>
                                     @endif

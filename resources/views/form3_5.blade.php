@@ -242,7 +242,7 @@ $user_identity = $user->id;
                     </tr>
                 </thead>
             </table>
-            @if($userType != '')
+            @if($userType != 'secretaria')
                 <button id="btn3_5" type="submit" class="btn custom-btn printButtonClass">Enviar
             @endif
             </form>

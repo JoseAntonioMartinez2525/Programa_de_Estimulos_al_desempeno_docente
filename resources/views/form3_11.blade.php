@@ -189,7 +189,7 @@ $user_identity = $user->id;
             
                         <th class="descripcion"><b>JD, *DSEs</b> </th>
                         <th>
-                            @if ($userType != '') 
+                            @if ($userType != 'secretaria') 
                             <button id="btn3_11" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
                             @endif
                         </th>

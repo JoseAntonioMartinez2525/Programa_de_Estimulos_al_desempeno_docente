@@ -803,7 +803,7 @@ $page_counter = 28;
                     </tr>
                 </thead>
             </table>
-            @if ($userType != '')
+            @if ($userType != 'secretaria')
                 <button id="btn3_19" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
 
             @endif

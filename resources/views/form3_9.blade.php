@@ -620,7 +620,7 @@ $user_identity = $user->id;
                         <th class="descripcion"><b>DSE para pregrado, DIIP para posgrado</b>
                         </th>
                         <th>
-                            @if ($userType != '')
+                            @if ($userType != 'secretaria')
                                 <button id="btn3_9" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
                             @endif    
                         </th>

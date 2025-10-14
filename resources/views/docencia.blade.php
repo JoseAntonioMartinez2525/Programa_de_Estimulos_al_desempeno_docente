@@ -859,7 +859,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         <div>
             <!--3.8.1 RSU -->
             <h4>Puntaje máximo 
-            @if($userType != '') <!-- fetch puntajeMaximo form3_8_1 -->
+            @if($userType != 'secretaria') <!-- fetch puntajeMaximo form3_8_1 -->
                 <span class="bg-black text-white px-4 mt-3" id="puntajeMaximo" for="">40</span>
             @endif
             </h4>
@@ -2898,7 +2898,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                 ];
 
 
-                let data = {
+                let dataDocentes = {
 
                     elaboracion: elaboracion,
                     cant1: cant1,
@@ -3085,7 +3085,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
                 // Función para actualizar el objeto data con los valores de los campos del formulario
                 function actualizarData() {
-                    data[this.id] = this.value;
+                    dataDocentes[this.id] = this.value;
                 }
 
                     async function submitForm(url, formId) {
@@ -3591,8 +3591,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 throw new Error('Network response was not ok ' + response.statusText);
                             }
 
-                            let data = await response.json(); // si la respuesta es JSON
-                            console.log('Response received from server:', data);
+                            let data2 = await response.json(); // si la respuesta es JSON
+                            console.log('Response received from server:', data2);
 
                         } catch (error) {
                             console.error('There was a problem with the fetch operation:', error);
@@ -3742,7 +3742,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
 
 
-            </script>
+        </script>
         </body>
 @endif
 

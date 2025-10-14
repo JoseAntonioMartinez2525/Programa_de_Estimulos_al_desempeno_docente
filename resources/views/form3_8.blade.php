@@ -136,7 +136,7 @@ continua o de formación y capacitación docente </td>
                     </table>
                 </tbody>
             </table>
-            @if ($userType != '')
+            @if ($userType != 'secretaria')
                 <button id="btn3_8" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
             @endif
             </form>
