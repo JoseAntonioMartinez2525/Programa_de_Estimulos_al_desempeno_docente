@@ -1,3 +1,4 @@
+@props(['componentIndex'])
 <thead>
 <tr>
     <th scope="col">Actividad</th>

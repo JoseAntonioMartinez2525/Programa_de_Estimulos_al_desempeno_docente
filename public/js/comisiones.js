@@ -155,8 +155,10 @@ function onActv3Comision3_8_1() {
 }
 
 
-function onActv3Comision3_9() {
-  const comisionInputs = document.querySelectorAll('input[id^="tutoriasComision"]');
+function onActv3Comision3_9(){
+
+    const comisionInputs = document.querySelectorAll('input[id^="tutoriasComision"]');
+
   const comisionValues = Array.from(comisionInputs).map(input => {
     const value = input.value;
     if (value === '') {
@@ -181,6 +183,16 @@ function onActv3Comision3_9() {
 
 
 }
+
+
+
+function syncComision39Headers() {
+    const value = document.getElementById('comision3_9')?.value || '0';
+    document.querySelectorAll('[id^="comision3_9_"]').forEach(el => {
+        el.textContent = value;
+    });
+}
+
 
 
 function onActv3Comision3_10(){

@@ -12,7 +12,8 @@ $docenteConfig =  $docenteConfig ?? [
         'userTypeForDict' => '',
         'docenteMappings' => [
         // score y su copia
-        'score3_9' => 'score3_9',     
+        '#score3_9_0' => 'score3_9',    
+        '#score3_9_1' => 'score3_9', 
         // cantidades y subtotales
         'puntaje3_9_1' => 'puntaje3_9_1',
         'puntaje3_9_2' => 'puntaje3_9_2',

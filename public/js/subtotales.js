@@ -601,9 +601,11 @@ if (!isNaN(score3_8_1)) {
 
 
 //Actividad 9
-function onActv3SubTotal3_9(){
+function onActv3SubTotal3_9(componentIndex){
 
-  //Puntaje
+  // obtener solo elementos con ese índice
+  const scoreElement = document.getElementById(`score3_9_${componentIndex}`);
+    //Puntajes
   const puntajeTutorias20_1 = parseFloat(document.getElementById("puntajeTutorias20_1").textContent);
   const puntajeTutorias15_1 = parseFloat(document.getElementById("puntajeTutorias15_1").textContent);
   const puntajeTutorias10_1 = parseFloat(document.getElementById("puntajeTutorias10_1").textContent);
@@ -728,9 +730,9 @@ function onActv3SubTotal3_9(){
     console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias17:", tutorias17)
 
 //subtotal minimo resultante
-const score3_9 = minTutorias(tutorias1,tutorias2,tutorias3, tutorias4, tutorias6, tutorias7, tutorias8, tutorias9, tutorias10, tutorias11, tutorias12, tutorias13, tutorias14, tutorias15, tutorias16, tutorias17);
- document.getElementById("score3_9").innerHTML= score3_9;
- console.log("Puntaje a Evaluar minimo resultante Actividad 3.9 :", score3_9);
+    const score3_9 = minTutorias(tutorias1,tutorias2,tutorias3, tutorias4, tutorias6, tutorias7, tutorias8, tutorias9, tutorias10, tutorias11, tutorias12, tutorias13, tutorias14, tutorias15, tutorias16, tutorias17);
+    scoreElement.textContent = score3_9.toFixed(2);
+    console.log(`Puntaje tabla ${componentIndex}:`, score3_9);
  
 if (!isNaN(score3_9)) {
     docencia += score3_9;
@@ -740,15 +742,24 @@ if (!isNaN(score3_9)) {
   }else{
     document.getElementById("docencia").innerHTML = docencia;
   }
+     
 
 }
 
- data.score3_9 = score3_9;
- data.docencia  = docencia;
-console.log("docencia 3:", docencia);
-  data.score3_9 = isNaN(score3_9) ? 0 : score3_9;
+  data[`score3_9_${componentIndex}`] = score3_9;
+  data.docencia  = docencia;
+  console.log("docencia 3:", docencia);
+
+  // syncScore39Headers();
   updateDocencia();
 }
+
+// function syncScore39Headers() {
+//     const value = document.getElementById('score3_9')?.value || '0';
+//     document.querySelectorAll('[id^="score3_9_"]').forEach(el => {
+//         el.textContent = value;
+//     });
+// }
 
 function onActv3SubTotal3_10(){
     //Puntaje
