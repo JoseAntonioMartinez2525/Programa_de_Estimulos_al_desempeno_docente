@@ -84,6 +84,19 @@
         if (lastId) assign(lastId, value);
     }
 
+   //Nueva función que además busca copias con índices _0, _1, _2...
+    function setValueWithCopies(selector, value) {
+        // Aplica al original
+        setValue(selector, value);
+
+        // Aplica a las copias numeradas si existen
+        for (let i = 0; i <= 5; i++) {
+            const copySelector = `${selector}_${i}`;
+            const el = document.querySelector(copySelector.startsWith('#') ? copySelector : `#${copySelector}`);
+            if (el) setValue(copySelector, value);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.getElementById(config.searchInputId || 'docenteSearch');
         const suggestionsBox = document.getElementById(config.suggestionsBoxId || 'docenteSuggestions');

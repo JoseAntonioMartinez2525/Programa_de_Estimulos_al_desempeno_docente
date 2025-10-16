@@ -1,6 +1,7 @@
 <script>
 (function () {
     const config = @json($config ?? []);
+
     async function submitForm(url, formId) {
         const form = document.getElementById(formId);
         if (!form) {
@@ -8,23 +9,22 @@
             return;
         }
 
+        // ---------- EMAIL Y USER_ID ----------
         const hiddenEmailInput = form.querySelector('input[name="email"]');
         const hiddenUserIdInput = form.querySelector('input[name="user_id"]');
         const selectedDocenteEmailInput = document.getElementById(config.selectedEmailInputId || 'selectedDocenteEmail');
         const docenteSearch = document.getElementById(config.searchInputId || 'docenteSearch');
 
-        let email = (
+        let email =
             hiddenEmailInput?.value?.trim() ||
             selectedDocenteEmailInput?.value?.trim() ||
             (docenteSearch?.value?.match(/\(([^)]+)\)$/) || [])[1] ||
-            ''
-        );
+            '';
 
         if (!email) {
             alert('Seleccione un docente antes de enviar (email ausente).');
             return;
         }
-
         if (hiddenEmailInput) hiddenEmailInput.value = email;
 
         let userId = hiddenUserIdInput?.value?.trim();
@@ -46,34 +46,53 @@
             if (!ok) return;
         }
 
-        // Campos comunes
-        const formData = {
-            dictaminador_id: form.querySelector('input[name="dictaminador_id"]')?.value || '',
-            user_id: hiddenUserIdInput?.value || userId,
-            email: email,
-            user_type: form.querySelector('input[name="user_type"]')?.value || '',
-        };
+        // ---------- CREAR FORM DATA ----------
+        const formData = new FormData();
 
-        // Campos extra configurables (por ejemplo: score3_6, puntaje3_6, etc.)
+        formData.append('dictaminador_id', form.querySelector('input[name="dictaminador_id"]')?.value || '');
+        formData.append('user_id', userId);
+        formData.append('email', email);
+        formData.append('user_type', form.querySelector('input[name="user_type"]')?.value || '');
+
+        // ---------- CAMPOS EXTRA DINÁMICOS ----------
         if (Array.isArray(config.extraFields)) {
             config.extraFields.forEach(field => {
-                const el = document.getElementById(field) ||
-                           document.querySelector(`input[name="${field}"]`) ||
-                           document.querySelector(`span[name="${field}"]`);
-                formData[field] = el?.value || el?.textContent || '';
+                // Buscar todos los elementos que coincidan con el campo (exacto o con sufijo numérico)
+                const elements = document.querySelectorAll(
+                    `[id="${field}"], [name="${field}"], [id^="${field}_"], [name^="${field}_"]`
+                );
+
+                elements.forEach(el => {
+                    const val = el.value !== undefined ? el.value : el.textContent || '';
+                    const key = el.name || el.id || field;
+                    formData.append(key, val.trim());
+                });
+
+                // ⚙️ Si no hay campo base (sin sufijo), crear uno con el primer valor encontrado con sufijo
+                const hasBase = Array.from(formData.keys()).includes(field);
+                if (!hasBase) {
+                    const first = Array.from(formData.entries()).find(([k]) => k.startsWith(field + '_'));
+                    if (first) {
+                        const [, val] = first;
+                        formData.append(field, val);
+                    }
+                }
             });
         }
 
-        console.log('Submitting form data:', formData);
+        // ---------- DEBUG OPCIONAL ----------
+        console.group("📤 Campos que se enviarán al servidor:");
+        for (const [k, v] of formData.entries()) console.log(k, ':', v);
+        console.groupEnd();
 
+        // ---------- ENVIAR ----------
         try {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: formData,
             });
 
             const json = await response.json();
@@ -84,14 +103,14 @@
                 return;
             }
 
-            showMessage(json.message || 'Formulario enviado', 'green');
+            showMessage(json.message || 'Formulario enviado correctamente', 'green');
         } catch (error) {
             console.error('Error de red:', error);
             showMessage('Problema de red al enviar', 'red');
         }
     }
 
-    // Registrar en global si se desea
+    // Registrar globalmente si se desea
     if (config.exposeAs) {
         window[config.exposeAs] = submitForm;
     }

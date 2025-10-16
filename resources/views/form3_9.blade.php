@@ -3,144 +3,58 @@ $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
+//mapping del partials docente-autocomplete.blade.php
+$docenteMappings = [
+    'score3_9' => 'score3_9',
+    
+];
+
+$dictMappings = [
+    'score3_9' => 'score3_9',
+    'comision3_9' => 'comision3_9',
+];
+
+// Copias de score
+foreach (range(0, 2) as $i) {
+    $docenteMappings["#score3_9_$i"] = 'score3_9';
+    $dictMappings["#comision3_9_$i"] = 'comision3_9';
+}
+
+// Observaciones
+foreach (range(1, 18) as $i) {
+    
+    $dictMappings["#obs3_9_$i"] = "obs3_9_$i";
+}
+
+// Puntajes
+foreach (range(1, 18) as $i) {
+    $docenteMappings["puntaje3_9_$i"] = "puntaje3_9_$i";
+    $dictMappings["puntaje3_9_$i"] = "puntaje3_9_$i";
+}
+
+// Tutorías
+foreach (range(1, 18) as $i) {
+    $docenteMappings["tutorias$i"] = "tutorias$i";
+    $dictMappings["tutorias$i"] = "tutorias$i";
+    $dictMappings["tutoriasComision$i"] = "tutorias$i";
+}
+
 $docenteConfig =  $docenteConfig ?? [
-        'formKey' => 'form3_9',
-        'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data', 
-        'docentesEndpoint' => '/formato-evaluacion/get-docentes',
-        'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
-        'dictCollectionKey' => 'form3_9',
-        'userTypeForDict' => '',
-        'docenteMappings' => [
-        // score y su copia
-        '#score3_9_0' => 'score3_9',    
-        '#score3_9_1' => 'score3_9', 
-        // cantidades y subtotales
-        'puntaje3_9_1' => 'puntaje3_9_1',
-        'puntaje3_9_2' => 'puntaje3_9_2',
-        'puntaje3_9_3' => 'puntaje3_9_3',
-        'puntaje3_9_4' => 'puntaje3_9_4',
-        'puntaje3_9_5' => 'puntaje3_9_5',
-        'puntaje3_9_6' => 'puntaje3_9_6',
-        'puntaje3_9_7' => 'puntaje3_9_7',
-        'puntaje3_9_8' => 'puntaje3_9_8',
-        'puntaje3_9_9' => 'puntaje3_9_9',
-        'puntaje3_9_10' => 'puntaje3_9_10',
-        'puntaje3_9_11' => 'puntaje3_9_11',
-        'puntaje3_9_12' => 'puntaje3_9_12',
-        'puntaje3_9_13' => 'puntaje3_9_13',
-        'puntaje3_9_14' => 'puntaje3_9_14',
-        'puntaje3_9_15' => 'puntaje3_9_15',
-        'puntaje3_9_16' => 'puntaje3_9_16',
-        'puntaje3_9_17' => 'puntaje3_9_17',
+    'formKey' => 'form3_9',
+    'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data',
+    'docentesEndpoint' => '/formato-evaluacion/get-docentes',
+    'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
+    'dictCollectionKey' => 'form3_9',
+    'userTypeForDict' => '',
+    'docenteMappings' => $docenteMappings,
+    'dictMappings' => $dictMappings,
 
-        'tutorias1' => 'tutorias1',
-        'tutorias2' => 'tutorias2',
-        'tutorias3' => 'tutorias3',
-        'tutorias4' => 'tutorias4',
-        'tutorias5' => 'tutorias5',
-        'tutorias6' => 'tutorias6',
-        'tutorias7' => 'tutorias7',
-        'tutorias8' => 'tutorias8',
-        'tutorias9' => 'tutorias9',
-        'tutorias10' => 'tutorias10',
-        'tutorias11' => 'tutorias11',
-        'tutorias12' => 'tutorias12',
-        'tutorias13' => 'tutorias13',
-        'tutorias14' => 'tutorias14',
-        'tutorias15' => 'tutorias15',
-        'tutorias16' => 'tutorias16',
-        'tutorias17' => 'tutorias17',
-        ],
-        // Mapeos para respuestas de dictaminadores (si aplica)
-    'dictMappings' => [
-        // comisiones / comIncisos
-        '#comision3_9' => 'comision3_9',
-        'comisionDict3_9' => 'comisionDict3_9',
-        'tutoriasComision1' => 'tutoriasComision1',
-        'tutoriasComision2' => 'tutoriasComision2',
-        'tutoriasComision3' => 'tutoriasComision3',
-        'tutoriasComision4' => 'tutoriasComision4',
-        'tutoriasComision5' => 'tutoriasComision5',
-        'tutoriasComision6' => 'tutoriasComision6',
-        'tutoriasComision7' => 'tutoriasComision7',
-        'tutoriasComision8' => 'tutoriasComision8',
-        'tutoriasComision9' => 'tutoriasComision9',
-        'tutoriasComision10' => 'tutoriasComision10',
-        'tutoriasComision11' => 'tutoriasComision11',
-        'tutoriasComision12' => 'tutoriasComision12',
-        'tutoriasComision13' => 'tutoriasComision13',
-        'tutoriasComision14' => 'tutoriasComision14',
-        'tutoriasComision15' => 'tutoriasComision15',
-        'tutoriasComision16' => 'tutoriasComision16',
-        'tutoriasComision17' => 'tutoriasComision17',
-        // observaciones (span o elementos de texto)
-        '#obs3_9_1' => 'obs3_9_1',
-        '#obs3_9_2' => 'obs3_9_2',
-        '#obs3_9_3' => 'obs3_9_3',
-        '#obs3_9_4' => 'obs3_9_4',
-        '#obs3_9_5' => 'obs3_9_5',
-        '#obs3_9_6' => 'obs3_9_6',
-        '#obs3_9_7' => 'obs3_9_7',
-        '#obs3_9_8' => 'obs3_9_8',
-        '#obs3_9_9' => 'obs3_9_9',
-        '#obs3_9_10' => 'obs3_9_10',
-        '#obs3_9_11' => 'obs3_9_11',
-        '#obs3_9_12' => 'obs3_9_12',
-        '#obs3_9_13' => 'obs3_9_13',
-        '#obs3_9_14' => 'obs3_9_14',
-        '#obs3_9_15' => 'obs3_9_15',
-        '#obs3_9_16' => 'obs3_9_16',
-        '#obs3_9_17' => 'obs3_9_17',
-        
-        // repetir score/rc/stotals para sobrescribir si vienen desde dictaminador
-        'score3_9' => 'score3_9',
-        // cantidades y subtotales
-
-        'puntaje3_9_1' => 'puntaje3_9_1',
-        'puntaje3_9_2' => 'puntaje3_9_2',
-        'puntaje3_9_3' => 'puntaje3_9_3',
-        'puntaje3_9_4' => 'puntaje3_9_4',
-        'puntaje3_9_5' => 'puntaje3_9_5',
-        'puntaje3_9_6' => 'puntaje3_9_6',
-        'puntaje3_9_7' => 'puntaje3_9_7',
-        'puntaje3_9_8' => 'puntaje3_9_8',
-        'puntaje3_9_9' => 'puntaje3_9_9',
-        'puntaje3_9_10' => 'puntaje3_9_10',
-        'puntaje3_9_11' => 'puntaje3_9_11',
-        'puntaje3_9_12' => 'puntaje3_9_12',
-        'puntaje3_9_13' => 'puntaje3_9_13',
-        'puntaje3_9_14' => 'puntaje3_9_14',
-        'puntaje3_9_15' => 'puntaje3_9_15',
-        'puntaje3_9_16' => 'puntaje3_9_16',
-        'puntaje3_9_17' => 'puntaje3_9_17',
-
-        'tutorias1' => 'tutorias1',
-        'tutorias2' => 'tutorias2',
-        'tutorias3' => 'tutorias3',
-        'tutorias4' => 'tutorias4',
-        'tutorias5' => 'tutorias5',
-        'tutorias6' => 'tutorias6',
-        'tutorias7' => 'tutorias7',
-        'tutorias8' => 'tutorias8',
-        'tutorias9' => 'tutorias9',
-        'tutorias10' => 'tutorias10',
-        'tutorias11' => 'tutorias11',
-        'tutorias12' => 'tutorias12',
-        'tutorias13' => 'tutorias13',
-        'tutorias14' => 'tutorias14',
-        'tutorias15' => 'tutorias15',
-        'tutorias16' => 'tutorias16',
-        'tutorias17' => 'tutorias17',
-    ],
-
-    // Inputs ocultos que deben llenarse desde docenteData.form3_9
     'fillHiddenFrom' => [
         'user_id' => 'user_id',
         'email' => 'email',
         'user_type' => 'user_type',
     ],
 
-    // Inputs ocultos que deben llenarse desde la respuesta de dictaminador seleccionada
     'fillHiddenFromDict' => [
         'dictaminador_id' => 'dictaminador_id',
         'user_id' => 'user_id',
@@ -148,112 +62,95 @@ $docenteConfig =  $docenteConfig ?? [
         'user_type' => 'user_type',
     ],
 
-    // comportamiento al no encontrar respuesta de dictaminador
     'resetOnNotFound' => false,
-    'resetValues' => [
-        // opcional: valores por defecto explícitos para targets 
-        'score3_9' => '0',
-        '#comision3_9' => '0',
-        '#obs3_9_1' => '',
-        '#obs3_9_2' => '',
-        '#obs3_9_3' => '',
-        '#obs3_9_4' => '',
-        '#obs3_9_5' => '',
-        '#obs3_9_6' => '',
-        '#obs3_9_7' => '',
-        '#obs3_9_8' => '',
-        '#obs3_9_9' => '',
-        '#obs3_9_10' => '',
-        '#obs3_9_11' => '',
-        '#obs3_9_12' => '',
-        '#obs3_9_13' => '',
-        '#obs3_9_14' => '',
-        '#obs3_9_15' => '',
-        '#obs3_9_16' => '',
-        '#obs3_9_17' => '',
-
-
-    ],
-
+    'resetValues' => array_merge(
+        ['score3_9' => '0', 'comision3_9' => '0'],
+        array_reduce(range(1, 17), function($acc, $i) {
+            $acc["#obs3_9_$i"] = '';
+            return $acc;
+        }, [])
+    ),
 ];
 
+//mapping del partials submit-form.blade.php
 if (!isset($docenteConfigForm)) {
     $docenteConfigForm = [
         'extraFields' => [
             'score3_9',
-        // cantidades y subtotales
-        'puntaje3_9_1',
-        'puntaje3_9_2',
-        'puntaje3_9_3',
-        'puntaje3_9_4',
-        'puntaje3_9_5',
-        'puntaje3_9_6',
-        'puntaje3_9_7',
-        'puntaje3_9_8',
-        'puntaje3_9_9',
-        'puntaje3_9_10',
-        'puntaje3_9_11',
-        'puntaje3_9_12',
-        'puntaje3_9_13',
-        'puntaje3_9_14',
-        'puntaje3_9_15',
-        'puntaje3_9_16',
-        'puntaje3_9_17',
+            // cantidades y subtotales
+            'puntaje3_9_1',
+            'puntaje3_9_2',
+            'puntaje3_9_3',
+            'puntaje3_9_4',
+            'puntaje3_9_5',
+            'puntaje3_9_6',
+            'puntaje3_9_7',
+            'puntaje3_9_8',
+            'puntaje3_9_9',
+            'puntaje3_9_10',
+            'puntaje3_9_11',
+            'puntaje3_9_12',
+            'puntaje3_9_13',
+            'puntaje3_9_14',
+            'puntaje3_9_15',
+            'puntaje3_9_16',
+            'puntaje3_9_17',
 
-        'tutorias1',
-        'tutorias2',
-        'tutorias3',
-        'tutorias4',
-        'tutorias5',
-        'tutorias6',
-        'tutorias7',
-        'tutorias8',
-        'tutorias9',
-        'tutorias10',
-        'tutorias11',
-        'tutorias12',
-        'tutorias13',
-        'tutorias14',
-        'tutorias15',
-        'tutorias16',
-        'tutorias17',
+            'tutorias1',
+            'tutorias2',
+            'tutorias3',
+            'tutorias4',
+            'tutorias5',
+            'tutorias6',
+            'tutorias7',
+            'tutorias8',
+            'tutorias9',
+            'tutorias10',
+            'tutorias11',
+            'tutorias12',
+            'tutorias13',
+            'tutorias14',
+            'tutorias15',
+            'tutorias16',
+            'tutorias17',
 
-        'comision3_9',
-        'tutoriasComision1',
-        'tutoriasComision2',
-        'tutoriasComision3',
-        'tutoriasComision4',
-        'tutoriasComision5',
-        'tutoriasComision6',
-        'tutoriasComision7',
-        'tutoriasComision8',
-        'tutoriasComision9',
-        'tutoriasComision10',
-        'tutoriasComision11',
-        'tutoriasComision12',
-        'tutoriasComision13',
-        'tutoriasComision14',
-        'tutoriasComision15',
-        'tutoriasComision16',
-        'tutoriasComision17',
-        // observaciones (span o elementos de texto)
-        '#obs3_9_1',
-        '#obs3_9_2',
-        '#obs3_9_3',
-        '#obs3_9_4',
-        '#obs3_9_5',
-        '#obs3_9_6',
-        '#obs3_9_7',
-        '#obs3_9_8',
-        '#obs3_9_9',
-        '#obs3_9_10',
-        '#obs3_9_11',
-        '#obs3_9_12',
-        '#obs3_9_13',
-        '#obs3_9_14',
-        '#obs3_9_15',
-        '#obs3_9_16',
-        '#obs3_9_17',
+            'comision3_9',
+            'tutoriasComision1',
+            'tutoriasComision2',
+            'tutoriasComision3',
+            'tutoriasComision4',
+            'tutoriasComision5',
+            'tutoriasComision6',
+            'tutoriasComision7',
+            'tutoriasComision8',
+            'tutoriasComision9',
+            'tutoriasComision10',
+            'tutoriasComision11',
+            'tutoriasComision12',
+            'tutoriasComision13',
+            'tutoriasComision14',
+            'tutoriasComision15',
+            'tutoriasComision16',
+            'tutoriasComision17',
+
+            // observaciones (sin #)
+            'obs3_9_1',
+            'obs3_9_2',
+            'obs3_9_3',
+            'obs3_9_4',
+            'obs3_9_5',
+            'obs3_9_6',
+            'obs3_9_7',
+            'obs3_9_8',
+            'obs3_9_9',
+            'obs3_9_10',
+            'obs3_9_11',
+            'obs3_9_12',
+            'obs3_9_13',
+            'obs3_9_14',
+            'obs3_9_15',
+            'obs3_9_16',
+            'obs3_9_17',
         ],
         'exposeAs' => 'submitForm',
         'selectedEmailInputId' => 'selectedDocenteEmail',
@@ -432,7 +329,7 @@ $user_identity = $user->id;
     </div>
 
     <main class="container">
-        <!-- Form for Part 3_1 -->
+        <!-- Form for Part 3_9 -->
         <form id="form3_9" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-form39', 'form3_9');">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
@@ -456,7 +353,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Doctorado</td>
                         <td id="puntajeTutorias20_1">20</td>
-                        <td id="puntaje3_9_1"></td>
+                        <td id="puntaje3_9_1" name="puntaje3_9_1"></td>
                         <td id="tutorias1">0</td>
                         <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -480,7 +377,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Maestría</td>
                         <td id="puntajeTutorias15_1">15</td>
-                        <td id="puntaje3_9_2"></td>
+                        <td id="puntaje3_9_2" name="puntaje3_9_2"></td>
                         <td id="tutorias2">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -503,7 +400,7 @@ $user_identity = $user->id;
                         <td>Tesis y otras</td>
                         <td>TSU, Lic y especialidad</td>
                         <td id="puntajeTutorias10_1">10</td>
-                        <td id="puntaje3_9_3"></td>
+                        <td id="puntaje3_9_3" name="puntaje3_9_3"></td>
                         <td id="tutorias3">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -526,7 +423,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Doctorado</td>
                         <td id="puntajeTutorias55">55</td>
-                        <td id="puntaje3_9_4"></td>
+                        <td id="puntaje3_9_4" name="puntaje3_9_4"></td>
                         <td id="tutorias4">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -549,7 +446,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Maestría</td>
                         <td id="puntajeTutorias45">45</td>
-                        <td id="puntaje3_9_5"></td>
+                        <td id="puntaje3_9_5" name="puntaje3_9_5"></td>
                         <td id="tutorias5">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -572,7 +469,7 @@ $user_identity = $user->id;
                         <td>Tesis y otras</td>
                         <td>TSU, Lic y especialidad</td>
                         <td id="puntajeTutorias35">35</td>
-                        <td id="puntaje3_9_6"></td>
+                        <td id="puntaje3_9_6" name="puntaje3_9_6"></td>
                         <td id="tutorias6">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -595,7 +492,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Doctorado</td>
                         <td id="puntajeTutorias70">70</td>
-                        <td id="puntaje3_9_7"></td>
+                        <td id="puntaje3_9_7" name="puntaje3_9_7"></td>
                         <td id="tutorias7">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -639,7 +536,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Maestría</td>
                         <td id="puntajeTutorias60">60</td>
-                        <td id="puntaje3_9_8"></td>
+                        <td id="puntaje3_9_8" name="puntaje3_9_8"></td>
                         <td id="tutorias8">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -663,7 +560,7 @@ $user_identity = $user->id;
                         <td>Tesis y otras</td>
                         <td>TSU, Lic y especialidad</td>
                         <td id="puntajeTutorias50">50</td>
-                        <td id="puntaje3_9_9"></td>
+                        <td id="puntaje3_9_9" name="puntaje3_9_9"></td>
                         <td id="tutorias9">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -686,7 +583,7 @@ $user_identity = $user->id;
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias30_1">30</td>
-                    <td id="puntaje3_9_10">0</td>
+                    <td id="puntaje3_9_10" name="puntaje3_9_10">0</td>
                     <td id="tutorias10">0</td>
                     <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -709,7 +606,7 @@ $user_identity = $user->id;
                     <td>Tesis</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias20_2">50</td>
-                    <td id="puntaje3_9_11">0</td>
+                    <td id="puntaje3_9_11" name="puntaje3_9_11">0</td>
                     <td id="tutorias11">0</td>
                     <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -732,7 +629,7 @@ $user_identity = $user->id;
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias15_2">15</td>
-                    <td id="puntaje3_9_12">0</td>
+                    <td id="puntaje3_9_12" name="puntaje3_9_12">0</td>
                     <td id="tutorias12">0</td>
                     <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -755,7 +652,7 @@ $user_identity = $user->id;
                     <td>Examen</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias30_2">30</td>
-                    <td id="puntaje3_9_13">0</td>
+                    <td id="puntaje3_9_13" name="puntaje3_9_13">0</td>
                     <td id="tutorias13">0</td>
                     <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -778,7 +675,7 @@ $user_identity = $user->id;
                     <td>Examen</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias20_3">15</td>
-                    <td id="puntaje3_9_14">0</td>
+                    <td id="puntaje3_9_14" name="puntaje3_9_14">0</td>
                     <td id="tutorias14">0</td>
                     <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -801,7 +698,7 @@ $user_identity = $user->id;
                     <td>Examen</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias15_3">15</td>
-                    <td id="puntaje3_9_15">0</td>
+                    <td id="puntaje3_9_15" name="puntaje3_9_15">0</td>
                     <td id="tutorias15">0</td>
                     <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -824,7 +721,7 @@ $user_identity = $user->id;
                     <td></td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias15_4">15</td>
-                    <td id="puntaje3_9_16">0</td>
+                    <td id="puntaje3_9_16" name="puntaje3_9_16">0</td>
                     <td id="tutorias16">0</td>
                     <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -847,7 +744,7 @@ $user_identity = $user->id;
                     <td></td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias10_2">10</td>
-                    <td id="puntaje3_9_17">0</td>
+                    <td id="puntaje3_9_17" name="puntaje3_9_17">0</td>
                     <td id="tutorias17">0</td>
                     <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -898,31 +795,33 @@ $user_identity = $user->id;
             class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
             Página 15 de 33
         </div>
-</div>
+    </div>
         </form>
     </main>
 
 <script>
     let selectedEmail = null;
     window.onload = function () {
-        const footerHeight = document.querySelector('footer').offsetHeight;
+        // const footerHeight = document.querySelector('footer').offsetHeight;
         const elements = document.querySelectorAll('.prevent-overlap');
 
-        elements.forEach(element => {
-            const rect = element.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
+        // if(footerHeight){
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
 
-            // Verifica si el elemento está demasiado cerca del footer
-            if (rect.bottom > viewportHeight - footerHeight) {
-                element.style.pageBreakBefore = "always";
-            }
-        });
+                // Verifica si el elemento está demasiado cerca del footer
+                if (rect.bottom > viewportHeight - footerHeight) {
+                    element.style.pageBreakBefore = "always";
+                }
+            });
+        
 
         // Múltiples eventos para mayor compatibilidad
-        window.addEventListener('beforeprint', updatePageNumberOnPrint);
-        window.matchMedia('print').addListener(updatePageNumberOnPrint);
-
-    };
+        // window.addEventListener('beforeprint', updatePageNumberOnPrint);
+        // window.matchMedia('print').addListener(updatePageNumberOnPrint);
+        }
+    // };
 
     function minWithSum(value1, value2) {
         const sum = value1 + value2;

@@ -1,4 +1,3 @@
-@props(['componentIndex'])
 <thead>
 <tr>
     <th scope="col">Actividad</th>
@@ -15,14 +14,11 @@
 <thead>
 <tr>
     <th class="seccion3_9" scope="col" class="p3_9" colspan="6">3.9 Trabajos dirigidos para la titulación de estudiantes</th>
-    <th class="score3_9" id="score3_9_{{ $componentIndex }}">0</th>
-    <th class="comision3_9" id="comision3_9_{{ $componentIndex }}">0</th>
+    <th class="score3_9" id="score3_9_{{ $componentIndex }}" name="score3_9">0</th>
+    <th class="comision3_9" id="comision3_9_{{ $componentIndex }}" name="comision3_9">0</th>
 </tr>
 <tr>
     <th class="table-ajust" scope="col" colspan="6"></th>
-
-
-
 
 </tr>
 </thead>
