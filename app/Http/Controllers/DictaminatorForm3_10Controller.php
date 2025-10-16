@@ -37,9 +37,9 @@ class DictaminatorForm3_10Controller extends TransferController
             if (!isset($validatedData['score3_10'])) {
                 $validatedData['score3_10'] = 0;
             }
-            $validatedData['obsGrupal'] = $validatedData['obsGrupal'] ?? 'sin comentarios';
-            $validatedData['obsIndividual'] = $validatedData['obsIndividual'] ?? 'sin comentarios';
-
+            $validatedData['obsGrupal'] = trim($validatedData['obsGrupal']) !== '' ? $validatedData['obsGrupal'] : 'sin comentarios';
+            $validatedData['obsIndividual'] = trim($validatedData['obsIndividual']) !== '' ? $validatedData['obsIndividual'] : 'sin comentarios';
+        
 
             $validatedData['form_type'] = 'form3_10';
 

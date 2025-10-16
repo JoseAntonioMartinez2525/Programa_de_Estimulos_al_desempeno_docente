@@ -356,7 +356,10 @@ td.text-right.punto3_8_1.centerSelect{
     color: #000000;
 }
 
-
+input#comisionIndividual, input#comisionGrupal, input#comisionIndividual, input#comisionAsesoria, input#comisionServicio, input#comisionPracticas, 
+input#comisionCientificos, input#comisionDivulgacion, input#comisionTraduccion, input#comisionArbitrajeInt, input#comisionArbitrajeNac, input#comisionSinInt, input#comisionSinNac, input#comisionAutor, input#comisionEditor, input#comisionWeb{
+    border: hidden;
+}
 
 
 
