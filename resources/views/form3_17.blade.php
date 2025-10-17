@@ -2,6 +2,115 @@
 $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
+
+$docenteConfig = $docenteConfig ?? [
+    'formKey' => 'form3_17',
+
+    // Endpoints base
+    'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data',
+    'docentesEndpoint'    => '/formato-evaluacion/get-docentes',
+    'dictEndpoint'        => '/formato-evaluacion/get-dictaminators-responses',
+
+    // Clave de colección dentro del JSON de dictaminadores
+    'dictCollectionKey'   => 'form3_17',
+
+    // Tipo de usuario que debe gatillar la carga de respuestas de dictaminadores
+    'userTypeForDict'     => '',
+
+    // ---- Mapeos cuando se selecciona un docente ----
+    'docenteMappings' => [
+        // puntajes principales
+        'score3_17'          => 'score3_17',
+
+        // cantidades y subtotales
+        'cantPatentes'     => 'cantPatentes',
+        'subtotalPatentes'  => 'subtotalPatentes',
+        'cantPrototipos' => 'cantPrototipos',
+        'subtotalPrototipos'=> 'subtotalPrototipos',
+
+    ],
+
+    // ---- Mapeos de datos desde dictaminadores ----
+    'dictMappings' => [
+
+        // cantidades y subtotales
+        'cantPatentes'       => 'cantPatentes',
+        'subtotalPatentes'    => 'subtotalPatentes',
+        'cantPrototipos' => 'cantPrototipos',
+        'subtotalPrototipos'=> 'subtotalPrototipos',
+
+
+        // comisiones y observaciones
+        'comisionPatententes'   => 'comisionPatententes',
+        'comisionPrototipos' => 'comisionPrototipos',
+        'obsPatentes'  => 'obsPatentes',
+        'obsPrototipos'   => 'obsPrototipos',
+
+        // totales
+        'score3_17'                     => 'score3_17',
+        'comision3_17'                 => 'comision3_17',
+        '.comision3_17'                 => 'comision3_17',
+        '#comision3_17'                 => 'comision3_17',
+    ],
+
+    // ---- Inputs ocultos que se llenan desde docenteData.form3_17 ----
+    'fillHiddenFrom' => [
+        'user_id'    => 'user_id',
+        'email'      => 'email',
+        'user_type'  => 'user_type',
+    ],
+
+    // ---- Inputs ocultos que se llenan desde la respuesta de dictaminador ----
+    'fillHiddenFromDict' => [
+        'dictaminador_id' => 'dictaminador_id',
+        'user_id'         => 'user_id',
+        'email'           => 'email',
+        'user_type'       => 'user_type',
+    ],
+
+    // ---- Comportamiento cuando no hay respuesta de dictaminador ----
+    'resetOnNotFound' => false,
+    'resetValues' => [
+        'score3_17' => '0',
+        '#comision3_17' => '0',
+        'cantPatentes' => '0',
+        'subtotalPatentes' => '0',
+        'cantPrototipos' => '0',
+        'subtotalPrototipos' => '0',
+        'comisionPatententes' => '0',
+        'comisionPrototipos' => '0',
+        'obsPatentes'   => '',
+        'obsPrototipos' => '',
+
+    ],
+];
+
+if (!isset($docenteConfigForm)) {
+    $docenteConfigForm = [
+        // Campos adicionales que se enviarán junto al form
+        'extraFields' => [
+            'comision3_17',
+            'score3_17',
+        // Demas datos
+        'cantPatentes',
+        'subtotalPatentes',
+        'cantPrototipos',
+        'subtotalPrototipos',
+        'comisionPatententes',
+        'comisionPrototipos',
+        'obsPatentes',
+        'obsPrototipos',
+            
+        ],
+
+        // Nombre global de la función que se expondrá (window.submitForm)
+        'exposeAs' => 'submitForm',
+
+        // IDs usados por el autocompletado docente
+        'selectedEmailInputId' => 'selectedDocenteEmail',
+        'searchInputId' => 'docenteSearch',
+    ];
+}
 @endphp
 <!DOCTYPE html>
 <html lang="">
