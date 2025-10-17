@@ -2846,6 +2846,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     </main>
 
                                     <footer>
+                                        <p class="text-center">Convocatoria actual: {{ $convocatoria ?? 'No asignada' }}</p>
+                                        <p class="text-center">Periodo: {{ $periodo ?? 'Sin definir' }}</p>
                                         @component('components.pie-pag', ['number' => '2'])@endcomponent
                                     </footer>
                     </div>
@@ -3615,61 +3617,61 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
 
 
-        // Función para actualizar el label en el footer con la convocatoria y periodo de evaluación
-        function actualizarLabelConvocatoriaPeriodo(convocatoria, periodo) {
-            const label = document.getElementById('convocatoriaPeriodoLabel');
-            label.textContent = `Convocatoria: ${convocatoria}, Período: ${periodo}`;
-        }
+        // // Función para actualizar el label en el footer con la convocatoria y periodo de evaluación
+        // function actualizarLabelConvocatoriaPeriodo(convocatoria, periodo) {
+        //     const label = document.getElementById('convocatoriaPeriodoLabel');
+        //     label.textContent = `Convocatoria: ${convocatoria}, Período: ${periodo}`;
+        // }
 
         // Captura la convocatoria y periodo de evaluación al enviar el formulario form1
-        document.addEventListener('DOMContentLoaded', function () {
-            const form1 = document.getElementById('form1');
-            form1.addEventListener('submit', function (event) {
-                event.preventDefault(); // Evita el envío del formulario para manejarlo con JavaScript
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const form1 = document.getElementById('form1');
+        //     form1.addEventListener('submit', function (event) {
+        //         event.preventDefault(); // Evita el envío del formulario para manejarlo con JavaScript
 
-                // Captura los valores del formulario form1
-                const convocatoria = document.getElementById('convocatoria').value;
-                const periodo = document.getElementById('periodo').value;
+        //         // Captura los valores del formulario form1
+        //         const convocatoria = document.getElementById('convocatoria').value;
+        //         const periodo = document.getElementById('periodo').value;
 
-                // Actualiza el label en el footer con los valores capturados
-                actualizarLabelConvocatoriaPeriodo(convocatoria, periodo);
-                console.log(label);
-            });
-        });
+        //         // Actualiza el label en el footer con los valores capturados
+        //         actualizarLabelConvocatoriaPeriodo(convocatoria, periodo);
+        //         console.log(label);
+        //     });
+        // });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get the canvas element
-            var canvas = document.getElementById('convocatoriaCanvas');
-            var context = canvas.getContext('2d');
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     // Get the canvas element
+        //     var canvas = document.getElementById('convocatoriaCanvas');
+        //     var context = canvas.getContext('2d');
 
-            // Function to update the canvas with 'Convocatoria' value
-            function updateCanvas(text) {
-                // Clear the canvas
-                context.clearRect(200, 100, canvas.width, canvas.height);
+        //     // Function to update the canvas with 'Convocatoria' value
+        //     function updateCanvas(text) {
+        //         // Clear the canvas
+        //         context.clearRect(200, 100, canvas.width, canvas.height);
 
-                // Set text properties
-                context.font = '20px Arial';
-                context.fillStyle = 'black';
-                context.textAlign = 'right';
-                context.textBaseline = 'middle';
+        //         // Set text properties
+        //         context.font = '20px Arial';
+        //         context.fillStyle = 'black';
+        //         context.textAlign = 'right';
+        //         context.textBaseline = 'middle';
 
-                // Draw the text
-                context.fillText(text, canvas.width / 2, canvas.height / 2);
-            }
+        //         // Draw the text
+        //         context.fillText(text, canvas.width / 2, canvas.height / 2);
+        //     }
 
-            // Get the input element with id 'convocatoria'
-            var convocatoriaInput = document.getElementById('convocatoria');
-            if (convocatoriaInput) {
-                // Update the canvas initially with the placeholder value or empty
-                updateCanvas(convocatoriaInput.placeholder);
+        //     // Get the input element with id 'convocatoria'
+        //     var convocatoriaInput = document.getElementById('convocatoria');
+        //     if (convocatoriaInput) {
+        //         // Update the canvas initially with the placeholder value or empty
+        //         updateCanvas(convocatoriaInput.placeholder);
 
-                // Listen for input events to dynamically update the canvas
-                convocatoriaInput.addEventListener('input', function () {
-                    var newValue = convocatoriaInput.value;
-                    updateCanvas(newValue);
-                });
-            }
-        });
+        //         // Listen for input events to dynamically update the canvas
+        //         convocatoriaInput.addEventListener('input', function () {
+        //             var newValue = convocatoriaInput.value;
+        //             updateCanvas(newValue);
+        //         });
+        //     }
+        // });
 
 
         document.addEventListener('DOMContentLoaded', function () {

@@ -15,7 +15,7 @@ $docenteConfig = $docenteConfig ?? [
     'dictCollectionKey'   => 'form3_10',
 
     // Tipo de usuario que debe gatillar la carga de respuestas de dictaminadores
-    'userTypeForDict'     => 'dictaminador',
+    'userTypeForDict'     => '',
 
     // ---- Mapeos cuando se selecciona un docente ----
     'docenteMappings' => [
@@ -36,10 +36,20 @@ $docenteConfig = $docenteConfig ?? [
         'comisionIndividual'=> 'comisionIndividual',
         'obsGrupal'        => 'obsGrupal',
         'obsIndividual'    => 'obsIndividual',
+        '#comisionGrupal'   => 'comisionGrupal',
+        '#comisionIndividual'=> 'comisionIndividual',
+        '#obsGrupal'        => 'obsGrupal',
+        '#obsIndividual'    => 'obsIndividual',
+        '.comisionGrupal'   => 'comisionGrupal',
+        '.comisionIndividual'=> 'comisionIndividual',
+        '.obsGrupal'        => 'obsGrupal',
+        '.obsIndividual'    => 'obsIndividual',
 
         // totales
         'score3_10'                     => 'score3_10',
         'comision3_10'                 => 'comision3_10',
+        '.comision3_10'                 => 'comision3_10',
+        '#comision3_10'                 => 'comision3_10',
     ],
 
     // ---- Inputs ocultos que se llenan desde docenteData.form3_10 ----
@@ -146,7 +156,7 @@ $user_identity = $user->id;
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="user_id" value="">
             <input type="hidden" name="email" value="">
-            <input type="hidden" name="user_type" value="">
+            <input type="hidden" name="user_type" value="dictaminador">
             <!--3.10 Trabajos dirigidos para la titulación de estudiantes-->
             <h4>Puntaje máximo
                 <label class="bg-black text-white px-4 mt-3" for="">115</label>

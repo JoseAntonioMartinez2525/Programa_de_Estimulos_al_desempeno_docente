@@ -36,13 +36,26 @@ class AppServiceProvider extends ServiceProvider
 
         //convocatoria
          // @php-intel-disable-next-line
-        if (\Illuminate\Support\Facades\Auth::check()) {
-            $convocatoria = UsersResponseForm1::where('user_id', Auth::id())->latest()->first();
-            if ($convocatoria) {
-                view()->share('convocatoria', $convocatoria->convocatoria);
-            }
-        }
+         View::composer('*', function ($view) {
+            if (Auth::check()) {
+                // Hacemos una sola consulta
+                $registro = UsersResponseForm1::where('user_id', Auth::id())
+                    ->latest()
+                    ->first();
 
-        
+                // Compartimos varios valores
+                $view->with([
+                    'convocatoria' => $registro?->convocatoria,
+                    'periodo' => $registro?->periodo,
+
+                ]);
+            } else {
+                // Si no hay usuario autenticado, enviamos null
+                $view->with([
+                    'convocatoria' => null,
+                    'periodo' => null,
+                ]);
+            }
+        });
     }
 }
