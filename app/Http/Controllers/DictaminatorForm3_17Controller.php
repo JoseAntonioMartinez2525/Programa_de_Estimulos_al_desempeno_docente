@@ -43,10 +43,12 @@ class DictaminatorForm3_17Controller extends TransferController
             if (!isset($validatedData['score3_17'])) {
                 $validatedData['score3_17'] = 0;
             }
-            $validatedData['obsDifusionExt'] = $validatedData['obsDifusionExt'] ?? 'sin comentarios';
-            $validatedData['obsDifusionInt'] = $validatedData['obsDifusionInt'] ?? 'sin comentarios';
-            $validatedData['obsRepDifusionExt'] = $validatedData['obsRepDifusionExt'] ?? 'sin comentarios';
-            $validatedData['obsRepDifusionInt'] = $validatedData['obsRepDifusionInt'] ?? 'sin comentarios';
+
+            $campos = ['obsDifusionExt', 'obsDifusionInt', 'obsRepDifusionExt', 'obsRepDifusionInt'];
+
+            foreach ($campos as $campo) {
+            $validatedData[$campo] = trim($validatedData[$campo]) !== '' ? $validatedData[$campo] : 'sin comentarios';
+            }
 
             $validatedData['form_type'] = 'form3_17';
 

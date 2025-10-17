@@ -41,6 +41,13 @@ $docenteConfig = $docenteConfig ?? [
         'obsServicio'        => 'obsServicio',
         'comisionPracticas'  => 'comisionPracticas',
         'obsPracticas'       => 'obsPracticas',
+        //cantidades y subtotales
+        'cantAsesoria'       => 'cantAsesoria',
+        'cantServicio'    => 'cantServicio',
+        'cantPracticas'     => 'cantPracticas',
+        'subtotalAsesoria'   => 'subtotalAsesoria',
+        'subtotalServicio' => 'subtotalServicio',
+        'subtotalPracticas'  => 'subtotalPracticas',
 
         // totales
         'score3_11'                     => 'score3_11',
