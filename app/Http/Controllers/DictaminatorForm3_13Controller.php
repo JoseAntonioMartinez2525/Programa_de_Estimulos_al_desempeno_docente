@@ -43,11 +43,12 @@ class DictaminatorForm3_13Controller extends TransferController
             if (!isset($validatedData['score3_13'])) {
                 $validatedData['score3_13'] = 0;
             }
-            $validatedData['obsInicioFinancimientoExt'] = $validatedData['obsInicioFinancimientoExt'] ?? 'sin comentarios';
-            $validatedData['obsInicioInvInterno'] = $validatedData['obsInicioInvInterno'] ?? 'sin comentarios';
-            $validatedData['obsReporteFinanciamExt'] = $validatedData['obsReporteFinanciamExt'] ?? 'sin comentarios';
-            $validatedData['obsReporteInvInt'] = $validatedData['obsReporteInvInt'] ?? 'sin comentarios';
 
+            $campos = ['obsInicioFinancimientoExt', 'obsInicioInvInterno', 'obsReporteFinanciamExt', 'obsReporteInvInt'];
+
+            foreach ($campos as $campo) {
+                $validatedData[$campo] = trim($validatedData[$campo]) !== '' ? $validatedData[$campo] : 'sin comentarios';
+            }
 
             $validatedData['form_type'] = 'form3_13';
 

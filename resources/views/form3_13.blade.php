@@ -2,6 +2,137 @@
 $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
+
+$docenteConfig = $docenteConfig ?? [
+    'formKey' => 'form3_13',
+
+    // Endpoints base
+    'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data',
+    'docentesEndpoint'    => '/formato-evaluacion/get-docentes',
+    'dictEndpoint'        => '/formato-evaluacion/get-dictaminators-responses',
+
+    // Clave de colección dentro del JSON de dictaminadores
+    'dictCollectionKey'   => 'form3_13',
+
+    // Tipo de usuario que debe gatillar la carga de respuestas de dictaminadores
+    'userTypeForDict'     => '',
+
+    // ---- Mapeos cuando se selecciona un docente ----
+    'docenteMappings' => [
+        // puntajes principales
+        'score3_13'          => 'score3_13',
+
+        // cantidades y subtotales
+        'cantInicioFinanExt'       => 'cantInicioFinanExt',
+        'cantInicioInvInterno'    => 'cantInicioInvInterno',
+        'cantReporteFinanciamExt' => 'cantReporteFinanciamExt',
+        'cantReporteInvInt'       => 'cantReporteInvInt',
+        'subtotalInicioFinanExt'       => 'subtotalInicioFinanExt',
+        'subtotalInicioInvInterno'    => 'subtotalInicioInvInterno',
+        'subtotalReporteFinanciamExt' => 'subtotalReporteFinanciamExt',
+        'subtotalReporteInvInt'       => 'subtotalReporteInvInt',
+
+
+    ],
+
+    // ---- Mapeos de datos desde dictaminadores ----
+    'dictMappings' => [
+
+        // cantidades y subtotales
+        'cantInicioFinanExt'       => 'cantInicioFinanExt',
+        'cantInicioInvInterno'    => 'cantInicioInvInterno',
+        'cantReporteFinanciamExt' => 'cantReporteFinanciamExt',
+        'cantReporteInvInt'       => 'cantReporteInvInt',
+        'subtotalInicioFinanExt'       => 'subtotalInicioFinanExt',
+        'subtotalInicioInvInterno'    => 'subtotalInicioInvInterno',
+        'subtotalReporteFinanciamExt' => 'subtotalReporteFinanciamExt',
+        'subtotalReporteInvInt'       => 'subtotalReporteInvInt',
+
+        // comisiones y observaciones
+        'comisionInicioFinancimientoExt'   => 'comisionInicioFinancimientoExt',
+        'obsInicioFinancimientoExt'        => 'obsInicioFinancimientoExt',
+        'comisionInicioInvInterno'        => 'comisionInicioInvInterno',
+        'obsInicioInvInterno'             => 'obsInicioInvInterno',
+        'comisionReporteFinanciamExt'     => 'comisionReporteFinanciamExt',
+        'obsReporteFinanciamExt'          => 'obsReporteFinanciamExt',
+        'comisionReporteInvInt'           => 'comisionReporteInvInt',
+        'obsReporteInvInt'                => 'obsReporteInvInt',
+
+
+        // totales
+        'score3_13'                     => 'score3_13',
+        'comision3_13'                 => 'comision3_13',
+        '.comision3_13'                 => 'comision3_13',
+        '#comision3_13'                 => 'comision3_13',
+    ],
+
+    // ---- Inputs ocultos que se llenan desde docenteData.form3_13 ----
+    'fillHiddenFrom' => [
+        'user_id'    => 'user_id',
+        'email'      => 'email',
+        'user_type'  => 'user_type',
+    ],
+
+    // ---- Inputs ocultos que se llenan desde la respuesta de dictaminador ----
+    'fillHiddenFromDict' => [
+        'dictaminador_id' => 'dictaminador_id',
+        'user_id'         => 'user_id',
+        'email'           => 'email',
+        'user_type'       => 'user_type',
+    ],
+
+    // ---- Comportamiento cuando no hay respuesta de dictaminador ----
+    'resetOnNotFound' => false,
+    'resetValues' => [
+        'score3_13' => '0',
+        '#comision3_13' => '0',
+        'cantInicioFinanExt' => '0',
+        'cantInicioInvInterno' => '0',
+        'cantReporteFinanciamExt' => '0',
+        'cantReporteInvInt' => '0',
+        'subtotalInicioFinanExt' => '0',
+        'subtotalInicioInvInterno' => '0',
+        'subtotalReporteFinanciamExt' => '0',
+        'subtotalReporteInvInt' => '0',
+        'obsInicioFinancimientoExt' => '',
+        'obsInicioInvInterno' => '',
+        'obsReporteFinanciamExt' => '',
+        'obsReporteInvInt' => '',
+    ],
+];
+
+if (!isset($docenteConfigForm)) {
+    $docenteConfigForm = [
+        // Campos adicionales que se enviarán junto al form
+        'extraFields' => [
+            'score3_13',
+            'cantInicioFinanExt',
+            'cantInicioInvInterno',
+            'cantReporteInvInt',
+            'cantReporteFinanciamExt',
+            'subtotalInicioFinanExt',
+            'subtotalInicioInvInterno',
+            'subtotalReporteFinanciamExt',
+            'subtotalReporteInvInt',
+            'comisionInicioFinancimientoExt',
+            'comisionInicioInvInterno',
+            'comisionReporteFinanciamExt',
+            'comisionReporteInvInt',
+            'obsInicioFinancimientoExt',
+            'obsInicioInvInterno',
+            'obsReporteFinanciamExt',
+            'obsReporteInvInt',
+            'comision3_13',
+        ],
+
+        // Nombre global de la función que se expondrá (window.submitForm)
+        'exposeAs' => 'submitForm',
+
+        // IDs usados por el autocompletado docente
+        'selectedEmailInputId' => 'selectedDocenteEmail',
+        'searchInputId' => 'docenteSearch',
+    ];
+}
 @endphp
 <!DOCTYPE html>
 <html lang="">
@@ -14,6 +145,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <x-head-resources />
+    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+    @include('partials.submit-form', ['config' => $docenteConfigForm])
     <link href="{{ asset('css/onePage.css') }}" rel="stylesheet">
 </head>
 
@@ -37,17 +170,13 @@ $user_identity = $user->id;
 
     <div class="container mt-4" id="seleccionDocente">
         @if($userType !== 'docente')
-            <!-- Select para dictaminador seleccionando docentes -->
-            <label for="docenteSearch">Seleccionar Docente:</label>
-            <select id="docenteSearch" class="form-select"> <!--name="docentes[]" multiple-->
-                <option value="">Seleccionar un docente</option>
-                <!-- Aquí se llenarán los docentes con JavaScript -->
-            </select>
+            {{-- Buscar Docentes: --}}
+            <x-docente-search />
         @endif
     </div>
 
     <main class="container">
-        <!-- Form for Part 3_1 -->
+        <!-- Form for Part 3_13 -->
         <form id="form3_13" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-form313', 'form3_13');">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
@@ -97,10 +226,10 @@ $user_identity = $user->id;
                     <td>a)</td>
                     <td class="td_3_13">Inicio de proyecto de investigación con financiamiento externo</td>
                     <td id="puntajeInicioFinanExt">50</td>
-                    <td id="cantInicioFinanExt" class="cantidad">
+                    <td id="cantInicioFinanExt" class="cantidad" name="cantInicioFinanExt">
                     </td>
                     <td colspan="3"></td>
-                    <td id="subtotalInicioFinanExt"></td>
+                    <td id="subtotalInicioFinanExt" name="subtotalInicioFinanExt"></td>
                     <td class="comision3_13">
                     @if ($userType == 'dictaminador')
                         <input type="number" step="0.01" id="comisionInicioFinancimientoExt" name="comisionInicioFinancimientoExt" value="{{ oldValueOrDefault('comisionInicioFinancimientoExt') }}" oninput="onActv3Comision3_13()">
@@ -121,9 +250,9 @@ $user_identity = $user->id;
                     <td>b)</td>
                     <td class="td_3_13">Inicio de proyecto de investigación interno, aprobado por CAAC</td>
                     <td id="puntajeInicioInvInterno">25</td>
-                    <td id="cantInicioInvInterno" class="cantidad"></td>
+                    <td id="cantInicioInvInterno" class="cantidad" name="cantInicioInvInterno"></td>
                     <td colspan="3"></td>
-                    <td id="subtotalInicioInvInterno"></td>
+                    <td id="subtotalInicioInvInterno" name="subtotalInicioInvInterno"></td>
                     <td class="comision3_13">
                      @if ($userType == 'dictaminador')   
                         <input type="number" step="0.01" id="comisionInicioInvInterno" name="comisionInicioInvInterno" value="{{ oldValueOrDefault('comisionInicioInvInterno') }}" oninput="onActv3Comision3_13()">
@@ -228,6 +357,7 @@ $user_identity = $user->id;
     </footer>
     </center>
     <script>
+        let selectedEmail = null;
         window.onload = function () {
             const footerHeight = document.querySelector('footer').offsetHeight;
             const elements = document.querySelectorAll('.prevent-overlap');
@@ -243,300 +373,13 @@ $user_identity = $user->id;
             });
 
         }; 
-    document.addEventListener('DOMContentLoaded', async () => {
-        const userType = @json($userType);  // Inject user type from backend to JS
-        const user_identity = @json($user_identity);
-        const docenteSearch = document.getElementById('docenteSearch');
 
-        if (docenteSearch) {
-            // Cuando el usuario es dictaminador
-            if (userType === 'dictaminador') {
-                try {
-                   const response = await fetch('/formato-evaluacion/get-docentes');
-                    const docentes = await response.json();
-
-                    docentes.forEach(docente => {
-                        const option = document.createElement('option');
-                        option.value = docente.email;
-                        option.textContent = docente.email;
-                        docenteSearch.appendChild(option);
-                    });
-
-                    docenteSearch.addEventListener('change', async (event) => {
-                        const email = event.target.value;
-
-                        if (email) {
-                            axios.get('/formato-evaluacion/get-docente-data', { params: { email } })
-                                .then(response => {
-                                    const data = response.data;
-
-                                    // Populate fields with fetched data
-                                    document.getElementById('score3_13').textContent = data.form3_13.score3_13 || '0';
-
-                                    // Cantidades
-                                    document.getElementById('cantInicioFinanExt').textContent = data.form3_13.cantInicioFinanExt || '0';
-                                    document.getElementById('cantInicioInvInterno').textContent = data.form3_13.cantInicioInvInterno || '0';
-                                    document.getElementById('cantReporteFinanciamExt').textContent = data.form3_13.cantReporteFinanciamExt || '0';
-                                    document.getElementById('cantReporteInvInt').textContent = data.form3_13.cantReporteInvInt || '0';
+    function minWithSum(value1, value2) {
+        const sum = value1 + value2;
+        return Math.min(sum, 200);
 
 
-                                    // Subtotales
-                                    document.getElementById('subtotalInicioFinanExt').textContent = data.form3_13.subtotalInicioFinanExt || '0';
-                                    document.getElementById('subtotalInicioInvInterno').textContent = data.form3_13.subtotalInicioInvInterno || '0';
-                                    document.getElementById('subtotalReporteFinanciamExt').textContent = data.form3_13.subtotalReporteFinanciamExt || '0';
-                                    document.getElementById('subtotalReporteInvInt').textContent = data.form3_13.subtotalReporteInvInt || '0';
-
-                                    //  hidden inputs
-                                    document.querySelector('input[name="user_id"]').value = data.form3_13.user_id || '';
-                                    document.querySelector('input[name="email"]').value = data.form3_13.email || '';
-                                    document.querySelector('input[name="user_type"]').value = data.form3_13.user_type || '';
-
-                                    // Actualizar convocatoria
-                                    const convocatoriaElement = document.getElementById('convocatoria');
-                                    if (convocatoriaElement) {
-                                        if (data.form1) {
-                                            convocatoriaElement.textContent = data.form1.convocatoria || '';
-                                        } else {
-                                            console.error('form1 no está definido en la respuesta.');
-                                        }
-                                    } else {
-                                        console.error('Elemento con ID "convocatoria" no encontrado.');
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Error fetching docente data:', error);
-                                });
-                            //await asignarDocentes(user_identity, email);
-                        }
-                    });
-                } catch (error) {
-                    console.error('Error fetching docentes:', error);
-                    alert('No se pudo cargar la lista de docentes.');
-                }
-            }
-            // Cuando el userType está vacío
-            else if (userType === 'secretaria') {
-
-                try {
-                   const response = await fetch('/formato-evaluacion/get-docentes');
-
-                    const docentes = await response.json();
-
-                    docentes.forEach(docente => {
-                        const option = document.createElement('option');
-                        option.value = docente.email;
-                        option.textContent = docente.email;
-                        docenteSearch.appendChild(option);
-                    });
-
-                    docenteSearch.addEventListener('change', async (event) => {
-                        const email = event.target.value;
-
-                        if (email) {
-                            axios.get('/formato-evaluacion/get-docente-data', { params: { email } })
-                                .then(response => {
-                                    const data = response.data;
-
-                                    // Actualizar convocatoria
-
-                                    // Verifica si la respuesta contiene los datos esperados
-                                    if (data.docente) {
-                                        const convocatoriaElement = document.getElementById('convocatoria');
-
-                                        // Mostrar la convocatoria si existe
-                                        if (convocatoriaElement) {
-                                            if (data.docente.convocatoria) {
-                                                convocatoriaElement.textContent = data.docente.convocatoria;
-                                            } else {
-                                                convocatoriaElement.textContent = 'Convocatoria no disponible';
-                                            }
-                                        }
-                                    }
-                                });
-                            // Lógica para obtener datos de DictaminatorsResponseForm2
-                            try {
-                                const response = await fetch('/formato-evaluacion/get-dictaminators-responses');
-                                const dictaminatorResponses = await response.json();
-                                // Filtrar la entrada correspondiente al email seleccionado
-                                const selectedResponseForm3_13 = dictaminatorResponses.form3_13.find(res => res.email === email);
-                                if (selectedResponseForm3_13) {
-
-                                    document.querySelector('input[name="dictaminador_id"]').value = selectedResponseForm3_13.dictaminador_id || '0';
-                                    document.querySelector('input[name="user_id"]').value = selectedResponseForm3_13.user_id || '';
-                                    document.querySelector('input[name="email"]').value = selectedResponseForm3_13.email || '';
-                                    document.querySelector('input[name="user_type"]').value = selectedResponseForm3_13.user_type || '';
-                                    document.getElementById('score3_13').textContent = selectedResponseForm3_13.score3_13 || '0';
-                                    document.getElementById('comision3_13').textContent = selectedResponseForm3_13.comision3_13 || '0';
-
-                                    // Cantidades
-                                    document.getElementById('cantInicioFinanExt').textContent = selectedResponseForm3_13.cantInicioFinanExt || '0';
-                                    document.getElementById('cantInicioInvInterno').textContent = selectedResponseForm3_13.cantInicioInvInterno || '0';
-                                    document.getElementById('cantReporteFinanciamExt').textContent = selectedResponseForm3_13.cantReporteFinanciamExt || '0';
-                                    document.getElementById('cantReporteInvInt').textContent = selectedResponseForm3_13.cantReporteInvInt || '0';
-
-
-                                    // Subtotales
-                                    document.getElementById('subtotalInicioFinanExt').textContent = selectedResponseForm3_13.subtotalInicioFinanExt || '0';
-                                    document.getElementById('subtotalInicioInvInterno').textContent = selectedResponseForm3_13.subtotalInicioInvInterno || '0';
-                                    document.getElementById('subtotalReporteFinanciamExt').textContent = selectedResponseForm3_13.subtotalReporteFinanciamExt || '0';
-                                    document.getElementById('subtotalReporteInvInt').textContent = selectedResponseForm3_13.subtotalReporteInvInt || '0';
-
-
-                                    // Comisiones
-                                    document.querySelector('#comisionInicioFinancimientoExt').textContent = selectedResponseForm3_13.comisionInicioFinancimientoExt || '0';
-                                    document.querySelector('#comisionInicioInvInterno').textContent = selectedResponseForm3_13.comisionInicioInvInterno || '0';
-                                    document.querySelector('#comisionReporteFinanciamExt').textContent = selectedResponseForm3_13.comisionReporteFinanciamExt || '0';
-                                    document.querySelector('#comisionReporteInvInt').textContent = selectedResponseForm3_13.comisionReporteInvInt || '0';
-
-
-                                    // Observaciones
-                                    document.querySelector('#obsInicioFinancimientoExt').textContent = selectedResponseForm3_13.obsInicioFinancimientoExt || '';
-                                    document.querySelector('#obsInicioInvInterno').textContent = selectedResponseForm3_13.obsInicioInvInterno || '';
-                                    document.querySelector('#obsReporteFinanciamExt').textContent = selectedResponseForm3_13.obsReporteFinanciamExt || '';
-                                    document.querySelector('#obsReporteInvInt').textContent = selectedResponseForm3_13.obsReporteInvInt || '';
-
-
-
-                                } else {
-                                    console.error('No form3_13 data found for the selected dictaminador.');
-
-                                    // Reset input values if no data found
-                                    document.querySelector('input[name="dictaminador_id"]').value = '0';
-                                    document.querySelector('input[name="user_id"]').value = '0';
-                                    document.querySelector('input[name="email"]').value = '';
-                                    document.querySelector('input[name="user_type"]').value = '';
-
-                                    document.getElementById('score3_13').textContent = '0';
-
-                                    // Cantidades
-                                    document.getElementById('cantInicioFinanExt').textContent = '0';
-                                    document.getElementById('cantInicioInvInterno').textContent = '0';
-                                    document.getElementById('cantReporteFinanciamExt').textContent = '0';
-                                    document.getElementById('cantReporteInvInt').textContent = '0';
-
-
-                                    // Subtotales
-                                    document.getElementById('subtotalInicioFinanExt').textContent = '0';
-                                    document.getElementById('subtotalInicioInvInterno').textContent = '0';
-                                    document.getElementById('subtotalReporteFinanciamExt').textContent = '0';
-                                    document.getElementById('subtotalReporteInvInt').textContent = '0';
-
-
-                                    // Comisiones
-                                    document.querySelector('#comisionInicioFinancimientoExt').textContent = '0';
-                                    document.querySelector('#comisionInicioInvInterno').textContent = '0';
-                                    document.querySelector('#comisionReporteFinanciamExt').textContent = '0';
-                                    document.querySelector('#comisionReporteInvInt').textContent = '0';
-
-
-                                    // Observaciones
-                                    document.querySelector('#obsInicioFinancimientoExt').textContent = '';
-                                    document.querySelector('#obsInicioInvInterno').textContent = '';
-                                    document.querySelector('#obsReporteFinanciamExt').textContent = '';
-                                    document.querySelector('#obsReporteInvInt').textContent = '';
-
-                                    document.getElementById('comision3_13').textContent = '0';
-                                }
-                            } catch (error) {
-                                console.error('Error fetching dictaminators responses:', error);
-                            }
-                        }
-                    });
-                } catch (error) {
-                    console.error('Error fetching docentes:', error);
-                    alert('No se pudo cargar la lista de docentes.');
-                }
-
-
-            }
-
-
-
-        }
-
-    });
-
-        // Function to handle form submission
-        async function submitForm(url, formId) {
-            const formData = {};
-            const form = document.getElementById(formId);
-
-            if (!form) {
-                console.error(`Form with id "${formId}" not found.`);
-                return;
-            }
-
-            formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
-            formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = form.querySelector('input[name="email"]').value;
-            formData['user_type'] = form.querySelector('input[name="user_type"]').value;
-
-            // Cantidades
-            formData['cantInicioFinanExt'] = form.querySelector('td[id="cantInicioFinanExt"]').textContent;
-            formData['cantInicioInvInterno'] = form.querySelector('td[id="cantInicioInvInterno"]').textContent;
-            formData['cantReporteFinanciamExt'] = form.querySelector('td[id="cantReporteFinanciamExt"]').textContent;
-            formData['cantReporteInvInt'] = form.querySelector('td[id="cantReporteInvInt"]').textContent;
-
-
-            // Subtotales
-            formData['subtotalInicioFinanExt'] = document.getElementById('subtotalInicioFinanExt').textContent;
-            formData['subtotalInicioInvInterno'] = document.getElementById('subtotalInicioInvInterno').textContent;
-            formData['subtotalReporteFinanciamExt'] = document.getElementById('subtotalReporteFinanciamExt').textContent;
-            formData['subtotalReporteInvInt'] = document.getElementById('subtotalReporteInvInt').textContent;
-
-
-            // Comisiones
-            formData['comisionInicioFinancimientoExt'] = form.querySelector('input[id="comisionInicioFinancimientoExt"]').value;
-            formData['comisionInicioInvInterno'] = form.querySelector('input[id="comisionInicioInvInterno"]').value;
-            formData['comisionReporteFinanciamExt'] = form.querySelector('input[id="comisionReporteFinanciamExt"]').value;
-            formData['comisionReporteInvInt'] = form.querySelector('input[id="comisionReporteInvInt"]').value;
-
-            // Observaciones
-            formData['obsInicioFinancimientoExt'] = form.querySelector('input[id="obsInicioFinancimientoExt"]').value;
-            formData['obsInicioInvInterno'] = form.querySelector('input[id="obsInicioInvInterno"]').value;
-            formData['obsReporteFinanciamExt'] = form.querySelector('input[id="obsReporteFinanciamExt"]').value;
-            formData['obsReporteInvInt'] = form.querySelector('input[id="obsReporteInvInt"]').value;
-
-            formData['score3_13'] = document.getElementById('score3_13').textContent;
-            formData['comision3_13'] = document.getElementById('comision3_13').textContent;
-
-            // Observations
-
-            console.log('Form data:', formData);
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const responseData = await response.json();
-                console.log('Response received from server:', responseData);
-
-                //Mensaje al usuario
-                if (responseData.success) {
-                    showMessage('Formulario enviado', 'green');
-                } else {
-                    showMessage('Formulario no enviado', 'red');
-                }
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
-        }
-        function minWithSum(value1, value2) {
-            const sum = value1 + value2;
-            return Math.min(sum, 200);
-
-
-        }
+    }
 
     document.addEventListener('DOMContentLoaded', function () {
 

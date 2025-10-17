@@ -59,7 +59,8 @@
             config.extraFields.forEach(field => {
                 // Buscar todos los elementos que coincidan con el campo (exacto o con sufijo numérico)
                 const elements = document.querySelectorAll(
-                    `[id="${field}"], [name="${field}"], [id^="${field}_"], [name^="${field}_"]`
+                    `[id="${field}"], [name="${field}"], [id*="${field}"], [name*="${field}"]
+`
                 );
 
                 elements.forEach(el => {
