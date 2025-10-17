@@ -22,7 +22,7 @@ $docenteConfig = $docenteConfig ?? [
         // puntajes principales
         'score3_11'          => 'score3_11',
 
-        // campos grupales e individuales
+        //cantidades y subtotales
         'cantAsesoria'       => 'cantAsesoria',
         'cantServicio'    => 'cantServicio',
         'cantPracticas'     => 'cantPracticas',
@@ -70,11 +70,11 @@ $docenteConfig = $docenteConfig ?? [
         'score3_11' => '0',
         '#comision3_11' => '0',
         'comisionAsesoria' => '0',
-        'obsAsesoria' => '0',
+        'obsAsesoria' => '',
         'comisionServicio' => '',
         'obsServicio' => '',
         'comisionPracticas' => '0',
-        'obsPracticas' => '0',
+        'obsPracticas' => '',
         'cantAsesoria' => '0',
         'cantServicio' => '0',
         'cantPracticas' => '0',
