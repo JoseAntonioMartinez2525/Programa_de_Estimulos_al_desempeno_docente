@@ -137,24 +137,24 @@ class DictaminatorForm3_19Controller extends TransferController
             
             return response()->json([
                 'success' => true,
-                'message' => 'Data successfully saved',
+                'message' => 'Formulario enviado con éxito',
                 'data' => $validatedData,
             ], 200);
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation failed',
+                'message' => 'Validadción fallida',
                 'errors' => $e->errors()
             ], 422);
         } catch (QueryException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Database error: ' . $e->getMessage(),
+                'message' => 'Error de Base de datos: ' . $e->getMessage(),
             ], 500); // Cambiado de 1200 a 500
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'An unexpected error occurred: ' . $e->getMessage(),
+                'message' => 'Un error inesperado ha ocurrido ' . $e->getMessage(),
             ], 500); // Cambiado de 1200 a 500
         }
 
@@ -167,7 +167,7 @@ class DictaminatorForm3_19Controller extends TransferController
             if (!$data) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Data not found',
+                    'message' => 'Datos no encontrados',
                 ], 404);
             }
 
@@ -179,7 +179,7 @@ class DictaminatorForm3_19Controller extends TransferController
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'An error occurred while retrieving data: ' . $e->getMessage(),
+                'message' => 'Un error ha ocurrido mientras se cargaban los datos: ' . $e->getMessage(),
             ], 500);
         }
 
