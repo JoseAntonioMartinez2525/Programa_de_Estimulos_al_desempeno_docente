@@ -331,7 +331,7 @@ body.dark-mode img.imgFirma{
     @endif
 </thead>
 </table>
-</form>
+            </form>
 <br>
     <center>
         <footer id="footerForm3_4">
@@ -812,53 +812,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     row.appendChild(comisionCell);
                                     dataContainer.appendChild(row);
 
-                                    /*
-                                    // Crear el pie de página después de la fila 16
-                                    if (i === 16) {
-                                        const footerRow = document.createElement('tfoot');
-                                        footerRow.className = 'datosConvocatoria print-only';
-                                        footerRow.setAttribute('data-print-footer', 'true');
-
-                                        const footerMainRow = document.createElement('tr');
-                                        const footerCell = document.createElement('td');
-                                        footerCell.setAttribute('colspan', '4');
-
-                                        // Crear div para convocatoria
-                                        const convocatoriaDiv = document.createElement('div');
-                                        convocatoriaDiv.id = 'convocatoria1';
-                                        if (data.form1 && data.form1.convocatoria) {
-                                            const convocatoriaTitle = document.createElement('h1');
-                                            convocatoriaTitle.style.width = '900px';
-                                            convocatoriaTitle.style.textAlign = 'right'; // Alinear texto a la derecha
-                                            convocatoriaTitle.style.paddingRight = '400px'; // Ajusta el margen derecho
-                                            convocatoriaTitle.style.fontSize = "16px";
-                                            convocatoriaTitle.style.fontWeight = "bold";
-                                            convocatoriaTitle.textContent = 'Convocatoria: ' + data.form1.convocatoria;
-                                            convocatoriaDiv.appendChild(convocatoriaTitle);
-                                        }
-
-                                        const piedePaginaDiv = document.createElement('div');
-                                        piedePaginaDiv.id = 'piedepagina1';
-                                        piedePaginaDiv.style.textAlign = 'right'; // Alinear texto a la derecha
-                                        piedePaginaDiv.style.paddingRight = '600px'; // Ajusta el margen derecho
-                                        piedePaginaDiv.style.fontSize = "16px";
-                                        piedePaginaDiv.textContent = 'Página 31 de 33';
-
-                                        // Agregar divs a la celda
-                                        footerCell.appendChild(convocatoriaDiv);
-                                        footerCell.appendChild(piedePaginaDiv);
-
-                                        // Agregar celda a la fila
-                                        footerMainRow.appendChild(footerCell);
-
-                                        // Ya no necesitas crear otro tfoot
-                                        footerRow.appendChild(footerMainRow);
-
-                                        // Agregar al contenedor de datos
-                                        dataContainer.appendChild(footerRow);
-                                    }
-                                */
-
+                                
                                 });
 
 

@@ -67,4 +67,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(DictaminadorSignature::class, 'user_id');
     }
+
+    public function firmaDictaminador()
+    {
+        return $this->hasOne(FirmaDictaminador::class, 'user_id');
+    }
+
 }

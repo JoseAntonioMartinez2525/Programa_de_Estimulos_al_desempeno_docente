@@ -4,6 +4,7 @@ $newLocale = str_replace('_', '-', $locale);
 $formType = request()->query('formType');
 $formName = request()->query('formName');
 use App\Models\DynamicForm; // Ensure to include the model
+ $tieneFirma = $tieneFirma ?? false;
 
 $forms = DynamicForm::all(); // Fetch all forms from the database
 $existingFormNames = [];
@@ -74,7 +75,71 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             <x-general-header />
             <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass" style="margin-left: 100px;"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
-            <div class="container mt-4">
+    {{-- ingresar firma antes de que se carguen la tabla de formularios --}}
+        
+<!-- FORMULARIO DE FIRMA -->
+<div id="firmaSection">
+     @if(!$tieneFirma)
+     <!-- Mostrar formulario SOLO si no hay firma -->
+    <form id="firmasDict" method="POST" enctype="multipart/form-data" 
+          onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-dictaminator_signatures', 'firmasDict');">
+        @csrf
+        <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="email" id="email" value="{{ auth()->user()->email }}">
+        <input type="hidden" name="user_type" id="user_type" value="{{ auth()->user()->user_type }}">
+
+        <table>
+            <thead>
+                <tr id="eva1">
+                    <th class="evaluadores">
+                        @if(empty($personaEvaluadora))
+                            <input class="personaEvaluadora" type="text" id="personaEvaluadora"
+                                   name="evaluator_name" required
+                                   placeholder="Nombre completo de la persona evaluadora">
+                        @else
+                            <span>{{ $personaEvaluadora }}</span>
+                        @endif
+                    </th>
+                    <th>
+                        @if(empty($firma))
+                            <button type="button" class="btnFile"
+                                    onclick="document.getElementById('firma1').click()">Subir firma electrónica</button>
+                            <input type="file" class="d-none files" id="firma1" name="firma1" accept="image/*">
+                            <small class="text-muted">(solo formatos .png, .jpg, .jpeg)</small>
+                        @else
+                            <span>Ya se ha registrado una firma.</span>
+                        @endif
+                    </th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <span id="firmaTexto"></span>
+                        <small class="text-muted">Tamaño máximo: 2MB</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 600px;">
+                        <button type="submit" id="submitButton"
+                                class="btn custom-btn buttonSignature2">Enviar</button>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </form>
+        <!-- Contador visible -->
+       <div id="timerContainer" class="mt-3">
+            <span>Tiempo transcurrido: <strong id="timer">0</strong> segundos</span>
+        </div>
+    @else
+        <!-- Si ya tiene firma, no mostrar formulario ni timer -->
+        <div class="alert alert-success">
+            ✅ Ya has registrado tu firma electrónica.
+        </div>
+    @endif
+        {{-- tabla de formularios --}}
+
+            <div id="mainSection" class="container mt-4" style="display:none;">
                 <!-- Selector para elegir el formulario -->
                 <label for="formGrid">Buscar Evaluación:</label>
 
@@ -149,61 +214,17 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                         </div>
                     </div>
 
-
-                {{-- <select id="formGrid" class="form-select">
-                    <option value=""></option>
-                    <option value="form2">1. Permanencia en las actividades de la docencia</option>
-                    <option value="form2_2">2. Dedicación en el desempeño docente</option>
-                    <option value="form3_1">  3.1 Participación en actividades de diseño curricular</option>
-                    <option value="form3_2">  3.2 Calidad del desempeño docente evaluada por el alumnado</option>
-                    <option value="form3_3">  3.3 Publicaciones relacionadas con la docencia</option>
-                    <option value="form3_4">  3.4 Distinciones académicas recibidas por el docente</option>
-                    <option value="form3_5">  3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC</option>
-                    <option value="form3_6">  3.6 Capacitación y actualización pedagógica recibida</option>
-                    <option value="form3_7">  3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento</option>
-                    <option value="form3_8">  3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y
-                    capacitación docente</option>
-                    <option value="form3_8_1"> 3.8.1 RSU</option>
-                    <option value="form3_9">  3.9 Trabajos dirigidos para la titulación de estudiantes</option>
-                    <option value="form3_10"> 3.10 Tutorías a estudiantes</option>
-                    <option value="form3_11"> 3.11 Asesoría a estudiantes</option>
-                    <option value="form3_12"> 3.12 Publicaciones de investigación relacionadas con el contenido de los PE que imparte el docente</option>
-                    <option value="form3_13"> 3.13 Proyectos académicos de investigación</option>
-                    <option value="form3_14"> 3.14 Participación como ponente en congresos o eventos académicos del Área de Conocimiento o afines del docente</option>
-                    <option value="form3_15"> 3.15 Registro de patentes y productos de investigación tecnológica y educativa</option>
-                    <option value="form3_16"> 3.16 Actividades de arbitraje, revisión, correción y edición</option>
-                    <option value="form3_17"> 3.17 Proyectos académicos de extensión y difusión</option>
-                    <option value="form3_18"> 3.18 Organización de congresos o eventos institucionales del área de conocimiento del Docente</option>
-                    <option value="form3_19"> 3.19 Participación en cuerpos colegiados</option> --}}
-
-                    <!-- Dynamic options -->
-                    {{-- @foreach($forms as $form)
-                        @if(!in_array($form->form_name, $existingFormNames)) <!-- Check for duplicates -->
-                            <option value="{{ $form->form_name }}" data-id="{{ $form->id }}">{{ $form->form_name }}</option>
-                            @php $existingFormNames[] = $form->form_name; @endphp <!-- Add to existing names -->
-                        @endif
-                    @endforeach --}}
-
-                {{-- </select> --}}
-                <!--Funcionalidad en caso de nuevos formularios-->
-                {{-- <div class="container mt-3" style="display: none;">
-                    <label for="teacherSelect">Seleccionar Docente:</label>
-                    <select id="teacherSelect" class="form-select">
-                        <option value="">Seleccionar un docente</option>
-                    </select>
-                </div> --}}
                 
             </div>
-
             <div id="formContainer">
                 <!-- Aquí se cargará el contenido del formulario seleccionado -->
                 </div>
-
         @else
             <p>No tienes permisos para ver esta página.</p>
-        @endif
+        @endif       
     @else
         <p>Por favor, inicia sesión.</p>
+ 
     @endauth
         </main>
 
@@ -984,7 +1005,49 @@ function guardarDatosComision(formId, docenteEmail) {
  function navigateToRoute(route) {
         window.location.href = route;
       }
+
+
+            // Solo iniciar el timer si no existe firma
+            document.addEventListener("DOMContentLoaded", function() {
+                timerInterval = setInterval(() => {
+                    timerSeconds++;
+                    document.getElementById('timer').textContent = timerSeconds;
+                }, 1000);
+            });
     
+                // Función para enviar el formulario vía AJAX
+            async function submitFirmaForm() {
+                const form = document.getElementById('firmasDict');
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch("{{ url('/store-dictaminator_signatures') }}", {
+                        method: "POST",
+                        headers: {
+                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                        },
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        clearInterval(timerInterval); // detener el contador
+                        alert("Firma guardada correctamente.");
+
+                        // Ocultar formulario y timer
+                        document.getElementById('firmaSection').style.display = 'none';
+
+                        // Mostrar siguiente sección
+                        document.getElementById('formGrid').style.display = 'block';
+                    } else {
+                        alert("Error al guardar la firma.");
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("Ocurrió un error al enviar la firma.");
+                }
+            }        
     </script>
 
 </body>
