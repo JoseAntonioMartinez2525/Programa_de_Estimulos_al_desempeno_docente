@@ -75,18 +75,14 @@ class DictaminatorForm3_18Controller extends TransferController
             if (!isset($validatedData['score3_18'])) {
                 $validatedData['score3_18'] = 0;
             }
-            $validatedData['obsComOrgInt'] = $validatedData['obsComOrgInt'] ?? 'sin comentarios';
-            $validatedData['obsComOrgNac'] = $validatedData['obsComOrgNac'] ?? 'sin comentarios';
-            $validatedData['obsComOrgReg'] = $validatedData['obsComOrgReg'] ?? 'sin comentarios';
-            $validatedData['obsComApoyoInt'] = $validatedData['obsComApoyoInt'] ?? 'sin comentarios';
-            $validatedData['obsComApoyoNac'] = $validatedData['obsComApoyoNac'] ?? 'sin comentarios';
-            $validatedData['obsComApoyoReg'] = $validatedData['obsComApoyoReg'] ?? 'sin comentarios';
-            $validatedData['obsCicloComOrgInt'] = $validatedData['obsCicloComOrgInt'] ?? 'sin comentarios';
-            $validatedData['obsCicloComOrgNac'] = $validatedData['obsCicloComOrgNac'] ?? 'sin comentarios';
-            $validatedData['obsCicloComOrgReg'] = $validatedData['obsCicloComOrgReg'] ?? 'sin comentarios';
-            $validatedData['obsCicloComApoyoReg'] = $validatedData['obsCicloComApoyoReg'] ?? 'sin comentarios';
-            $validatedData['obsCicloComApoyoInt'] = $validatedData['obsCicloComApoyoInt'] ?? 'sin comentarios';
-            $validatedData['obsCicloComApoyoNac'] = $validatedData['obsCicloComApoyoNac'] ?? 'sin comentarios';
+
+            //observaciones
+            $campos = ['obsComOrgInt', 'obsComOrgNac', 'obsComOrgReg', 'obsComApoyoInt', 'obsComApoyoNac', 'obsComApoyoReg', 'obsCicloComOrgInt', 'obsCicloComOrgNac', 'obsCicloComOrgReg', 'obsCicloComApoyoInt', 'obsCicloComApoyoNac', 'obsCicloComApoyoReg'];
+
+            foreach ($campos as $campo) {
+                $validatedData[$campo] = trim($validatedData[$campo]) !== '' ? $validatedData[$campo] : 'sin comentarios';
+            }
+
 
             $validatedData['form_type'] = 'form3_18';
 

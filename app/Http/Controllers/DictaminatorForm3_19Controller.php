@@ -107,26 +107,13 @@ class DictaminatorForm3_19Controller extends TransferController
             if (!isset($validatedData['score3_19'])) {
                 $validatedData['score3_19'] = 0;
             }
-            $validatedData['obsCGUtitular'] = $validatedData['obsCGUtitular'] ?? 'sin comentarios';
-            $validatedData['obsCGUespecial'] = $validatedData['obsCGUespecial'] ?? 'sin comentarios';
-            $validatedData['obsCGUpermanente'] = $validatedData['obsCGUpermanente'] ?? 'sin comentarios';
-            $validatedData['obsCAACtitular'] = $validatedData['obsCAACtitular'] ?? 'sin comentarios';
-            $validatedData['obsCAACintegCom'] = $validatedData['obsCAACintegCom'] ?? 'sin comentarios';
-            $validatedData['obsComDepart'] = $validatedData['obsComDepart'] ?? 'sin comentarios';
-            $validatedData['obsComPEDPD'] = $validatedData['obsComPEDPD'] ?? 'sin comentarios';
-            $validatedData['obsComPartPos'] = $validatedData['obsComPartPos'] ?? 'sin comentarios';
-            $validatedData['obsRespPos'] = $validatedData['obsRespPos'] ?? 'sin comentarios';
-            $validatedData['obsRespCarrera'] = $validatedData['obsRespCarrera'] ?? 'sin comentarios';
-            $validatedData['obsRespProd'] = $validatedData['obsRespProd'] ?? 'sin comentarios';
-            $validatedData['obsRespLab'] = $validatedData['obsRespLab'] ?? 'sin comentarios';
-            $validatedData['obsExamProf'] = $validatedData['obsExamProf'] ?? 'sin comentarios';
-            $validatedData['obsExamAcademicos'] = $validatedData['obsExamAcademicos'] ?? 'sin comentarios';
-            $validatedData['obsPRODEPformResp'] = $validatedData['obsPRODEPformResp'] ?? 'sin comentarios';
-            $validatedData['obsPRODEPformInteg'] = $validatedData['obsPRODEPformInteg'] ?? 'sin comentarios';
-            $validatedData['obsPRODEPenconsResp'] = $validatedData['obsPRODEPenconsResp'] ?? 'sin comentarios';
-            $validatedData['obsPRODEPenconsInteg'] = $validatedData['obsPRODEPenconsInteg'] ?? 'sin comentarios';
-            $validatedData['obsPRODEPconsResp'] = $validatedData['obsPRODEPconsResp'] ?? 'sin comentarios';
-            $validatedData['obsPRODEPconsInteg'] = $validatedData['obsPRODEPconsInteg'] ?? 'sin comentarios';
+
+                        //observaciones
+            $campos = ['obsCGUtitular', 'obsCGUespecial', 'obsCGUpermanente', 'obsCAACtitular', 'obsCAACintegCom', 'obsComDepart', 'obsComPEDPD', 'obsComPartPos', 'obsRespPos', 'obsRespCarrera', 'obsRespProd', 'obsRespLab', 'obsExamProf', 'obsExamAcademicos', 'obsPRODEPformResp', 'obsPRODEPformInteg', 'obsPRODEPenconsResp', 'obsPRODEPenconsInteg', 'obsPRODEPconsResp', 'obsPRODEPconsInteg'];
+
+            foreach ($campos as $campo) {
+                $validatedData[$campo] = trim($validatedData[$campo]) !== '' ? $validatedData[$campo] : 'sin comentarios';
+            }
 
             $validatedData['form_type'] = 'form3_19';
 

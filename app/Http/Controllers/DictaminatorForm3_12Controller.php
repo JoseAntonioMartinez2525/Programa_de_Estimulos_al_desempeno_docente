@@ -67,16 +67,12 @@ class DictaminatorForm3_12Controller extends TransferController
             if (!isset($validatedData['score3_12'])) {
                 $validatedData['score3_12'] = 0;
             }
-            $validatedData['obsCientificos'] = $validatedData['obsCientificos'] ?? 'sin comentarios';
-            $validatedData['obsDivulgacion'] = $validatedData['obsDivulgacion'] ?? 'sin comentarios';
-            $validatedData['obsTraduccion'] = $validatedData['obsTraduccion'] ?? 'sin comentarios';
-            $validatedData['obsArbitrajeInt'] = $validatedData['obsArbitrajeInt'] ?? 'sin comentarios';
-            $validatedData['obsArbitrajeNac'] = $validatedData['obsArbitrajeNac'] ?? 'sin comentarios';
-            $validatedData['obsSinInt'] = $validatedData['obsSinInt'] ?? 'sin comentarios';
-            $validatedData['obsSinNac'] = $validatedData['obsSinNac'] ?? 'sin comentarios';
-            $validatedData['obsAutor'] = $validatedData['obsAutor'] ?? 'sin comentarios';
-            $validatedData['obsEditor'] = $validatedData['obsEditor'] ?? 'sin comentarios';
-            $validatedData['obsWeb'] = $validatedData['obsWeb'] ?? 'sin comentarios';
+            //observaciones
+            $campos = ['obsCientificos', 'obsDivulgacion', 'obsTraduccion', 'obsArbitrajeInt', 'obsArbitrajeNac','obsSinInt', 'obsSinNac', 'obsAutor', 'obsEditor', 'obsWeb'];
+
+            foreach ($campos as $campo) {
+                $validatedData[$campo] = trim($validatedData[$campo]) !== '' ? $validatedData[$campo] : 'sin comentarios';
+            }
 
             $validatedData['form_type'] = 'form3_12';
 
