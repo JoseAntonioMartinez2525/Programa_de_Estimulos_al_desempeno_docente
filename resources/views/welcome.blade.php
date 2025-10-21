@@ -42,7 +42,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         <nav class="-mx-3 flex flex-1 justify-end"></nav>
 
 
-        <form id="form1" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store', 'form1');">
+        <form id="form1" method="POST">
 
           <br>
         <label for="convocatoria" class="label">Convocatoria</label>
@@ -182,7 +182,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         <td><label for="">a) Posgrado</label>
         <label for="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Semestre </label>
         </td>
-        <td><input id="horasPosgrado" name="horasPosgrado" class="horasActv2" placeholder="0" type="number" oninput="onChange()"value="{{ oldValueOrDefault('horasPosgrado') }}"></td>
+        <td><input id="horasPosgrado" name="horasPosgrado" class="horasActv2" placeholder="0" type="number" value="{{ oldValueOrDefault('horasPosgrado') }}"></td>
         <td class="puntajeEvaluar2"><label id="DSE" name="dse"class="puntajeEvaluar" type="text"></label></td>
         <td class="comision actv"><input id="comisionPosgrado" placeholder="0" for=""
         oninput="onActv2Comision()"></input></td>
@@ -193,7 +193,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         <label for="">&nbsp &nbsp &nbsp &nbsp Horas </label>
         </td>
         <td>
-        <input id="horasSemestre" name="horasSemestre" class="horasActv2" placeholder="0" type="number" oninput="onChange()" value="{{ oldValueOrDefault('horasSemestre') }}">
+        <input id="horasSemestre" name="horasSemestre" class="horasActv2" placeholder="0" type="number"  value="{{ oldValueOrDefault('horasSemestre') }}">
         </td>
         <td class="puntajeEvaluar2"><label id="DSE2" name="dse2" class="puntajeEvaluar" type="text"></label></td>
         <td class="comision actv"><input id="comisionLic" placeholder="0" oninput="onActv2Comision()"></input>
@@ -289,6 +289,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
       // Use the event data here. 
       console.log('Button clicked: ' + currentTarget.getAttribute('data-id'));
     } document.addEventListener('DOMContentLoaded', onload);
+    
     function onChange() {
       // Obtener los valores de los inputs
       const puntajePosgrado = parseFloat(document.getElementById("horasPosgrado").value);
@@ -421,8 +422,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     }
 
     // Función para actualizar el objeto data con los valores de los campos del formulario
-    function actualizarData() {
-      data[this.id] = this.value;
+    function actualizarData(fieldId, value) {
+      console.log(`Campo ${fieldId} actualizado a ${value}`);
     }
 
     document.querySelector('input[name="horasActv2"]').addEventListener('input', function () {
@@ -672,7 +673,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     }
 
     toggleDarkMode();
-  });      
+  });   
+  
+  document.addEventListener('DOMContentLoaded', function() {
+  const inputs = document.querySelectorAll('#horasPosgrado, #horasSemestre');
+  inputs.forEach(input => input.addEventListener('input', onChange));
+});
   </script>
 
 </body>

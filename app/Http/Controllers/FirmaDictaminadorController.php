@@ -16,10 +16,13 @@ class FirmaDictaminadorController extends Controller
 
         $firmaDictaminador = FirmaDictaminador::where('user_id', $user->id)->first();
 
+        // Si ya tiene firma, toma su nombre de la BD; si no, usa el del usuario
+        $personaEvaluadora = $firmaDictaminador->evaluator_name ?? $user->name;
+
         return view('comision_dictaminadora', [
-            'personaEvaluadora' => $firmaDictaminador->evaluator_name ?? null,
-            'firma1' => $firmaDictaminador->signature_image ?? null,
-            'tieneFirma' => $firmaDictaminador ? true : false,
+        'personaEvaluadora' => $personaEvaluadora,
+        'firma' => $firmaDictaminador->signature_image ?? null,
+        'tieneFirma' => $firmaDictaminador ? true : false,
         ]);
     }
 
@@ -27,7 +30,7 @@ class FirmaDictaminadorController extends Controller
     public function storeFirma(Request $request)
     {
         $request->validate([
-            'evaluator_name' => 'required|string|max:255',
+            
             'firma1' => 'required|image|max:2048|mimes:png,jpg,jpeg',
         ]);
 
@@ -50,8 +53,10 @@ class FirmaDictaminadorController extends Controller
         FirmaDictaminador::updateOrCreate(
             ['user_id' => $user->id],
             [
-                'evaluator_name' => $request->evaluator_name,
+                'evaluator_name' => $user->name,
                 'signature_image' => $imageData,
+                
+
             ]
         );
 
@@ -70,48 +75,32 @@ class FirmaDictaminadorController extends Controller
      */
     private function removeBackgroundAndReturnPngBytes($image)
     {
-        // Obtener recurso GD nativo
         $gd = $image->core()->native();
-
-        // Asegurar truecolor y canal alfa
-        if (!imageistruecolor($gd)) {
-            $tmp = imagecreatetruecolor(imagesx($gd), imagesy($gd));
-            imagecopy($tmp, $gd, 0, 0, 0, 0, imagesx($gd), imagesy($gd));
-            $gd = $tmp;
-        }
-
-        imagesavealpha($gd, true);
 
         $width = imagesx($gd);
         $height = imagesy($gd);
+        imagesavealpha($gd, true);
 
-        // Umbral para considerar "blanco" (ajusta si es necesario)
-        $threshold = 240;
+        $threshold = 240; // nivel de blanco a eliminar
 
-        // Recorremos y hacemos transparente el blanco cercano
         for ($x = 0; $x < $width; $x++) {
             for ($y = 0; $y < $height; $y++) {
                 $rgb = imagecolorat($gd, $x, $y);
                 $colors = imagecolorsforindex($gd, $rgb);
 
                 if ($colors['red'] >= $threshold && $colors['green'] >= $threshold && $colors['blue'] >= $threshold) {
-                    // alpha en imagecolorallocatealpha: 0 = opaque, 127 = fully transparent
                     $alphaColor = imagecolorallocatealpha($gd, 255, 255, 255, 127);
                     imagesetpixel($gd, $x, $y, $alphaColor);
                 }
             }
         }
 
-        imagesavealpha($gd, true);
-
-        // Capturamos los bytes PNG sin usar $image->encode() (evita problemas de Intelephense)
         ob_start();
         imagepng($gd);
         $pngData = ob_get_clean();
-
-        // Liberar recurso si se desea
         imagedestroy($gd);
 
         return $pngData;
     }
 }
+

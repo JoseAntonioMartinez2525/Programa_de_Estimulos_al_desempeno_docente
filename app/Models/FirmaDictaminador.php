@@ -14,8 +14,10 @@ class FirmaDictaminador extends Model
         'user_id',
         'evaluator_name',
         'signature_image',
+
     ];
 
+    protected $table = 'dictaminador_signatures'; 
     public function user()
     {
         return $this->belongsTo(User::class);

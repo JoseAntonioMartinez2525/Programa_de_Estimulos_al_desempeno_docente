@@ -126,7 +126,7 @@ Route::get('form5', function () {return view('form5'); })->name('form5');
 Route::get('resumen_comision', function () {return view('resumen_comision'); })->name('resumen_comision');
 
 Route::get('/reporte_pdf', [App\Http\Controllers\DictaminatorController::class, 'generarPDF'])->name('reporte_pdf');
-Route::get('comision_dictaminadora', function () {return view('comision_dictaminadora'); })->name('comision_dictaminadora');
+// Route::get('comision_dictaminadora', function () {return view('comision_dictaminadora'); })->name('comision_dictaminadora');
 Route::get('dynamic_forms', function () {return view('dynamic_forms'); })->name('dynamic_forms');
 
 Route::get('/secretaria', [SecretariaController::class, 'showSecretaria'])->name('secretaria');
@@ -202,7 +202,7 @@ Route::post('/store-form316', [DictaminatorForm3_16Controller::class, 'storeform
 Route::post('/store-form317', [DictaminatorForm3_17Controller::class, 'storeform317'])->withoutMiddleware('auth');
 Route::post('/store-form318', [DictaminatorForm3_18Controller::class, 'storeform318'])->withoutMiddleware('auth');
 Route::post('/store-form319', [DictaminatorForm3_19Controller::class, 'storeform319'])->withoutMiddleware('auth');
-Route::post('/store-dictaminator_signatures', [FirmaDictaminadorController::class, 'storeFirma'])->name('dictaminador.store');
+Route::post('/store-dictaminator_signatures', [FirmaDictaminadorController::class, 'storeFirma'])->name('firmaDictaminador.store');
 Route::post('/generate-pdf', [ResponseForm3_19Controller::class, 'generatePdf'])->name('generate.pdf');
 // Ruta para asignar varios docentes a un dictaminador
 Route::post('/asignar-docentes/{dictaminador_id}', [DictaminatorForm2_Controller::class, 'asignarDocentes'])
@@ -252,7 +252,7 @@ Route::get('/get-dictaminators-responses', [ResponseJson::class, 'getDictaminato
 Route::get('/get-dictaminators-responses-id', [ResponseJson::class, 'getDictaminatorResponsesId']);
 Route::get('/fetch-convocatoria/{user_id}', [ResumenComisionController::class, 'fetchConvocatoria'])->name('fetch-convocatoria');
 Route::get('/get-docentes-by-dictaminador', [DictaminatorForm2_Controller::class, 'getDocentesByDictaminador']);
-Route::get('/comision_dictaminadora', [FirmaDictaminadorController::class, 'showForm'])->name('dictaminador.form');
+Route::get('/comision_dictaminadora', [FirmaDictaminadorController::class, 'showForm'])->name('comision_dictaminadora');
 Route::get('/get-user-id', [DictaminatorController::class, 'getUserId']);
 Route::get('/general', [ReportsController::class, 'index'])->name('general');
 Route::get('/show-profile', [ReportsController::class, 'showProfile'])->name('show-profile');

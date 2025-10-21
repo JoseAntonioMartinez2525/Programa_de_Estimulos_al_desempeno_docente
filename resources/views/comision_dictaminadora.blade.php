@@ -63,6 +63,10 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             right: 20px;
         }
 
+    .alert.alert-success.msucess {
+        margin-inline-start: 5rem;
+
+    }
     </style>
 
 </head>
@@ -81,8 +85,10 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 <div id="firmaSection">
      @if(!$tieneFirma)
      <!-- Mostrar formulario SOLO si no hay firma -->
-    <form id="firmasDict" method="POST" enctype="multipart/form-data" 
-          onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-dictaminator_signatures', 'firmasDict');">
+<form id="firmasDict" 
+      method="POST" 
+      action="{{ route('firmaDictaminador.store') }}" 
+      enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
         <input type="hidden" name="email" id="email" value="{{ auth()->user()->email }}">
@@ -92,13 +98,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             <thead>
                 <tr id="eva1">
                     <th class="evaluadores">
-                        @if(empty($personaEvaluadora))
-                            <input class="personaEvaluadora" type="text" id="personaEvaluadora"
-                                   name="evaluator_name" required
-                                   placeholder="Nombre completo de la persona evaluadora">
-                        @else
-                            <span>{{ $personaEvaluadora }}</span>
-                        @endif
+                        <span><strong>Evaluador:</strong> {{ $personaEvaluadora }}</span>
+                        <input type="hidden" name="evaluator_name" value="{{ $personaEvaluadora }}">
+
                     </th>
                     <th>
                         @if(empty($firma))
@@ -131,11 +133,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
        <div id="timerContainer" class="mt-3">
             <span>Tiempo transcurrido: <strong id="timer">0</strong> segundos</span>
         </div>
-    @else
-        <!-- Si ya tiene firma, no mostrar formulario ni timer -->
-        <div class="alert alert-success">
-            ✅ Ya has registrado tu firma electrónica.
-        </div>
+
     @endif
         {{-- tabla de formularios --}}
 
@@ -1008,46 +1006,87 @@ function guardarDatosComision(formId, docenteEmail) {
 
 
             // Solo iniciar el timer si no existe firma
-            document.addEventListener("DOMContentLoaded", function() {
-                timerInterval = setInterval(() => {
-                    timerSeconds++;
-                    document.getElementById('timer').textContent = timerSeconds;
-                }, 1000);
+// Esperar a que el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Caso 1: Usuario sin firma (muestra el formulario + timer de segundos)
+    const timerElement = document.getElementById('timer');
+    if (timerElement && !{{ $tieneFirma ? 'true' : 'false' }}) {
+        let seconds = 0;
+        window.timerInterval = setInterval(() => {
+            seconds++;
+            timerElement.textContent = seconds;
+        }, 1000);
+    }
+
+    // Caso 2: Usuario YA tiene firma → mostrar mensaje y luego los formularios
+    if ({{ $tieneFirma ? 'true' : 'false' }}) {
+        const successDiv = document.createElement('div');
+        successDiv.className = "alert alert-success text-center mt-3";
+        successDiv.innerHTML = `
+            ✅ Ya has registrado tu firma electrónica.<br>
+            <small>Mostrando formularios en <span id="countdown">5</span> segundos...</small>
+        `;
+        document.getElementById('firmaSection').appendChild(successDiv);
+
+        let countdown = 5;
+        const countdownSpan = document.getElementById('countdown');
+
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            countdownSpan.textContent = countdown;
+
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                successDiv.remove();
+                const mainSection = document.getElementById('mainSection');
+                if (mainSection) mainSection.style.display = 'block';
+            }
+        }, 1000);
+    }
+
+    // Caso 3: Envío de firma nueva (solo si no tiene)
+    const formFirmas = document.getElementById('firmasDict');
+    if (formFirmas) {
+        formFirmas.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const response = await fetch(`{{ url('/store-dictaminator_signatures') }}`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: formData
             });
-    
-                // Función para enviar el formulario vía AJAX
-            async function submitFirmaForm() {
-                const form = document.getElementById('firmasDict');
-                const formData = new FormData(form);
 
-                try {
-                    const response = await fetch("{{ url('/store-dictaminator_signatures') }}", {
-                        method: "POST",
-                        headers: {
-                            "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                        },
-                        body: formData
-                    });
+            const data = await response.json();
 
-                    const result = await response.json();
+            if (data.success) {
+                if (typeof window.timerInterval !== 'undefined') clearInterval(window.timerInterval);
 
-                    if (result.success) {
-                        clearInterval(timerInterval); // detener el contador
-                        alert("Firma guardada correctamente.");
+                document.getElementById('firmaSection').innerHTML = `
+                    <div class="alert alert-success text-center mt-3" id="successMsg">
+                        ✅ Firma registrada correctamente.<br>
+                        <small>Mostrando formularios en 5 segundos...</small>
+                    </div>
+                `;
 
-                        // Ocultar formulario y timer
-                        document.getElementById('firmaSection').style.display = 'none';
+                setTimeout(() => {
+                    const msg = document.getElementById('successMsg');
+                    if (msg) msg.remove();
+                    const mainSection = document.getElementById('mainSection');
+                    if (mainSection) mainSection.style.display = 'block';
+                }, 5000);
+            } else {
+                alert('❌ Error al guardar la firma.');
+            }
+        });
+    }
+});
 
-                        // Mostrar siguiente sección
-                        document.getElementById('formGrid').style.display = 'block';
-                    } else {
-                        alert("Error al guardar la firma.");
-                    }
-                } catch (error) {
-                    console.error("Error:", error);
-                    alert("Ocurrió un error al enviar la firma.");
-                }
-            }        
+
+       
     </script>
 
 </body>
