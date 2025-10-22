@@ -9,7 +9,8 @@ use App\Models\DictaminatorsResponseForm2;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use App\Events\EvaluationCompleted;
-
+use App\Models\UsersResponseForm1;
+use Auth;
 
 class DictaminatorForm2_Controller extends TransferController
 {
@@ -187,7 +188,6 @@ class DictaminatorForm2_Controller extends TransferController
 
         return response()->json(['success' => true, 'message' => 'Docente agregado correctamente']);
     }
-
     public function showForm()
     {
         $docentes = UsersResponseForm2::all(); // O cualquier lógica para obtener los docentes
