@@ -19,6 +19,13 @@ class FirmaDictaminadorController extends Controller
         // Si ya tiene firma, toma su nombre de la BD; si no, usa el del usuario
         $personaEvaluadora = $firmaDictaminador->evaluator_name ?? $user->name;
 
+        // Si ya tiene firma y no hemos mostrado el mensaje en esta sesión
+            if ($firmaDictaminador && !session()->has('firma_msg_shown')) {
+                session()->flash('status', '✅ Ya has registrado tu firma electrónica. Mostrando formularios en 5 segundos...');
+                // Guardamos una bandera para que no se vuelva a flashar durante esta sesión
+                session()->put('firma_msg_shown', true);
+            }
+
         return view('comision_dictaminadora', [
         'personaEvaluadora' => $personaEvaluadora,
         'firma' => $firmaDictaminador->signature_image ?? null,
@@ -59,6 +66,10 @@ class FirmaDictaminadorController extends Controller
 
             ]
         );
+
+        // Mensaje flash de éxito
+        session()->flash('status', '✅ Firma registrada correctamente. Mostrando formularios en 5 segundos...');
+
 
         return response()->json([
             'success' => true,
