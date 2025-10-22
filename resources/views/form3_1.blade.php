@@ -2,6 +2,122 @@
 $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
+
+/*
+comisionIncisoA, comisionIncisoB, comisionIncisoC, comisionIncisoD, comisionIncisoE, score3_1, actv3Comision, obs3_1_1, obs3_1_2, obs3_1_3, obs3_1_4, obs3_1_5, user_type, created_at, updated_at, form_type
+*/
+
+ $docenteConfig = [
+        'formKey' => 'form3_1',
+        'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data', 
+        'docentesEndpoint' => '/formato-evaluacion/get-docentes',
+        'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
+        'dictCollectionKey' => 'form3_1',
+        'userTypeForDict' => '',
+        'docenteMappings' => [
+            'elaboracion' => 'elaboracion',
+            'elaboracionSubTotal1' => 'elaboracionSubTotal1',
+            'elaboracion2' => 'elaboracion2',
+            'elaboracionSubTotal2'=> 'elaboracionSubTotal2',
+            'elaboracion3' => 'elaboracion3',
+            'elaboracionSubTotal3' => 'elaboracionSubTotal3',
+            'elaboracion4' => 'elaboracion4',
+            'elaboracionSubTotal4'=> 'elaboracionSubTotal4',      
+            'elaboracion5' => 'elaboracion5',
+            'elaboracionSubTotal5'=> 'elaboracionSubTotal5',  
+            'score3_1'=>'score3_1',
+    
+
+
+        ],
+        'dictMappings' => [
+
+            'elaboracion' => 'elaboracion',
+            'elaboracionSubTotal1' => 'elaboracionSubTotal1',
+            'elaboracion2' => 'elaboracion2',
+            'elaboracionSubTotal2'=> 'elaboracionSubTotal2',
+            'elaboracion3' => 'elaboracion3',
+            'elaboracionSubTotal3' => 'elaboracionSubTotal3',
+            'elaboracion4' => 'elaboracion4',
+            'elaboracionSubTotal4'=> 'elaboracionSubTotal4',      
+            'elaboracion5' => 'elaboracion5',
+            'elaboracionSubTotal5'=> 'elaboracionSubTotal5',  
+            'comisionA'=>'comisionIncisoA',
+            'comisionB'=>'comisionIncisoB',
+            'comisionC'=>'comisionIncisoC',
+            'comisionD'=>'comisionIncisoD',
+            'comisionE'=>'comisionIncisoE'
+            'actv3Comision'=>'actv3Comision',
+            'score3_1'=>'score3_1',
+
+        ],
+        'fillHiddenFrom' => [
+            'user_id' => 'user_id',
+            'email' => 'email',
+            'user_type' => 'user_type',
+        ],
+        'fillHiddenFromDict' => [
+            'dictaminador_id' => 'dictaminador_id',
+            'user_id' => 'user_id',
+            'email' => 'email',
+            'user_type' => 'user_type',
+        ],
+        
+// comportamiento al no encontrar respuesta de dictaminador
+    'resetOnNotFound' => false,
+    'resetValues' => [
+        // opcional: valores por defecto explícitos para targets 
+            'elaboracion' => '0',
+            'elaboracionSubTotal1' => '0',
+            'elaboracion2' => '0',
+            'elaboracionSubTotal2'=> '0',
+            'elaboracion3' => '0',
+            'elaboracionSubTotal3' => '0',
+            'elaboracion4' => '0',
+            'elaboracionSubTotal4'=> '0',      
+            'elaboracion5' => '0',
+            'elaboracionSubTotal5'=> '0',  
+            'comisionA'=>'0',
+            'comisionB'=>'0',
+            'comisionC'=>'0',
+            'comisionD'=>'0',
+            'comisionE'=>'0'
+            'actv3Comision'=>'0',
+            'score3_1'=>'0',
+
+
+    ],
+  
+    ];
+
+
+    if (!isset($docenteConfigForm)) {
+    $docenteConfigForm = [
+        'extraFields' => [
+        'elaboracion',
+        'elaboracionSubTotal1',
+        'elaboracion2',
+        'elaboracionSubTotal2',
+        'elaboracion3',
+        'elaboracionSubTotal3',
+        'elaboracion4',
+        'elaboracionSubTotal4',   
+        'elaboracion5',
+        'elaboracionSubTotal5',
+        'comisionIncisoA',
+        'comisionIncisoB',
+        'comisionIncisoC',
+        'comisionIncisoD',
+        'comisionIncisoE'
+        'actv3Comision',
+        'score3_1',
+        ],
+
+        'exposeAs' => 'submitForm',
+        'selectedEmailInputId' => 'selectedDocenteEmail',
+        'searchInputId' => 'docenteSearch',
+    ];
+}
 @endphp
 <!DOCTYPE html>
 <html lang="">
