@@ -221,7 +221,6 @@ Route::post('/update-commission-data/{formId}', [DynamicFormController::class, '
 Route::get('/get-data1', [ResponseController::class, 'getData1'])->name('getData1');
 Route::get('/get-data2', [ResponseForm2Controller::class, 'getData2'])->name('getData2');
 Route::get('/get-data22', [ResponseForm2_2Controller::class, 'getData22'])->name('getData22');
-Route::get('/get-data22', [ResponseForm2_2Controller::class, 'getData22'])->name('getData22');
 Route::get('/get-data-31', [ResponseForm3_1Controller::class, 'getData31'])->name('getData31');
 Route::get('/get-data-32', [ResponseForm3_2Controller::class, 'getData32'])->name('getData32');
 Route::get('/get-data-33', [ResponseForm3_3Controller::class, 'getData33'])->name('getData33');
@@ -244,6 +243,7 @@ Route::get('/get-data-318', [ResponseForm3_18Controller::class, 'getData318'])->
 Route::get('/get-data-319', [ResponseForm3_19Controller::class, 'getData319'])->name('getData319');
 
 Route::get('/get-form-data2', [DictaminatorForm2_Controller::class, 'getFormData2'])->name('getFormData2');
+// Route::get('/get-form-data-22', [DictaminatorForm2_2Controller::class, 'getFormData22'])->name('getFormData22');
 Route::get('/get-form-data', [DictaminatorFormsGroupsController::class, 'getDictaminadorData']);
 Route::get('/get-data-resume', [ResumeController::class, 'getDataResume'])->name('get-data-resume');
 Route::get('/get-evaluator-signature', [EvaluatorSignatureController1::class, 'getEvaluatorSignature'])->name('get-evaluator-signature');

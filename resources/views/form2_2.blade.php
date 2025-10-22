@@ -262,7 +262,7 @@ document.addEventListener('docenteSelected', async (e) => {
 
 
             // Obtener datos de UsersResponseForm2_2
-            const res = await fetch(`/formato-evaluacion/get-data2?email=${encodeURIComponent(email)}`);
+            const res = await fetch(`/formato-evaluacion/get-data22?email=${encodeURIComponent(email)}`);
             
 
             document.getElementById('hoursText').textContent = docenteData.form2_2.hours || '0';
@@ -276,7 +276,7 @@ document.addEventListener('docenteSelected', async (e) => {
 
             if (userType === 'secretaria') {
             // Obtener un solo registro de DictaminatorsResponseForm2_2
-            const res = await fetch(`/formato-evaluacion/get-form-data2?dictaminador_id=${encodeURIComponent(email)}`);
+            const res = await fetch(`/formato-evaluacion/get-form-data-22?dictaminador_id=${encodeURIComponent(email)}`);
             const result = await res.json();
 
             if (result.success && result.data) {
