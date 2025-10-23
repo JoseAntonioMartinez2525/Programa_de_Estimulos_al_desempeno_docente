@@ -42,12 +42,86 @@ $user_identity = $user->id;
         <x-docente-search />
     @endif
 </div>
-        <button onclick="resetTimerAdmin(300)">Dar 5 minutos</button>
+    <!-- Campo oculto para almacenar el email seleccionado -->
+    <input type="hidden" id="selectedDocenteEmail" name="email">
+    <!-- Input dinámico y botón para prórroga -->
+    <div class="d-flex align-items-center gap-2 mt-2 p-2" style="margin-left:12rem;">
+        <input type="number" id="prorrogaInput" class="form-control" min="1" placeholder="Minutos a prorrogar" style="width: 200px;">
+        <button id="prorrogarTimerBtn" class="btn btn-primary">Prorrogar</button>
+    </div>
+
     </header>
             
 </body>
 <script>
-    resetTimerAdmin(300);
+    const docenteSearch = document.getElementById('docenteSearch');
+const docenteSuggestions = document.getElementById('docenteSuggestions');
+const selectedDocenteEmail = document.getElementById('selectedDocenteEmail');
+
+docenteSearch.addEventListener('input', async function() {
+    const search = this.value;
+    if (!search) {
+        docenteSuggestions.style.display = 'none';
+        return;
+    }
+
+    const res = await fetch(`/formato-evaluacion/get-docentes?search=${search}`);
+    const docentes = await res.json();
+
+    docenteSuggestions.innerHTML = '';
+    docentes.forEach(d => {
+        const li = document.createElement('li');
+        li.classList.add('list-group-item', 'list-group-item-action');
+        li.textContent = `${d.nombre} (${d.email})`;
+        li.addEventListener('click', () => {
+            docenteSearch.value = d.nombre;
+            selectedDocenteEmail.value = d.email;
+            docenteSuggestions.style.display = 'none';
+        });
+        docenteSuggestions.appendChild(li);
+    });
+
+    docenteSuggestions.style.display = docentes.length ? 'block' : 'none';
+});
+
+document.getElementById('prorrogarTimerBtn').addEventListener('click', async () => {
+    const email = selectedDocenteEmail.value;
+    const minutosExtra = parseInt(document.getElementById('prorrogaInput').value, 10);
+
+    if (!email) {
+        alert('Selecciona un docente primero');
+        return;
+    }
+
+    if (isNaN(minutosExtra) || minutosExtra <= 0) {
+        alert('Ingresa un valor válido');
+        return;
+    }
+
+    const segundosExtra = minutosExtra * 60;
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    const res = await fetch('{{ route('admin.reset.timer') }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': token
+        },
+        body: JSON.stringify({ email, segundosExtra })
+    });
+
+    if (res.ok) {
+        alert(`Se agregaron ${minutosExtra} minutos al docente ${email}`);
+        document.getElementById('prorrogaInput').value = '';
+    } else {
+        alert('Error al prorrogar el timer');
+    }
+});
+
+
+
+
+
 </script>
 
 </html>

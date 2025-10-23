@@ -31,13 +31,35 @@ use Barryvdh\Snappy\Facades\SnappyPdf;
 use Dompdf\Exception;
 use Illuminate\Http\Request;
 use App\Models\User; // Asegúrate de tener el modelo User
+use App\Models\UserTimer;
 use Barryvdh\DomPDF\Facade\Pdf; // Importar DomPDF
 use Svg\Document;
 use Svg\Nodes\EmbeddedImage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
 
 class DictaminatorController extends Controller
 {
+public function adminResetTimer(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email|exists:users,email',
+        'segundosExtra' => 'required|integer|min:1',
+    ]);
+
+    $user = \App\Models\User::where('email', $request->email)->firstOrFail();
+
+    \DB::table('user_timers')->updateOrInsert(
+        ['user_id' => $user->id],
+        [
+            'tiempo_restante' => \DB::raw("COALESCE(tiempo_restante, 0) + {$request->segundosExtra}"),
+            'updated_at' => now()
+        ]
+    );
+
+    return response()->json(['message' => 'Timer prorrogado correctamente']);
+}
+    
     public function getDocentes(Request $request)
 {
     $search = $request->query('search');

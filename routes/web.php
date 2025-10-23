@@ -333,3 +333,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/timer/update', [UserTimerController::class, 'updateTimer']);
     Route::post('/timer/extend/{userId}', [UserTimerController::class, 'extendTimer']); // Admin
 });
+
+Route::post('/formato-evaluacion/admin-reset-timer', [DictaminatorController::class, 'adminResetTimer'])
+    ->middleware('auth')
+    ->name('admin.reset.timer');
