@@ -22,7 +22,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <x-head-resources />
-
+@include('partials.timer', ['tiempoTotal' => 5 * 60])
+1
 </head>
 @if (Route::has('login'))
         @csrf

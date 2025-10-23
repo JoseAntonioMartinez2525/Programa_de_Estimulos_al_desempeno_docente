@@ -71,7 +71,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DictaminatorController;
 use App\Http\Controllers\FirmaDictaminadorController;
 use App\Http\Controllers\PuntajeMaximosController;
-
+use App\Http\Controllers\UserTimerController;
 
 Route::get('/forzar-error', function () {
     throw new \Exception("Este es un error de prueba");
@@ -85,99 +85,100 @@ Route::get('/formato-evaluacion/', [SessionsController::class, 'index'])->name('
 Route::post('/login', [SessionsController::class, 'login'])->name('login.post');
  
 Route::middleware(['auth'])->group(function (){
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/welcome', [HomeController::class, 'showWelcome'])->name('welcome');
-Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/welcome', [HomeController::class, 'showWelcome'])->name('welcome');
+    Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 
-Route::get('rules', function () {return view('rules'); })->name('rules');
-Route::get('docencia', function () {return view('docencia'); })->name('docencia');
-Route::get('resumen', function () {return view('resumen'); })->name('resumen');
-Route::get('perfil', function () {return view('perfil'); })->name('perfil');
-Route::get('general', function () {return view('general');})->name('general');
-Route::get('edit_delete_form', [DynamicFormController::class, 'showSecretaria'])->name('edit_delete_form_dynamic');
+    Route::get('rules', function () {return view('rules'); })->name('rules');
+    Route::get('docencia', function () {return view('docencia'); })->name('docencia');
+    Route::get('resumen', function () {return view('resumen'); })->name('resumen');
+    Route::get('perfil', function () {return view('perfil'); })->name('perfil');
+    Route::get('general', function () {return view('general');})->name('general');
+    Route::get('tiempo', function () {return view('tiempo');})->name('tiempo');
+    Route::get('edit_delete_form', [DynamicFormController::class, 'showSecretaria'])->name('edit_delete_form_dynamic');
 
-Route::get('/get-first-non-numeric-value/{formId}', [DynamicFormController::class, 'getFirstNonNumericValue']);
+    Route::get('/get-first-non-numeric-value/{formId}', [DynamicFormController::class, 'getFirstNonNumericValue']);
 
-//formularios
-Route::get('form2', function () {return view('form2'); })->name('form2');
-Route::get('form2_2', function () {return view('form2_2'); })->name('form2_2');
-Route::get('form3_1', function () {return view('form3_1'); })->name('form3_1');
-Route::get('form3_2', function () {return view('form3_2'); })->name('form3_2');
-Route::get('form3_3', function () {return view('form3_3'); })->name('form3_3');
-Route::get('form3_4', function () { return view('form3_4'); })->name('form3_4');
-Route::get('form3_5', function () {return view('form3_5'); })->name('form3_5');
-Route::get('form3_6', function () {return view('form3_6'); })->name('form3_6');
-Route::get('form3_7', function () {return view('form3_7'); })->name('form3_7');
-Route::get('form3_8', function () {return view('form3_8'); })->name('form3_8');
-Route::get('form3_8_1', function () {return view('form3_8_1'); })->name('form3_8_1');
-Route::get('form3_9', function () {return view('form3_9'); })->name('form3_9');
-Route::get('form3_10', function () {return view('form3_10'); })->name('form3_10');
-Route::get('form3_11', function () {return view('form3_11'); })->name('form3_11');
-Route::get('form3_12', function () {return view('form3_12'); })->name('form3_12');
-Route::get('form3_13', function () {return view('form3_13'); })->name('form3_13');
-Route::get('form3_14', function () {return view('form3_14'); })->name('form3_14');
-Route::get('form3_15', function () {return view('form3_15'); })->name('form3_15');
-Route::get('form3_16', function () {return view('form3_16'); })->name('form3_16');
-Route::get('form3_17', function () {return view('form3_17'); })->name('form3_17');
-Route::get('form3_18', function () {return view('form3_18'); })->name('form3_18');
-Route::get('form3_19', function () {return view('form3_19'); })->name('form3_19');
-Route::get('form4', function () {return view('form4'); })->name('form4');
-Route::get('form5', function () {return view('form5'); })->name('form5');
-Route::get('resumen_comision', function () {return view('resumen_comision'); })->name('resumen_comision');
+    //formularios
+    Route::get('form2', function () {return view('form2'); })->name('form2');
+    Route::get('form2_2', function () {return view('form2_2'); })->name('form2_2');
+    Route::get('form3_1', function () {return view('form3_1'); })->name('form3_1');
+    Route::get('form3_2', function () {return view('form3_2'); })->name('form3_2');
+    Route::get('form3_3', function () {return view('form3_3'); })->name('form3_3');
+    Route::get('form3_4', function () { return view('form3_4'); })->name('form3_4');
+    Route::get('form3_5', function () {return view('form3_5'); })->name('form3_5');
+    Route::get('form3_6', function () {return view('form3_6'); })->name('form3_6');
+    Route::get('form3_7', function () {return view('form3_7'); })->name('form3_7');
+    Route::get('form3_8', function () {return view('form3_8'); })->name('form3_8');
+    Route::get('form3_8_1', function () {return view('form3_8_1'); })->name('form3_8_1');
+    Route::get('form3_9', function () {return view('form3_9'); })->name('form3_9');
+    Route::get('form3_10', function () {return view('form3_10'); })->name('form3_10');
+    Route::get('form3_11', function () {return view('form3_11'); })->name('form3_11');
+    Route::get('form3_12', function () {return view('form3_12'); })->name('form3_12');
+    Route::get('form3_13', function () {return view('form3_13'); })->name('form3_13');
+    Route::get('form3_14', function () {return view('form3_14'); })->name('form3_14');
+    Route::get('form3_15', function () {return view('form3_15'); })->name('form3_15');
+    Route::get('form3_16', function () {return view('form3_16'); })->name('form3_16');
+    Route::get('form3_17', function () {return view('form3_17'); })->name('form3_17');
+    Route::get('form3_18', function () {return view('form3_18'); })->name('form3_18');
+    Route::get('form3_19', function () {return view('form3_19'); })->name('form3_19');
+    Route::get('form4', function () {return view('form4'); })->name('form4');
+    Route::get('form5', function () {return view('form5'); })->name('form5');
+    Route::get('resumen_comision', function () {return view('resumen_comision'); })->name('resumen_comision');
 
-Route::get('/reporte_pdf', [App\Http\Controllers\DictaminatorController::class, 'generarPDF'])->name('reporte_pdf');
-// Route::get('comision_dictaminadora', function () {return view('comision_dictaminadora'); })->name('comision_dictaminadora');
-Route::get('dynamic_forms', function () {return view('dynamic_forms'); })->name('dynamic_forms');
+    Route::get('/reporte_pdf', [App\Http\Controllers\DictaminatorController::class, 'generarPDF'])->name('reporte_pdf');
+    // Route::get('comision_dictaminadora', function () {return view('comision_dictaminadora'); })->name('comision_dictaminadora');
+    Route::get('dynamic_forms', function () {return view('dynamic_forms'); })->name('dynamic_forms');
 
-Route::get('/secretaria', [SecretariaController::class, 'showSecretaria'])->name('secretaria');
-
-
-Route::get('/show-all-users', [ProfileController::class, 'showAllUsers'])->name('show-all-users');
-Route::get('/get-docentes', [DictaminatorController::class, 'getDocentes'])->name('getDocentes');
-Route::get('/get-docente-data', [DictaminatorController::class, 'getDocenteData'])->name('getDocenteData');
-//Route::get('/get-form-content/{form}', [FormContentController::class, 'getFormContent']);
-Route::get('/get-dictaminadores', [FormsController::class, 'getdictaminadores'])->name('getdictaminadores');
-Route::get('/form4', [ConsolidatedResponseController::class, 'showResumen'])->name('form4');
-Route::get('/get-dictaminador-data', [FormsController::class, 'getDictaminadorData'])->name('getDictaminadorData');
-Route::get('otros_formularios', function () {return view('otros_formularios'); })->name('otros_formularios');
-    Route::get('/get-docentes-otros-form', [DynamicFormController::class, 'getDocentesOtrosForm'])->name('get-docentes-otros-form');
-Route::get('/resumen-comision', [ResumenComisionController::class, 'getDictaminadorFinalData']);
-// routes/web.php
-
-Route::get('/dictaminador-final-data', [ResumenComisionController::class, 'getDictaminadorFinalData']);
-Route::get('/convocatoria/{dictaminadorId}', [DictaminatorController::class, 'getConvocatoria']);
+    Route::get('/secretaria', [SecretariaController::class, 'showSecretaria'])->name('secretaria');
 
 
-Route::get('/form3_1', [DictaminatorForm3_1Controller::class, 'showForm31']);
+    Route::get('/show-all-users', [ProfileController::class, 'showAllUsers'])->name('show-all-users');
+    Route::get('/get-docentes', [DictaminatorController::class, 'getDocentes'])->name('getDocentes');
+    Route::get('/get-docente-data', [DictaminatorController::class, 'getDocenteData'])->name('getDocenteData');
+    //Route::get('/get-form-content/{form}', [FormContentController::class, 'getFormContent']);
+    Route::get('/get-dictaminadores', [FormsController::class, 'getdictaminadores'])->name('getdictaminadores');
+    Route::get('/form4', [ConsolidatedResponseController::class, 'showResumen'])->name('form4');
+    Route::get('/get-dictaminador-data', [FormsController::class, 'getDictaminadorData'])->name('getDictaminadorData');
+    Route::get('otros_formularios', function () {return view('otros_formularios'); })->name('otros_formularios');
+        Route::get('/get-docentes-otros-form', [DynamicFormController::class, 'getDocentesOtrosForm'])->name('get-docentes-otros-form');
+    Route::get('/resumen-comision', [ResumenComisionController::class, 'getDictaminadorFinalData']);
+    // routes/web.php
+
+    Route::get('/dictaminador-final-data', [ResumenComisionController::class, 'getDictaminadorFinalData']);
+    Route::get('/convocatoria/{dictaminadorId}', [DictaminatorController::class, 'getConvocatoria']);
+
+
+    Route::get('/form3_1', [DictaminatorForm3_1Controller::class, 'showForm31']);
 
 
 
-//POST formularios
-Route::post('/store', [ResponseController::class, 'store'])->name('store');
-Route::post('/store2', [ResponseForm2Controller::class, 'store2'])->name('store2');
-Route::post('/store3', [ResponseForm2_2Controller::class, 'store3']);
-Route::post('/store31', [ResponseForm3_1Controller::class, 'store31']);
-Route::post('/store32', [ResponseForm3_2Controller::class, 'store32']);
-Route::post('/store33', [ResponseForm3_3Controller::class, 'store33']);
-Route::post('/store34', [ResponseForm3_4Controller::class, 'store34']);
-Route::post('/store35', [ResponseForm3_5Controller::class, 'store35']);
-Route::post('/store36', [ResponseForm3_6Controller::class, 'store36']);
-Route::post('/store37', [ResponseForm3_7Controller::class, 'store37']);
-Route::post('/store38', [ResponseForm3_8Controller::class, 'store38']);
-Route::post('/store381', [ResponseForm3_8_1Controller::class, 'store381']);
-Route::post('/store39', [ResponseForm3_9Controller::class, 'store39']);
-Route::post('/store310', [ResponseForm3_10Controller::class, 'store310']);
-Route::post('/store311', [ResponseForm3_11Controller::class, 'store311']);
-Route::post('/store312', [ResponseForm3_12Controller::class, 'store312']);
-Route::post('/store313', [ResponseForm3_13Controller::class, 'store313']);
-Route::post('/store314', [ResponseForm3_14Controller::class, 'store314']);
-Route::post('/store315', [ResponseForm3_15Controller::class, 'store315']);
-Route::post('/store316', [ResponseForm3_16Controller::class, 'store316']);
-Route::post('/store317', [ResponseForm3_17Controller::class, 'store317']);
-Route::post('/store318', [ResponseForm3_18Controller::class, 'store318']);
-Route::post('/store319', [ResponseForm3_19Controller::class, 'store319']);
-Route::post('/store-resume', [ResumeController::class, 'storeResume']);
-Route::post('/store-evaluator-signature', [EvaluatorSignatureController1::class, 'storeEvaluatorSignature'])->name('store-evaluator-signature');
+    //POST formularios
+    Route::post('/store', [ResponseController::class, 'store'])->name('store');
+    Route::post('/store2', [ResponseForm2Controller::class, 'store2'])->name('store2');
+    Route::post('/store3', [ResponseForm2_2Controller::class, 'store3']);
+    Route::post('/store31', [ResponseForm3_1Controller::class, 'store31']);
+    Route::post('/store32', [ResponseForm3_2Controller::class, 'store32']);
+    Route::post('/store33', [ResponseForm3_3Controller::class, 'store33']);
+    Route::post('/store34', [ResponseForm3_4Controller::class, 'store34']);
+    Route::post('/store35', [ResponseForm3_5Controller::class, 'store35']);
+    Route::post('/store36', [ResponseForm3_6Controller::class, 'store36']);
+    Route::post('/store37', [ResponseForm3_7Controller::class, 'store37']);
+    Route::post('/store38', [ResponseForm3_8Controller::class, 'store38']);
+    Route::post('/store381', [ResponseForm3_8_1Controller::class, 'store381']);
+    Route::post('/store39', [ResponseForm3_9Controller::class, 'store39']);
+    Route::post('/store310', [ResponseForm3_10Controller::class, 'store310']);
+    Route::post('/store311', [ResponseForm3_11Controller::class, 'store311']);
+    Route::post('/store312', [ResponseForm3_12Controller::class, 'store312']);
+    Route::post('/store313', [ResponseForm3_13Controller::class, 'store313']);
+    Route::post('/store314', [ResponseForm3_14Controller::class, 'store314']);
+    Route::post('/store315', [ResponseForm3_15Controller::class, 'store315']);
+    Route::post('/store316', [ResponseForm3_16Controller::class, 'store316']);
+    Route::post('/store317', [ResponseForm3_17Controller::class, 'store317']);
+    Route::post('/store318', [ResponseForm3_18Controller::class, 'store318']);
+    Route::post('/store319', [ResponseForm3_19Controller::class, 'store319']);
+    Route::post('/store-resume', [ResumeController::class, 'storeResume']);
+    Route::post('/store-evaluator-signature', [EvaluatorSignatureController1::class, 'storeEvaluatorSignature'])->name('store-evaluator-signature');
 
 // Dictaminadores
 Route::post('/store-form2', [DictaminatorForm2_Controller::class, 'storeform2'])->withoutMiddleware('auth');
@@ -302,8 +303,8 @@ Route::post('/formato-evaluacion/update-page-counter', function (Request $reques
 });
 
 
-Route::get('/formato-evaluacion//dynamic-form/columns/{formId}', [DynamicFormController::class, 'getColumns'])->name('dynamic-form.columns');
-Route::get('/formato-evaluacion//form/edit/{form_name}', [DynamicFormController::class, 'edit'])->name('form.edit');
+    Route::get('/formato-evaluacion//dynamic-form/columns/{formId}', [DynamicFormController::class, 'getColumns'])->name('dynamic-form.columns');
+    Route::get('/formato-evaluacion//form/edit/{form_name}', [DynamicFormController::class, 'edit'])->name('form.edit');
     Route::put('/forms/{id}', [DynamicFormController::class, 'update'])->name('forms.update');
 
     Route::delete('/forms/{id}', [DynamicFormController::class, 'destroy'])->name('forms.destroy');
@@ -313,6 +314,7 @@ Route::get('/formato-evaluacion//form/edit/{form_name}', [DynamicFormController:
 
 //Route::get('/get-form-data/{formType}', [DynamicFormController::class, 'getFormData']);
     Route::get('/formato-evaluacion//get-form-data/{formName}', [DynamicFormController::class, 'getFormData'])->where('formName', '.*');
+
 
 });
 Route::post('/logout', action: [SessionsController::class, 'logout'])->name('logout');
@@ -324,4 +326,10 @@ Route::get('/formato-evaluacion//test-dompdf', function () {
     } catch (\Exception $e) {
         return 'Error: ' . $e->getMessage();
     }
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/timer', [UserTimerController::class, 'getTimer']);
+    Route::post('/timer/update', [UserTimerController::class, 'updateTimer']);
+    Route::post('/timer/extend/{userId}', [UserTimerController::class, 'extendTimer']); // Admin
 });
