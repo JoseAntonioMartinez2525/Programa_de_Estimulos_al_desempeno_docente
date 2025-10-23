@@ -97,7 +97,9 @@ nav {
     text-align: center;
 }
 
-td[id^="puntaje3_9_"]{
+td[id^="puntaje3_9_"], input[id^="puntaje3_9_"]{
+    border-color: transparent;
+    background-color: #c1cfd3;
     text-align: center!important;
 }
 
@@ -109,7 +111,9 @@ td[id^="puntaje3_9_"]{
 #cantAsesoria, #cantServicio, #cantPracticas, .cantidad,
 #cantCongresoInt, #cantCongresoNac, #cantCongresoLoc, 
 #cantDifusionExt, #cantDifusionInt, #cantRepDifusionExt, #cantRepDifusionInt, #puntaje3_7,
-#cantInicioFinanExt, #cantInicioInvInterno, #cantReporteFinanciamExt, #cantReporteInvInt, #puntaje3_8, #puntaje3_6, #puntaje3_8_1, #cantCientifico, #cantDivulgacion, #cantTraduccion, #cantArbitrajeInt, #cantArbitrajeNac, #cantSinInt, #cantSinNac, #cantAutor, #cantEditor, #cantWeb{
+#cantInicioFinanExt, #cantInicioInvInterno, #cantReporteFinanciamExt, #cantReporteInvInt, 
+#puntaje3_8, #puntaje3_6, #puntaje3_8_1, #cantCientifico, #cantDivulgacion, #cantTraduccion, #cantArbitrajeInt, 
+#cantArbitrajeNac, #cantSinInt, #cantSinNac, #cantAutor, #cantEditor, #cantWeb{
     border-color: transparent;
     background-color: #c1cfd3;
     text-align: center;

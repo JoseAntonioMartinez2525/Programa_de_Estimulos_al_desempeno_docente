@@ -3,116 +3,99 @@ $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
-/*
-comisionIncisoA, comisionIncisoB, comisionIncisoC, comisionIncisoD, comisionIncisoE, score3_1, actv3Comision, obs3_1_1, obs3_1_2, obs3_1_3, obs3_1_4, obs3_1_5, user_type, created_at, updated_at, form_type
-*/
 
- $docenteConfig = [
-        'formKey' => 'form3_1',
-        'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data', 
-        'docentesEndpoint' => '/formato-evaluacion/get-docentes',
-        'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
-        'dictCollectionKey' => 'form3_1',
-        'userTypeForDict' => '',
-        'docenteMappings' => [
-            'elaboracion' => 'elaboracion',
-            'elaboracionSubTotal1' => 'elaboracionSubTotal1',
-            'elaboracion2' => 'elaboracion2',
-            'elaboracionSubTotal2'=> 'elaboracionSubTotal2',
-            'elaboracion3' => 'elaboracion3',
-            'elaboracionSubTotal3' => 'elaboracionSubTotal3',
-            'elaboracion4' => 'elaboracion4',
-            'elaboracionSubTotal4'=> 'elaboracionSubTotal4',      
-            'elaboracion5' => 'elaboracion5',
-            'elaboracionSubTotal5'=> 'elaboracionSubTotal5',  
-            'score3_1'=>'score3_1',
-    
+$elaboracionMappings = [];
+for ($i = 1; $i <= 5; $i++) {
+    $elaboracionMappings["elaboracion{$i}"] = "elaboracion{$i}";
+    $elaboracionMappings["elaboracionSubTotal{$i}"] = "elaboracionSubTotal{$i}";
+}
 
+// --- Campos comunes a docente y dictaminador ---
+$commonFields = [
+    'comisionA' => 'comisionIncisoA',
+    'comisionB' => 'comisionIncisoB',
+    'comisionC' => 'comisionIncisoC',
+    'comisionD' => 'comisionIncisoD',
+    'comisionE' => 'comisionIncisoE',
+    'actv3Comision' => 'actv3Comision',
+    'score3_1' => 'score3_1',
+    'obs3_1_1' => 'obs3_1_1',
+    'obs3_1_2' => 'obs3_1_2',
+    'obs3_1_3' => 'obs3_1_3',
+    'obs3_1_4' => 'obs3_1_4',
+    'obs3_1_5' => 'obs3_1_5',
+];
 
-        ],
-        'dictMappings' => [
+// --- Configuración principal ---
+$docenteConfig = [
+    'formKey' => 'form3_1',
+    'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data',
+    'docentesEndpoint' => '/formato-evaluacion/get-docentes',
+    'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
+    'dictCollectionKey' => 'form3_1',
+    'userTypeForDict' => '',
 
-            'elaboracion' => 'elaboracion',
-            'elaboracionSubTotal1' => 'elaboracionSubTotal1',
-            'elaboracion2' => 'elaboracion2',
-            'elaboracionSubTotal2'=> 'elaboracionSubTotal2',
-            'elaboracion3' => 'elaboracion3',
-            'elaboracionSubTotal3' => 'elaboracionSubTotal3',
-            'elaboracion4' => 'elaboracion4',
-            'elaboracionSubTotal4'=> 'elaboracionSubTotal4',      
-            'elaboracion5' => 'elaboracion5',
-            'elaboracionSubTotal5'=> 'elaboracionSubTotal5',  
-            'comisionA'=>'comisionIncisoA',
-            'comisionB'=>'comisionIncisoB',
-            'comisionC'=>'comisionIncisoC',
-            'comisionD'=>'comisionIncisoD',
-            'comisionE'=>'comisionIncisoE'
-            'actv3Comision'=>'actv3Comision',
-            'score3_1'=>'score3_1',
+    // --- Mappings ---
+    'docenteMappings' => array_merge(['elaboracion' => 'elaboracion'], $elaboracionMappings, ['score3_1' => 'score3_1']),
+    'dictMappings' => array_merge(['elaboracion' => 'elaboracion'], $elaboracionMappings, $commonFields),
 
-        ],
-        'fillHiddenFrom' => [
-            'user_id' => 'user_id',
-            'email' => 'email',
-            'user_type' => 'user_type',
-        ],
-        'fillHiddenFromDict' => [
-            'dictaminador_id' => 'dictaminador_id',
-            'user_id' => 'user_id',
-            'email' => 'email',
-            'user_type' => 'user_type',
-        ],
-        
-// comportamiento al no encontrar respuesta de dictaminador
-    'resetOnNotFound' => false,
-    'resetValues' => [
-        // opcional: valores por defecto explícitos para targets 
-            'elaboracion' => '0',
-            'elaboracionSubTotal1' => '0',
-            'elaboracion2' => '0',
-            'elaboracionSubTotal2'=> '0',
-            'elaboracion3' => '0',
-            'elaboracionSubTotal3' => '0',
-            'elaboracion4' => '0',
-            'elaboracionSubTotal4'=> '0',      
-            'elaboracion5' => '0',
-            'elaboracionSubTotal5'=> '0',  
-            'comisionA'=>'0',
-            'comisionB'=>'0',
-            'comisionC'=>'0',
-            'comisionD'=>'0',
-            'comisionE'=>'0'
-            'actv3Comision'=>'0',
-            'score3_1'=>'0',
-
-
+    // --- Campos ocultos ---
+    'fillHiddenFrom' => [
+        'user_id' => 'user_id',
+        'email' => 'email',
+        'user_type' => 'user_type',
     ],
-  
-    ];
+    'fillHiddenFromDict' => [
+        'dictaminador_id' => 'dictaminador_id',
+        'user_id' => 'user_id',
+        'email' => 'email',
+        'user_type' => 'user_type',
+    ],
 
+    // --- Comportamiento al no encontrar datos ---
+    'resetOnNotFound' => false,
+    'resetValues' => (function() {
+        $reset = [];
+        for ($i = 1; $i <= 5; $i++) {
+            $reset["elaboracion{$i}"] = '0';
+            $reset["elaboracionSubTotal{$i}"] = '0';
+        }
+        $extra = [
+            'comisionA' => '0',
+            'comisionB' => '0',
+            'comisionC' => '0',
+            'comisionD' => '0',
+            'comisionE' => '0',
+            'actv3Comision' => '0',
+            'score3_1' => '0',
+            'obs3_1_1' => '',
+            'obs3_1_2' => '',
+            'obs3_1_3' => '',
+            'obs3_1_4' => '',
+            'obs3_1_5' => '',
+        ];
+        return array_merge($reset, $extra);
+    })(),
 
-    if (!isset($docenteConfigForm)) {
+    'printPagePairs' => [[2,3]],
+];
+
+// --- Configuración del formulario docente ---
+if (!isset($docenteConfigForm)) {
+    $extraFields = [];
+    for ($i = 1; $i <= 5; $i++) {
+        $extraFields[] = "elaboracion{$i}";
+        $extraFields[] = "elaboracionSubTotal{$i}";
+    }
+
+    $extraFields = array_merge(
+        $extraFields,
+        ['comisionIncisoA','comisionIncisoB','comisionIncisoC','comisionIncisoD','comisionIncisoE',
+         'actv3Comision','score3_1','obs3_1_1','obs3_1_2','obs3_1_3','obs3_1_4','obs3_1_5']
+    );
+
     $docenteConfigForm = [
-        'extraFields' => [
-        'elaboracion',
-        'elaboracionSubTotal1',
-        'elaboracion2',
-        'elaboracionSubTotal2',
-        'elaboracion3',
-        'elaboracionSubTotal3',
-        'elaboracion4',
-        'elaboracionSubTotal4',   
-        'elaboracion5',
-        'elaboracionSubTotal5',
-        'comisionIncisoA',
-        'comisionIncisoB',
-        'comisionIncisoC',
-        'comisionIncisoD',
-        'comisionIncisoE'
-        'actv3Comision',
-        'score3_1',
-        ],
-
+        'extraFields' => $extraFields,
         'exposeAs' => 'submitForm',
         'selectedEmailInputId' => 'selectedDocenteEmail',
         'searchInputId' => 'docenteSearch',
@@ -131,91 +114,60 @@ comisionIncisoA, comisionIncisoB, comisionIncisoC, comisionIncisoD, comisionInci
     @include('components.partials.partials')
 
     <x-head-resources />  
+    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+    @include('partials.submit-form', ['config' => $docenteConfigForm]) 
+       
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <style>
- body.chrome @media print {
-    #convocatoria, #convocatoria2 {
-        font-size: .8rem;
-        color: blue; /* Ejemplo de estilo específico para Chrome */
+   <style>
+/* --- Estilos específicos para Chrome en impresión --- */
+@media print {
+    body.chrome #convocatoria,
+    body.chrome #convocatoria2 {
+        font-size: 0.8rem;
+        color: blue;
     }
 
-
-    @html{
+    html {
         font-size: 2rem;
     }
-}
 
-body.chrome @media screen{
-       #convocatoria, #convocatoria2 {
-        font-size: .8rem;
-        color: blue; /* Ejemplo de estilo específico para Chrome */
-    }
-
-}
-
-#convocatoria2{
-    font-weight: normal;
-    width: 100%;
-    text-align: left;
-    margin-top: 20px;
-    
-}
-
-@media print {
-    .print-footer { /* Estilos comunes para ambos footers en la impresión */
-        display: table-footer-group !important; /* Asegura que se muestre como footer */
-        position: fixed; /* Para que se pegue al final de la página */
+    .print-footer {
+        display: table-footer-group !important;
+        position: fixed;
         bottom: 0;
         width: 100%;
     }
-    .first-page-footer {
-        /* Estilos específicos para el footer de la primera página */
-    }
-    .second-page-footer {
-        /* Estilos específicos para el footer de la segunda página */
-    }
-    /* Oculta el footer que no corresponde a la página actual */
+
+    .first-page-footer { }
+    .second-page-footer { }
+
     .first-page-footer {
         display: table-footer-group;
     }
+
     .second-page-footer {
         display: none;
     }
-    table:nth-of-type(2) ~ table .second-page-footer { /* Selecciona el segundo footer solo cuando hay dos tablas antes */
+
+    table:nth-of-type(2) ~ table .second-page-footer {
         display: table-footer-group;
     }
-    table:nth-of-type(2) ~ table .first-page-footer { /* Oculta el primer footer cuando hay dos tablas antes */
+
+    table:nth-of-type(2) ~ table .first-page-footer {
         display: none;
     }
+
     body {
         -webkit-print-color-adjust: exact;
-    }
-}
-
-    @media print {
-    .page-footer {
-        position: relative;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 12px;
-        background-color: white;
-        padding: 10px 0;
-        border-top: 1px solid #ccc;
-        page-break-after: always; /* Asegura el salto de página después del footer */
-    }
-    body {
-        
-        margin-left: 200px ;
+        margin-left: 200px;
         margin-top: -10px;
         padding: 0;
-        font-size: .7rem;
+        font-size: 0.7rem;
         padding-bottom: 50px;
-       
     }
-        .footerForm3_1 {
+
+    .footerForm3_1 {
         position: fixed;
         bottom: 0;
         left: 0;
@@ -223,14 +175,17 @@ body.chrome @media screen{
         text-align: center;
     }
 
-.prevent-overlap {
-    page-break-before: always;
-    page-break-inside: avoid; 
-}
+    .prevent-overlap {
+        page-break-before: always;
+        page-break-inside: avoid;
+    }
 
-    #convocatoria, #convocatoria2, #piedepagina1, #piedepagina2 {
+    #convocatoria,
+    #convocatoria2,
+    #piedepagina1,
+    #piedepagina2 {
         margin: 0;
-        font-size: .7rem;
+        font-size: 0.7rem;
     }
 
     #piedepagina {
@@ -239,16 +194,14 @@ body.chrome @media screen{
 
     @page {
         size: landscape;
-        margin: 20mm; /* Ajusta según sea necesario */
+        margin: 20mm;
         counter-increment: page;
-        
     }
-    
-    @page:first {
-  counter-reset: page 2; /* Initialize the counter to 2 for the first page */
-  counter-increment: page;
-}
 
+    @page:first {
+        counter-reset: page 2;
+        counter-increment: page;
+    }
 
     .page-number-display {
         display: block;
@@ -260,32 +213,34 @@ body.chrome @media screen{
         width: 100%;
         z-index: 1000;
     }
-    
-    
-}
 
-.page-footer.hidden-footer {
-    display: none !important;
-}
+    .page-footer {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 12px;
+        background-color: white;
+        padding: 10px 0;
+        border-top: 1px solid #ccc;
+        page-break-after: always;
+    }
 
-@media print {
-    hidden-footer {
+    .page-footer.hidden-footer {
         display: none !important;
     }
 
-    /* Prevent page breaks within table rows */
     table tr {
         page-break-inside: avoid;
     }
 
-    .table-wrap{
-      height: 50px; 
-      page-break-inside: avoid; 
+    .table-wrap {
+        height: 50px;
+        page-break-inside: avoid;
     }
 
-
     /* Página 4 */
-/* Mostrar el footer correcto según la página */
     .page-break[data-page="3"] .first-page-footer {
         display: table-footer-group !important;
     }
@@ -294,97 +249,106 @@ body.chrome @media screen{
         display: table-footer-group !important;
     }
 
+    .secretaria-style {
+        font-weight: normal;
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: left;
+    }
 
+    .secretaria-style #piedepagina1 {
+        float: right;
+        display: inline-block;
+        margin-left: 5px;
+        font-weight: normal;
+        color: #000;
+    }
 
-.secretaria-style {
+    .dictaminador-style {
+        font-weight: normal !important;
+        font-size: 16px;
+        margin-top: 10px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .dictaminador-style#piedepagina2 {
+        margin-left: 800px;
+        margin-top: 10px;
+        font-weight: normal !important;
+        white-space: nowrap;
+    }
+
+    .secretaria-style#piedepagina2 {
+        margin-left: 100px;
+        margin-top: 0;
+        font-weight: normal !important;
+        display: inline-block;
+        white-space: nowrap;
+    }
+}
+
+/* --- Fuera de media queries --- */
+#convocatoria2 {
     font-weight: normal;
-    font-size: 14px;
-    margin-top: 10px;
+    width: 100%;
     text-align: left;
-    
+    margin-top: 20px;
 }
 
-.secretaria-style #piedepagina1 {
-    float: right;
-    display: inline-block;
-    margin-left: 5px;
-    font-weight: normal; /* Opcional, si quieres menos énfasis */
-    color: #000;
-}
-
-.dictaminador-style {
-    font-weight: normal!important;
-    font-size: 16px;
-    margin-top: 10px;
-    text-align: center;
-    white-space: nowrap;
-}
-
-.dictaminador-style#piedepagina2 {
-    margin-left: 800px;
-    margin-top: 10px;
-    font-weight: normal!important;
-    white-space: nowrap;
-    
-}
-
-/* Estilo para secretaria o userType vacío */
-.secretaria-style#piedepagina2 {
-    margin-left: 100px;
-    margin-top: 0;
-    font-weight: normal!important;
-    display: inline-block;
-    white-space: nowrap;
-}
-}
-
-.table2{
+.table2 {
     margin-top: 300px;
 }
 
-body.dark-mode #elaboracion, body.dark-mode #elaboracion2, body.dark-mode #elaboracion3, body.dark-mode #elaboracion4, body.dark-mode #elaboracion5,
-body.dark-mode #comisionIncisoA, body.dark-mode #comisionIncisoB, body.dark-mode #comisionIncisoC, body.dark-mode #comisionIncisoD, body.dark-mode #comisionIncisoE
-
-{
-    background-color:transparent;
+body.dark-mode #elaboracion,
+body.dark-mode #elaboracion2,
+body.dark-mode #elaboracion3,
+body.dark-mode #elaboracion4,
+body.dark-mode #elaboracion5,
+body.dark-mode #comisionIncisoA,
+body.dark-mode #comisionIncisoB,
+body.dark-mode #comisionIncisoC,
+body.dark-mode #comisionIncisoD,
+body.dark-mode #comisionIncisoE {
+    background-color: transparent;
     color: #ffffff;
-    }
+}
 
-    body.dark-mode [id^="obs3_1_"]
-{
-    background-color:transparent;
+body.dark-mode [id^="obs3_1_"] {
+    background-color: transparent;
     color: #ffffff;
-    }
+}
 
-        .avoid-page-break {
+.avoid-page-break {
     page-break-inside: avoid;
     page-break-after: avoid;
-    }
+}
 
-    .table td, .table th {
+.table td,
+.table th {
     padding: 2px !important;
     margin: 0 !important;
-    vertical-align: middle; /* Asegura que el contenido esté centrado verticalmente */
+    vertical-align: middle;
 }
 
-/* Reducir la altura de las filas */
-.table tr{
+.table tr {
     height: auto !important;
 }
-[id^="btn3_"]{
+
+[id^="btn3_"] {
     margin-left: 900px;
 }
 
-body.dark-mode [id^="btn3_"]{
-        background-color: #456483;
-        color: floralwhite;
+body.dark-mode [id^="btn3_"] {
+    background-color: #456483;
+    color: floralwhite;
 }
 
 body.dark-mode [id^="btn3_"]:hover {
     background-color: #6a5b9f;
-    
 }
-    </style>
+</style>
+
 
 
 </head>
@@ -657,369 +621,6 @@ let selectedEmail = null;
     };
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('docenteSearch');
-    const suggestionsBox = document.getElementById('docenteSuggestions');
-    const hiddenEmail = document.getElementById('selectedDocenteEmail');
-
-    const userType = @json($userType);
-    const userIdentity = @json($user_identity);
-
-    let debounceTimer;
-
-    // Autocompletado: Buscar docentes mientras se escribe
-    searchInput.addEventListener('input', function () {
-        const query = this.value.trim();
-        clearTimeout(debounceTimer);
-
-        if (query.length < 2) {
-            suggestionsBox.style.display = 'none';
-            return;
-        }
-
-        debounceTimer = setTimeout(async () => {
-            try {
-                const response = await fetch(`/formato-evaluacion/get-docentes?search=${encodeURIComponent(query)}`);
-                const docentes = await response.json();
-
-                suggestionsBox.innerHTML = '';
-                if (docentes.length > 0) {
-                    docentes.forEach(d => {
-                        const li = document.createElement('li');
-                        li.classList.add('list-group-item', 'list-group-item-action');
-                        li.innerHTML = `<strong>${d.nombre}</strong><br><small>${d.email}</small>`;
-                        li.addEventListener('click', () => {
-                            searchInput.value = `${d.nombre} (${d.email})`;
-                            hiddenEmail.value = d.email;
-                            suggestionsBox.style.display = 'none';
-
-                            // Disparar evento personalizado
-                            const selectedEvent = new CustomEvent('docenteSelected', { detail: d });
-                            document.dispatchEvent(selectedEvent);
-                        });
-                        suggestionsBox.appendChild(li);
-                    });
-                    suggestionsBox.style.display = 'block';
-                } else {
-                    suggestionsBox.style.display = 'none';
-                }
-            } catch (error) {
-                console.error('Error buscando docentes:', error);
-            }
-        }, 300);
-    });
-
-    // Ocultar sugerencias al hacer clic fuera
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('#docenteSearch') && !e.target.closest('#docenteSuggestions')) {
-            suggestionsBox.style.display = 'none';
-        }
-    });
-
-    // Evento cuando se selecciona un docente
-document.addEventListener('docenteSelected', async (e) => {
-    const docente = e.detail;
-    const email = docente.email;
-    selectedEmail = email;
-
-    try {
-        // === Comunes: cargar datos de docente ===
-        const axiosResponse = await axios.get('/formato-evaluacion/get-docente-data', { params: { email } });
-        const docenteData = axiosResponse.data;
-
-        if (docenteData.docente) {
-            // Actualizar convocatoria
-                const convocatoriaElement = document.getElementById('convocatoria');
-                const convocatoriaElement2 = document.getElementById('convocatoria2');
-                if (convocatoriaElement) {
-                    if (docenteData.form1) {
-                        convocatoriaElement.textContent = docenteData.form1.convocatoria || '';
-                        convocatoriaElement2.textContent = docenteData.form1.convocatoria || '';
-                    } else {
-                        console.error('form1 no está definido en la respuesta.');
-                    }
-                } else {
-                    console.error('Elemento con ID "convocatoria" no encontrado.');
-                }
-        }
-
-        const user_id = docenteData.form3_1.user_id; 
-            axios.get(window.ENDPOINTS.getTotalDocencia, { params: { user_id } })
-            .then(response => {
-            const total = parseFloat(response.data.totalDocencia ?? '0');
-            document.querySelectorAll('#docencia, #docencia2').forEach(el => {
-                el.textContent = total.toFixed(2);                                                
-            });
-
-            })
-            .catch(error => {
-            document.querySelectorAll('#docencia, #docencia2').forEach(el => {
-                el.textContent = '0';
-            });
-            console.error('Error obteniendo total docencia:', error);
-            });
-
-
-            // Obtener datos de UsersResponseForm3_1
-             const res = await fetch(`/formato-evaluacion/get-data-31`);
-                const scoreElements = document.querySelectorAll('.score3_1');
-                    scoreElements.forEach(element => {
-                        element.textContent = docenteData.form3_1.score3_1 || '0';
-                    });
-            
-
-                    document.getElementById('elaboracion').textContent = docenteData.form3_1.elaboracion || '0';
-                    document.getElementById('elaboracionSubTotal1').textContent = docenteData.form3_1.elaboracionSubTotal1 || '0';
-                    document.getElementById('elaboracion2').textContent = docenteData.form3_1.elaboracion2 || '0';
-                    document.getElementById('elaboracionSubTotal2').textContent = docenteData.form3_1.elaboracionSubTotal2 || '0';
-                    document.getElementById('elaboracion3').textContent = docenteData.form3_1.elaboracion3 || '0';
-                    document.getElementById('elaboracionSubTotal3').textContent = docenteData.form3_1.elaboracionSubTotal3 || '0';
-                    document.getElementById('elaboracion4').textContent = docenteData.form3_1.elaboracion4 || '0';
-                    document.getElementById('elaboracionSubTotal4').textContent = docenteData.form3_1.elaboracionSubTotal4 || '0';
-                    document.getElementById('elaboracion5').textContent = docenteData.form3_1.elaboracion5 || '0';
-                    document.getElementById('elaboracionSubTotal5').textContent = docenteData.form3_1.elaboracionSubTotal5 || '0';
-                    //document.getElementById('actv3Comision').textContent = data.form3_1.actv3Comision || '0';
-
-                    // forzar relectura y recálculo 
-                    if (typeof scheduleInitializeFromDOM === 'function') { scheduleInitializeFromDOM(50); 
-                    } else if (typeof updateDocencia === 'function') { updateDocencia(); }
-
-                    // Populate hidden inputs
-                    document.querySelector('input[name="user_id"]').value = docenteData.form3_1.user_id || '';
-                    document.querySelector('input[name="email"]').value = docenteData.form3_1.email || '';
-                    document.querySelector('input[name="user_type"]').value = docenteData.form3_1.user_type || '';
-
-
-            if (userType === 'secretaria') {
-           
-            // (Opcional) Obtener todas las respuestas de dictaminadores
-            // Lógica para obtener datos de DictaminatorsResponseForm3_1
-            try {
-                const response = await fetch('/formato-evaluacion/get-dictaminators-responses');
-                const dictaminatorResponses = await response.json();
-                // Filtrar la entrada correspondiente al email seleccionado
-                const selectedResponseForm3_1 = dictaminatorResponses.form3_1.find(res => res.email === email);
-                // const unSelectedResponse = dictaminatorResponses.form1.find(res => res.email === email);
-                
-                if (selectedResponseForm3_1) {
-
-                    document.querySelector('input[name="dictaminador_id"]').value = selectedResponseForm3_1.dictaminador_id || '0';
-                    document.querySelector('input[name="user_id"]').value = selectedResponseForm3_1.user_id || '';
-                    document.querySelector('input[name="email"]').value = selectedResponseForm3_1.email || '';
-                    document.querySelector('input[name="user_type"]').value = selectedResponseForm3_1.user_type || '';
-
-                    const scoreElements = document.querySelectorAll('.score3_1'); // Selecciona todos los elementos con la clase 'score3_1'
-                    scoreElements.forEach(element => {
-                        element.textContent = selectedResponseForm3_1.score3_1 || '0'; // Asigna el valor o '0' como fallback
-                    });
-                    document.getElementById('elaboracion').textContent = selectedResponseForm3_1.elaboracion || '0';
-                    document.getElementById('elaboracionSubTotal1').textContent = selectedResponseForm3_1.elaboracionSubTotal1 || '0';
-                    document.getElementById('elaboracion2').textContent = selectedResponseForm3_1.elaboracion2 || '0';
-                    document.getElementById('elaboracionSubTotal2').textContent = selectedResponseForm3_1.elaboracionSubTotal2 || '0';
-                    document.getElementById('elaboracion3').textContent = selectedResponseForm3_1.elaboracion3 || '0';
-                    document.getElementById('elaboracionSubTotal3').textContent = selectedResponseForm3_1.elaboracionSubTotal3 || '0';
-                    document.getElementById('elaboracion4').textContent = selectedResponseForm3_1.elaboracion4 || '0';
-                    document.getElementById('elaboracionSubTotal4').textContent = selectedResponseForm3_1.elaboracionSubTotal4 || '0';
-                    document.getElementById('elaboracion5').textContent = selectedResponseForm3_1.elaboracion5 || '0';
-                    document.getElementById('elaboracionSubTotal5').textContent = selectedResponseForm3_1.elaboracionSubTotal5 || '0';
-                    
-                    const actv3ComisionElements = document.querySelectorAll('.actv3Comision');
-                    actv3ComisionElements.forEach(element => {
-                        element.textContent = selectedResponseForm3_1.actv3Comision || '0'; // Asigna el valor o '0' como fallback
-                    });
-                    document.querySelector('label[id="comisionIncisoA"]').textContent = selectedResponseForm3_1.comisionIncisoA || '0';
-                    document.querySelector('label[id="comisionIncisoB"]').textContent = selectedResponseForm3_1.comisionIncisoB || '0';
-                    document.querySelector('label[id="comisionIncisoC"]').textContent = selectedResponseForm3_1.comisionIncisoC || '0';
-                    document.querySelector('label[id="comisionIncisoD"]').textContent = selectedResponseForm3_1.comisionIncisoD || '0';
-                    document.querySelector('label[id="comisionIncisoE"]').textContent = selectedResponseForm3_1.comisionIncisoE || '0';
-                    document.querySelector('label[id="obs3_1_1"]').textContent = selectedResponseForm3_1.obs3_1_1 || 'sin comentarios';
-                    document.querySelector('label[id="obs3_1_2"]').textContent = selectedResponseForm3_1.obs3_1_2 || 'sin comentarios';
-                    document.querySelector('label[id="obs3_1_3"]').textContent = selectedResponseForm3_1.obs3_1_3 || 'sin comentarios';
-                    document.querySelector('label[id="obs3_1_4"]').textContent = selectedResponseForm3_1.obs3_1_4 || 'sin comentarios';
-                    document.querySelector('label[id="obs3_1_5"]').textContent = selectedResponseForm3_1.obs3_1_5 || 'sin comentarios';
-
-                    // forzar relectura y recálculo 
-                    if (typeof scheduleInitializeFromDOM === 'function') { scheduleInitializeFromDOM(50); 
-                    } else if (typeof updateDocencia === 'function') { updateDocencia(); }
-
-                } else {
-                    document.querySelectorAll('#docencia, #docencia2').forEach(el => {
-                        el.textContent = '0';
-                    });
-                    console.error('No form3_1 data found for the selected dictaminador.');
-                    // Reset input values if no data found
-                    document.querySelector('input[name="dictaminador_id"]').value = '0';
-                    document.querySelector('input[name="user_id"]').value = '0';
-                    document.querySelector('input[name="email"]').value = '';
-                    document.querySelector('input[name="user_type"]').value = '';
-                    const scoreElements = document.querySelectorAll('.score3_1'); 
-                    scoreElements.forEach(element => {
-                        element.textContent = '0'; 
-                    });
-                    document.getElementById('elaboracion').textContent = '0';
-                    document.getElementById('elaboracionSubTotal1').textContent = '0';
-                    document.getElementById('elaboracion2').textContent = '0';
-                    document.getElementById('elaboracionSubTotal2').textContent = '0';
-                    document.getElementById('elaboracion3').textContent = '0';
-                    document.getElementById('elaboracionSubTotal3').textContent = '0';
-                    document.getElementById('elaboracion4').textContent = '0';
-                    document.getElementById('elaboracionSubTotal4').textContent = '0';
-                    document.getElementById('elaboracion5').textContent = '0';
-                    document.getElementById('elaboracionSubTotal5').textContent = '0';
-                    
-                    const actv3ComisionElements = document.querySelectorAll('.actv3Comision');
-                    actv3ComisionElements.forEach(element => {
-                        element.textContent = '0'; // Asigna '0' cuando no haya datos
-                    });
-                    document.querySelector('label[id="comisionIncisoA"]').textContent = '0';
-                    document.querySelector('label[id="comisionIncisoB"]').textContent = '0';
-                    document.querySelector('label[id="comisionIncisoC"]').textContent = '0';
-                    document.querySelector('label[id="comisionIncisoD"]').textContent = '0';
-                    document.querySelector('label[id="comisionIncisoE"]').textContent = '0';
-                    document.querySelector('label[id="obs3_1_1"]').textContent = 'sin comentarios';
-                    document.querySelector('label[id="obs3_1_2"]').textContent = 'sin comentarios';
-                    document.querySelector('label[id="obs3_1_3"]').textContent = 'sin comentarios';
-                    document.querySelector('label[id="obs3_1_4"]').textContent = 'sin comentarios';
-                    document.querySelector('label[id="obs3_1_5"]').textContent = 'sin comentarios';
-                }
-            } catch (error) {
-                console.error('Error fetching dictaminators responses:', error);
-            }
-        }
-
-    } catch (error) {
-        console.error('Error general al procesar datos del docente:', error);
-    }
-});
-
-
-
-           const pages = document.querySelectorAll(".page-break");
-            const isPrinting = window.matchMedia('print').matches;
-
-            if (isPrinting) {
-                const firstFooter = document.querySelector('.first-page-footer');
-                const secondFooter = document.querySelector('.second-page-footer');
-
-                // Ocultar/mostrar los pies de página según el contenido visible
-                pages.forEach((page) => {
-                    if (page.dataset.page === "3") {
-                        firstFooter.style.display = 'table-footer-group';
-                        secondFooter.style.display = 'none';
-                    } else if (page.dataset.page === "4") {
-                        firstFooter.style.display = 'none';
-                        secondFooter.style.display = 'table-footer-group';
-                    }
-                });
-            }
-
-                    window.addEventListener('beforeprint', () => {
-                const pages = document.querySelectorAll(".page-break");
-
-                pages.forEach(page => {
-                    const pageNumber = page.getAttribute('data-page');
-                    const firstFooter = page.querySelector('.first-page-footer');
-                    const secondFooter = page.querySelector('.second-page-footer');
-
-                    if (firstFooter) {
-                        firstFooter.style.display = pageNumber === '3' ? 'table-footer-group' : 'none';
-                    }
-
-                    if (secondFooter) {
-                        secondFooter.style.display = pageNumber === '4' ? 'table-footer-group' : 'none';
-                    }
-                });
-            });
-});
-
-
-            // Function to handle form submission
-            async function submitForm(url, formId) {
-            const formData = { };
-            const form = document.getElementById(formId);
-
-            if (!form) {
-                console.error(`Form with id "${formId}" not found.`);
-            return;
-        }
-
-            // Gather all related information from the form
-            formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
-            formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = selectedEmail;
-            formData['user_type'] = form.querySelector('input[name="user_type"]').value;
-
-            formData['elaboracion'] = document.getElementById('elaboracion').textContent;
-            formData['elaboracionSubTotal1'] = document.getElementById('elaboracionSubTotal1').textContent;
-            formData['comisionIncisoA'] = document.getElementById('comisionIncisoA').value; // Ensure input value is fetched
-            formData['elaboracion2'] = document.getElementById('elaboracion2').textContent;
-            formData['elaboracionSubTotal2'] = document.getElementById('elaboracionSubTotal2').textContent;
-            formData['comisionIncisoB'] = document.getElementById('comisionIncisoB').value; // Ensure input value is fetched
-            formData['elaboracion3'] = document.getElementById('elaboracion3').textContent;
-            formData['elaboracionSubTotal3'] = document.getElementById('elaboracionSubTotal3').textContent;
-            formData['comisionIncisoC'] = document.getElementById('comisionIncisoC').value; // Ensure input value is fetched
-            formData['elaboracion4'] = document.getElementById('elaboracion4').textContent;
-            formData['elaboracionSubTotal4'] = document.getElementById('elaboracionSubTotal4').textContent;
-            formData['comisionIncisoD'] = document.getElementById('comisionIncisoD').value; // Ensure input value is fetched
-            formData['elaboracion5'] = document.getElementById('elaboracion5').textContent;
-            formData['elaboracionSubTotal5'] = document.getElementById('elaboracionSubTotal5').textContent;
-            formData['comisionIncisoA'] = form.querySelector('input[id="comisionIncisoA"]').value; 
-            formData['comisionIncisoB'] = form.querySelector('input[id="comisionIncisoB"]').value;
-            formData['comisionIncisoC'] = form.querySelector('input[id="comisionIncisoC"]').value;
-            formData['comisionIncisoD'] = form.querySelector('input[id="comisionIncisoD"]').value;   
-            formData['comisionIncisoE'] = form.querySelector('input[id="comisionIncisoE"]').value;  
-            
-            // Selecciona todos los elementos con la clase 'score3_1' 
-                const score3_1Element = document.querySelector('.score3_1');               
-                 formData['score3_1'] = score3_1Element ? score3_1Element.textContent : null;
-
-                formData['score3_1'] = score3_1Element ? score3_1Element.textContent : null;
-
-
-             const actv3ComisionElement = document.querySelector('.actv3Comision');
-                formData['actv3Comision'] = actv3ComisionElement ? actv3ComisionElement.textContent : null;
-
-            // Observations
-            formData['obs3_1_1'] = form.querySelector('input[name="obs3_1_1"]').value;
-            formData['obs3_1_2'] = form.querySelector('input[name="obs3_1_2"]').value;
-            formData['obs3_1_3'] = form.querySelector('input[name="obs3_1_3"]').value;
-            formData['obs3_1_4'] = form.querySelector('input[name="obs3_1_4"]').value;
-            formData['obs3_1_5'] = form.querySelector('input[name="obs3_1_5"]').value;
-
-            console.log('Form data:', formData);
-
-            try {
-            const response = await fetch(url, {
-                method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-            'Content-Type': 'application/json',
-                },
-            body: JSON.stringify(formData),
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const responseData = await response.json();
-            console.log('Response received from server:', responseData);
-
-                // Mensaje al usuario
-                // Solo mostrar éxito si el servidor marca success === true
-                if (responseData && responseData.success === true) {
-                    showMessage('Formulario enviado', 'green');
-                } else {
-                    console.error('Submission failed:', responseData);
-                    showMessage(responseData.message || 'Formulario no enviado', 'red');
-                }
-
-        } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
-        showMessage('Formulario no enviado', 'red');
-
-        }
-    }
         function minWithSum(value1, value2) {
             const sum = value1 + value2;
             return Math.min(sum, 200);

@@ -42,7 +42,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         <nav class="-mx-3 flex flex-1 justify-end"></nav>
 
 
-        <form id="form1" method="POST">
+        <form id="form1" method="POST" onsubmit="event.preventDefault(); submitForm('store', 'form1');">
 
           <br>
         <label for="convocatoria" class="label">Convocatoria</label>
@@ -255,21 +255,21 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     //const actv2Comision = document.querySelector('#actv2ComisionText');
 
 
-    let data = {
-      convocatoria: convocatoria,
-      periodo: periodo,
-      nombre: nombre,
-      area: area,
-      departamento: departamento,
-      horasPosgrado: horasPosgrado,
-      horasSemestre: horasSemestre,
-      obs1: obs1,
-      obs2: obs2,
-      obs2_2: obs2_2,
-      docencia: docencia,
-      hours: hoursText,
+    // let data = {
+    //   convocatoria: convocatoria,
+    //   periodo: periodo,
+    //   nombre: nombre,
+    //   area: area,
+    //   departamento: departamento,
+    //   horasPosgrado: horasPosgrado,
+    //   horasSemestre: horasSemestre,
+    //   obs1: obs1,
+    //   obs2: obs2,
+    //   obs2_2: obs2_2,
+    //   docencia: docencia,
+    //   hours: hoursText,
   
-    };
+    // };
 
     const dse = document.querySelector("#DSE");
     const puntajeAEvaluarPosgrado = document.querySelector("#horasPosgrado");
