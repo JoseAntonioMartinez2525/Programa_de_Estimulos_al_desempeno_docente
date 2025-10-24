@@ -154,29 +154,33 @@ Route::middleware(['auth'])->group(function (){
 
 
     //POST formularios
-    Route::post('/store', [ResponseController::class, 'store'])->name('store');
-    Route::post('/store2', [ResponseForm2Controller::class, 'store2'])->name('store2');
-    Route::post('/store3', [ResponseForm2_2Controller::class, 'store3']);
-    Route::post('/store31', [ResponseForm3_1Controller::class, 'store31']);
-    Route::post('/store32', [ResponseForm3_2Controller::class, 'store32']);
-    Route::post('/store33', [ResponseForm3_3Controller::class, 'store33']);
-    Route::post('/store34', [ResponseForm3_4Controller::class, 'store34']);
-    Route::post('/store35', [ResponseForm3_5Controller::class, 'store35']);
-    Route::post('/store36', [ResponseForm3_6Controller::class, 'store36']);
-    Route::post('/store37', [ResponseForm3_7Controller::class, 'store37']);
-    Route::post('/store38', [ResponseForm3_8Controller::class, 'store38']);
-    Route::post('/store381', [ResponseForm3_8_1Controller::class, 'store381']);
-    Route::post('/store39', [ResponseForm3_9Controller::class, 'store39']);
-    Route::post('/store310', [ResponseForm3_10Controller::class, 'store310']);
-    Route::post('/store311', [ResponseForm3_11Controller::class, 'store311']);
-    Route::post('/store312', [ResponseForm3_12Controller::class, 'store312']);
-    Route::post('/store313', [ResponseForm3_13Controller::class, 'store313']);
-    Route::post('/store314', [ResponseForm3_14Controller::class, 'store314']);
-    Route::post('/store315', [ResponseForm3_15Controller::class, 'store315']);
-    Route::post('/store316', [ResponseForm3_16Controller::class, 'store316']);
-    Route::post('/store317', [ResponseForm3_17Controller::class, 'store317']);
-    Route::post('/store318', [ResponseForm3_18Controller::class, 'store318']);
-    Route::post('/store319', [ResponseForm3_19Controller::class, 'store319']);
+    // Grupo de rutas para los formularios de docentes
+    Route::middleware(['checktimer'])->group(function () {
+        Route::post('/store', [ResponseController::class, 'store'])->name('store');
+        Route::post('/store2', [ResponseForm2Controller::class, 'store2'])->name('store2');
+        Route::post('/store3', [ResponseForm2_2Controller::class, 'store3']);
+        Route::post('/store31', [ResponseForm3_1Controller::class, 'store31']);
+        Route::post('/store32', [ResponseForm3_2Controller::class, 'store32']);
+        Route::post('/store33', [ResponseForm3_3Controller::class, 'store33']);
+        Route::post('/store34', [ResponseForm3_4Controller::class, 'store34']);
+        Route::post('/store35', [ResponseForm3_5Controller::class, 'store35']);
+        Route::post('/store36', [ResponseForm3_6Controller::class, 'store36']);
+        Route::post('/store37', [ResponseForm3_7Controller::class, 'store37']);
+        Route::post('/store38', [ResponseForm3_8Controller::class, 'store38']);
+        Route::post('/store381', [ResponseForm3_8_1Controller::class, 'store381']);
+        Route::post('/store39', [ResponseForm3_9Controller::class, 'store39']);
+        Route::post('/store310', [ResponseForm3_10Controller::class, 'store310']);
+        Route::post('/store311', [ResponseForm3_11Controller::class, 'store311']);
+        Route::post('/store312', [ResponseForm3_12Controller::class, 'store312']);
+        Route::post('/store313', [ResponseForm3_13Controller::class, 'store313']);
+        Route::post('/store314', [ResponseForm3_14Controller::class, 'store314']);
+        Route::post('/store315', [ResponseForm3_15Controller::class, 'store315']);
+        Route::post('/store316', [ResponseForm3_16Controller::class, 'store316']);
+        Route::post('/store317', [ResponseForm3_17Controller::class, 'store317']);
+        Route::post('/store318', [ResponseForm3_18Controller::class, 'store318']);
+        Route::post('/store319', [ResponseForm3_19Controller::class, 'store319']);
+    });
+    
     Route::post('/store-resume', [ResumeController::class, 'storeResume']);
     Route::post('/store-evaluator-signature', [EvaluatorSignatureController1::class, 'storeEvaluatorSignature'])->name('store-evaluator-signature');
 
@@ -333,7 +337,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/timer/update', [UserTimerController::class, 'updateTimer']);
     Route::post('/timer/extend/{userId}', [UserTimerController::class, 'extendTimer']); // Admin
 });
-
-Route::post('/formato-evaluacion/admin-reset-timer', [DictaminatorController::class, 'adminResetTimer'])
-    ->middleware('auth')
+Route::post('admin-reset-timer', [DictaminatorController::class, 'adminResetTimer'])
+    ->middleware('verify.admin')
     ->name('admin.reset.timer');
+

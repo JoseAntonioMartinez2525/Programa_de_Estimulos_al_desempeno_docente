@@ -8,21 +8,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const STORAGE_KEY = `tiempoRestante_${userEmail}`;
     const EXPIRED_KEY = `tiempoExpirado_${userEmail}`;
 
-    const timerDisplay = document.createElement("div");
+  let timerDisplay = document.getElementById("timerDisplay");
+
+  if (!timerDisplay) {
+    timerDisplay = document.createElement("div");
     timerDisplay.id = "timerDisplay";
-    timerDisplay.style = `
-      position:fixed;
-      top:10px;
-      right:10px;
-      background:#222;
-      color:#fff;
-      padding:10px 15px;
-      border-radius:8px;
-      font-weight:bold;
-      z-index:9999;
-      font-family:monospace;
-    `;
+    timerDisplay.style.position = "fixed";
+    timerDisplay.style.top = "10px";
+    timerDisplay.style.right = "10px";
+    timerDisplay.style.background = "rgb(34 34 34)";
+    timerDisplay.style.color = "rgb(255 255 255)";
+    timerDisplay.style.padding = "10px 15px";
+    timerDisplay.style.borderRadius = "8px";
+    timerDisplay.style.fontWeight = "bold";
+    timerDisplay.style.zIndex = "9999";
+    timerDisplay.style.fontFamily = "monospace";
     document.body.appendChild(timerDisplay);
+  }
 
     let tiempoRestante = null;
     let intervalo = null;
@@ -58,7 +60,12 @@ document.addEventListener('DOMContentLoaded', function () {
       timerDisplay.textContent = "⏰ Tiempo finalizado";
       timerDisplay.style.background = "red";
       timerDisplay.style.color = "#fff";
+
+    
+
     }
+
+
 
     // 🔹 Finalizar timer
     function finalizarFormularios() {
@@ -98,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Si ya expiró para este usuario
       bloquearFormularios();
       mostrarFinalizado();
+   
     } else if (localStorage.getItem(STORAGE_KEY)) {
       // Continuar desde localStorage
       tiempoRestante = parseInt(localStorage.getItem(STORAGE_KEY), 10);
@@ -112,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
             bloquearFormularios();
             mostrarFinalizado();
             localStorage.setItem(EXPIRED_KEY, "true");
+            // timerDisplay.style.background = "rgb(255,255,255)"; div#timerDisplay
           } else {
             localStorage.setItem(STORAGE_KEY, tiempoRestante);
             iniciarTimer();

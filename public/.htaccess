@@ -5,6 +5,9 @@
 
     RewriteEngine On
 
+    # Importante: indicar el subdirectorio donde está Laravel
+    RewriteBase /formato-evaluacion/
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

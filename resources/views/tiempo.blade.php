@@ -54,6 +54,7 @@ $user_identity = $user->id;
             
 </body>
 <script>
+    const adminResetTimerUrl = @json(route('admin.reset.timer'));
     const docenteSearch = document.getElementById('docenteSearch');
 const docenteSuggestions = document.getElementById('docenteSuggestions');
 const selectedDocenteEmail = document.getElementById('selectedDocenteEmail');
@@ -101,7 +102,7 @@ document.getElementById('prorrogarTimerBtn').addEventListener('click', async () 
     const segundosExtra = minutosExtra * 60;
     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    const res = await fetch('{{ route('admin.reset.timer') }}', {
+    const res = await fetch(adminResetTimerUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

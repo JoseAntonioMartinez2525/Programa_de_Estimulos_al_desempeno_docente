@@ -52,7 +52,7 @@ public function adminResetTimer(Request $request)
     \DB::table('user_timers')->updateOrInsert(
         ['user_id' => $user->id],
         [
-            'tiempo_restante' => \DB::raw("COALESCE(tiempo_restante, 0) + {$request->segundosExtra}"),
+        'tiempo_restante' => \DB::raw("COALESCE(tiempo_restante, 0) + ?", [$request->segundosExtra]),
             'updated_at' => now()
         ]
     );

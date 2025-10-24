@@ -23,7 +23,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
     <x-head-resources />
 @include('partials.timer', ['tiempoTotal' => 5 * 60])
-1
+
 </head>
 @if (Route::has('login'))
         @csrf
@@ -295,8 +295,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <thead>
                                         <!--prom90-100-->
                                         <tr>
-                                            <td class="ranges">
-                                                <center>Promedio 90-100</center>
+                                            <td class="ranges text-center">
+                                                Promedio 90-100
                                             </td>
                                             <td id="ran1"><b>50</b></td>
                                             <td class="elabInput"><input id="r1" type="number" placeholder="0"
@@ -308,8 +308,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         </tr>
                                         <!--prom80-90-->
                                         <tr>
-                                            <td class="ranges">
-                                                <center>Promedio 80-90</center>
+                                            <td class="ranges text-center">
+                                                Promedio 80-90
                                             </td>
                                             <td id="ran2"><b>40</b></td>
                                             <td class="elabInput"><input id="r2" type="number" placeholder="0"
@@ -321,8 +321,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         </tr>
                                         <!--prom70-80-->
                                         <tr>
-                                            <td class="ranges">
-                                                <center>Promedio 70-80</center>
+                                            <td class="ranges text-center">
+                                                Promedio 70-80
                                             </td>
                                             <td id="ran3"><b>30</b></td>
                                             <td class="elabInput"><input id="r3" type="number" placeholder="0"
@@ -401,8 +401,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td>a)</td>
                                                 <td>Libro de texto con editorial de reconocido prestigio</td>
                                                 <td>Autor(a)</td>
-                                                <td id="p100">
-                                                    <center><b>100</b></center>
+                                                <td id="p100" class="text-center">
+                                                    <b>100</b>
                                                 </td>
                                                 <td class="elabInput"><input id="rc1" type="number" oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc1') }}">
                                                 </td>
@@ -415,8 +415,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td>b)</td>
                                                 <td>1. Paquete didáctico, 2. Manual de operaciones</td>
                                                 <td>Autor(a)</td>
-                                                <td id="p50">
-                                                    <center><b>50</b></center>
+                                                <td id="p50" class="text-center">
+                                                    <b>50</b>
                                                 </td>
                                                 <td class="elabInput"><input id="rc2" type="number" 
                                                         oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc2') }}">
@@ -432,8 +432,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <textarea name="" class="textAreaForms" cols="30" rows="10">1. Capítulo de libro, 2. Elaboración de Manuales de laboratorio o instructivos, 3. Diseño y construcción de equipo de laboratorio, 4. Elaboración de material audiovisual, 5. Elaboración de software educativo, 6. Notas de curso, 7. Antología comentada, 8.Monografía.</textarea>
                                                 </td>
                                                 <td>Autor(a)</td>
-                                                <td id="p30">
-                                                    <center><b>30</b></center>
+                                                <td id="p30" class="text-center">
+                                                    <b>30</b>
                                                 </td>
                                                 <td class="elabInput"><input id="rc3" type="number"
                                                         oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc3') }}">
@@ -449,8 +449,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     3. Traducciones
                                                     publicadas de artículos.</td>
                                                 <td>Autor(a)</td>
-                                                <td id="p25">
-                                                    <center><b>25</b></center>
+                                                <td id="p25" class="text-center">
+                                                    <b>25</b>
                                                 </td>
                                                 <td class="elabInput"><input id="rc4" type="number"
                                                         oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc4') }}">
