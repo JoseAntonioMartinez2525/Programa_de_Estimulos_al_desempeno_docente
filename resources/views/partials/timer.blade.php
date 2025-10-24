@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const userEmail = "{{ Auth::user()->email }}";
     const STORAGE_KEY = `tiempoRestante_${userEmail}`;
     const EXPIRED_KEY = `tiempoExpirado_${userEmail}`;
-
+  let initialTime = TIEMPO_TOTAL; 
   let timerDisplay = document.getElementById("timerDisplay");
 
   if (!timerDisplay) {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
       mostrarFinalizado();
       localStorage.setItem(EXPIRED_KEY, "true");
       localStorage.removeItem(STORAGE_KEY);
-
+      timerDisplay.classList.add("expired"); // Añade la clase 'expired'
       // Actualizamos estado en BD
       fetch('/timer/update', {
         method: 'POST',
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
           localStorage.setItem(STORAGE_KEY, tiempoRestante);
           actualizarDisplay();
         }
-      }, 1000);
+      }, 2000);
     }
 
     // 🔹 Inicialización híbrida (localStorage + BD)

@@ -17,7 +17,8 @@ class UserTimerController extends Controller
         );
         return response()->json([
             'tiempo_restante' => $timer->tiempo_restante,
-            'expirado' => $timer->expirado
+            'expirado' => $timer->expirado,
+            'initial_time' => 15 * 60 
         ]);
     }
 

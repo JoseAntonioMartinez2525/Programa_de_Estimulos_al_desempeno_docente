@@ -1409,4 +1409,9 @@ i.fa-solid.fa-alarm-clock{
 }
 
 
+#timerDisplay.expired {
+  display: none; /* Oculta el timer completamente */
+}
+
+
 
