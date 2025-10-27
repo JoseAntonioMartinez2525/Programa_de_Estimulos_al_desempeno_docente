@@ -49,16 +49,27 @@ public function adminResetTimer(Request $request)
 
     $user = \App\Models\User::where('email', $request->email)->firstOrFail();
 
-    \DB::table('user_timers')->updateOrInsert(
+    // Crear o obtener el timer
+    $timer = \App\Models\UserTimer::firstOrCreate(
         ['user_id' => $user->id],
-        [
-        'tiempo_restante' => \DB::raw("COALESCE(tiempo_restante, 0) + ?", [$request->segundosExtra]),
-            'updated_at' => now()
-        ]
+        ['tiempo_restante' => 0, 'expirado' => false]
     );
 
-    return response()->json(['message' => 'Timer prorrogado correctamente']);
+    // Sumar segundos
+    $timer->tiempo_restante += $request->segundosExtra;
+    $timer->expirado = false; // asegura que se reactive si estaba expirado
+    $timer->save();
+
+
+
+    return response()->json([
+        'message' => 'Timer prorrogado correctamente',
+        'nuevoTiempo' => $timer->tiempo_restante
+    ]);
+
+        dd(app()->make(\App\Http\Middleware\VerifyAdminPrivileges::class));
 }
+
     
     public function getDocentes(Request $request)
 {

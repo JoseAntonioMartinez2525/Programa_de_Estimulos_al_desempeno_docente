@@ -34,9 +34,10 @@ $user = Auth::user();
 $userType = $user->user_type;
 $user_identity = $user->id; 
 @endphp
-<button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button> <br>
+
 
 <div class="container mt-4 printButtonClass">
+   
     @if($userType !== 'docente')
         <!-- Buscando docentes -->
         <x-docente-search />
@@ -54,7 +55,7 @@ $user_identity = $user->id;
             
 </body>
 <script>
-    const adminResetTimerUrl = @json(route('admin.reset.timer'));
+
     const docenteSearch = document.getElementById('docenteSearch');
 const docenteSuggestions = document.getElementById('docenteSuggestions');
 const selectedDocenteEmail = document.getElementById('selectedDocenteEmail');
@@ -85,6 +86,7 @@ docenteSearch.addEventListener('input', async function() {
     docenteSuggestions.style.display = docentes.length ? 'block' : 'none';
 });
 
+const adminResetTimerUrl = @json(route('admin.reset.timer'));
 document.getElementById('prorrogarTimerBtn').addEventListener('click', async () => {
     const email = selectedDocenteEmail.value;
     const minutosExtra = parseInt(document.getElementById('prorrogaInput').value, 10);
@@ -112,13 +114,20 @@ document.getElementById('prorrogarTimerBtn').addEventListener('click', async () 
     });
 
     if (res.ok) {
+        const data = await res.json();
+        // Actualizar timer inmediatamente en la vista del docente (si está abierta)
+        if(window.resetTimerAdmin){
+            window.resetTimerAdmin(data.nuevoTiempo);
+        }
         alert(`Se agregaron ${minutosExtra} minutos al docente ${email}`);
         document.getElementById('prorrogaInput').value = '';
     } else {
+        const errorData = await res.json().catch(() => null);
+        console.error(errorData);
         alert('Error al prorrogar el timer');
     }
-});
 
+});
 
 
 

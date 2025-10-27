@@ -72,6 +72,7 @@ use App\Http\Controllers\DictaminatorController;
 use App\Http\Controllers\FirmaDictaminadorController;
 use App\Http\Controllers\PuntajeMaximosController;
 use App\Http\Controllers\UserTimerController;
+use App\Http\Middleware\VerifyAdminPrivileges;
 
 Route::get('/forzar-error', function () {
     throw new \Exception("Este es un error de prueba");
@@ -179,6 +180,7 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/store317', [ResponseForm3_17Controller::class, 'store317']);
         Route::post('/store318', [ResponseForm3_18Controller::class, 'store318']);
         Route::post('/store319', [ResponseForm3_19Controller::class, 'store319']);
+        
     });
     
     Route::post('/store-resume', [ResumeController::class, 'storeResume']);
@@ -337,7 +339,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/timer/update', [UserTimerController::class, 'updateTimer']);
     Route::post('/timer/extend/{userId}', [UserTimerController::class, 'extendTimer']); // Admin
 });
+
+
+
 Route::post('admin-reset-timer', [DictaminatorController::class, 'adminResetTimer'])
-    ->middleware('verify.admin')
+    ->middleware([VerifyAdminPrivileges::class])
     ->name('admin.reset.timer');
+
 

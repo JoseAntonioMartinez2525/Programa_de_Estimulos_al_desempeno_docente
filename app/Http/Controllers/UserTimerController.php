@@ -16,34 +16,45 @@ class UserTimerController extends Controller
             ['tiempo_restante' => 15*60, 'expirado' => false]
         );
         return response()->json([
+            'user_id' => $user->id,
             'tiempo_restante' => $timer->tiempo_restante,
             'expirado' => $timer->expirado,
+            'updated_at' => $timer->updated_at, // verificar sincronización
             'initial_time' => 15 * 60 
         ]);
     }
 
     public function updateTimer(Request $request){
         $user = Auth::user();
-        $timer = UserTimer::updateOrCreate(
-            ['user_id' => $user->id],
-            [
-                'tiempo_restante' => $request->tiempo_restante,
-                'expirado' => $request->expirado
-            ]
-        );
-        return response()->json(['success' => true]);
+        $timer = UserTimer::firstOrCreate(['user_id' => $user->id]);
+
+        if ($request->has('tiempo_restante')) {
+            $nuevoTiempo = max($timer->tiempo_restante, $request->tiempo_restante);
+            $timer->tiempo_restante = $nuevoTiempo;
+        }
+
+        if ($request->has('expirado')) {
+            $timer->expirado = $request->expirado;
+        }
+
+        $timer->save();
     }
 
     // Prórroga por admin
     public function extendTimer(Request $request, $userId)
     {
-        $timer = UserTimer::where('user_id', $userId)->first();
-        if (!$timer) return response()->json(['error'=>'Timer no encontrado'],404);
+        $timer = UserTimer::firstOrCreate(
+            ['user_id' => $userId],
+            ['tiempo_restante' => 0, 'expirado' => false]
+        );
 
-        $timer->tiempo_restante = $request->input('tiempo_restante', 5*60);
-        $timer->expirado = false;
+        $timer->tiempo_restante += $request->input('segundosExtra', 5*60);        $timer->expirado = false;
         $timer->save();
 
-        return response()->json($timer);
+        return response()->json([
+            'message' => 'Timer extendido correctamente',
+            'tiempo_restante' => $timer->tiempo_restante,
+        ]);
     }
+
 }
