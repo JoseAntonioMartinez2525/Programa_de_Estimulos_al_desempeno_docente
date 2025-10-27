@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem(EXPIRED_KEY, "true");
         localStorage.removeItem(STORAGE_KEY);
 
-        fetch('/timer/update', {
+        fetch(@json(route('timer.update')), {
             method: 'POST',
             headers: { 
                 'X-CSRF-TOKEN': '{{ csrf_token() }}',
@@ -96,43 +96,64 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
     }
 
-    // 🔹 Inicialización desde BD
-    fetch('/timer')
-        .then(r => r.json())
-        .then(data => {
-            tiempoRestante = data.tiempo_restante ?? TIEMPO_TOTAL;
+    // 🔹 Inicialización híbrida (localStorage + BD)
+    let tiempoRestanteLS = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+    let expiradoLS = localStorage.getItem(EXPIRED_KEY) === "true";
 
-            if (data.expirado) {
-                bloquearFormularios();
-                mostrarFinalizado();
-                localStorage.setItem(EXPIRED_KEY, "true");
-            } else {
-                localStorage.setItem(STORAGE_KEY, tiempoRestante);
-                localStorage.removeItem(EXPIRED_KEY);
-                iniciarTimer();
-            }
-        });
-
-    // 🔹 Polling: verificar cada 5s si admin extendió tiempo
-    setInterval(() => {
-        fetch('/timer')
+    if (expiradoLS) {
+        bloquearFormularios();
+        mostrarFinalizado();
+    } else if (!isNaN(tiempoRestanteLS)) {
+        // Usar valor localStorage
+        tiempoRestante = tiempoRestanteLS;
+        iniciarTimer();
+    } else {
+        // Traer de BD
+        fetch(@json(route('timer.get')))
             .then(r => r.json())
             .then(data => {
-                const nuevoTiempo = data.tiempo_restante ?? TIEMPO_TOTAL;
-                const expirado = data.expirado;
+                tiempoRestante = data.tiempo_restante ?? TIEMPO_TOTAL;
 
-                if (expirado && !timerDisplay.classList.contains('expired')) {
-                    finalizarTimer();
-                } else if (nuevoTiempo > tiempoRestante) {
-                    tiempoRestante = nuevoTiempo;
+                if (data.expirado) {
+                    bloquearFormularios();
+                    mostrarFinalizado();
+                    localStorage.setItem(EXPIRED_KEY, "true");
+                } else {
                     localStorage.setItem(STORAGE_KEY, tiempoRestante);
                     localStorage.removeItem(EXPIRED_KEY);
-                    actualizarDisplay();
+                    iniciarTimer();
                 }
-            }).catch(err => console.error("Error verificando timer:", err));
-    }, 5000);
+            }).catch(err => console.error("Error inicializando timer:", err));
+    }
 
-    // 🔹 Función global para admin
+// 🔹 Polling: verificar cada 5s si admin extendió tiempo
+let ultimoTiempoBD = null; 
+setInterval(() => {
+    fetch(@json(route('timer.get')))
+        .then(r => r.json())
+        .then(data => {
+            const nuevoTiempo = Number(data.tiempo_restante ?? TIEMPO_TOTAL);
+            const expirado = data.expirado;
+
+            if (expirado && !timerDisplay.classList.contains('expired')) {
+                finalizarTimer();
+                return;
+            } else if (ultimoTiempoBD !== null && nuevoTiempo > ultimoTiempoBD) {
+                // Solo actualizar si admin agregó tiempo
+                const incremento = nuevoTiempo - ultimoTiempoBD;
+                tiempoRestante += incremento;
+                localStorage.setItem(STORAGE_KEY, tiempoRestante);
+                localStorage.removeItem(EXPIRED_KEY);
+                actualizarDisplay();
+            }
+
+            // Guardamos valor de BD para la próxima comparación
+            ultimoTiempoBD = nuevoTiempo;
+        }).catch(err => console.error("Error verificando timer:", err));
+}, 5000);
+
+
+    // 🔹 Función global para admin: reiniciar/prorrogar timer
     window.resetTimerAdmin = function(nuevoTiempoSegundos){
         tiempoRestante = nuevoTiempoSegundos ?? TIEMPO_TOTAL;
         localStorage.setItem(STORAGE_KEY, tiempoRestante);

@@ -72,6 +72,7 @@ use App\Http\Controllers\DictaminatorController;
 use App\Http\Controllers\FirmaDictaminadorController;
 use App\Http\Controllers\PuntajeMaximosController;
 use App\Http\Controllers\UserTimerController;
+use App\Http\Middleware\CheckTimer;
 use App\Http\Middleware\VerifyAdminPrivileges;
 
 Route::get('/forzar-error', function () {
@@ -156,7 +157,7 @@ Route::middleware(['auth'])->group(function (){
 
     //POST formularios
     // Grupo de rutas para los formularios de docentes
-    Route::middleware(['checktimer'])->group(function () {
+    Route::middleware([CheckTimer::class])->group(function () {
         Route::post('/store', [ResponseController::class, 'store'])->name('store');
         Route::post('/store2', [ResponseForm2Controller::class, 'store2'])->name('store2');
         Route::post('/store3', [ResponseForm2_2Controller::class, 'store3']);
@@ -335,10 +336,11 @@ Route::get('/formato-evaluacion//test-dompdf', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/timer', [UserTimerController::class, 'getTimer']);
-    Route::post('/timer/update', [UserTimerController::class, 'updateTimer']);
-    Route::post('/timer/extend/{userId}', [UserTimerController::class, 'extendTimer']); // Admin
+    Route::get('/timer', [UserTimerController::class, 'getTimer'])->name('timer.get');
+    Route::post('/timer/update', [UserTimerController::class, 'updateTimer'])->name('timer.update');
+    Route::post('/timer/extend/{userId}', [UserTimerController::class, 'extendTimer'])->name('timer.extend'); // Admin
 });
+
 
 
 
