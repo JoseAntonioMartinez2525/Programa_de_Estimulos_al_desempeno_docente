@@ -1414,4 +1414,28 @@ i.fa-solid.fa-alarm-clock{
 }
 
 
+/* ---------------------------------------------
+   2. Scrollbar-width (Firefox)
+   Solo afecta navegadores que soportan scrollbar-width
+----------------------------------------------*/
+@supports (scrollbar-width: thin) {
+    .scroll-element { /* reemplaza con tu selector real si es necesario */
+        scrollbar-width: thin;
+    }
+}
+
+/* ---------------------------------------------
+   3. Line clamp (WebKit)
+----------------------------------------------*/
+/* Line clamp (WebKit + estándar) */
+.line-clamp {
+    display: -webkit-box;          /* WebKit */
+    -webkit-box-orient: vertical;  /* WebKit */
+    -webkit-line-clamp: 3;         /* limita a 3 líneas */
+    overflow: hidden;
+
+    line-clamp: 3;                 /* estándar tentativa */
+
+}
+
 
