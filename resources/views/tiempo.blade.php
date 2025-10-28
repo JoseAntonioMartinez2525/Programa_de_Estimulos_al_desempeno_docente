@@ -47,8 +47,9 @@ $user_identity = $user->id;
     <input type="hidden" id="selectedDocenteEmail" name="email">
     <!-- Input dinámico y botón para prórroga -->
     <div class="d-flex align-items-center gap-2 mt-2 p-2" style="margin-left:12rem;">
-        <input type="number" id="prorrogaInput" class="form-control" min="1" placeholder="Minutos a prorrogar" style="width: 200px;">
+        <input type="number" id="prorrogaInput" class="form-control" min="1" placeholder="Segundos a prorrogar" style="width: 200px;">
         <button id="prorrogarTimerBtn" class="btn btn-primary">Prorrogar</button>
+        <span id="conversionLabel" class="text-muted" style="margin-left: 1rem;"></span>
     </div>
 
     </header>
@@ -56,10 +57,26 @@ $user_identity = $user->id;
 </body>
 <script>
 
-    const docenteSearch = document.getElementById('docenteSearch');
+const docenteSearch = document.getElementById('docenteSearch');
 const docenteSuggestions = document.getElementById('docenteSuggestions');
 const selectedDocenteEmail = document.getElementById('selectedDocenteEmail');
+const adminResetTimerUrl = @json(route('admin.reset.timer'));
+const input = document.getElementById('prorrogaInput');
+const conversionLabel = document.getElementById('conversionLabel');
 
+// 🔹 Conversión automática segundos → minutos:segundos
+input.addEventListener('input', () => {
+    const segundos = parseInt(input.value, 10);
+    if (!isNaN(segundos) && segundos > 0) {
+        const minutos = Math.floor(segundos / 60);
+        const resto = segundos % 60;
+        conversionLabel.textContent = `🕒 Equivale a ${minutos} min ${resto} seg`;
+    } else {
+        conversionLabel.textContent = '';
+    }
+});
+
+// 🔹 Búsqueda de docentes (igual que antes)
 docenteSearch.addEventListener('input', async function() {
     const search = this.value;
     if (!search) {
@@ -86,22 +103,21 @@ docenteSearch.addEventListener('input', async function() {
     docenteSuggestions.style.display = docentes.length ? 'block' : 'none';
 });
 
-const adminResetTimerUrl = @json(route('admin.reset.timer'));
+// 🔹 Envío de prórroga
 document.getElementById('prorrogarTimerBtn').addEventListener('click', async () => {
     const email = selectedDocenteEmail.value;
-    const minutosExtra = parseInt(document.getElementById('prorrogaInput').value, 10);
+    const segundosExtra = parseInt(input.value, 10);
 
     if (!email) {
         alert('Selecciona un docente primero');
         return;
     }
 
-    if (isNaN(minutosExtra) || minutosExtra <= 0) {
-        alert('Ingresa un valor válido');
+    if (isNaN(segundosExtra) || segundosExtra <= 0) {
+        alert('Ingresa un valor válido en segundos');
         return;
     }
 
-    const segundosExtra = minutosExtra * 60;
     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     const res = await fetch(adminResetTimerUrl, {
@@ -115,21 +131,20 @@ document.getElementById('prorrogarTimerBtn').addEventListener('click', async () 
 
     if (res.ok) {
         const data = await res.json();
-        // Actualizar timer inmediatamente en la vista del docente (si está abierta)
-        if(window.resetTimerAdmin){
+        // 🔹 Actualiza el timer del lado del docente si está abierta su sesión
+        if (window.resetTimerAdmin) {
             window.resetTimerAdmin(data.nuevoTiempo);
         }
-        alert(`Se agregaron ${minutosExtra} minutos al docente ${email}`);
-        document.getElementById('prorrogaInput').value = '';
+
+        alert(`✅ Se asignaron ${segundosExtra} segundos al docente ${email}`);
+        input.value = '';
+        conversionLabel.textContent = '';
     } else {
         const errorData = await res.json().catch(() => null);
         console.error(errorData);
-        alert('Error al prorrogar el timer');
+        alert('❌ Error al prorrogar el timer');
     }
-
 });
-
-
 
 
 </script>

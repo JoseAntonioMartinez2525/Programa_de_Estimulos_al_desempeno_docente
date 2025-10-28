@@ -55,10 +55,17 @@ public function adminResetTimer(Request $request)
         ['tiempo_restante' => 0, 'expirado' => false]
     );
 
-    // Sumar segundos
-    $timer->tiempo_restante += $request->segundosExtra;
-    $timer->expirado = false; // asegura que se reactive si estaba expirado
+    // Si el timer está expirado o en 0, reiniciar desde los segundos extra
+    if ($timer->expirado || $timer->tiempo_restante <= 0) {
+        $timer->tiempo_restante = $request->segundosExtra;
+    } else {
+        // Si aún tenía tiempo, solo sumar
+        $timer->tiempo_restante += $request->segundosExtra;
+    }
+
+    $timer->expirado = false;
     $timer->save();
+
 
 
 
@@ -67,7 +74,7 @@ public function adminResetTimer(Request $request)
         'nuevoTiempo' => $timer->tiempo_restante
     ]);
 
-        dd(app()->make(\App\Http\Middleware\VerifyAdminPrivileges::class));
+        
 }
 
     

@@ -85,4 +85,10 @@
         
     </div>
 </body>
+<script>
+    const html = document.documentElement;
+
+if (navigator.userAgent.includes('Chrome')) html.classList.add('chrome');
+if (navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome')) html.classList.add('safari');
+</script>
 </html>

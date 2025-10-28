@@ -1235,7 +1235,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
                                     @csrf
-                                <!--3.9 Trabajos dirigidos para la titulación de estudiantes-->
+                                <!--3.10 Trabajos dirigidos para la titulación de estudiantes-->
                                 <h4>Puntaje máximo
                                     <label class="bg-black text-white px-4 mt-3" for="">115</label>
                                 </h4>
@@ -3743,6 +3743,170 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     });
 
 
+//Actividad 9
+function onActv3SubTotal3_9(){
+
+  // obtener solo elementos con ese índice
+  const scoreElement = document.getElementById('score3_9');
+    //Puntajes
+  const puntajeTutorias20_1 = parseFloat(document.getElementById("puntajeTutorias20_1").textContent);
+  const puntajeTutorias15_1 = parseFloat(document.getElementById("puntajeTutorias15_1").textContent);
+  const puntajeTutorias10_1 = parseFloat(document.getElementById("puntajeTutorias10_1").textContent);
+  const puntajeTutorias55 = parseFloat(document.getElementById("puntajeTutorias55").textContent);
+  const puntajeTutorias45 = parseFloat(document.getElementById("puntajeTutorias45").textContent);
+  const puntajeTutorias35 = parseFloat(document.getElementById("puntajeTutorias35").textContent);
+  const puntajeTutorias70 = parseFloat(document.getElementById("puntajeTutorias70").textContent);
+  const puntajeTutorias60 = parseFloat(document.getElementById("puntajeTutorias60").textContent);
+  const puntajeTutorias50 = parseFloat(document.getElementById("puntajeTutorias50").textContent);
+  const puntajeTutorias30_1 = parseFloat(document.getElementById("puntajeTutorias30_1").textContent);
+  const puntajeTutorias20_2 = parseFloat(document.getElementById("puntajeTutorias20_2").textContent);
+  const puntajeTutorias15_2 = parseFloat(document.getElementById("puntajeTutorias15_2").textContent);
+  const puntajeTutorias30_2 = parseFloat(document.getElementById("puntajeTutorias30_2").textContent);
+  const puntajeTutorias20_3 = parseFloat(document.getElementById("puntajeTutorias20_3").textContent);
+  const puntajeTutorias15_3 = parseFloat(document.getElementById("puntajeTutorias15_3").textContent);
+  const puntajeTutorias15_4 = parseFloat(document.getElementById("puntajeTutorias15_4").textContent);
+  const puntajeTutorias10_2 = parseFloat(document.getElementById("puntajeTutorias10_2").textContent);
+
+  //Cantidad
+  const puntaje3_9_1 = parseFloat(document.getElementById("puntaje3_9_1").value);
+  const puntaje3_9_2 = parseFloat(document.getElementById("puntaje3_9_2").value);
+  const puntaje3_9_3 =  parseFloat(document.getElementById("puntaje3_9_3").value);
+  const puntaje3_9_4 = parseFloat(document.getElementById("puntaje3_9_4").value);
+  const puntaje3_9_5 = parseFloat(document.getElementById("puntaje3_9_5").value);
+  const puntaje3_9_6 =  parseFloat(document.getElementById("puntaje3_9_6").value);
+  const puntaje3_9_7 = parseFloat(document.getElementById("puntaje3_9_7").value);
+  const puntaje3_9_8 = parseFloat(document.getElementById("puntaje3_9_8").value);
+  const puntaje3_9_9 =  parseFloat(document.getElementById("puntaje3_9_9").value);
+  const puntaje3_9_10 = parseFloat(document.getElementById("puntaje3_9_10").value);
+  const puntaje3_9_11 = parseFloat(document.getElementById("puntaje3_9_11").value);
+  const puntaje3_9_12 =  parseFloat(document.getElementById("puntaje3_9_12").value);
+  const puntaje3_9_13 = parseFloat(document.getElementById("puntaje3_9_13").value);
+  const puntaje3_9_14 = parseFloat(document.getElementById("puntaje3_9_14").value);
+  const puntaje3_9_15 =  parseFloat(document.getElementById("puntaje3_9_15").value);
+  const puntaje3_9_16 = parseFloat(document.getElementById("puntaje3_9_16").value);
+  const puntaje3_9_17 = parseFloat(document.getElementById("puntaje3_9_17").value);
+
+  //calculos subtotales
+    //a)
+    const tutorias1 = subtotal(puntajeTutorias20_1, puntaje3_9_1);
+    document.getElementById("tutorias1").innerHTML= tutorias1;
+    console.log("tutorias 1:", tutorias1);
+
+    //b
+    const tutorias2 = subtotal(puntajeTutorias15_1, puntaje3_9_2);
+    document.getElementById("tutorias2").innerHTML= tutorias2;
+    console.log("tutorias 2:", tutorias2);
+
+    //c)
+    const tutorias3 = subtotal(puntajeTutorias10_1, puntaje3_9_3);
+    document.getElementById("tutorias3").innerHTML= tutorias3;
+    console.log("tutorias 3:", tutorias3);
+
+    //d
+    const tutorias4 = subtotal(puntajeTutorias55, puntaje3_9_4);
+    document.getElementById("tutorias4").innerHTML= tutorias4;
+    console.log("tutorias 4:", tutorias4);
+
+    //e
+    const tutorias5 = subtotal(puntajeTutorias45, puntaje3_9_5);
+    document.getElementById("tutorias5").innerHTML= tutorias5;
+    console.log("tutorias 5:", tutorias5);
+
+    //f
+    const tutorias6 = subtotal(puntajeTutorias35,puntaje3_9_6);
+    document.getElementById("tutorias6").innerHTML = tutorias6; 
+    console.log("tutorias 6:", tutorias6)
+    
+    //g
+    const tutorias7 = subtotal(puntajeTutorias70,puntaje3_9_7);
+    document.getElementById("tutorias7").innerHTML = tutorias7;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias7:", tutorias7)
+    
+    //h
+    const tutorias8 = subtotal(puntajeTutorias60,puntaje3_9_8);
+    document.getElementById("tutorias8").innerHTML = tutorias8;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias8:", tutorias8)
+    
+    //i
+    const tutorias9 = subtotal(puntajeTutorias50,puntaje3_9_9);
+    document.getElementById("tutorias9").innerHTML = tutorias9;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias9:", tutorias9)
+
+    //j
+    const tutorias10 = subtotal(puntajeTutorias30_1,puntaje3_9_10);
+    document.getElementById("tutorias10").innerHTML = tutorias10;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias10:", tutorias10)
+
+    //k
+    const tutorias11 = subtotal(puntajeTutorias20_2,puntaje3_9_11);
+    document.getElementById("tutorias11").innerHTML = tutorias11;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias11:", tutorias11)
+
+    //l
+    const tutorias12 = subtotal(puntajeTutorias15_2,puntaje3_9_12);
+    document.getElementById("tutorias12").innerHTML = tutorias12;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias12:", tutorias12)
+
+    //m
+    const tutorias13 = subtotal(puntajeTutorias30_2,puntaje3_9_13);
+    document.getElementById("tutorias13").innerHTML = tutorias13;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias13:", tutorias13)
+
+    //n
+    const tutorias14 = subtotal(puntajeTutorias20_3,puntaje3_9_14);
+    document.getElementById("tutorias14").innerHTML = tutorias14;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias14:", tutorias14)
+
+    //o
+    const tutorias15 = subtotal(puntajeTutorias15_3,puntaje3_9_15);
+    document.getElementById("tutorias15").innerHTML = tutorias15;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias15:", tutorias15)
+
+    //p
+    const tutorias16 = subtotal(puntajeTutorias15_4,puntaje3_9_16);
+    document.getElementById("tutorias16").innerHTML = tutorias16;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias16:", tutorias16)
+    
+    //q
+    const tutorias17 = subtotal(puntajeTutorias10_2,puntaje3_9_17);
+    document.getElementById("tutorias17").innerHTML = tutorias17;
+    console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias17:", tutorias17)
+
+//subtotal minimo resultante
+    const score3_9 = minTutorias(tutorias1,tutorias2,tutorias3, tutorias4, tutorias6, tutorias7, tutorias8, tutorias9, tutorias10, tutorias11, tutorias12, tutorias13, tutorias14, tutorias15, tutorias16, tutorias17);
+    scoreElement.textContent = score3_9.toFixed(2);
+    console.log(`Puntaje tabla ${componentIndex}:`, score3_9);
+ 
+if (!isNaN(score3_9)) {
+    docencia += score3_9;
+  if(docencia>=700){
+
+  document.getElementById("docencia").innerHTML = 700;
+  }else{
+    document.getElementById("docencia").innerHTML = docencia;
+  }
+     
+
+}
+}
+
+    function minTutorias() {
+      // convert the arguments object to an array
+      const values = Array.from(arguments);
+
+      // use reduce to sum the values
+      const ms = values.reduce((acc, current) => {
+        return acc + current;
+      }, 0);
+
+      // return the minimum of ms and 200
+      return Math.min(ms, 200);
+    }
+
+        function subtotal(value1, value2) {
+      const st = value1 * value2;
+      return st;
+    }
 
 
         </script>

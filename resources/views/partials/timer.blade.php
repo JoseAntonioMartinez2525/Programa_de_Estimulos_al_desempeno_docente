@@ -108,22 +108,25 @@ document.addEventListener('DOMContentLoaded', function () {
         tiempoRestante = tiempoRestanteLS;
         iniciarTimer();
     } else {
-        // Traer de BD
-        fetch(@json(route('timer.get')))
-            .then(r => r.json())
-            .then(data => {
-                tiempoRestante = data.tiempo_restante ?? TIEMPO_TOTAL;
 
-                if (data.expirado) {
-                    bloquearFormularios();
-                    mostrarFinalizado();
-                    localStorage.setItem(EXPIRED_KEY, "true");
-                } else {
-                    localStorage.setItem(STORAGE_KEY, tiempoRestante);
-                    localStorage.removeItem(EXPIRED_KEY);
-                    iniciarTimer();
-                }
-            }).catch(err => console.error("Error inicializando timer:", err));
+    // Traer de BD solo si nunca se guardó nada localmente
+    fetch(@json(route('timer.get')))
+        .then(r => r.json())
+        .then(data => {
+            if (localStorage.getItem(STORAGE_KEY)) return; // ⛔ evita reinicio doble
+
+            tiempoRestante = data.tiempo_restante ?? TIEMPO_TOTAL;
+
+            if (data.expirado) {
+                bloquearFormularios();
+                mostrarFinalizado();
+                localStorage.setItem(EXPIRED_KEY, "true");
+            } else {
+                localStorage.setItem(STORAGE_KEY, tiempoRestante);
+                localStorage.removeItem(EXPIRED_KEY);
+                iniciarTimer();
+            }
+        }).catch(err => console.error("Error inicializando timer:", err));
     }
 
 // 🔹 Polling: verificar cada 5s si admin extendió tiempo
@@ -138,28 +141,61 @@ setInterval(() => {
             if (expirado && !timerDisplay.classList.contains('expired')) {
                 finalizarTimer();
                 return;
-            } else if (ultimoTiempoBD !== null && nuevoTiempo > ultimoTiempoBD) {
-                // Solo actualizar si admin agregó tiempo
+
+            } else  // Manejo de prórrogas (caso especial: expirado previamente)
+                            // Primera lectura
+            if (ultimoTiempoBD === null) {
+                ultimoTiempoBD = nuevoTiempo;
+                return;
+            }
+
+            // Si el admin extendió tiempo
+            if (nuevoTiempo > ultimoTiempoBD && (nuevoTiempo - ultimoTiempoBD) < 600) {
                 const incremento = nuevoTiempo - ultimoTiempoBD;
-                tiempoRestante += incremento;
+
+                if (localStorage.getItem(EXPIRED_KEY) === "true" || tiempoRestante <= 0) {
+                    // Estaba expirado → reiniciar con el nuevo tiempo total
+                    tiempoRestante = incremento;
+                    localStorage.removeItem(EXPIRED_KEY);
+                    iniciarTimer();
+                } 
+
                 localStorage.setItem(STORAGE_KEY, tiempoRestante);
-                localStorage.removeItem(EXPIRED_KEY);
                 actualizarDisplay();
             }
 
-            // Guardamos valor de BD para la próxima comparación
             ultimoTiempoBD = nuevoTiempo;
-        }).catch(err => console.error("Error verificando timer:", err));
+        })
+        .catch(err => console.error("Error verificando timer:", err));
 }, 5000);
+
+    // 🔹 Guardar tiempo restante al cerrar pestaña
+    window.addEventListener('beforeunload', () => {
+        if (tiempoRestante > 0) {
+            navigator.sendBeacon(@json(route('timer.update')), JSON.stringify({
+                tiempo_restante: tiempoRestante,
+                expirado: false,
+                _token: '{{ csrf_token() }}'
+            }));
+        }
+    });
 
 
     // 🔹 Función global para admin: reiniciar/prorrogar timer
     window.resetTimerAdmin = function(nuevoTiempoSegundos){
-        tiempoRestante = nuevoTiempoSegundos ?? TIEMPO_TOTAL;
+        if (localStorage.getItem(EXPIRED_KEY) === "true" || tiempoRestante <= 0) {
+            // Caso especial: el timer estaba vencido → reiniciar desde cero con la nueva prórroga
+            tiempoRestante = nuevoTiempoSegundos;
+            localStorage.removeItem(EXPIRED_KEY);
+            iniciarTimer();
+        } else {
+            // Caso normal: el timer sigue activo → solo actualiza al nuevo valor
+            tiempoRestante = nuevoTiempoSegundos;
+        }
         localStorage.setItem(STORAGE_KEY, tiempoRestante);
-        localStorage.removeItem(EXPIRED_KEY);
         actualizarDisplay();
     }
+
 
   })();
 });
