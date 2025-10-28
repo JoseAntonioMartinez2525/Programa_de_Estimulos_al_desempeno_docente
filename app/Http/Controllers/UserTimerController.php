@@ -31,25 +31,42 @@ class UserTimerController extends Controller
         ]);
     }
 
-    public function updateTimer(Request $request){
-        $user = Auth::user();
-        $timer = UserTimer::firstOrCreate(['user_id' => $user->id]);
+public function updateTimer(Request $request)
+{
+    $user = Auth::user();
 
-        // 🔹 Si el timer expiró, no permitir que se reescriba con un valor mayor
-        if (!$timer->expirado && $request->has('tiempo_restante')) {
-            $timer->tiempo_restante = (int) $request->tiempo_restante;
-        }
-
-        if ($request->has('expirado')) {
-            $timer->expirado = (bool) $request->expirado;
-            if ($timer->expirado) {
-                $timer->tiempo_restante = 0;
-            }
-        }
-
-        $timer->save();
-        return response()->json(['ok' => true]);
+    // Validar que al menos venga uno de los campos
+    if (!$request->has('tiempo_restante') && !$request->has('expirado')) {
+        return response()->json(['error' => 'Datos insuficientes'], 400);
     }
+
+    // Preparar datos para upsert
+    $data = [
+        'user_id' => $user->id,
+        'updated_at' => now(),
+    ];
+
+    if ($request->has('tiempo_restante')) {
+        $data['tiempo_restante'] = (int) $request->tiempo_restante;
+    }
+
+    if ($request->has('expirado')) {
+        $expirado = (bool) $request->expirado;
+        $data['expirado'] = $expirado;
+        if ($expirado) {
+            $data['tiempo_restante'] = 0;
+        }
+    }
+
+    // 🔹 Inserta o actualiza directamente (según user_id)
+    \App\Models\UserTimer::upsert(
+        [$data],
+        ['user_id'], // columnas únicas
+        ['tiempo_restante', 'expirado', 'updated_at'] // columnas a actualizar
+    );
+
+    return response()->json(['ok' => true]);
+}
 
     // Prórroga por admin
     public function extendTimer(Request $request, $userId)

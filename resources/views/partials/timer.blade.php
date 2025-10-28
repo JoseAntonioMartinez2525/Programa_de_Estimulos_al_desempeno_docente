@@ -158,8 +158,7 @@ setInterval(() => {
                     tiempoRestante = incremento;
                     localStorage.removeItem(EXPIRED_KEY);
                     iniciarTimer();
-                } 
-
+                }
                 localStorage.setItem(STORAGE_KEY, tiempoRestante);
                 actualizarDisplay();
             }
@@ -181,20 +180,28 @@ setInterval(() => {
     });
 
 
-    // 🔹 Función global para admin: reiniciar/prorrogar timer
-    window.resetTimerAdmin = function(nuevoTiempoSegundos){
-        if (localStorage.getItem(EXPIRED_KEY) === "true" || tiempoRestante <= 0) {
-            // Caso especial: el timer estaba vencido → reiniciar desde cero con la nueva prórroga
-            tiempoRestante = nuevoTiempoSegundos;
-            localStorage.removeItem(EXPIRED_KEY);
-            iniciarTimer();
-        } else {
-            // Caso normal: el timer sigue activo → solo actualiza al nuevo valor
-            tiempoRestante = nuevoTiempoSegundos;
-        }
-        localStorage.setItem(STORAGE_KEY, tiempoRestante);
-        actualizarDisplay();
-    }
+
+// 🔹 Función global para admin: reiniciar o prorrogar el timer del docente
+window.resetTimerAdmin = function (nuevoTiempoSegundos) {
+    // Detener el contador actual si está corriendo
+    clearInterval(window.timerInterval);
+
+    // Actualizar el tiempo restante con el valor exacto del backend
+    tiempoRestante = parseInt(nuevoTiempoSegundos, 10);
+
+    // Marcar como no expirado
+    localStorage.setItem(EXPIRED_KEY, "false");
+
+    // Guardar el nuevo tiempo en localStorage
+    localStorage.setItem(STORAGE_KEY, tiempoRestante);
+
+    // Actualizar la interfaz inmediatamente
+    actualizarDisplay();
+
+    // Reiniciar el timer
+    iniciarTimer();
+};
+
 
 
   })();
