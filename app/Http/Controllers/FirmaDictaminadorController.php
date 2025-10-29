@@ -113,5 +113,31 @@ class FirmaDictaminadorController extends Controller
 
         return $pngData;
     }
+
+    public function index()
+{
+    $user = Auth::user();
+
+    if (!$user) {
+        return redirect()->route('login');
+    }
+
+    // Busca si el dictaminador ya tiene firma registrada
+    $firmaDictaminador = FirmaDictaminador::where('user_id', $user->id)->first();
+
+    $personaEvaluadora = $firmaDictaminador->evaluator_name ?? $user->name;
+
+    // Si ya tiene firma y no se ha mostrado el mensaje aún
+    if ($firmaDictaminador && !session()->has('firma_msg_shown')) {
+        session()->flash('status', '✅ Ya has registrado tu firma electrónica. Mostrando formularios en 5 segundos...');
+        session()->put('firma_msg_shown', true);
+    }
+
+    return view('resumen_comision', [
+        'personaEvaluadora' => $personaEvaluadora,
+        'firma' => $firmaDictaminador->signature_image ?? null,
+        'tieneFirma' => $firmaDictaminador ? true : false,
+    ]);
+}
 }
 

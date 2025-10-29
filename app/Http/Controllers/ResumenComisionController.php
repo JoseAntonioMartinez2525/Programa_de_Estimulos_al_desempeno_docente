@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DictaminatorsResponseForm2;
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -99,6 +100,53 @@ class ResumenComisionController extends Controller
         return response()->json(['error' => 'Access denied'], 403);
     }
 
+public function getFirmasYResumen(Request $request)
+{
+    $user = Auth::user();
+
+    // Si es secretaria/admin, obtiene todas las firmas
+    if (in_array($user->user_type, ['admin', 'secretaria'])) {
+        $firmas = DB::table('firma_dictaminadores')
+            ->select(
+                'id',
+                'user_id',
+                'evaluator_name',
+                'evaluator_name_2',
+                'evaluator_name_3',
+                'signature_path',
+                'signature_path_2',
+                'signature_path_3'
+            )
+            ->get();
+    } 
+    // Si es dictaminador, solo obtiene su propia firma
+    else if ($user->user_type === 'dictaminador') {
+        $firmas = DB::table('firma_dictaminadores')
+            ->where('user_id', $user->id)
+            ->select(
+                'id',
+                'user_id',
+                'evaluator_name',
+                'signature_path'
+            )
+            ->get();
+    } 
+    else {
+        return response()->json(['error' => 'No autorizado'], 403);
+    }
+
+    // Si también necesitas traer el resumen de comisión junto con firmas:
+    $resumen = DB::table('users_final_resume')
+        ->where('email', $user->email)
+        ->first();
+
+    return response()->json([
+        'usuario' => $user->email,
+        'user_type' => $user->user_type,
+        'firmas' => $firmas,
+        'resumen' => $resumen
+    ]);
+}
 
 
 

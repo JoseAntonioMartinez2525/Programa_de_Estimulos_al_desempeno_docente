@@ -746,11 +746,15 @@ function renderTabla(labels, values, comisiones, dataContainer) {
         labelCell.textContent = label;
         valueCell.textContent = values[i] ?? '';
 
+        const encabezadosSinValor = [15, 20, 27];
         // 🧩 Lógica para mostrar correctamente valores numéricos y de texto
         if (i === 37 || i === 38) {
             // Mostrar texto (como "III", "V")
             comisionCell.textContent = comisiones[i] || '';
             comisionCell.style.fontWeight = 'bold';
+        } else if (encabezadosSinValor.includes(i)) {
+            // Subtítulos (mostrar vacío)
+            comisionCell.textContent = '';
         } else if (
             comisiones[i] !== undefined &&
             comisiones[i] !== null &&
