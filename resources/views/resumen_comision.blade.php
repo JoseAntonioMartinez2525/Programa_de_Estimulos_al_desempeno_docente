@@ -113,8 +113,77 @@ body.dark-mode img.imgFirma{
     filter: invert(0.92) brightness(2);;
 }
 
+#resumenContainer {
+    width: 100%;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    font-size: 14px;
+  }
 
+  #resumenTable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
 
+  /* No mostrar bordes: transparentes; usamos padding y separación para lectura */
+  #resumenTable td,
+  #resumenTable th {
+    border: 1px solid transparent;
+    padding: 8px 10px;
+    vertical-align: middle;
+  }
+
+  /* Encabezados */
+  #resumenTable thead th {
+    text-align: left;
+    font-weight: 700;
+    padding-bottom: 12px;
+  }
+
+  /* Primera columna (actividad) alineada a la izquierda */
+  #resumenTable tbody td.activity {
+    text-align: left;
+    padding-left: 6px;
+    white-space: normal;
+  }
+
+  /* Columnas numéricas (puntaje máximo y comisiones) alineadas al centro */
+  #resumenTable tbody td.maxpoints,
+  #resumenTable tbody td.comision {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Color de fondo para celdas "puntaje otorgado" evaluadas */
+  .comision.resaltado {
+    background-color: #f6c667;
+    border-radius: 4px;
+  }
+
+  /* Negrita para subtotales/títulos de sección */
+  .negrita {
+    font-weight: 700;
+  }
+
+  /* Centrados especiales */
+  .centrado {
+    text-align: center;
+  }
+
+  /* Espacio para firmas / pdf */
+  #pdfButtonContainer {
+    margin-top: 16px;
+    text-align: right;
+  }
+
+  .btn.custom-btn {
+    display: inline-block;
+    background-color: #0c4a6e;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
 
 </style>
 <body class="bg-gray-50 text-black/50">
@@ -401,48 +470,7 @@ body.dark-mode img.imgFirma{
             });
 
         };
-    const labels = [
-        '1. Permanencia en las actividades de la docencia  ',
-        '1.1 Años de experiencia docente en la institución  ',
-        '2. Dedicación en el desempeño docente  ',
-        '2.1 Carga de trabajo docente frente a grupo  ',
-        '3. Calidad en la docencia  ',
-        '3.1 Participación en actividades de diseño curricular  ',
-        '3.2 Calidad del desempeño docente evaluada por los estudiantes ',
-        '3.3 Publicaciones relacionadas con la docencia',
-        '3.4 Distinciones académicas recibidas por el docente',
-        '3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC',
-        '3.6 Capacitación y actualización pedagógica recibida',
-        '3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento',
-        '3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente',
-        '3.8.1 RSU',
-        'Subtotal ',
-        'Tutorias',
-        '3.9 Trabajos dirigidos para la titulación de estudiantes',
-        '3.10 Tutorías a estudiantes',
-        '3.11 Asesoría a estudiantes',
-        'Subtotal',
-        'Investigación',
-        '3.12 Publicaciones de investigación relacionadas con el contenido de los PE que imparte el docente',
-        '3.13 Proyectos académicos de investigación',
-        '3.14 Participación como ponente en congresos o eventos académicos del área de conocimiento o afines del docente',
-        '3.15 Registro de patentes y productos de investigación tecnológica y educativa',
-        '3.16 Actividades de arbitraje, revisión, corrección y edición',
-        'Subtotal',
-        'Cuerpos colegiados',
-        '3.17 Proyectos académicos de extensión y difusión',
-        '3.18 Organización de congresos o eventos institucionales del área de conocimiento del Docente',
-        '3.19 Participación en cuerpos colegiados',
-        'Subtotal',
-        'Total logrado en la evaluación',
-        '1. Permanencia en las actividades de la docencia ',
-        '2. Dedicación en el desempeño docente',
-        '3. Calidad en la docencia',
-        'Total de puntaje obtenido en la evaluación',
-    ];
 
-    const values = [100, 100, 200, 200, 700, 60, 50, 100, 60, 75, 40, 40, 40, 40, null, null,
-        200, 115, 95, null, null, 150, 130, 40, 60, 30, null, null, 50, 40, 40, null, null, 100, 200, 700, null];
 
         function handleClick(event) {
             var currentTarget = event.currentTarget;
@@ -587,507 +615,253 @@ body.dark-mode img.imgFirma{
         });
 
       
+// ======== config.js ========
+const labels = [
+    '1. Permanencia en las actividades de la docencia',
+    '1.1 Años de experiencia docente en la institución',
+    '2. Dedicación en el desempeño docente',
+    '2.1 Carga de trabajo docente frente a grupo',
+    '3. Calidad en la docencia',
+    '3.1 Participación en actividades de diseño curricular',
+    '3.2 Calidad del desempeño docente evaluada por los estudiantes',
+    '3.3 Publicaciones relacionadas con la docencia',
+    '3.4 Distinciones académicas recibidas por el docente',
+    '3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC',
+    '3.6 Capacitación y actualización pedagógica recibida',
+    '3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento',
+    '3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente',
+    '3.8.1 RSU',
+    'Subtotal',
+    'Tutorias',
+    '3.9 Trabajos dirigidos para la titulación de estudiantes',
+    '3.10 Tutorías a estudiantes',
+    '3.11 Asesoría a estudiantes',
+    'Subtotal',
+    'Investigación',
+    '3.12 Publicaciones de investigación relacionadas con el contenido de los PE que imparte el docente',
+    '3.13 Proyectos académicos de investigación',
+    '3.14 Participación como ponente en congresos o eventos académicos del área de conocimiento o afines del docente',
+    '3.15 Registro de patentes y productos de investigación tecnológica y educativa',
+    '3.16 Actividades de arbitraje, revisión, corrección y edición',
+    'Subtotal',
+    'Cuerpos colegiados',
+    '3.17 Proyectos académicos de extensión y difusión',
+    '3.18 Organización de congresos o eventos institucionales del área de conocimiento del Docente',
+    '3.19 Participación en cuerpos colegiados',
+    'Subtotal',
+    'Total logrado en la evaluación',
+    '1. Permanencia en las actividades de la docencia',
+    '2. Dedicación en el desempeño docente',
+    '3. Calidad en la docencia',
+    'Total de puntaje obtenido en la evaluación',
+    'Mínima de Calidad',
+    'Mínima Total'
+];
 
-    
-document.addEventListener('DOMContentLoaded', async () => {
-    const userType = @json($userType); 
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    const user_identity = @json($user_identity);
-    const docenteSearch = document.getElementById('docenteSearch');
-    const dictaminadorSelect = document.getElementById('dictaminadorSelect');
-    const formContainer = document.getElementById('formContainer');
-    const dataContainer = document.getElementById('data');
+const values = [
+    100, 100, 200, 200, 700, 60, 50, 100, 60, 75, 40, 40, 40, 40, null, null,
+    200, 115, 95, null, null, 150, 130, 40, 60, 30, null, null, 50, 40, 40, null,
+    null, 100, 200, 700, null
+];
 
-    if (docenteSearch) {
-        
-        try {
-           const response = await fetch('/formato-evaluacion/get-docentes');
-            const docentes = await response.json();
-            
-            docentes.forEach(docente => {
-                const option = document.createElement('option');
-                option.value = docente.email;
-                option.textContent = docente.email;
-                docenteSearch.appendChild(option);
-            });
+// ======== api.js ========
+async function fetchDocentes() {
+    const res = await fetch('/formato-evaluacion/get-docentes');
+    if (!res.ok) throw new Error('Error al obtener docentes');
+    return await res.json();
+}
 
-            docenteSearch.addEventListener('change', async (event) => {
-                const email = event.target.value;
-                const dataContainer = document.getElementById('data'); // Get the tbody container
+async function fetchDocenteData(email) {
+    const res = await axios.get('/formato-evaluacion/get-docente-data', { params: { email } });
+    return res.data;
+}
 
-                    if (dataContainer) {
-                    dataContainer.innerHTML = '';
-                }
+async function fetchUserId(email) {
+    const res = await fetch(`/formato-evaluacion/get-user-id?email=${email}`);
+    const data = await res.json();
+    return data.user_id;
+}
 
-                // Reset form container display
-                const formContainer = document.getElementById('formContainer');
-                if (formContainer) {
-                    formContainer.style.display = 'none';
-                }
+async function fetchDictaminatorResponses(userId) {
+    const res = await fetch(`/formato-evaluacion/get-dictaminators-responses?user_id=${userId}`);
+    if (!res.ok) throw new Error('Error obteniendo comisiones');
+    return await res.json();
+}
 
-                if (email) {
-                    // Mantenemos la solicitud a /get-docente-data para obtener los datos del docente
+// ======== utils.js ========
+function calcularSubtotales(comisiones) {
+    const subtotales = [
+        { range: [5, 13], position: 14 },
+        { range: [16, 18], position: 19 },
+        { range: [21, 25], position: 26 },
+        { range: [28, 30], position: 31 }
+    ];
 
-                    const response = await axios.get('/formato-evaluacion/get-docente-data', { params: { email } });
-                    const data = response.data;
-                    if(data){
-                                    formContainer.style.display = 'block';
-                            let actividades = {};
+    subtotales.forEach(({ range, position }) => {
+        let subtotal = 0;
+        for (let i = range[0]; i <= range[1]; i++) {
+            subtotal += parseFloat(comisiones[i]) || 0;
+        }
+        comisiones[position] = subtotal;
+    });
 
-                            //cambiar la logica para acceder a las comisiones desde el id del docente
-                           //const comisiones = await fetch('/get-comisiones', {
-                                //implementar switch para casos de uso para evitar formularios nulos
+    const sumaComision3 = Math.min(
+        parseFloat(comisiones[14]) +
+        parseFloat(comisiones[19]) +
+        parseFloat(comisiones[26]) +
+        parseFloat(comisiones[31]),
+        700
+    );
 
-                            switch (data) {
-                            case 'form2':
-                                actividades['comision1'] = response.data.form2 && response.data.form2.comision1 ? response.data.form2.comision1 : 0;
-                                console.log(actividades['comision1']);
-                                break;
-                            case 'form2_2':
-                                actividades['actv2Comision'] = response.data.form2_2 && response.data.form2_2.actv2Comision ? response.data.form2_2.actv2Comision : 0;
-                                console.log(actividades['actv2Comision']);
-                                break;
-                            case 'form3_1':
-                                actividades['actv3Comision'] = response.data.form3_1 && response.data.form3_1.actv3Comision ? response.data.form3_1.actv3Comision : 0;
-                                console.log(actividades['actv3Comision']);
-                                default:
-                                console.warn('Unexpected form name:', data);
-                                break;
-                        }
-                            
-                            
-                        for (let i = 2; i <= 19; i++) {
-                            actividades[`comision3_${i}`] = data[`form3_${i}`] ? (data[`form3_${i}`].comision3_i || 0) : 0;
-                            console.log(actividades[`comision3_${i}`]);
-                        }
+    comisiones[4] = parseFloat(sumaComision3).toFixed(2);
+    comisiones[33] = comisiones[0]; // Permanencia
+    comisiones[34] = comisiones[2]; // Dedicación
+    comisiones[35] = comisiones[4]; // Calidad
 
-                            formContainer.style.display = 'block'; // Mostrar formulario
+    let total = parseFloat(comisiones[1]) + parseFloat(comisiones[3]) + parseFloat(comisiones[4]);
+    total = Math.min(total, 1000).toFixed(2);
+    comisiones[32] = total;
+    comisiones[36] = total; // Total de puntaje obtenido en la evaluación
 
-                            
+    // ✅ Aquí asignamos los índices 37 y 38
+    const minimaCalidad = evaluarCalidad(parseFloat(comisiones[4]));
+    const minimaTotal = evaluarTotal(parseFloat(comisiones[36]));
 
-                            // Aquí realizamos la solicitud para obtener las comisiones de los dictaminadores
+    comisiones[37] = minimaCalidad;
+    comisiones[38] = minimaTotal;
 
-                   
-                    try {
-                        const userIdResponse = await fetch(`/formato-evaluacion/get-user-id?email=${email}`);
-                        const userIdData = await userIdResponse.json();
-
-                        if (userIdData.user_id) {
-                            const userId = userIdData.user_id;
-                            const dictaminatorResponse = await fetch(`/formato-evaluacion/get-dictaminators-responses?user_id=${userId}`);
-                            const dictaminatorData = await dictaminatorResponse.json();
-
-                            if (dictaminatorResponse.ok) {
-                                // Inicializar comisiones con valores predeterminados
-                                let comisiones = Array(38).fill('0');
-
-                                // Asignación de valores con cortocircuito
-                                comisiones[0] = data.form2?.comision1 || '0';
-                                comisiones[1] = data.form2?.comision1 || '0';
-                                comisiones[2] = data.form2_2?.actv2Comision || '0';
-                                comisiones[3] = data.form2_2?.actv2Comision || '0';
-                                comisiones[5] = data.form3_1?.actv3Comision || '0';
-                                comisiones[6] = data.form3_2?.comision3_2 || '0';
-                                comisiones[7] = data.form3_3?.comision3_3 || '0';
-                                comisiones[8] = data.form3_4?.comision3_4 || '0';
-                                comisiones[9] = data.form3_5?.comision3_5 || '0';
-                                comisiones[10] = data.form3_6?.comision3_6 || '0';
-                                comisiones[11] = data.form3_7?.comision3_7 || '0';
-                                comisiones[12] = data.form3_8?.comision3_8 || '0';
-                                comisiones[13] = data.form3_8_1?.comision3_8_1 || '0';
-                                //agregar 3.8.1
-                                /*
-                                                                const subtotales = [
-                                    { range: [5, 13], position: 14 }, // Subtotal 1
-                                    { range: [16, 18], position: 19 }, // Subtotal 2
-                                    { range: [21, 25], position: 26 }, // Subtotal 3
-                                    { range: [28, 30], position: 31 }  // Subtotal 4
-                                ];*/ 
-                                
-                                //subtotal 1 -> position [14]
-                                comisiones[15] = '';   //Tutorias
-                                
-                                comisiones[16] = data.form3_9?.comision3_9 || '0';
-                                comisiones[17] = data.form3_10?.comision3_10 || '0';
-                                comisiones[18] = data.form3_11?.comision3_11 || '0';
-                                
-                                // Subtotal 2 -> position[19]
-                                comisiones[20] = '';    //Investigación
-                                
-                                comisiones[21] = data.form3_12?.comision3_12 || '0';
-                                comisiones[22] = data.form3_13?.comision3_13 || '0';
-                                comisiones[23] = data.form3_14?.comision3_14 || '0';
-                                comisiones[24] = data.form3_15?.comision3_15 || '0';
-                                comisiones[25] = data.form3_16?.comision3_16 || '0';
-                                // SubTotal 3 -> position[26]
-
-                                comisiones[27] = '';    //Cuerpos colegiados
-                                comisiones[28] = data.form3_17?.comision3_17 || '0';
-                                comisiones[29] = data.form3_18?.comision3_18 || '0';
-                                comisiones[30] = data.form3_19?.comision3_19 || '0';
-
-                                 //SubTotal 4 -> position [31] 
-                                 //comisiones[32] = ''; //Total logrado en la evaluación
-                                comisiones[33] = data.form2?.comision1 || '0';
-                                comisiones[34] = data.form2_2?.actv2Comision || '0';
-                                //comisiones[35] Total calidad docencia
-                                // Cálculo de subtotales
-                                
-                                const subtotales = [
-                                    { range: [5, 13], position: 14 }, // Subtotal 1
-                                    { range: [16, 18], position: 19 }, // Subtotal 2
-                                    { range: [21, 25], position: 26 }, // Subtotal 3
-                                    { range: [28, 30], position: 31 }  // Subtotal 4
-                                ];
-
-                                subtotales.forEach(({ range, position }) => {
-                                    let subtotal = 0;
-                                    for (let i = range[0]; i <= range[1]; i++) {
-                                        subtotal += parseFloat(comisiones[i]) || 0;
-                                    }
-                                    comisiones[position] = subtotal;
-                                    
-                                });
-
-                                const sumaComision3 = Math.min(
-                                    parseFloat(comisiones[14]) +
-                                    parseFloat(comisiones[19]) +
-                                    parseFloat(comisiones[26]) +
-                                    parseFloat(comisiones[31]),
-                                    700
-                                );
-
-                                comisiones[4] = parseFloat(sumaComision3).toFixed(2);
-                                comisiones[35] = comisiones[4];
-
-                                let tLogrado = parseFloat(comisiones[1]) + parseFloat(comisiones[3]) + parseFloat(comisiones[4]);
-                                tLogrado = tLogrado.toFixed(2); 
-
-                                const totalLogrado = tLogrado <= 1000 ? Math.min(tLogrado, 1000) : tLogrado;
-                                
-                                //total logrado position
-                                comisiones[32] = totalLogrado;
-                                comisiones[36] = totalLogrado;
-                                comisiones[37] = totalLogrado;
-                                let comisionCell;
-                                // Generar las filas en la tabla
-                                labels.forEach((label, i) => {
-                                    const row = document.createElement('tr');
-                                    const labelCell = document.createElement('td');
-                                    const valueCell = document.createElement('td');
-                                    comisionCell = document.createElement('td');
-
-                                    labelCell.textContent = label;
-                                    valueCell.textContent = values[i];
-                                    comisionCell.textContent = comisiones[i] || '';
-
-                                    // Aplicar estilos
-                                    if (['Subtotal ', 'Subtotal', 'Tutorias', 'Investigación', 'Cuerpos colegiados', 'Total logrado en la evaluación', 'Total de puntaje obtenido en la evaluación'].includes(label)) {
-                                        labelCell.style.fontWeight = 'bold';
-                                        labelCell.style.textAlign = 'center';
-                                    }
-
-                                    if (![0, 2, 4, 14, 15, 19, 20, 26, 27, 31, 32, 36].includes(i)) {
-                                        comisionCell.style.backgroundColor = '#f6c667';
-                                        comisionCell[i] = comisiones[i].toString();
-                                        comisionCell.innerHTML = parseFloat(comisiones[i]).toFixed(2);
-                                    }
-
-                                    if ([0, 2, 4, 14, 19, 26, 31, 36].includes(i)) {
-                                        comisionCell.style.fontWeight = 'bold';
-                                    }
-
-                                    if (i === 37 || i===38) {
-                                        comisionCell.style.backgroundColor = 'transparent';
-                                    }
-
-                                    // Insertar valores específicos
-                                    if (i === 4) comisionCell.textContent = parseFloat(sumaComision3).toFixed(2);
-                                    if ([14, 19, 26, 31].includes(i)) comisionCell.textContent = comisiones[i];
-                                    if (i === 32 || i===36 || i===37) comisionCell.textContent = totalLogrado.toString();
-
-                                    comisionCell.style.textAlign = 'center';
-                                    row.appendChild(labelCell);
-                                    row.appendChild(valueCell);
-                                    row.appendChild(comisionCell);
-                                    dataContainer.appendChild(row);
-
-                                
-                                });
+    return { sumaComision3, total };
+}
 
 
-                                                                // Actualizar convocatoria
-                                const convocatoriaElement = document.getElementById('convocatoria');
-                                const convocatoriaElement1 = document.getElementById('convocatoria1');
-                                const convocatoriaElement2 = document.getElementById('convocatoria2');
-                                if (convocatoriaElement) {
-                                    if (data.form1) {
-                                        convocatoriaElement.style.fontWeight = "bold";
-                                        convocatoriaElement.textContent = data.form1.convocatoria || '';
-                                        // Asegurarse de que convocatoriaElement1 y convocatoriaElement2 existen antes de asignarles el mismo contenido 
-                                        if (convocatoriaElement1) { 
-                                            convocatoriaElement1.style.fontWeight = "bold"; convocatoriaElement1.textContent = data.form1.convocatoria || ''; } if (convocatoriaElement2) { convocatoriaElement2.style.fontWeight = "bold"; convocatoriaElement2.textContent = data.form1.convocatoria || ''; }
+function renderTabla(labels, values, comisiones, dataContainer) {
+    dataContainer.innerHTML = '';
 
-                                    } else {
-                                        console.error('form1 no está definido en la respuesta.');
-                                    }
-                                } else {
-                                    console.error('Elemento con ID "convocatoria" no encontrado.');
+    labels.forEach((label, i) => {
+        const row = document.createElement('tr');
+        const labelCell = document.createElement('td');
+        const valueCell = document.createElement('td');
+        const comisionCell = document.createElement('td');
 
-                                }
+        labelCell.textContent = label;
+        valueCell.textContent = values[i] ?? '';
 
-                                for (let i = 0; i <= comisiones.length; i++) {
-                                    switch (i) {
-                                        case 0: comisionCell.innerHTML = comisiones[i] || data.form2?.comision1;
-                                        break;
-                                        case 1:
-                                            comisionCell.innerHTML = comisiones[i] || data.form2?.comision1; // Asignación estándar
-                                            break;
-                                        case 2: comisionCell.innerHTML = comisiones[i] || data.form2_2?.actv2Comision; break;
-                                        case 3:
-                                            comisionCell.innerHTML = comisiones[i] || data.form2_2?.actv2Comision; // Asignación estándar
-                                            break;
-                                        case 4:
-                                            comisionCell.innerHTML = parseFloat(sumaComision3).toFixed(2); // Valor calculado
-                                            break;
-                                        case 5:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_1?.actv3Comision || '0'; // comision3_1
-                                            break;
-                                        case 6:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_2?.comision3_2 || '0'; // comision3_2
-                                            break;
-                                        case 7:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_3?.comision3_3 || '0'; // comision3_3
-                                            break;
-                                        case 8:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_4?.comision3_4 || '0'; // comision3_4
-                                            break;
-                                        case 9:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_5?.comision3_5 || '0'; // comision3_5
-                                            break;
-                                        case 10:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_6?.comision3_6 || '0'; // comision3_6
-                                            break;
-                                        case 11:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_7?.comision3_7 || '0'; // comision3_7
-                                            break;
-                                        case 12:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_8?.comision3_8 || '0'; // comision3_8
-                                            break;
-                                        case 13:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_8_1?.comision3_8_1 || '0'; // comision3_8_1
-                                            break;
-                                        case 14:
-                                            comisionCell.innerHTML = comisiones[i].toString(); // Valor calculado
-                                            break;
-                                        case 16:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_9?.comision3_9 || '0'; // comision3_9
-                                            break;
-                                        case 17:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_10?.comision3_10 || '0'; // comision3_10
-                                            break;
-                                        case 18:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_11?.comision3_11 || '0'; // comision3_11
-                                            break;
-                                        case 19:
-                                            comisionCell.innerHTML =  comisiones[i].toString(); // Valor calculado
-                                            break;
-                                        case 21:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_12?.comision3_12 || '0'; // comision3_12
-                                            break;
-                                        case 22:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_13?.comision3_13 || '0'; // comision3_13
-                                            break;
-                                        case 23:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_14?.comision3_14 || '0'; // comision3_14
-                                            break;
-                                        case 24:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_15?.comision3_15 || '0'; // comision3_15
-                                            break;
-                                        case 25:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_16?.comision3_16 || '0'; // comision3_16
-                                            break;
-                                        case 26:
-                                            comisionCell.innerHTML =  comisiones[i].toString(); // Valor calculado
-                                            break;
-                                        case 28:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_17?.comision3_17 || '0'; // comision3_17
-                                            break;
-                                        case 29:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_18?.comision3_18; // comision3_18
-                                            break;
-                                        case 30:
-                                            comisionCell.innerHTML = comisiones[i] || data.form3_19?.comision3_19; // comision3_19
-                                            break;
-                                        case 31:
-                                            comisionCell.innerHTML =  comisiones[i].toString(); // Valor calculado
-                                            break;
-                                        case 32:
-                                            comisionCell.innerHTML = totalLogrado.toString(); // Valor calculado
-                                            break;
-                                        case 33:
-                                            comisionCell.innerHTML = comisiones[i] || data.form2?.comision1; // Asignación estándar
-                                            break;
-                                        case 34: comisionCell.innerHTML = comisiones[i] || data.form2_2?.actv2Comision;
-                                            break;
-                                        case 35:
-                                            comisionCell.innerHTML = parseFloat(sumaComision3).toFixed(2); // Valor calculado
-                                            break;
-                                        case 36:
-                                            comisionCell.innerHTML = totalLogrado.toString(); // Valor calculado
-                                            break;  
-                                        case 37:
-                                            comisionCell.innerHTML = totalLogrado.toString(); // Valor calculado
-                                            break; 
-                                        case 38:
-                                            comisionCell.innerHTML = totalLogrado.toString(); // Valor calculado
-                                            break;                                                                                       
-                                        default:
-                                            comisionCell.innerHTML = '0'; // Valor por defecto si no coincide con ningún caso
-                                    }
-                                }
-
-
-                                console.log(comisionCell.innerHTML);
-                                console.log(comisiones.toString());
-
-                                actualizarResultados(comisiones[4], totalLogrado);
-
-                            // Enviar el formulario después de generar la tabla
-
-                                // Una vez generada la tabla, agrega el EventListener al botón de envío
-                                const submitButton = document.getElementById('submitButton'); // ID del botón de enviar
-
-                                if (submitButton) {
-                                    submitButton.addEventListener('click', async (event) => {
-                                        event.preventDefault(); // Evita el envío automático del formulario
-
-                                        // Mostrar mensaje al usuario
-                                        const messageContainer = document.getElementById('messageContainer');
-                                        messageContainer.textContent = 'Enviando formulario, por favor espere...';
-                                        messageContainer.style.display = 'block';
-
-                                        try {
-                                            await submitForm('/formato-evaluacion/store-evaluator-signature', 'form5', userId, email);
-                                            messageContainer.textContent = 'Formulario enviado exitosamente.';
-                                            messageContainer.style.backgroundColor = '#d4edda'; // Cambiar color de fondo a verde claro
-                                            messageContainer.style.color = '#155724'; // Cambiar color de texto a verde oscuro
-                                        } catch (error) {
-                                            messageContainer.textContent = 'Hubo un error al enviar el formulario. Por favor, inténtelo de nuevo.';
-                                            messageContainer.style.backgroundColor = '#f8d7da'; // Cambiar color de fondo a rojo claro
-                                            messageContainer.style.color = '#721c24'; // Cambiar color de texto a rojo oscuro
-                                        }
-
-                                        // Ocultar el mensaje después de unos segundos
-                                        setTimeout(() => {
-                                            messageContainer.style.display = 'none';
-                                        }, 5000); // Ocultar después de 5 segundos
-                                    });
-                                }
-
-
-                            }
-                            
-                            if (userType === 'secretaria') { // Only proceed if user type is empty 
-                                axios.get('/formato-evaluacion/get-evaluator-signature', {
-                                    params: {
-                                        user_id: userId,
-                                        email: email,
-                                    }
-                                })
-                                    .then(function (response) {
-                                        const evaluatorResponse = response.data;
-                                        if (evaluatorResponse && evaluatorResponse.message !== 'Evaluator signature not found') {
-                                           if (document.getElementById('personaEvaluadora')) {
-                                            document.getElementById('personaEvaluadora').textContent = evaluatorResponse.evaluator_name || 'No hay nombre del evaluador';
-                                        }
-                                        if (document.getElementById('personaEvaluadora2')) {
-                                            document.getElementById('personaEvaluadora2').textContent = evaluatorResponse.evaluator_name_2 || 'No hay nombre del evaluador';
-                                        }
-                                        if (document.getElementById('personaEvaluadora3')) {
-                                            document.getElementById('personaEvaluadora3').textContent = evaluatorResponse.evaluator_name_3 || 'No hay nombre del evaluador';
-                                        }
-
-
-                                            // Mostrar las imágenes de las firmas (assuming image elements exist)
-                                            const imgFirma1 = document.getElementById('signature_path');
-                                            if (imgFirma1 && evaluatorResponse.signature_path) {
-                                                imgFirma1.src = evaluatorResponse.signature_path || 'default.png';
-                                                imgFirma1.style.display = 'block';
-                                                imgFirma1.style.height = '100px';
-                                                //document.getElementById('signature_path').src = '/storage/' + (evaluatorResponse.signature_path || 'default.png');
-                                            } else if (imgFirma1) {
-                                                imgFirma1.style.display = 'none';
-                                            }
-
-
-                                            const imgFirma2 = document.getElementById('signature_path_2');
-                                            if (imgFirma2 && evaluatorResponse.signature_path_2) {
-                                                imgFirma2.src = evaluatorResponse.signature_path_2 || 'default2.png'; 
-                                                imgFirma2.style.display = 'block';
-                                                imgFirma2.style.height = '100px';
-                                                //document.getElementById('signature_path_2').src = '/storage/' + (evaluatorResponse.signature_path_2 || 'default.png');
-
-                                            } else if (imgFirma2) {
-                                                imgFirma2.style.display = 'none';
-                                            }
-
-                                            const imgFirma3 = document.getElementById('signature_path_3');
-                                            if (imgFirma3 && evaluatorResponse.signature_path_3) {
-                                                imgFirma3.src = evaluatorResponse.signature_path_3 || 'default3.png';
-                                                imgFirma3.style.display = 'block';
-                                                imgFirma3.style.height = '100px';
-                                            } else if (imgFirma3) {
-                                                imgFirma3.style.display = 'none';
-                                                //document.getElementById('signature_path_3').src = '/storage/' + (evaluatorResponse.signature_path_3 || 'default.png');
-                                            
-                                            }
-
-                                            // Justo después de cargar y mostrar los datos del docente y las firmas
-                                            const pdfButtonContainer = document.getElementById('pdfButtonContainer');
-                                            pdfButtonContainer.innerHTML = `
-                                            <a href="/formato-evaluacion/reporte_pdf?email=${encodeURIComponent(email)}" target="_blank" class="btn custom-btn">
-                                                Ver PDF de Resumen de Comisión
-                                            </a>
-                                        `;
-
-                                        } else {
-                                            console.error('Evaluator signature not found');
-                                        }
-                                    })
-                                    .catch(function (error) {
-                                        console.error('Error:', error);
-                                    });
-                            }
-                            
-
-                        }
-
-                    } catch (error) {
-                        console.error("Error al procesar los datos:", error);
-                    }
-
-
-                     }
-                    else {
-                        console.error('Error fetching docente data:', error);
-                    }
-                    
-                }
-
-                
-            });
-        } catch (error) {
-            console.error('Error fetching docentes:', error);
-            alert('No se pudo cargar la lista de docentes.');
+        // 🧩 Lógica para mostrar correctamente valores numéricos y de texto
+        if (i === 37 || i === 38) {
+            // Mostrar texto (como "III", "V")
+            comisionCell.textContent = comisiones[i] || '';
+            comisionCell.style.fontWeight = 'bold';
+        } else if (
+            comisiones[i] !== undefined &&
+            comisiones[i] !== null &&
+            comisiones[i] !== '' &&
+            !isNaN(parseFloat(comisiones[i]))
+        ) {
+            comisionCell.textContent = parseFloat(comisiones[i]).toFixed(2);
+        } else {
+            comisionCell.textContent = '';
         }
 
+        // 🟨 Color de fondo solo para los índices numéricos relevantes
+        if (![0, 2, 4, 14, 15, 19, 20, 26, 27, 31, 32, 36, 37, 38].includes(i)) {
+            comisionCell.style.backgroundColor = '#f6c667';
+        }
 
-        
-    }else{
-        console.warn("El elemento docenteSearch no se encontró en el DOM.");
+        // 🔹 Negrita para encabezados y totales
+        if ([0, 2, 4, 14, 19, 26, 31, 36, 37, 38].includes(i)) {
+            comisionCell.style.fontWeight = 'bold';
+        }
+
+        // 🔹 Estilo para subtítulos
+        if (['Subtotal', 'Tutorias', 'Investigación', 'Cuerpos colegiados', 'Total logrado en la evaluación', 'Total de puntaje obtenido en la evaluación'].includes(label)) {
+            labelCell.style.fontWeight = 'bold';
+            labelCell.style.textAlign = 'center';
+        }
+
+        comisionCell.style.textAlign = 'center';
+        row.append(labelCell, valueCell, comisionCell);
+        dataContainer.appendChild(row);
+    });
+}
+
+// ======== main.js ========
+document.addEventListener('DOMContentLoaded', async () => {
+    const docenteSearch = document.getElementById('docenteSearch');
+    const dataContainer = document.getElementById('data');
+    const formContainer = document.getElementById('formContainer');
+    const userType = @json($userType);
+    
+    if (!docenteSearch) return;
+
+    try {
+        const docentes = await fetchDocentes();
+        docentes.forEach(docente => {
+            const opt = document.createElement('option');
+            opt.value = docente.email;
+            opt.textContent = docente.email;
+            docenteSearch.appendChild(opt);
+        });
+    } catch (err) {
+        console.error('Error cargando docentes', err);
+        return;
     }
+
+    docenteSearch.addEventListener('change', async e => {
+        const email = e.target.value;
+        if (!email) return;
+
+        formContainer.style.display = 'none';
+        dataContainer.innerHTML = '';
+
+        try {
+            const data = await fetchDocenteData(email);
+            const userId = await fetchUserId(email);
+            const dictaminatorData = await fetchDictaminatorResponses(userId);
+
+            // inicializar arreglo base
+            let comisiones = Array(40).fill('0');
+            comisiones[0] = data.form2?.comision1 || '0';
+            comisiones[1] = data.form2?.comision1 || '0';
+            comisiones[2] = data.form2_2?.actv2Comision || '0';
+            comisiones[3] = data.form2_2?.actv2Comision || '0';
+
+            // llenar secciones 3.x
+            comisiones[5] = data.form3_1?.actv3Comision || '0';
+            comisiones[6] = data.form3_2?.comision3_2 || '0';
+            comisiones[7] = data.form3_3?.comision3_3 || '0';
+            comisiones[8] = data.form3_4?.comision3_4 || '0';
+            comisiones[9] = data.form3_5?.comision3_5 || '0';
+            comisiones[10] = data.form3_6?.comision3_6 || '0';
+            comisiones[11] = data.form3_7?.comision3_7 || '0';
+            comisiones[12] = data.form3_8?.comision3_8 || '0';
+            comisiones[13] = data.form3_8_1?.comision3_8_1 || '0';
+            comisiones[16] = data.form3_9?.comision3_9 || '0';
+            comisiones[17] = data.form3_10?.comision3_10 || '0';
+            comisiones[18] = data.form3_11?.comision3_11 || '0';
+            comisiones[21] = data.form3_12?.comision3_12 || '0';
+            comisiones[22] = data.form3_13?.comision3_13 || '0';
+            comisiones[23] = data.form3_14?.comision3_14 || '0';
+            comisiones[24] = data.form3_15?.comision3_15 || '0';
+            comisiones[25] = data.form3_16?.comision3_16 || '0';
+            comisiones[28] = data.form3_17?.comision3_17 || '0';
+            comisiones[29] = data.form3_18?.comision3_18 || '0';
+            comisiones[30] = data.form3_19?.comision3_19 || '0';
+
+            const { sumaComision3, total } = calcularSubtotales(comisiones);
+
+
+            renderTabla(labels, values, comisiones, dataContainer);
+            formContainer.style.display = 'block';
+
+            console.log('Comisiones calculadas:', comisiones);
+            console.log('Total logrado:', total);
+
+        } catch (error) {
+            console.error('Error procesando docente', error);
+        }
+    });
 });
+
 
     //Enviar formulario
     async function submitForm(url, formId, user_id, email) {
@@ -1247,6 +1021,15 @@ window.submitForm = submitForm;
             }
             toggleDarkMode();
         });
+
+        function actualizarResultados(sumaComision3, totalLogrado) {
+        const minimaCalidad = evaluarCalidad(sumaComision3);
+        const minimaTotal = evaluarTotal(totalLogrado);
+
+        // Actualizar el DOM con los valores calculados
+        document.getElementById('minimaCalidad').textContent = minimaCalidad;
+        document.getElementById('minimaTotal').textContent = minimaTotal;
+    }
     </script>
 
 <div id="app" data-user-id="{{ auth()->user()->id }}" data-user-email="{{ auth()->user()->email }}" data-user-type="{{ auth()->user()->user_type }}" style="display: none;"></div></div>
