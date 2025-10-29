@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   (function () {
 
     // 🔹 Configuración inicial
-    const TIEMPO_TOTAL = @json($tiempoTotal ?? 15 * 60); // default 15 min
+    const TIEMPO_TOTAL = 15 * 60; // default 15 min
     const userEmail = "{{ Auth::user()->email }}";
     const STORAGE_KEY = `tiempoRestante_${userEmail}`;
     const EXPIRED_KEY = `tiempoExpirado_${userEmail}`;

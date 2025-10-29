@@ -2,11 +2,6 @@
 $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
-
-$docenteConfig = [
-
-    'timer' => 3 * 60, // 3 minutos
-];
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $newLocale }}">
@@ -19,7 +14,7 @@ $docenteConfig = [
   <title>Evaluación docente</title> 
   
   <x-head-resources />
-@include('partials.timer', ['tiempoTotal' => 20 * 60])
+@include('partials.timer')
 <style>
   @media print {
     .footer-number::after {

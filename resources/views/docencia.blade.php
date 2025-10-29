@@ -1,6 +1,8 @@
 @php
 $userType = Auth::user()->user_type;
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
+
+
 @endphp
 <!DOCTYPE html>
 <!--
@@ -22,7 +24,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <x-head-resources />
-@include('partials.timer', ['tiempoTotal' => $tiempoTotal])
+@include('partials.timer')
 
 
 </head>
