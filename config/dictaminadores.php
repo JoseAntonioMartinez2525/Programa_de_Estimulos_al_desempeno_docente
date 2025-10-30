@@ -4,10 +4,12 @@ return [
     'emails' => [
         'brendaran@uabcs.mx',
         'juanco@uabcs.mx',
+        'jparra@uabcs.mx',
     ],
     'nombres' => [
         'Dra. Brenda Elizabeth Ramiréz Díaz',
         'M.C Juan Carlos Pérez Concha',
+        'Ing Javier Parra Unzón',
     ],
 ];
 

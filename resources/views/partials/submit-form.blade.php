@@ -100,11 +100,11 @@
 
             if (!response.ok || json.success === false) {
                 console.error('Error del servidor:', json);
-                showMessage(json.message || 'Error al enviar', 'red');
+                showMessage('Error al enviar', 'red');
                 return;
             }
 
-            showMessage(json.message || 'Formulario enviado correctamente', 'green');
+            showMessage('Formulario enviado correctamente', 'green');
         } catch (error) {
             console.error('Error de red:', error);
             showMessage('Problema de red al enviar', 'red');
