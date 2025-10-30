@@ -36,7 +36,7 @@ $docenteConfig =  $docenteConfig ?? [
     // Inputs ocultos que deben llenarse desde docenteData.form3_8
     'fillHiddenFrom' => [
         'user_id' => 'user_id',
-        'email' => 'email',
+        'email' => '',
         'user_type' => 'user_type',
     ],
 
@@ -44,7 +44,7 @@ $docenteConfig =  $docenteConfig ?? [
     'fillHiddenFromDict' => [
         'dictaminador_id' => 'dictaminador_id',
         'user_id' => 'user_id',
-        'email' => 'email',
+        'email' => '',
         'user_type' => 'user_type',
     ],
 
@@ -233,7 +233,7 @@ continua o de formación y capacitación docente </td>
 </footer>
 </center>
     <script>
-    let selectedEmail = null;
+    
     window.onload = function () {
         const footerHeight = document.querySelector('footer').offsetHeight;
         const elements = document.querySelectorAll('.prevent-overlap');

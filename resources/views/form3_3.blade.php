@@ -59,7 +59,7 @@ $docenteConfig = [
     // Inputs ocultos que deben llenarse desde docenteData.form3_3
     'fillHiddenFrom' => [
         'user_id' => 'user_id',
-        'email' => 'email',
+        'email' => '',
         'user_type' => 'user_type',
     ],
 
@@ -67,7 +67,7 @@ $docenteConfig = [
     'fillHiddenFromDict' => [
         'dictaminador_id' => 'dictaminador_id',
         'user_id' => 'user_id',
-        'email' => 'email',
+        'email' => '',
         'user_type' => 'user_type',
     ],
 
@@ -585,7 +585,7 @@ $user_identity = $user->id;
 </form>
     </main>
     <script>
-let selectedEmail = null;
+
 
     window.onload = function () {
 

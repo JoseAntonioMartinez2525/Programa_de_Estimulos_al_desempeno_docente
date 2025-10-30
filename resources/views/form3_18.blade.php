@@ -674,7 +674,7 @@ $user_identity = $user->id;
     </main>
 
     <script>
-        let selectedEmail = null;
+        
         window.onload = function () {
             const footerHeight = document.querySelector('footer').offsetHeight;
             const elements = document.querySelectorAll('.prevent-overlap');

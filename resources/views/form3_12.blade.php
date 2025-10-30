@@ -109,7 +109,7 @@ $docenteConfig = $docenteConfig ?? [
     // ---- Inputs ocultos que se llenan desde docenteData.form3_12 ----
     'fillHiddenFrom' => [
         'user_id'    => 'user_id',
-        'email'      => 'email',
+        'email'      => '',
         'user_type'  => 'user_type',
     ],
 
@@ -701,7 +701,7 @@ $user_identity = $user->id;
         </form>
     </main>
     <script>
-        let selectedEmail = null;
+        
 
         let cant3_12 = ['cantCientifico', 'cantDivulgacion', 'cantTraduccion', 'cantArbitrajeInt', 'cantArbitrajeNac', 'cantSinInt', 'cantSinNac', 'cantAutor', 'cantEditor', 'cantWeb'];
         let subtotal3_12 = ['subtotalCientificos', 'subtotalDivulgacion', 'subtotalTraduccion', 'subtotalArbitrajeInt', 'subtotalArbitrajeNac', 'subtotalSinInt', 'subtotalSinNac', 'subtotalAutor', 'subtotalEditor', 'subtotalWeb'];

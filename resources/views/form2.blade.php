@@ -26,13 +26,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         ],
         'fillHiddenFrom' => [
             'user_id' => 'user_id',
-            'email' => 'email',
+            'email' => '',
             'user_type' => 'user_type',
         ],
         'fillHiddenFromDict' => [
             'dictaminador_id' => 'dictaminador_id',
             'user_id' => 'user_id',
-            'email' => 'email',
+            'email' => '',
             'user_type' => 'user_type',
         ],
 // comportamiento al no encontrar respuesta de dictaminador
@@ -151,7 +151,7 @@ $user_identity = $user->id;
 <div class="mostrar">
     <main class="container">
         <!-- Form for Part 2 -->
-        <form id="form2" method="POST">
+        <form id="form2" method="POST" action="{{ url('/store-form2') }}">
             @csrf
             <div><br>
             <div class="datosConvocatoria">
@@ -205,6 +205,8 @@ $user_identity = $user->id;
             <input type="hidden" name="email" value="">
             <input type="hidden" name="user_type" value="">
             <input type="hidden" id="puntajeEvaluarInput" name="puntajeEvaluar" value="0">
+            <input type="hidden" id="horasActv2Input" name="horasActv2" value="">
+
             <table class="table table-sm datosPrimarios">
                 <thead>
                     <tr>
@@ -292,8 +294,10 @@ $user_identity = $user->id;
 
     <script>
 
+document.getElementById('horasActv2Input').value =
+    document.getElementById('horasActv2')?.textContent?.trim() || '0';
 
-//     // Evento cuando se selecciona un docente
+  // Evento cuando se selecciona un docente
 document.addEventListener('docenteSelected', async (e) => {
     const docente = e.detail;
     const email = docente.email;

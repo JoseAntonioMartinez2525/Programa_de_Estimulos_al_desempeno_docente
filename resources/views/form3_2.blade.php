@@ -37,13 +37,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         ],
         'fillHiddenFrom' => [
             'user_id' => 'user_id',
-            'email' => 'email',
+            'email' => '',
             'user_type' => 'user_type',
         ],
         'fillHiddenFromDict' => [
             'dictaminador_id' => 'dictaminador_id',
             'user_id' => 'user_id',
-            'email' => 'email',
+            'email' => '',
             'user_type' => 'user_type',
         ],
 // comportamiento al no encontrar respuesta de dictaminador
@@ -385,7 +385,7 @@ $user_identity = $user->id;
             });
 
         };  
-        let selectedEmail = null;
+        
             
         // Function to handle form submission
         async function submitForm(url, formId) {

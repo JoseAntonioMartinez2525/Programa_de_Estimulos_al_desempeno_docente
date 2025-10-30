@@ -53,7 +53,7 @@ $docenteConfig = $docenteConfig ?? [
     // ---- Inputs ocultos ----
     'fillHiddenFrom' => [
         'user_id'    => 'user_id',
-        'email'      => 'email',
+        'email'      => '',
         'user_type'  => 'user_type',
     ],
     'fillHiddenFromDict' => [
@@ -929,7 +929,7 @@ $page_counter = 28;
 
 
     <script>
-        let selectedEmail = null;
+        
         window.onload = function () {
             const pageCount = 3; // Total number of pages
             const currentPage = Math.ceil(window.printPageNumber || 1); // Assuming you have a way to track the current page

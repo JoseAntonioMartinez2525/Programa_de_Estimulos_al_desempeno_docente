@@ -180,6 +180,16 @@
                     });
                 }
 
+                // --- respaldo: si el email no se llenó, tomarlo directamente del docente seleccionado o del nivel raíz ---
+                if (config.fillHiddenFrom && config.fillHiddenFrom.email) {
+                    const emailInput = document.querySelector(`input[name="email"]`);
+                    if (emailInput && !emailInput.value) {
+                        emailInput.value = docente.email || readProp(docenteData, 'email') || '';
+                        console.log('Email de respaldo asignado:', emailInput.value);
+                    }
+                }
+
+
                 // Si hay convocatorias adicionales configuradas, poblarlas
                 if (docenteData && docenteData.form1 && Array.isArray(config.convocatoriaSelectors)) {
                     config.convocatoriaSelectors.forEach(sel => setValue(sel, docenteData.form1.convocatoria || ''));

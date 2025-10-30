@@ -35,13 +35,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         ],
         'fillHiddenFrom' => [
             'user_id' => 'user_id',
-            'email' => 'email',
+            'email' => '',
             'user_type' => 'user_type',
         ],
         'fillHiddenFromDict' => [
             'dictaminador_id' => 'dictaminador_id',
             'user_id' => 'user_id',
-            'email' => 'email',
+            'email' => '',
             'user_type' => 'user_type',
         ],
         
@@ -68,11 +68,14 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     $docenteConfigForm = [
         'extraFields' => [
             'hoursText',
+            'hours',
             'horasPosgrado',
             'horasSemestre',
             'dse',
             'dse2',
             'actv2Comision',
+            'comisionPosgrado',
+            'comisionLic',
             'obs2',
             'obs2_2',
         ],
@@ -139,7 +142,7 @@ $user_identity = $user->id;
 </div>
     <main class="container">
         <!-- Form for Part 2_2 -->
-        <form id="form2_2" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-form22', 'form2_2');">
+        <form id="form2_2" method="POST">
             @csrf
             <div>
                 <!-- Activity 2: Commitment in Teaching Performance -->
@@ -256,8 +259,9 @@ $user_identity = $user->id;
     </footer>
 </center>
     <script>
-let selectedEmail = null;
-
+document.getElementById('comisionLic').value = document.getElementById('comisionLic')?.textContent?.trim() || '0';
+document.getElementById('comisionPosgrado').value = document.getElementById('comisionPosgrado')?.textContent?.trim() || '0';
+document.getElementById('hoursText').value = document.getElementById('hours')?.textContent?.trim() || '0';
     
         function minWithSum(value1, value2) {
             const sum = value1 + value2;

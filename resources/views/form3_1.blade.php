@@ -42,13 +42,13 @@ $docenteConfig = [
     // --- Campos ocultos ---
     'fillHiddenFrom' => [
         'user_id' => 'user_id',
-        'email' => 'email',
+        'email' => '',
         'user_type' => 'user_type',
     ],
     'fillHiddenFromDict' => [
         'dictaminador_id' => 'dictaminador_id',
         'user_id' => 'user_id',
-        'email' => 'email',
+        'email' => '',
         'user_type' => 'user_type',
     ],
 
@@ -91,7 +91,7 @@ if (!isset($docenteConfigForm)) {
     $extraFields = array_merge(
         $extraFields,
         ['comisionIncisoA','comisionIncisoB','comisionIncisoC','comisionIncisoD','comisionIncisoE',
-         'actv3Comision','score3_1','obs3_1_1','obs3_1_2','obs3_1_3','obs3_1_4','obs3_1_5']
+         'actv3Comision','score3_1','obs3_1_1','obs3_1_2','obs3_1_3','obs3_1_4','obs3_1_5', 'score3_1', 'elaboracion']
     );
 
     $docenteConfigForm = [
@@ -381,223 +381,225 @@ $user_identity = $user->id;
 
     <main class="container">
         <!--Form for Part 3_1 -->
-        <form id="form3_1" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-form31', 'form3_1');">
+        <form id="form3_1" method="POST">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="user_id" value="">
             <input type="hidden" name="email" value="">
             <input type="hidden" name="user_type" value="">
+            <input type="hidden" name="score3_1" id="score3_1_hidden">
+            <input type="hidden" name="actv3Comision" id="actv3Comision_hidden">
            
                 <!-- Actividad 3.1 Participación en actividades de diseño curricular -->
                 <h4>Puntaje máximo
                     <label class="bg-black text-white px-4" id="pMax60" for="">60</label>
                 </h4>
             
-<table class="table table-sm">
-    <x-table-header />
-    <tr>
-        <td colspan="5"><b>3. Calidad en la docencia</b></td>
-       <td id="docencia2">{{ $docencia ?? '0' }}</td>
-        <td class="actv3Comision" style="background-color: #ffcc6d; text-align: center; border: none; font-weight: bold;"></td>
-        <td></td>
-    </tr>
-    <!-- Sub-encabezados -->
-    <x-sub-headers-form3_1 />
+                    <table class="table table-sm">
+                        <x-table-header />
+                        <tr>
+                            <td colspan="5"><b>3. Calidad en la docencia</b></td>
+                        <td id="docencia2">{{ $docencia ?? '0' }}</td>
+                            <td class="actv3Comision" style="background-color: #ffcc6d; text-align: center; border: none; font-weight: bold;"></td>
+                            <td></td>
+                        </tr>
+                        <!-- Sub-encabezados -->
+                        <x-sub-headers-form3_1 />
 
-    <!-- Contenido Incisos a) y b) -->
-    <tbody data-page="3">
-        <tr class="table-wrap">
-            <td>a)</td>
-            <td>
-                <label style="height:84px; width: 170px;">Plan de estudios de una carrera o posgrado nuevo o
-                    actualización</label>
-            </td>
-            <td>
-                <label style="height:94px; width: 180px;">Responsable de la Comisión para la elaboración del
-                documento</label>
-            </td>
-            <td id="puntaje60"><b>60</b></td>
-            <td class="elabInput"><span id="elaboracion">0</span></td>
-            <td><span id="elaboracionSubTotal1"></span></td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="comisionIncisoA" class="actv3Comision" type="number" step="0.01" oninput="onActv3Comision()"
-                        value="{{ oldValueOrDefault('comisionIncisoA') }}">
-                @else
-                    <label id="comisionIncisoA"></label>
-                @endif
-            </td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="obs3_1_1" name="obs3_1_1" class="table-header" type="text">
-                @else
-                    <label id="obs3_1_1" class="table-header"></label>
-                @endif
-            </td>
-        </tr>
-        <tr  class="table-wrap">
-            <td>b)</td>
-            <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o
-                    actualización</label></td>
-            <td><label class="form3_1LabelDoc" for="">Colaboración en la Comisión para la elaboración del
-                    documento</label></td>
-            <td><span id="puntaje40"><b>40</b></span></td>
-            <td class="elabInput"><span id="elaboracion2">0</span></td>
-            <td><span id="elaboracionSubTotal2" for="" type="text"></span></td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="comisionIncisoB" type="number" step="0.01" oninput="onActv3Comision()"
-                        value="{{ oldValueOrDefault('comisionIncisoB') }}">
-                @else
-                    <label id="comisionIncisoB"></label>
-                @endif
-            </td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="obs3_1_2" name="obs3_1_2" type="text">
-                @else
-                    <label id="obs3_1_2"></label>
-                @endif
-            </td>
-        </tr>
-    </tbody>
-</table>
+                        <!-- Contenido Incisos a) y b) -->
+                        <tbody data-page="3">
+                            <tr class="table-wrap">
+                                <td>a)</td>
+                                <td>
+                                    <label style="height:84px; width: 170px;">Plan de estudios de una carrera o posgrado nuevo o
+                                        actualización</label>
+                                </td>
+                                <td>
+                                    <label style="height:94px; width: 180px;">Responsable de la Comisión para la elaboración del
+                                    documento</label>
+                                </td>
+                                <td id="puntaje60"><b>60</b></td>
+                                <td class="elabInput"><span id="elaboracion">0</span></td>
+                                <td><span id="elaboracionSubTotal1"></span></td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="comisionIncisoA" class="actv3Comision" type="number" step="0.01" oninput="onActv3Comision()"
+                                            value="{{ oldValueOrDefault('comisionIncisoA') }}">
+                                    @else
+                                        <label id="comisionIncisoA"></label>
+                                    @endif
+                                </td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="obs3_1_1" name="obs3_1_1" class="table-header" type="text">
+                                    @else
+                                        <label id="obs3_1_1" class="table-header"></label>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr  class="table-wrap">
+                                <td>b)</td>
+                                <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o
+                                        actualización</label></td>
+                                <td><label class="form3_1LabelDoc" for="">Colaboración en la Comisión para la elaboración del
+                                        documento</label></td>
+                                <td><span id="puntaje40"><b>40</b></span></td>
+                                <td class="elabInput"><span id="elaboracion2">0</span></td>
+                                <td><span id="elaboracionSubTotal2" for="" type="text"></span></td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="comisionIncisoB" type="number" step="0.01" oninput="onActv3Comision()"
+                                            value="{{ oldValueOrDefault('comisionIncisoB') }}">
+                                    @else
+                                        <label id="comisionIncisoB"></label>
+                                    @endif
+                                </td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="obs3_1_2" name="obs3_1_2" type="text">
+                                    @else
+                                        <label id="obs3_1_2"></label>
+                                    @endif
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-<div class="avoid-page-break" style="display: flex; justify-content: space-between; padding-top: -20px;">
-    <div id="convocatoria">
-        <!-- Mostrar convocatoria -->
-        @if(isset($convocatoria))
-            <div style="margin-right: -500px;">
-                <h1>Convocatoria: {{ $convocatoria->convocatoria }}</h1>
-            </div>
-        @endif
-    </div>
-    <div id="piedepagina1"
-        class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
-        Página 3 de 33
-    </div>
-</div><br>
-
-<table class="table table-sm table2">
-    <x-table-header />
-    
-    <tr>
-        <td colspan="5"><b>3. Calidad en la docencia</b></td>
-       <td id="docencia">{{ $docencia ?? '0' }}</td>
-        <td class="actv3Comision" style="background-color: #ffcc6d; text-align: center; border: none; font-weight: bold;"></td>
-        <td></td>
-    </tr>
-    <!--Sub Encabezados-->
-    <x-sub-headers-form3_1 />
-    
-    <!-- Contenido Incisos c), d) y e) -->
-    <tbody class="page-break" data-page="4">
-        <tr class="table-wrap">
-            <td>c)</td>
-            <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
-            <td><label class="form3_1LabelDoc">Elaboración de contenidos mínimos</label></td>
-            <td><label id="puntaje10" for=""><b>10</b></label></td>
-            <td class="elabInput"><span id="elaboracion3">0</span></td>
-            <td><span id="elaboracionSubTotal3" for="" type="text"></span></td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="comisionIncisoC" for="" type="number" step="0.01" oninput="onActv3Comision()" value="{{ oldValueOrDefault('comisionIncisoC') }}">
-                @else
-                    <label id="comisionIncisoC" name="comisionIncisoC"></label>
-                @endif
-            </td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="obs3_1_3" name="obs3_1_3" class="table-header" type="text">
-                @else
-                    <label id="obs3_1_3" name="obs3_1_3" class="table-header"></label>
-                @endif
-            </td>
-        </tr>
-        <tr  class="table-wrap">
-            <td>d)</td>
-            <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
-            <td><label class="form3_1LabelDoc">Elaboración de programas de asignatura</label></td>
-            <td><label id="puntaje20" for=""><b>20</b></label></td>
-            <td class="elabInput"><span id="elaboracion4">0</span></td>
-            <td><span id="elaboracionSubTotal4"></span></td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="comisionIncisoD" for="" type="number" step="0.01" oninput="onActv3Comision()" value="{{ oldValueOrDefault('comisionIncisoD') }}">
-                @else
-                    <label id="comisionIncisoD" name="comisionIncisoD"></label>
-                @endif
-            </td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="obs3_1_4" name="obs3_1_4" class="table-header" type="text">
-                @else
-                    <label id="obs3_1_4" name="obs3_1_4" class="table-header"></label>
-                @endif
-            </td>
-        </tr>
-        <tr  class="table-wrap">
-            <td>e)</td>
-            <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
-            <td><label class="form3_1LabelDoc">Actualización de programas de asignatura</label></td>
-            <td><label id="p10" for=""><b>10</b></label></td>
-            <td class="elabInput"><span id="elaboracion5">0</span></td>
-            <td><span id="elaboracionSubTotal5"></span></td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="comisionIncisoE" for="" type="number" step="0.01" oninput="onActv3Comision()" value="{{ oldValueOrDefault('comisionIncisoE') }}">
-                @else
-                    <label id="comisionIncisoE" name="comisionIncisoE"></label>
-                @endif
-            </td>
-            <td class="comision actv comEstilos">
-                @if($userType == 'dictaminador')
-                    <input id="obs3_1_5" name="obs3_1_5" class="table-header" type="text">
-                @else
-                    <label id="obs3_1_5" name="obs3_1_5" class="table-header"></label>
-                @endif
-            </td>
-        </tr>
-    </tbody>
-</table>
-<table>
-    <thead>
-        <tr>
-            <!-- Tabla informativa Acreditacion Actividad 3_1 -->
-
-            <th class="acreditacion" scope="col">Acreditacion: </th>
-
-            <th class="descripcion" style="white-space: nowrap;"><b>H.CGU</b> puntos a,b y e; <b>CAAC</b> puntos d y e</th>
-        </tr>
-    </thead>
-            </table>
-        @if ($userType != 'secretaria')
-            <button id="btn3_1" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
-        @endif
-<!--Convocatoria 2-->
-            <div class="avoid-page-break" style="display: flex; justify-content: space-between;padding-top: 15px;">
-                <div id="convocatoria2">
-                    <!-- Mostrar convocatoria -->
-                    @if(isset($convocatoria))
-
-                        <div style="margin-right: -200px;white-space: nowrap;">
-                            <h1>Convocatoria: {{ $convocatoria->convocatoria }}</h1>
+                    <div class="avoid-page-break" style="display: flex; justify-content: space-between; padding-top: -20px;">
+                        <div id="convocatoria">
+                            <!-- Mostrar convocatoria -->
+                            @if(isset($convocatoria))
+                                <div style="margin-right: -500px;">
+                                    <h1>Convocatoria: {{ $convocatoria->convocatoria }}</h1>
+                                </div>
+                            @endif
                         </div>
-                    @endif
-                </div>
+                        <div id="piedepagina1"
+                            class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
+                            Página 3 de 33
+                        </div>
+                    </div><br>
 
-                <div id="piedepagina2"
-                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
-                    Página 4 de 33
-                </div>
-            </div>
+                    <table class="table table-sm table2">
+                        <x-table-header />
+                        
+                        <tr>
+                            <td colspan="5"><b>3. Calidad en la docencia</b></td>
+                        <td id="docencia">{{ $docencia ?? '0' }}</td>
+                            <td class="actv3Comision" style="background-color: #ffcc6d; text-align: center; border: none; font-weight: bold;"></td>
+                            <td></td>
+                        </tr>
+                        <!--Sub Encabezados-->
+                        <x-sub-headers-form3_1 />
+                        
+                        <!-- Contenido Incisos c), d) y e) -->
+                        <tbody class="page-break" data-page="4">
+                            <tr class="table-wrap">
+                                <td>c)</td>
+                                <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
+                                <td><label class="form3_1LabelDoc">Elaboración de contenidos mínimos</label></td>
+                                <td><label id="puntaje10" for=""><b>10</b></label></td>
+                                <td class="elabInput"><span id="elaboracion3">0</span></td>
+                                <td><span id="elaboracionSubTotal3" for="" type="text"></span></td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="comisionIncisoC" for="" type="number" step="0.01" oninput="onActv3Comision()" value="{{ oldValueOrDefault('comisionIncisoC') }}">
+                                    @else
+                                        <label id="comisionIncisoC" name="comisionIncisoC"></label>
+                                    @endif
+                                </td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="obs3_1_3" name="obs3_1_3" class="table-header" type="text">
+                                    @else
+                                        <label id="obs3_1_3" name="obs3_1_3" class="table-header"></label>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr  class="table-wrap">
+                                <td>d)</td>
+                                <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
+                                <td><label class="form3_1LabelDoc">Elaboración de programas de asignatura</label></td>
+                                <td><label id="puntaje20" for=""><b>20</b></label></td>
+                                <td class="elabInput"><span id="elaboracion4">0</span></td>
+                                <td><span id="elaboracionSubTotal4"></span></td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="comisionIncisoD" for="" type="number" step="0.01" oninput="onActv3Comision()" value="{{ oldValueOrDefault('comisionIncisoD') }}">
+                                    @else
+                                        <label id="comisionIncisoD" name="comisionIncisoD"></label>
+                                    @endif
+                                </td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="obs3_1_4" name="obs3_1_4" class="table-header" type="text">
+                                    @else
+                                        <label id="obs3_1_4" name="obs3_1_4" class="table-header"></label>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr  class="table-wrap">
+                                <td>e)</td>
+                                <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
+                                <td><label class="form3_1LabelDoc">Actualización de programas de asignatura</label></td>
+                                <td><label id="p10" for=""><b>10</b></label></td>
+                                <td class="elabInput"><span id="elaboracion5">0</span></td>
+                                <td><span id="elaboracionSubTotal5"></span></td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="comisionIncisoE" for="" type="number" step="0.01" oninput="onActv3Comision()" value="{{ oldValueOrDefault('comisionIncisoE') }}">
+                                    @else
+                                        <label id="comisionIncisoE" name="comisionIncisoE"></label>
+                                    @endif
+                                </td>
+                                <td class="comision actv comEstilos">
+                                    @if($userType == 'dictaminador')
+                                        <input id="obs3_1_5" name="obs3_1_5" class="table-header" type="text">
+                                    @else
+                                        <label id="obs3_1_5" name="obs3_1_5" class="table-header"></label>
+                                    @endif
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <!-- Tabla informativa Acreditacion Actividad 3_1 -->
+
+                                <th class="acreditacion" scope="col">Acreditacion: </th>
+
+                                <th class="descripcion" style="white-space: nowrap;"><b>H.CGU</b> puntos a,b y e; <b>CAAC</b> puntos d y e</th>
+                            </tr>
+                        </thead>
+                                </table>
+                            @if ($userType != 'secretaria')
+                                <button id="btn3_1" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+                            @endif
+                    <!--Convocatoria 2-->
+                                <div class="avoid-page-break" style="display: flex; justify-content: space-between;padding-top: 15px;">
+                                    <div id="convocatoria2">
+                                        <!-- Mostrar convocatoria -->
+                                        @if(isset($convocatoria))
+
+                                            <div style="margin-right: -200px;white-space: nowrap;">
+                                                <h1>Convocatoria: {{ $convocatoria->convocatoria }}</h1>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <div id="piedepagina2"
+                                        class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
+                                        Página 4 de 33
+                                    </div>
+                                </div>
 
         </form>
             </div>
     </main>
     <script>
-let selectedEmail = null;
+
     window.onload = function () {
 
                 function preventOverlap() {
