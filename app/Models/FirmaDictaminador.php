@@ -22,4 +22,16 @@ class FirmaDictaminador extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+// Relación muchos a muchos con los docentes evaluados
+    public function docentes()
+    {
+        return $this->belongsToMany(
+            User::class,                // Modelo al que se relaciona
+            'dictaminador_docente',     // Tabla pivote
+            'dictaminador_id',          // FK de este modelo en la tabla pivote
+            'docente_id'                // FK del otro modelo en la tabla pivote
+        );
+    }
+
 }

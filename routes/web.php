@@ -220,6 +220,9 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/firma-dictaminador', [FirmaDictaminadorController::class, 'index'])
         ->name('firmaDictaminador.index');
 
+        Route::get('/dictaminador-signatures', [FirmaDictaminadorController::class, 'getFirmasPorDocente']);
+
+
 
     Route::post('/update-form/{formId}', [DynamicFormController::class, 'updateFormData']);
     // Ruta para agregar un solo docente a un dictaminador

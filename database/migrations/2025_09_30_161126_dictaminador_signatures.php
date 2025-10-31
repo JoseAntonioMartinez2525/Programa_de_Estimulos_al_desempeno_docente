@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             // Relación con el usuario que firma
-            $table->unsignedBigInteger('user_id')->unique(); // Un dictaminador solo puede tener una firma
+            $table->unsignedBigInteger('user_id')->unique(); // Un dictaminador solo puede tener una firma, pero puede evaluar a muchos docentes
 
             // Aquí guardamos la firma en base64 o texto largo
             $table->longText('signature_image')->nullable(); // Ideal para base64 (más portable que BLOB)

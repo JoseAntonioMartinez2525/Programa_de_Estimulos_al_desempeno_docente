@@ -73,4 +73,15 @@ class User extends Authenticatable
         return $this->hasOne(FirmaDictaminador::class, 'user_id');
     }
 
+    // Relación con los dictaminadores que lo evaluaron
+    public function dictaminadores()
+    {
+        return $this->belongsToMany(
+            FirmaDictaminador::class,   // Modelo de dictaminador
+            'dictaminador_docente',     // Tabla pivote
+            'docente_id',               // FK del docente en la tabla pivote
+            'dictaminador_id'           // FK del dictaminador en la tabla pivote
+        );
+    }
+
 }

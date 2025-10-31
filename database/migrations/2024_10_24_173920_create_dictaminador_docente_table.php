@@ -11,7 +11,7 @@ public function up()
     Schema::create('dictaminador_docente', function (Blueprint $table) {
         $table->id();
         
-        $table->unsignedBigInteger('user_id'); // Relaciona con docentes
+        $table->unsignedBigInteger('docente_id'); // Relaciona con docentes
         $table->bigInteger('dictaminador_id')->unsigned();
         $table->string('form_type')->nullable(); // Para identificar el tipo de formulario
         $table->string('docente_email')->nullable();

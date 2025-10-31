@@ -240,19 +240,25 @@ body.dark-mode img.imgFirma{
 
             </table>
             <table>
-            <thead>
+            {{-- <thead>
             <tr>
             <th id="nivelLabel">Nivel obtenido de acuerdo al artículo 10 del Reglamento</th>
             <th colspan="1" id="minimaLabel">Mínima de Calidad</th>
             <th colspan="2" id="minimaCalidad"></th>
             </tr>
-            </thead>
+            </thead> --}}
             <tbody>
-            <th style="padding-right: 200px;"></th>
+            {{-- <th style="padding-right: 200px;"></th>
             <th class="minima">Mínima Total</th>
-            <th id="minimaTotal"></th>
+            <th id="minimaTotal"></th> --}}
             <thead>
-
+            <tr>
+                <td style="padding-left: 600px;">
+                    @if(Auth::user()->user_type === 'dictaminador')
+                        <button type="submit" id="submitButton" class="btn custom-btn buttonSignature2">Enviar</button>
+                    @endif
+                </td>
+            </tr>
             </thead>
             </tbody>
             </table>
@@ -267,140 +273,134 @@ body.dark-mode img.imgFirma{
         <input type="hidden" name="user_type" id="user_type" value="{{ auth()->user()->user_type }}">
         <input type="hidden" name="dictaminador_id" value="{{ $user_identity }}">
 
-        <table>
-        <thead>
-            <tr id="eva1">
-            <th class="evaluadores">
-                @if($userType === 'secretaria')
-                        <center><span class="personaEvaluadora" type="text" id="personaEvaluadora"></span></center>
-
-                @elseif($userType === 'dictaminador')
-                    <!-- Implementación en caso que el usuario sea 'dictaminador' -->
-                    @if(empty($personaEvaluadora))
-                        <input class="personaEvaluadora1" type="text" id="personaEvaluadora1" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name" required placeholder="Nombre completo de la persona evaluadora">
-                    @elseif(!empty($personaEvaluadora) && empty($personaEvaluadora2))
-                        <input class="personaEvaluadora2" type="text" id="personaEvaluadora2" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name_2" required placeholder="Nombre completo de la persona evaluadora"> 
-                    @elseif((!empty($personaEvaluadora1)) && (!empty($personaEvaluadora2)))
-                            <input class="personaEvaluadora3" type="text" id="personaEvaluadora3" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name_3" required placeholder="Nombre completo de la persona evaluadora">                                                                                                                              
-                    @endif
-                @endif
-            </th>
-            <th>
-            @if($userType === 'dictaminador')
-                @if(empty($firma))
-                    <button class="btnFile" onclick="document.getElementById('firma1').click()">Subir firma electrónica</button>
-                    <input type="file" class="d-none files" id="firma1" name="firma1" accept="image/*">
-                    <small class="text-muted">(solo formatos con extension .png)</small>
-                    
-                @elseif(empty($firma2))
-                    <button class="btnFile" onclick="document.getElementById('firma2').click()">Subir firma electrónica</button>
-                    <input type="file" class="d-none files" id="firma2" name="firma2" accept="image/*">
-                    <small class="text-muted">(solo formatos con extension .png)</small>
-                @elseif(empty($firma3))
-                    <button class="btnFile" onclick="document.getElementById('firma3').click()">Subir firma electrónica</button>
-                    <input type="file" class="d-none files" id="firma3" name="firma3" accept="image/*">
-                    <small class="text-muted">(solo formatos con extension .png)</small>
-                @else
-                    <span>Ya se han completado las firmas requeridas.</span>
-                @endif
-            @endif
-            </th>
-            <th>
-        @if($userType === 'secretaria')
-            @if(!empty($signature_path))
-                <img id="signature_path" src="{{ asset('storage/' . $signature_path) }}" alt="Firma 1" class="imgFirma">
-            @else
-                <img id="signature_path" src="{{ asset('storage/default.png') }}" alt="Firma 1" class="imgFirma" style="display:none;">
-            @endif
-        @endif
-            </th>
-            <th>
-                <!-- Aquí se mostrará las firmas si ya han sido subidas -->
-            @if($userType === 'dictaminador')
-            @if(!empty($signature_path))
-                <img id="signature_path" src="{{ asset('storage/' . $signature_path) }}" alt="Firma 1" class="imgFirma">
-            @else
-                <img id="signature_path" src="{{ asset('storage/default.png') }}" alt="Firma 1" class="imgFirma" style="display:none;">
-            @endif
-            @if(!empty($signature_path_2))
-                <img id="signature_path_2" src="{{ asset('storage/' . $signature_path_2) }}" alt="Firma 2" class="imgFirma">
-            @else
-                <img id="signature_path_2" src="{{ asset('storage/default2.png') }}" alt="Firma 2" class="imgFirma"
-                    style="display:none;">
-            @endif
-            @if(!empty($signature_path_3))
-                <img id="signature_path_3" src="{{ asset('storage/' . $signature_path_3) }}" alt="Firma 3" class="imgFirma">
-            @else
-                <img id="signature_path_3" src="{{ asset('storage/default3.png') }}" alt="Firma 3" class="imgFirma"
-                    style="display:none;">
-            @endif
-            @endif
-            </th>
-
-            </tr>
-            <tr>
-                {{-- <td class="p-2 nombreLabel">Nombre de la persona evaluadora</td> --}}
-                <td></td>
-                <td class="p-2"><span id="firmaTexto"></span>
-                    @if($userType === 'dictaminador')
-                        <small class="text-muted">Tamaño máximo permitido: 2MB</small>
-                    @endif
-                </td>
-            </tr>
-            @if($userType === 'secretaria')
-                <tr id=eva2>
+            <table>
+                <thead>
+                    <tr id="eva1">
                     <th class="evaluadores">
-                            <center><span class="personaEvaluadora2" type="text" id="personaEvaluadora2"></span></center>
-                    </th>
-                    <th>
-                        @if(!empty($signature_path_2))
-                            <img id="signature_path_2" src="{{ asset('storage/' . $signature_path_2) }}" alt="Firma 2" class="imgFirma">
-                        @else
-                            <img id="signature_path_2" src="{{ asset('storage/default2.png') }}" alt="Firma 2" class="imgFirma"
-                                style="display:none;">
+                        @if($userType === 'secretaria')
+                                <center><span class="personaEvaluadora" type="text" id="personaEvaluadora"></span></center>
+
+                        @elseif($userType === 'dictaminador')
+                            <!-- Implementación en caso que el usuario sea 'dictaminador' -->
+                            @if(empty($personaEvaluadora))
+                                <input class="personaEvaluadora1" type="text" id="personaEvaluadora1" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name" required placeholder="Nombre completo de la persona evaluadora">
+                            @elseif(!empty($personaEvaluadora) && empty($personaEvaluadora2))
+                                <input class="personaEvaluadora2" type="text" id="personaEvaluadora2" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name_2" required placeholder="Nombre completo de la persona evaluadora"> 
+                            @elseif((!empty($personaEvaluadora1)) && (!empty($personaEvaluadora2)))
+                                    <input class="personaEvaluadora3" type="text" id="personaEvaluadora3" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name_3" required placeholder="Nombre completo de la persona evaluadora">                                                                                                                              
+                            @endif
                         @endif
                     </th>
-                </tr>
-            @endif
-            <tr>
-                @if($userType === 'secretaria')
-                    <td class="p-2 nombreLabel">Nombre de la persona evaluadora</td>
-
-                    <td class="p-2"><span id="firmaTexto2">Firma</span>
-                @endif
-            </tr>
-            @if($userType === 'secretaria')
-                <tr id="eva3">
-                    <th class="evaluadores">
-                    <center><span class="personaEvaluadora3" type="text" id="personaEvaluadora3"></span></center>
-                </th>
-                <th>
-                @if(!empty($signature_path_3))
-                    <img id="signature_path_3" src="{{ asset('storage/' . $signature_path_3) }}" alt="Firma 3" class="imgFirma">
-                @else
-                    <img id="signature_path_3" src="{{ asset('storage/default3.png') }}" alt="Firma 3" class="imgFirma"
-                        style="display:none;">
-                @endif
-                </th>
-            </tr>@endif
-            <tr>
-                @if($userType === 'secretaria')
-                    <td class="p-2 mr-2 nombreLabel">Nombre de la persona evaluadora</td>
-
-                    <td class="p-2"><span id="firmaTexto3">Firma</span>
-                @endif
-            </tr>
-            <tr>
-                <td style="padding-left: 600px;">
-                    @if(Auth::user()->user_type === 'dictaminador')
-                        <button type="submit" id="submitButton" class="btn custom-btn buttonSignature2">Enviar</button>
+                    <th>
+                    @if($userType === 'dictaminador')
+                        @if(empty($firma))
+                            <button class="btnFile" onclick="document.getElementById('firma1').click()">Subir firma electrónica</button>
+                            <input type="file" class="d-none files" id="firma1" name="firma1" accept="image/*">
+                            <small class="text-muted">(solo formatos con extension .png)</small>
+                            
+                        @elseif(empty($firma2))
+                            <button class="btnFile" onclick="document.getElementById('firma2').click()">Subir firma electrónica</button>
+                            <input type="file" class="d-none files" id="firma2" name="firma2" accept="image/*">
+                            <small class="text-muted">(solo formatos con extension .png)</small>
+                        @elseif(empty($firma3))
+                            <button class="btnFile" onclick="document.getElementById('firma3').click()">Subir firma electrónica</button>
+                            <input type="file" class="d-none files" id="firma3" name="firma3" accept="image/*">
+                            <small class="text-muted">(solo formatos con extension .png)</small>
+                        @else
+                            <span>Ya se han completado las firmas requeridas.</span>
+                        @endif
                     @endif
-                </td>
-            </tr>
-    @endif
-</thead>
-</table>
-            </form>
+                    </th>
+                    <th>
+                @if($userType === 'secretaria')
+                    @if(!empty($signature_path))
+                        <img id="signature_path" src="{{ asset('storage/' . $signature_path) }}" alt="Firma 1" class="imgFirma">
+                    @else
+                        <img id="signature_path" src="{{ asset('storage/default.png') }}" alt="Firma 1" class="imgFirma" style="display:none;">
+                    @endif
+                @endif
+                    </th>
+                    <th>
+                        <!-- Aquí se mostrará las firmas si ya han sido subidas -->
+                    @if($userType === 'dictaminador')
+                    @if(!empty($signature_path))
+                        <img id="signature_path" src="{{ asset('storage/' . $signature_path) }}" alt="Firma 1" class="imgFirma">
+                    @else
+                        <img id="signature_path" src="{{ asset('storage/default.png') }}" alt="Firma 1" class="imgFirma" style="display:none;">
+                    @endif
+                    @if(!empty($signature_path_2))
+                        <img id="signature_path_2" src="{{ asset('storage/' . $signature_path_2) }}" alt="Firma 2" class="imgFirma">
+                    @else
+                        <img id="signature_path_2" src="{{ asset('storage/default2.png') }}" alt="Firma 2" class="imgFirma"
+                            style="display:none;">
+                    @endif
+                    @if(!empty($signature_path_3))
+                        <img id="signature_path_3" src="{{ asset('storage/' . $signature_path_3) }}" alt="Firma 3" class="imgFirma">
+                    @else
+                        <img id="signature_path_3" src="{{ asset('storage/default3.png') }}" alt="Firma 3" class="imgFirma"
+                            style="display:none;">
+                    @endif
+                    @endif
+                    </th>
+
+                    </tr>
+                    <tr>
+                        {{-- <td class="p-2 nombreLabel">Nombre de la persona evaluadora</td> --}}
+                        <td></td>
+                        <td class="p-2"><span id="firmaTexto"></span>
+                            @if($userType === 'dictaminador')
+                                <small class="text-muted">Tamaño máximo permitido: 2MB</small>
+                            @endif
+                        </td>
+                    </tr>
+                    @if($userType === 'secretaria')
+                        <tr id=eva2>
+                            <th class="evaluadores">
+                                    <center><span class="personaEvaluadora2" type="text" id="personaEvaluadora2"></span></center>
+                            </th>
+                            <th>
+                                @if(!empty($signature_path_2))
+                                    <img id="signature_path_2" src="{{ asset('storage/' . $signature_path_2) }}" alt="Firma 2" class="imgFirma">
+                                @else
+                                    <img id="signature_path_2" src="{{ asset('storage/default2.png') }}" alt="Firma 2" class="imgFirma"
+                                        style="display:none;">
+                                @endif
+                            </th>
+                        </tr>
+                    @endif
+                    <tr>
+                        @if($userType === 'secretaria')
+                            <td class="p-2 nombreLabel">Nombre de la persona evaluadora</td>
+
+                            <td class="p-2"><span id="firmaTexto2">Firma</span>
+                        @endif
+                    </tr>
+                    @if($userType === 'secretaria')
+                        <tr id="eva3">
+                            <th class="evaluadores">
+                            <center><span class="personaEvaluadora3" type="text" id="personaEvaluadora3"></span></center>
+                        </th>
+                        <th>
+                        @if(!empty($signature_path_3))
+                            <img id="signature_path_3" src="{{ asset('storage/' . $signature_path_3) }}" alt="Firma 3" class="imgFirma">
+                        @else
+                            <img id="signature_path_3" src="{{ asset('storage/default3.png') }}" alt="Firma 3" class="imgFirma"
+                                style="display:none;">
+                        @endif
+                        </th>
+                    </tr>@endif
+                    <tr>
+                        @if($userType === 'secretaria')
+                            <td class="p-2 mr-2 nombreLabel">Nombre de la persona evaluadora</td>
+
+                            <td class="p-2"><span id="firmaTexto3">Firma</span>
+                        @endif
+                    </tr>
+
+            @endif
+                </thead>
+            </table>
+        </form>
 <br>
     <center>
         <footer id="footerForm3_4">
@@ -616,8 +616,8 @@ body.dark-mode img.imgFirma{
 
       
 // ======== config.js ========
-const labels = [
-    '1. Permanencia en las actividades de la docencia',
+const labels = [                                        //======== posicion ========
+    '1. Permanencia en las actividades de la docencia',             //0
     '1.1 Años de experiencia docente en la institución',
     '2. Dedicación en el desempeño docente',
     '2.1 Carga de trabajo docente frente a grupo',
@@ -627,17 +627,17 @@ const labels = [
     '3.3 Publicaciones relacionadas con la docencia',
     '3.4 Distinciones académicas recibidas por el docente',
     '3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC',
-    '3.6 Capacitación y actualización pedagógica recibida',
+    '3.6 Capacitación y actualización pedagógica recibida',         //10
     '3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento',
     '3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente',
     '3.8.1 RSU',
-    'Subtotal',
+    'Subtotal',                                                     //14
     'Tutorias',
     '3.9 Trabajos dirigidos para la titulación de estudiantes',
     '3.10 Tutorías a estudiantes',
     '3.11 Asesoría a estudiantes',
     'Subtotal',
-    'Investigación',
+    'Investigación',                                                //20
     '3.12 Publicaciones de investigación relacionadas con el contenido de los PE que imparte el docente',
     '3.13 Proyectos académicos de investigación',
     '3.14 Participación como ponente en congresos o eventos académicos del área de conocimiento o afines del docente',
@@ -649,19 +649,20 @@ const labels = [
     '3.18 Organización de congresos o eventos institucionales del área de conocimiento del Docente',
     '3.19 Participación en cuerpos colegiados',
     'Subtotal',
-    'Total logrado en la evaluación',
-    '1. Permanencia en las actividades de la docencia',
-    '2. Dedicación en el desempeño docente',
-    '3. Calidad en la docencia',
-    'Total de puntaje obtenido en la evaluación',
-    'Mínima de Calidad',
-    'Mínima Total'
+    'Total logrado en la evaluación',                              //32
+    '1. Permanencia en las actividades de la docencia',            //33
+    '2. Dedicación en el desempeño docente',                       //34
+    '3. Calidad en la docencia',                                   //35
+    'Total de puntaje obtenido en la evaluación',                  //36
+    'Nivel obtenido de acuerdo al artículo 10 del Reglamento',     //37
+    'Mínima de Calidad',                                           //38
+    'Mínima Total'                                                 //39
 ];
 
 const values = [
     100, 100, 200, 200, 700, 60, 50, 100, 60, 75, 40, 40, 40, 40, null, null,
     200, 115, 95, null, null, 150, 130, 40, 60, 30, null, null, 50, 40, 40, null,
-    null, 100, 200, 700, null
+    null, 100, 200, 700, null, null, null, null
 ];
 
 // ======== api.js ========
@@ -723,12 +724,12 @@ function calcularSubtotales(comisiones) {
     comisiones[32] = total;
     comisiones[36] = total; // Total de puntaje obtenido en la evaluación
 
-    // ✅ Aquí asignamos los índices 37 y 38
+    // ✅ Aquí asignamos los índices 38 y 39
     const minimaCalidad = evaluarCalidad(parseFloat(comisiones[4]));
     const minimaTotal = evaluarTotal(parseFloat(comisiones[36]));
 
-    comisiones[37] = minimaCalidad;
-    comisiones[38] = minimaTotal;
+    comisiones[38] = minimaCalidad;
+    comisiones[39] = minimaTotal;
 
     return { sumaComision3, total };
 }
@@ -746,12 +747,14 @@ function renderTabla(labels, values, comisiones, dataContainer) {
         labelCell.textContent = label;
         valueCell.textContent = values[i] ?? '';
 
-        const encabezadosSinValor = [15, 20, 27];
+        const encabezadosSinValor = [15, 20, 27, 37];
         // 🧩 Lógica para mostrar correctamente valores numéricos y de texto
-        if (i === 37 || i === 38) {
+        if (i === 38 || i === 39) {
             // Mostrar texto (como "III", "V")
             comisionCell.textContent = comisiones[i] || '';
             comisionCell.style.fontWeight = 'bold';
+            comisionCell.style.backgroundColor = 'transparent';
+            
         } else if (encabezadosSinValor.includes(i)) {
             // Subtítulos (mostrar vacío)
             comisionCell.textContent = '';
@@ -767,17 +770,17 @@ function renderTabla(labels, values, comisiones, dataContainer) {
         }
 
         // 🟨 Color de fondo solo para los índices numéricos relevantes
-        if (![0, 2, 4, 14, 15, 19, 20, 26, 27, 31, 32, 36, 37, 38].includes(i)) {
+        if (![0, 2, 4, 14, 15, 19, 20, 26, 27, 31, 32, 36, 37, 38, 39].includes(i)) {
             comisionCell.style.backgroundColor = '#f6c667';
         }
 
         // 🔹 Negrita para encabezados y totales
-        if ([0, 2, 4, 14, 19, 26, 31, 36, 37, 38].includes(i)) {
+        if ([0, 2, 4, 14, 19, 26, 31, 36, 37, 38, 39].includes(i)) {
             comisionCell.style.fontWeight = 'bold';
         }
 
         // 🔹 Estilo para subtítulos
-        if (['Subtotal', 'Tutorias', 'Investigación', 'Cuerpos colegiados', 'Total logrado en la evaluación', 'Total de puntaje obtenido en la evaluación'].includes(label)) {
+        if (['Subtotal', 'Tutorias', 'Investigación', 'Cuerpos colegiados', 'Total logrado en la evaluación', 'Total de puntaje obtenido en la evaluación', 'Nivel obtenido de acuerdo al artículo 10 del Reglamento'].includes(label)) {
             labelCell.style.fontWeight = 'bold';
             labelCell.style.textAlign = 'center';
         }
@@ -823,7 +826,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const dictaminatorData = await fetchDictaminatorResponses(userId);
 
             // inicializar arreglo base
-            let comisiones = Array(40).fill('0');
+            let comisiones = Array(41).fill('0');
             comisiones[0] = data.form2?.comision1 || '0';
             comisiones[1] = data.form2?.comision1 || '0';
             comisiones[2] = data.form2_2?.actv2Comision || '0';

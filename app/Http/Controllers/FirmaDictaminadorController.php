@@ -33,6 +33,43 @@ class FirmaDictaminadorController extends Controller
         ]);
     }
 
+public function showResumen(Request $request)
+{
+    $user = Auth::user();
+    $userType = $user->user_type;
+
+    $firmas = []; // ✅ inicializar siempre
+
+    if ($userType === 'dictaminador') {
+        $firmaDictaminador = FirmaDictaminador::where('user_id', $user->id)->first();
+        $personaEvaluadora = $firmaDictaminador->evaluator_name ?? $user->name;
+
+        // Creamos un objeto dentro de un arreglo para que Blade pueda iterar
+        $firmas[] = (object)[
+            'evaluator_name' => $personaEvaluadora,
+            'signature_image' => $firmaDictaminador->signature_image ?? null,
+        ];
+    }
+
+    if ($userType === 'secretaria') {
+        $docenteId = $request->input('docente_id');
+
+        if (!$docenteId) abort(400, 'Debe especificar un docente');
+
+        $firmas = FirmaDictaminador::whereHas('docentes', function($q) use ($docenteId) {
+            $q->where('docente_id', $docenteId);
+        })->get();
+    }
+
+        return view('resumen_comision', [
+        'userType' => $userType,
+        'firmas' => $firmas ?? [],
+    ]);
+}
+
+
+
+
     
     public function storeFirma(Request $request)
     {
@@ -139,5 +176,22 @@ class FirmaDictaminadorController extends Controller
         'tieneFirma' => $firmaDictaminador ? true : false,
     ]);
 }
+
+public function getFirmasPorDocente(Request $request)
+{
+    $docenteId = $request->input('docente_id');
+
+    if (!$docenteId) {
+        return response()->json(['error' => 'Falta el user_id del docente'], 400);
+    }
+
+    // Obtener todas las firmas de dictaminadores que evaluaron a este docente
+    $firmas = FirmaDictaminador::whereHas('docentes', function ($q) use ($docenteId) {
+        $q->where('docente_id', $docenteId);
+    })->get();
+
+    return response()->json($firmas);
+}
+
 }
 
