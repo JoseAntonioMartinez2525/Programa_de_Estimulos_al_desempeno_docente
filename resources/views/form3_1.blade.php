@@ -12,11 +12,11 @@ for ($i = 1; $i <= 5; $i++) {
 
 // --- Campos comunes a docente y dictaminador ---
 $commonFields = [
-    'comisionA' => 'comisionIncisoA',
-    'comisionB' => 'comisionIncisoB',
-    'comisionC' => 'comisionIncisoC',
-    'comisionD' => 'comisionIncisoD',
-    'comisionE' => 'comisionIncisoE',
+    'comisionIncisoA' => 'comisionIncisoA',
+    'comisionIncisoB' => 'comisionIncisoB',
+    'comisionIncisoC' => 'comisionIncisoC',
+    'comisionIncisoD' => 'comisionIncisoD',
+    'comisionIncisoE' => 'comisionIncisoE',
     'actv3Comision' => 'actv3Comision',
     'score3_1' => 'score3_1',
     'obs3_1_1' => 'obs3_1_1',
