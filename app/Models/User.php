@@ -77,11 +77,50 @@ class User extends Authenticatable
     public function dictaminadores()
     {
         return $this->belongsToMany(
-            FirmaDictaminador::class,   // Modelo de dictaminador
+            \App\Models\FirmaDictaminador::class,   // Modelo de dictaminador
             'dictaminador_docente',     // Tabla pivote
             'docente_id',               // FK del docente en la tabla pivote
-            'dictaminador_id'           // FK del dictaminador en la tabla pivote
-        )->with('dictaminadorSignature'); 
+            'dictaminador_id',           // FK del dictaminador en la tabla pivote
+            'id',                                  // parent key en users (users.id)
+            'user_id'                              // related key EN FirmaDictaminador (firma.user_id)
+        )->withTimestamps();; 
     }
+
+public function tieneAlgunFormularioEvaluado()
+{
+    $formularios = [
+        'form1'      => 'App\\Models\\UsersResponseForm1',
+        'form2'      => 'App\\Models\\UsersResponseForm2',
+        'form2_2'    => 'App\\Models\\UsersResponseForm2_2',
+        'form3_1'    => 'App\\Models\\DictaminatorsResponseForm3_1',
+        'form3_2'    => 'App\\Models\\DictaminatorsResponseForm3_2',
+        'form3_3'    => 'App\\Models\\DictaminatorsResponseForm3_3',
+        'form3_4'    => 'App\\Models\\DictaminatorsResponseForm3_4',
+        'form3_5'    => 'App\\Models\\DictaminatorsResponseForm3_5',
+        'form3_6'    => 'App\\Models\\DictaminatorsResponseForm3_6',
+        'form3_7'    => 'App\\Models\\DictaminatorsResponseForm3_7',
+        'form3_8'    => 'App\\Models\\DictaminatorsResponseForm3_8',
+        'form3_8_1'  => 'App\\Models\\DictaminatorsResponseForm3_8_1',
+        'form3_9'    => 'App\\Models\\DictaminatorsResponseForm3_9',
+        'form3_10'   => 'App\\Models\\DictaminatorsResponseForm3_10',
+        'form3_11'   => 'App\\Models\\DictaminatorsResponseForm3_11',
+        'form3_12'   => 'App\\Models\\DictaminatorsResponseForm3_12',
+        'form3_13'   => 'App\\Models\\DictaminatorsResponseForm3_13',
+        'form3_14'   => 'App\\Models\\DictaminatorsResponseForm3_14',
+        'form3_15'   => 'App\\Models\\DictaminatorsResponseForm3_15',
+        'form3_16'   => 'App\\Models\\DictaminatorsResponseForm3_16',
+        'form3_17'   => 'App\\Models\\DictaminatorsResponseForm3_17',
+        'form3_18'   => 'App\\Models\\DictaminatorsResponseForm3_18',
+        'form3_19'   => 'App\\Models\\DictaminatorsResponseForm3_19',
+    ];
+
+    foreach ($formularios as $form => $modelClass) {
+        if (class_exists($modelClass) && $modelClass::where('user_id', $this->id)->exists()) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 }

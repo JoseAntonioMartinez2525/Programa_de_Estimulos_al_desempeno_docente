@@ -220,32 +220,29 @@ public function getSignatures(Request $request)
     }
 
     // ===== Secretaria: retorna todas las firmas de los dictaminadores de un docente =====
-    if ($userType === 'secretaria') {
-        $docente = User::where('email', $email)->first();
+ if ($userType === 'secretaria') {
+$docente = User::where('email', $email)->first();
 
-        if (!$docente) {
-            return response()->json(['message' => 'Docente no encontrado'], 404);
-        }
-
-        // Traemos dictaminadores asociados al docente
-        $dictaminadores = $docente->dictaminadores()->with('dictaminadorSignature')->get()->unique('id');
-
-        $signatures = $dictaminadores->map(function ($dictaminador) {
-            $firma = $dictaminador->dictaminadorSignature;
-
-            return [
-                'evaluator_name' => $firma->evaluator_name ?? null,
-                'signature_image' => $firma->signature_image ?? null,
-                'mime' => $firma->mime ?? null,
-            ];
-        });
-
-        return response()->json($signatures->values()); // values() para resetear keys
+    if (!$docente) {
+        return response()->json(['message' => 'Docente no encontrado'], 404);
     }
+
+    // devuelven objetos FirmaDictaminador (no usuarios)
+    $firmas = $docente->dictaminadores()->get();
+
+    $signatures = $firmas->map(function ($firma) {
+        return [
+            'evaluator_name'  => $firma->evaluator_name ?? ($firma->user->name ?? null),
+            'signature_image' => $firma->signature_image ?? null,
+            'mime'            => $firma->mime ?? null,
+        ];
+    });
+
+    return response()->json($signatures->values());
+}
 
     return response()->json(['message' => 'Tipo de usuario no válido'], 403);
 }
-
 
 
 }

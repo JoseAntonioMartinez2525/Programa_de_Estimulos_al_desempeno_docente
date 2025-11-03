@@ -213,7 +213,7 @@ body.dark-mode img.imgFirma{
             @endif
             </div>
             <main class="container" id="formContainer" style="display: none;">
-
+                
             <form id="form4" method="POST" enctype="multipart/form-data"
             onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-resume', 'form4');">
             @csrf
@@ -266,72 +266,46 @@ body.dark-mode img.imgFirma{
 
             </form>
 
-    <form id="form5" method="GET" onsubmit="event.preventDefault(); fetchSignatures('form5');">
-            @csrf
-            <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
-            <input type="hidden" name="email" id="email" value="{{ auth()->user()->email }}">
-            <input type="hidden" name="user_type" id="user_type" value="{{ auth()->user()->user_type }}">
-            <input type="hidden" name="dictaminador_id" value="{{ $user_identity }}">
+<form id="form5" method="GET" onsubmit="event.preventDefault(); fetchSignatures('form5');">
+    @csrf
+    <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+    <input type="hidden" name="email" id="email" value="{{ auth()->user()->email }}">
+    <input type="hidden" name="user_type" id="user_type" value="{{ auth()->user()->user_type }}">
+    <input type="hidden" name="dictaminador_id" value="{{ $user_identity ?? '' }}">
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nombre del Evaluador</th>
-                    <th>Firma</th>
-                </tr>
-            </thead>
-            <tbody id="signaturesBody">
-                @if($userType === 'dictaminador')
-                    @php
-                        $signature = $user->dictaminadorSignature;
-                    @endphp
-                    @if($signature)
-                        <tr>
-                            <td>{{ $signature->evaluator_name }}</td>
-                            <td>
-                                <img src="data:{{ $signature->mime }};base64,{{ $signature->signature_image }}" 
-                                     alt="Firma" style="max-width: 150px; display: block;">
-                            </td>
-                        </tr>
-                    @else
-                        <tr>
-                            <td colspan="2">No se ha registrado ninguna firma.</td>
-                        </tr>
-                    @endif
-                @elseif($userType === 'secretaria')
-                    @php
-                        // Obtener los dictaminadores que evaluaron al docente seleccionado
-                        $docente = $selectedDocente ?? null; 
-                        $dictaminadores = $docente 
-                            ? $docente->dictaminadores()->with('dictaminadorSignature')->get()
-                            : collect();
-                    @endphp
-
-                    @forelse($dictaminadores as $dictaminador)
-                        <tr>
-                            <td>{{ $dictaminador->dictaminadorSignature->evaluator_name ?? 'Sin nombre' }}</td>
-                            <td>
-                                @if($dictaminador->dictaminadorSignature && $dictaminador->dictaminadorSignature->signature_image)
-                                    <img src="data:{{ $dictaminador->dictaminadorSignature->mime }};base64,{{ $dictaminador->dictaminadorSignature->signature_image }}" 
-                                         alt="Firma" style="max-width: 150px; display: block;">
-                                @else
-                                    Sin firma
-                                @endif
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="2">No se encontraron dictaminadores para este docente.</td>
-                        </tr>
-                    @endforelse
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre del Evaluador</th>
+                <th>Firma</th>
+            </tr>
+        </thead>
+        <tbody id="signaturesBody">
+            @if($userType === 'dictaminador')
+                @php $signature = auth()->user()->dictaminadorSignature; @endphp
+                @if($signature)
+                    <tr>
+                        <td>{{ $signature->evaluator_name }}</td>
+                        <td>
+                            <img src="data:{{ $signature->mime }};base64,{{ $signature->signature_image }}" 
+                                 alt="Firma" style="max-width: 150px; display: block;">
+                        </td>
+                    </tr>
+                @else
+                    <tr>
+                        <td colspan="2">No se ha registrado ninguna firma.</td>
+                    </tr>
                 @endif
-            </tbody>
-        </table>
+            @elseif($userType === 'secretaria')
+                {{-- Para secretaria, tbody se llenará con JS --}}
 
-        @if($userType === 'secretaria')
-            <button type="submit" class="btn btn-primary mt-2">Cargar firma</button>
-        @endif
-    </form>
+            @endif
+        </tbody>
+    </table>
+
+
+</form>
+
     @endif
 <br>
     <center>
@@ -798,6 +772,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (error) {
             console.error('Error procesando docente', error);
         }
+
+        // Llamada a fetchSignatures pasando el email seleccionado
+        const firmas = await fetchSignatures(email);
+
+
     });
 });
 
@@ -970,48 +949,47 @@ window.submitForm = submitForm;
         document.getElementById('minimaTotal').textContent = minimaTotal;
     }
 
-async function fetchSignatures(formId) {
-    const form = document.getElementById(formId);
-    const formData = new FormData(form);
-    const userType = formData.get('user_type');
-    const email = formData.get('email');
-    const tbody = document.getElementById('signaturesBody');
-
-    tbody.innerHTML = '';
+async function fetchSignatures(email) {
+    // const form = document.getElementById(formId);
+    const userType = form.querySelector('#user_type').value;
 
     try {
-        const params = new URLSearchParams({
-            email: email
-        });
+        const response = await fetch("{{ route('get.signatures') }}?email=" + encodeURIComponent(email));
+        if (!response.ok) throw new Error('No se pudieron cargar las firmas');
+        const data = await response.json();
 
-        const res = await fetch(`/formato-evaluacion/get-signatures?${params.toString()}`);
-        if (!res.ok) throw new Error('Error al obtener firmas');
-        const data = await res.json();
+        const tbody = document.getElementById('signaturesBody');
+        tbody.innerHTML = '';
 
-        if (userType === 'dictaminador') {
-            // Solo su firma
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${data.evaluator_name}</td>
-                <td><img src="data:${data.mime};base64,${data.signature_image}" width="150"></td>
-            `;
-            tbody.appendChild(tr);
-        } else if (userType === 'secretaria') {
-            // Tres firmas
-            data.forEach(sig => {
+        if (Array.isArray(data) && data.length > 0) {
+            data.forEach(firma => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${sig.evaluator_name}</td>
-                    <td><img src="data:${sig.mime};base64,${sig.signature_image}" width="150"></td>
+                    <td>${firma.evaluator_name ?? 'Sin nombre'}</td>
+                    <td>
+                        ${firma.signature_image 
+                            ? `<img src="data:${firma.mime};base64,${firma.signature_image}" 
+                                     style="max-width: 150px; display:block;">`
+                            : 'Sin firma'}
+                    </td>
                 `;
                 tbody.appendChild(tr);
             });
+        } else if (data.message) {
+            tbody.innerHTML = `<tr><td colspan="2">${data.message}</td></tr>`;
+        } else {
+            tbody.innerHTML = '<tr><td colspan="2">No se encontraron dictaminadores para este docente.</td></tr>';
         }
     } catch (error) {
-        console.error('Error al cargar firmas:', error);
-        tbody.innerHTML = '<tr><td colspan="2">Error al cargar firmas</td></tr>';
+        console.error(error);
+        document.getElementById('signaturesBody').innerHTML =
+            '<tr><td colspan="2">Error al cargar firmas</td></tr>';
     }
 }
+
+
+
+
 
 
     
