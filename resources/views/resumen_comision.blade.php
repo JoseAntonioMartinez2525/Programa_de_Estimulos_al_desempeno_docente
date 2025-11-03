@@ -2,6 +2,11 @@
 $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
+
+$user = Auth::user();
+$userType = $user->user_type;
+$user_email = $user->email;
+$user_identity = $user->id; 
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $newLocale }}">
@@ -197,12 +202,6 @@ body.dark-mode img.imgFirma{
             <x-general-header />
                 <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
-        @php
-    $user = Auth::user();
-    $userType = $user->user_type;
-    $user_email = $user->email;
-    $user_identity = $user->id; 
-        @endphp
             <div class="container mt-4" id="seleccionDocente">
             @if($userType !== 'docente')
             <!-- Select para dictaminador seleccionando docentes -->
@@ -214,6 +213,7 @@ body.dark-mode img.imgFirma{
             @endif
             </div>
             <main class="container" id="formContainer" style="display: none;">
+
             <form id="form4" method="POST" enctype="multipart/form-data"
             onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-resume', 'form4');">
             @csrf
@@ -266,141 +266,73 @@ body.dark-mode img.imgFirma{
 
             </form>
 
-        <form id="form5" method="POST" enctype="multipart/form-data" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-evaluator-signature', 'form5');">
-        @csrf
-        <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="email" id="email" value="{{ auth()->user()->email }}">
-        <input type="hidden" name="user_type" id="user_type" value="{{ auth()->user()->user_type }}">
-        <input type="hidden" name="dictaminador_id" value="{{ $user_identity }}">
+    <form id="form5" method="GET" onsubmit="event.preventDefault(); fetchSignatures('form5');">
+            @csrf
+            <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
+            <input type="hidden" name="email" id="email" value="{{ auth()->user()->email }}">
+            <input type="hidden" name="user_type" id="user_type" value="{{ auth()->user()->user_type }}">
+            <input type="hidden" name="dictaminador_id" value="{{ $user_identity }}">
 
-            <table>
-                <thead>
-                    <tr id="eva1">
-                    <th class="evaluadores">
-                        @if($userType === 'secretaria')
-                                <center><span class="personaEvaluadora" type="text" id="personaEvaluadora"></span></center>
-
-                        @elseif($userType === 'dictaminador')
-                            <!-- Implementación en caso que el usuario sea 'dictaminador' -->
-                            @if(empty($personaEvaluadora))
-                                <input class="personaEvaluadora1" type="text" id="personaEvaluadora1" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name" required placeholder="Nombre completo de la persona evaluadora">
-                            @elseif(!empty($personaEvaluadora) && empty($personaEvaluadora2))
-                                <input class="personaEvaluadora2" type="text" id="personaEvaluadora2" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name_2" required placeholder="Nombre completo de la persona evaluadora"> 
-                            @elseif((!empty($personaEvaluadora1)) && (!empty($personaEvaluadora2)))
-                                    <input class="personaEvaluadora3" type="text" id="personaEvaluadora3" style="background:transparent;border: 15px rgba(0, 0, 0, 0);" name="evaluator_name_3" required placeholder="Nombre completo de la persona evaluadora">                                                                                                                              
-                            @endif
-                        @endif
-                    </th>
-                    <th>
-                    @if($userType === 'dictaminador')
-                        @if(empty($firma))
-                            <button class="btnFile" onclick="document.getElementById('firma1').click()">Subir firma electrónica</button>
-                            <input type="file" class="d-none files" id="firma1" name="firma1" accept="image/*">
-                            <small class="text-muted">(solo formatos con extension .png)</small>
-                            
-                        @elseif(empty($firma2))
-                            <button class="btnFile" onclick="document.getElementById('firma2').click()">Subir firma electrónica</button>
-                            <input type="file" class="d-none files" id="firma2" name="firma2" accept="image/*">
-                            <small class="text-muted">(solo formatos con extension .png)</small>
-                        @elseif(empty($firma3))
-                            <button class="btnFile" onclick="document.getElementById('firma3').click()">Subir firma electrónica</button>
-                            <input type="file" class="d-none files" id="firma3" name="firma3" accept="image/*">
-                            <small class="text-muted">(solo formatos con extension .png)</small>
-                        @else
-                            <span>Ya se han completado las firmas requeridas.</span>
-                        @endif
-                    @endif
-                    </th>
-                    <th>
-                @if($userType === 'secretaria')
-                    @if(!empty($signature_path))
-                        <img id="signature_path" src="{{ asset('storage/' . $signature_path) }}" alt="Firma 1" class="imgFirma">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre del Evaluador</th>
+                    <th>Firma</th>
+                </tr>
+            </thead>
+            <tbody id="signaturesBody">
+                @if($userType === 'dictaminador')
+                    @php
+                        $signature = $user->dictaminadorSignature;
+                    @endphp
+                    @if($signature)
+                        <tr>
+                            <td>{{ $signature->evaluator_name }}</td>
+                            <td>
+                                <img src="data:{{ $signature->mime }};base64,{{ $signature->signature_image }}" 
+                                     alt="Firma" style="max-width: 150px; display: block;">
+                            </td>
+                        </tr>
                     @else
-                        <img id="signature_path" src="{{ asset('storage/default.png') }}" alt="Firma 1" class="imgFirma" style="display:none;">
-                    @endif
-                @endif
-                    </th>
-                    <th>
-                        <!-- Aquí se mostrará las firmas si ya han sido subidas -->
-                    @if($userType === 'dictaminador')
-                    @if(!empty($signature_path))
-                        <img id="signature_path" src="{{ asset('storage/' . $signature_path) }}" alt="Firma 1" class="imgFirma">
-                    @else
-                        <img id="signature_path" src="{{ asset('storage/default.png') }}" alt="Firma 1" class="imgFirma" style="display:none;">
-                    @endif
-                    @if(!empty($signature_path_2))
-                        <img id="signature_path_2" src="{{ asset('storage/' . $signature_path_2) }}" alt="Firma 2" class="imgFirma">
-                    @else
-                        <img id="signature_path_2" src="{{ asset('storage/default2.png') }}" alt="Firma 2" class="imgFirma"
-                            style="display:none;">
-                    @endif
-                    @if(!empty($signature_path_3))
-                        <img id="signature_path_3" src="{{ asset('storage/' . $signature_path_3) }}" alt="Firma 3" class="imgFirma">
-                    @else
-                        <img id="signature_path_3" src="{{ asset('storage/default3.png') }}" alt="Firma 3" class="imgFirma"
-                            style="display:none;">
-                    @endif
-                    @endif
-                    </th>
-
-                    </tr>
-                    <tr>
-                        {{-- <td class="p-2 nombreLabel">Nombre de la persona evaluadora</td> --}}
-                        <td></td>
-                        <td class="p-2"><span id="firmaTexto"></span>
-                            @if($userType === 'dictaminador')
-                                <small class="text-muted">Tamaño máximo permitido: 2MB</small>
-                            @endif
-                        </td>
-                    </tr>
-                    @if($userType === 'secretaria')
-                        <tr id=eva2>
-                            <th class="evaluadores">
-                                    <center><span class="personaEvaluadora2" type="text" id="personaEvaluadora2"></span></center>
-                            </th>
-                            <th>
-                                @if(!empty($signature_path_2))
-                                    <img id="signature_path_2" src="{{ asset('storage/' . $signature_path_2) }}" alt="Firma 2" class="imgFirma">
-                                @else
-                                    <img id="signature_path_2" src="{{ asset('storage/default2.png') }}" alt="Firma 2" class="imgFirma"
-                                        style="display:none;">
-                                @endif
-                            </th>
+                        <tr>
+                            <td colspan="2">No se ha registrado ninguna firma.</td>
                         </tr>
                     @endif
-                    <tr>
-                        @if($userType === 'secretaria')
-                            <td class="p-2 nombreLabel">Nombre de la persona evaluadora</td>
+                @elseif($userType === 'secretaria')
+                    @php
+                        // Obtener los dictaminadores que evaluaron al docente seleccionado
+                        $docente = $selectedDocente ?? null; 
+                        $dictaminadores = $docente 
+                            ? $docente->dictaminadores()->with('dictaminadorSignature')->get()
+                            : collect();
+                    @endphp
 
-                            <td class="p-2"><span id="firmaTexto2">Firma</span>
-                        @endif
-                    </tr>
-                    @if($userType === 'secretaria')
-                        <tr id="eva3">
-                            <th class="evaluadores">
-                            <center><span class="personaEvaluadora3" type="text" id="personaEvaluadora3"></span></center>
-                        </th>
-                        <th>
-                        @if(!empty($signature_path_3))
-                            <img id="signature_path_3" src="{{ asset('storage/' . $signature_path_3) }}" alt="Firma 3" class="imgFirma">
-                        @else
-                            <img id="signature_path_3" src="{{ asset('storage/default3.png') }}" alt="Firma 3" class="imgFirma"
-                                style="display:none;">
-                        @endif
-                        </th>
-                    </tr>@endif
-                    <tr>
-                        @if($userType === 'secretaria')
-                            <td class="p-2 mr-2 nombreLabel">Nombre de la persona evaluadora</td>
+                    @forelse($dictaminadores as $dictaminador)
+                        <tr>
+                            <td>{{ $dictaminador->dictaminadorSignature->evaluator_name ?? 'Sin nombre' }}</td>
+                            <td>
+                                @if($dictaminador->dictaminadorSignature && $dictaminador->dictaminadorSignature->signature_image)
+                                    <img src="data:{{ $dictaminador->dictaminadorSignature->mime }};base64,{{ $dictaminador->dictaminadorSignature->signature_image }}" 
+                                         alt="Firma" style="max-width: 150px; display: block;">
+                                @else
+                                    Sin firma
+                                @endif
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="2">No se encontraron dictaminadores para este docente.</td>
+                        </tr>
+                    @endforelse
+                @endif
+            </tbody>
+        </table>
 
-                            <td class="p-2"><span id="firmaTexto3">Firma</span>
-                        @endif
-                    </tr>
-
-            @endif
-                </thead>
-            </table>
-        </form>
+        @if($userType === 'secretaria')
+            <button type="submit" class="btn btn-primary mt-2">Cargar firma</button>
+        @endif
+    </form>
+    @endif
 <br>
     <center>
         <footer id="footerForm3_4">
@@ -1037,6 +969,52 @@ window.submitForm = submitForm;
         document.getElementById('minimaCalidad').textContent = minimaCalidad;
         document.getElementById('minimaTotal').textContent = minimaTotal;
     }
+
+async function fetchSignatures(formId) {
+    const form = document.getElementById(formId);
+    const formData = new FormData(form);
+    const userType = formData.get('user_type');
+    const email = formData.get('email');
+    const tbody = document.getElementById('signaturesBody');
+
+    tbody.innerHTML = '';
+
+    try {
+        const params = new URLSearchParams({
+            email: email
+        });
+
+        const res = await fetch(`/formato-evaluacion/get-signatures?${params.toString()}`);
+        if (!res.ok) throw new Error('Error al obtener firmas');
+        const data = await res.json();
+
+        if (userType === 'dictaminador') {
+            // Solo su firma
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${data.evaluator_name}</td>
+                <td><img src="data:${data.mime};base64,${data.signature_image}" width="150"></td>
+            `;
+            tbody.appendChild(tr);
+        } else if (userType === 'secretaria') {
+            // Tres firmas
+            data.forEach(sig => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${sig.evaluator_name}</td>
+                    <td><img src="data:${sig.mime};base64,${sig.signature_image}" width="150"></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+    } catch (error) {
+        console.error('Error al cargar firmas:', error);
+        tbody.innerHTML = '<tr><td colspan="2">Error al cargar firmas</td></tr>';
+    }
+}
+
+
+    
     </script>
 
 <div id="app" data-user-id="{{ auth()->user()->id }}" data-user-email="{{ auth()->user()->email }}" data-user-type="{{ auth()->user()->user_type }}" style="display: none;"></div></div>

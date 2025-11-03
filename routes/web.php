@@ -211,6 +211,8 @@ Route::middleware(['auth'])->group(function (){
     Route::post('/store-form318', [DictaminatorForm3_18Controller::class, 'storeform318'])->name('form3_18.store_18')->withoutMiddleware('auth');
     Route::post('/store-form319', [DictaminatorForm3_19Controller::class, 'storeform319'])->name('form3_19.store_19')->withoutMiddleware('auth');
     Route::post('/store-dictaminator_signatures', [FirmaDictaminadorController::class, 'storeFirma'])->name('firmaDictaminador.store');
+    Route::get('/formato-evaluacion/get-signatures', [FirmaDictaminadorController::class, 'getSignatures']);
+
     Route::post('/generate-pdf', [ResponseForm3_19Controller::class, 'generatePdf'])->name('generate.pdf');
     // Ruta para asignar varios docentes a un dictaminador
     Route::post('/asignar-docentes/{dictaminador_id}', [DictaminatorForm2_Controller::class, 'asignarDocentes'])

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DictaminadorSignature;
 use Illuminate\Http\Request;
 use App\Models\FirmaDictaminador;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -192,6 +195,58 @@ public function getFirmasPorDocente(Request $request)
 
     return response()->json($firmas);
 }
+
+public function getSignatures(Request $request)
+{
+    $user = Auth::user();
+    $userType = $user->user_type;
+    $userId = $user->id;
+
+    $email = $request->input('email'); // correo del docente seleccionado (solo lo envía secretaria)
+
+    // ===== Dictaminador: solo retorna su propia firma =====
+    if ($userType === 'dictaminador') {
+        $firma = DictaminadorSignature::where('user_id', $userId)->first();
+
+        if (!$firma) {
+            return response()->json(['message' => 'No se encontró firma registrada'], 404);
+        }
+
+        return response()->json([
+            'evaluator_name' => $firma->evaluator_name ?? $user->name,
+            'signature_image' => $firma->signature_image ?? null,
+            'mime' => $firma->mime ?? null,
+        ]);
+    }
+
+    // ===== Secretaria: retorna todas las firmas de los dictaminadores de un docente =====
+    if ($userType === 'secretaria') {
+        $docente = User::where('email', $email)->first();
+
+        if (!$docente) {
+            return response()->json(['message' => 'Docente no encontrado'], 404);
+        }
+
+        // Traemos dictaminadores asociados al docente
+        $dictaminadores = $docente->dictaminadores()->with('dictaminadorSignature')->get()->unique('id');
+
+        $signatures = $dictaminadores->map(function ($dictaminador) {
+            $firma = $dictaminador->dictaminadorSignature;
+
+            return [
+                'evaluator_name' => $firma->evaluator_name ?? null,
+                'signature_image' => $firma->signature_image ?? null,
+                'mime' => $firma->mime ?? null,
+            ];
+        });
+
+        return response()->json($signatures->values()); // values() para resetear keys
+    }
+
+    return response()->json(['message' => 'Tipo de usuario no válido'], 403);
+}
+
+
 
 }
 

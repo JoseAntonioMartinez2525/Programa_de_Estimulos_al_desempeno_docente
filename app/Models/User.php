@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function dictaminadorSignature()
     {
-        return $this->hasOne(DictaminadorSignature::class, 'user_id');
+        return $this->hasOne(DictaminadorSignature::class, 'user_id', 'id');
     }
 
     public function firmaDictaminador()
@@ -81,7 +81,7 @@ class User extends Authenticatable
             'dictaminador_docente',     // Tabla pivote
             'docente_id',               // FK del docente en la tabla pivote
             'dictaminador_id'           // FK del dictaminador en la tabla pivote
-        );
+        )->with('dictaminadorSignature'); 
     }
 
 }
