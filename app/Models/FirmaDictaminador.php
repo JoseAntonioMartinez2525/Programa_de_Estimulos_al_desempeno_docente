@@ -27,10 +27,12 @@ class FirmaDictaminador extends Model
     public function docentes()
     {
         return $this->belongsToMany(
-            User::class,                // Modelo al que se relaciona
+            \App\Models\User::class,                // Modelo al que se relaciona
             'dictaminador_docente',     // Tabla pivote
             'dictaminador_id',          // FK de este modelo en la tabla pivote
-            'docente_id'                // FK del otro modelo en la tabla pivote
+            'docente_id',                // FK del otro modelo en la tabla pivote
+            'user_id',         // key local en FirmaDictaminador (user_id)
+            'id'               // key en User (id)
         );
     }
 
