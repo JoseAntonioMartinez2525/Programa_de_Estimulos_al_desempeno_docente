@@ -132,28 +132,7 @@ $filas3_9To3_19 = [
     ],
 
 ];
-$data = [
-    'logoBase64' => $logoBase64,
-    'convocatoria' => $convocatoria,
-    'comisiones' => $comisiones,
-    'total' => $total,
-    'minimaCalidad' => $minimaCalidad,
-    'minimaTotal' => $minimaTotal,
-    'totalComisionRepetido' => $totalComisionRepetido,
-    'subtotal3_1To3_8_1' => $subtotal3_1To3_8_1,
-    'subtotal3_9To3_11' => $subtotal3_9To3_11,
-    'subtotal3_12To3_16' => $subtotal3_12To3_16,
-    'subtotal3_17To3_19' => $subtotal3_17To3_19,
-    '$total' => $total,
-    'evaluator_name' => $evaluatorSignature->evaluator_name ?? '',
-    'evaluator_name_2' => $evaluatorSignature->evaluator_name_2 ?? '',
-    'evaluator_name_3' => $evaluatorSignature->evaluator_name_3 ?? '',
-    'signatureBase64' => $signatureBase64,
-    'signatureBase64_2' => $signatureBase64_2,
-    'signatureBase64_3' => $signatureBase64_3,
-    'pagina_inicio' => 31,
-    'pagina_total' => 32,
-];
+
 @endphp
 <!DOCTYPE html>
 <html lang="es">
@@ -361,17 +340,17 @@ $data = [
         <tr>
             <td>1. Permanencia en las actividades de la docencia</td>
             <td class="valorMaximo">100</td>
-            <td class="puntaje">{{ $comisiones->comision1 ?? '0.00' }}</td>
+            <td class="puntaje">{{ number_format($totalComision1 ?? 0, 2) }}</td>
         </tr>
         <tr>
             <td>2. Dedicación en el desempeño docente</td>
             <td class="valorMaximo">200</td>
-            <td class="puntaje">{{ $comisiones->actv2Comision ?? '0.00' }}</td>
+            <td class="puntaje">{{ number_format($totalComision2 ?? 0, 2) }}</td>
         </tr>
         <tr>
             <td>3. Calidad en la docencia</td>
             <td class="valorMaximo">700</td>
-            <td class="puntaje">{{ $total ?? '0.00' }}</td>
+            <td class="puntaje">{{ number_format($total ?? 0, 2) }}</td>
         </tr>
         <tr>
             <td colspan="2" class="subtotal"><strong>Total de puntaje obtenido en la evaluación</strong></td>
@@ -404,46 +383,40 @@ $data = [
 {{-- Salto de página 
 <div style="page-break-before: always;"></div> --}}
 
-<table class="firmas-table">
+<table class="firmas-table" style="width:100%; border-collapse:collapse; margin-top:20px;">
     <thead>
-        <tr>
-            <th style="text-align:center;">Nombre de la persona evaluadora</th>
-            <th style="text-align:center;">Firma</th>
+        <tr style="background:#f9f9f9;">
+            <th style="text-align:center; padding:6px; border:1px solid #ccc;">Nombre de la persona evaluadora</th>
+            <th style="text-align:center; padding:6px; border:1px solid #ccc;">Firma</th>
         </tr>
     </thead>
     <tbody>
-    <tr>
-        <td class="nombre-evaluador">
-            {{ $evaluator_name ?? '' }}
-        </td>
-        <td class="firma-evaluador">
-            @if(!empty($signatureBase64))
-                <img src="{{ $signatureBase64 }}" alt="Firma" class="firma-img">
-            @endif
-        </td>
-    </tr>
-    <tr>    
-    <td class="nombre-evaluador">
-        {{ $evaluator_name_2 ?? '' }}
-    </td    >
-        <td class="firma-evaluador">
-            @if(!empty($signatureBase64_2))
-                <img src="{{ $signatureBase64_2 }}" alt="Firma" class="firma-img">
-            @endif
-        </td>
-    </tr>
-    <tr>
-        <td class="nombre-evaluador">
-        {{ $evaluator_name_3 ?? '' }}
-        </td>
-        <td class="firma-evaluador">
-            @if(!empty($signatureBase64_3))
-                <img src="{{ $signatureBase64_3 }}" alt="Firma" class="firma-img">
-            @endif
-        </td>
-    </tr>
+        @if(isset($dictaminadores) && $dictaminadores->count() > 0)
+            @foreach($dictaminadores as $dictaminador)
+                <tr>
+                    <td class="nombre-evaluador" style="text-align:center; padding:6px; border:1px solid #ccc;">
+                        {{ $dictaminador['name'] }}
+                    </td>
+                    <td class="firma-evaluador" style="text-align:center; padding:6px; border:1px solid #ccc;">
+                        @if($dictaminador['signature_image'])
+                            <img src="data:{{ $dictaminador['mime'] }};base64,{{ $dictaminador['signature_image'] }}"
+                                 alt="Firma"
+                                 class="firma-img"
+                                 style="width:120px; height:auto;">
+                        @else
+                            <em>Sin firma</em>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+        @else
+            <tr>
+                <td colspan="2" style="text-align:center; padding:10px;">No hay firmas registradas.</td>
+            </tr>
+        @endif
     </tbody>
 </table>
+
 
 <div style="margin-top: 100px; text-align: center;">
     <strong>Convocatoria:</strong> {{ $convocatoria }}

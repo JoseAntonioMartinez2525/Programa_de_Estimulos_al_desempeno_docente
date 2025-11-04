@@ -78,8 +78,6 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
 @php
 $userType = Auth::user()->user_type;
-$sections;
-$subtotalAdded = false;
 @endphp
     <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
@@ -112,94 +110,46 @@ $subtotalAdded = false;
                     <th id="pMaximo">Puntaje máximo</th>
                     <th id="pComision">Puntaje otorgado Comisión PEDPD</th>
                     </tr>
-@if (isset($sections['data']) && is_array($sections['data']))
-    @php
-    $counter = 0;
-    $subtotalIndexes = [13, 17, 23, 27];
-    @endphp
-    @foreach ($sections['data'] as $index => $data)
-        @if (in_array($index, $subtotalIndexes))
-            {{-- Mostrar subtotales --}}
-            <tr>
-                <td colspan="2">
-                    <center><b>{{ $data['label'] }}</b></center>
-                </td>
-                <td><b>
-                    @if (in_array($data['label'], ['1. Permanencia en las actividades de la docencia', '2. Dedicación en el desempeño docente', '3. Calidad en la docencia']))
-                        <label class="p2">{{ $data['comision'] }}</label>
-                    @else
-                        <label>{{ $data['comision'] }}</label>
-                    @endif
-                </b></td>
-            </tr>
-        @else
-            {{-- Datos normales --}}
-            <tr>
-                <td @if (in_array($data['label'], ['1. Permanencia en las actividades de la docencia', '2. Dedicación en el desempeño docente'])) style="font-weight: bold" @elseif (in_array($data['label'], ['3. Calidad en la docencia'])) style="font-weight: bold" @elseif(in_array($data['label'], ['1.1 Años de experiencia docente en la institución', '2.1 Carga de trabajo docente frente a grupo'])) style="background-color: #A4DDED;" @endif>
-                    {{ $data['label'] }}
-                </td>
-                <td @if ($counter === 0 || $counter === 2 || $counter === 4) style="font-weight: bold" @endif class="p1">
-                    {{ $data['value'] }}
-                </td>
-                <td class="tdResaltado">
-                    @if (in_array($data['label'], ['1. Permanencia en las actividades de la docencia', '2. Dedicación en el desempeño docente', '3. Calidad en la docencia']))
-                        <span id="{{ $data['id'] ?? '' }}" class="p2">{{ $data['comision'] }}</span>
-                    @elseif (in_array($index, $subtotalIndexes))
-                        {{-- Este bloque maneja los subtotales y no les aplica el fondo amarillo --}}
-                        <span id="{{ $data['id'] ?? '' }}">{{ $data['comision'] }}</span>
-                    @else
-                        {{-- Aplicar fondo amarillo para todos los demás casos --}}
-                        <span style="background-color: #FFC72C;" id="{{ $data['id'] ?? '' }}">{{ $data['comision'] }}</span>
-                    @endif
-                </td>
-            </tr>
-        @endif
-
-        @php
-            $counter++; // Incrementamos el contador en cada iteración
-        @endphp
-    @endforeach
-@endif
 <tr>
     <td><center><b>Total logrado en la evaluación</b></center></td>
     <td></td>
-    <td><label id="totalComision" for="">{{ $totalComisionRepetido }}</label></td>
+    <td><label id="totalComision" for="">{{ $totalComisionRepetido ?? 0 }}</label></td>
 </tr>
 </tr>
 
 <tr>
     <td>1. Permanencia en las actividades de la docencia</td>
     <td>100</td>
-    <td><label id="totalComision1" for="">{{ $totalComision1 }}</label></td>
+    <td><label id="totalComision1" for="">{{ $totalComision1 ?? 0 }}</label></td>
 </tr>
 
 <tr>
     <td>2. Dedicación en el desempeño docente</td>
     <td>200</td>
-    <td><label id="totalComision2" for="">{{ $totalComision2 }}</label></td>
+    <td><label id="totalComision2" for="">{{ $totalComision2 ?? 0 }}</label></td>
 </tr>
 <tr>
     <td>3. Calidad en la docencia</td>
     <td>700</td>
-    <td><label id="totalComision3" for="">{{ $total }}</label></td>
+    <td><label id="totalComision3" for="">{{ $total ?? 0 }}</label></td>
 </tr>                               
 <tr>
     <td>
         <center><b>Total de puntaje obtenido en la evaluación</b></center>
     </td>
     <td></td>
-    <td><b><label id="totalComisionRepetido" class="p2">{{ $totalComisionRepetido }}</label></b></td>
+    <td><b><label id="totalComisionRepetido" class="p2">{{ $totalComisionRepetido ?? 0 }}</label></b></td>
 
 
 <tr>
     <th>Nivel obtenido de acuerdo al artículo 10 del Reglamento</th> 
     <th>Mínima de Calidad</th>
-    <th><b><span id="minimaCalidad">{{ $minimaCalidad }}</span></b></th>
+    <th><b><span id="minimaCalidad">{{ $minimaCalidad ?? 'N/A' }}</span></b></th>
 </tr>
 <tr>
     <th></th>
     <th>Mínima Total</th>
-    <th><b><span id="minimaTotal">{{ $minimaTotal }}</span></b></th>
+    <th><b><span id="minimaTotal">{{ $minimaTotal ?? 'N/A' }}</span></b></th>
 </tr>
 </thead>
 </table>

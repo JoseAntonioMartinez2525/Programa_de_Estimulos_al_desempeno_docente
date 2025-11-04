@@ -770,12 +770,31 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log('Total logrado:', total);
 
         } catch (error) {
+            // On error, clear the button container
+            const pdfButtonContainer = document.getElementById('pdfButtonContainer');
+            if (pdfButtonContainer) {
+                pdfButtonContainer.innerHTML = '';
+            }
             console.error('Error procesando docente', error);
         }
 
         // Llamada a fetchSignatures pasando el email seleccionado
         const firmas = await fetchSignatures(email);
 
+        // After all data is fetched and rendered, create the PDF button for 'secretaria'
+        if (userType === 'secretaria' && email) {
+            const pdfButtonContainer = document.getElementById('pdfButtonContainer');
+            // Clear previous button
+            pdfButtonContainer.innerHTML = ''; 
+
+            // Create and append the new button
+            const pdfLink = document.createElement('a');
+            pdfLink.href = `{{ route('reporte_pdf') }}?email=${encodeURIComponent(email)}`;
+            pdfLink.target = '_blank';
+            pdfLink.className = 'btn custom-btn';
+            pdfLink.innerHTML = `<i class="fa-solid fa-file-pdf"></i>&nbsp; Generar Reporte PDF`;
+            pdfButtonContainer.appendChild(pdfLink);
+        }
 
     });
 });

@@ -186,91 +186,120 @@ public function adminResetTimer(Request $request)
     public function generarPDF(Request $request)
     {
         Log::info(['GENERAR PDF']);
+
         $email = $request->query('email');
         $user = User::where('email', $email)->first();
-        $logoPath = public_path('logo_uabcs.png');
-        if (!file_exists($logoPath)) {
-            // Si no existe en public, intenta en storage como respaldo
-            $logoPath = storage_path('logo_uabcs.png');
-        }
-        $logoImageContent = file_exists($logoPath) ? file_get_contents($logoPath) : '';
-        $logoType = pathinfo($logoPath, PATHINFO_EXTENSION);
 
-
-        $logoBase64 = $logoImageContent
-            ? 'data:image/' . $logoType . ';base64,' . base64_encode($logoImageContent)
-            : '';
-
-        //'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png'; // Or from a configuration
         if (!$user) {
             return response()->json(['error' => 'Usuario no encontrado'], 404);
         }
 
-        // 1. Obtener la convocatoria
-        $form1 = UsersResponseForm1::where('user_id', $user->id)->first();
-        $convocatoria = $form1 ? $form1->convocatoria : '';
-
-        // 2. Obtener las comisiones del usuario
-        $comisiones = \DB::table('consolidated_responses')->where('user_id', $user->id)->first();
-
-        if (!$comisiones) {
-            return response()->json(['error' => 'No hay datos de comisiones para este usuario'], 404);
+        // === LOGO ===
+        $logoPath = public_path('logo_uabcs.png');
+        if (!file_exists($logoPath)) {
+            $logoPath = storage_path('logo_uabcs.png');
         }
+        $logoImageContent = file_exists($logoPath) ? file_get_contents($logoPath) : '';
+        $logoType = pathinfo($logoPath, PATHINFO_EXTENSION);
+        $logoBase64 = $logoImageContent
+            ? 'data:image/' . $logoType . ';base64,' . base64_encode($logoImageContent)
+            : '';
 
-        // 3. Calcular subtotales y totales igual que en tu ConsolidatedResponseController
-        $subtotal3_1To3_8_1 = $comisiones->actv3Comision + $comisiones->comision3_2 + $comisiones->comision3_3 + $comisiones->comision3_4 + $comisiones->comision3_5 + $comisiones->comision3_6 + $comisiones->comision3_7 + $comisiones->comision3_8 + $comisiones->comision3_8_1;
+        // === FORM 1 ===
+        $form1 = UsersResponseForm1::where('user_id', $user->id)->first();
+        $convocatoria = $form1->convocatoria ?? '';
+
+        // === FORM 2 ===
+        $form2 = UsersResponseForm2::where('user_id', $user->id)->first();
+        $form2_2 = UsersResponseForm2_2::where('user_id', $user->id)->first();
+
+        // === FORM 3 ===
+        $form3_1 = UsersResponseForm3_1::where('user_id', $user->id)->first();
+        $form3_2 = UsersResponseForm3_2::where('user_id', $user->id)->first();
+        $form3_3 = UsersResponseForm3_3::where('user_id', $user->id)->first();
+        $form3_4 = UsersResponseForm3_4::where('user_id', $user->id)->first();
+        $form3_5 = UsersResponseForm3_5::where('user_id', $user->id)->first();
+        $form3_6 = UsersResponseForm3_6::where('user_id', $user->id)->first();
+        $form3_7 = UsersResponseForm3_7::where('user_id', $user->id)->first();
+        $form3_8 = UsersResponseForm3_8::where('user_id', $user->id)->first();
+        $form3_8_1 = UsersResponseForm3_8_1::where('user_id', $user->id)->first();
+        $form3_9 = UsersResponseForm3_9::where('user_id', $user->id)->first();
+        $form3_10 = UsersResponseForm3_10::where('user_id', $user->id)->first();
+        $form3_11 = UsersResponseForm3_11::where('user_id', $user->id)->first();
+        $form3_12 = UsersResponseForm3_12::where('user_id', $user->id)->first();
+        $form3_13 = UsersResponseForm3_13::where('user_id', $user->id)->first();
+        $form3_14 = UsersResponseForm3_14::where('user_id', $user->id)->first();
+        $form3_15 = UsersResponseForm3_15::where('user_id', $user->id)->first();
+        $form3_16 = UsersResponseForm3_16::where('user_id', $user->id)->first();
+        $form3_17 = UsersResponseForm3_17::where('user_id', $user->id)->first();
+        $form3_18 = UsersResponseForm3_18::where('user_id', $user->id)->first();
+        $form3_19 = UsersResponseForm3_19::where('user_id', $user->id)->first();
+
+        // === Construir "comisiones" directamente ===
+        $comisiones = (object) [
+            'comision1' => $form2->comision1 ?? 0,
+            'actv2Comision' => $form2_2->actv2Comision ?? 0,
+            'actv3Comision' => $form3_1->actv3Comision ?? 0,
+            'comision3_2' => $form3_2->comision3_2 ?? 0,
+            'comision3_3' => $form3_3->comision3_3 ?? 0,
+            'comision3_4' => $form3_4->comision3_4 ?? 0,
+            'comision3_5' => $form3_5->comision3_5 ?? 0,
+            'comision3_6' => $form3_6->comision3_6 ?? 0,
+            'comision3_7' => $form3_7->comision3_7 ?? 0,
+            'comision3_8' => $form3_8->comision3_8 ?? 0,
+            'comision3_8_1' => $form3_8_1->comision3_8_1 ?? 0,
+            'comision3_9' => $form3_9->comision3_9 ?? 0,
+            'comision3_10' => $form3_10->comision3_10 ?? 0,
+            'comision3_11' => $form3_11->comision3_11 ?? 0,
+            'comision3_12' => $form3_12->comision3_12 ?? 0,
+            'comision3_13' => $form3_13->comision3_13 ?? 0,
+            'comision3_14' => $form3_14->comision3_14 ?? 0,
+            'comision3_15' => $form3_15->comision3_15 ?? 0,
+            'comision3_16' => $form3_16->comision3_16 ?? 0,
+            'comision3_17' => $form3_17->comision3_17 ?? 0,
+            'comision3_18' => $form3_18->comision3_18 ?? 0,
+            'comision3_19' => $form3_19->comision3_19 ?? 0,
+        ];
+
+        // === Cálculos ===
+        $subtotal3_1To3_8_1 = $comisiones->actv3Comision + $comisiones->comision3_2 + $comisiones->comision3_3 +
+            $comisiones->comision3_4 + $comisiones->comision3_5 + $comisiones->comision3_6 +
+            $comisiones->comision3_7 + $comisiones->comision3_8 + $comisiones->comision3_8_1;
+
         $subtotal3_9To3_11 = $comisiones->comision3_9 + $comisiones->comision3_10 + $comisiones->comision3_11;
         $subtotal3_12To3_16 = $comisiones->comision3_12 + $comisiones->comision3_13 + $comisiones->comision3_14 + $comisiones->comision3_15 + $comisiones->comision3_16;
         $subtotal3_17To3_19 = $comisiones->comision3_17 + $comisiones->comision3_18 + $comisiones->comision3_19;
 
-        $total = min(
-            $subtotal3_1To3_8_1 + $subtotal3_9To3_11 + $subtotal3_12To3_16 + $subtotal3_17To3_19,
-            700
-        );
-
-        $totalComision1 = $comisiones->comision1 ?? 0;
-        $totalComision2 = $comisiones->actv2Comision ?? 0;
+        $total = min($subtotal3_1To3_8_1 + $subtotal3_9To3_11 + $subtotal3_12To3_16 + $subtotal3_17To3_19, 700);
+        $totalComision1 = $comisiones->comision1;
+        $totalComision2 = $comisiones->actv2Comision;
         $totalComision3 = $total;
         $totalComisionRepetido = min($totalComision1 + $totalComision2 + $totalComision3, 1000);
 
-        // 4. Calcular mínima calidad y mínima total usando los mismos métodos
         $minimaCalidad = $this->evaluarCalidad($total);
         $minimaTotal = $this->evaluarTotal($totalComisionRepetido);
-        // Agrega esta línea para obtener la firma del evaluador:
-        $evaluatorSignature = EvaluatorSignature::where('user_id', $user->id)->first() ?? new EvaluatorSignature();
 
-        $signaturePaths = [
-            'signature_path' => storage_path('/formato-evaluacion/app/public/' . $evaluatorSignature->signature_path),
-            'signature_path_2' => storage_path('/formato-evaluacion/app/public/' . $evaluatorSignature->signature_path_2),
-            'signature_path_3' => storage_path('/formato-evaluacion/app/public/' . $evaluatorSignature->signature_path_3)
-        ];
+        // === Dictaminadores ===
+        $dictaminadoresCollection = $user->dictaminadores()->with('dictaminadorSignature')->distinct()->get();
+        $dictaminadores = $dictaminadoresCollection->map(function ($dictaminador) {
+            $signature = $dictaminador->dictaminadorSignature;
+            return [
+                'name' => $signature->evaluator_name ?? $dictaminador->name ?? 'Nombre no disponible',
+                'signature_image' => $signature->signature_image ?? '',
+                'mime' => $signature->mime ?? 'image/png',
+            ];
+        })
+        ->unique('name') // 🔹 evita duplicados por nombre
+        ->values();      // 🔹 reindexa el array
 
-        // Validación básica para evitar errores si la firma no existe
-        foreach ($signaturePaths as $key => $path) {
-            if (!file_exists($path)) {
-                $signaturePaths[$key] = null; 
-            }
-        }
 
-        $signatureBase64 = '';
-        if ($evaluatorSignature->signature_path && file_exists(public_path('storage/' . $evaluatorSignature->signature_path))) {
-            $signatureBase64 = $this->resizeAndEncodeBase64(public_path('storage/' . $evaluatorSignature->signature_path));
-        }
-
-        $signatureBase64_2 = '';
-        if ($evaluatorSignature->signature_path_2 && file_exists(public_path('storage/' . $evaluatorSignature->signature_path_2))) {
-            $signatureBase64_2 = $this->resizeAndEncodeBase64(public_path('storage/' . $evaluatorSignature->signature_path_2));
-        }
-
-        $signatureBase64_3 = '';
-        if ($evaluatorSignature->signature_path_3 && file_exists(public_path('storage/' . $evaluatorSignature->signature_path_3))) {
-            $signatureBase64_3 = $this->resizeAndEncodeBase64(public_path('storage/' . $evaluatorSignature->signature_path_3));
-        }
-        // Preparar los datos para la vista PDF
+        // === Datos a la vista ===
         $data = [
             'logoBase64' => $logoBase64,
             'convocatoria' => $convocatoria,
             'comisiones' => $comisiones,
+            'totalComision1' => $totalComision1,
+            'totalComision2' => $totalComision2,
             'total' => $total,
             'minimaCalidad' => $minimaCalidad,
             'minimaTotal' => $minimaTotal,
@@ -279,32 +308,21 @@ public function adminResetTimer(Request $request)
             'subtotal3_9To3_11' => $subtotal3_9To3_11,
             'subtotal3_12To3_16' => $subtotal3_12To3_16,
             'subtotal3_17To3_19' => $subtotal3_17To3_19,
-            'evaluator_name' => $evaluatorSignature->evaluator_name ?? '',
-            'evaluator_name_2' => $evaluatorSignature->evaluator_name_2 ?? '',
-            'evaluator_name_3' => $evaluatorSignature->evaluator_name_3 ?? '',
-            'signatureBase64' => $signatureBase64,
-            'signatureBase64_2' => $signatureBase64_2,
-            'signatureBase64_3' => $signatureBase64_3,
+            'dictaminadores' => $dictaminadores,
             'pagina_inicio' => 31,
             'pagina_total' => 33,
         ];
 
+        Log::info('Data enviada al PDF:', $data);
 
-        // Para asegurarte de que la ejecución no llegue al PDF
-        //dd("SVGPaths generados correctamente:", $svgPaths);
-
-        // 5. Pasar todo a la vista PDF
         $pdf = Pdf::loadView('reporte_pdf', $data);
-        $pdf->setPaper('A4', 'landscape'); // <-- Esta línea establece la orientación horizontal
-
-        //dd($evaluatorSignature->signature_path, $evaluatorSignature->signature_path_2, $evaluatorSignature->signature_path_3);
+        $pdf->setPaper('A4', 'landscape');
         $pdf->setOption('enable-local-file-access', true);
         $pdf->setOption('disable-smart-shrinking', true);
-        
-
 
         return $pdf->stream('reporte_pdf.pdf');
     }
+
 
     // Copia los métodos de evaluación de ConsolidatedResponseController:
     private function evaluarCalidad($total)
