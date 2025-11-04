@@ -950,9 +950,6 @@ window.submitForm = submitForm;
     }
 
 async function fetchSignatures(email) {
-    // const form = document.getElementById(formId);
-    const userType = form.querySelector('#user_type').value;
-
     try {
         const response = await fetch("{{ route('get.signatures') }}?email=" + encodeURIComponent(email));
         if (!response.ok) throw new Error('No se pudieron cargar las firmas');
@@ -962,7 +959,16 @@ async function fetchSignatures(email) {
         tbody.innerHTML = '';
 
         if (Array.isArray(data) && data.length > 0) {
+            // Use a Map to store unique signatures by evaluator name
+            const uniqueSignatures = new Map();
             data.forEach(firma => {
+                if (firma.evaluator_name && !uniqueSignatures.has(firma.evaluator_name)) {
+                    uniqueSignatures.set(firma.evaluator_name, firma);
+                }
+            });
+
+            // Iterate over the unique signatures and render them
+            uniqueSignatures.forEach(firma => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${firma.evaluator_name ?? 'Sin nombre'}</td>
@@ -974,6 +980,7 @@ async function fetchSignatures(email) {
                     </td>
                 `;
                 tbody.appendChild(tr);
+                
             });
         } else if (data.message) {
             tbody.innerHTML = `<tr><td colspan="2">${data.message}</td></tr>`;

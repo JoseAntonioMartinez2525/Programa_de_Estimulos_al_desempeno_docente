@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DictaminadorSignature;
 use Illuminate\Http\Request;
 use App\Models\FirmaDictaminador;
 use App\Models\User;
@@ -10,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use App\Models\DictaminadorSignature;
 
 class FirmaDictaminadorController extends Controller
 {
@@ -17,7 +17,7 @@ class FirmaDictaminadorController extends Controller
     {
         $user = Auth::user();
 
-        $firmaDictaminador = FirmaDictaminador::where('user_id', $user->id)->first();
+        $firmaDictaminador = DictaminadorSignature::where('user_id', $user->id)->first();
 
         // Si ya tiene firma, toma su nombre de la BD; si no, usa el del usuario
         $personaEvaluadora = $firmaDictaminador->evaluator_name ?? $user->name;
@@ -44,7 +44,7 @@ public function showResumen(Request $request)
     $firmas = []; // ✅ inicializar siempre
 
     if ($userType === 'dictaminador') {
-        $firmaDictaminador = FirmaDictaminador::where('user_id', $user->id)->first();
+        $firmaDictaminador = DictaminadorSignature::where('user_id', $user->id)->first();
         $personaEvaluadora = $firmaDictaminador->evaluator_name ?? $user->name;
 
         // Creamos un objeto dentro de un arreglo para que Blade pueda iterar
@@ -59,7 +59,7 @@ public function showResumen(Request $request)
 
         if (!$docenteId) abort(400, 'Debe especificar un docente');
 
-        $firmas = FirmaDictaminador::whereHas('docentes', function($q) use ($docenteId) {
+        $firmas = DictaminadorSignature::whereHas('docentes', function($q) use ($docenteId) {
             $q->where('docente_id', $docenteId);
         })->get();
     }
@@ -97,12 +97,12 @@ public function showResumen(Request $request)
         $imageData = base64_encode($pngBytes);
 
         // Guardar o actualizar
-        FirmaDictaminador::updateOrCreate(
+        DictaminadorSignature::updateOrCreate(
             ['user_id' => $user->id],
             [
                 'evaluator_name' => $user->name,
                 'signature_image' => $imageData,
-                
+                'mime' => 'image/png',
 
             ]
         );
@@ -163,7 +163,7 @@ public function showResumen(Request $request)
     }
 
     // Busca si el dictaminador ya tiene firma registrada
-    $firmaDictaminador = FirmaDictaminador::where('user_id', $user->id)->first();
+    $firmaDictaminador = DictaminadorSignature::where('user_id', $user->id)->first();
 
     $personaEvaluadora = $firmaDictaminador->evaluator_name ?? $user->name;
 
@@ -189,7 +189,7 @@ public function getFirmasPorDocente(Request $request)
     }
 
     // Obtener todas las firmas de dictaminadores que evaluaron a este docente
-    $firmas = FirmaDictaminador::whereHas('docentes', function ($q) use ($docenteId) {
+    $firmas = DictaminadorSignature::whereHas('docentes', function ($q) use ($docenteId) {
         $q->where('docente_id', $docenteId);
     })->get();
 
@@ -212,29 +212,29 @@ public function getSignatures(Request $request)
             return response()->json(['message' => 'No se encontró firma registrada'], 404);
         }
 
-        return response()->json([
+        return response()->json([[ // Return as an array to be consistent
             'evaluator_name' => $firma->evaluator_name ?? $user->name,
             'signature_image' => $firma->signature_image ?? null,
             'mime' => $firma->mime ?? null,
-        ]);
+        ]]);
     }
 
     // ===== Secretaria: retorna todas las firmas de los dictaminadores de un docente =====
  if ($userType === 'secretaria') {
-$docente = User::where('email', $email)->first();
+    $docente = User::where('email', $email)->where('user_type', 'docente')->first();
 
     if (!$docente) {
         return response()->json(['message' => 'Docente no encontrado'], 404);
     }
 
-    // devuelven objetos FirmaDictaminador (no usuarios)
-    $firmas = $docente->dictaminadores()->get();
+    // Obtiene los usuarios (dictaminadores) y carga sus firmas
+    $dictaminadores = $docente->dictaminadores()->with('dictaminadorSignature')->distinct()->get();
 
-    $signatures = $firmas->map(function ($firma) {
+    $signatures = $dictaminadores->map(function ($dictaminador) {
         return [
-            'evaluator_name'  => $firma->evaluator_name ?? ($firma->user->name ?? null),
-            'signature_image' => $firma->signature_image ?? null,
-            'mime'            => $firma->mime ?? null,
+            'evaluator_name'  => $dictaminador->dictaminadorSignature->evaluator_name ?? $dictaminador->name,
+            'signature_image' => $dictaminador->dictaminadorSignature->signature_image ?? null,
+            'mime'            => $dictaminador->dictaminadorSignature->mime ?? null,
         ];
     });
 
@@ -246,4 +246,3 @@ $docente = User::where('email', $email)->first();
 
 
 }
-

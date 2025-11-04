@@ -68,22 +68,20 @@ class User extends Authenticatable
         return $this->hasOne(DictaminadorSignature::class, 'user_id', 'id');
     }
 
-    public function firmaDictaminador()
-    {
-        return $this->hasOne(FirmaDictaminador::class, 'user_id');
-    }
+    // public function firmaDictaminador()
+    // {
+    //     return $this->hasOne(FirmaDictaminador::class, 'user_id');
+    // }
 
     // Relación con los dictaminadores que lo evaluaron
     public function dictaminadores()
     {
         return $this->belongsToMany(
-            \App\Models\FirmaDictaminador::class,   // Modelo de dictaminador
+            User::class,                // The User model (for dictaminadores)
             'dictaminador_docente',     // Tabla pivote
             'docente_id',               // FK del docente en la tabla pivote
-            'dictaminador_id',           // FK del dictaminador en la tabla pivote
-            'id',                                  // parent key en users (users.id)
-            'user_id'                              // related key EN FirmaDictaminador (firma.user_id)
-        )->withTimestamps();; 
+            'dictaminador_id'           // FK of the related model (dictaminador) on the pivot table
+        )->withTimestamps();
     }
 
 public function tieneAlgunFormularioEvaluado()
