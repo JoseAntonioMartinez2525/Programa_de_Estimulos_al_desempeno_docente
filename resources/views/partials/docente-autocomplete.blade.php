@@ -148,6 +148,9 @@
         // Manejo cuando se selecciona docente: usa axios para /get-docente-data por defecto
         document.addEventListener('docenteSelected', async (e) => {
             const docente = e.detail;
+            // Si la vista que incluye este parcial necesita manejar el evento por su cuenta, puede pasar este flag.
+            if (config.skipAutoFetch) return;
+
             const email = docente.email;
             selectedEmail = email; // actualizar variable global
             try {

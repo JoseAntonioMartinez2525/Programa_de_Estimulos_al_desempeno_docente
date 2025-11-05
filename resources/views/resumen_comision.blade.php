@@ -7,6 +7,14 @@ $user = Auth::user();
 $userType = $user->user_type;
 $user_email = $user->email;
 $user_identity = $user->id; 
+
+$docenteConfig = [
+    'searchInputId' => 'docenteSearch',
+    'suggestionsBoxId' => 'docenteSuggestions',
+    'hiddenEmailId' => 'selectedDocenteEmail',
+    'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data',
+    'skipAutoFetch' => true, // Evita que el script de autocompletado global intente cargar datos.
+];
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $newLocale }}">
@@ -21,6 +29,7 @@ $user_identity = $user->id;
     
     <x-head-resources />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
     <script src="{{ asset('js/resumen_comision.js') }}"></script>
 </head>
 <style>
@@ -213,12 +222,8 @@ body.dark-mode img.imgFirma{
 
             <div class="container mt-4" id="seleccionDocente">
             @if($userType !== 'docente')
-            <!-- Select para dictaminador seleccionando docentes -->
-            <label for="docenteSearch">Buscar Docente:</label>
-            <select id="docenteSearch" class="form-select"> <!--name="docentes[]" multiple-->
-            <option value="">Seleccionar un docente</option>
-            <!-- Aquí se llenarán los docentes con JavaScript -->
-            </select>
+            {{-- Componente de búsqueda de docente --}}
+            <x-docente-search />
             @endif
             </div>
             <main class="container" id="formContainer" style="display: none;">
@@ -696,23 +701,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const formContainer = document.getElementById('formContainer');
     const userType = @json($userType);
     
-    if (!docenteSearch) return;
+    // Escuchar el evento personalizado 'docenteSelected' que dispara el componente de autocompletado
+    document.addEventListener('docenteSelected', async (event) => {
+        const docente = event.detail;
+        const email = docente.email;
 
-    try {
-        const docentes = await fetchDocentes();
-        docentes.forEach(docente => {
-            const opt = document.createElement('option');
-            opt.value = docente.email;
-            opt.textContent = docente.email;
-            docenteSearch.appendChild(opt);
-        });
-    } catch (err) {
-        console.error('Error cargando docentes', err);
-        return;
-    }
-
-    docenteSearch.addEventListener('change', async e => {
-        const email = e.target.value;
         if (!email) return;
 
         formContainer.style.display = 'none';
@@ -723,7 +716,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             const userId = await fetchUserId(email);
             const dictaminatorData = await fetchDictaminatorResponses(userId);
 
-            // inicializar arreglo base
             let comisiones = Array(41).fill('0');
             comisiones[0] = data.form2?.comision1 || '0';
             comisiones[1] = data.form2?.comision1 || '0';
@@ -763,6 +755,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log('Total logrado:', total);
 
         } catch (error) {
+            formContainer.style.display = 'none'; // Hide on error
             // On error, clear the button container
             const pdfButtonContainer = document.getElementById('pdfButtonContainer');
             if (pdfButtonContainer) {
