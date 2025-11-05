@@ -296,7 +296,7 @@ public function adminResetTimer(Request $request)
         // === Datos a la vista ===
         $data = [
             'logoBase64' => $logoBase64,
-            'convocatoria' => $convocatoria,
+            'convocatoria' => $form1->convocatoria ?? '',
             'comisiones' => $comisiones,
             'totalComision1' => $totalComision1,
             'totalComision2' => $totalComision2,

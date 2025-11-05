@@ -190,6 +190,12 @@ body.dark-mode img.imgFirma{
     text-decoration: none;
   }
 
+  /* convocatoria resumen_comision blade */
+    span#convocatoria-title {
+        margin-inline-start: 10rem;
+    }
+
+
 </style>
 <body class="bg-gray-50 text-black/50">
 
@@ -240,17 +246,7 @@ body.dark-mode img.imgFirma{
 
             </table>
             <table>
-            {{-- <thead>
-            <tr>
-            <th id="nivelLabel">Nivel obtenido de acuerdo al artículo 10 del Reglamento</th>
-            <th colspan="1" id="minimaLabel">Mínima de Calidad</th>
-            <th colspan="2" id="minimaCalidad"></th>
-            </tr>
-            </thead> --}}
             <tbody>
-            {{-- <th style="padding-right: 200px;"></th>
-            <th class="minima">Mínima Total</th>
-            <th id="minimaTotal"></th> --}}
             <thead>
             <tr>
                 <td style="padding-left: 600px;">
@@ -308,25 +304,18 @@ body.dark-mode img.imgFirma{
 
     @endif
 <br>
-    <center>
+    
         <footer id="footerForm3_4">
-            <center>
+        
                 <div id="convocatoria">
-                    <!-- Mostrar convocatoria -->
-                    @if(isset($convocatoria))
-
-                        <div style="margin-right: -700px;">
-                            <h1>Convocatoria: {{ $convocatoria->convocatoria }}</h1>
-                        </div>
-                    @endif
+                    <div>
+                        {{-- This will be filled by JavaScript --}}
+                        <span id="convocatoria-title"></span>
+                    </div>
                 </div>
-            </center>
-    {{-- -<div id="piedepagina" style="margin-left: 500px;margin-top:10px;">
-        Página 33 de 33
-    </div> --}}
 
         </footer>
-    </center>
+   
         </main>
 
     </div>
@@ -763,6 +752,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const { sumaComision3, total } = calcularSubtotales(comisiones);
 
 
+            document.getElementById('convocatoria-title').textContent = `Convocatoria: ${data.docente.convocatoria || 'No asignada'}`;
             renderTabla(labels, values, comisiones, dataContainer);
             formContainer.style.display = 'block';
 
