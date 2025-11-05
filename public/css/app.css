@@ -189,9 +189,6 @@ body {
         padding: -20px 0 0 0;
     }
 
-    button#btn3_15{
-        margin-left: 484px!important;
-    }
     
 }
 
@@ -282,7 +279,7 @@ body.dark-mode [id^="btn3_"]:hover , body.dark-mode .dynamicBtn:hover{
 }
 
 button#btn3_15 {
-    margin-left: 300px!important;
+    margin-inline-start: 60rem;
 }
 
 #btn3_19{

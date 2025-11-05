@@ -344,7 +344,7 @@ $user_identity = $user->id;
                     <h3 style="margin-left:400px;">Tutorias</h3>
                 </h4>
             </div>
-            <table class="table table-sm tutorias">
+            <table class="table table-sm tutorias mb-3">
             <x-sub-headers-form3_9 :componentIndex="0" />
                 <tbody data-page="14">
                     <tr>
@@ -353,7 +353,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Doctorado</td>
                         <td id="puntajeTutorias20_1">20</td>
-                        <td id="puntaje3_9_1" name="puntaje3_9_1"></td>
+                        <td id="puntaje3_9_1" name="puntaje3_9_1">0</td>
                         <td id="tutorias1">0</td>
                         <td class="td_obs">
                         @if ($userType == 'dictaminador')
@@ -377,7 +377,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Maestría</td>
                         <td id="puntajeTutorias15_1">15</td>
-                        <td id="puntaje3_9_2" name="puntaje3_9_2"></td>
+                        <td id="puntaje3_9_2" name="puntaje3_9_2">0</td>
                         <td id="tutorias2">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -400,7 +400,7 @@ $user_identity = $user->id;
                         <td>Tesis y otras</td>
                         <td>TSU, Lic y especialidad</td>
                         <td id="puntajeTutorias10_1">10</td>
-                        <td id="puntaje3_9_3" name="puntaje3_9_3"></td>
+                        <td id="puntaje3_9_3" name="puntaje3_9_3">0</td>
                         <td id="tutorias3">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -423,7 +423,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Doctorado</td>
                         <td id="puntajeTutorias55">55</td>
-                        <td id="puntaje3_9_4" name="puntaje3_9_4"></td>
+                        <td id="puntaje3_9_4" name="puntaje3_9_4">0</td>
                         <td id="tutorias4">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -446,7 +446,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Maestría</td>
                         <td id="puntajeTutorias45">45</td>
-                        <td id="puntaje3_9_5" name="puntaje3_9_5"></td>
+                        <td id="puntaje3_9_5" name="puntaje3_9_5">0</td>
                         <td id="tutorias5">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -469,7 +469,7 @@ $user_identity = $user->id;
                         <td>Tesis y otras</td>
                         <td>TSU, Lic y especialidad</td>
                         <td id="puntajeTutorias35">35</td>
-                        <td id="puntaje3_9_6" name="puntaje3_9_6"></td>
+                        <td id="puntaje3_9_6" name="puntaje3_9_6">0</td>
                         <td id="tutorias6">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -492,7 +492,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Doctorado</td>
                         <td id="puntajeTutorias70">70</td>
-                        <td id="puntaje3_9_7" name="puntaje3_9_7"></td>
+                        <td id="puntaje3_9_7" name="puntaje3_9_7">0</td>
                         <td id="tutorias7">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -526,7 +526,7 @@ $user_identity = $user->id;
                         Página 14 de 33
                     </div>                
             </div>
-    
+
             <table class="table table-sm tutorias table2">
             <x-sub-headers-form3_9 :componentIndex="1" />
                 <tbody data-page="15">
@@ -536,7 +536,7 @@ $user_identity = $user->id;
                         <td>Tesis</td>
                         <td>Maestría</td>
                         <td id="puntajeTutorias60">60</td>
-                        <td id="puntaje3_9_8" name="puntaje3_9_8"></td>
+                        <td id="puntaje3_9_8" name="puntaje3_9_8">0</td>
                         <td id="tutorias8">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')
@@ -560,7 +560,7 @@ $user_identity = $user->id;
                         <td>Tesis y otras</td>
                         <td>TSU, Lic y especialidad</td>
                         <td id="puntajeTutorias50">50</td>
-                        <td id="puntaje3_9_9" name="puntaje3_9_9"></td>
+                        <td id="puntaje3_9_9" name="puntaje3_9_9">0</td>
                         <td id="tutorias9">0</td>
                         <td class="td_obs">
                             @if ($userType == 'dictaminador')

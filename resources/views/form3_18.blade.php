@@ -605,7 +605,7 @@ $user_identity = $user->id;
                     </tr>
                     <tr>
                         <td>l)</td>
-                        <td>Ciclo de conferencias, simposio, coloquio, etc.</td>
+                        <td><textarea name="" class="textAreaForms" cols="30" rows="10">Ciclo de conferencias, simposio, coloquio, etc.</textarea></td>
                         <td>Comisiones de apoyo</td>
                         <td>Regional/Institucional</td>
                         <td id="puntajeCicloComApoyoReg"><b>10</b></td>
@@ -631,11 +631,6 @@ $user_identity = $user->id;
                             @endif
                         </td>
                     </tr>
-                </tbody>
-            </table>
-            <!--Tabla informativa Acreditacion Actividad 3.18-->
-            <table>
-                <thead>
                     <tr>
                         <th class="acreditacion" scope="col" colspan=2> **Coparticipación técnica y/o
                             académica y/o
@@ -650,8 +645,14 @@ $user_identity = $user->id;
 
                         </th>
                     </tr>
-                </thead>
+                </tbody>
             </table>
+            <!--Tabla informativa Acreditacion Actividad 3.18-->
+            {{-- <table>
+                <thead>
+                    
+                </thead>
+            </table> --}}
 
             <!--Convocatoria 2-->
             <div style="display: flex; justify-content: space-between;padding-top: 150px;">
