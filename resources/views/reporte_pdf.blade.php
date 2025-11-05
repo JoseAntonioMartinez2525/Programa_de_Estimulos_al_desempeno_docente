@@ -1,5 +1,32 @@
 {{-- formato-evaluacion/resources/views/reporte_pdf.blade.php --}}
 @php
+
+// Inicializa
+$convocatoria = '';
+
+// Intenta obtener email desde la query (la ruta que llama al PDF usa ?email=...)
+try {
+    $email = request()->query('email') ?? null;
+
+    // Si el controlador ya te pasó $user (u otro identificador), úsalo primero:
+    if (isset($user) && $user instanceof \App\Models\User) {
+        $userModel = $user;
+    } elseif ($email) {
+        $userModel = \App\Models\User::where('email', $email)->first();
+    } else {
+        $userModel = null;
+    }
+
+    if ($userModel) {
+        $form1 = \App\Models\UsersResponseForm1::where('user_id', $userModel->id)->first();
+        $convocatoria = $form1->convocatoria ?? '';
+    }
+} catch (\Throwable $e) {
+    // Evita que la vista rompa: registramos el error y dejamos $convocatoria vacío
+    \Log::error('Error cargando convocatoria en vista reporte_pdf: '.$e->getMessage());
+    $convocatoria = '';
+}
+
 $filas1To3_8_1 = [
     [
         'actividad' => '1. Permanencia en las actividades de la docencia',

@@ -207,7 +207,7 @@ public function adminResetTimer(Request $request)
 
         // === FORM 1 ===
         $form1 = UsersResponseForm1::where('user_id', $user->id)->first();
-        $convocatoria = $form1->convocatoria ?? '';
+       $convocatoria = $form1->convocatoria ?? '';
 
         // === FORM 2 ===
         $form2 = UsersResponseForm2::where('user_id', $user->id)->first();
@@ -314,6 +314,7 @@ public function adminResetTimer(Request $request)
         ];
 
         Log::info('Data enviada al PDF:', $data);
+        \Log::info('FORM1', ['user_id' => $user->id, 'form1' => $form1]);
 
         $pdf = Pdf::loadView('reporte_pdf', $data);
         $pdf->setPaper('A4', 'landscape');
