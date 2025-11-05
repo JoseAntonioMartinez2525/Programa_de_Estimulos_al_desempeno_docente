@@ -195,6 +195,9 @@ body.dark-mode img.imgFirma{
         margin-inline-start: 10rem;
     }
 
+    .form-select{
+        width: 70%!important;
+    }
 
 </style>
 <body class="bg-gray-50 text-black/50">
