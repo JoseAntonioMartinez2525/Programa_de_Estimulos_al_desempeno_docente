@@ -1436,3 +1436,27 @@ i.fa-solid.fa-alarm-clock{
 }
 
 
+input#prorrogaInput
+ {
+    margin-inline-start: 7rem;
+}
+
+ul.list-center
+ {
+    margin-inline-start: 1rem;
+}
+
+
+body.dark-mode .relative.w-full.max-w-2xl.px-6.lg\:max-w-7xl, body.dark-mode th, body.dark-mode td, body.dark-mode table.table.table-sm{
+    background-color: #282828;
+}
+
+
+body.dark-mode td.puntajeEvaluar2, body.dark-mode th, body.dark-mode td, body.dark-mode table.table.table-sm, body.dark-mode label#DSE, body.dark-mode label#DSE2{
+    color: white;
+}
+
+body.dark-mode input#comisionPosgrado, body.dark-mode input#comisionLic{
+    background-color: transparent;
+}
+

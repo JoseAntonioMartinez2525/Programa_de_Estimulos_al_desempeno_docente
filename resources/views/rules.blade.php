@@ -136,7 +136,10 @@ body.dark-mode nav.nav.flex-column a:hover {
   display: flex;
   min-height: 100vh;
 }
-
+li.nav-item
+ {
+    margin-inline-start: 2rem;
+}
   </style>
 
 </head>

@@ -199,6 +199,9 @@ body.dark-mode img.imgFirma{
     text-decoration: none;
   }
 
+  body.dark-mode .btn.custom-btn{
+        background-color: #23516b;
+  }
   /* convocatoria resumen_comision blade */
     span#convocatoria-title {
         margin-inline-start: 10rem;
@@ -256,13 +259,14 @@ body.dark-mode img.imgFirma{
             <table>
             <tbody>
             <thead>
-            <tr>
+                {{-- posible boton para enviar las respúestas consolidadas de las comisiones --}}
+            {{-- <tr>
                 <td style="padding-left: 600px;">
                     @if(Auth::user()->user_type === 'dictaminador')
                         <button type="submit" id="submitButton" class="btn custom-btn buttonSignature2">Enviar</button>
                     @endif
                 </td>
-            </tr>
+            </tr> --}}
             </thead>
             </tbody>
             </table>
@@ -292,7 +296,7 @@ body.dark-mode img.imgFirma{
                         <td>{{ $signature->evaluator_name }}</td>
                         <td>
                             <img src="data:{{ $signature->mime }};base64,{{ $signature->signature_image }}" 
-                                 alt="Firma" style="max-width: 150px; display: block;" class="bg-info-subtle">
+                                 alt="Firma" style="max-width: 150px; display: block;">
                         </td>
                     </tr>
                 @else
@@ -977,7 +981,7 @@ async function fetchSignatures(email) {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${firma.evaluator_name ?? 'Sin nombre'}</td>
-                    <td>
+                    <td style="background-color: #d6fff7;">
                         ${firma.signature_image 
                             ? `<img src="data:${firma.mime};base64,${firma.signature_image}" 
                                      style="max-width: 150px; display:block;">`

@@ -71,6 +71,7 @@ nav {
 .actv3::-webkit-scrollbar-thumb {
     background: #555385;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .actv3::-webkit-scrollbar-thumb:hover {

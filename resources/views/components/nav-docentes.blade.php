@@ -5,23 +5,23 @@
     <form class="printButtonClass">
         @csrf
         <nav class="nav flex-column {{ $navClass }}"
-            style="padding-top: 50px; height: 900px; background: linear-gradient(90deg, #afc7ce, #4281a4);"
+            style="padding-top: 0.125rem; height: 100.25rem; background: linear-gradient(90deg, #afc7ce, #4281a4);"
             id="navPrint">
-            <div class="nav-header" style="display: flex; align-items: center; padding-top: 50px;">
+            <div class="nav-header" style="display: flex;padding-top: 2rem;justify-content: flex-start;align-content: flex-start;flex-direction: row-reverse;align-items: baseline;">
+                <li style="list-style: none; margin-right: 20px;">
+                    <a href="{{ route('login') }}" style="display:inline;padding-left:1rem;" title="cerrar_sesion">
+                        <i class="fas fa-power-off" style="font-size: 20px; color:white;" name="cerrar_sesion"></i>
+                    </a>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled enlaceSN {{ $emailClass }}" style="font-size: large; color: white;padding-left: 50px;"
+                    <a class="nav-link disabled enlaceSN {{ $emailClass }}" style="font-size: large; color: white;padding-left: 1rem;"
                         href="#">
                         <i class="fa-solid fa-user" style="color: white;"></i>&nbsp&nbsp{{ $user->email }}
                     </a>
                 </li>
-            <li style="list-style: none; margin-right: 20px;">
-                <a href="{{ route('login') }}" style="display:inline;" title="cerrar_sesion">
-                    <i class="fas fa-power-off" style="font-size: 20px; color:white;" name="cerrar_sesion"></i>
-                </a>
-            </li>
             </div><br>
             <div>
-                <ul style="list-style: none;"">
+                <ul style="list-style: none;" class="list-center">
                     <li class=" nav-item">
                     <a class="nav-link active enlaceSN" aria-current="page" style="width: 200px;"
                         href="{{ route('rules') }}" title="Reglamento deacuerdo al artículo 10 de PEDPD"><i
