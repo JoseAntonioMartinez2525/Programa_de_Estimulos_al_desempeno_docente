@@ -292,7 +292,7 @@ body.dark-mode img.imgFirma{
                         <td>{{ $signature->evaluator_name }}</td>
                         <td>
                             <img src="data:{{ $signature->mime }};base64,{{ $signature->signature_image }}" 
-                                 alt="Firma" style="max-width: 150px; display: block;">
+                                 alt="Firma" style="max-width: 150px; display: block;" class="bg-info-subtle">
                         </td>
                     </tr>
                 @else
