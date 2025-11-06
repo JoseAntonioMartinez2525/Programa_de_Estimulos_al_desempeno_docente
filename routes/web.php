@@ -299,7 +299,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/formato-evaluacion/edit_delete_form/', [DynamicFormController::class, 'showDynamicForm'])->name('edit_delete_form');
 
     // Ruta para cambiar el modo oscuro
-    Route::post('/toggle-dark-mode', [ThemeController::class, 'toggleDarkMode']);
+    Route::post('/toggle-dark-mode', [ThemeController::class, 'toggleDarkMode'])->name('theme.toggle');
     //Route::resource('dynamic-forms', DynamicFormController::class);
     Route::post('/dynamic-form/store', [DynamicFormController::class, 'store'])->name('dynamic-form.store');
 

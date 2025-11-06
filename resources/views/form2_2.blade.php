@@ -114,7 +114,10 @@ body.dark-mode nav.nav.flex-column a:hover {
    color:  rgb(122, 164, 237);
 }
 
-</style>    
+</style>  
+<script>
+    window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
+</script>  
 </head>
 
 <body class="bg-gray-50 text-black/50">

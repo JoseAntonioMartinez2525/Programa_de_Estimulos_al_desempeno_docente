@@ -87,6 +87,9 @@ if (!isset($docenteConfigForm)) {
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <x-head-resources />
+    <script>
+        window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
+    </script>
     @include('partials.docente-autocomplete', ['config' => $docenteConfig])
     @include('partials.submit-form', ['config' => $docenteConfigForm])
     <link href="{{ asset('css/onePage.css') }}" rel="stylesheet">
@@ -97,7 +100,7 @@ if (!isset($docenteConfigForm)) {
     </style>
 </head>
 
-<body class="bg-gray-50 text-black/50">
+<body class="bg-gray-50 text-black/50 {{ $bodyClass ?? 'light-mode' }}">
 
     <div class="relative min-h-screen flex flex-col items-center justify-center">
         @if (Route::has('login'))

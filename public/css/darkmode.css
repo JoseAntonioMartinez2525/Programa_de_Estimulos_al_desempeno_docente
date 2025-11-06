@@ -23,10 +23,40 @@ body.light-mode .btn {
     color: #000000;
 }
 
+
 body.light-mode{
-    background-color: #edeef0;
+    background-color: #ffffff;
 }
+
+
+
+body.light-mode button.btn.btn-outline-primary.w-100.form-option{
+    background-color: #528fb3;
+    color: white;
+    border-color: transparent;
+}
+
+body.light-mode button.btn-outline-primary.w-100.form-option:hover {
+    background-color: #719dd1;
+    color: white;
+    border-color: transparent;
+
+}
+
 #toggle-dark-mode{
     margin-left: 75rem !important;
+}
+
+
+body.light.mode .custom-btn{
+        background-color: #9ccbdd;
+        color: #0b3b67;
+}
+
+body.light.mode .custom-btn:hover {
+
+    background-color: #afc7ce;
+    color: floralwhite;
+    font-weight: 500;
 }
 

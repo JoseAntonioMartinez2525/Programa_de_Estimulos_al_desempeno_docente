@@ -335,8 +335,9 @@ body.dark-mode [id^="obs3_1_"] {
     height: auto !important;
 }
 
-[id^="btn3_"] {
+body.light-mode [id^="btn3_"] {
     margin-left: 900px;
+    background-color: #528fb3;
 }
 
 body.dark-mode [id^="btn3_"] {
@@ -349,6 +350,9 @@ body.dark-mode [id^="btn3_"]:hover {
 }
 </style>
 
+<script>
+    window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
+</script>
 
 
 </head>

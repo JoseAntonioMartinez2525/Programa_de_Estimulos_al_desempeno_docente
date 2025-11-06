@@ -24,7 +24,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <x-head-resources />
 @include('partials.timer')
 
-
+    <script>
+        window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
+    </script>
 </head>
 @if (Route::has('login'))
         @csrf

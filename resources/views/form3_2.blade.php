@@ -176,6 +176,9 @@ body.dark-mode [id^="btn3_"]:hover {
 }
 
 </style>
+<script>
+    window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
+</script>
 </head>
 
 <body class="bg-gray-50 text-black/50">

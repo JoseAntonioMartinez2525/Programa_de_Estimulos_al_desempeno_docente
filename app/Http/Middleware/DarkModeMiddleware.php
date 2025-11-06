@@ -15,13 +15,11 @@ class DarkModeMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Verificar si el modo oscuro está activado en la sesión o en una cookie
-        if (session('dark_mode', false)) {
-            // Añadir una clase para aplicar el modo oscuro
-            view()->share('darkMode', true);
-        } else {
-            view()->share('darkMode', false);
-        }
+        $isDarkMode = session('dark_mode', false);
+
+        view()->share('darkMode', $isDarkMode);
+        view()->share('bodyClass', $isDarkMode ? 'dark-mode' : 'light-mode');
+
         return $next($request);
     }
 }

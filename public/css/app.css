@@ -302,17 +302,6 @@ margin-left: 900px;
     background-color: #d6fff7;
 }
 
-.custom-btn{
-        background-color: #9ccbdd;
-        color: #0b3b67;
-}
-
-.custom-btn:hover {
-
-    background-color: #afc7ce;
-    color: floralwhite;
-    font-weight: 500;
-}
 
 
 
@@ -1089,19 +1078,6 @@ body.dark-mode nav.nav.flex-column a:hover {
 
 
 
-.btn-outline-primary:hover {
-    background-color: #719dd1;
-    color: white;
-    border-color: transparent;
-
-}
-
-.btn-outline-primary{
-    background-color: #528fb3;
-    color: white;
-    border-color: transparent;
-
-}
 
 body.dark-mode .btn-outline-primary{
         background-color: #2c3777!important;

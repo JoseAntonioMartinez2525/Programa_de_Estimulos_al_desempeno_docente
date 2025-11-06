@@ -22,7 +22,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     }
   }
 </style>
-
+<script>
+    window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
+</script>
 </head>
 
 <body class="font-sans antialiased">

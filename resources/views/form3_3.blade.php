@@ -3,6 +3,9 @@ $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
+$user = Auth::user();
+$userType = $user->user_type;
+$user_identity = $user->id; 
 // datos para cada formulario
 $docenteConfig = [
         'formKey' => 'form3_3',
@@ -102,249 +105,254 @@ $docenteConfig = [
 
     <x-head-resources />
     @include('partials.docente-autocomplete', ['config' => $docenteConfig])
-<style>
- body.chrome @media print {
-    #convocatoria, #convocatoria_copy {
-        font-size: 1.2rem;
-        color: blue; /* Ejemplo de estilo específico para Chrome */
-    }
+    <style>
+        @media print {
+            body.chrome #convocatoria, 
+            body.chrome #convocatoria_copy {
+                font-size: 1.2rem;
+                color: blue;
+            }
+        }
 
 
-    @html{
-        font-size: 2rem;
-    }
+        html{
+            font-size: 2rem;
+        }
 
-    @media screen{
-       #convocatoria, #convocatoria_copy {
-        font-size: 1.2rem;
-        color: blue; /* Ejemplo de estilo específico para Chrome */
-    }
-}
- }
-
- .table3_3_2{
-    margin-top: 200px;
- }
-
-#convocatoria_copy{
-    font-weight: bold;
-    
-}
-
-.espaciadoConvocatoria{
-        margin-top: 100px;
-    }
-
-
-@media print {
-    .print-footer { /* Estilos comunes para ambos footers en la impresión */
-        display: table-footer-group !important; /* Asegura que se muestre como footer */
-        position: fixed; /* Para que se pegue al final de la página */
-        bottom: 0;
-        width: 100%;
-    }
-    .first-page-footer {
-        /* Estilos específicos para el footer de la primera página */
-    }
-    .second-page-footer {
-        /* Estilos específicos para el footer de la segunda página */
-    }
-    /* Oculta el footer que no corresponde a la página actual */
-    .first-page-footer {
-        display: table-footer-group;
-    }
-    .second-page-footer {
-        display: none;
-    }
-    table:nth-of-type(2) ~ table .second-page-footer { /* Selecciona el segundo footer solo cuando hay dos tablas antes */
-        display: table-footer-group;
-    }
-    table:nth-of-type(2) ~ table .first-page-footer { /* Oculta el primer footer cuando hay dos tablas antes */
-        display: none;
-    }
-    body {
-        -webkit-print-color-adjust: exact;
-    }
-
-    .espaciadoConvocatoria{
-        margin-top: 100px;
-    }
-}
-
-    @media print {
-    .page-footer {
-        position: relative;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 10px;
-        background-color: white;
-        padding: 10px 0;
-        border-top: 1px solid #ccc;
-        page-break-after: always; /* Asegura el salto de página después del footer */
-    }
-    body {
+        @media screen{
+            #convocatoria, #convocatoria_copy {
+                font-size: 1.2rem;
+                color: blue; /* Ejemplo de estilo específico para Chrome */
+            }
+        }
         
-        margin-left: 200px ;
-        margin-top: -10px;
-        padding: 0;
-        font-size: .7rem;
-        padding-bottom: 50px;
-       
-    }
-        .footerForm3_1 {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-    }
 
-.prevent-overlap {
-    page-break-before: always;
-    page-break-inside: avoid; 
-}
+        .table3_3_2{
+            margin-top: 200px;
+        }
 
-    #convocatoria, #convocatoria_copy, #piedepagina, #piedepagina_copy {
-        margin: 0;
-        font-size: .7rem;
-    }
+        #convocatoria_copy{
+            font-weight: bold;
+            
+        }
 
-    #piedepagina {
-        margin: 0;
-    }
-
-    @page {
-        size: landscape;
-        margin: 20mm; /* Ajusta según sea necesario */
-        counter-increment: page;
-        
-    }
-    
-    @page:first {
-  counter-reset: page 2; /* Initialize the counter to 2 for the first page */
-  counter-increment: page;
-}
+        .espaciadoConvocatoria{
+                margin-top: 100px;
+            }
 
 
-    .page-number-display {
-        display: block;
-        text-align: center;
-        font-size: 12px;
-        position: fixed;
-        bottom: 10px;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-    
-    
-}
+        @media print {
+            .print-footer { /* Estilos comunes para ambos footers en la impresión */
+                display: table-footer-group !important; /* Asegura que se muestre como footer */
+                position: fixed; /* Para que se pegue al final de la página */
+                bottom: 0;
+                width: 100%;
+            }
+            .first-page-footer {
+                /* Estilos específicos para el footer de la primera página */
+            }
+            .second-page-footer {
+                /* Estilos específicos para el footer de la segunda página */
+            }
+            /* Oculta el footer que no corresponde a la página actual */
+            .first-page-footer {
+                display: table-footer-group;
+            }
+            .second-page-footer {
+                display: none;
+            }
+            table:nth-of-type(2) ~ table .second-page-footer { /* Selecciona el segundo footer solo cuando hay dos tablas antes */
+                display: table-footer-group;
+            }
+            table:nth-of-type(2) ~ table .first-page-footer { /* Oculta el primer footer cuando hay dos tablas antes */
+                display: none;
+            }
+            body {
+                -webkit-print-color-adjust: exact;
+            }
 
-.page-footer.hidden-footer {
-    display: none !important;
-}
+            .espaciadoConvocatoria{
+                margin-top: 100px;
+            }
+        }
+
+            @media print {
+            .page-footer {
+                position: relative;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                font-size: 10px;
+                background-color: white;
+                padding: 10px 0;
+                border-top: 1px solid #ccc;
+                page-break-after: always; /* Asegura el salto de página después del footer */
+            }
+            body {
+                
+                margin-left: 200px ;
+                margin-top: -10px;
+                padding: 0;
+                font-size: .7rem;
+                padding-bottom: 50px;
+            
+            }
+                .footerForm3_1 {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+
+            .prevent-overlap {
+                page-break-before: always;
+                page-break-inside: avoid; 
+            }
+
+            #convocatoria, #convocatoria_copy, #piedepagina, #piedepagina_copy {
+                margin: 0;
+                font-size: .7rem;
+            }
+
+            #piedepagina {
+                margin: 0;
+            }
+
+            @page {
+                size: landscape;
+                margin: 20mm; /* Ajusta según sea necesario */
+                counter-increment: page;
+                
+            }
+            
+            @page:first {
+            counter-reset: page 2; /* Initialize the counter to 2 for the first page */
+            counter-increment: page;
+        }
 
 
-@media print {
-    hidden-footer {
-        display: none !important;
-    }
+            .page-number-display {
+                display: block;
+                text-align: center;
+                font-size: 12px;
+                position: fixed;
+                bottom: 10px;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            
+            
+        }
 
-    /* Prevent page breaks within table rows */
-    table tr {
-        page-break-inside: avoid;
-    }
-
-    .table-wrap{
-      height: 100px; 
-      page-break-inside: avoid; 
-    }
+        .page-footer.hidden-footer {
+            display: none !important;
+        }
 
 
-    /* Página 4 */
-/* Mostrar el footer correcto según la página */
-    .page-break[data-page="6"] .first-page-footer {
-        display: table-footer-group !important;
-    }
+        @media print {
+            hidden-footer {
+                display: none !important;
+            }
 
-    .page-break[data-page="7"] .second-page-footer {
-        display: table-footer-group !important;
-    }
+            /* Prevent page breaks within table rows */
+            table tr {
+                page-break-inside: avoid;
+            }
 
-    .page-number:before {
-  content: "Página " counter(page) " de 33";
-}
+            .table-wrap{
+            height: 100px; 
+            page-break-inside: avoid; 
+            }
 
-.secretaria-style {
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 10px;
-    text-align: left;
-    
-}
 
-.secretaria-style #piedepagina {
-    float: right;
-    display: inline-block;
-    margin-left: 5px;
-    font-weight: normal; /* Opcional, si quieres menos énfasis */
-    color: #000;
-}
+            /* Página 4 */
+            /* Mostrar el footer correcto según la página */
+            .page-break[data-page="6"] .first-page-footer {
+                display: table-footer-group !important;
+            }
 
-.dictaminador-style {
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: 10px;
-    text-align: center;
-}
+            .page-break[data-page="7"] .second-page-footer {
+                display: table-footer-group !important;
+            }
 
-.dictaminador-style#piedepagina_copy {
-    margin-left: 0px;
-    margin-top: 10px;
-    font-weight: normal!important;
+                .page-number:before {
+            content: "Página " counter(page) " de 33";
+            }
 
-}
+            .secretaria-style {
+                font-weight: bold;
+                font-size: 14px;
+                margin-top: 10px;
+                text-align: left;
+                
+            }
 
-/* Estilo para secretaria o userType vacío */
-.secretaria-style#piedepagina_copy {
-    float: right;
-    display: inline-block;
-    margin-left: 5px;
-    font-weight: normal; /* Opcional, si quieres menos énfasis */
-    color: #000;
-}
-}
+            .secretaria-style #piedepagina {
+                float: right;
+                display: inline-block;
+                margin-left: 5px;
+                font-weight: normal; /* Opcional, si quieres menos énfasis */
+                color: #000;
+            }
 
- body.dark-mode [class^="obs3_3_"]{
-    color: white;
-    background-color: transparent;
-}
+            .dictaminador-style {
+                font-weight: bold;
+                font-size: 16px;
+                margin-top: 10px;
+                text-align: center;
+            }
 
-body.dark-mode .comIncisoA, body.dark-mode .comIncisoB, body.dark-mode .comIncisoC,
- body.dark-mode .comIncisoD{
-    color: black;
-}
+            .dictaminador-style#piedepagina_copy {
+                margin-left: 0px;
+                margin-top: 10px;
+                font-weight: normal!important;
 
-body.dark-mode td.cantidad{
-    color:white;
-}
+            }
 
-[id^="btn3_"]{
-    margin-left: 900px;
-}
+            /* Estilo para secretaria o userType vacío */
+            .secretaria-style#piedepagina_copy {
+                float: right;
+                display: inline-block;
+                margin-left: 5px;
+                font-weight: normal; /* Opcional, si quieres menos énfasis */
+                color: #000;
+            }
+            }
 
-body.dark-mode [id^="btn3_"]{
-        background-color: #456483;
-        color: floralwhite;
-}
+            body.dark-mode [class^="obs3_3_"]{
+                color: white;
+                background-color: transparent;
+            }
 
-body.dark-mode [id^="btn3_"]:hover {
-    background-color: #6a5b9f;
-    
-}
+            body.dark-mode .comIncisoA, body.dark-mode .comIncisoB, body.dark-mode .comIncisoC,
+            body.dark-mode .comIncisoD{
+                color: black;
+            }
+
+            body.dark-mode td.cantidad{
+                color:white;
+            }
+
+            [id^="btn3_"]{
+                margin-left: 900px;
+            }
+
+            body.dark-mode [id^="btn3_"]{
+                    background-color: #456483;
+                    color: floralwhite;
+            }
+
+            body.dark-mode [id^="btn3_"]:hover {
+                background-color: #6a5b9f;
+                
+            }
     </style>
+<script>
+window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
+</script>
 </head>
 
 <body class="bg-gray-50 text-black/50">
@@ -357,11 +365,6 @@ body.dark-mode [id^="btn3_"]:hover {
         @endif
     </div>
     <x-general-header />
-@php
-$user = Auth::user();
-$userType = $user->user_type;
-$user_identity = $user->id; 
-@endphp
 
 <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
@@ -461,7 +464,7 @@ $user_identity = $user->id;
     </tbody>
 </table>
 <div class="espaciadoConvocatoria">
-    <div id="convocatoria" colspan="8"
+    <div id="convocatoria" 
         class="{{ $userType == 'dictaminador' ? 'dictaminador-style' : 'secretaria-style' }}">
         @if(isset($convocatoria))
             @if($userType == 'dictaminador')
@@ -478,7 +481,7 @@ $user_identity = $user->id;
             @endif
         @endif
     </div>
-<div colspan="8">
+<div>
     @if($userType == 'dictaminador')
         <span id="piedepagina" style="display: none;margin-left:800px;">Página 6 de 33</span>
     @endif
@@ -580,8 +583,7 @@ $user_identity = $user->id;
     class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
     Página 7 de 33
 </div>
-
-</div>            
+          
 </form>
     </main>
     <script>
