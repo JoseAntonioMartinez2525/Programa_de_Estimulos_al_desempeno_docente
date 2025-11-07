@@ -43,8 +43,20 @@ body.light-mode button.btn-outline-primary.w-100.form-option:hover {
 
 }
 
-#toggle-dark-mode{
-    margin-left: 75rem !important;
+body.light-mode button[id^="btn3_"] {
+        background-color: #72aaca;
+        color: whitesmoke;
+}
+
+body.light-mode button[id^="btn3_"]:hover {
+    background-color: #7ac1ca;
+    color: floralwhite;
+    font-weight: bold;
+
+}
+
+body.dark-mode #toggle-dark-mode{
+    margin-left: 95rem !important;
 }
 
 

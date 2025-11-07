@@ -90,6 +90,12 @@ nav {
     text-align: center;
 }
 
+[id^="obs3_1_"]{
+    padding-left: 14rem;
+    padding-right: 2rem;
+
+    
+}
 
 #puntajeIndividual, #individualCant ,#comisionIndividual ,#obsIndividual,
 #puntajeGrupales ,#grupalesCant ,#comisionGrupal ,#obsGrupal,
@@ -194,13 +200,18 @@ td.punto3_5, #cantDA, #cantCAAC{
 #cantRespPos, #cantRespCarrera, #cantRespProd, #cantRespLab, #cantExamProf, #cantExamAcademicos, #cantPRODEPformResp, #cantPRODEPformInteg, #cantPRODEPenconsResp,
 #cantPRODEPenconsInteg, #cantPRODEPconsResp, #cantPRODEPconsInteg, #cantComOrgInt, #cantCicloComApoyoReg, #cantComOrgReg, #cantCicloComApoyoNac,
 #cantComOrgNac, #cantComOrgReg, #cantComApoyoInt, #cantComApoyoNac, #cantComApoyoReg, #cantCicloComOrgInt, #cantCicloComOrgNac, #cantCicloComOrgReg, #cantCicloComApoyoInt,
-#cantPatentes, #cantPrototipos, #r1, #r2, #r3, .elabInput{
+#cantPatentes, #cantPrototipos{
     background-color: #c1cfd3;
     text-align: right;
     border-color:transparent;
 }
 
-#cantArbInt, #cantArbNac, #cantPubInt,#cantPubNac,#cantRevInt, #cantRevNac,#cantRevista{
+/* input#r1, input#r2, input#r3
+ {
+    margin-left: 16rem;
+} */
+
+#cantArbInt, #cantArbNac, #cantPubInt,#cantPubNac,#cantRevInt, #cantRevNac,#cantRevista, #r1, #r2, #r3{
       background-color: #c1cfd3;
     text-align: center;
     border-color:transparent;  
@@ -322,6 +333,9 @@ button#toggle-dark-mode {
     position: fixed;
 }
 
+body.light-mode button#toggle-dark-mode{
+    margin-left: 95rem!important;
+}
 th#seccion3_5 {
     padding: 0px !important;
 }

@@ -258,6 +258,8 @@ header{
     padding-left: 80px;
     padding-right: 70px;
     border-radius: 90px 90px 90px 90px;
+    background-color: #7fb6d6;
+    color: whitesmoke;
 
 }
 
@@ -268,6 +270,7 @@ body.dark-mode [id^="btn3_"], body.dark-mode .dynamicBtn{
 
 body.dark-mode [id^="btn3_"]:hover , body.dark-mode .dynamicBtn:hover{
     background-color: #6a5b9f !important;
+    font-weight: bold;
     
 }
 
@@ -554,8 +557,8 @@ body.dark-mode #comIncisoA, body.dark-mode #comIncisoB, body.dark-mode #comIncis
     /* Add some space between the labels */
 }
 
-#rCant1, 
-#rc1, #rc2, #rc3, #rc4{
+#rCant1
+{
 text-align: right;
 background-color: #c1cfd3;
 border: none;
@@ -565,16 +568,22 @@ padding: 0 30px;
 }
 
 #elaboracion, #elaboracion2, #elaboracion3, #elaboracion4, #elaboracion5{
-text-align: right;
+text-align: center;
 background-color: transparent;
 border: none;
-padding: 0 30px;
+padding: 0 0rem;
 
 
 }
 
-#elaboracion, #elaboracion2{
-padding-left: 20px; 
+#elaboracion{
+padding-left: 0.9375rem; 
+justify-content: flex-start;
+}
+
+#elaboracion2{
+margin-left: 2rem; 
+justify-content: flex-start; 
 }
 
 #elaboracion3, #elaboracion4, #elaboracion5{
@@ -601,11 +610,25 @@ text-align: center;
 
 }
 
-.elabInput input{
-    width: 100px;
-    background-color: #c1cfd3;
-    text-align: right;
-    
+td.elabInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c1cfd3;
+  padding: 0.3rem 0rem 0 2rem;
+  border-color: transparent;
+  width: 15ch; /* ancho suficiente para x dígitos */
+}
+
+td.elabInput input[type="number"] {
+  width: 15ch; /* espacio para unos x caracteres */
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+
+input#elaboracion{
+    margin-inline-start: 2rem;
 }
 
 .scoreRight td{
@@ -763,7 +786,19 @@ form[id^="form3_"] {
     width: 200px;
     border-radius: 90px 90px 90px 90px;
 }
-body.dark-mode #btn1, body.dark-mode #form2_1Button, body.dark-mode #form2_2Button{
+
+body.light-mode #form2_1Button, body.light-mode #form2_2Button, body.light-mode #btn1{
+        background-color: #72aaca;
+        color: whitesmoke;
+}
+
+body.light-mode #form2_1Button:hover, body.light-mode #form2_2Button:hover, body.light-mode #btn1:hover{
+    background-color: #7ac1ca;
+    color: floralwhite;
+    font-weight: bold;
+
+}
+body.dark-mode #btn1, body.dark-mode #form2_1Button, body.dark-mode #form2_2Button, body.dark-mode #btn1{
     background-color: #456483;
     color: floralwhite;
 }
@@ -771,6 +806,7 @@ body.dark-mode #btn1, body.dark-mode #form2_1Button, body.dark-mode #form2_2Butt
 body.dark-mode #btn1:hover, body.dark-mode #form2_1Button:hover,
 body.dark-mode #form2_2Button:hover{
     background-color: #6a5b9f;
+    font-weight: bold;
 }
 .menu{padding-top: 50px; height: 800px;}
 
@@ -922,11 +958,15 @@ td[id^="puntaje3_9_"]{
 }
 
 
-#elaboracion2,
+
 #elaboracion3,
 #elaboracion4,
 #elaboracion5{
-    margin-left: -250px;
+    margin-left: 1rem;
+}
+
+#elaboracion2{
+    margin-left: 3rem;
 }
 
 #seccion3_8, #seccion3_8_1{
@@ -1434,5 +1474,44 @@ body.dark-mode td.puntajeEvaluar2, body.dark-mode th, body.dark-mode td, body.da
 
 body.dark-mode input#comisionPosgrado, body.dark-mode input#comisionLic{
     background-color: transparent;
+}
+
+
+/* === Estilos exclusivos de form3_2 y form3_3 === */
+/* Columna “Cantidad” */
+/* Solo afecta a la columna "Cantidad" de form3_2 */
+#form3_2 tr > td:nth-child(3) {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: #c1cfd3;
+  padding: 0.3rem;
+}
+
+/* El input dentro de esa celda */
+#form3_2 tr > td:nth-child(3) > input {
+  width: 6ch;               /* tamaño relativo al número de caracteres */
+  text-align: center;
+  background-color: #c1cfd3;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.2rem 0;
+  height: 100%;             /* iguala altura al td */
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Inputs de cantidad */
+#form3_2 #r1, #form3_2 #r2, #form3_2 #r3,
+#form3_3 #rc1, #form3_3 #rc2, #form3_3 #rc3, #form3_3 #rc4 {
+  width: 6ch;
+  text-align: center;
+  background-color: #c1cfd3;
+  border: none;
+  border-radius: 0.3rem;
+  margin: 0;
+  padding: 0.2rem 0;
+  height: 100%;             /* 🔹 mantiene alineación vertical uniforme */
+  box-sizing: border-box;   /* asegura que padding no desborde */
 }
 

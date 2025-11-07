@@ -302,7 +302,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 Promedio 90-100
                                             </td>
                                             <td id="ran1"><b>50</b></td>
-                                            <td class="elabInput"><input id="r1" type="number" placeholder="0"
+                                            <td class="cantidad-cell"><input id="r1" type="number" placeholder="0"
                                                     oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r1') }}"></td>
                                             <td id="cant1">0</td>
                                             <td class="td_obs"><input id="prom90_100" type="value" placeholder="0"
@@ -315,7 +315,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 Promedio 80-90
                                             </td>
                                             <td id="ran2"><b>40</b></td>
-                                            <td class="elabInput"><input id="r2" type="number" placeholder="0"
+                                            <td class="cantidad-cell"><input id="r2" type="number" placeholder="0"
                                                     oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r2') }}"></td>
                                             <td id="cant2">0</td>
                                             <td class="td_obs"><input id="prom80_90" placeholder="0" type="value"
@@ -328,7 +328,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 Promedio 70-80
                                             </td>
                                             <td id="ran3"><b>30</b></td>
-                                            <td class="elabInput"><input id="r3" type="number" placeholder="0"
+                                            <td class="cantidad-cell"><input id="r3" type="number" placeholder="0"
                                                     oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r3') }}"></td>
                                             <td id="cant3">0</td>
                                             <td class="td_obs"><input id="prom70_80" placeholder="0" type="value"
@@ -407,7 +407,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="p100" class="text-center">
                                                     <b>100</b>
                                                 </td>
-                                                <td class="elabInput"><input id="rc1" type="number" oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc1') }}">
+                                                <td class="cantidad-cell"><input id="rc1" type="number" oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc1') }}">
                                                 </td>
                                                 <td id="stotal1"></td>
                                                 <td class="td_obs comision actv"><input id="comIncisoA" placeholder="0" for=""
@@ -421,7 +421,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="p50" class="text-center">
                                                     <b>50</b>
                                                 </td>
-                                                <td class="elabInput"><input id="rc2" type="number" 
+                                                <td class="cantidad-cell"><input id="rc2" type="number" 
                                                         oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc2') }}">
                                                 </td>
                                                 <td id="stotal2"></td>
@@ -438,7 +438,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="p30" class="text-center">
                                                     <b>30</b>
                                                 </td>
-                                                <td class="elabInput"><input id="rc3" type="number"
+                                                <td class="cantidad-cell"><input id="rc3" type="number"
                                                         oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc3') }}">
                                                 </td>
                                                 <td id="stotal3"></td>
@@ -455,7 +455,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="p25" class="text-center">
                                                     <b>25</b>
                                                 </td>
-                                                <td class="elabInput"><input id="rc4" type="number"
+                                                <td class="cantidad-cell"><input id="rc4" type="number"
                                                         oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc4') }}">
                                                 </td>
                                                 <td id="stotal4"></td>
