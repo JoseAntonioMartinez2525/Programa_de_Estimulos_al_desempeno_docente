@@ -1310,9 +1310,9 @@ body.dark-mode td.elabInput, body.dark-mode td.td_docente_cantidad, body.dark-mo
     color: white!important;
 }
 
-input[id^="rc"]{
+/* input[id^="rc"]{
 padding-inline-start: -20px;
-}
+} */
 
 input#cantInternacional, input#cantNacional, input#cantidadRegional, input#cantPreparacion{
     width: 100px;
@@ -1488,11 +1488,18 @@ body.dark-mode input#comisionPosgrado, body.dark-mode input#comisionLic{
   padding: 0.3rem;
 }
 
+td.text-center.punto3_2{
+    background-color: white!important;
+}
+
+td#comision3_2{
+    background-color: #ffcc6d!important;
+}
+
 /* El input dentro de esa celda */
 #form3_2 tr > td:nth-child(3) > input {
   width: 6ch;               /* tamaño relativo al número de caracteres */
   text-align: center;
-  background-color: #c1cfd3;
   border: none;
   border-radius: 0.3rem;
   padding: 0.2rem 0;
@@ -1502,8 +1509,7 @@ body.dark-mode input#comisionPosgrado, body.dark-mode input#comisionLic{
 }
 
 /* Inputs de cantidad */
-#form3_2 #r1, #form3_2 #r2, #form3_2 #r3,
-#form3_3 #rc1, #form3_3 #rc2, #form3_3 #rc3, #form3_3 #rc4 {
+#r1, #r2,  #r3{
   width: 6ch;
   text-align: center;
   background-color: #c1cfd3;
@@ -1513,5 +1519,36 @@ body.dark-mode input#comisionPosgrado, body.dark-mode input#comisionLic{
   padding: 0.2rem 0;
   height: 100%;             /* 🔹 mantiene alineación vertical uniforme */
   box-sizing: border-box;   /* asegura que padding no desborde */
+}
+
+/* Alinea vertical y horizontalmente los inputs bajo "Cantidad" */
+#form3_3 .cantidad-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+  box-sizing: border-box;
+}
+
+/* Selección clara y única para los inputs rc1..rc4 */
+#form3_3 .cantidad-cell input[type="number"],
+#form3_3 .cantidad-cell input[id^="rc"] {
+  width: 6ch;
+  min-width: 3ch;
+  text-align: center;
+  padding: 0.2rem 0;
+  border: none;
+  border-radius: 0.3rem;
+  box-sizing: border-box;
+  height: auto; /* quitar height:100% */
+  background-color: #c1cfd3;
+  display: block;
+
+}
+
+/* Asegura alineación vertical de celdas de tabla */
+#form3_3 table th,
+#form3_3 table td {
+  vertical-align: middle;
 }
 

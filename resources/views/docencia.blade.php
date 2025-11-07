@@ -290,7 +290,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         <tr>
                                             <td colspan="1"></td>
                                             <td>Puntaje</td>
-                                            <td class="text-center">Cantidad</td>
+                                            <td class="text-center punto3_2">Cantidad</td>
                                             <td colspan="2"></td>
                                             <td class="text-center table-ajust" scope="col">Observaciones</td>
                                         </tr>
@@ -477,92 +477,94 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         </tr>
                                     </thead>
                                 </table>
-                                </form>
-    <form id="form3_4" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store34', 'form3_4');">
-        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-        @csrf
-        <div>
-            <!-- 3.4 Distinciones académicas recibidas por el docente  -->
-            <h4>Puntaje máximo
-                <label class="bg-black text-white px-4 mt-3" for="">60</label>
-            </h4>
-        </div>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">Actividad</th>
-                    <th colspan="3" class="table-ajust" scope="col"></th>
-                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th id="seccion3_4" colspan="2" class="punto3_4" scope="col" style="padding:30px;">3.4 Distinciones
-                        académicas recibidas por el docente</th>
-                    <th colspan="2"></th>
-                    <th id="score3_4">0</th>
-                    <th id="comision3_4">0</th>
-                </tr>
-                <tr>
-                    <td colspan="2"></td>
-                    <td class="punto3_4">Puntaje</td>
-                    <td class="text-center punto3_4">Cantidad</td>
-                    <td colspan="2"></td>
-                    <td class="text-center table-ajust" scope="col">Observaciones</td>
-                </tr>
-                <tr>
-                    <td class="punto3_4">a)</td>
-                    <td>Internacional</td>
-                    <td id="p60"><b>60</b></td>
-                    <td class="td_docente_cantidad"><input type="number" id="cantInternacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantInternacional') }}"></td>
-                    <td id="cantInternacional2"></td>
-                    <td class="td_obs"><input type="number" id="comInternacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                    <td class="td_obs"><input id="obs3_4_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                </tr>
-                <tr>
-                    <td class="punto3_4">b)</td>
-                    <td>Nacional</td>
-                    <td id="p30Nac"><b>30</b></td>
-                    <td class="td_docente_cantidad"><input type="number" id="cantNacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantNacional') }}"></td>
-                    <td id="cantNacional2"></td>
-                    <td class="td_obs"><input type="number" id="comNacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                    <td class="td_obs"><input id="obs3_4_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                </tr>
-                <tr>
-                    <td class="punto3_4">c)</td>
-                    <td>Regional o estatal</td>
-                    <td id="p20"><b>20</b></td>
-                    <td class="td_docente_cantidad"><input type="number" id="cantidadRegional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantidadRegional') }}"></td>
-                    <td id="cantidadRegional2"></td>
-                    <td class="td_obs"><input type="number" id="comRegional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                    <td class="td_obs"><input id="obs3_4_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                </tr>
-                <tr>
-                    <td class="punto3_4">d)</td>
-                    <td>Preparación de grupos de alumnado para olimpiadas competencias académicas o exámenes generales.</td>
-                    <td id="p30Prep"><b>30</b></td>
-                    <td class="td_docente_cantidad"><input type="number" id="cantPreparacion" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantPreparacion') }}"></td>
-                    <td id="cantPreparacion2"></td>
-                    <td class="td_obs"><input type="number" id="comPreparacion" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                    <td class="td_obs"><input id="obs3_4_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                </tr>
-            </tbody>
-        </table>
-        <!--Tabla informativa Acreditacion Actividad 3.4-->
-        <table>
-            <thead>
-                <tr><br>
-                    <th class="acreditacion" scope="col">Acreditacion: </th>
-                    <th class="descripcionCAAC"><b>CAAC, Instancia que la otorga</b></th>
-                    <th><button id="btn3_4" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-                </tr>
-            </thead>
-        </table>
-    </form>
+                            </form>
+                            
+                            
+                                <form id="form3_4" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store34', 'form3_4');">
+                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                            <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                            <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                            @csrf
+                            <div>
+                                <!-- 3.4 Distinciones académicas recibidas por el docente  -->
+                                <h4>Puntaje máximo
+                                    <label class="bg-black text-white px-4 mt-3" for="">60</label>
+                                </h4>
+                            </div>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Actividad</th>
+                                        <th colspan="3" class="table-ajust" scope="col"></th>
+                                        <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                        <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th id="seccion3_4" colspan="2" class="punto3_4" scope="col" style="padding:30px;">3.4 Distinciones
+                                            académicas recibidas por el docente</th>
+                                        <th colspan="2"></th>
+                                        <th id="score3_4">0</th>
+                                        <th id="comision3_4">0</th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td class="punto3_4">Puntaje</td>
+                                        <td class="text-center punto3_4">Cantidad</td>
+                                        <td colspan="2"></td>
+                                        <td class="text-center table-ajust" scope="col">Observaciones</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="punto3_4">a)</td>
+                                        <td>Internacional</td>
+                                        <td id="p60"><b>60</b></td>
+                                        <td class="td_docente_cantidad"><input type="number" id="cantInternacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantInternacional') }}"></td>
+                                        <td id="cantInternacional2"></td>
+                                        <td class="td_obs"><input type="number" id="comInternacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                        <td class="td_obs"><input id="obs3_4_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="punto3_4">b)</td>
+                                        <td>Nacional</td>
+                                        <td id="p30Nac"><b>30</b></td>
+                                        <td class="td_docente_cantidad"><input type="number" id="cantNacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantNacional') }}"></td>
+                                        <td id="cantNacional2"></td>
+                                        <td class="td_obs"><input type="number" id="comNacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                        <td class="td_obs"><input id="obs3_4_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="punto3_4">c)</td>
+                                        <td>Regional o estatal</td>
+                                        <td id="p20"><b>20</b></td>
+                                        <td class="td_docente_cantidad"><input type="number" id="cantidadRegional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantidadRegional') }}"></td>
+                                        <td id="cantidadRegional2"></td>
+                                        <td class="td_obs"><input type="number" id="comRegional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                        <td class="td_obs"><input id="obs3_4_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="punto3_4">d)</td>
+                                        <td>Preparación de grupos de alumnado para olimpiadas competencias académicas o exámenes generales.</td>
+                                        <td id="p30Prep"><b>30</b></td>
+                                        <td class="td_docente_cantidad"><input type="number" id="cantPreparacion" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantPreparacion') }}"></td>
+                                        <td id="cantPreparacion2"></td>
+                                        <td class="td_obs"><input type="number" id="comPreparacion" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                        <td class="td_obs"><input id="obs3_4_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--Tabla informativa Acreditacion Actividad 3.4-->
+                            <table>
+                                <thead>
+                                    <tr><br>
+                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+                                        <th class="descripcionCAAC"><b>CAAC, Instancia que la otorga</b></th>
+                                        <th><button id="btn3_4" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </form>
 
     <form id="form3_5" method="POST"
         onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store35', 'form3_5');">
