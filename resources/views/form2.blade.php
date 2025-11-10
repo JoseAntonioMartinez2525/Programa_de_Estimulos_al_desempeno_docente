@@ -124,6 +124,29 @@ td{
     font-size: 1rem;
 }
 
+#convocatoria2{
+    margin-left: 2rem!important;
+}
+
+#obs1{
+    height: 50px;
+}
+
+textarea#obs1_input{
+    text-align: left;
+}
+
+@media print {
+    #obs1_input {
+        display: block; /* Oculta el textarea al imprimir */
+
+    }
+    #obs1_print {
+        display: block; /* Muestra el span al imprimir */
+        white-space: pre-wrap; /* Conserva los saltos de línea y ajustes */
+        word-wrap: break-word;
+    }
+}
   
 </style>
 <script>
@@ -248,10 +271,12 @@ $user_identity = $user->id;
                         <td class="td_obs">
                             <div class="filled">
                         @if($userType == 'dictaminador')
-                            <!-- Mostrar input si es 'dictaminador' -->
-                            <input id="obs1" name="obs1" class="table-header" type="text">
+                            <!-- Mostrar textarea para edición -->
+                            <textarea id="obs1_input" name="obs1" class="table-header" oninput="document.getElementById('obs1_print').textContent = this.value"></textarea>
+                            <!-- Span solo para impresión -->
+                            <span id="obs1_print" class="d-none d-print-block"></span>
                         @else
-                            <!-- Mostrar span si es otro tipo de usuario -->
+                            <!-- Mostrar span para otros usuarios -->
                             <span id="obs1" class="table-header"></span>
                         @endif
                             </div>
@@ -312,6 +337,21 @@ document.addEventListener('docenteSelected', async (e) => {
 
     try {
         // === Comunes: cargar datos de docente ===
+        const docenteDataEndpoint = @json($docenteConfig['docenteDataEndpoint'] ?? '/formato-evaluacion/get-docente-data');
+        const dictEndpoint = @json($docenteConfig['dictEndpoint'] ?? '/formato-evaluacion/get-dictaminators-responses');
+        const dictCollectionKey = @json($docenteConfig['dictCollectionKey'] ?? 'form2');
+        const userType = @json($userType ?? 'docente');
+
+        // Helper para asignar valor a los campos de observaciones
+        function setObservationValue(value) {
+            const obsInput = document.getElementById('obs1_input');
+            const obsPrint = document.getElementById('obs1_print');
+            const obsSpan = document.getElementById('obs1');
+
+            if (obsInput) obsInput.value = value;
+            if (obsPrint) obsPrint.textContent = value;
+            if (obsSpan) obsSpan.textContent = value;
+        }
         const axiosResponse = await axios.get('/formato-evaluacion/get-docente-data', { params: { email } });
         const docenteData = axiosResponse.data;
 
@@ -325,6 +365,22 @@ document.addEventListener('docenteSelected', async (e) => {
             document.getElementById('departamento2').textContent = departamento || '';
         }
 
+        // === Llenar datos de dictaminador para 'secretaria' ===
+        if (userType === 'secretaria') {
+            const dictResp = await axios.get(dictEndpoint);
+            const dictData = dictResp.data;
+
+            if (dictData && dictData[dictCollectionKey]) {
+                const dictaminadorResponse = dictData[dictCollectionKey].find(d => d.email === email);
+                if (dictaminadorResponse) {
+                    document.getElementById('comision1').textContent = dictaminadorResponse.comision1 || '0';
+                    setObservationValue(dictaminadorResponse.obs1 || '');
+                } else {
+                    document.getElementById('comision1').textContent = '0';
+                    setObservationValue('');
+                }
+            }
+        }
     } catch (error) {
         console.error('Error general al procesar datos del docente:', error);
     }
