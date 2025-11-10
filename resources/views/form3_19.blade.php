@@ -78,6 +78,12 @@ $docenteConfig = $docenteConfig ?? [
         }
         return $resets;
     })($secciones),
+
+        'convocatoriaSelectors' => [
+        '#convocatoria',
+        '#convocatoria2',
+        '#convocatoria3',
+    ],
 ];
 
 // Configuración del formulario
@@ -165,7 +171,7 @@ if (!isset($docenteConfigForm)) {
         #convocatoria {
             margin: 0;
             display: block;
-            margin-top: -80px;
+            margin-top: 1rem;
         }
 
         #piedepagina {
@@ -279,6 +285,10 @@ if (!isset($docenteConfigForm)) {
 
     .page-number:before {
         content: "Página " counter(page) " de 33";
+    }
+
+    #convocatoria2{
+        margin-left: 0%;
     }
 
     }

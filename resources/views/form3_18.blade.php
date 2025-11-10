@@ -74,6 +74,11 @@ $docenteConfig = $docenteConfig ?? [
         'score3_18'     => '0',
         '#comision3_18' => '0',
     ])->toArray(),
+
+        'convocatoriaSelectors' => [
+        '#convocatoria',
+        '#convocatoria2',
+    ],
 ];
 
 // ---- CONFIGURACIÓN DEL FORM ----
@@ -248,6 +253,15 @@ if (!isset($docenteConfigForm)) {
 
 
 
+        }
+
+        .f3_18_table_margin_top{
+            margin-top: 10rem;
+        }
+
+        button#btn3_18 {
+            margin-inline-start:  88%;
+            MARGIN-top: 5%;
         }
     </style>
 
@@ -447,7 +461,7 @@ $user_identity = $user->id;
                     </tr>
                 </tbody>
             </table>
-            <div style="display: flex; justify-content: space-between;padding-top: 80px;">
+            <div style="display: flex; justify-content: space-between;padding-top: 80px;margin-top: 10rem;">
                 <div id="convocatoria">
                     <!-- Mostrar convocatoria -->
                     @if(isset($convocatoria))
@@ -463,7 +477,7 @@ $user_identity = $user->id;
             </div><br>
 
             <!--Siguiente tabla-->
-            <table class="table table-sm tutorias">
+            <table class="table table-sm tutorias f3_18_table_margin_top">
                 <x-sub-headers-form3_18 :componentIndex="1" />
                 <tbody data-page="27">
                     <tr>
@@ -638,12 +652,6 @@ $user_identity = $user->id;
                             de institución extranjera</th>
                         <th class="acreditacion" style="padding-left: 100px;">Acreditacion:</th>
                         <th class="descripcion"><b>Instancia que lo otorga</b></th>
-                        <th>
-                            @if ($userType != 'secretaria')
-                                <button id="btn3_18" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
-                            @endif
-
-                        </th>
                     </tr>
                 </tbody>
             </table>
@@ -670,6 +678,12 @@ $user_identity = $user->id;
                     class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
                     Página 27 de 33
                 </div>
+
+            </div>
+            <div>
+                @if ($userType != 'secretaria')
+                <button id="btn3_18" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+                @endif
             </div>
         </form>
     </main>

@@ -99,6 +99,7 @@ $docenteConfig = $docenteConfig ?? [
         'email'           => 'email',
         'user_type'       => 'user_type',
     ],
+    
 
     // ---- Comportamiento cuando no hay respuesta de dictaminador ----
     'resetOnNotFound' => false,
@@ -135,6 +136,11 @@ $docenteConfig = $docenteConfig ?? [
         'obsRevista' => '',
 
 
+    ],
+
+        'convocatoriaSelectors' => [
+        '#convocatoria',
+        '#convocatoria2',
     ],
 ];
 
@@ -213,7 +219,6 @@ if (!isset($docenteConfigForm)) {
             margin: 0;
             font-size: 1rem;
         }
-
 
 
         .page-number:before {
@@ -323,11 +328,7 @@ $user_identity = $user->id;
             <table class="table table-sm tutorias">
                 <thead>
                     <tr>
-                        <th>
-                            <h3></h3>
-                        </th>
-                        <th>
-                            <h3></h3>
+                        <th colspan="2">
                         </th>
                         <th>
                             <h3 class="datosPrimarios">Investigación</h3>
