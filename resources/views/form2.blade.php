@@ -46,6 +46,10 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
 
     ],
+    'convocatoriaSelectors' => [
+        '#convocatoria',
+        '#convocatoria2',
+    ],
   
     ];
 

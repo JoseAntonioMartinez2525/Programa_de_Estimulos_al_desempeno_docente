@@ -47,7 +47,7 @@
             let byIdCopy = document.getElementById(copyId);
 
             const isInsideTable = byId && !!byId.closest('table');
-            const explicitCopySelectorProvided = selector.endsWith('_copy') || (typeof config.cloneWhitelist !== 'undefined' && Array.isArray(config.cloneWhitelist) && config.cloneWhitelist.includes(simpleName));
+            const explicitCopySelectorProvided = selector.endsWith('_copy') || ['convocatoria'].includes(simpleName) || (typeof config.cloneWhitelist !== 'undefined' && Array.isArray(config.cloneWhitelist) && config.cloneWhitelist.includes(simpleName));
             if (!byIdCopy && byId && (!isInsideTable || explicitCopySelectorProvided)) {
                 try {
                     byIdCopy = byId.cloneNode(true);

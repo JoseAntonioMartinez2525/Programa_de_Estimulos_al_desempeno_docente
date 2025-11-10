@@ -991,12 +991,15 @@ td[id^="puntaje3_9_"]{
 }
 
 
-#convocatoria2, #nombre2, #periodo2,
+#nombre2, #periodo2,
 #area2,
 #departamento2{
     margin-left: 30px;
 }
 
+#convocatoria2{
+    margin-left: 13rem;
+}
 
 .form3_1LabelActv{
     height:84px; width: 170px;

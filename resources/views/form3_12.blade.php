@@ -169,6 +169,11 @@ $docenteConfig = $docenteConfig ?? [
 
 
     ],
+
+    'convocatoriaSelectors' => [
+        '#convocatoria',
+        '#convocatoria2',
+    ],
 ];
 
 if (!isset($docenteConfigForm)) {
@@ -509,23 +514,20 @@ $user_identity = $user->id;
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <td class="text-center" colspan="10">
+                            <!-- Mostrar convocatoria -->
+                            <div id="convocatoria">
+                                @if(isset($convocatoria))
+                                        <h1>Convocatoria: {{ $convocatoria->convocatoria }}</h1>
+                                @endif
+                            </div>
+                        </td>
+                        <td id="piedepagina1"
+                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">Página 18 de 33</td>
+                    </tr>
                 </tbody>
             </table>
-            <!-- convocatoria -->
-            <div style="display: flex; justify-content: space-between;padding-top: 80px;">
-                <div id="convocatoria">
-                    <!-- Mostrar convocatoria -->
-                    @if(isset($convocatoria))
-                        <div style="margin-right: -500px;">
-                            <h1>Convocatoria: {{ $convocatoria->convocatoria }}</h1>
-                        </div>
-                    @endif
-                </div>
-                <div id="piedepagina1"
-                    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
-                    Página 18 de 33
-                </div>
-            </div><br><br>
 
             <!--Tabla 2-->
             <table class="table table-sm tutorias">
@@ -683,14 +685,13 @@ $user_identity = $user->id;
                 </thead>
             </table>
             <div style="display: flex; justify-content: space-between;padding-top: 150px;">
-                <div id="convocatoria2">
+                <div>
                     <!-- Mostrar convocatoria -->
-                    @if(isset($convocatoria))
-
-                        <div style="margin-right: -700px;">
+                    <div id="convocatoria2" style="margin-right: -700px;">
+                        @if(isset($convocatoria))
                             <h1>Convocatoria: {{ $convocatoria->convocatoria }}</h1>
-                        </div>
-                    @endif
+                        @endif
+                    </div>
                 </div>
 
                 <div id="piedepagina2"
