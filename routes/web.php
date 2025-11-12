@@ -72,6 +72,7 @@ use App\Http\Controllers\DictaminatorController;
 use App\Http\Controllers\FirmaDictaminadorController;
 use App\Http\Controllers\PuntajeMaximosController;
 use App\Http\Controllers\UserTimerController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Middleware\CheckTimer;
 use App\Http\Middleware\VerifyAdminPrivileges;
 
@@ -85,6 +86,12 @@ Route::get('/', function () {
 
 Route::get('/formato-evaluacion/', [SessionsController::class, 'index'])->name('login');
 Route::post('/login', [SessionsController::class, 'login'])->name('login.post');
+
+// Rutas para restablecer contraseña
+Route::get('/forgot-password', [PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
  
 Route::middleware(['auth'])->group(function (){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -362,5 +369,3 @@ Route::post('admin-reset-timer', [DictaminatorController::class, 'adminResetTime
     Route::get('/resumen-comision/firmas', [ResumenComisionController::class, 'getFirmasYResumen'])
     ->middleware(['auth'])
     ->name('resumenComision.firmas');
-
-
