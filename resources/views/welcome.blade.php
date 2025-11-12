@@ -14,7 +14,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
   <title>Evaluación docente</title> 
   
   <x-head-resources />
-@include('partials.timer')
+{{-- @include('partials.timer') --}}
 <style>
   @media print {
     .footer-number::after {

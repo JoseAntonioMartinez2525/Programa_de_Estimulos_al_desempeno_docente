@@ -40,12 +40,12 @@ class User extends Authenticatable
 
     
 
-    public function evaluatorSignatures()
+    public function evaluatorSignatures() //cada dictaminador puede evaluar a muchos docentes
     {
         return $this->hasMany(EvaluatorSignature::class, 'user_id', 'id');
     }
 
-    public function userResume()
+    public function userResume() //extraer los datos de 3.Calidad en la docencia para el resumen del docente 
     {
         return $this->hasOne(UserResume::class, 'user_id', 'id');
     }
@@ -63,15 +63,11 @@ class User extends Authenticatable
         return parent::__call($method, $parameters);
     }
 
-    public function dictaminadorSignature()
+    public function dictaminadorSignature() //cada dictaminador ppuede tener solo una firma almacenada
     {
         return $this->hasOne(DictaminadorSignature::class, 'user_id', 'id');
     }
 
-    // public function firmaDictaminador()
-    // {
-    //     return $this->hasOne(FirmaDictaminador::class, 'user_id');
-    // }
 
     // Relación con los dictaminadores que lo evaluaron
     public function dictaminadores()
@@ -84,7 +80,7 @@ class User extends Authenticatable
         )->withTimestamps();
     }
 
-public function tieneAlgunFormularioEvaluado()
+public function tieneAlgunFormularioEvaluado() //verificar que formularios fueron los evaluados
 {
     $formularios = [
         'form1'      => 'App\\Models\\UsersResponseForm1',

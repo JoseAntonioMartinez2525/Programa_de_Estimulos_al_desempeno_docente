@@ -157,7 +157,7 @@ Route::middleware(['auth'])->group(function (){
 
     //POST formularios
     // Grupo de rutas para los formularios de docentes
-    Route::middleware([CheckTimer::class])->group(function () {
+    // Route::middleware([CheckTimer::class])->group(function () {
         Route::post('/store', [ResponseController::class, 'store'])->name('store');
         Route::post('/store2', [ResponseForm2Controller::class, 'store2'])->name('store2');
         Route::post('/store3', [ResponseForm2_2Controller::class, 'store3']);
@@ -182,7 +182,7 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/store318', [ResponseForm3_18Controller::class, 'store318']);
         Route::post('/store319', [ResponseForm3_19Controller::class, 'store319']);
         
-    });
+    // });
     
     Route::post('/store-resume', [ResumeController::class, 'storeResume']);
     Route::post('/store-evaluator-signature', [EvaluatorSignatureController1::class, 'storeEvaluatorSignature'])->name('store-evaluator-signature');

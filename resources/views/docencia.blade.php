@@ -22,7 +22,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <link rel="preconnect" href="https://fonts.bunny.net">
 
     <x-head-resources />
-@include('partials.timer')
+{{-- @include('partials.timer') --}}
 
     <script>
         window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
