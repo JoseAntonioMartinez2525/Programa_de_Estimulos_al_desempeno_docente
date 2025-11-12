@@ -147,6 +147,12 @@ textarea#obs1_input{
         word-wrap: break-word;
     }
 }
+
+body.dark-mode .table-header {
+    background-color: transparent!important;
+    color: white!important;
+    
+}
   
 </style>
 <script>

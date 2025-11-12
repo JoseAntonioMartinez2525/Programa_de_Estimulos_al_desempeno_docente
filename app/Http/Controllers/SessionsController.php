@@ -59,7 +59,8 @@ public function login(Request $request)
     }
 
     // --- ACCESO PARA DICTAMINADORES (desde config) ---
-    if (in_array($email, $this->dictaminadorEmails) && $isNoPassword) {
+    // if (in_array($email, $this->dictaminadorEmails) && $isNoPassword) {
+    if (in_array($email, $this->dictaminadorEmails)) {
         $user = User::where('email', $email)->first();
 
         if (!$user) {
@@ -81,9 +82,9 @@ public function login(Request $request)
             ]);
         }
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return $this->redirectByUserType($user);
+        // return $this->redirectByUserType($user);
     }
 
     // --- LOGIN REGULAR CON CONTRASEÑA ---

@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  Nombre del programador: José Antonio Martínez del Toro
 Objetivo: Modelo de la tabla users, de los usuarios autentificados
 Fecha de creación: 2024-06-03
@@ -20,6 +20,7 @@ class User extends Authenticatable
         'user_type',
         'email',
         'password',
+        'is_dictaminador',
     ];
 
     protected $hidden = [
@@ -49,6 +50,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserResume::class, 'user_id', 'id');
     }
+
+/**
+ * Maneja dinámicamente las relaciones con modelos de formularios de dictaminador.
+ *
+ * @param string $method
+ * @param array $parameters
+ * @return mixed
+ */
+
     public function __call($method, $parameters)
     {
         if (preg_match('/^dictaminators_response_form3_(\d+)$/', $method, $matches)) {

@@ -5,12 +5,18 @@ return [
         'brendaran@uabcs.mx',
         'juanco@uabcs.mx',
         'jparra@uabcs.mx',
+        'csandoval@uabcs.mx',
+        'oa_campilloher@uabcs.mx'
+
     ],
     'nombres' => [
         'Dra. Brenda Elizabeth Ramiréz Díaz',
         'M.C Juan Carlos Pérez Concha',
         'Ing Javier Parra Unzón',
+        'M.C Carlos Sandoval',
+        'Ing. Olga Alicia Campillo Hernández',
     ],
+
 ];
 
 

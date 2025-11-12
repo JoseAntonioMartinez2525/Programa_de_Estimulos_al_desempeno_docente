@@ -91,7 +91,7 @@ Fecha de creación: 2024-06-03
                         <!-- Submit button -->
                         <button type="submit" data-mdb-button-init data-mdb-ripple-init
                             class="btn btn-primary btn-block mb-3">Registrarse</button>
-                    </form>
+                   </form>
                 </div>
             </div>
         </div>

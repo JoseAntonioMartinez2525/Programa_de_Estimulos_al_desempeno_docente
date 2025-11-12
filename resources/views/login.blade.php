@@ -124,13 +124,14 @@ input:-webkit-autofill {
     <script>
     function checkAllowedEmail() {
         
-        const allowedEmails = @json($autoLoginEmails);
+        // const allowedEmails = @json($autoLoginEmails);
+        const allowedEmails = @json($allowedEmails); // Solo secretarias
         const emailInput = document.getElementById('email');
         if (!emailInput) return;
         const email = emailInput.value.trim().toLowerCase();
         if (allowedEmails.includes(email)) {
             document.getElementById('no_password_required').value = 'true';
-            document.getElementById('password-group').style.display = 'none';
+            // document.getElementById('password-group').style.display = 'none';
         } else {
             document.getElementById('no_password_required').value = 'false';
             document.getElementById('password-group').style.display = 'block';

@@ -67,6 +67,16 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         margin-inline-start: 5rem;
 
     }
+
+    body.light-mode button#submitButton{
+        color: white;
+        background-color: #5385c7!important;
+    }
+
+        body.dark-mode button#submitButton{
+        background-color: #22426d!important;
+    }
+    
     </style>
     <script>
         window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
@@ -131,8 +141,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             </thead>
         </table>
     </form>
-        <!-- Contador visible -->
-       <div id="timerContainer" class="mt-3">
+        <!-- Contador invisible -->
+       <div id="timerContainer" class="mt-3" style="display: none">
             <span>Tiempo transcurrido: <strong id="timer">0</strong> segundos</span>
         </div>
 </div>
