@@ -89,7 +89,7 @@ input:-webkit-autofill {
                                         </div>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="password" class="form-control" name="password"
-                                                placeholder="•••••••••••••"
+                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                                 aria-describedby="password" value="{{ old('password') }}" />
                                             <span class="input-group-text cursor-pointer"><i
                                                     class="ti ti-eye-off"></i></span>
@@ -97,14 +97,11 @@ input:-webkit-autofill {
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember-me">
+                                            <input class="form-check-input" type="checkbox" id="remember-me">
                                             <label class="form-check-label" for="remember-me">
                                                 Recordar
                                             </label>
                                         </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
                                     </div>
                                     <button type="submit" class="btn btn-primary d-grid w-100">Login</button>
                                 </form>

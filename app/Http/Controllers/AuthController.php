@@ -35,6 +35,9 @@ class AuthController extends Controller
             'registerPassword.confirmed' => 'Las contraseñas no coinciden.',
     ]);
 
+        // Verificar si el correo pertenece a un dictaminador
+        $isDictaminador = in_array($request->registerEmail, config('dictaminadores.emails'));
+        $userType = $isDictaminador ? 'dictaminador' : 'docente';
 
         // Create the new user
         $user = new User();
@@ -44,6 +47,13 @@ class AuthController extends Controller
         $user->password = Hash::make($request->registerPassword);
         // Use Hash to encrypt the password
         $user->save();
+        $user = User::create([
+            'name' => $request->registerName,
+            'email' => $request->registerEmail,
+            'password' => Hash::make($request->registerPassword),
+            'user_type' => $userType,
+            'is_dictaminador' => $isDictaminador,
+        ]);
 
 
         // Redirect or login the user
