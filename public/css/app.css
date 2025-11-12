@@ -743,6 +743,18 @@ margin-bottom: 20px;
             font-size: 10px;
             /* Tamaño de letra base para impresión */
         }
+
+        textarea.textAreaForms {
+            border: none !important; /* Oculta el borde */
+            height: auto !important; /* Permite que el textarea se expanda verticalmente para mostrar todo el contenido */
+            overflow: visible !important; /* Asegura que todo el contenido sea visible y no se recorte */
+            resize: none !important; /* Evita que aparezcan los controladores de redimensionamiento */
+            scrollbar-width: none !important; /* Oculta la barra de desplazamiento en Firefox */
+            -ms-overflow-style: none !important; /* Oculta la barra de desplazamiento en IE/Edge */
+        }
+        textarea.textAreaForms::-webkit-scrollbar {
+            display: none !important; /* Oculta la barra de desplazamiento en navegadores WebKit (Chrome, Safari) */
+        }
     
         #form2 {
             margin-bottom: 0;

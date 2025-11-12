@@ -190,17 +190,17 @@ body.dark-mode img.imgFirma{
     text-align: right;
   }
 
-  .btn.custom-btn {
+  body.light-mode .btn.custom-btn {
     display: inline-block;
-    background-color: #0c4a6e;
-    color: white;
+    background-color: #367ea8!important;
+    color: white!important;
     padding: 8px 12px;
     border-radius: 6px;
     text-decoration: none;
   }
 
   body.dark-mode .btn.custom-btn{
-        background-color: #23516b;
+        background-color: #23516b!important;
   }
   /* convocatoria resumen_comision blade */
     span#convocatoria-title {
