@@ -36,12 +36,11 @@ $user_identity = $user->id;
 @endphp
 
 
-<div class="container mt-4 printButtonClass">
+    </header>
+    <div class="container mt-4 printButtonClass">
    
 
-</div>
-
-    </header>
+    </div>
             
 </body>
 </html>
