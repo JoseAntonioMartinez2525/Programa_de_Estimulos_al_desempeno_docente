@@ -69,6 +69,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EvaluatorSignatureController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DictaminatorController;
+use App\Http\Controllers\EvaluationDateController;
 use App\Http\Controllers\FirmaDictaminadorController;
 use App\Http\Controllers\PuntajeMaximosController;
 use App\Http\Controllers\UserTimerController;
@@ -371,4 +372,7 @@ Route::post('admin-reset-timer', [DictaminatorController::class, 'adminResetTime
     ->middleware(['auth'])
     ->name('resumenComision.firmas');
 
-
+Route::post('/evaluation-dates/docentes-llenado', [EvaluationDateController::class, 'storeDocentesLlenado']);
+Route::post('/evaluation-dates/docentes-evaluacion', [EvaluationDateController::class, 'storeDocentesEvaluacion']);
+Route::post('/evaluation-dates/evaluadores-captura', [EvaluationDateController::class, 'storeEvaluadoresCaptura']);
+Route::get('/evaluation-dates', [EvaluationDateController::class, 'getFechas']);

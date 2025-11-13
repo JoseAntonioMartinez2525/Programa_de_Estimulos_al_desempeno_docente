@@ -23,6 +23,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
     <!-- Incluir Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- Incluir el archivo de localización para español -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
 
 <style>
     .btn-primary, .btn-secondary, .btn-third {
@@ -68,8 +70,10 @@ $user_identity = $user->id;
     <x-dates_users 
         buttonClass="btn-primary" 
         buttonText="Fecha de llenado de las evaluaciones para docentes"
-        inputId="fechaDocentesLlenado"
+        inputIdStart="fechaDocentesLlenadoInicio"
+        inputIdEnd="fechaDocentesLlenadoFin"
         collapseId="collapseDocentesLlenado"
+        endpointSave="/evaluation-dates/docentes-llenado"
         minDate="today"
         maxDate="2027-01-31"
     />
@@ -77,17 +81,21 @@ $user_identity = $user->id;
     <x-dates_users 
         buttonClass="btn-secondary" 
         buttonText="Fecha de evaluación para docentes"
-        inputId="fechaDocentesEvaluacion"
+        inputIdStart="fechaDocentesEvaluacionInicio"
+        inputIdEnd="fechaDocentesEvaluacionFin"
         collapseId="collapseDocentesEvaluacion"
+        endpointSave="/evaluation-dates/docentes-evaluacion"
         minDate="2026-01-01"
         maxDate="2027-01-31"
     />
 
     <x-dates_users 
         buttonClass="btn-third" 
-        buttonText="Fecha de capturacion de actas"
-        inputId="fechaEvaluadores"
+        buttonText="Fecha de capturación de actas"
+        inputIdStart="fechaEvaluadoresInicio"
+        inputIdEnd="fechaEvaluadoresFin"
         collapseId="collapseEvaluadores"
+        endpointSave="/evaluation-dates/evaluadores-captura"
         minDate="2026-02-01"
         maxDate="2027-01-31"
     />
