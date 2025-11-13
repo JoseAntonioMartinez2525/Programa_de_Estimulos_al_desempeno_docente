@@ -15,6 +15,32 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     
     <x-head-resources />
 
+    <!-- Incluir Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Incluir jQuery (si vas a usarlo para otros componentes) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Incluir Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<style>
+    .btn-primary, .btn-secondary, .btn-third {
+        border: none!important;
+        color: white!important;
+    }
+    .btn-primary {
+        background-color: #3780e0!important;
+    }
+
+    .btn-secondary {
+        background-color: #48d3b0!important;
+    }
+
+    .btn-third {
+        background-color: #46c5d6!important;
+    }
+</style>
 </head>
 
 <body>
@@ -36,11 +62,37 @@ $user_identity = $user->id;
 @endphp
 
 
-    </header>
+    </header><br>
     <div class="container mt-4 printButtonClass">
-   
+
+    <x-dates_users 
+        buttonClass="btn-primary" 
+        buttonText="Fecha de llenado de las evaluaciones para docentes"
+        inputId="fechaDocentesLlenado"
+        collapseId="collapseDocentesLlenado"
+        minDate="today"
+        maxDate="2027-01-31"
+    />
+
+    <x-dates_users 
+        buttonClass="btn-secondary" 
+        buttonText="Fecha de evaluación para docentes"
+        inputId="fechaDocentesEvaluacion"
+        collapseId="collapseDocentesEvaluacion"
+        minDate="2026-01-01"
+        maxDate="2027-01-31"
+    />
+
+    <x-dates_users 
+        buttonClass="btn-third" 
+        buttonText="Fecha de capturacion de actas"
+        inputId="fechaEvaluadores"
+        collapseId="collapseEvaluadores"
+        minDate="2026-02-01"
+        maxDate="2027-01-31"
+    />
 
     </div>
-            
+
 </body>
 </html>
