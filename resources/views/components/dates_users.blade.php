@@ -25,7 +25,7 @@
     <div class="collapse collapse-horizontal" id="{{ $collapseId }}">
         <div class="card card-body shadow-sm" style="width: 350px;">
             <label for="{{ $inputIdStart }}" class="form-label mb-2">Selecciona un rango de fechas</label>
-            <input type="text" id="{{ $inputIdStart }}" class="form-control" placeholder="YYYY-MM-DD a YYYY-MM-DD">
+            <input type="text" id="{{ $inputIdStart }}" class="form-control" placeholder="Año-Mes-Dia a Año-Mes-Dia">
             <button 
                 class="btn btn-success mt-3" 
                 onclick="saveDates('{{ $inputIdStart }}', '{{ $endpointSave }}')"
@@ -56,13 +56,14 @@ document.addEventListener('DOMContentLoaded', function() {
 if (typeof saveDates !== 'function') {
     function saveDates(inputId, endpoint) {
         const dateRange = document.getElementById(inputId).value;
+        const separator = ' a '; // Separador para el locale en español
         
-        if (!dateRange || !dateRange.includes(' to ')) {
+        if (!dateRange || !dateRange.includes(separator)) {
             alert('Por favor selecciona un rango de fechas válido.');
             return;
         }
 
-        const [startDate, endDate] = dateRange.split(' to ');
+        const [startDate, endDate] = dateRange.split(separator);
 
         fetch(endpoint, {
             method: 'POST',

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EvaluationDate;
 use App\Models\DocentesEvaluationDate;
-use App\Models\EvaluadoresCapturDate;
+use App\Models\EvaluadoresCaptureDate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -19,18 +19,29 @@ class EvaluationDateController extends Controller
             ]);
 
             if ($modelClass === EvaluationDate::class && $type) {
-                EvaluationDate::updateOrCreate(['type' => $type], $validated);
+                // Fusionamos el 'type' con los datos validados para asegurarnos de que se guarde.
+                EvaluationDate::updateOrCreate(
+                    ['type' => $type], // Condición de búsqueda
+                    array_merge($validated, ['type' => $type]) // Datos para guardar/actualizar
+                );
+            } elseif ($modelClass === DocentesEvaluationDate::class) {
+                // Asumimos que solo hay un registro, así que el primer argumento puede estar vacío.
+                DocentesEvaluationDate::updateOrCreate([], $validated);
+            } elseif ($modelClass === EvaluadoresCaptureDate::class) {
+                EvaluadoresCaptureDate::updateOrCreate([], $validated);
             } else {
-                // Para los otros modelos, asumimos que solo guardan el último registro.
-                $modelClass::latest()->first()?->delete();
-                $modelClass::create($validated);
+                throw new \Exception("Tipo de modelo no manejado: " . $modelClass);
             }
 
             return response()->json(['success' => true, 'message' => 'Fechas guardadas correctamente']);
         } catch (ValidationException $e) {
             return response()->json(['success' => false, 'message' => 'Error de validación.', 'errors' => $e->errors()], 422);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Ocurrió un error al guardar las fechas.'], 500);
+            // Devuelve el mensaje de error real para depuración
+            return response()->json([
+                'success' => false, 
+                'message' => $e->getMessage() // Esto nos dirá qué está fallando exactamente
+            ], 500);
         }
     }
 
@@ -46,7 +57,7 @@ class EvaluationDateController extends Controller
 
     public function storeEvaluadoresCaptura(Request $request)
     {
-        return $this->storeDates($request, EvaluadoresCapturDate::class);
+        return $this->storeDates($request, EvaluadoresCaptureDate::class);
     }
 
     public function getFechas()
@@ -54,7 +65,7 @@ class EvaluationDateController extends Controller
         return response()->json([
             'docentes_llenado' => EvaluationDate::where('type', 'docentes_llenado')->latest()->first(),
             'docentes_evaluacion' => DocentesEvaluationDate::latest()->first(),
-            'evaluadores_captura' => EvaluadoresCapturDate::latest()->first(),
+            'evaluadores_captura' => EvaluadoresCaptureDate::latest()->first(),
         ]);
     }
 }

@@ -13,7 +13,7 @@
         "doctrine/dbal": "^4.3",
         "intervention/image": "^3.11",
         "laravel/framework": "^12.3.0",
-        "laravel/telescope": "^5.8",
+        "laravel/telescope": "^5.15",
         "laravel/tinker": "^2.9.0",
         "laravel/ui": "^4.5.2",
         "meyfa/php-svg": "^0.16.1",

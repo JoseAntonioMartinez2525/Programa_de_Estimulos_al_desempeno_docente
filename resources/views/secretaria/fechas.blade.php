@@ -16,16 +16,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <x-head-resources />
 
     <!-- Incluir Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-    <!-- Incluir jQuery (si vas a usarlo para otros componentes) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css" integrity="sha512-MQXduO8IQnJVq1qmySpN87QQkiR1bZHtorbJBD0tzy7/0U9+YIC93QWHeGTEoojMVHWWNkoCp8V6OzVSYrX0oQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Incluir Flatpickr JS -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js" integrity="sha512-K/oyQtMXpxI4+K0W7H25UopjM8pzq0yrVdFdG21Fh5dBe91I40pDd9A4lzNlHPHBIP2cwZuoxaUSX0GJSObvGA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Incluir el archivo de localización para español -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/l10n/es.min.js" integrity="sha512-qNFoLkoKxYYiUEW14iAJbDcNsfoLTNznoq7UTa5xUp23NmGnlgC/pPWzN5kMcQC4bm+eFx2ibqelc3ARWf+SJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
     .btn-primary, .btn-secondary, .btn-third {
         border: none!important;
@@ -73,7 +69,7 @@ $user_identity = $user->id;
         inputIdStart="fechaDocentesLlenadoInicio"
         inputIdEnd="fechaDocentesLlenadoFin"
         collapseId="collapseDocentesLlenado"
-        endpointSave="/evaluation-dates/docentes-llenado"
+        :endpointSave="url('/evaluation-dates/docentes-llenado')"
         minDate="today"
         maxDate="2027-01-31"
     />
@@ -84,7 +80,7 @@ $user_identity = $user->id;
         inputIdStart="fechaDocentesEvaluacionInicio"
         inputIdEnd="fechaDocentesEvaluacionFin"
         collapseId="collapseDocentesEvaluacion"
-        endpointSave="/evaluation-dates/docentes-evaluacion"
+        :endpointSave="url('/evaluation-dates/docentes-evaluacion')"
         minDate="2026-01-01"
         maxDate="2027-01-31"
     />
@@ -95,7 +91,7 @@ $user_identity = $user->id;
         inputIdStart="fechaEvaluadoresInicio"
         inputIdEnd="fechaEvaluadoresFin"
         collapseId="collapseEvaluadores"
-        endpointSave="/evaluation-dates/evaluadores-captura"
+        :endpointSave="url('/evaluation-dates/evaluadores-captura')"
         minDate="2026-02-01"
         maxDate="2027-01-31"
     />

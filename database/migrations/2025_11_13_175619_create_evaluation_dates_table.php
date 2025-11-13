@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->date('start_date')->comment('Fecha de inicio de llenado');
             $table->date('end_date')->comment('Fecha de fin de llenado');
-            $table->string('type')->default('docentes_llenado');
+            $table->string('type')->nullable()->comment('Tipo de fecha, ej: docentes_llenado');
             $table->timestamps();
         });
     }
