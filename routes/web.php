@@ -104,6 +104,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('perfil', function () {return view('perfil'); })->name('perfil');
     Route::get('general', function () {return view('general');})->name('general');
     Route::get('tiempo', function () {return view('tiempo');})->name('tiempo');
+    Route::get('fechas', function () {return view('/secretaria/fechas');})->name('fechas');
     Route::get('edit_delete_form', [DynamicFormController::class, 'showSecretaria'])->name('edit_delete_form_dynamic');
 
     Route::get('/get-first-non-numeric-value/{formId}', [DynamicFormController::class, 'getFirstNonNumericValue']);

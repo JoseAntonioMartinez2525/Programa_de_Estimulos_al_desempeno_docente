@@ -40,8 +40,11 @@ body.dark-mode .nav {
                             <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('perfil') }}"><i class="fas fa-chart-bar"></i>Mostrar
                                 Reporte</a>
                         </li> --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('tiempo') }}" class="nav-link" title="Otorgar Prórroga de tiempo"><i class='fas fa-clock'></i> Agregar Tiempo</a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('fechas') }}" class="nav-link" title="fechas de evaluacion"><i class='fas fa-calendar'></i> establecer fechas</a>
                         </li>
                         @else 
                         <li class="nav-item">
