@@ -70,7 +70,7 @@ $user_identity = $user->id;
         inputIdEnd="fechaDocentesLlenadoFin"
         collapseId="collapseDocentesLlenado"
         :endpointSave="url('/evaluation-dates/docentes-llenado')"
-        minDate="today"
+        minDate=""
         maxDate="2027-01-31"
     />
 
@@ -106,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
         flatpickr(input, {
             dateFormat: "Y-m-d",
             locale: "es",
-            minDate: input.dataset.minDate || "today",
+            //minDate: input.dataset.minDate || "today",
+            minDate: input.dataset.minDate || null,
             maxDate: input.dataset.maxDate || null,
         });
     });

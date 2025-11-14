@@ -17,7 +17,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             <div class="text-center">
                 <h1 class="text-2xl font-bold text-gray-800 mb-4">Período de Evaluación Cerrado</h1>
                 <p class="text-gray-600">
-                    {{ $message ?? 'El período para el llenado de la evaluación docente no se encuentra activo. Por favor, contacta al administrador para más información.' }}
+                    {{ $message ?? 'El período para el llenado de la evaluación docente no se encuentra activo.' }}
                 </p>
                 <div class="mt-6">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary">

@@ -117,12 +117,10 @@ private function redirectByUserType($user)
             $endDate = Carbon::parse($evaluationDates->end_date)->endOfDay();
 
             if (!$now->between($startDate, $endDate)) {
-                Auth::logout(); // Cerramos la sesión que acabamos de crear
-                return redirect('/login')->withErrors(['email' => 'El período de evaluación se encuentra cerrado.']);
+                return response()->view('errors.period-closed', [], 403);
             }
         } else {
-            Auth::logout();
-            return redirect('/login')->withErrors(['email' => 'El período de evaluación no ha sido configurado.']);
+            return response()->view('errors.period-closed', ['message' => 'El período de evaluación aún no ha sido configurado.'], 403);
         }
     }
 
@@ -153,7 +151,7 @@ private function redirectByUserType($user)
         
         \Log::info('Logout ejecutado correctamente.');
 
-        return redirect('/login') // Redirige a la vista de login
+        return redirect()->route('login') // Redirige a la ruta nombrada 'login'
             ->header('Cache-Control', 'no-cache, no-store, must-revalidate')
             ->header('Pragma', 'no-cache')
             ->header('Expires', '0');

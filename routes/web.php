@@ -98,10 +98,6 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('rules', function () {return view('rules'); })->name('rules');
      Route::get('/welcome', [HomeController::class, 'showWelcome'])->name('welcome');
-    // Rutas para docentes protegidas por período de evaluación
-    Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome')->middleware('check.period');
-    Route::get('docencia', function () {return view('docencia'); })->name('docencia')->middleware('check.period');
-
     Route::get('resumen', function () {return view('resumen'); })->name('resumen');
     Route::get('perfil', function () {return view('perfil'); })->name('perfil');
     Route::get('general', function () {return view('general');})->name('general');
@@ -165,9 +161,13 @@ Route::middleware(['auth'])->group(function (){
 
 
 
-    //POST formularios
-    // Grupo de rutas para los formularios de docentes
-    // Route::middleware([CheckTimer::class])->group(function () {
+    // --- GRUPO DE RUTAS PARA DOCENTES PROTEGIDAS POR PERÍODO DE EVALUACIÓN ---
+    Route::middleware([\App\Http\Middleware\CheckEvaluationPeriod::class])->group(function () {
+        // Rutas GET para mostrar los formularios
+        Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+        Route::get('docencia', function () {return view('docencia'); })->name('docencia');
+
+        // Rutas POST para guardar los datos de los formularios
         Route::post('/store', [ResponseController::class, 'store'])->name('store');
         Route::post('/store2', [ResponseForm2Controller::class, 'store2'])->name('store2');
         Route::post('/store3', [ResponseForm2_2Controller::class, 'store3']);
@@ -191,8 +191,7 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/store317', [ResponseForm3_17Controller::class, 'store317']);
         Route::post('/store318', [ResponseForm3_18Controller::class, 'store318']);
         Route::post('/store319', [ResponseForm3_19Controller::class, 'store319']);
-        
-    // });
+    });
     
     Route::post('/store-resume', [ResumeController::class, 'storeResume']);
     Route::post('/store-evaluator-signature', [EvaluatorSignatureController1::class, 'storeEvaluatorSignature'])->name('store-evaluator-signature');
