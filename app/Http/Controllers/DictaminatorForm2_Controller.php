@@ -10,13 +10,23 @@ use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use App\Events\EvaluationCompleted;
 use App\Models\UsersResponseForm1;
+use App\Traits\ValidatesDictaminatorPeriod;
 use Auth;
+
 
 class DictaminatorForm2_Controller extends TransferController
 {
+    use ValidatesDictaminatorPeriod;
+
+
     public function storeform2(Request $request)
     {
         try {
+            // 2. Llamar a la validación de fecha al inicio del método
+            if ($error = $this->validateEvaluationPeriod($request)) {
+                return $error;
+            }
+
             $validatedData = $request->validate([
                 'dictaminador_id'=>'required|numeric',
                 'user_id' => 'required|exists:users,id',

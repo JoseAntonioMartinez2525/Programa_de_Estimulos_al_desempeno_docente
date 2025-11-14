@@ -30,15 +30,19 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
-
+use App\Traits\ValidatesDictaminatorPeriod;
 
 class DictaminatorForm3_1Controller extends TransferController
 {
+    use ValidatesDictaminatorPeriod;
     public function storeform31(Request $request)
     {
         
         
         try {
+                if ($error = $this->validateEvaluationPeriod($request)) {
+                return $error;
+                }
             \Log::info('Inicio de storeform31');
 
             $validatedData = $request->validate([
