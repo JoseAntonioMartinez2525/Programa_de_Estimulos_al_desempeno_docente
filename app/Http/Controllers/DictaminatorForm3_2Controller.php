@@ -9,14 +9,19 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use App\Traits\ValidatesDictaminatorPeriod;
 
 class DictaminatorForm3_2Controller extends TransferController
 {
+    use ValidatesDictaminatorPeriod;
     public function storeform32(Request $request)
     {
-        
-        
+          
         try {
+
+                if ($error = $this->validateEvaluationPeriod($request)) {
+                    return $error;
+                }
             $validatedData = $request->validate([
                 'dictaminador_id' => 'required|numeric',
                 'user_id' => 'required|exists:users,id',
