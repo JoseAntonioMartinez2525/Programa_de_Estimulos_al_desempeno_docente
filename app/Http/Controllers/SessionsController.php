@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use App\Models\EvaluationDate;
+use Carbon\Carbon;
 
 class SessionsController extends Controller
 {
@@ -104,6 +106,25 @@ private function redirectByUserType($user)
     $noCache = 'no-cache, no-store, must-revalidate';
     $pragmaNoCache = 'no-cache';
     $expiresZero = '0';
+
+    // Verificación de período para docentes al iniciar sesión
+    if ($user->user_type === 'docente') {
+        $evaluationDates = EvaluationDate::where('type', 'docentes_llenado')->first();
+        $now = Carbon::now();
+
+        if ($evaluationDates) {
+            $startDate = Carbon::parse($evaluationDates->start_date);
+            $endDate = Carbon::parse($evaluationDates->end_date)->endOfDay();
+
+            if (!$now->between($startDate, $endDate)) {
+                Auth::logout(); // Cerramos la sesión que acabamos de crear
+                return redirect('/login')->withErrors(['email' => 'El período de evaluación se encuentra cerrado.']);
+            }
+        } else {
+            Auth::logout();
+            return redirect('/login')->withErrors(['email' => 'El período de evaluación no ha sido configurado.']);
+        }
+    }
 
     if ($user->user_type === 'dictaminador') {
         return redirect()->route('comision_dictaminadora')

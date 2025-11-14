@@ -8,16 +8,18 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('evaluadores_capture_dates', function (Blueprint $table) {
+        Schema::create('files_capture_dates', function (Blueprint $table) {
             $table->id();
             $table->date('start_date')->comment('Fecha de inicio de captura');
             $table->date('end_date')->comment('Fecha de fin de captura');
+            $table->string('type')->unique()->comment('Tipo de fecha, ej: files_capture_dates');
+
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('evaluadores_capture_dates');
+        Schema::dropIfExists('files_capture_dates');
     }
 };

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DocentesEvaluationDate extends Model
 {
-    protected $fillable = ['start_date', 'end_date'];
+    protected $fillable = ['start_date', 'end_date', 'type'];
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date',

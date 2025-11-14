@@ -24,11 +24,17 @@
 
     <div class="collapse collapse-horizontal" id="{{ $collapseId }}">
         <div class="card card-body shadow-sm" style="width: 350px;">
-            <label for="{{ $inputIdStart }}" class="form-label mb-2">Selecciona un rango de fechas</label>
-            <input type="text" id="{{ $inputIdStart }}" class="form-control" placeholder="Año-Mes-Dia a Año-Mes-Dia">
+            <div class="mb-2">
+                <label for="{{ $inputIdStart }}" class="form-label">Fecha de inicio</label>
+                <input type="text" id="{{ $inputIdStart }}" class="form-control flatpickr-input" placeholder="Selecciona fecha de inicio" data-min-date="{{ $minDate }}" data-max-date="{{ $maxDate }}">
+            </div>
+            <div class="mb-2">
+                <label for="{{ $inputIdEnd }}" class="form-label">Fecha de fin</label>
+                <input type="text" id="{{ $inputIdEnd }}" class="form-control flatpickr-input" placeholder="Selecciona fecha de fin" data-min-date="{{ $minDate }}" data-max-date="{{ $maxDate }}">
+            </div>
             <button 
                 class="btn btn-success mt-3" 
-                onclick="saveDates('{{ $inputIdStart }}', '{{ $endpointSave }}')"
+                onclick="saveDates('{{ $inputIdStart }}', '{{ $inputIdEnd }}', '{{ $endpointSave }}')"
             >
                 Guardar
             </button>
@@ -37,39 +43,21 @@
 </div>
 {{-- Script inline para inicializar Flatpickr de forma independiente --}}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    flatpickr("#{{ $inputIdStart }}", {
-        mode: "range",
-        dateFormat: "Y-m-d",
-        locale: "es",
-        minDate: "{{ $minDate }}",
-        maxDate: "{{ $maxDate }}",
-        onChange: function(selectedDates, dateStr, instance) {
-            // Esto es opcional, pero útil si necesitas los valores por separado
-            if (selectedDates.length === 2) {
-                // Puedes almacenar las fechas de inicio y fin si es necesario
-            }
-        }
-    });
-});
-
 if (typeof saveDates !== 'function') {
-    function saveDates(inputId, endpoint) {
-        const dateRange = document.getElementById(inputId).value;
-        const separator = ' a '; // Separador para el locale en español
-        
-        if (!dateRange || !dateRange.includes(separator)) {
-            alert('Por favor selecciona un rango de fechas válido.');
+    function saveDates(startId, endId, endpoint) {
+        const startDate = document.getElementById(startId).value;
+        const endDate = document.getElementById(endId).value;
+
+        if (!startDate || !endDate) {
+            alert('Por favor, selecciona una fecha de inicio y una de fin.');
             return;
         }
-
-        const [startDate, endDate] = dateRange.split(separator);
 
         fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
             body: JSON.stringify({
                 start_date: startDate,

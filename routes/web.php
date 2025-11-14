@@ -96,11 +96,12 @@ Route::post('/login', [SessionsController::class, 'login'])->name('login.post');
  
 Route::middleware(['auth'])->group(function (){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/welcome', [HomeController::class, 'showWelcome'])->name('welcome');
-    Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
-
     Route::get('rules', function () {return view('rules'); })->name('rules');
-    Route::get('docencia', function () {return view('docencia'); })->name('docencia');
+     Route::get('/welcome', [HomeController::class, 'showWelcome'])->name('welcome');
+    // Rutas para docentes protegidas por período de evaluación
+    Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome')->middleware('check.period');
+    Route::get('docencia', function () {return view('docencia'); })->name('docencia')->middleware('check.period');
+
     Route::get('resumen', function () {return view('resumen'); })->name('resumen');
     Route::get('perfil', function () {return view('perfil'); })->name('perfil');
     Route::get('general', function () {return view('general');})->name('general');

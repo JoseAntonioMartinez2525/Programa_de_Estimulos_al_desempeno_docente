@@ -24,11 +24,15 @@ class EvaluationDateController extends Controller
                     ['type' => $type], // Condición de búsqueda
                     array_merge($validated, ['type' => $type]) // Datos para guardar/actualizar
                 );
-            } elseif ($modelClass === DocentesEvaluationDate::class) {
+            } elseif ($modelClass === DocentesEvaluationDate::class && $type) {
                 // Asumimos que solo hay un registro, así que el primer argumento puede estar vacío.
-                DocentesEvaluationDate::updateOrCreate([], $validated);
-            } elseif ($modelClass === EvaluadoresCaptureDate::class) {
-                EvaluadoresCaptureDate::updateOrCreate([], $validated);
+                DocentesEvaluationDate::updateOrCreate( ['type' => $type], // Condición de búsqueda
+                    array_merge($validated, ['type' => $type]) // Datos para guardar/actualizar
+                );
+            } elseif ($modelClass === EvaluadoresCaptureDate::class && $type) {
+                EvaluadoresCaptureDate::updateOrCreate( ['type' => $type], // Condición de búsqueda
+                    array_merge($validated, ['type' => $type]) // Datos para guardar/actualizar
+                );
             } else {
                 throw new \Exception("Tipo de modelo no manejado: " . $modelClass);
             }
@@ -52,20 +56,20 @@ class EvaluationDateController extends Controller
 
     public function storeDocentesEvaluacion(Request $request)
     {
-        return $this->storeDates($request, DocentesEvaluationDate::class);
+        return $this->storeDates($request, DocentesEvaluationDate::class,'dictaminadores_capturando_datos');
     }
 
     public function storeEvaluadoresCaptura(Request $request)
     {
-        return $this->storeDates($request, EvaluadoresCaptureDate::class);
+        return $this->storeDates($request, EvaluadoresCaptureDate::class,'files_capture_dates');
     }
 
     public function getFechas()
     {
         return response()->json([
             'docentes_llenado' => EvaluationDate::where('type', 'docentes_llenado')->latest()->first(),
-            'docentes_evaluacion' => DocentesEvaluationDate::latest()->first(),
-            'evaluadores_captura' => EvaluadoresCaptureDate::latest()->first(),
+            'dictaminadores_capturando_datos' => DocentesEvaluationDate::where('type', 'dictaminadores_capturando_datos')->latest()->first(),
+            'files_capture_dates' => EvaluadoresCaptureDate::where('type', 'files_capture_dates')->latest()->first(),
         ]);
     }
 }

@@ -98,5 +98,116 @@ $user_identity = $user->id;
 
     </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // --- PASO 1: Inicializar todos los calendarios flatpickr ---
+    const allPickers = document.querySelectorAll('.flatpickr-input');
+    allPickers.forEach(input => {
+        flatpickr(input, {
+            dateFormat: "Y-m-d",
+            locale: "es",
+            minDate: input.dataset.minDate || "today",
+            maxDate: input.dataset.maxDate || null,
+        });
+    });
+
+    // --- PASO 2: Obtener las instancias de flatpickr para el encadenamiento ---
+    const selectors = [
+        { start: 'fechaDocentesLlenadoInicio', end: 'fechaDocentesLlenadoFin' },
+        { start: 'fechaDocentesEvaluacionInicio', end: 'fechaDocentesEvaluacionFin' },
+        { start: 'fechaEvaluadoresInicio', end: 'fechaEvaluadoresFin' }
+    ];
+
+    const pickers = selectors.map(sel => {
+        const startEl = document.querySelector(`#${sel.start}`);
+        const endEl = document.querySelector(`#${sel.end}`);
+        // La instancia _flatpickr ahora existirá con seguridad
+        return {
+            start: startEl._flatpickr,
+            end: endEl._flatpickr
+        };
+    });
+
+    // --- PASO 3: Definir la lógica de encadenamiento ---
+    for (let i = 0; i < pickers.length; i++) {
+        const current = pickers[i];
+        const next = pickers[i + 1];
+
+        // Encadenar INICIO con FIN dentro del mismo componente
+        current.start.config.onChange.push((selectedDates) => {
+            if (selectedDates[0]) {
+                // La fecha final no puede ser anterior a la de inicio
+                current.end.set('minDate', selectedDates[0]);
+            }
+        });
+
+        // Encadenar FIN del actual con INICIO del siguiente componente
+        if (next) {
+            current.end.config.onChange.push((selectedDates) => {
+                if (selectedDates[0]) {
+                    // La fecha de inicio del siguiente periodo debe ser el día después.
+                    const endDate = selectedDates[0];
+                    const nextMinDate = new Date(endDate.getTime()); // Clonar la fecha
+                    nextMinDate.setDate(endDate.getDate() + 1);
+
+                    // Formatear la fecha a 'YYYY-MM-DD' para evitar errores de interpretación.
+                    const year = nextMinDate.getFullYear();
+                    const month = String(nextMinDate.getMonth() + 1).padStart(2, '0'); // +1 porque los meses son 0-11
+                    const day = String(nextMinDate.getDate()).padStart(2, '0');
+                    const nextMinDateString = `${year}-${month}-${day}`;
+
+                    // Establecer la fecha mínima y saltar a esa vista en el calendario.
+                    next.start.set('minDate', nextMinDateString);
+                    next.start.jumpToDate(nextMinDateString);
+                }
+            });
+        }
+    }
+
+    // --- PASO 4: Cargar datos existentes y aplicar la lógica de encadenamiento inicial ---
+    function loadAndApplyInitialDates() {
+        fetch('{{ url("/evaluation-dates") }}')
+            .then(response => response.json())
+            .then(data => {
+                // Mapeo de claves de datos a IDs de los inputs
+                const dateMappings = {
+                    docentes_llenado: pickers[0],
+                    dictaminadores_capturando_datos: pickers[1],
+                    files_capture_dates: pickers[2]
+                };
+
+                // Poblar inputs y disparar la lógica de encadenamiento
+                Object.keys(dateMappings).forEach(key => {
+                    if (data[key]) {
+                        const pickerPair = dateMappings[key];
+                        const startDate = data[key].start_date;
+                        const endDate = data[key].end_date;
+
+                        // Establecer los valores en los calendarios
+                        pickerPair.start.setDate(startDate, false); // El 'false' evita disparar onChange
+                        pickerPair.end.setDate(endDate, false);
+
+                        // Disparar manualmente la lógica de encadenamiento
+                        // 1. Encadenamiento interno (inicio -> fin)
+                        pickerPair.end.set('minDate', startDate);
+
+                        // 2. Encadenamiento externo (fin del actual -> inicio del siguiente)
+                        const nextPickerPair = pickers[pickers.indexOf(pickerPair) + 1];
+                        if (nextPickerPair) {
+                            const nextMinDate = new Date(endDate);
+                            nextMinDate.setDate(nextMinDate.getDate() + 1);
+                            const nextMinDateString = nextMinDate.toISOString().split('T')[0];
+                            
+                            nextPickerPair.start.set('minDate', nextMinDateString);
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error al cargar las fechas iniciales:', error));
+    }
+
+    loadAndApplyInitialDates();
+});
+</script>
 </body>
 </html>
