@@ -18,7 +18,12 @@ class DictaminatorForm3_7Controller extends TransferController
 
 
         try {
-            if ($error = $this->validateEvaluationPeriod($request)) {
+            // 1. Obtener el ID del dictaminador autenticado y añadirlo al request.
+            $dictaminadorId = \Auth::id();
+            $request->merge(['dictaminador_id' => $dictaminadorId]);
+
+            // 2. Llamar a la validación de fecha al inicio del método
+            if ($error = $this->validateEvaluationPeriod($request, 'form3_7')) {
                 return $error;
             }
             $validatedData = $request->validate([
@@ -35,6 +40,18 @@ class DictaminatorForm3_7Controller extends TransferController
             ]);
 
             $validatedData['form_type'] = 'form3_7';
+
+                // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
+                $existingRecord = DictaminatorsResponseForm3_7::where('dictaminador_id', $dictaminadorId)
+                    ->where('user_id', $validatedData['user_id'])
+                    ->first();
+
+                if ($existingRecord) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Error al enviar, formulario ya existente'
+                    ], 409);
+                }
 
             if (!isset($validatedData['score3_7'])) {
                 $validatedData['score3_7'] = 0;
@@ -71,7 +88,7 @@ class DictaminatorForm3_7Controller extends TransferController
         } catch (QueryException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Database error: ' . $e->getMessage(),
+                'message' => 'Error al enviar, formulario ya existente',
             ], 700);
         } catch (\Exception $e) {
             return response()->json([

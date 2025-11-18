@@ -40,9 +40,15 @@ class DictaminatorForm3_1Controller extends TransferController
         
         
         try {
-                if ($error = $this->validateEvaluationPeriod($request)) {
+            // 1. Obtener el ID del dictaminador autenticado y añadirlo al request.
+            $dictaminadorId = \Auth::id();
+            $request->merge(['dictaminador_id' => $dictaminadorId]);
+
+            // 2. Llamar a la validación de fecha al inicio del método
+            if ($error = $this->validateEvaluationPeriod($request, 'form3_1')) {
                 return $error;
-                }
+            }
+
             \Log::info('Inicio de storeform31');
 
             $validatedData = $request->validate([
@@ -77,6 +83,18 @@ class DictaminatorForm3_1Controller extends TransferController
             \Log::info('Datos validados:', $validatedData);
 
             $validatedData['form_type'] = 'form3_1';
+
+                // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
+                $existingRecord = DictaminatorsResponseForm3_1::where('dictaminador_id', $dictaminadorId)
+                    ->where('user_id', $validatedData['user_id'])
+                    ->first();
+
+                if ($existingRecord) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Error al enviar, formulario ya existente'
+                    ], 409);
+                }
             
             if (!isset($validatedData['score3_1'])) {
                 $validatedData['score3_1'] = 0;
@@ -129,7 +147,7 @@ class DictaminatorForm3_1Controller extends TransferController
             \Log::error('QueryException:', ['message' => $e->getMessage()]);
             return response()->json([
                 'success' => false,
-                'message' => 'Database error: ' . $e->getMessage(),
+                'message' => 'Error al enviar, formulario ya existente',
             ], 500);
         } catch (\Exception $e) {
             \Log::error('Exception:', ['message' => $e->getMessage()]);

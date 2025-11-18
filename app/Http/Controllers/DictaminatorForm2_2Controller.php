@@ -20,28 +20,45 @@ class DictaminatorForm2_2Controller extends TransferController
     public function storeform22(Request $request)
     {
         try {
-            if ($error = $this->validateEvaluationPeriod($request)) {
-                
+            // 1. Obtener el ID del dictaminador autenticado y añadirlo al request.
+            $dictaminadorId = \Auth::id();
+            $request->merge(['dictaminador_id' => $dictaminadorId]);
+
+            // 2. Llamar a la validación de fecha al inicio del método
+            if ($error = $this->validateEvaluationPeriod($request, 'form2_2')) {
                 return $error;
             }
-        $validatedData = $request->validate([
-            'dictaminador_id' => 'required|numeric',
-            'user_id' => 'required|exists:users,id',
-            'email' => 'required|exists:users,email',
-            'hours' => 'required|numeric',
-            'horasPosgrado' => 'required|numeric', // Allow nullable
-            'horasSemestre' => 'required|numeric',
-            'dse' => 'required|numeric',
-            'dse2' => 'required|numeric',
-            'comisionPosgrado' => 'required|numeric',
-            'comisionLic' => 'required|numeric',
-            'actv2Comision' => 'required|numeric',
-            'obs2' => 'nullable|string',
-            'obs2_2' => 'nullable|string',
-            'user_type' => 'required|in:user,docente,dictaminator',
-        ]);
+
+            $validatedData = $request->validate([
+                'dictaminador_id' => 'required|numeric',
+                'user_id' => 'required|exists:users,id',
+                'email' => 'required|exists:users,email',
+                'hours' => 'required|numeric',
+                'horasPosgrado' => 'required|numeric', // Allow nullable
+                'horasSemestre' => 'required|numeric',
+                'dse' => 'required|numeric',
+                'dse2' => 'required|numeric',
+                'comisionPosgrado' => 'required|numeric',
+                'comisionLic' => 'required|numeric',
+                'actv2Comision' => 'required|numeric',
+                'obs2' => 'nullable|string',
+                'obs2_2' => 'nullable|string',
+                'user_type' => 'required|in:user,docente,dictaminator',
+            ]);
 
             $validatedData['form_type'] = 'form2_2';
+
+                // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
+                $existingRecord = DictaminatorsResponseForm2_2::where('dictaminador_id', $dictaminadorId)
+                    ->where('user_id', $validatedData['user_id'])
+                    ->first();
+
+                if ($existingRecord) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Error al enviar, formulario ya existente'
+                    ], 409);
+                }
 
         if (!isset($validatedData['hours'])) {
             $validatedData['hours'] = 0;
@@ -49,6 +66,15 @@ class DictaminatorForm2_2Controller extends TransferController
         $validatedData['obs2'] = $validatedData['obs2'] ?? 'sin comentarios';
         $validatedData['obs2_2'] = $validatedData['obs2_2'] ?? 'sin comentarios';
 
+        
+            // Esto actualiza si existe o crea si no existe
+            $response = DictaminatorsResponseForm2_2::updateOrCreate(
+                [
+                    'dictaminador_id' => $dictaminadorId,
+                    'user_id' => $validatedData['user_id']
+                ],
+                $validatedData
+            );
         try {
             $response = DictaminatorsResponseForm2_2::create($validatedData);
                 // Actualizar automáticamente el modelo docente con la comision
@@ -96,7 +122,7 @@ class DictaminatorForm2_2Controller extends TransferController
         } catch (QueryException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Database error: ' . $e->getMessage(),
+                'message' => 'Error al enviar, formulario ya existente',
             ], 500);
 
         } catch (\Exception $e) {
