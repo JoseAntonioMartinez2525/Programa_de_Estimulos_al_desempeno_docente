@@ -73,6 +73,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <x-head-resources />
     {{-- partial blade para autocompletar datos--}}
     @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+    @include('partials.submit-form', ['config' => $docenteConfigForm])
 <style>
     body.chrome @media print {
         #convocatoria {
