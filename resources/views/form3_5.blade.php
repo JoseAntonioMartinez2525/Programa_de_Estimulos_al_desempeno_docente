@@ -68,6 +68,23 @@ $docenteConfig = [
 
 ];
 @endphp
+@php
+if (!isset($docenteConfigForm)) {
+    $docenteConfigForm = [
+        'extraFields' => [
+            'score3_5',
+            'comision3_5',
+            'cantDA', 'cantCAAC',
+            'cantDA2', 'cantCAAC2',
+            'comDA', 'comNCAA',
+            'obs3_5_1', 'obs3_5_2',
+        ],
+        'exposeAs' => 'submitForm',
+        'selectedEmailInputId' => 'selectedDocenteEmail',
+        'searchInputId' => 'docenteSearch',
+    ];
+}
+@endphp
 <!DOCTYPE html>
 <html lang="">
 
@@ -140,7 +157,7 @@ $user_identity = $user->id;
     </div>
     <main class="container">
         <!-- Form for Part 3_5 -->
-        <form id="form3_5" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-form35', 'form3_5');">
+        <form id="form3_5" action="/formato-evaluacion/store-form35" method="POST">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
@@ -287,68 +304,6 @@ $user_identity = $user->id;
     };   
 
 
-        // Function to handle form submission
-        async function submitForm(url, formId) {
-            const formData = {};
-            const form = document.getElementById(formId);
-
-            if (!form) {
-                console.error(`Form with id "${formId}" not found.`);
-                return;
-            }
-
-            // Gather all related information from the form
-            formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
-            formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = selectedEmail;
-            formData['user_type'] = form.querySelector('input[name="user_type"]').value;
-            formData['cantDA'] = document.getElementById('cantDA').textContent;
-            formData['cantCAAC'] = document.getElementById('cantCAAC').textContent;
-            formData['cantDA2'] = document.getElementById('cantDA2').textContent;
-            formData['cantCAAC2'] = document.getElementById('cantCAAC2').textContent;
-            formData['comDA'] = form.querySelector('input[id="comDA"]').value;
-            formData['comNCAA'] = form.querySelector('input[id="comNCAA"]').value;
-            formData['score3_5'] = document.getElementById('score3_5').textContent;
-            formData['comision3_5'] = document.getElementById('comision3_5').textContent;
-
-            // Observations
-            formData['obs3_5_1'] = form.querySelector('input[name="obs3_5_1"]').value;
-            formData['obs3_5_2'] = form.querySelector('input[name="obs3_5_2"]').value;
-
-            console.log('Form data:', formData);
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const responseData = await response.json();
-                console.log('Response received from server:', responseData);
-
-                // Mensaje al usuario
-                // Solo mostrar éxito si el servidor marca success === true
-                if (responseData && responseData.success === true) {
-                    showMessage('Formulario enviado', 'green');
-                } else {
-                    console.error('Submission failed:', responseData);
-                    showMessage(responseData.message || 'Formulario no enviado', 'red');
-                }
-
-        } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
-        showMessage('Formulario no enviado', 'red');
-
-        }
-        }
         function minWithSum(value1, value2) {
             const sum = value1 + value2;
             return Math.min(sum, 200);
