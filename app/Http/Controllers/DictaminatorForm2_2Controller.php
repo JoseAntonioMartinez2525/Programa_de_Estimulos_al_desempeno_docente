@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use App\Traits\ValidatesDictaminatorPeriod;
 
+use function Laravel\Prompts\alert;
+
 class DictaminatorForm2_2Controller extends TransferController
 {
     use ValidatesDictaminatorPeriod;
@@ -19,6 +21,7 @@ class DictaminatorForm2_2Controller extends TransferController
     {
         try {
             if ($error = $this->validateEvaluationPeriod($request)) {
+                
                 return $error;
             }
         $validatedData = $request->validate([

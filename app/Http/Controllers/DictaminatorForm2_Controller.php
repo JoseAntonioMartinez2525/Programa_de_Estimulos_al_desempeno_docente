@@ -11,19 +11,22 @@ use Illuminate\Validation\ValidationException;
 use App\Events\EvaluationCompleted;
 use App\Models\UsersResponseForm1;
 use App\Traits\ValidatesDictaminatorPeriod;
-use Auth;
 
 
 class DictaminatorForm2_Controller extends TransferController
 {
+    
     use ValidatesDictaminatorPeriod;
-
 
     public function storeform2(Request $request)
     {
         try {
+            // 1. Obtener el ID del dictaminador autenticado y añadirlo al request.
+            $dictaminadorId = \Auth::id();
+            $request->merge(['dictaminador_id' => $dictaminadorId]);
+
             // 2. Llamar a la validación de fecha al inicio del método
-            if ($error = $this->validateEvaluationPeriod($request)) {
+            if ($error = $this->validateEvaluationPeriod($request, 'form2')) {
                 return $error;
             }
 
@@ -40,13 +43,34 @@ class DictaminatorForm2_Controller extends TransferController
             ]);
 
             $validatedData['form_type'] = 'form2';
+            
+            // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
+                $existingRecord = DictaminatorsResponseForm2::where('dictaminador_id', $dictaminadorId)
+                    ->where('user_id', $validatedData['user_id'])
+                    ->first();
+
+                if ($existingRecord) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Error al enviar, formulario ya existente'
+                    ], 409);
+                }
+            
+            
             // Default values for optional fields
             if (!isset($validatedData['puntajeEvaluar'])) {
                 $validatedData['puntajeEvaluar'] = 0;
             }
             $validatedData['obs1'] = trim($validatedData['obs1']) !== '' ? $validatedData['obs1'] : 'sin comentarios';
 
-            $response = DictaminatorsResponseForm2::create($validatedData);
+            // Esto actualiza si existe o crea si no existe
+            $response = DictaminatorsResponseForm2::updateOrCreate(
+                [
+                    'dictaminador_id' => $dictaminadorId,
+                    'user_id' => $validatedData['user_id']
+                ],
+                $validatedData
+            );
 
             // Actualizar automáticamente UsersResponseForm2 con comision1
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['comision1']);
@@ -81,7 +105,7 @@ class DictaminatorForm2_Controller extends TransferController
         } catch (QueryException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Database error: ' . $e->getMessage(),
+                'message' => 'Error al enviar, formulario ya existente',
             ], 500);
 
         } catch (\Exception $e) {

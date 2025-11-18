@@ -126,7 +126,7 @@
 
             if (!response.ok || json.success === false) {
                 console.error('Error del servidor:', json);
-                showMessage('Error al enviar', 'red');
+                showMessage(json.message || 'Error al enviar', 'red'); // Usar el mensaje del servidor o uno genérico
                 return;
             }
 

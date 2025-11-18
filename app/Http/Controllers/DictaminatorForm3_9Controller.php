@@ -9,8 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
+use App\Traits\ValidatesDictaminatorPeriod;
 class DictaminatorForm3_9Controller extends TransferController
 {
+    use ValidatesDictaminatorPeriod;
     public function storeform39(Request $request)
     {
 

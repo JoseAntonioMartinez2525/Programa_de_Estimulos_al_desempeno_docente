@@ -825,15 +825,25 @@ document.addEventListener('DOMContentLoaded', function () {
                         body: JSON.stringify(formData),
                     });
 
+                    //let data = await response.json();
+
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        // Si la respuesta no es exitosa, leemos el JSON para obtener el mensaje de error.
+                        let errorData = await response.json();
+                        // Si la respuesta no es exitosa, lanzamos un error con el mensaje del servidor.
+                        // El mensaje que configuramos en el controlador será usado aquí.
+                        throw new Error(errorData.message || 'Ocurrió un error en el servidor.');
                     }
 
                     let data = await response.json();
                     console.log('Response received from server:', data);
+                    alert('Datos guardados correctamente.'); // Mensaje de éxito
                     
                 } catch (error) {
                     console.error('There was a problem with the fetch operation:', error);
+                    // Mostramos el mensaje de error en un alert para el usuario.
+                    // Usamos el mensaje del error que lanzamos en el bloque 'if (!response.ok)'
+                    alert(error.message);
                 }
             }
 
