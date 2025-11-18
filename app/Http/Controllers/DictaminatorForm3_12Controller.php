@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\EvaluationCompleted;
 use App\Models\DictaminatorsResponseForm3_12;
 use App\Models\UsersResponseForm3_12;
+use App\Traits\ValidatesDictaminatorPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class DictaminatorForm3_12Controller extends TransferController
 {
-   
+    use ValidatesDictaminatorPeriod;
     public function storeform312(Request $request)
     {
 

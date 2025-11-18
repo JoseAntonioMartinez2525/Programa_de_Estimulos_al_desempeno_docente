@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Events\EvaluationCompleted;
 use App\Models\DictaminatorsResponseForm3_13;
 use App\Models\UsersResponseForm3_13;
+use App\Traits\ValidatesDictaminatorPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\DB;
+
 class DictaminatorForm3_13Controller extends TransferController
 {
+    use ValidatesDictaminatorPeriod;
     public function storeform313(Request $request)
     {
-
+        
         try {
             // 1. Obtener el ID del dictaminador autenticado y añadirlo al request.
             $dictaminadorId = \Auth::id();
