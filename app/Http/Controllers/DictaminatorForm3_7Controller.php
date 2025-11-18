@@ -58,7 +58,13 @@ class DictaminatorForm3_7Controller extends TransferController
             }
             $validatedData['obs3_7_1'] = trim($validatedData['obs3_7_1'])!== '' ? $validatedData['obs_3_7_1'] : 'sin comentarios';
 
-            $response = DictaminatorsResponseForm3_7::create($validatedData);
+            $response = DictaminatorsResponseForm3_7::updateOrCreate(
+                [
+                    'dictaminador_id' => $dictaminadorId,
+                    'user_id' => $validatedData['user_id']
+                ],
+                $validatedData
+            );
             // Actualizar automáticamente el modelo docente con la comision
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['comision3_7']);
             

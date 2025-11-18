@@ -106,7 +106,13 @@ class DictaminatorForm3_18Controller extends TransferController
                     ], 409);
                 }            
 
-            $response = DictaminatorsResponseForm3_18::create($validatedData);
+            $response = DictaminatorsResponseForm3_18::updateOrCreate(
+                [
+                    'dictaminador_id' => $dictaminadorId,
+                    'user_id' => $validatedData['user_id']
+                ],
+                $validatedData
+            );
 
             // Actualizar automáticamente el modelo docente con la comision
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['comision3_18']);

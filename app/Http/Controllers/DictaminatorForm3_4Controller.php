@@ -73,7 +73,13 @@ class DictaminatorForm3_4Controller extends TransferController
             $validatedData['obs3_4_4'] = $validatedData['obs3_4_4'] ?? 'sin comentarios';
 
 
-            $response = DictaminatorsResponseForm3_4::create($validatedData);
+            $response = DictaminatorsResponseForm3_4::updateOrCreate(
+                [
+                    'dictaminador_id' => $dictaminadorId,
+                    'user_id' => $validatedData['user_id']
+                ],
+                $validatedData
+            );
             
             // Actualizar automáticamente el modelo docente con la comision
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['comision3_4']);

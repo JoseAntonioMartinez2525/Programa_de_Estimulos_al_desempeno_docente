@@ -108,7 +108,13 @@ class DictaminatorForm3_1Controller extends TransferController
 
 
             
-            $response = DictaminatorsResponseForm3_1::create($validatedData);
+            $response = DictaminatorsResponseForm3_1::updateOrCreate(
+                [
+                    'dictaminador_id' => $dictaminadorId,
+                    'user_id' => $validatedData['user_id']
+                ],
+                $validatedData
+            );
             \Log::info('Datos guardados en DictaminatorsResponseForm3_1:', $response->toArray());
 
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['actv3Comision']);
