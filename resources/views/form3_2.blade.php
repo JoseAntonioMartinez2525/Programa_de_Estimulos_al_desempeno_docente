@@ -246,7 +246,7 @@ $user_identity = $user->id;
                         <tr>
                               <td></td>
                             <td>Puntaje</td>
-                            <td class="text-center">Cantidad</td>
+                            <td class="text-center bg-transparent">Cantidad</td>
                             <td colspan="2"></td>
                             
                             <td class="text-center table-ajust" scope="col">Observaciones</td>

@@ -189,6 +189,9 @@ body {
         padding: -20px 0 0 0;
     }
 
+    td.text-center.bg-transparent{
+        margin-inline-start: -10rem!important;
+    }
     
 }
 
@@ -1562,9 +1565,9 @@ td#comision3_2{
 }
 
 /* Asegura alineación vertical de celdas de tabla */
-#form3_3 table th,
+/* #form3_3 table th,
 #form3_3 table td {
   vertical-align: middle;
   margin-top: 3.2rem;
-}
+} */
 

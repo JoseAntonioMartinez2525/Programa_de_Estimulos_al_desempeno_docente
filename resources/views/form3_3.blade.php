@@ -108,25 +108,18 @@ $docenteConfig = [
     <style>
         @media print {
             body.chrome #convocatoria, 
-            body.chrome #convocatoria_copy {
+            /* body.chrome #convocatoria_copy {
                 font-size: 1.2rem;
                 color: blue;
-            }
+            } */
         }
 
 
         html{
-            font-size: 2rem;
+            font-size: 1rem;
         }
 
-        @media screen{
-            #convocatoria, #convocatoria_copy {
-                font-size: 1.2rem;
-                color: blue; /* Ejemplo de estilo específico para Chrome */
-            }
-        }
-        
-
+    
         .table3_3_2{
             margin-top: 200px;
         }
@@ -348,6 +341,10 @@ $docenteConfig = [
             body.dark-mode [id^="btn3_"]:hover {
                 background-color: #6a5b9f;
                 
+            }
+
+            .elabInput{
+                height: 2rem;
             }
     </style>
 <script>
