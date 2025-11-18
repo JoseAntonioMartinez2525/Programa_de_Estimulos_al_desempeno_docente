@@ -93,6 +93,26 @@ $docenteConfig = [
      'convocatoriaSelectors' => ['#convocatoria_copy','#piedepagina_copy'],
 ];
 @endphp
+@php
+if (!isset($docenteConfigForm)) {
+    $docenteConfigForm = [
+        'extraFields' => [
+            'score3_3',
+            'comision3_3',
+            'rc1', 'rc2', 'rc3', 'rc4',
+            'stotal1', 'stotal2', 'stotal3', 'stotal4',
+            'comIncisoA',
+            'comIncisoB',
+            'comIncisoC',
+            'comIncisoD',
+            'obs3_3_1', 'obs3_3_2', 'obs3_3_3', 'obs3_3_4',
+        ],
+        'exposeAs' => 'submitForm',
+        'selectedEmailInputId' => 'selectedDocenteEmail',
+        'searchInputId' => 'docenteSearch',
+    ];
+}
+@endphp
 <!DOCTYPE html>
 <html lang="">
 
@@ -375,7 +395,7 @@ window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
 
     <main class="container">
         <!--Form for Part 3_3 -->
-        <form id="form3_3" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-form33', 'form3_3');">
+        <form id="form3_3" action="/formato-evaluacion/store-form33" method="POST">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
@@ -609,105 +629,6 @@ window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
         // window.addEventListener('beforeprint', updatePagination);
     };
 
-
-
-        // Function to handle form submission
-        async function submitForm(url, formId) {
-            const formData = {};
-            const form = document.getElementById(formId);
-
-            if (!form) {
-                console.error(`Form with id "${formId}" not found.`);
-                return;
-            }
-
-            // Gather all related information from the form
-            formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
-            formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = selectedEmail;
-            formData['user_type'] = form.querySelector('input[name="user_type"]').value;
-            formData['rc1'] = document.getElementById('rc1').textContent;
-            formData['comIncisoA'] = document.getElementById('comIncisoA').value; // Ensure input value is fetched
-            formData['rc2'] = document.getElementById('rc2').textContent;
-            formData['rc3'] = document.getElementById('rc3').textContent;
-            formData['comIncisoB'] = document.getElementById('comIncisoB').value; // Ensure input value is fetched
-            formData['rc4'] = document.getElementById('rc4').textContent;
-            formData['stotal1'] = document.getElementById('stotal1').textContent;
-            formData['comIncisoC'] = document.getElementById('comIncisoC').value; // Ensure input value is fetched
-            formData['stotal2'] = document.getElementById('stotal2').textContent;
-            formData['stotal3'] = document.getElementById('stotal3').textContent;
-            formData['comIncisoD'] = document.getElementById('comIncisoD').value; // Ensure input value is fetched
-            formData['stotal4'] = document.getElementById('stotal4').textContent;
-            formData['comIncisoA'] = form.querySelector('input[id="comIncisoA"]').value;
-            formData['comIncisoB'] = form.querySelector('input[id="comIncisoB"]').value;
-            formData['comIncisoC'] = form.querySelector('input[id="comIncisoC"]').value;
-            formData['comIncisoD'] = form.querySelector('input[id="comIncisoD"]').value;
-            formData['score3_3'] = document.getElementById('score3_3').textContent;
-            formData['comision3_3'] = document.querySelector('.comision3_3').textContent;
-
-            // Observations
-            
-            formData['obs3_3_1'] = form.querySelector('input[class="obs3_3_1"]').textContent;
-            formData['obs3_3_2'] = form.querySelector('input[class="obs3_3_2"]').textContent;
-            formData['obs3_3_3'] = form.querySelector('input[class="obs3_3_3"]').textContent;
-            formData['obs3_3_4'] = form.querySelector('input[class="obs3_3_4"]').textContent;
-
-            console.log('Form data:', formData);
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const responseData = await response.json();
-                console.log('Response received from server:', responseData);
-
-                // Mensaje al usuario
-                // Solo mostrar éxito si el servidor marca success === true
-                if (responseData && responseData.success === true) {
-                    showMessage('Formulario enviado', 'green');
-                } else {
-                    console.error('Submission failed:', responseData);
-                    showMessage(responseData.message || 'Formulario no enviado', 'red');
-                }
-
-        } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
-        showMessage('Formulario no enviado', 'red');
-
-        }
-        }
-
-        
-        function minWithSum(value1, value2) {
-            const sum = value1 + value2;
-            return Math.min(sum, 200);
-
-
-        }
-
-        // Función para asignar valores solo si el elemento existe
-            function setValue(selector, value) {
-                const element = document.querySelector(selector);
-                if (element) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'SELECT') {
-                        element.value = value;
-                    } else {
-                        element.textContent = value;
-                    }
-                } else {
-                    console.warn(`Elemento no encontrado: ${selector}`);
-                }
-            }
 
 
     document.addEventListener('DOMContentLoaded', function () {

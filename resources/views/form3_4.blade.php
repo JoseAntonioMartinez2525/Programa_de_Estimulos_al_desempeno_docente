@@ -81,6 +81,28 @@ $docenteConfig = [
 
 ];
 @endphp
+@php
+if (!isset($docenteConfigForm)) {
+    $docenteConfigForm = [
+        'extraFields' => [
+            'score3_4',
+            'comision3_4',
+            'cantInternacional',
+            'cantNacional',
+            'cantidadRegional',
+            'cantPreparacion',
+            'comInternacional',
+            'comNacional',
+            'comRegional',
+            'comPreparacion',
+            'obs3_4_1', 'obs3_4_2', 'obs3_4_3', 'obs3_4_4',
+        ],
+        'exposeAs' => 'submitForm',
+        'selectedEmailInputId' => 'selectedDocenteEmail',
+        'searchInputId' => 'docenteSearch',
+    ];
+}
+@endphp
 <!DOCTYPE html>
 <html lang="">
 
@@ -220,7 +242,7 @@ $user_identity = $user->id;
 </div>
     <main class="container">
         <!-- Form for Part 3_4 -->
-        <form id="form3_4" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-form34', 'form3_4');">
+        <form id="form3_4" action="/formato-evaluacion/store-form34" method="POST">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
@@ -385,93 +407,7 @@ $user_identity = $user->id;
 
     <script>
     
-     window.onload = function () {
-            const footerHeight = document.querySelector('footer').offsetHeight;
-            const elements = document.querySelectorAll('.prevent-overlap');
 
-            elements.forEach(element => {
-                const rect = element.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-
-                // Verifica si el elemento está demasiado cerca del footer y aplica page-break-before si es necesario
-                if (rect.bottom + footerHeight > viewportHeight) {
-                    element.style.pageBreakBefore = "always"; // Forzar salto antes
-                }
-            });
-
-        };    
-
-
-        // Function to handle form submission
-        async function submitForm(url, formId) {
-            const formData = {};
-            const form = document.getElementById(formId);
-
-            if (!form) {
-                console.error(`Form with id "${formId}" not found.`);
-                return;
-            }
-
-            // Gather all related information from the form
-            formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
-            formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = selectedEmail;
-            formData['user_type'] = form.querySelector('input[name="user_type"]').value;
-            formData['cantInternacional'] = document.getElementById('cantInternacional').textContent;
-            formData['cantNacional'] = document.getElementById('cantNacional').textContent;
-            formData['cantidadRegional'] = document.getElementById('cantidadRegional').textContent;
-            formData['cantPreparacion'] = document.getElementById('cantPreparacion').textContent;
-            formData['cantInternacional2'] = document.getElementById('cantInternacional2').textContent;
-            formData['cantNacional2'] = document.getElementById('cantNacional2').textContent;
-            formData['cantidadRegional2'] = document.getElementById('cantidadRegional2').textContent;
-            formData['cantPreparacion2'] = document.getElementById('cantPreparacion2').textContent;
-            formData['comInternacional'] = form.querySelector('input[id="comInternacional"]').value;
-            formData['comNacional'] = form.querySelector('input[id="comNacional"]').value;
-            formData['comRegional'] = form.querySelector('input[id="comRegional"]').value;
-            formData['comPreparacion'] = form.querySelector('input[id="comPreparacion"]').value;
-            formData['score3_4'] = document.getElementById('score3_4').textContent;
-            formData['comision3_4'] = document.getElementById('comision3_4').textContent;
-
-            // Observations
-            formData['obs3_4_1'] = form.querySelector('input[name="obs3_4_1"]').value;
-            formData['obs3_4_2'] = form.querySelector('input[name="obs3_4_2"]').value;
-            formData['obs3_4_3'] = form.querySelector('input[name="obs3_4_3"]').value;
-            formData['obs3_4_4'] = form.querySelector('input[name="obs3_4_4"]').value;
-
-            console.log('Form data:', formData);
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const responseData = await response.json();
-                console.log('Response received from server:', responseData);
-
-                    // Mensaje al usuario
-                // Solo mostrar éxito si el servidor marca success === true
-                if (responseData && responseData.success === true) {
-                    showMessage('Formulario enviado', 'green');
-                } else {
-                    console.error('Submission failed:', responseData);
-                    showMessage(responseData.message || 'Formulario no enviado', 'red');
-                }
-
-        } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
-        showMessage('Formulario no enviado', 'red');
-
-        }
-        }
         function minWithSum(value1, value2) {
             const sum = value1 + value2;
             return Math.min(sum, 200);
