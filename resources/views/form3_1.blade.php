@@ -328,7 +328,7 @@ body.dark-mode [id^="obs3_1_"] {
 .table th {
     padding: 2px !important;
     margin: 0 !important;
-    vertical-align: middle;
+    --vertical-align: middle;
 }
 
 .table tr {
