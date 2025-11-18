@@ -79,6 +79,7 @@ $docenteConfig = [
 
     <x-head-resources />
     @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+    @include('partials.submit-form', ['config' => $docenteConfigForm])
     <link href="{{ asset('css/onePage.css') }}" rel="stylesheet">
 </head>
 <style>

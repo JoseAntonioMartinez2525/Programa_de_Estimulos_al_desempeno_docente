@@ -59,6 +59,31 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     ],
         'printPagePairs' => [[3,4]],
     ];
+
+    if (!isset($docenteConfigForm)) {
+    $docenteConfigForm = [
+        'extraFields' => [
+            'score3_2',
+            'comision3_2',
+            'r1',
+            'r2',
+            'r3',
+            'cant1',
+            'cant2',
+            'cant3',
+            'prom90_100',
+            'prom80_90',
+            'prom70_80',
+            'obs3_2_1',
+            'obs3_2_2',
+            'obs3_2_3',
+        ],
+        'exposeAs' => 'submitForm',
+        'selectedEmailInputId' => 'selectedDocenteEmail',
+        'searchInputId' => 'docenteSearch',
+    ];
+}
+    
 @endphp
 <!DOCTYPE html>
 <html lang="">
@@ -209,7 +234,7 @@ $user_identity = $user->id;
 
     <main class="container">
         <!-- Form for Part 3_1 -->
-        <form id="form3_2" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store-form32', 'form3_2');">
+        <form id="form3_2" action="/formato-evaluacion/store-form32" method="POST">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
@@ -373,123 +398,6 @@ $user_identity = $user->id;
     </center>
 
     <script>
-
-        window.onload = function () {
-            const footerHeight = document.querySelector('footer').offsetHeight;
-            const elements = document.querySelectorAll('.prevent-overlap');
-
-            elements.forEach(element => {
-                const rect = element.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-
-                // Verifica si el elemento está demasiado cerca del footer y aplica page-break-before si es necesario
-                if (rect.bottom + footerHeight > viewportHeight) {
-                    element.style.pageBreakBefore = "always"; // Forzar salto antes
-                }
-            });
-
-        };  
-        
-            
-        // Function to handle form submission
-        async function submitForm(url, formId) {
-            const formData = {};
-            const form = document.getElementById(formId);
-
-            if (!form) {
-                console.error(`Form with id "${formId}" not found.`);
-                return;
-            }
-
-            // Gather all related information from the form
-            formData['dictaminador_id'] = form.querySelector('input[name="dictaminador_id"]').value;
-            formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-
-             // --- SAFEGUARD: ensure we actually capture the email (with fallbacks) ---
-            const emailInput = form.querySelector('input[name="email"]');
-            let email = emailInput ? (emailInput.value || '').trim() : '';
-
-            // fallback 1: hidden element set by the autocomplete
-            if (!email) {
-                const hiddenEmailElem = document.getElementById('selectedDocenteEmail');
-                if (hiddenEmailElem && hiddenEmailElem.value) {
-                    email = hiddenEmailElem.value.trim();
-                    if (emailInput) emailInput.value = email; // put back into form
-                }
-            }
-
-            // fallback 2: parse docenteSearch value like "Name (email@host)"
-            if (!email) {
-                const searchVal = document.getElementById('docenteSearch')?.value || '';
-                const m = searchVal.match(/\(([^)@]+@[^)\s]+)\)/);
-                if (m) {
-                    email = m[1].trim();
-                    if (emailInput) emailInput.value = email;
-                }
-            }
-            formData['email'] = selectedEmail;
-
-            formData['user_type'] = form.querySelector('input[name="user_type"]').value;
-            formData['r1'] = document.getElementById('r1').textContent;
-            formData['prom90_100'] = document.getElementById('prom90_100').value; // Ensure input value is fetched
-            formData['r2'] = document.getElementById('r2').textContent;
-            formData['r3'] = document.getElementById('r3').textContent;
-            formData['prom80_90'] = document.getElementById('prom80_90').value; // Ensure input value is fetched
-            formData['cant1'] = document.getElementById('cant1').textContent;
-            formData['cant2'] = document.getElementById('cant2').textContent;
-            formData['prom70_80'] = document.getElementById('prom70_80').value; // Ensure input value is fetched
-            formData['cant3'] = document.getElementById('cant3').textContent;
-            formData['prom90_100'] = form.querySelector('input[id="prom90_100"]').value;
-            formData['prom80_90'] = form.querySelector('input[id="prom80_90"]').value;
-            formData['prom70_80'] = form.querySelector('input[id="prom70_80"]').value;
-            formData['score3_2'] = document.getElementById('score3_2').textContent;
-            formData['comision3_2'] = document.getElementById('comision3_2').textContent;
-
-            // Observations
-            formData['obs3_2_1'] = form.querySelector('input[name="obs3_2_1"]').value;
-            formData['obs3_2_2'] = form.querySelector('input[name="obs3_2_2"]').value;
-            formData['obs3_2_3'] = form.querySelector('input[name="obs3_2_3"]').value;
-
-            if (!formData['email']) {
-            showMessage('No se ha seleccionado un docente.', 'red');
-            return;
-            }
-
-            console.log('Form data:', formData);
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-
-                const responseData = await response.json();
-                console.log('Response received from server:', responseData);
-
-                //Mensaje al usuario
-                // Solo mostrar éxito si el servidor marca success === true
-                if (responseData && responseData.success === true) {
-                    showMessage('Formulario enviado', 'green');
-                } else {
-                    console.error('Submission failed:', responseData);
-                    showMessage(responseData.message || 'Formulario no enviado', 'red');
-                }
-
-                } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-                showMessage('Formulario no enviado', 'red');
-
-                }
-        }
-
         function minWithSum(value1, value2) {
             const sum = value1 + value2;
             return Math.min(sum, 200);

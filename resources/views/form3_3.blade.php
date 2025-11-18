@@ -105,6 +105,7 @@ $docenteConfig = [
 
     <x-head-resources />
     @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+    @include('partials.submit-form', ['config' => $docenteConfigForm])
     <style>
         @media print {
             body.chrome #convocatoria, 

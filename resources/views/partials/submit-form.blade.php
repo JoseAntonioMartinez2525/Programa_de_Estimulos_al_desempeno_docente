@@ -57,7 +57,7 @@
         // ---------- CAMPOS EXTRA DINÁMICOS ----------
         if (Array.isArray(config.extraFields)) {
             // primero sincroniza los campos <td>/<span> a hidden inputs
-            ['score3_1','actv3Comision'].forEach(field => {
+            ['score3_1','actv3Comision', 'score3_2', 'comision3_2', 'r1', 'r2', 'r3', 'cant1', 'cant2', 'cant3'].forEach(field => {
                 const el = document.querySelector(`.${field}`);
                 if(el){
                     let hidden = form.querySelector(`input[name="${field}"]`);
