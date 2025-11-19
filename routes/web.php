@@ -302,8 +302,8 @@ Route::middleware(['auth'])->group(function (){
         return 'Evento disparado para user_id: ' . $user_id;
     });
 
-    Route::get('/formato-evaluacion/register', [AuthController::class, 'showRegisterForm'])->name('register');
-    Route::post('/formato-evaluacion/register', [AuthController::class, 'register'])->name('register.post');
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
     Route::get('/formato-evaluacion/edit_delete_form/', [DynamicFormController::class, 'showDynamicForm'])->name('edit_delete_form');
 

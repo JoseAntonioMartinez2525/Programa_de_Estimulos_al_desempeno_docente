@@ -58,9 +58,7 @@ input:-webkit-autofill {
                                 aria-controls="pills-login" aria-selected="true">Login</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="tab-register" data-mdb-pill-init href="{{ route('register') }}" role="tab"
-                                aria-controls="pills-register" aria-selected="false">Registro</a>
-
+                            <a class="nav-link" href="{{ route('register') }}">Registro</a>
                         </li>
                     </ul>
                     <!-- Pills navs -->

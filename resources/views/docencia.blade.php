@@ -27,6 +27,11 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <script>
         window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
     </script>
+    <style>
+        *:focus {
+    box-shadow: none !important;
+}
+    </style>
 </head>
 @if (Route::has('login'))
         @csrf

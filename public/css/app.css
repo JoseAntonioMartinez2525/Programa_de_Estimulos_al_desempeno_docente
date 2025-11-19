@@ -630,8 +630,20 @@ td.elabInput input[type="number"] {
   border: none;
 }
 
-input#elaboracion{
-    margin-inline-start: 2rem;
+input#elaboracion {
+    margin-inline-start: -2rem;
+}
+
+input#elaboracion:focus, input#elaboracion2:focus, input#elaboracion3:focus, input#elaboracion4:focus, input#elaboracion5:focus{
+    outline: none !important;
+}
+
+input#elaboracion2{
+  margin-inline-start: -1rem;  
+}
+
+ input#elaboracion3, input#elaboracion4, input#elaboracion5{
+    margin-inline-start: -3rem;
 }
 
 .scoreRight td{

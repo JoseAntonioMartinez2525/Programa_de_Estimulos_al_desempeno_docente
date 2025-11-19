@@ -15,6 +15,7 @@ return [
         'abeltran@uabcs.mx',
         'iestrada@uabcs.mx',
         'rborquez@uabcs.mx',
+        'brendaran@uabcs.mx',  //pruebas
 
 
     ],
@@ -32,6 +33,9 @@ return [
         'Dr. Félix Alfredo Beltrán Morales',
         'M.S.C. Italia Estrada Cota',
         'Dr. Ricardo Bórquez Reyes',
+
+        //Pruebas
+        'Dra. Brenda Díaz Romo'  
 
     ],
 

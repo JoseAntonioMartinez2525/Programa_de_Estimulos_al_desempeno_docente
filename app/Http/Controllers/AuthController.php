@@ -40,13 +40,14 @@ class AuthController extends Controller
         $userType = $isDictaminador ? 'dictaminador' : 'docente';
 
         // Create the new user
-        $user = new User();
-        $user->name = $request->registerName;
-        $user->user_type = 'docente';
-        $user->email = $request->registerEmail;
-        $user->password = Hash::make($request->registerPassword);
+        // $user = new User();
+        // $user->name = $request->registerName;
+        // $user->user_type = 'docente';
+        // $user->email = $request->registerEmail;
+        // $user->password = Hash::make($request->registerPassword);
+        
         // Use Hash to encrypt the password
-        $user->save();
+        // $user->save();
         $user = User::create([
             'name' => $request->registerName,
             'email' => $request->registerEmail,
