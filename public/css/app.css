@@ -981,13 +981,9 @@ td[id^="puntaje3_9_"]{
 }
 #cantidadActv, #cantidadform3_3{
     margin-left: 350px;
+    text-align: center;
     
 }
-
-#cantidadActv{
-text-align: center;
-}
-
 
 
 #elaboracion3,
@@ -1628,3 +1624,8 @@ td[id^="puntajeTutorias"], td[id^="puntajeInicio"], td[id^="puntajeReporte"]{
     font-weight: bold;
 }
 
+#subtotalCongresoInt, #subtotalCongresoNac, #subtotalCongresoLoc, #subtotalCGUtitular, #subtotalCGUespecial, #subtotalCGUpermanente, #subtotalCAACtitular, #subtotalCAACintegCom, #subtotalComDepart, #subtotalComPEDPD, #subtotalComPartPos,
+#subtotalRespPos, #subtotalRespCarrera, #subtotalRespProd, #subtotalRespLab, #subtotalExamProf, #subtotalExamAcademicos,
+#subtotalPRODEPformResp, #subtotalPRODEPformInteg, #subtotalPRODEPenconsResp, #subtotalPRODEPenconsInteg, #subtotalPRODEPconsResp, #subtotalPRODEPconsInteg{
+    text-align: center;
+}

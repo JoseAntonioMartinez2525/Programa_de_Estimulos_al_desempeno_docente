@@ -391,7 +391,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td class="incisos">Incisos</td>
                                                 <td class="obra">Obra</td>
                                                 <td>Actividad</td>
-                                                <td>Puntaje</td>
+                                                <td class="text-center">Puntaje</td>
                                                 <td id="cantidadform3_3">Cantidad</td>
                                                 <td>SubTotal</td>
                                                 <td colspan="1"></td>
@@ -1779,7 +1779,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         <tr>
                                             <th class="acreditacion" colspan=2>Congresos y eventos académicos</th>
                                             <th class="acreditacion">Puntaje</th>
-                                            <th class="text-right acreditacion cantidad3_14">Cantidad</th>
+                                            <th class="text-center acreditacion cantidad3_14">Cantidad</th>
                                             <th colspan="3"></th>
                                             <th class="acreditacion">Subtotal</th>
                                             <th colspan="1"></th>
@@ -2516,7 +2516,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 
                                                 <th class="acreditacion">Nivel</th>
                                                 <th class="acreditacion">Puntaje</th>
-                                                <th class="acreditacion">Cantidad</th>
+                                                <th class="acreditacion text-center">Cantidad</th>
                                                 <th></th>
                                                 <th class="acreditacion">Subtotal</th>
                                                 <th></th>
