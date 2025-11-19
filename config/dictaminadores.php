@@ -2,22 +2,41 @@
 
 return [
     'emails' => [
-        'brendaran@uabcs.mx',
-        'juanco@uabcs.mx',
-        'jparra@uabcs.mx',
-        'csandoval@uabcs.mx',
-        'oa_campilloher@uabcs.mx'
+        'bramirez@uabcs.mx',
+        'jperez@uabcs.mx',
+        'sandoval@uabcs.mx',
+        'mcoronado@uabcs.mx',
+        'isaias@uabcs.mx', 
+        'mpina@uabcs.mx',
+        'mycortes@uabcs.mx',
+        'imaz@uabcs.mx',
+        'gbrabata@uabcs.mx',
+        'rdeluna@uabcs.mx',
+        'abeltran@uabcs.mx',
+        'iestrada@uabcs.mx',
+        'rborquez@uabcs.mx',
+
 
     ],
     'nombres' => [
-        'Dra. Brenda Elizabeth Ramiréz Díaz',
+        'Dra. Brenda Elizabeth Ramírez Díaz',
         'M.C Juan Carlos Pérez Concha',
-        'Ing Javier Parra Unzón',
-        'M.C Carlos Sandoval',
-        'Ing. Olga Alicia Campillo Hernández',
+        'Dr. Jesús Andrés Sandoval Bringas',
+        'Dr. Manuel Arturo Coronado García',
+        'Dr. Francisco Isaías Ruiz Ceseña',
+        'Dra. Marta Piña Zentella',
+        'Dra. Mara Yadira Cortés Martínez',
+        'Dr. Miguel Ángel Imaz Lamadrid',
+        'Dra. Georgina Brabata Domínguez',
+        'Dr. Rafael de Luna de la Peña',
+        'Dr. Félix Alfredo Beltrán Morales',
+        'M.S.C. Italia Estrada Cota',
+        'Dr. Ricardo Bórquez Reyes',
+
     ],
 
 ];
+
 
 
 // 'email' => [
