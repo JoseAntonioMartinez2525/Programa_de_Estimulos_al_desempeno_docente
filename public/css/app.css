@@ -1612,13 +1612,19 @@ body.dark-mode td.text-center.punto3_2 {
     background-color: transparent !important;
 }
 
+.form3_15Cantidad{
+    width: 5rem;
+}
 
-/*#9b9a9a !important*/
+.form3_10Cantidad{
+    width: 2rem;
+}
 
-/* Asegura alineación vertical de celdas de tabla */
-/* #form3_3 table th,
-#form3_3 table td {
-  vertical-align: middle;
-  margin-top: 3.2rem;
-} */
+#puntajeGrupales, #puntajeIndividual{
+    font-weight: bold;
+}
+
+td[id^="puntajeTutorias"], td[id^="puntajeInicio"], td[id^="puntajeReporte"]{
+    font-weight: bold;
+}
 

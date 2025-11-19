@@ -1265,7 +1265,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         <tr>
                                             <th colspan="2"></th>
                                             <th class="acreditacion">Puntaje</th>
-                                            <th class="text-center acreditacion">Cantidad</th>
+                                            <th class="text-center acreditacion form3_10Cantidad">Cantidad</th>
                                             <th colspan="6"></th>
                                             <th class="text-center acreditacion" scope="col">Observaciones</th>
                                         </tr>
@@ -1877,7 +1877,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         <tr>
                                             <th colspan="2"></th>
                                             <th class="acreditacion">Puntaje</th>
-                                            <th class="text-center acreditacion">Cantidad</th>
+                                            <th class="text-center acreditacion form3_15Cantidad">Cantidad</th>
                                             <th colspan="5"></th>
                                             <th class="text-center acreditacion" scope="col">Observaciones</th>
                                         </tr>
