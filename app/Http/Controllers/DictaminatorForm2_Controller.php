@@ -31,7 +31,7 @@ class DictaminatorForm2_Controller extends TransferController
             }
 
             $validatedData = $request->validate([
-                'dictaminador_id'=>'required|numeric',
+                //'dictaminador_id'=>'required|numeric',
                 'user_id' => 'required|exists:users,id',
                 'email' => 'required|exists:users,email',
                 'horasActv2' => 'required|numeric',
@@ -45,16 +45,16 @@ class DictaminatorForm2_Controller extends TransferController
             $validatedData['form_type'] = 'form2';
             
             // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
-                $existingRecord = DictaminatorsResponseForm2::where('dictaminador_id', $dictaminadorId)
-                    ->where('user_id', $validatedData['user_id'])
-                    ->first();
+                // $existingRecord = DictaminatorsResponseForm2::where('dictaminador_id', $dictaminadorId)
+                //     ->where('user_id', $validatedData['user_id'])
+                //     ->first();
 
-                if ($existingRecord) {
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'Error al enviar, formulario ya existente'
-                    ], 409);
-                }
+                // if ($existingRecord) {
+                //     return response()->json([
+                //         'success' => false,
+                //         'message' => 'Error al enviar, formulario ya existente'
+                //     ], 409);
+                // }
             
             
             // Default values for optional fields
@@ -69,19 +69,22 @@ class DictaminatorForm2_Controller extends TransferController
                     'dictaminador_id' => $dictaminadorId,
                     'user_id' => $validatedData['user_id']
                 ],
-                $validatedData
+                array_merge($validatedData, ['dictaminador_id' => $dictaminadorId])
             );
 
             // Actualizar automáticamente UsersResponseForm2 con comision1
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['comision1']);
+            $this->updateUserResponseComision($validatedData);
             // Agregar a dictaminador_docente
-            DB::table('dictaminador_docente')->insert([
-                'user_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
-                'dictaminador_id'=> $response->dictaminador_id,
-                'form_type' => 'form2', // O el tipo de formulario correspondiente
-                'docente_email'=>$response->email,
-                'created_at' => now(),
-                'updated_at' => now(),
+            DB::table('dictaminador_docente')->updateOrInsert(
+                [
+                    'user_id' => $validatedData['user_id'],
+                    'dictaminador_id' => $response->dictaminador_id,
+                    'form_type' => 'form2',
+                ],
+                [
+                    'docente_email' => $response->email,
+                    'updated_at' => now(),
             ]);
             // Llama a la verificación y transferencia
             $this->checkAndTransfer('DictaminatorsResponseForm2');
@@ -234,14 +237,31 @@ class DictaminatorForm2_Controller extends TransferController
     }
 
     private function updateUserResponseComision($userId, $comisionValue)
+    private function updateUserResponseComision(array $data)
     {
-        // Buscar el registro de UsersResponseForm2 correspondiente y actualizar comision1
-        $userResponse = UsersResponseForm2::where('user_id', $userId)->first();
+        
+                // Buscar el registro de UsersResponseForm2 correspondiente y actualizar comision1
+        // $userResponse = UsersResponseForm2::where('user_id', $userId)->first();
 
-        if ($userResponse) {
-            $userResponse->comision1 = $comisionValue;
-            $userResponse->save();
-        }
+        // if ($userResponse) {
+        //     $userResponse->comision1 = $comisionValue;
+        //     $userResponse->save();
+        // }
+        
+        // Utiliza updateOrCreate para asegurar que el registro exista antes de intentar actualizarlo.
+        // Si no existe, lo crea con el user_id y el valor de comision1.
+        // Si ya existe, solo actualiza el valor de comision1.
+        UsersResponseForm2::updateOrCreate(
+            ['user_id' => $userId], // Criterio de búsqueda
+            ['comision1' => $comisionValue] // Valores para crear o actualizar
+            ['user_id' => $data['user_id']], // Criterio de búsqueda
+            [
+                'comision1' => $data['comision1'],
+                // Aseguramos que los otros campos NOT NULL tengan un valor por defecto al crear.
+                'horasActv2' => $data['horasActv2'] ?? 0,
+                'puntajeEvaluar' => $data['puntajeEvaluar'] ?? 0,
+            ] // Valores para crear o actualizar
+        );
     }
     
 

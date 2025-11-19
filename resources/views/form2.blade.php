@@ -341,6 +341,10 @@ document.addEventListener('docenteSelected', async (e) => {
     const email = docente.email;
     selectedEmail = email;
 
+    // *** THE DEFINITIVE FIX ***
+    // This populates the global variable that the submit-form script relies on.
+    window.selectedDocente = docente;
+
     try {
         // === Comunes: cargar datos de docente ===
         const docenteDataEndpoint = @json($docenteConfig['docenteDataEndpoint'] ?? '/formato-evaluacion/get-docente-data');
