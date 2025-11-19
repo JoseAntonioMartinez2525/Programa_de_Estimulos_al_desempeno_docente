@@ -981,7 +981,11 @@ td[id^="puntaje3_9_"]{
 }
 #cantidadActv, #cantidadform3_3{
     margin-left: 350px;
-    text-align: center;
+    
+}
+
+#cantidadActv{
+text-align: center;
 }
 
 
@@ -1556,25 +1560,60 @@ td#comision3_2{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.2rem;
+  padding: 0;
   box-sizing: border-box;
+  height: auto;
+  background-color: #c1cfd3;
+}
+
+body.dark-mode td.cantidad-cell {
+    background-color: #9b9a9a !important;
 }
 
 /* Selección clara y única para los inputs rc1..rc4 */
 #form3_3 .cantidad-cell input[type="number"],
 #form3_3 .cantidad-cell input[id^="rc"] {
-  width: 6ch;
-  min-width: 3ch;
+  width: 4.5rem;
+  min-width: 3.5rem;
   text-align: center;
-  padding: 0.2rem 0;
+  padding: 0.3rem 0.4rem;
+  margin: 0 auto;           /* centra horizontalmente */
+  display: inline-block;    /* mantiene alineación vertical */
+  line-height: 1.4rem;      /* centra verticalmente */
+  background-color: transparent;
   border: none;
   border-radius: 0.3rem;
-  box-sizing: border-box;
-  height: auto; /* quitar height:100% */
-  background-color: #c1cfd3;
-  display: block;
 
+  /* Para evitar que "salte" la alineación */
+  vertical-align: middle;
+  box-sizing: border-box;
 }
+
+#form3_3 table tbody tr td.cantidad-cell {
+  padding: 0.5rem 0;
+  vertical-align: middle;
+}
+
+
+input#rc1 , input#rc2{
+    padding-top: 2rem !important;
+}
+
+input#rc3{
+    padding-top: 3rem !important;
+}
+
+input#rc4{
+    padding-top: 4rem !important;
+}
+
+body.dark-mode td.text-center.punto3_2 {
+    color: white;
+    background-color: transparent !important;
+}
+
+
+/*#9b9a9a !important*/
 
 /* Asegura alineación vertical de celdas de tabla */
 /* #form3_3 table th,
