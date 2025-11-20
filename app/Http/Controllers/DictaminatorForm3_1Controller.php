@@ -51,6 +51,9 @@ class DictaminatorForm3_1Controller extends TransferController
 
             \Log::info('Inicio de storeform31');
 
+            //3. validad formulario unico
+             $this->validarFormularioUnico($request, 'dictaminators_response_form3_1');
+
             $validatedData = $request->validate([
                 'dictaminador_id' => 'required|numeric',
                 'user_id' => 'required|exists:users,id',
@@ -84,17 +87,6 @@ class DictaminatorForm3_1Controller extends TransferController
 
             $validatedData['form_type'] = 'form3_1';
 
-                // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
-                $existingRecord = DictaminatorsResponseForm3_1::where('dictaminador_id', $dictaminadorId)
-                    ->where('user_id', $validatedData['user_id'])
-                    ->first();
-
-                if ($existingRecord) {
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'Error al enviar, formulario ya existente'
-                    ], 409);
-                }
             
             if (!isset($validatedData['score3_1'])) {
                 $validatedData['score3_1'] = 0;
@@ -115,11 +107,14 @@ class DictaminatorForm3_1Controller extends TransferController
                 ],
                 $validatedData
             );
-            \Log::info('Datos guardados en DictaminatorsResponseForm3_1:', $response->toArray());
 
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['actv3Comision']);
-            \Log::info('updateUserResponseComision ejecutado');
 
+             \Log::info('updateUserResponseComision ejecutado');
+
+            \Log::info('Datos guardados en DictaminatorsResponseForm3_1:', $response->toArray());
+
+          
             DB::table('dictaminador_docente')->insert([
                 'user_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
                 'dictaminador_id' => $response->dictaminador_id,
