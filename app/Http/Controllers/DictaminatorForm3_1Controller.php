@@ -133,25 +133,25 @@ class DictaminatorForm3_1Controller extends TransferController
             \Log::info('Evento EvaluationCompleted disparado');
 
             return response()->json([
-                'success' => true,
-                'message' => 'Data successfully saved',
-                'data' => $validatedData,
-            ], 200);
+                        'success' => true,
+                        'message' => 'Data successfully saved',
+                        'data' => $validatedData
+                    ], 200);
+
         } catch (ValidationException $e) {
-            \Log::error('ValidationException:', $e->errors());
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
                 'errors' => $e->errors()
             ], 422);
+
         } catch (QueryException $e) {
-            \Log::error('QueryException:', ['message' => $e->getMessage()]);
             return response()->json([
                 'success' => false,
                 'message' => 'Error al enviar, formulario ya existente',
             ], 500);
+
         } catch (\Exception $e) {
-            \Log::error('Exception:', ['message' => $e->getMessage()]);
             return response()->json([
                 'success' => false,
                 'message' => 'An unexpected error occurred: ' . $e->getMessage(),
