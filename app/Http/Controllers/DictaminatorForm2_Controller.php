@@ -48,8 +48,6 @@ class DictaminatorForm2_Controller extends TransferController
 
             $validatedData['form_type'] = 'form2';
             
-
-            
             // Default values for optional fields
             if (!isset($validatedData['puntajeEvaluar'])) {
                 $validatedData['puntajeEvaluar'] = 0;

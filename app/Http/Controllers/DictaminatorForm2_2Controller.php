@@ -29,6 +29,8 @@ class DictaminatorForm2_2Controller extends TransferController
                 return $error;
             }
 
+            //3. validad formulario unico
+             $this->validarFormularioUnico($request, 'dictaminators_response_form2_2');
             $validatedData = $request->validate([
                 'dictaminador_id' => 'required|numeric',
                 'user_id' => 'required|exists:users,id',
@@ -49,6 +51,7 @@ class DictaminatorForm2_2Controller extends TransferController
             $validatedData['form_type'] = 'form2_2';
 
                 // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
+                /*
                 $existingRecord = DictaminatorsResponseForm2_2::where('dictaminador_id', $dictaminadorId)
                     ->where('user_id', $validatedData['user_id'])
                     ->first();
@@ -59,26 +62,27 @@ class DictaminatorForm2_2Controller extends TransferController
                         'message' => 'Error al enviar, formulario ya existente'
                     ], 409);
                 }
+                */
 
-        if (!isset($validatedData['hours'])) {
-            $validatedData['hours'] = 0;
-        }
-        $validatedData['obs2'] = $validatedData['obs2'] ?? 'sin comentarios';
-        $validatedData['obs2_2'] = $validatedData['obs2_2'] ?? 'sin comentarios';
+                if (!isset($validatedData['hours'])) {
+                    $validatedData['hours'] = 0;
+                }
+                $validatedData['obs2'] = $validatedData['obs2'] ?? 'sin comentarios';
+                $validatedData['obs2_2'] = $validatedData['obs2_2'] ?? 'sin comentarios';
 
-        
-            // Esto actualiza si existe o crea si no existe
-            $response = DictaminatorsResponseForm2_2::updateOrCreate(
-                [
-                    'dictaminador_id' => $dictaminadorId,
-                    'user_id' => $validatedData['user_id']
-                ],
-                $validatedData
-            );
-        try {
-            $response = DictaminatorsResponseForm2_2::create($validatedData);
-                // Actualizar automáticamente el modelo docente con la comision
+                
+                    // Esto actualiza si existe o crea si no existe
+                    $response = DictaminatorsResponseForm2_2::updateOrCreate(
+                        [
+                            'dictaminador_id' => $dictaminadorId,
+                            'user_id' => $validatedData['user_id']
+                        ],
+                        $validatedData
+                    );
+
                 $this->updateUserResponseComision($validatedData['user_id'], $validatedData['actv2Comision']);
+
+                
                 DB::table('dictaminador_docente')->insert([
                     'user_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
                     'dictaminador_id' => $response->dictaminador_id,
@@ -89,30 +93,16 @@ class DictaminatorForm2_2Controller extends TransferController
                 ]);
 
                 $this->checkAndTransfer('DictaminatorsResponseForm2_2');
-
-                // DB::table('consolidated_responses')->insert([
-                // 'user_id'=>$validatedData['user_id'], 
-                // 'user_email'=>$validatedData['user_email'],
-                // 'user_type'=>$validatedData['user_type'],
-                // 'actv2Comision'=> $validatedData['actv2Comision'],]); 
                 
                 event(new EvaluationCompleted($validatedData['user_id']));
                 
-        } catch (QueryException $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Error al procesar la solicitud: ' . $e->getMessage(),
-            ], 500);
-        }
+                return response()->json([
+                        'success' => true,
+                        'message' => 'Data successfully saved',
+                        'data' => $validatedData
+                    ], 200);
 
-         return response()->json([
-                'success' => true,
-                'message' => 'Data successfully saved',
-                'data' => $validatedData
-            ], 200);
-
-            
-    }catch (ValidationException $e) {
+        } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
@@ -131,7 +121,7 @@ class DictaminatorForm2_2Controller extends TransferController
                 'message' => 'An unexpected error occurred: ' . $e->getMessage(),
             ], 500);
         }
-    }
+}
 
     public function getFormData22(Request $request)
     {
