@@ -29,6 +29,7 @@ $docenteConfig = [
         'stotal4' => 'stotal4',
         // comisiones y sus copias (puedes usar clase o id)
         '.comision3_3' => 'comision3_3',
+        '#comision3_3' => 'comision3_3',
         '.comision3_3_copy' => 'comision3_3',
         '#comision3_3_copy' => 'comision3_3',
         ],
@@ -37,6 +38,8 @@ $docenteConfig = [
         // comisiones / comIncisos
         '.comision3_3' => 'comision3_3',
         '.comision3_3_copy' => 'comision3_3',
+        '#comision3_3' => 'comision3_3',
+        '#comision3_3_copy' => 'comision3_3',
         'comIncisoA' => 'comIncisoA',
         'comIncisoB' => 'comIncisoB',
         'comIncisoC' => 'comIncisoC',
