@@ -92,8 +92,7 @@ $docenteConfig = [
     'printPagePairs' => [[6, 7]],
      'convocatoriaSelectors' => ['#convocatoria_copy','#piedepagina_copy'],
 ];
-@endphp
-@php
+
 if (!isset($docenteConfigForm)) {
     $docenteConfigForm = [
         'extraFields' => [
@@ -105,7 +104,10 @@ if (!isset($docenteConfigForm)) {
             'comIncisoB',
             'comIncisoC',
             'comIncisoD',
-            'obs3_3_1', 'obs3_3_2', 'obs3_3_3', 'obs3_3_4',
+            'obs3_3_1', 
+            'obs3_3_2', 
+            'obs3_3_3',
+            'obs3_3_4',
         ],
         'exposeAs' => 'submitForm',
         'selectedEmailInputId' => 'selectedDocenteEmail',
