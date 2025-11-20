@@ -26,6 +26,9 @@ use App\Models\DictaminatorsResponseForm3_16;
 use App\Models\DictaminatorsResponseForm3_17;
 use App\Models\DictaminatorsResponseForm3_18;
 use App\Models\DictaminatorsResponseForm3_19;
+use App\Rules\UniqueDictaminadorForm;
+use Illuminate\Support\Facades\Auth;
+
 class TransferController extends Controller
 {
     protected function checkAndTransfer($modelClass)
@@ -85,6 +88,20 @@ class TransferController extends Controller
             default:
                 return false; // Si el modelo no coincide, retornar false
         }
+    }
+
+    protected function validarFormularioUnico($request, $table)
+    {
+        $request->validate([
+            'user_id' => [
+                'required',
+                new UniqueDictaminadorForm(
+                    auth::id(),
+                    $request->user_id,
+                    $table
+                )
+            ]
+        ]);
     }
 
 }

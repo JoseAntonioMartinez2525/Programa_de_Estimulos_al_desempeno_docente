@@ -127,17 +127,32 @@
             });
 
             const json = await response.json();
+            
+                // --- manejar errores de validación de Laravel ---
+                if (json.errors) {
+                    const firstError = Object.values(json.errors)[0][0];
+                    showMessage(firstError, "red");
+                    return;
+                }
 
-            if (!response.ok || json.success === false) {
-                console.error('Error del servidor:', json);
-                showMessage(json.message || 'Error al enviar', 'red'); // Usar el mensaje del servidor o uno genérico
-                return;
-            }
+                // --- detectar formulario duplicado TRADICIONAL (por si usas existing:true) ---
+                if (json.existing === true || json.message?.includes('existente')) {
+                    showMessage(json.message || 'El formulario ya existe', 'red');
+                    return;
+                }
 
-            showMessage('Formulario enviado correctamente', 'green');
-        } catch (error) {
-            console.error('Error de red:', error);
-            showMessage('Problema de red al enviar', 'red');
+                // --- manejar errores generales ---
+                if (!response.ok || json.success === false) {
+                    showMessage(json.message || 'Error al enviar', 'red');
+                    return;
+                }
+
+
+                 showMessage('Formulario enviado correctamente', 'green');
+       
+            } catch (error) {
+                console.error('Error de red:', error);
+                showMessage('Problema de red al enviar', 'red');
         }
     }
 

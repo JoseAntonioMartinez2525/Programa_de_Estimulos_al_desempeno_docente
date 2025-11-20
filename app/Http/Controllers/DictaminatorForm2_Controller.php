@@ -30,6 +30,10 @@ class DictaminatorForm2_Controller extends TransferController
                 return $error;
             }
 
+            //3. validad formulario unico
+             $this->validarFormularioUnico($request, 'dictaminators_response_form2');
+
+             //4. validaciones propias del formulario
             $validatedData = $request->validate([
                 'dictaminador_id'=>'required|numeric',
                 'user_id' => 'required|exists:users,id',
@@ -77,7 +81,7 @@ class DictaminatorForm2_Controller extends TransferController
             // Agregar a dictaminador_docente
             DB::table('dictaminador_docente')->updateOrInsert(
                 [
-                    'user_id' => $validatedData['user_id'],
+                    'docente_id' => $validatedData['user_id'],
                     'dictaminador_id' => $response->dictaminador_id,
                     'form_type' => 'form2',
                 ],
