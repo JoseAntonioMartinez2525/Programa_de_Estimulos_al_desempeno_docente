@@ -48,18 +48,7 @@ class DictaminatorForm2_Controller extends TransferController
 
             $validatedData['form_type'] = 'form2';
             
-            // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
-                // $existingRecord = DictaminatorsResponseForm2::where('dictaminador_id', $dictaminadorId)
-                //     ->where('user_id', $validatedData['user_id'])
-                //     ->first();
 
-                // if ($existingRecord) {
-                //     return response()->json([
-                //         'success' => false,
-                //         'message' => 'Error al enviar, formulario ya existente'
-                //     ], 409);
-                // }
-            
             
             // Default values for optional fields
             if (!isset($validatedData['puntajeEvaluar'])) {
