@@ -25,6 +25,9 @@ class DictaminatorForm3_3Controller extends TransferController
             if ($error = $this->validateEvaluationPeriod($request, 'form3_3')) {
                 return $error;
             }
+
+            //3. validad formulario unico
+             $this->validarFormularioUnico($request, 'dictaminators_response_form3_3');
                 
             $validatedData = $request->validate([
                 'dictaminador_id' => 'required|numeric',
@@ -53,17 +56,6 @@ class DictaminatorForm3_3Controller extends TransferController
 
             $validatedData['form_type'] = 'form3_3';
 
-                // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
-                $existingRecord = DictaminatorsResponseForm3_3::where('dictaminador_id', $dictaminadorId)
-                    ->where('user_id', $validatedData['user_id'])
-                    ->first();
-
-                if ($existingRecord) {
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'Error al enviar, formulario ya existente'
-                    ], 409);
-                }
 
             if (!isset($validatedData['score3_3'])) {
                 $validatedData['score3_3'] = 0;
@@ -85,35 +77,41 @@ class DictaminatorForm3_3Controller extends TransferController
             // Actualizar automáticamente el modelo docente con la comision
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['comision3_3']);
            
-            DB::table('dictaminador_docente')->insert([
-                'user_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
-                'dictaminador_id' => $response->dictaminador_id,
-                'form_type' => 'form3_3', // O el tipo de formulario correspondiente
-                'docente_email' => $response->email,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+                // Agregar a dictaminador_docente
+                DB::table('dictaminador_docente')->updateOrInsert(
+                    [
+                        'docente_id' => $validatedData['user_id'],
+                        'dictaminador_id' => $response->dictaminador_id,
+                        'form_type' => 'form3_3',
+                    ],
+                    [
+                        'docente_email' => $response->email,
+                        'updated_at' => now(),
+                ]);
             
             $this->checkAndTransfer('DictaminatorsResponseForm3_3');
 
             event(new EvaluationCompleted($validatedData['user_id']));
             
             return response()->json([
-                'success' => true,
-                'message' => 'Data successfully saved',
-                'data' => $validatedData,
-            ], 200);
+                        'success' => true,
+                        'message' => 'Data successfully saved',
+                        'data' => $validatedData
+                    ], 200);
+
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
                 'errors' => $e->errors()
             ], 422);
+
         } catch (QueryException $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Error al enviar, formulario ya existente',
             ], 500);
+
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
