@@ -114,15 +114,19 @@ class DictaminatorForm3_1Controller extends TransferController
 
             \Log::info('Datos guardados en DictaminatorsResponseForm3_1:', $response->toArray());
 
-          
-            DB::table('dictaminador_docente')->insert([
-                'user_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
-                'dictaminador_id' => $response->dictaminador_id,
-                'form_type' => 'form3_1', // O el tipo de formulario correspondiente
-                'docente_email' => $response->email,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+            // Usar updateOrInsert para evitar errores de duplicados si el registro ya existe.
+            // Esto es útil si un dictaminador re-evalúa a un docente.
+            DB::table('dictaminador_docente')->updateOrInsert(
+                [
+                    'docente_id' => $validatedData['user_id'],
+                    'dictaminador_id' => $response->dictaminador_id,
+                    'form_type' => 'form3_1',
+                ],
+                [
+                    'docente_email' => $response->email,
+                    'updated_at' => now(),
+                ]
+            );
 
             \Log::info('Datos insertados en dictaminador_docente');
 
@@ -366,5 +370,3 @@ class DictaminatorForm3_1Controller extends TransferController
     return response()->json(['totalDocencia' => $total]);
 }
 }
-
-
