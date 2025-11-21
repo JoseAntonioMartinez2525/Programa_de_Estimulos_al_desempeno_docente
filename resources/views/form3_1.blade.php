@@ -336,11 +336,12 @@ body.dark-mode [id^="obs3_1_"] {
 }
 
 body.light-mode [id^="btn3_"] {
-    margin-left: 900px;
+    margin-left: 56.25rem;
     background-color: #528fb3;
 }
 
 body.dark-mode [id^="btn3_"] {
+    margin-left: 56.25rem;
     background-color: #456483;
     color: floralwhite;
 }

@@ -53,6 +53,7 @@
         formData.append('user_id', userId);
         formData.append('email', email);
         formData.append('user_type', form.querySelector('input[name="user_type"]')?.value || '');
+        let obsform3_13 = ['obsInicioFinanciamientoExt','obsInicioInvInterno','obsReporteFinanciamExt','obsReporteInvInt'];
 
         // ---------- CAMPOS EXTRA DINÁMICOS ----------
         if (Array.isArray(config.extraFields)) {
@@ -61,7 +62,8 @@
              'score3_3', 'comision3_3', 'rc1', 'rc2', 'rc3', 'rc4', 'stotal1', 'stotal2', 'stotal3', 'stotal4',
              'score3_4', 'comision3_4', 'cantInternacional', 'cantNacional', 'cantidadRegional', 'cantPreparacion',
              'score3_5', 'comision3_5', 'cantDA', 'cantCAAC', 'cantDA2', 'cantCAAC2', 'obs3_3_1', 'obs3_3_2','obs3_3_3', 'obs3_3_4',
-             'obsInicioFinancimientoExt','obsInicioInvInterno','obsReporteFinanciamExt','obsReporteInvInt'
+             'obsInicioFinanciamientoExt','obsInicioInvInterno','obsReporteFinanciamExt','obsReporteInvInt','comisionInicioFinancimientoExt', 
+             'comisionInicioInvInterno', 'comisionReporteFinanciamExt', 'comisionReporteInvInt'
 
             ].forEach(field => {
                 const el = document.querySelector(`.${field}`);
@@ -73,7 +75,20 @@
                         hidden.name = field;
                         form.appendChild(hidden);
                     }
-                    hidden.value = el.textContent.trim() || '0';
+
+                        let raw = el.textContent.trim();
+
+                        // Si es un campo de observación:
+                        if (obsform3_13.includes(field)) {
+                            hidden.value = (raw === "" || raw === "0") ? "sin comentarios" : raw;
+                        } else {
+                            hidden.value = raw || "0";
+                        }
+
+                    //hidden.value = el.textContent.trim() || '0';
+
+                    
+
                 }
             });
 

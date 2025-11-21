@@ -287,7 +287,7 @@ $user_identity = $user->id;
                     </td class="comision3_13">
                     <td class="obsReporteFinanciamExt">
                     @if ($userType == 'dictaminador')      
-                        <input class="table-header" type="text" id="obsReporteFinanciamExt"></td>
+                        <input class="table-header" type="text" id="obsReporteFinanciamExt"  name="obsReporteFinanciamExt"></td>
                     @else
                     <span id="obsReporteFinanciamExt" name="obsReporteFinanciamExt" class="obsBackground"></span>
                     @endif
@@ -311,7 +311,7 @@ $user_identity = $user->id;
                     </td>
                     <td class="obsReporteInvInt">
                     @if ($userType == 'dictaminador')      
-                        <input class="table-header" type="text" id="obsReporteInvInt">
+                        <input class="table-header" type="text" id="obsReporteInvInt" name="obsReporteInvInt">
                     @else
                         <span id="obsReporteInvInt" name="obsReporteInvInt" class="obsBackground"></span>
                     @endif

@@ -86,7 +86,7 @@ class DictaminatorForm3_4Controller extends TransferController
 
             DB::table('dictaminador_docente')->insert([
                 //'dictaminador_form_id' => $response->id, // Asegúrate de que este ID exista
-                'user_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
+                'docente_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
                 'dictaminador_id' => $response->dictaminador_id,
                 'form_type' => 'form3_4', // O el tipo de formulario correspondiente
                 'docente_email' => $response->email,
@@ -98,13 +98,13 @@ class DictaminatorForm3_4Controller extends TransferController
             event(new EvaluationCompleted($validatedData['user_id']));
             return response()->json([
                 'success' => true,
-                'message' => 'Data successfully saved',
+                'message' => 'Formulario enviado',
                 'data' => $validatedData,
             ], 200);
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation failed',
+                'message' => 'Validation fallida',
                 'errors' => $e->errors()
             ], 422);
         } catch (QueryException $e) {

@@ -151,7 +151,7 @@ class DictaminatorForm3_19Controller extends TransferController
             $this->updateUserResponseComision($validatedData['user_id'], $validatedData['comision3_19']);
             DB::table('dictaminador_docente')->insert([
                 //'dictaminador_form_id' => $response->id, // Asegúrate de que este ID exista
-                'user_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
+                'docente_id' => $validatedData['user_id'], // Asegúrate de que este ID exista
                 'dictaminador_id' => $response->dictaminador_id,
                 'form_type' => 'form3_19', // O el tipo de formulario correspondiente
                 'docente_email' => $response->email,

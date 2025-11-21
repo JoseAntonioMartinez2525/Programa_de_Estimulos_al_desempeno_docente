@@ -1637,14 +1637,15 @@ input[id^="obs3_5_"]:focus, input#comisionDict3_7:focus, input#comisionDict3_6:f
 input[id^="obs3_9_"]:focus, input#comisionGrupal:focus, input#comisionIndividual:focus, input#obsGrupal:focus, input#obsIndividual:focus,
 input#comisionAsesoria:focus, input#comisionServicio:focus, input#comisionPracticas:focus, input#comisionCientificos:focus, input#comisionDivulgacion:focus, input#comisionTraduccion:focus,
 input#comisionArbitrajeInt:focus, input#comisionArbitrajeNac:focus, input#comisionSinInt:focus, input#comisionSinNac:focus, input#comisionAutor:focus, input#comisionEditor:focus, input#comisionWeb:focus,
-input #obsAsesoria:focus, input[id^="obs"]:focus, input[id^="comisionInicio"]:focus, input[id^="comisionReporte"]:focus
+input #obsAsesoria:focus, input[id^="obs"]:focus, input[id^="comisionInicio"]:focus, input[id^="comisionReporte"]:focus, input[id^="comisionCongreso"]:focus, input#comisionPatententes:focus, input#comisionPrototipos:focus 
  {
 outline: none;
 }
 
 body.light-mode td.obsInicioFinancimientoExt, body.light-mode td.obsInicioInvInterno, body.light-mode td.obsReporteInvInt, body.light-mode td.obsReporteFinanciamExt{
         background-color: #d6fff7;
-        border: thin;
+        border-width: thin;
+        border-color: white;
 }
 
 body.dark-mode td.obsInicioFinancimientoExt, body.dark-mode td.obsInicioInvInterno, body.dark-mode td.obsReporteInvInt, body.dark-mode td.obsReporteFinanciamExt{
