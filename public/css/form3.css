@@ -91,7 +91,7 @@ nav {
 }
 
 [id^="obs3_1_"]{
-    padding-left: 14rem;
+    padding-left: 0rem;
     padding-right: 2rem;
 
     
@@ -167,9 +167,12 @@ td.punto3_5, #cantDA, #cantCAAC{
 #obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteInvInt,  #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt
 
 {
-    background-color: transparent;
-    border-color: transparent;
+     border-color: transparent;
     text-align: right;
+}
+
+#obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt{
+background-color: transparent;
 }
 
 #comisionInicioFinancimientoExt, #comisionInicioInvInterno, #comisionReporteFinanciamExt, #comisionReporteInvInt, #comisionArbInt,

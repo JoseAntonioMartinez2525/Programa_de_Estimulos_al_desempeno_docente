@@ -60,7 +60,8 @@
             ['score3_1','actv3Comision', 'score3_2', 'comision3_2', 'r1', 'r2', 'r3', 'cant1', 'cant2', 'cant3',
              'score3_3', 'comision3_3', 'rc1', 'rc2', 'rc3', 'rc4', 'stotal1', 'stotal2', 'stotal3', 'stotal4',
              'score3_4', 'comision3_4', 'cantInternacional', 'cantNacional', 'cantidadRegional', 'cantPreparacion',
-             'score3_5', 'comision3_5', 'cantDA', 'cantCAAC', 'cantDA2', 'cantCAAC2', 'obs3_3_1', 'obs3_3_2','obs3_3_3', 'obs3_3_4'
+             'score3_5', 'comision3_5', 'cantDA', 'cantCAAC', 'cantDA2', 'cantCAAC2', 'obs3_3_1', 'obs3_3_2','obs3_3_3', 'obs3_3_4',
+             'obsInicioFinancimientoExt','obsInicioInvInterno','obsReporteFinanciamExt','obsReporteInvInt'
 
             ].forEach(field => {
                 const el = document.querySelector(`.${field}`);

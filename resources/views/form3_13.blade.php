@@ -238,11 +238,11 @@ $user_identity = $user->id;
                     @endif
                         
                     </td>
-                    <td class="comision3_13">
+                    <td class="obsInicioFinancimientoExt">
                     @if ($userType == 'dictaminador')
                         <input class="table-header" type="text" id="obsInicioFinancimientoExt" name="obsInicioFinancimientoExt">
                     @else
-                        <span id="obsInicioFinancimientoExt" name="obsInicioFinancimientoExt"></span>
+                        <span id="obsInicioFinancimientoExt" name="obsInicioFinancimientoExt" class="obsBackground"></span>
                     @endif                    
                     </td>
                 </tr>
@@ -260,11 +260,11 @@ $user_identity = $user->id;
                         <span id="comisionInicioInvInterno"name="comisionInicioInvInterno" ></span>
                     @endif
                     </td>
-                    <td class="comision3_13">
+                    <td class="obsInicioInvInterno">
                     @if ($userType == 'dictaminador')
                         <input class="table-header" type="text" id="obsInicioInvInterno" name="obsInicioInvInterno">
                     @else
-                        <span id="obsInicioInvInterno" name="obsInicioInvInterno"></span>
+                        <span id="obsInicioInvInterno" name="obsInicioInvInterno" class="obsBackground"></span>
                     @endif
                     </td>
                 </tr>
@@ -285,11 +285,11 @@ $user_identity = $user->id;
                     <span id="comisionReporteFinanciamExt" name="comisionReporteFinanciamExt"></span>
                     @endif
                     </td class="comision3_13">
-                    <td class="comision3_13">
+                    <td class="obsReporteFinanciamExt">
                     @if ($userType == 'dictaminador')      
                         <input class="table-header" type="text" id="obsReporteFinanciamExt"></td>
                     @else
-                    <span id="obsReporteFinanciamExt" name="obsReporteFinanciamExt"></span>
+                    <span id="obsReporteFinanciamExt" name="obsReporteFinanciamExt" class="obsBackground"></span>
                     @endif
                 </tr>
                 <tr>
@@ -306,14 +306,14 @@ $user_identity = $user->id;
                     @if ($userType == 'dictaminador')      
                         <input type="number" step="0.01" id="comisionReporteInvInt" value="{{ oldValueOrDefault('comisionReporteInvInt') }}" oninput="onActv3Comision3_13()">
                     @else
-                        <span id="comisionReporteInvInt" name="comisionReporteInvInt"></span>
+                        <span id="comisionReporteInvInt" name="comisionReporteInvInt" class="obsBackground"></span>
                     @endif
                     </td>
-                    <td class="comision3_13">
+                    <td class="obsReporteInvInt">
                     @if ($userType == 'dictaminador')      
                         <input class="table-header" type="text" id="obsReporteInvInt">
                     @else
-                        <span id="obsReporteInvInt" name="obsReporteInvInt"></span>
+                        <span id="obsReporteInvInt" name="obsReporteInvInt" class="obsBackground"></span>
                     @endif
                     </td>
                 </tr>

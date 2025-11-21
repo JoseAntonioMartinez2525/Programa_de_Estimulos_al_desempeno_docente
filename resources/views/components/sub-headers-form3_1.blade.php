@@ -10,6 +10,8 @@
     <th class="actividades">Actividad</th>
     <th class="actividades">Puntaje</th>
     <th class="actividades" id="cantidadForm3_1">Cantidad</th>
-    <th class="actividades">Subtotal</th>
+    <th class="actividades" colspan=2>Subtotal</th>
+
+    <th class="actividades text-center">Observaciones</th>
     
 </tr>
