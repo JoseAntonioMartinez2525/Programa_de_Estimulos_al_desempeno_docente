@@ -76,21 +76,21 @@
                         form.appendChild(hidden);
                     }
 
-                    // Para campos de observación, un "0" desde la BD debe ser un string vacío en el span.
-                    // Y un span vacío no debe convertirse en "0" al enviar.
-                    if (obsform3_13.includes(field)) {
-                        hidden.value = el.textContent.trim();
-                    } else {
-                        hidden.value = el.textContent.trim() || '0';
-                    }
+                        let raw = el.textContent.trim();
+
+                        // Si es un campo de observación:
+                        if (obsform3_13.includes(field)) {
+                            hidden.value = (raw === "" || raw === "0") ? "sin comentarios" : raw;
+                        } else {
+                            hidden.value = raw || "0";
+                        }
+
+                    //hidden.value = el.textContent.trim() || '0';
+
+                    
 
                 }
             });
-
-            // Crear un conjunto de los campos ya procesados para evitar duplicados.
-            const processedFields = new Set(form.querySelectorAll('input[type="hidden"]'));
-            processedFields.forEach(input => formData.append(input.name, input.value));
-
 
             config.extraFields.forEach(field => {
                 const elements = document.querySelectorAll(
@@ -100,10 +100,7 @@
                 elements.forEach(el => {
                     const val = el.value ?? el.textContent ?? '';
                     const key = el.name || el.id || field;
-                    // Solo agregar a formData si no fue procesado en el bucle anterior
-                    if (!form.querySelector(`input[name="${key}"]`)) {
-                        formData.append(key, val.trim());
-                    }
+                    formData.append(key, val.trim());
                 });
 
                 // ⚙️ Si no hay campo base, crear uno con el primer valor encontrado con sufijo
