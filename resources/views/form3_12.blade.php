@@ -101,9 +101,7 @@ $docenteConfig = $docenteConfig ?? [
 
         // totales
         'score3_12'                     => 'score3_12',
-        'comision3_12'                 => 'comision3_12',
-        '.comision3_12'                 => 'comision3_12',
-        '#comision3_12'                 => 'comision3_12',
+        'comision3_12'                  => 'comision3_12',
     ],
 
     // ---- Inputs ocultos que se llenan desde docenteData.form3_12 ----

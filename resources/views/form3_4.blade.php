@@ -291,7 +291,7 @@ $user_identity = $user->id;
                         <td id="cantInternacional2"></td>
                         <td class="td_obs">
                         @if($userType == 'dictaminador')
-                            <input type="number" step="0.01" id="comInternacional" oninput="onActv3Comision3_4()" value="{{ oldValueOrDefault('comInternacional') }}">
+                            <input type="number" step="0.01" id="comInternacional" name="comInternacional" oninput="onActv3Comision3_4()" value="{{ oldValueOrDefault('comInternacional') }}">
                         @else
                             <span id="comInternacional" name="comInternacional"></span>
                             @endif
@@ -360,7 +360,7 @@ $user_identity = $user->id;
                         <td id="cantPreparacion2"></td>
                         <td class="td_obs">
                             @if($userType == 'dictaminador')
-                            <input type="number" step="0.01" id="comPreparacion"  oninput="onActv3Comision3_4()" value="{{ oldValueOrDefault('comPreparacion') }}">
+                            <input type="number" step="0.01" id="comPreparacion" name="comPreparacion" oninput="onActv3Comision3_4()" value="{{ oldValueOrDefault('comPreparacion') }}">
                             @else
                             <span id="comPreparacion" name="comPreparacion"></span>
                             @endif
@@ -382,8 +382,9 @@ $user_identity = $user->id;
             @if($userType != 'secretaria')
                 <button id="btn3_4" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
             @endif
-            </form>
-    </main>
+        </form>
+   
+        </main>
     <center>
     <footer id="footerForm3_4">
         <center>

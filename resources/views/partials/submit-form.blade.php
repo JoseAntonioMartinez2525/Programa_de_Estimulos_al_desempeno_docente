@@ -54,25 +54,33 @@
         formData.append('email', email);
         formData.append('user_type', form.querySelector('input[name="user_type"]')?.value || '');
         let obsform3_13 = ['obsInicioFinanciamientoExt','obsInicioInvInterno','obsReporteFinanciamExt','obsReporteInvInt'];
-
-        // Sincronizar valores de comIncisoX antes de enviar el formulario
-        ['comIncisoA', 'comIncisoB', 'comIncisoC', 'comIncisoD','comInternacional', 'comPreparacion', 'comDA', 'comNCAA'].forEach(field => {
-            const input = form.querySelector(`input[name="${field}"]`);
-            if (!input) {
-                // Si el input no existe, agregarlo al FormData con valor predeterminado
-                formData.append(field, '0');
-            } else {
-                // Si el input existe, agregar su valor al FormData
-                formData.append(field, input.value.trim() || '0');
-            }
+        
+        // Sincronizar valores de campos de comisión (inputs que empiezan con 'com' o 'comision')
+        form.querySelectorAll('input[name^="com"]').forEach(input => {
+            formData.append(input.name, input.value.trim() || '0');
         });
 
-        // Sincronizar valores de campos tipo <td> antes de enviar el formulario
+        // Sincronizar valores de campos tipo <td> específicos (se mantiene por solicitud)
         ['cantInternacional2', 'cantNacional2', 'cantidadRegional2', 'cantPreparacion2'].forEach(field => {
             const element = form.querySelector(`[id="${field}"]`);
             if (element) {
                 const value = element.textContent.trim(); // Obtener el texto dentro del <td>
                 formData.append(field, value || '0'); // Si está vacío, asignar '0'
+            }
+        });
+        
+        // Sincronizar valores de campos con sufijo numérico (ej. score3_12_0, comision3_12_1)
+        // Busca elementos cuyo ID coincida con el patrón score..._ o comision..._
+        form.querySelectorAll('[id*="_"][id^="score"], [id*="_"][id^="comision"]').forEach(el => {
+            const baseField = el.id.substring(0, el.id.lastIndexOf('_'));
+            const value = el.textContent.trim() || '0';
+            formData.append(el.id, value);
+            
+            let firstValue = null;
+            firstValue = value;
+            // Asegurar que el campo base (sin sufijo) se envíe para validación en backend
+            if (firstValue !== null && !formData.has(baseField)) {
+                formData.append(baseField, firstValue);
             }
         });
         // ---------- CAMPOS EXTRA DINÁMICOS ----------
@@ -100,9 +108,6 @@
 
             // Lógica para sincronizar <td>/<span> a FormData
             config.extraFields.forEach(field => {
-                // Si el campo ya fue recolectado por el bucle de inputs, no hacer nada.
-                if (formData.has(field)) return;
-
                 // Buscar solo elementos que NO sean inputs, para no procesarlos dos veces.
                 const elements = document.querySelectorAll(
                     `[id="${field}"]:not(input):not(textarea):not(select), [name="${field}"]:not(input):not(textarea):not(select)`
@@ -119,9 +124,11 @@
                 });
 
                 // Si el campo está en extraFields pero no se encontró en el DOM y no está en formData,
-                // se añade como vacío para evitar errores de "undefined array key" en el backend.
-                if (!found && !formData.has(field) && field.startsWith('obs')) {
-                    formData.append(field, '');
+                // se añade con un valor por defecto para evitar errores de "undefined array key" en el backend.
+                if (!found && !formData.has(field)) {
+                    // Para campos de comisión, el valor por defecto es '0'. Para observaciones, es una cadena vacía.
+                    const defaultValue = field.startsWith('comision') ? '0' : '';
+                    formData.append(field, defaultValue);
                 }
 
                 // ⚙️ Si no hay campo base, crear uno con el primer valor encontrado con sufijo

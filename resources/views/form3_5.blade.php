@@ -210,7 +210,7 @@ $user_identity = $user->id;
                         <td id="cantDA2"></td>
                         <td class="td_obs">
                             @if($userType == 'dictaminador')
-                            <input type="number" step="0.01" id="comDA" placeholder="0" oninput="onActv3Comision3_5()" value="{{ oldValueOrDefault('comDA') }}">
+                            <input type="number" step="0.01" id="comDA" name="comDA" placeholder="0" oninput="onActv3Comision3_5()" value="{{ oldValueOrDefault('comDA') }}">
                             @else
                             <span id="comDA" name="comDA"></span>
                             @endif
@@ -233,7 +233,7 @@ $user_identity = $user->id;
                             <td id="cantCAAC2" name="cantCAAC2"></td>
                             <td class="td_obs">
                                 @if($userType == 'dictaminador')
-                                <input type="number" step="0.01" id="comNCAA"
+                                <input type="number" step="0.01" id="comNCAA" name="comNCAA"
                                 oninput="onActv3Comision3_5()" value="{{ oldValueOrDefault('comNCAA') }}">
                                 @else
                                 <span id="comNCAA" name="comNCAA"></span>
