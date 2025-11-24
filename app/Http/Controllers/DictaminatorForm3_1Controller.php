@@ -95,7 +95,8 @@ class DictaminatorForm3_1Controller extends TransferController
             $campos = ['obs3_1_1', 'obs3_1_2', 'obs3_1_3', 'obs3_1_4', 'obs3_1_5'];
 
             foreach ($campos as $campo) {
-                $validatedData[$campo] = trim($validatedData[$campo]) !== '' ? $validatedData[$campo] : 'sin comentarios';
+                $validatedData[$campo] = trim($validatedData[$campo] ?? '') !== '' ? $validatedData[$campo] : 'sin comentarios';
+
             }
 
 
@@ -197,7 +198,7 @@ class DictaminatorForm3_1Controller extends TransferController
             // Actualiza/crea el registro específico del formulario de usuario
             $userResponse = UsersResponseForm3_1::updateOrCreate(
                 ['user_id' => $userId],
-                ['comision3_2' => $comisionValue]
+                ['actv3Comision' => $comisionValue]
             );
 
             if ($userResponse) {
@@ -208,11 +209,11 @@ class DictaminatorForm3_1Controller extends TransferController
         } else {
             \Log::warning('No se encontró registro en UsersResponseForm3_1 para user_id: ' . $userId);
         }
-        // Actualiza o inserta la fila consolidada (solo el campo de comision3_2)
+        // Actualiza o inserta la fila consolidada (solo el campo de actv3Comision)
                     DB::table('consolidated_responses')->updateOrInsert(
                         ['user_id' => $userId],
                         [
-                            'comision3_2' => (float) $comisionValue,
+                            'actv3Comision' => (float) $comisionValue,
                             'updated_at'  => now()
                         ]
                     );

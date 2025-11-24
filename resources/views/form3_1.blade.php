@@ -429,7 +429,7 @@ $user_identity = $user->id;
                                 <td><span id="elaboracionSubTotal1"></span></td>
                                 <td class="comision actv comEstilos">
                                     @if($userType == 'dictaminador')
-                                        <input id="comisionIncisoA" class="actv3Comision" type="number" step="0.01" oninput="onActv3Comision()"
+                                        <input id="comisionIncisoA" type="number" step="0.01" oninput="onActv3Comision()"
                                             value="{{ oldValueOrDefault('comisionIncisoA') }}">
                                     @else
                                         <label id="comisionIncisoA"></label>

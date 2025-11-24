@@ -76,32 +76,40 @@
                         form.appendChild(hidden);
                     }
 
-                        let raw = el.textContent.trim();
-
-                        // Si es un campo de observación:
-                        if (obsform3_13.includes(field)) {
-                            hidden.value = (raw === "" || raw === "0") ? "sin comentarios" : raw;
-                        } else {
-                            hidden.value = raw || "0";
-                        }
-
-                    //hidden.value = el.textContent.trim() || '0';
-
-                    
+                    // Para campos de observación, un "0" desde la BD debe ser un string vacío en el span.
+                    // Y un span vacío no debe convertirse en "0" al enviar.
+                    if (obsform3_13.includes(field)) {
+                        hidden.value = el.textContent.trim();
+                    } else {
+                        hidden.value = el.textContent.trim() || '0';
+                    }
 
                 }
             });
+
+            // Crear un conjunto de los campos ya procesados para evitar duplicados.
+            const processedFields = new Set(form.querySelectorAll('input[type="hidden"]'));
+            processedFields.forEach(input => formData.append(input.name, input.value));
+
 
             config.extraFields.forEach(field => {
                 const elements = document.querySelectorAll(
                     `[id="${field}"], [name="${field}"], [id*="${field}"], [name*="${field}"]`
                 );
-
+                let found = false;
                 elements.forEach(el => {
                     const val = el.value ?? el.textContent ?? '';
                     const key = el.name || el.id || field;
-                    formData.append(key, val.trim());
+                    // Solo agregar a formData si no fue procesado en el bucle anterior
+                    if (!form.querySelector(`input[name="${key}"]`)) {
+                        formData.append(key, val.trim());
+                    }
+                    found = true;
                 });
+
+                if (!found && !formData.has(field)) {
+                    formData.append(field, '');
+                }
 
                 // ⚙️ Si no hay campo base, crear uno con el primer valor encontrado con sufijo
                 const hasBase = Array.from(formData.keys()).includes(field);
