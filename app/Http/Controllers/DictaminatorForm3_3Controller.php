@@ -21,6 +21,8 @@ class DictaminatorForm3_3Controller extends TransferController
             $dictaminadorId = \Auth::id();
             $request->merge(['dictaminador_id' => $dictaminadorId]);
 
+            // dd($request->all());
+
             // 2. Llamar a la validación de fecha al inicio del método
             if ($error = $this->validateEvaluationPeriod($request, 'form3_3')) {
                 return $error;

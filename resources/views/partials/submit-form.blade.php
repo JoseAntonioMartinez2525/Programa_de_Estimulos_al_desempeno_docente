@@ -55,56 +55,74 @@
         formData.append('user_type', form.querySelector('input[name="user_type"]')?.value || '');
         let obsform3_13 = ['obsInicioFinanciamientoExt','obsInicioInvInterno','obsReporteFinanciamExt','obsReporteInvInt'];
 
+        // Sincronizar valores de comIncisoX antes de enviar el formulario
+        ['comIncisoA', 'comIncisoB', 'comIncisoC', 'comIncisoD','comInternacional', 'comPreparacion', 'comDA', 'comNCAA'].forEach(field => {
+            const input = form.querySelector(`input[name="${field}"]`);
+            if (!input) {
+                // Si el input no existe, agregarlo al FormData con valor predeterminado
+                formData.append(field, '0');
+            } else {
+                // Si el input existe, agregar su valor al FormData
+                formData.append(field, input.value.trim() || '0');
+            }
+        });
+
+        // Sincronizar valores de campos tipo <td> antes de enviar el formulario
+        ['cantInternacional2', 'cantNacional2', 'cantidadRegional2', 'cantPreparacion2'].forEach(field => {
+            const element = form.querySelector(`[id="${field}"]`);
+            if (element) {
+                const value = element.textContent.trim(); // Obtener el texto dentro del <td>
+                formData.append(field, value || '0'); // Si está vacío, asignar '0'
+            }
+        });
         // ---------- CAMPOS EXTRA DINÁMICOS ----------
         if (Array.isArray(config.extraFields)) {
-            // primero sincroniza los campos <td>/<span> a hidden inputs
-            ['score3_1','actv3Comision', 'score3_2', 'comision3_2', 'r1', 'r2', 'r3', 'cant1', 'cant2', 'cant3',
-             'score3_3', 'comision3_3', 'rc1', 'rc2', 'rc3', 'rc4', 'stotal1', 'stotal2', 'stotal3', 'stotal4',
-             'score3_4', 'comision3_4', 'cantInternacional', 'cantNacional', 'cantidadRegional', 'cantPreparacion',
-             'score3_5', 'comision3_5', 'cantDA', 'cantCAAC', 'cantDA2', 'cantCAAC2', 'obs3_3_1', 'obs3_3_2','obs3_3_3', 'obs3_3_4',
-             'obsInicioFinanciamientoExt','obsInicioInvInterno','obsReporteFinanciamExt','obsReporteInvInt','comisionInicioFinancimientoExt', 
-             'comisionInicioInvInterno', 'comisionReporteFinanciamExt', 'comisionReporteInvInt'
-
-            ].forEach(field => {
-                const el = document.querySelector(`.${field}`);
-                if(el){
-                    let hidden = form.querySelector(`input[name="${field}"]`);
-                    if(!hidden){
-                        hidden = document.createElement('input');
-                        hidden.type = 'hidden';
-                        hidden.name = field;
-                        form.appendChild(hidden);
-                    }
-
-                    // Para campos de observación, un "0" desde la BD debe ser un string vacío en el span.
-                    // Y un span vacío no debe convertirse en "0" al enviar.
-                    if (obsform3_13.includes(field)) {
-                        hidden.value = el.textContent.trim();
-                    } else {
-                        hidden.value = el.textContent.trim() || '0';
-                    }
-
+            // ⚙️ **NUEVO**: Recolectar todos los inputs, selects y textareas visibles
+            form.querySelectorAll('input[name]:not([type="hidden"]), select[name], textarea[name]').forEach(el => {
+                const key = el.name || el.id;
+                let value = el.value.trim();
+                // Si es dictaminador y el campo es comIncisoX y está vacío, poner 0
+                if (['comIncisoA','comIncisoB','comIncisoC','comIncisoD'].includes(key) && value === '') {
+                    value = '0';
+                }
+                if (key && !formData.has(key)) {
+                     formData.append(key, value);
                 }
             });
 
-            // Crear un conjunto de los campos ya procesados para evitar duplicados.
-            const processedFields = new Set(form.querySelectorAll('input[type="hidden"]'));
-            processedFields.forEach(input => formData.append(input.name, input.value));
 
+            // Añadir los inputs ocultos que ya existen en el formulario
+            form.querySelectorAll('input[type="hidden"]').forEach(hiddenInput => {
+                if (hiddenInput.name && !formData.has(hiddenInput.name)) {
+                    formData.append(hiddenInput.name, hiddenInput.value);
+                }
+            });
 
+            // Lógica para sincronizar <td>/<span> a FormData
             config.extraFields.forEach(field => {
+                // Si el campo ya fue recolectado por el bucle de inputs, no hacer nada.
+                if (formData.has(field)) return;
+
+                // Buscar solo elementos que NO sean inputs, para no procesarlos dos veces.
                 const elements = document.querySelectorAll(
-                    `[id="${field}"], [name="${field}"], [id*="${field}"], [name*="${field}"]`
+                    `[id="${field}"]:not(input):not(textarea):not(select), [name="${field}"]:not(input):not(textarea):not(select)`
                 );
 
+                let found = false;
                 elements.forEach(el => {
-                    const val = el.value ?? el.textContent ?? '';
+                    // Para spans/tds, solo nos interesa textContent.
+                    const val = el.textContent ?? '';
                     const key = el.name || el.id || field;
-                    // Solo agregar a formData si no fue procesado en el bucle anterior
-                    if (!form.querySelector(`input[name="${key}"]`)) {
-                        formData.append(key, val.trim());
-                    }
+                    
+                    formData.append(key, val.trim() || '0');
+                    found = true;
                 });
+
+                // Si el campo está en extraFields pero no se encontró en el DOM y no está en formData,
+                // se añade como vacío para evitar errores de "undefined array key" en el backend.
+                if (!found && !formData.has(field) && field.startsWith('obs')) {
+                    formData.append(field, '');
+                }
 
                 // ⚙️ Si no hay campo base, crear uno con el primer valor encontrado con sufijo
                 const hasBase = Array.from(formData.keys()).includes(field);

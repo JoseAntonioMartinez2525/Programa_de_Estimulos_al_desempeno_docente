@@ -413,201 +413,201 @@ window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
                     <label class="bg-black text-white px-4 mt-3" for="">100</label>
                 </h4>
             </div>
-<table class="table table-sm">
-    <x-table-header />
-    <tbody class="page-break" data-page="6">
-        <tr>
-            <td class="seccion3_3" colspan="5">3.3 Publicaciones relacionadas con la docencia</td>
-            <td id="score3_3">0</td>
-            <td class="comision3_3" id="comision3_3"style="background-color: #ffcc6d; text-align: center; border: none; font-weight: bold;">0</td>
-        </tr>
-        <tr>
-            <td colspan="6"></td>
-        </tr>
-        <tr>
-            <td class="incisos">Incisos</td>
-            <td class="obra">Obra</td>
-            <td>Actividad</td>
-            <td>Puntaje</td>
-            <td class="cantidad2">Cantidad</td>
-            <td colspan="2">SubTotal</td>
-            <td class="table-ajust2" scope="col">Observaciones</td>
-        </tr>
-        <!-- Primera tabla: Incisos a) y b) -->
-        <tr>
-            <td>a)</td>
-            <td>Libro de texto con editorial de reconocido prestigio</td>
-            <td>Autor(a)</td>
-            <td>
-                <center><b>100</b></center>
-            </td>
-            <td class="elabInput"><span class="rc1" id="rc1"></span></td>
-            <td class="stotal1" id="stotal1"></td>
-            <td class="comision actv">
+            <table class="table table-sm">
+                <x-table-header />
+                <tbody class="page-break" data-page="6">
+                    <tr>
+                        <td class="seccion3_3" colspan="5">3.3 Publicaciones relacionadas con la docencia</td>
+                        <td id="score3_3">0</td>
+                        <td class="comision3_3" id="comision3_3"style="background-color: #ffcc6d; text-align: center; border: none; font-weight: bold;">0</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <td class="incisos">Incisos</td>
+                        <td class="obra">Obra</td>
+                        <td>Actividad</td>
+                        <td>Puntaje</td>
+                        <td class="cantidad2">Cantidad</td>
+                        <td colspan="2">SubTotal</td>
+                        <td class="table-ajust2" scope="col">Observaciones</td>
+                    </tr>
+                    <!-- Primera tabla: Incisos a) y b) -->
+                    <tr>
+                        <td>a)</td>
+                        <td>Libro de texto con editorial de reconocido prestigio</td>
+                        <td>Autor(a)</td>
+                        <td>
+                            <center><b>100</b></center>
+                        </td>
+                        <td class="elabInput"><span class="rc1" id="rc1"></span></td>
+                        <td class="stotal1" id="stotal1"></td>
+                        <td class="comision actv">
+                            @if($userType == 'dictaminador')
+                                <input type="number" step="0.01" class="comIncisoA" id="comIncisoA" name="comIncisoA" oninput="onActv3Comision3()"
+                                    value="{{ oldValueOrDefault('comIncisoA') }}">
+                            @else
+                                <span name="comIncisoA" class="comIncisoA"></span>
+                            @endif
+                        </td>
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
+                                <input id="obs3_3_1" name="obs3_3_1" class="obs3_3_1" type="text">
+                            @else
+                                <span class="obs3_3_1"></span>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>b)</td>
+                        <td>1. Paquete didáctico, 2. Manual de operaciones</td>
+                        <td>Autor(a)</td>
+                        <td>
+                            <center><b>50</b></center>
+                        </td>
+                        <td class="elabInput"><span class="rc2" id="rc2"></span></td>
+                        <td class="stotal2" id="stotal2"></td>
+                        <td class="comision actv">
+                            @if($userType == 'dictaminador')
+                                <input class="comIncisoB" id="comIncisoB" name="comIncisoB" type="number" step="0.01" oninput="onActv3Comision3()"
+                                    value="{{ oldValueOrDefault('comIncisoB') }}">
+                            @else
+                                <span class="comIncisoB"></span>
+                            @endif
+                        </td>
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
+                                <input id="obs3_3_2" name="obs3_3_2" class="obs3_3_2" type="text">
+                            @else
+                                <span class="obs3_3_2"></span>
+                            @endif
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="espaciadoConvocatoria">
+                <div id="convocatoria" 
+                    class="{{ $userType == 'dictaminador' ? 'dictaminador-style' : 'secretaria-style' }}">
+                    @if(isset($convocatoria))
+                        @if($userType == 'dictaminador')
+                            <span style="margin-right: 700px; display: inline-block;">
+                                <h1>Convocatoria: </h1>
+                            </span>
+                        @elseif($userType == 'secretaria')
+                            <span style="margin-right: 60px; margin-left: 100px; display:nonek;padding-right: 12px; text-align:left;">
+                                <h1>Convocatoria: </h1>
+                            </span>
+                            <span id="piedepagina" style="display: none; margin-left: 20px;">
+                                Página 3 de 33
+                            </span>
+                        @endif
+                    @endif
+                </div>
+            <div>
                 @if($userType == 'dictaminador')
-                    <input type="number" step="0.01" class="comIncisoA" id="comIncisoA" name="comIncisoA" oninput="onActv3Comision3()"
-                        value="{{ oldValueOrDefault('comIncisoA') }}">
-                @else
-                    <span name="comIncisoA" class="comIncisoA"></span>
+                    <span id="piedepagina" style="display: none;margin-left:800px;">Página 6 de 33</span>
                 @endif
-            </td>
-            <td class="td_obs">
-                @if($userType == 'dictaminador')
-                    <input class="obs3_3_1" type="text">
-                @else
-                    <span class="obs3_3_1"></span>
-                @endif
-            </td>
-        </tr>
-        <tr>
-            <td>b)</td>
-            <td>1. Paquete didáctico, 2. Manual de operaciones</td>
-            <td>Autor(a)</td>
-            <td>
-                <center><b>50</b></center>
-            </td>
-            <td class="elabInput"><span class="rc2" id="rc2"></span></td>
-            <td class="stotal2" id="stotal2"></td>
-            <td class="comision actv">
-                @if($userType == 'dictaminador')
-                    <input class="comIncisoB" id="comIncisoB" type="number" step="0.01" oninput="onActv3Comision3()"
-                        value="{{ oldValueOrDefault('comIncisoB') }}">
-                @else
-                    <span class="comIncisoB"></span>
-                @endif
-            </td>
-            <td class="td_obs">
-                @if($userType == 'dictaminador')
-                    <input class="obs3_3_2" type="text">
-                @else
-                    <span class="obs3_3_2"></span>
-                @endif
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div class="espaciadoConvocatoria">
-    <div id="convocatoria" 
-        class="{{ $userType == 'dictaminador' ? 'dictaminador-style' : 'secretaria-style' }}">
-        @if(isset($convocatoria))
-            @if($userType == 'dictaminador')
-                <span style="margin-right: 700px; display: inline-block;">
-                    <h1>Convocatoria: </h1>
-                </span>
-            @elseif($userType == 'secretaria')
-                <span style="margin-right: 60px; margin-left: 100px; display:nonek;padding-right: 12px; text-align:left;">
-                    <h1>Convocatoria: </h1>
-                </span>
-                <span id="piedepagina" style="display: none; margin-left: 20px;">
-                    Página 3 de 33
-                </span>
-            @endif
-        @endif
-    </div>
-<div>
-    @if($userType == 'dictaminador')
-        <span id="piedepagina" style="display: none;margin-left:800px;">Página 6 de 33</span>
-    @endif
-</div>
-</div><br><br>
+            </div>
+            </div><br><br>
 
-<table class="table table-sm table3_3_2">
-    <x-table-header />
-    <tbody class="page-break" data-page="7">
-        <tr>
-            <td class="seccion3_3" colspan="5">3.3 Publicaciones relacionadas con la docencia</td>
-            <td id="score3_3_copy">0</td>
-            <td class="comision3_3_copy" id="comision3_3_copy" style="background-color: #ffcc6d; text-align: center; border: none; font-weight: bold;">0</td>
-        </tr>
-        <tr>
-            <td colspan="6"></td>
-        </tr>
-        <tr>
-            <td class="incisos">Incisos</td>
-            <td class="obra">Obra</td>
-            <td>Actividad</td>
-            <td>Puntaje</td>
-            <td class="cantidad2">Cantidad</td>
-            <td>SubTotal</td>
-        </tr>
-        <!-- Segunda tabla: Incisos c) y d) -->
-        <tr>
-            <td>c)</td>
-            <td>
-                <textarea name="" class="textAreaForms" cols="30" rows="10">1. Capítulo de libro,&#10 2. Elaboración de Manuales de laboratorio o instructivos,&#10 3. Diseño y construcción de equipo de laboratorio,&#10 4. Elaboración de material audiovisual,&#10 5. Elaboración de software educativo,&#10 6. Notas de curso,&#10 7. Antología comentada,&#10 8.Monografía.</textarea>
-            </td>
-            <td>Autor(a)</td>
-            <td>
-                <center><b>30</b></center>
-            </td>
-            <td class="elabInput"><span class="rc3" id="rc3"></span></td>
-            <td class="stotal3" id="stotal3"></td>
-            <td class="comision actv">
-                @if($userType == 'dictaminador')
-                    <input class="comIncisoC" id="comIncisoC" type="number" step="0.01" oninput="onActv3Comision3()"
-                        value="{{ oldValueOrDefault('comIncisoC') }}">
-                @else
-                    <span class="comIncisoC"></span>
-                @endif
-            </td>
-            <td class="td_obs">
-                @if($userType == 'dictaminador')
-                    <input class="obs3_3_3" type="text">
-                @else
-                    <span class="obs3_3_3"></span>
-                @endif
-            </td>
-        </tr>
-        <tr>
-            <td>d)</td>
-            <td>
-                <textarea name="" class="textAreaForms" cols="30" rows="10">1. Traducción de libro,&#10 2.Traducción de material de apoyo didáctico,&#10 3. Traducciones publicadas de artículos.</textarea>
-            </td>
-            <td>Autor(a)</td>
-            <td>
-                <center><b>25</b></center>
-            </td>
-            <td class="elabInput"><span class="rc4" id="rc4"></span></td>
-            <td class="stotal4" id="stotal4"></td>
-            <td class="comision actv">
-                @if($userType == 'dictaminador')
-                    <input class="comIncisoD" id="comIncisoD" type="number" step="0.01" oninput="onActv3Comision3()"
-                        value="{{ oldValueOrDefault('comIncisoD') }}">
-                @else
-                    <span class="comIncisoD"></span>
-                @endif
-            </td>
-            <td class="td_obs">
-                @if($userType == 'dictaminador')
-                    <input class="obs3_3_4" type="text">
-                @else
-                    <span class="obs3_3_4"></span>
-                @endif
-            </td>
-        </tr>
-    </tbody>
-</table>
-<!--Tabla informativa Acreditacion Actividad 3.3-->
-<table>
-    <thead>
-        <tr>
-            <th class="acreditacion" scope="col">Acreditacion: </th>
+            <table class="table table-sm table3_3_2">
+                <x-table-header />
+                <tbody class="page-break" data-page="7">
+                    <tr>
+                        <td class="seccion3_3" colspan="5">3.3 Publicaciones relacionadas con la docencia</td>
+                        <td id="score3_3_copy">0</td>
+                        <td class="comision3_3_copy" id="comision3_3_copy" style="background-color: #ffcc6d; text-align: center; border: none; font-weight: bold;">0</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr>
+                        <td class="incisos">Incisos</td>
+                        <td class="obra">Obra</td>
+                        <td>Actividad</td>
+                        <td>Puntaje</td>
+                        <td class="cantidad2">Cantidad</td>
+                        <td>SubTotal</td>
+                    </tr>
+                    <!-- Segunda tabla: Incisos c) y d) -->
+                    <tr>
+                        <td>c)</td>
+                        <td>
+                            <textarea name="" class="textAreaForms" cols="30" rows="10">1. Capítulo de libro,&#10 2. Elaboración de Manuales de laboratorio o instructivos,&#10 3. Diseño y construcción de equipo de laboratorio,&#10 4. Elaboración de material audiovisual,&#10 5. Elaboración de software educativo,&#10 6. Notas de curso,&#10 7. Antología comentada,&#10 8.Monografía.</textarea>
+                        </td>
+                        <td>Autor(a)</td>
+                        <td>
+                            <center><b>30</b></center>
+                        </td>
+                        <td class="elabInput"><span class="rc3" id="rc3"></span></td>
+                        <td class="stotal3" id="stotal3"></td>
+                        <td class="comision actv">
+                            @if($userType == 'dictaminador')
+                                <input class="comIncisoC" id="comIncisoC" name="comIncisoC" type="number" step="0.01" oninput="onActv3Comision3()"
+                                    value="{{ oldValueOrDefault('comIncisoC') }}">
+                            @else
+                                <span class="comIncisoC"></span>
+                            @endif
+                        </td>
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
+                                <input id="obs3_3_3" name="obs3_3_3" class="obs3_3_3" type="text">
+                            @else
+                                <span class="obs3_3_3"></span>
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>d)</td>
+                        <td>
+                            <textarea name="" class="textAreaForms" cols="30" rows="10">1. Traducción de libro,&#10 2.Traducción de material de apoyo didáctico,&#10 3. Traducciones publicadas de artículos.</textarea>
+                        </td>
+                        <td>Autor(a)</td>
+                        <td>
+                            <center><b>25</b></center>
+                        </td>
+                        <td class="elabInput"><span class="rc4" id="rc4"></span></td>
+                        <td class="stotal4" id="stotal4"></td>
+                        <td class="comision actv">
+                            @if($userType == 'dictaminador')
+                                <input class="comIncisoD" id="comIncisoD" name="comIncisoD" type="number" step="0.01" oninput="onActv3Comision3()"
+                                    value="{{ oldValueOrDefault('comIncisoD') }}">
+                            @else
+                                <span class="comIncisoD"></span>
+                            @endif
+                        </td>
+                        <td class="td_obs">
+                            @if($userType == 'dictaminador')
+                                <input id="obs3_3_4" name="obs3_3_4" class="obs3_3_4" type="text">
+                            @else
+                                <span class="obs3_3_4"></span>
+                            @endif
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--Tabla informativa Acreditacion Actividad 3.3-->
+            <table>
+                <thead>
+                    <tr>
+                        <th class="acreditacion" scope="col">Acreditacion: </th>
 
-            <th class="descripcionCAAC"><b>CAAC, Instancia que la otorga</b></th>
-        </tr>
-    </thead>
-</table>
-    @if ($userType != 'secretaria')
-        <button id="btn3_3" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
-    @endif
+                        <th class="descripcionCAAC"><b>CAAC, Instancia que la otorga</b></th>
+                    </tr>
+                </thead>
+            </table>
+                @if ($userType != 'secretaria')
+                    <button id="btn3_3" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+                @endif
 
 
-<div id="piedepagina_copy"
-    class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
-    Página 7 de 33
-</div>
+            <div id="piedepagina_copy"
+                class="{{ $userType === 'dictaminador' ? 'dictaminador-style' : ($userType === 'secretaria' ? 'secretaria-style' : '') }}">
+                Página 7 de 33
+            </div>
           
-</form>
+        </form>
     </main>
     <script>
 
