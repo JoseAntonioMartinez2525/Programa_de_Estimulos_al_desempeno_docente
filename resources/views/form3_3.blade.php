@@ -378,7 +378,7 @@ window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
 </script>
 </head>
 
-<body class="bg-gray-50 text-black/50">
+<body class="bg-gray-50 text-black/20">
 
     <div class="relative min-h-screen flex flex-col items-center justify-center">
         @if (Route::has('login'))
