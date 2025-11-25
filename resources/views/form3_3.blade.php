@@ -120,7 +120,6 @@ if (!isset($docenteConfigForm)) {
 @endphp
 <!DOCTYPE html>
 <html lang="">
-
 <head>
     <link rel="icon" href="{{ $logo }}" type="image/png">
     <title>Evaluación docente</title>
@@ -130,7 +129,7 @@ if (!isset($docenteConfigForm)) {
 
     <x-head-resources />
     @include('partials.autocompleteForm3_3', ['config' => $docenteConfig])
-    @include('partials.submitForm3_3.blade.php', ['config' => $docenteConfigForm])
+    @include('partials.submitForm3_3', ['config' => $docenteConfigForm])
     <style>
         @media print {
             body.chrome #convocatoria, 
