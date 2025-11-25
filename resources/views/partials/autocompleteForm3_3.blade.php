@@ -1,4 +1,3 @@
-
 <script>
 (function () {
     const config = @json($config ?? []);
@@ -24,64 +23,33 @@
             }
         }
 
-        // 1) intentar selector CSS tal cual (permite '#id', '.class', 'span[name="x"]', etc.)
+        // 1. Prioridad: Intentar como selector CSS completo.
+        // Esto permite selectores explícitos como '#myId', '.myClass', '[name="myName"]'.
         try {
             const nodes = Array.from(document.querySelectorAll(selector));
             if (nodes.length) {
                 nodes.forEach(n => assign(n, value));
+
+                // Clonar si el selector es para una copia explícita o está en la lista blanca.
+                if (selector.endsWith('_copy') && nodes.length > 0) {
+                    // Lógica de clonación simple si es necesaria en el futuro.
+                }
                 return;
             }
         } catch (err) {
-            // selector inválido, se seguirá intentando otras estrategias
+            console.warn(`Selector inválido en setValue: "${selector}"`);
+            return; // Detener si el selector es inválido.
         }
 
-        // 2 si selector parece un identificador simple (sin .#[]), intentar id, name y clases
+        // 2. Si no se encontró nada y el selector es un nombre simple (sin '#', '.', etc.),
+        // se asume que es un ID. Esta es la única estrategia de fallback.
         const simpleName = selector.match(/^[A-Za-z0-9_\-]+$/) ? selector : null;
-
-       if (simpleName) {
-            const byId = document.getElementById(simpleName);
-            if (byId) assign(byId, value);
-
-            // Decide si clonamos: SOLO si no está dentro de una tabla (evita duplicar <td>)
-            const copyId = `${simpleName}_copy`;
-            let byIdCopy = document.getElementById(copyId);
-
-            const isInsideTable = byId && !!byId.closest('table');
-            const explicitCopySelectorProvided = selector.endsWith('_copy') || ['convocatoria'].includes(simpleName) || (typeof config.cloneWhitelist !== 'undefined' && Array.isArray(config.cloneWhitelist) && config.cloneWhitelist.includes(simpleName));
-            if (!byIdCopy && byId && (!isInsideTable || explicitCopySelectorProvided)) {
-                try {
-                    byIdCopy = byId.cloneNode(true);
-                    byIdCopy.id = copyId;
-                    if (byId.parentNode) byId.parentNode.insertBefore(byIdCopy, byId.nextSibling);
-                } catch (e) {
-                    byIdCopy = null;
-                }
+        if (simpleName) {
+            const elById = document.getElementById(simpleName);
+            if (elById) {
+                assign(elById, value);
             }
-            if (byIdCopy) assign(byIdCopy, value);
-
-            // elements by name attribute
-            const byName = document.querySelectorAll(`[name="${simpleName}"]`);
-            if (byName.length) Array.from(byName).forEach(n => assign(n, value));
-
-            // classes .name and .name_copy (no cloning here)
-            const byClass = document.querySelectorAll(`.${simpleName}`);
-            if (byClass.length) Array.from(byClass).forEach(n => assign(n, value));
-            const byClassCopy = document.querySelectorAll(`.${simpleName}_copy`);
-            if (byClassCopy.length) Array.from(byClassCopy).forEach(n => assign(n, value));
-
-            return;
         }
-
-        // 3) fallback: intentar como selector con name=... (por si pasaron 'prom90_100' como name)
-        const byNameFallback = document.querySelectorAll(`[name="${selector}"]`);
-        if (byNameFallback.length) {
-            Array.from(byNameFallback).forEach(n => assign(n, value));
-            return;
-        }
-
-        // último recurso: tratar selector como id
-        const lastId = document.getElementById(selector);
-        if (lastId) assign(lastId, value);
     }
 
    //Nueva función que además busca copias con índices _0, _1, _2...
@@ -204,7 +172,8 @@
                 }               
 
              // Ejecutar para secretaria (userType === 'secretaria') y para el tipo configurado de dictaminador
-                if (userType === 'secretaria' || userType === (config.userTypeForDict ?? '')) {
+                // 🔹 CORRECCIÓN: Se activa si el usuario es 'secretaria' O 'dictaminador', sin depender de la configuración del formulario.
+                if (userType === 'secretaria' || userType === 'dictaminador') {
                     try {
                         const dictRespUrl = config.dictEndpoint || '/formato-evaluacion/get-dictaminators-responses';
                         const resp = await fetch(dictRespUrl);

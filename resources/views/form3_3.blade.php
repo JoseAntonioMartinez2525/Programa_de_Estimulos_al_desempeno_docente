@@ -129,8 +129,8 @@ if (!isset($docenteConfigForm)) {
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <x-head-resources />
-    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
-    @include('partials.submit-form', ['config' => $docenteConfigForm])
+    @include('partials.autocompleteForm3_3', ['config' => $docenteConfig])
+    @include('partials.submitForm3_3.blade.php', ['config' => $docenteConfigForm])
     <style>
         @media print {
             body.chrome #convocatoria, 

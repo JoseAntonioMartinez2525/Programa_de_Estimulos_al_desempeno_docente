@@ -8,7 +8,7 @@ $docenteConfig =  $docenteConfig ?? [
         'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data', 
         'docentesEndpoint' => '/formato-evaluacion/get-docentes',
         'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
-        'dictCollectionKey' => 'form3_7',
+        'dictCollectionKey' => 'form3_7', // Ensure this matches the key in dictaminator responses
         'userTypeForDict' => '',
         'docenteMappings' => [
         // score y su copia
@@ -68,7 +68,7 @@ if (!isset($docenteConfigForm)) {
             'puntaje3_7',
             'puntajeHoras3_7',
             'comision3_7',
-            'comisionDict3_7',
+            '#comisionDict3_7',
             'obs3_7_1',
         ],
         'exposeAs' => 'submitForm',

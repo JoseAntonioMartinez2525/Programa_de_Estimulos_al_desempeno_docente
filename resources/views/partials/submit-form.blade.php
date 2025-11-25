@@ -71,7 +71,7 @@
         
         // Sincronizar valores de campos con sufijo numérico (ej. score3_12_0, comision3_12_1)
         // Busca elementos cuyo ID coincida con el patrón score..._ o comision..._
-        form.querySelectorAll('[id*="_"][id^="score"], [id*="_"][id^="comision"]').forEach(el => {
+        form.querySelectorAll('[id*="_"][id^="score"], [id*="_"][id^="comision"]', ).forEach(el => {
             const baseField = el.id.substring(0, el.id.lastIndexOf('_'));
             const value = el.textContent.trim() || '0';
             formData.append(el.id, value);
@@ -85,16 +85,23 @@
         });
         // ---------- CAMPOS EXTRA DINÁMICOS ----------
         if (Array.isArray(config.extraFields)) {
-            // ⚙️ **NUEVO**: Recolectar todos los inputs, selects y textareas visibles
+            // 1. PRIORIDAD MÁXIMA: Recolectar todos los inputs, selects y textareas visibles.
+            // Estos son los valores que el usuario puede editar directamente.
             form.querySelectorAll('input[name]:not([type="hidden"]), select[name], textarea[name]').forEach(el => {
                 const key = el.name || el.id;
                 let value = el.value.trim();
-                // Si es dictaminador y el campo es comIncisoX y está vacío, poner 0
-                if (['comIncisoA','comIncisoB','comIncisoC','comIncisoD'].includes(key) && value === '') {
+
+                if (['comIncisoA','comIncisoB','comIncisoC','comIncisoD', 'comisionDict3_7'].includes(key) && value === '') {
                     value = '0';
                 }
-                if (key && !formData.has(key)) {
+                if (key) { // Permitir que este bucle establezca el valor, incluso si ya existe.
                      formData.append(key, value);
+                // // 🔹 CORRECCIÓN: Solo añadir si la clave no existe, para dar prioridad a los inputs.
+                // if (key && !formData.has(key)) {
+                //     formData.append(key, value);
+                // }
+                if (key && !formData.has(key)) { // Solo añadir si no existe ya.
+                    formData.append(key, value);
                 }
             });
 
@@ -103,6 +110,11 @@
             form.querySelectorAll('input[type="hidden"]').forEach(hiddenInput => {
                 if (hiddenInput.name && !formData.has(hiddenInput.name)) {
                     formData.append(hiddenInput.name, hiddenInput.value);
+            // 2. PRIORIDAD BAJA: Recolectar datos de elementos no editables (spans, tds) definidos en extraFields.
+            // Estos solo se añaden si no fueron ya establecidos por un input.
+            config.extraFields.forEach(field => {
+                if (formData.has(field)) {
+                    return; // Saltar, ya que un input con este nombre tiene prioridad.
                 }
             });
 
@@ -114,20 +126,28 @@
                 );
 
                 let found = false;
-                elements.forEach(el => {
-                    // Para spans/tds, solo nos interesa textContent.
-                    const val = el.textContent ?? '';
-                    const key = el.name || el.id || field;
-                    
-                    formData.append(key, val.trim() || '0');
-                    found = true;
-                });
+                if (!formData.has(field)) {
+                    elements.forEach(el => {
+                        // Para spans/tds, solo nos interesa textContent.
+                        const val = el.textContent ?? '';
+                        const key = el.name || el.id || field;
+                        
+                        formData.append(key, val.trim() || '0');
+                        found = true;
+                    });
+                }
 
                 // Si el campo está en extraFields pero no se encontró en el DOM y no está en formData,
                 // se añade con un valor por defecto para evitar errores de "undefined array key" en el backend.
                 if (!found && !formData.has(field)) {
                     // Para campos de comisión, el valor por defecto es '0'. Para observaciones, es una cadena vacía.
                     const defaultValue = field.startsWith('comision') ? '0' : '';
+                if (elements.length > 0) {
+                    const val = elements[0].textContent ?? '';
+                    formData.append(field, val.trim() || '0');
+                } else if (!formData.has(field)) {
+                    // Si no se encontró ni como input ni como span/td, añadir con valor por defecto.
+                    const defaultValue = field.startsWith('com') ? '0' : '';
                     formData.append(field, defaultValue);
                 }
 
@@ -142,6 +162,14 @@
                 }
             });
         }
+
+        // 3. FINAL: Añadir inputs ocultos que no hayan sido añadidos aún.
+        form.querySelectorAll('input[type="hidden"]').forEach(hiddenInput => {
+            if (hiddenInput.name && !formData.has(hiddenInput.name)) {
+                formData.append(hiddenInput.name, hiddenInput.value);
+            }
+        });
+
 
         // ---------- DEBUG OPCIONAL ----------
         console.group(`📤 Campos que se enviarán al servidor (${formId}):`);
