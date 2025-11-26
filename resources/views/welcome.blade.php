@@ -21,6 +21,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
       content: "1";
     }
   }
+
 </style>
 <script>
     window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
@@ -46,58 +47,60 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
   <div id="timer">   
 
-        <form id="form1" method="POST" onsubmit="event.preventDefault(); submitForm('store', 'form1');">
+        <div id="step1" style="display:block;">
+            <form id="form1" method="POST" onsubmit="event.preventDefault(); submitForm('store', 'form1');">
 
-          <br>
-          <label for="convocatoria" class="label">Convocatoria</label>
-          <input name="convocatoria" type="text" class="input-header mb-3" id="convocatoria"></input>
+            <br>
+            <label for="convocatoria" class="label">Convocatoria</label>
+            <input name="convocatoria" type="text" class="input-header mb-3" id="convocatoria"></input>
 
-          <label for="periodo" class="label">Periodo de evaluación:</label>
-          <input name="periodo" id="periodo" type="text" class="input-header mb-3"></input>
+            <label for="periodo" class="label">Periodo de evaluación:</label>
+            <input name="periodo" id="periodo" type="text" class="input-header mb-3"></input>
 
-          <label for="nombre" class="label">Nombre del personal académico:</label> <input name="nombre" type="text"
-          class="input-header mb-3"></input>
+            <label for="nombre" class="label">Nombre del personal académico:</label> <input name="nombre" type="text"
+            class="input-header mb-3"></input>
 
-          <label for="area" class="label">Área de Conocimiento:</label>
-          <select name="area" id="area" class="form-select input-header" aria-label="Default select example" required>
-          @foreach ($areaOptions as $option)
-          <option value="{{ $option }}">{{ $option }}</option>
-          @endforeach
-          </select>
-          <label for="departamento" class="label">Departamento Académico:</label>
-          <select name="departamento" id="departamento" class="input-header" aria-label="Default select example"
-          required>
-          @foreach ($departamentoOptions as $option)
-          <option option value="{{ $option }}">{{ $option }}</option>
-          @endforeach
-          </select><br><br>
+            <label for="area" class="label">Área de Conocimiento:</label>
+            <select name="area" id="area" class="form-select input-header" aria-label="Default select example" required>
+            @foreach ($areaOptions as $option)
+            <option value="{{ $option }}">{{ $option }}</option>
+            @endforeach
+            </select>
+            <label for="departamento" class="label">Departamento Académico:</label>
+            <select name="departamento" id="departamento" class="input-header" aria-label="Default select example"
+            required>
+            @foreach ($departamentoOptions as $option)
+            <option option value="{{ $option }}">{{ $option }}</option>
+            @endforeach
+            </select><br><br>
 
-          <center class="printCenter"><h5>Instrucciones</h5></center>
+            <center class="printCenter"><h5>Instrucciones</h5></center>
 
-          <div class="container flex">
-          <p class="instrucciones">1 La persona a ser evaluada deberá completar la información en
-          cantidades u horas en los campos
-          marcados en <u><b>color gris</b></u>. <br>
-          2 La Comisión Dictaminadora deberá llenar los campos marcados en color azul cielo (puntajes totales o
-          subtotales, según sea el caso). <br>
-          3 No se deberán modificar fórmulas, ni agregar o quitar renglones. <br>
-          4 Este formato deberá presentarse en forma independiente de la documentación que acrediten las
-          actividades realizadas. <b>Para la evaluación no es necesario entregar las obras completas-libros,
-          manuales, publicaciones,etc.,</b> sino entregar el documento probatorio que se indique en la Guía de
-          definiciones. <br>
-          5 La Comisión Dictaminadora no tomará en cuenta documentación que no esté contemplada dentro del
-          formato de evaluación, asimismo no se aceptará documentación presentada de forma extemporánea.
-          <center><button type="submit" class="btn custom-btn" id="btn1">Enviar</button>
-          </center>
-          </div>
+            <div class="container flex">
+            <p class="instrucciones">1 La persona a ser evaluada deberá completar la información en
+            cantidades u horas en los campos
+            marcados en <u><b>color gris</b></u>. <br>
+            2 La Comisión Dictaminadora deberá llenar los campos marcados en color azul cielo (puntajes totales o
+            subtotales, según sea el caso). <br>
+            3 No se deberán modificar fórmulas, ni agregar o quitar renglones. <br>
+            4 Este formato deberá presentarse en forma independiente de la documentación que acrediten las
+            actividades realizadas. <b>Para la evaluación no es necesario entregar las obras completas-libros,
+            manuales, publicaciones,etc.,</b> sino entregar el documento probatorio que se indique en la Guía de
+            definiciones. <br>
+            5 La Comisión Dictaminadora no tomará en cuenta documentación que no esté contemplada dentro del
+            formato de evaluación, asimismo no se aceptará documentación presentada de forma extemporánea.
+            <center><button type="submit" class="btn custom-btn" id="btn1">Enviar</button>
+            </center>
+            </div>
 
-        </form>
+          </form>
+        </div>
 
         </header>
 
         <main class="container">
         <!--Actividad 1: Permanencia en las actividades de la docencia	-->
-
+       <div id="step2" style="display:none;">   
         <form id="form2" method="POST" onsubmit="event.preventDefault(); submitForm('store2', 'form2');">
           <div>
           <h4>Puntaje máximo
@@ -155,75 +158,82 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
           </table>
           <button type="submit" class="btn custom-btn" id="form2_1Button">Enviar</button>
         </form>
+       </div>
 
-        <form id="form2_2" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store3', 'form2_2');">
-          @csrf
-          <div>
-          <!--Actividad 2: Dedicacion en el Desempeño docente	-->
-          <h4>Puntaje máximo
-          <label class="bg-black text-white px-4 mt-3" for="">200</label>
-          </h4>
-          </div>
-          <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-          <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-          <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-          <table class="table table-sm">
-          <thead>
-          <tr>
-          <th scope="col">Actividad</th>
-          <th class="table-ajust" scope="col">Horas</th>
-          <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-          <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-          <th class="table-ajust" scope="col">Observaciones</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-          <td><b>2. Dedicacion en el Desempeño docente</b></td>
-          <td for=""></td>
-          <td id="hours" name="hours" for=""><label id="hoursText" for="">0</label></td>
-          <td id="actv2Comision" name="actv2Comision" for=""></td>
-          </tr>
-          <tr>
-          <td><label for="">a) Posgrado</label>
-          <label for="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Semestre </label>
-          </td>
-          <td><input id="horasPosgrado" name="horasPosgrado" class="horasActv2" placeholder="0" type="number" value="{{ oldValueOrDefault('horasPosgrado') }}"></td>
-          <td class="puntajeEvaluar2"><label id="DSE" name="dse"class="puntajeEvaluar" type="text"></label></td>
-          <td class="comision actv"><input id="comisionPosgrado" placeholder="0" for=""
-          oninput="onActv2Comision()"></input></td>
-          <td><input id="obs2" name="obs2" class="table-header" type="text"></td>
-          </tr>
-          <tr>
-          <td>b) Licenciatura y TSU
-          <label for="">&nbsp &nbsp &nbsp &nbsp Horas </label>
-          </td>
-          <td>
-          <input id="horasSemestre" name="horasSemestre" class="horasActv2" placeholder="0" type="number"  value="{{ oldValueOrDefault('horasSemestre') }}">
-          </td>
-          <td class="puntajeEvaluar2"><label id="DSE2" name="dse2" class="puntajeEvaluar" type="text"></label></td>
-          <td class="comision actv"><input id="comisionLic" placeholder="0" oninput="onActv2Comision()"></input>
-          </td>
-          <td><input id="obs2_2" name="obs2_2" class="table-header" type="text"></input></td>
-          </tr>
-          </tbody>
-          </table>
-          <table>
-          <thead>
-          <tr>
-          <th style="font-weight: normal; text-size: 20px;" scope="col">Acreditacion: </th>
-          <th style="width:60px;padding-left: 100px;">DSE/DIIP</th>
-          <th style="font-weight: normal; padding-left: 100px;">8.5 puntos por cada hora/semana/año en cada
-          caso
-          </th>
-          <th>
-          <button type="submit" class="btn custom-btn" id="form2_2Button">Enviar</button>
-          </th>
-          </tr>
-          </thead>
-          </table>      
-        </form>
-</div>    
+        <div id="step3" style="display:none;">
+            <form id="form2_2" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store3', 'form2_2');">
+            @csrf
+            <div>
+            <!--Actividad 2: Dedicacion en el Desempeño docente	-->
+            <h4>Puntaje máximo
+            <label class="bg-black text-white px-4 mt-3" for="">200</label>
+            </h4>
+            </div>
+            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+            <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+            <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+            <table class="table table-sm">
+            <thead>
+            <tr>
+            <th scope="col">Actividad</th>
+            <th class="table-ajust" scope="col">Horas</th>
+            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+            <th class="table-ajust" scope="col">Observaciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td><b>2. Dedicacion en el Desempeño docente</b></td>
+            <td for=""></td>
+            <td id="hours" name="hours" for=""><label id="hoursText" for="">0</label></td>
+            <td id="actv2Comision" name="actv2Comision" for=""></td>
+            </tr>
+            <tr>
+            <td><label for="">a) Posgrado</label>
+            <label for="">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Semestre </label>
+            </td>
+            <td><input id="horasPosgrado" name="horasPosgrado" class="horasActv2" placeholder="0" type="number" value="{{ oldValueOrDefault('horasPosgrado') }}"></td>
+            <td class="puntajeEvaluar2"><label id="DSE" name="dse"class="puntajeEvaluar" type="text"></label></td>
+            <td class="comision actv"><input id="comisionPosgrado" placeholder="0" for=""
+            oninput="onActv2Comision()"></input></td>
+            <td><input id="obs2" name="obs2" class="table-header" type="text"></td>
+            </tr>
+            <tr>
+            <td>b) Licenciatura y TSU
+            <label for="">&nbsp &nbsp &nbsp &nbsp Horas </label>
+            </td>
+            <td>
+            <input id="horasSemestre" name="horasSemestre" class="horasActv2" placeholder="0" type="number"  value="{{ oldValueOrDefault('horasSemestre') }}">
+            </td>
+            <td class="puntajeEvaluar2"><label id="DSE2" name="dse2" class="puntajeEvaluar" type="text"></label></td>
+            <td class="comision actv"><input id="comisionLic" placeholder="0" oninput="onActv2Comision()"></input>
+            </td>
+            <td><input id="obs2_2" name="obs2_2" class="table-header" type="text"></input></td>
+            </tr>
+            </tbody>
+            </table>
+            <table>
+            <thead>
+            <tr>
+            <th style="font-weight: normal; text-size: 20px;" scope="col">Acreditacion: </th>
+            <th style="width:60px;padding-left: 100px;">DSE/DIIP</th>
+            <th style="font-weight: normal; padding-left: 100px;">8.5 puntos por cada hora/semana/año en cada
+            caso
+            </th>
+            <th>
+            <button type="submit" class="btn custom-btn" id="form2_2Button">Enviar</button>
+            </th>
+            </tr>
+            </thead>
+            </table>      
+          </form>
+        </div>
+
+        <div id="continueButtonWrapper" style="display:none; text-align:center; margin-top:20px;">
+          <a href="{{ url('docencia') }}" class="btn btn-primary">Continuar a Actividad 3 — Calidad en la Docencia</a>
+        </div>
+  </div>    
 
     @endif
     </div>
@@ -557,6 +567,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
           form1.onsubmit = function (event) {
             event.preventDefault(); // Previene el envío por defecto
             submitForm('/formato-evaluacion/store', 'form1'); // Llama a la función submitForm
+            document.getElementById("step1").style.display = "none";
+            document.getElementById("step2").style.display = "block";
           };
         }
         const form2 = document.getElementById('form2');
@@ -564,6 +576,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
           form2.onsubmit = function (event) {
             event.preventDefault(); // Previene el envío por defecto
             submitForm('/formato-evaluacion/store2', 'form2'); // Llama a la función submitForm
+            document.getElementById("step2").style.display = "none";
+            document.getElementById("step3").style.display = "block";
           };
         }
 
@@ -572,6 +586,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
           form2_2.onsubmit = function (event) {
             event.preventDefault(); // Previene el envío por defecto
             submitForm('/formato-evaluacion/store3', 'form2_2'); // Llama a la función submitForm
+            document.getElementById("continueButtonWrapper").style.display = "block";
           };
         }
       });

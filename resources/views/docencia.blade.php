@@ -117,456 +117,463 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                             <div class="flex lg:justify-center lg:col-start-2"></div>
 
                             <nav class="-mx-3 flex flex-1 justify-end"></nav>
-                            <form id="form3_1" method="POST"
-                                onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store31', 'form3_1');">
-                                @csrf
-                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                <div>
-                                    <!-- Actividad 3.1 Participación en actividades de diseño curricular -->
-                                    <h4>Puntaje máximo
-                                        <label class="bg-black text-white px-4" id="pMax60" for="">60</label>
-                                    </h4>
-                                </div>
-                                <table class="table table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Actividad</th>
-                                            <th class="table-ajust2" scope="col" colspan="4"></th>
-                                            <th class="table-ajust2 cd" scope="col">Puntaje a evaluar</th>
-                                            <th class="table-ajust2 cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td colspan="5"><b>3. Calidad en la docencia</b></td>
-                                            <td id="docencia"></td>
-                                            <td id="actv3Comision"></td>
-                                            <td></td>
-                                        </tr>
-                                        <!-- Sub-encabezados -->
-                                        <tr>
-                                            <td id="seccion3_1" class="p2" colspan="5">3.1 Participación en actividades de diseño curricular</td>
-                                            <td id="score3_1"></td>
-                                            <td colspan="6"></td>
-                                        </tr>
-                                        <tr>
-                                            <th class="actividades">Incisos</th>
-                                            <th class="actividades">Documento</th>
-                                            <th class="actividades">Actividad</th>
-                                            <th class="actividades">Puntaje</th>
-                                            <th class="text-center actividades">Cantidad</th>
-                                            <th class="actividades">Subtotal</th>
-                                            <th colspan="1"></th>
-                                            <th class="text-center fw-normal table-ajust2" scope="col">Observaciones</th>
-
-                                        </tr>
-                                                        <!-- Contenido -->
-                                        <tr>
-                                            <td>a)</td>
-                                            <td>
-                                                <label style="height:84px; width: 170px;">Plan de estudios de una carrera o posgrado nuevo o
-                                                    actualización</label>
-                                            </td>
-                                            <td>
-                                                <label style="height:94px; width: 180px;">Responsable de la Comisión para la elaboración del
-                                                    documento</label>
-                                            </td>
-                                            <td id="puntaje60"><b>60</b></td>
-
-                                            <td class="elabInput"><input id="elaboracion" name="elaboracion" type="number"
-                                                    oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion') }}"></td>
-                                            <td><label id="elaboracionSubTotal1" for="" type="text" placeholder="Comenta aqui"></label></td>
-                                            <td class="comision actv"><input id="comisionIncisoA" placeholder="0"
-                                                    for="" oninput="onActv3Comision()"></input></td>
-                                            <td class="td_obs"><input id="obs3_1_1" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
-                                          </tr>   
+                            <div id="step1" style="display: block">
+                                <form id="form3_1" method="POST"
+                                    onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store31', 'form3_1');">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    <div>
+                                        <!-- Actividad 3.1 Participación en actividades de diseño curricular -->
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4" id="pMax60" for="">60</label>
+                                        </h4>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead>
                                             <tr>
-                                                <td>b)</td>
-                                                <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
-                                                <td><label class="form3_1LabelDoc" for="">Colaboración en la Comisión para la elaboración del documento</label></td>
-                                                <td><span id="puntaje40"><b>40</b></span></td>
-                                                <td class="elabInput"><input id="elaboracion2" name="elaboracion2" type="number"
-                                                        oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion2') }}"></td>
-                                                <td><label id="elaboracionSubTotal2" for="" type="text" placeholder="Comenta aqui"></label>
+                                                <th scope="col">Actividad</th>
+                                                <th class="table-ajust2" scope="col" colspan="4"></th>
+                                                <th class="table-ajust2 cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust2 cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5"><b>3. Calidad en la docencia</b></td>
+                                                <td id="docencia"></td>
+                                                <td id="actv3Comision"></td>
+                                                <td></td>
+                                            </tr>
+                                            <!-- Sub-encabezados -->
+                                            <tr>
+                                                <td id="seccion3_1" class="p2" colspan="5">3.1 Participación en actividades de diseño curricular</td>
+                                                <td id="score3_1"></td>
+                                                <td colspan="6"></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="actividades">Incisos</th>
+                                                <th class="actividades">Documento</th>
+                                                <th class="actividades">Actividad</th>
+                                                <th class="actividades">Puntaje</th>
+                                                <th class="text-center actividades">Cantidad</th>
+                                                <th class="actividades">Subtotal</th>
+                                                <th colspan="1"></th>
+                                                <th class="text-center fw-normal table-ajust2" scope="col">Observaciones</th>
+
+                                            </tr>
+                                                            <!-- Contenido -->
+                                            <tr>
+                                                <td>a)</td>
+                                                <td>
+                                                    <label style="height:84px; width: 170px;">Plan de estudios de una carrera o posgrado nuevo o
+                                                        actualización</label>
                                                 </td>
-                                                <td class="comision actv"><input id="comisionIncisoB"
+                                                <td>
+                                                    <label style="height:94px; width: 180px;">Responsable de la Comisión para la elaboración del
+                                                        documento</label>
+                                                </td>
+                                                <td id="puntaje60"><b>60</b></td>
+
+                                                <td class="elabInput"><input id="elaboracion" name="elaboracion" type="number"
+                                                        oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion') }}"></td>
+                                                <td><label id="elaboracionSubTotal1" for="" type="text" placeholder="Comenta aqui"></label></td>
+                                                <td class="comision actv"><input id="comisionIncisoA" placeholder="0"
+                                                        for="" oninput="onActv3Comision()"></input></td>
+                                                <td class="td_obs"><input id="obs3_1_1" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
+                                            </tr>   
+                                                <tr>
+                                                    <td>b)</td>
+                                                    <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
+                                                    <td><label class="form3_1LabelDoc" for="">Colaboración en la Comisión para la elaboración del documento</label></td>
+                                                    <td><span id="puntaje40"><b>40</b></span></td>
+                                                    <td class="elabInput"><input id="elaboracion2" name="elaboracion2" type="number"
+                                                            oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion2') }}"></td>
+                                                    <td><label id="elaboracionSubTotal2" for="" type="text" placeholder="Comenta aqui"></label>
+                                                    </td>
+                                                    <td class="comision actv"><input id="comisionIncisoB"
+                                                            placeholder="0" for=""
+                                                            oninput="onActv3Comision()"></input></td>
+                                                    <td class="td_obs"><input id="obs3_1_2" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>c)</td>
+                                                    <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
+                                                    <td><label class="form3_1LabelDoc">Elaboración de contenidos mínimos</label></td>
+                                                    <td><label id="puntaje10" for=""><b>10</b></label></td>
+                                                    <td class="elabInput"><input id="elaboracion3" name="elaboracion3" type="number"
+                                                            oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion3') }}"></td>
+                                                    <td><label id="elaboracionSubTotal3" for="" type="text" placeholder="Comenta aqui"></label>
+                                                    </td>
+                                                    <td class="comision actv"><input id="comisionIncisoC"
+                                                            placeholder="0" for=""
+                                                            oninput="onActv3Comision()"></input></td>
+                                                    <td class="td_obs"><input id="obs3_1_3" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
+                                                </tr>
+
+                                                <tr>
+                                                <td>d)</td>
+                                                <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
+                                                <td><label class="form3_1LabelDoc">Elaboración de programas de asignatura</label></td>
+                                                <td><label id="puntaje20" for=""><b>20</b></label></td>
+                                                <td class="elabInput"><input id="elaboracion4" name="elaboracion4" type="number"
+                                                        oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion4') }}"></td>
+                                                <td><label id="elaboracionSubTotal4" for="" type="text" placeholder="Comenta aqui"></label>
+                                                </td>
+                                                <td class="comision actv"><input id="comisionIncisoD"
                                                         placeholder="0" for=""
                                                         oninput="onActv3Comision()"></input></td>
-                                                <td class="td_obs"><input id="obs3_1_2" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>c)</td>
+                                                <td class="td_obs"><input id="obs3_1_4" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
+                                                </tr>
+                                                <tr>
+                                                <td>e)</td>
                                                 <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
-                                                <td><label class="form3_1LabelDoc">Elaboración de contenidos mínimos</label></td>
-                                                <td><label id="puntaje10" for=""><b>10</b></label></td>
-                                                <td class="elabInput"><input id="elaboracion3" name="elaboracion3" type="number"
-                                                        oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion3') }}"></td>
-                                                <td><label id="elaboracionSubTotal3" for="" type="text" placeholder="Comenta aqui"></label>
+                                                <td><label class="form3_1LabelDoc">Actualización de programas de asignatura</label></td>
+                                                <td><label id="p10" for=""><b>10</b></label></td>
+                                                <td class="elabInput"><input id="elaboracion5" name="elaboracion5" type="number"
+                                                        oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion5') }}"></td>
+                                                <td><label id="elaboracionSubTotal5" for="" type="text" placeholder="Comenta aqui"></label>
                                                 </td>
-                                                <td class="comision actv"><input id="comisionIncisoC"
+                                                <td class="comision actv"><input id="comisionIncisoE"
                                                         placeholder="0" for=""
                                                         oninput="onActv3Comision()"></input></td>
-                                                <td class="td_obs"><input id="obs3_1_3" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
-                                            </tr>
-
-                                            <tr>
-                                            <td>d)</td>
-                                            <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
-                                            <td><label class="form3_1LabelDoc">Elaboración de programas de asignatura</label></td>
-                                            <td><label id="puntaje20" for=""><b>20</b></label></td>
-                                            <td class="elabInput"><input id="elaboracion4" name="elaboracion4" type="number"
-                                                    oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion4') }}"></td>
-                                            <td><label id="elaboracionSubTotal4" for="" type="text" placeholder="Comenta aqui"></label>
-                                            </td>
-                                            <td class="comision actv"><input id="comisionIncisoD"
-                                                    placeholder="0" for=""
-                                                    oninput="onActv3Comision()"></input></td>
-                                            <td class="td_obs"><input id="obs3_1_4" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
-                                            </tr>
-                                            <tr>
-                                            <td>e)</td>
-                                            <td><label class="form3_1LabelActv" for="">Plan de estudios de una carrera o posgrado nuevo o actualización</label></td>
-                                            <td><label class="form3_1LabelDoc">Actualización de programas de asignatura</label></td>
-                                            <td><label id="p10" for=""><b>10</b></label></td>
-                                            <td class="elabInput"><input id="elaboracion5" name="elaboracion5" type="number"
-                                                    oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion5') }}"></td>
-                                            <td><label id="elaboracionSubTotal5" for="" type="text" placeholder="Comenta aqui"></label>
-                                            </td>
-                                            <td class="comision actv"><input id="comisionIncisoE"
-                                                    placeholder="0" for=""
-                                                    oninput="onActv3Comision()"></input></td>
-                                            <td class="td_obs"><input id="obs3_1_5" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                            </tr>
-                                    </tbody>
-                                </table>
-
-                                <!--Tabla informativa Acreditacion Actividad 3.1-->
-                                <table>
-                                    <thead>
-                                        <tr><br>
-
-                                            <th class="acreditacion" scope="col">Acreditacion: </th>
-
-                                            <th class="descripcion"><b>H.CGU</b> puntos a,b y e; <b>CAAC</b> puntos d y e</th>
-                                            <th> <button id="btn3_1" type="submit" class="btn custom-btn printButtonClass">Enviar</th>
-                                        </tr>
-
-
-                                    </thead>
-                                </table>
-                            </form>
-
-                            <form id="form3_2" method="POST"
-                                onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store32', 'form3_2');">
-                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                @csrf
-                                <div>
-                                    <!-- Actividad 3.2 Calidad del desempeño docente evaluada por el alumnado -->
-                                    <h4>Puntaje máximo
-                                        <label class="bg-black text-white px-4 mt-3" for="">50</label>
-                                    </h4>
-                                </div>
-                                <table class="table table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Actividad</th>
-                                            <th class="table-ajust" scope="col" colspan="2"></th>
-                                            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <td colspan="3" id="seccion3_2" style="height: 80px; width: 300px;">3.2 Calidad del desempeño docente evaluada por el alumnado</td>
-                                            <td id="score3_2" for="">0</td>
-                                            <td id="comision3_2">0</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="1"></td>
-                                            <td>Puntaje</td>
-                                            <td class="text-center punto3_2">Cantidad</td>
-                                            <td colspan="2"></td>
-                                            <td class="text-center table-ajust" scope="col">Observaciones</td>
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <!--prom90-100-->
-                                        <tr>
-                                            <td class="ranges text-center">
-                                                Promedio 90-100
-                                            </td>
-                                            <td id="ran1"><b>50</b></td>
-                                            <td class="cantidad-cell"><input id="r1" type="number" placeholder="0"
-                                                    oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r1') }}"></td>
-                                            <td id="cant1">0</td>
-                                            <td class="td_obs"><input id="prom90_100" type="value" placeholder="0"
-                                                    oninput="onActv3_2Comision()"></td>
-                                            <td class="td_obs"><input id="obs3_2_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                        </tr>
-                                        <!--prom80-90-->
-                                        <tr>
-                                            <td class="ranges text-center">
-                                                Promedio 80-90
-                                            </td>
-                                            <td id="ran2"><b>40</b></td>
-                                            <td class="cantidad-cell"><input id="r2" type="number" placeholder="0"
-                                                    oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r2') }}"></td>
-                                            <td id="cant2">0</td>
-                                            <td class="td_obs"><input id="prom80_90" placeholder="0" type="value"
-                                                    oninput="onActv3_2Comision()"></td>
-                                            <td class="td_obs"><input id="obs3_2_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                        </tr>
-                                        <!--prom70-80-->
-                                        <tr>
-                                            <td class="ranges text-center">
-                                                Promedio 70-80
-                                            </td>
-                                            <td id="ran3"><b>30</b></td>
-                                            <td class="cantidad-cell"><input id="r3" type="number" placeholder="0"
-                                                    oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r3') }}"></td>
-                                            <td id="cant3">0</td>
-                                            <td class="td_obs"><input id="prom70_80" placeholder="0" type="value"
-                                                    oninput="onActv3_2Comision()"></td>
-                                            <td class="td_obs"><input id="obs3_2_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                        </tr>
-                                    </thead>
+                                                <td class="td_obs"><input id="obs3_1_5" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
+                                        </tbody>
                                     </table>
-                                    <!--Tabla informativa Acreditacion Actividad 3.2-->
+
+                                    <!--Tabla informativa Acreditacion Actividad 3.1-->
+                                    <table>
+                                        <thead>
+                                            <tr><br>
+
+                                                <th class="acreditacion" scope="col">Acreditacion: </th>
+
+                                                <th class="descripcion"><b>H.CGU</b> puntos a,b y e; <b>CAAC</b> puntos d y e</th>
+                                                <th> <button id="btn3_1" type="submit" class="btn custom-btn printButtonClass">Enviar</th>
+                                            </tr>
+
+
+                                        </thead>
+                                    </table>
+                                </form>
+                            </div>
+
+                            <div id="step2" style="display: none">
+                                <form id="form3_2" method="POST"
+                                    onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store32', 'form3_2');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    @csrf
+                                    <div>
+                                        <!-- Actividad 3.2 Calidad del desempeño docente evaluada por el alumnado -->
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">50</label>
+                                        </h4>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Actividad</th>
+                                                <th class="table-ajust" scope="col" colspan="2"></th>
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <td colspan="3" id="seccion3_2" style="height: 80px; width: 300px;">3.2 Calidad del desempeño docente evaluada por el alumnado</td>
+                                                <td id="score3_2" for="">0</td>
+                                                <td id="comision3_2">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1"></td>
+                                                <td>Puntaje</td>
+                                                <td class="text-center punto3_2">Cantidad</td>
+                                                <td colspan="2"></td>
+                                                <td class="text-center table-ajust" scope="col">Observaciones</td>
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <!--prom90-100-->
+                                            <tr>
+                                                <td class="ranges text-center">
+                                                    Promedio 90-100
+                                                </td>
+                                                <td id="ran1"><b>50</b></td>
+                                                <td class="cantidad-cell"><input id="r1" type="number" placeholder="0"
+                                                        oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r1') }}"></td>
+                                                <td id="cant1">0</td>
+                                                <td class="td_obs"><input id="prom90_100" type="value" placeholder="0"
+                                                        oninput="onActv3_2Comision()"></td>
+                                                <td class="td_obs"><input id="obs3_2_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                            <!--prom80-90-->
+                                            <tr>
+                                                <td class="ranges text-center">
+                                                    Promedio 80-90
+                                                </td>
+                                                <td id="ran2"><b>40</b></td>
+                                                <td class="cantidad-cell"><input id="r2" type="number" placeholder="0"
+                                                        oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r2') }}"></td>
+                                                <td id="cant2">0</td>
+                                                <td class="td_obs"><input id="prom80_90" placeholder="0" type="value"
+                                                        oninput="onActv3_2Comision()"></td>
+                                                <td class="td_obs"><input id="obs3_2_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                            <!--prom70-80-->
+                                            <tr>
+                                                <td class="ranges text-center">
+                                                    Promedio 70-80
+                                                </td>
+                                                <td id="ran3"><b>30</b></td>
+                                                <td class="cantidad-cell"><input id="r3" type="number" placeholder="0"
+                                                        oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r3') }}"></td>
+                                                <td id="cant3">0</td>
+                                                <td class="td_obs"><input id="prom70_80" placeholder="0" type="value"
+                                                        oninput="onActv3_2Comision()"></td>
+                                                <td class="td_obs"><input id="obs3_2_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                        </thead>
+                                        </table>
+                                        <!--Tabla informativa Acreditacion Actividad 3.2-->
+                                        <table>
+                                            <thead>
+                                                <tr><br>
+                                                    <th class="acreditacion" scope="col">Acreditacion: </th>
+
+                                                    <th class="descripcionDDIE"><b>DDIE</b>
+                                                    <th> <button id="btn3_2" type="submit" class="btn custom-btn printButtonClass">Enviar</th>
+                                                </tr>
+
+                                            </thead>
+                                        </table>
+                                </form> 
+                            </div>
+                            <div id="step3" style="display: none">
+                                <form id="form3_3" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store33', 'form3_3');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    @csrf
+                                    <div>
+                                        <!-- Actividad 3.3 Publicaciones relacionadas con la docencia -->
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">100</label>
+                                        </h4>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Actividad</th>
+                                                <th colspan="4" class="table-ajust" scope="col"></th>
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                </th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <thead>
+                                                <tr>
+                                                    <td  colspan="5"id="seccion3_3">3.3 Publicaciones relacionadas con la docencia</td>
+                                                    
+                                                    <td id="score3_3" for="">0</td>
+                                                    <td id="comision3_3">0</td>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <td colspan=6>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="incisos">Incisos</td>
+                                                    <td class="obra">Obra</td>
+                                                    <td>Actividad</td>
+                                                    <td class="text-center">Puntaje</td>
+                                                    <td id="cantidadform3_3">Cantidad</td>
+                                                    <td>SubTotal</td>
+                                                    <td colspan="1"></td>
+                                                    <td class="text-center table-ajust" scope="col">Observaciones</td>
+
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <td>a)</td>
+                                                    <td>Libro de texto con editorial de reconocido prestigio</td>
+                                                    <td>Autor(a)</td>
+                                                    <td id="p100" class="text-center">
+                                                        <b>100</b>
+                                                    </td>
+                                                    <td class="cantidad-cell"><input id="rc1" type="number" oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc1') }}">
+                                                    </td>
+                                                    <td id="stotal1"></td>
+                                                    <td class="td_obs comision actv"><input id="comIncisoA" placeholder="0" for=""
+                                                            oninput="onActv3Comision3()"></input></td>
+                                                    <td class="td_obs"><input id="obs3_3_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>b)</td>
+                                                    <td>1. Paquete didáctico, 2. Manual de operaciones</td>
+                                                    <td>Autor(a)</td>
+                                                    <td id="p50" class="text-center">
+                                                        <b>50</b>
+                                                    </td>
+                                                    <td class="cantidad-cell"><input id="rc2" type="number" 
+                                                            oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc2') }}">
+                                                    </td>
+                                                    <td id="stotal2"></td>
+                                                    <td class="td_obs comision actv"><input id="comIncisoB" placeholder="0" for=""
+                                                            oninput="onActv3Comision3()"></input></td>
+                                                    <td class="td_obs"><input id="obs3_3_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>c)</td>
+                                                    <td>
+                                                        <textarea name="" class="textAreaForms" cols="30" rows="10">1. Capítulo de libro, 2. Elaboración de Manuales de laboratorio o instructivos, 3. Diseño y construcción de equipo de laboratorio, 4. Elaboración de material audiovisual, 5. Elaboración de software educativo, 6. Notas de curso, 7. Antología comentada, 8.Monografía.</textarea>
+                                                    </td>
+                                                    <td>Autor(a)</td>
+                                                    <td id="p30" class="text-center">
+                                                        <b>30</b>
+                                                    </td>
+                                                    <td class="cantidad-cell"><input id="rc3" type="number"
+                                                            oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc3') }}">
+                                                    </td>
+                                                    <td id="stotal3"></td>
+                                                    <td class="td_obs comision actv"><input id="comIncisoC" placeholder="0" for=""
+                                                            oninput="onActv3Comision3()"></input></td>
+                                                    <td class="td_obs"><input id="obs3_3_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>d)</td>
+                                                    <td>1. Traducción de libro, 2.Traducción de material de apoyo didáctico,
+                                                        3. Traducciones
+                                                        publicadas de artículos.</td>
+                                                    <td>Autor(a)</td>
+                                                    <td id="p25" class="text-center">
+                                                        <b>25</b>
+                                                    </td>
+                                                    <td class="cantidad-cell"><input id="rc4" type="number"
+                                                            oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc4') }}">
+                                                    </td>
+                                                    <td id="stotal4"></td>
+                                                    <td class="td_obs comision actv"><input id="comIncisoD" placeholder="0" for=""
+                                                            oninput="onActv3Comision3()"></input></td>
+                                                    <td class="td_obs"><input id="obs3_3_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
+                                            </thead>
+                                        </tbody>
+                                    </table>
+                                    <!--Tabla informativa Acreditacion Actividad 3.3-->
                                     <table>
                                         <thead>
                                             <tr><br>
                                                 <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                                <th class="descripcionDDIE"><b>DDIE</b>
-                                                <th> <button id="btn3_2" type="submit" class="btn custom-btn printButtonClass">Enviar</th>
+                                                <th class="descripcionCAAC"><b>CAAC, Instancia que la otorga</b></th>
+                                                <th><button id="btn3_3" type="submit" class="btn custom-btn printButtonClass">Enviar</th>
                                             </tr>
-
                                         </thead>
                                     </table>
-                            </form>
-
-                            <form id="form3_3" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store33', 'form3_3');">
-                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                @csrf
-                                <div>
-                                    <!-- Actividad 3.3 Publicaciones relacionadas con la docencia -->
-                                    <h4>Puntaje máximo
-                                        <label class="bg-black text-white px-4 mt-3" for="">100</label>
-                                    </h4>
-                                </div>
-                                <table class="table table-sm">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Actividad</th>
-                                            <th colspan="4" class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                            </th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <thead>
-                                            <tr>
-                                                <td  colspan="5"id="seccion3_3">3.3 Publicaciones relacionadas con la docencia</td>
-                                                
-                                                <td id="score3_3" for="">0</td>
-                                                <td id="comision3_3">0</td>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <td colspan=6>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="incisos">Incisos</td>
-                                                <td class="obra">Obra</td>
-                                                <td>Actividad</td>
-                                                <td class="text-center">Puntaje</td>
-                                                <td id="cantidadform3_3">Cantidad</td>
-                                                <td>SubTotal</td>
-                                                <td colspan="1"></td>
-                                                <td class="text-center table-ajust" scope="col">Observaciones</td>
-
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <td>a)</td>
-                                                <td>Libro de texto con editorial de reconocido prestigio</td>
-                                                <td>Autor(a)</td>
-                                                <td id="p100" class="text-center">
-                                                    <b>100</b>
-                                                </td>
-                                                <td class="cantidad-cell"><input id="rc1" type="number" oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc1') }}">
-                                                </td>
-                                                <td id="stotal1"></td>
-                                                <td class="td_obs comision actv"><input id="comIncisoA" placeholder="0" for=""
-                                                        oninput="onActv3Comision3()"></input></td>
-                                                <td class="td_obs"><input id="obs3_3_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>b)</td>
-                                                <td>1. Paquete didáctico, 2. Manual de operaciones</td>
-                                                <td>Autor(a)</td>
-                                                <td id="p50" class="text-center">
-                                                    <b>50</b>
-                                                </td>
-                                                <td class="cantidad-cell"><input id="rc2" type="number" 
-                                                        oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc2') }}">
-                                                </td>
-                                                <td id="stotal2"></td>
-                                                <td class="td_obs comision actv"><input id="comIncisoB" placeholder="0" for=""
-                                                        oninput="onActv3Comision3()"></input></td>
-                                                <td class="td_obs"><input id="obs3_3_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>c)</td>
-                                                <td>
-                                                    <textarea name="" class="textAreaForms" cols="30" rows="10">1. Capítulo de libro, 2. Elaboración de Manuales de laboratorio o instructivos, 3. Diseño y construcción de equipo de laboratorio, 4. Elaboración de material audiovisual, 5. Elaboración de software educativo, 6. Notas de curso, 7. Antología comentada, 8.Monografía.</textarea>
-                                                </td>
-                                                <td>Autor(a)</td>
-                                                <td id="p30" class="text-center">
-                                                    <b>30</b>
-                                                </td>
-                                                <td class="cantidad-cell"><input id="rc3" type="number"
-                                                        oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc3') }}">
-                                                </td>
-                                                <td id="stotal3"></td>
-                                                <td class="td_obs comision actv"><input id="comIncisoC" placeholder="0" for=""
-                                                        oninput="onActv3Comision3()"></input></td>
-                                                <td class="td_obs"><input id="obs3_3_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>d)</td>
-                                                <td>1. Traducción de libro, 2.Traducción de material de apoyo didáctico,
-                                                    3. Traducciones
-                                                    publicadas de artículos.</td>
-                                                <td>Autor(a)</td>
-                                                <td id="p25" class="text-center">
-                                                    <b>25</b>
-                                                </td>
-                                                <td class="cantidad-cell"><input id="rc4" type="number"
-                                                        oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc4') }}">
-                                                </td>
-                                                <td id="stotal4"></td>
-                                                <td class="td_obs comision actv"><input id="comIncisoD" placeholder="0" for=""
-                                                        oninput="onActv3Comision3()"></input></td>
-                                                <td class="td_obs"><input id="obs3_3_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                            </tr>
-                                        </thead>
-                                    </tbody>
-                                </table>
-                                <!--Tabla informativa Acreditacion Actividad 3.3-->
-                                <table>
-                                    <thead>
-                                        <tr><br>
-                                            <th class="acreditacion" scope="col">Acreditacion: </th>
-
-                                            <th class="descripcionCAAC"><b>CAAC, Instancia que la otorga</b></th>
-                                            <th><button id="btn3_3" type="submit" class="btn custom-btn printButtonClass">Enviar</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </form>
-                            
-                            
-                                <form id="form3_4" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store34', 'form3_4');">
-                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                            <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                            <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                            @csrf
-                            <div>
-                                <!-- 3.4 Distinciones académicas recibidas por el docente  -->
-                                <h4>Puntaje máximo
-                                    <label class="bg-black text-white px-4 mt-3" for="">60</label>
-                                </h4>
+                                </form>
                             </div>
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Actividad</th>
-                                        <th colspan="3" class="table-ajust" scope="col"></th>
-                                        <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                        <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th id="seccion3_4" colspan="2" class="punto3_4" scope="col" style="padding:30px;">3.4 Distinciones
-                                            académicas recibidas por el docente</th>
-                                        <th colspan="2"></th>
-                                        <th id="score3_4">0</th>
-                                        <th id="comision3_4">0</th>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td class="punto3_4">Puntaje</td>
-                                        <td class="text-center punto3_4">Cantidad</td>
-                                        <td colspan="2"></td>
-                                        <td class="text-center table-ajust" scope="col">Observaciones</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="punto3_4">a)</td>
-                                        <td>Internacional</td>
-                                        <td id="p60"><b>60</b></td>
-                                        <td class="td_docente_cantidad"><input type="number" id="cantInternacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantInternacional') }}"></td>
-                                        <td id="cantInternacional2"></td>
-                                        <td class="td_obs"><input type="number" id="comInternacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                                        <td class="td_obs"><input id="obs3_4_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="punto3_4">b)</td>
-                                        <td>Nacional</td>
-                                        <td id="p30Nac"><b>30</b></td>
-                                        <td class="td_docente_cantidad"><input type="number" id="cantNacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantNacional') }}"></td>
-                                        <td id="cantNacional2"></td>
-                                        <td class="td_obs"><input type="number" id="comNacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                                        <td class="td_obs"><input id="obs3_4_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="punto3_4">c)</td>
-                                        <td>Regional o estatal</td>
-                                        <td id="p20"><b>20</b></td>
-                                        <td class="td_docente_cantidad"><input type="number" id="cantidadRegional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantidadRegional') }}"></td>
-                                        <td id="cantidadRegional2"></td>
-                                        <td class="td_obs"><input type="number" id="comRegional" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                                        <td class="td_obs"><input id="obs3_4_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="punto3_4">d)</td>
-                                        <td>Preparación de grupos de alumnado para olimpiadas competencias académicas o exámenes generales.</td>
-                                        <td id="p30Prep"><b>30</b></td>
-                                        <td class="td_docente_cantidad"><input type="number" id="cantPreparacion" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantPreparacion') }}"></td>
-                                        <td id="cantPreparacion2"></td>
-                                        <td class="td_obs"><input type="number" id="comPreparacion" placeholder="0" oninput="onActv3Comision3_4()"></td>
-                                        <td class="td_obs"><input id="obs3_4_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <!--Tabla informativa Acreditacion Actividad 3.4-->
-                            <table>
-                                <thead>
-                                    <tr><br>
-                                        <th class="acreditacion" scope="col">Acreditacion: </th>
-                                        <th class="descripcionCAAC"><b>CAAC, Instancia que la otorga</b></th>
-                                        <th><button id="btn3_4" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-                                    </tr>
-                                </thead>
-                            </table>
-                            </form>
 
-    <form id="form3_5" method="POST"
+                            <div id="step4" style="display: none">
+                                <form id="form3_4" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store34', 'form3_4');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    @csrf
+                                    <div>
+                                        <!-- 3.4 Distinciones académicas recibidas por el docente  -->
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">60</label>
+                                        </h4>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Actividad</th>
+                                                <th colspan="3" class="table-ajust" scope="col"></th>
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th id="seccion3_4" colspan="2" class="punto3_4" scope="col" style="padding:30px;">3.4 Distinciones
+                                                    académicas recibidas por el docente</th>
+                                                <th colspan="2"></th>
+                                                <th id="score3_4">0</th>
+                                                <th id="comision3_4">0</th>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"></td>
+                                                <td class="punto3_4">Puntaje</td>
+                                                <td class="text-center punto3_4">Cantidad</td>
+                                                <td colspan="2"></td>
+                                                <td class="text-center table-ajust" scope="col">Observaciones</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="punto3_4">a)</td>
+                                                <td>Internacional</td>
+                                                <td id="p60"><b>60</b></td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantInternacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantInternacional') }}"></td>
+                                                <td id="cantInternacional2"></td>
+                                                <td class="td_obs"><input type="number" id="comInternacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                                <td class="td_obs"><input id="obs3_4_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="punto3_4">b)</td>
+                                                <td>Nacional</td>
+                                                <td id="p30Nac"><b>30</b></td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantNacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantNacional') }}"></td>
+                                                <td id="cantNacional2"></td>
+                                                <td class="td_obs"><input type="number" id="comNacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                                <td class="td_obs"><input id="obs3_4_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="punto3_4">c)</td>
+                                                <td>Regional o estatal</td>
+                                                <td id="p20"><b>20</b></td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantidadRegional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantidadRegional') }}"></td>
+                                                <td id="cantidadRegional2"></td>
+                                                <td class="td_obs"><input type="number" id="comRegional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                                <td class="td_obs"><input id="obs3_4_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="punto3_4">d)</td>
+                                                <td>Preparación de grupos de alumnado para olimpiadas competencias académicas o exámenes generales.</td>
+                                                <td id="p30Prep"><b>30</b></td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantPreparacion" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantPreparacion') }}"></td>
+                                                <td id="cantPreparacion2"></td>
+                                                <td class="td_obs"><input type="number" id="comPreparacion" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                                <td class="td_obs"><input id="obs3_4_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--Tabla informativa Acreditacion Actividad 3.4-->
+                                    <table>
+                                        <thead>
+                                            <tr><br>
+                                                <th class="acreditacion" scope="col">Acreditacion: </th>
+                                                <th class="descripcionCAAC"><b>CAAC, Instancia que la otorga</b></th>
+                                                <th><button id="btn3_4" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </form>
+                            </div>
+                            
+
+        <form id="form3_5" method="POST"
         onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store35', 'form3_5');">
         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
         <input type="hidden" name="email" value="{{ auth()->user()->email }}">
@@ -3161,7 +3168,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 }
 
                                         /*formData['docencia'] = form.querySelector('input[id="docencia"]').value;
-                                        */break;
+                                        */
+                                       
+                                        break;
 
                             case 'form3_2':
                                 let score3_2Label = form.querySelector('td[id="score3_2"]').innerText;
@@ -3616,8 +3625,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                 form3_1.onsubmit = function (event) {
                     event.preventDefault(); // Previene el envío por defecto
                     submitForm('/formato-evaluacion/store31', 'form3_1'); // Llama a la función submitForm
+                     document.getElementById("step1").style.display = "none";
+                    document.getElementById("step2").style.display = "block";
                 };
             }
+
+            /*Array regex que identifique desde form3_2 hasta form3_19 y los step sean desde el 3 hasta el ultimo, el style display de la primera parte es none y el segundo es block*/
 
         });
 
