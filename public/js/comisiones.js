@@ -23,20 +23,24 @@ function onActv2Comision() {
 
 
 
-function onActv3Comision(){
-    
+function onActv3Comision() {
+
     const comisionA = parseFloat(document.getElementById("comisionIncisoA").value);
     const comisionB = parseFloat(document.getElementById("comisionIncisoB").value);
     const comisionC = parseFloat(document.getElementById("comisionIncisoC").value);
     const comisionD = parseFloat(document.getElementById("comisionIncisoD").value);
     const comisionE = parseFloat(document.getElementById("comisionIncisoE").value);
 
-    let ms = min60(comisionA,comisionB,comisionC,comisionD,comisionE).toFixed(2);
-    document.querySelectorAll(".actv3Comision").forEach(function (element) {
-        element.innerHTML = ms;
-    });
+    let ms = min60(comisionA, comisionB, comisionC, comisionD, comisionE).toFixed(2);
 
+    // Mostrar visualmente el valor en la tabla
+    document.querySelectorAll(".actv3Comision").forEach(el => el.innerHTML = ms);
+
+    // Este es el FIX real:
+    document.getElementById("actv3Comision_hidden").value = ms;
 }
+
+
 
 
 

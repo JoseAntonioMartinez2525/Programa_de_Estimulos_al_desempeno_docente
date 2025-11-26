@@ -124,7 +124,7 @@
 
                     // Normalizar campos de comisión vacíos
                     if (
-                        ['comIncisoA','comIncisoB','comIncisoC','comIncisoD','comisionDict3_7']
+                        ['comIncisoA','comIncisoB','comIncisoC','comIncisoD','comisionDict3_7', 'actv3Comision_hidden']
                         .includes(key) && value === ''
                     ) {
                         value = '0';
