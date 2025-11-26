@@ -1,15 +1,27 @@
 <script>
 (function () {
+
+    // -----------------------------------------
+    // CONFIG GLOBAL DESDE PHP
+    // -----------------------------------------
     const config = @json($config ?? []);
 
+
+    // =========================================
+    // =========== FUNCIÓN PRINCIPAL ===========
+    // =========================================
     async function submitForm(url, formId) {
+
         const form = document.getElementById(formId);
         if (!form) {
             console.error(`Form ${formId} not found`);
             return;
         }
 
-        // ---------- EMAIL Y USER_ID ----------
+
+        // =========================================
+        // ========== PROCESAMIENTO DE EMAIL ==========
+        // =========================================
         const hiddenEmailInput = form.querySelector('input[name="email"]');
         const hiddenUserIdInput = form.querySelector('input[name="user_id"]');
         const selectedDocenteEmailInput = document.getElementById(config.selectedEmailInputId || 'selectedDocenteEmail');
@@ -25,16 +37,22 @@
             alert('Seleccione un docente antes de enviar (email ausente).');
             return;
         }
-        if (hiddenEmailInput) hiddenEmailInput.value = email;
 
+        hiddenEmailInput.value = email;
+
+
+        // =========================================
+        // ======= RESOLVER USER ID (BACKEND) =======
+        // =========================================
         let userId = hiddenUserIdInput?.value?.trim();
+
         if (!userId) {
             try {
                 const resp = await fetch(`/formato-evaluacion/get-user-id?email=${encodeURIComponent(email)}`);
                 if (resp.ok) {
                     const json = await resp.json();
                     userId = json.user_id || '';
-                    if (hiddenUserIdInput) hiddenUserIdInput.value = userId;
+                    hiddenUserIdInput.value = userId;
                 }
             } catch (err) {
                 console.warn('No se pudo obtener user_id desde el servidor:', err);
@@ -47,141 +65,136 @@
         }
 
 
-        // ---------- CREAR FORM DATA ----------
+        // =========================================
+        // ============= CREAR FORM DATA ============
+        // =========================================
         const formData = new FormData();
+
+        // Datos base siempre requeridos
         formData.append('dictaminador_id', form.querySelector('input[name="dictaminador_id"]')?.value || '');
         formData.append('user_id', userId);
         formData.append('email', email);
         formData.append('user_type', form.querySelector('input[name="user_type"]')?.value || '');
-        let obsform3_13 = ['obsInicioFinanciamientoExt','obsInicioInvInterno','obsReporteFinanciamExt','obsReporteInvInt'];
-        
-        // Sincronizar valores de campos de comisión (inputs que empiezan con 'com' o 'comision')
+
+
+        // =========================================
+        // ====== CAMPOS "com" (comisiones) ========
+        // =========================================
         form.querySelectorAll('input[name^="com"]').forEach(input => {
             formData.append(input.name, input.value.trim() || '0');
         });
 
-        // Sincronizar valores de campos tipo <td> específicos (se mantiene por solicitud)
-        ['cantInternacional2', 'cantNacional2', 'cantidadRegional2', 'cantPreparacion2'].forEach(field => {
-            const element = form.querySelector(`[id="${field}"]`);
-            if (element) {
-                const value = element.textContent.trim(); // Obtener el texto dentro del <td>
-                formData.append(field, value || '0'); // Si está vacío, asignar '0'
-            }
-        });
-        
-        // Sincronizar valores de campos con sufijo numérico (ej. score3_12_0, comision3_12_1)
-        // Busca elementos cuyo ID coincida con el patrón score..._ o comision..._
-        form.querySelectorAll('[id*="_"][id^="score"], [id*="_"][id^="comision"]', ).forEach(el => {
-            const baseField = el.id.substring(0, el.id.lastIndexOf('_'));
+
+        // =========================================
+        // ====== CAMPOS <td> DE CANTIDADES =========
+        // =========================================
+        ['cantInternacional2', 'cantNacional2', 'cantidadRegional2', 'cantPreparacion2']
+            .forEach(field => {
+                const el = form.querySelector('#' + field);
+                const value = el ? el.textContent.trim() : '0';
+                formData.append(field, value || '0');
+            });
+
+
+        // =========================================
+        // ====== CAMPOS scoreX_Y / comisionX_Y =====
+        // =========================================
+        form.querySelectorAll('[id*="_"][id^="score"], [id*="_"][id^="comision"]').forEach(el => {
+            const base = el.id.split('_').slice(0, -1).join('_');
             const value = el.textContent.trim() || '0';
+
             formData.append(el.id, value);
-            
-            let firstValue = null;
-            firstValue = value;
-            // Asegurar que el campo base (sin sufijo) se envíe para validación en backend
-            if (firstValue !== null && !formData.has(baseField)) {
-                formData.append(baseField, firstValue);
+
+            if (!formData.has(base)) {
+                formData.append(base, value);
             }
         });
-        // ---------- CAMPOS EXTRA DINÁMICOS ----------
+
+
+        // =====================================================================
+        // =================== PROCESAMIENTO DE EXTRA FIELDS ===================
+        // =====================================================================
         if (Array.isArray(config.extraFields)) {
-            // 1. PRIORIDAD MÁXIMA: Recolectar todos los inputs, selects y textareas visibles.
-            // Estos son los valores que el usuario puede editar directamente.
-            form.querySelectorAll('input[name]:not([type="hidden"]), select[name], textarea[name]').forEach(el => {
-                const key = el.name || el.id;
-                let value = el.value.trim();
 
-                if (['comIncisoA','comIncisoB','comIncisoC','comIncisoD', 'comisionDict3_7'].includes(key) && value === '') {
-                    value = '0';
-                }
-                if (key) { // Permitir que este bucle establezca el valor, incluso si ya existe.
-                     formData.append(key, value);
-                // // 🔹 CORRECCIÓN: Solo añadir si la clave no existe, para dar prioridad a los inputs.
-                // if (key && !formData.has(key)) {
-                //     formData.append(key, value);
-                // }
-                if (key && !formData.has(key)) { // Solo añadir si no existe ya.
+            // 1. PRIORIDAD ALTA – Inputs editables
+            form.querySelectorAll('input[name]:not([type="hidden"]), select[name], textarea[name]')
+                .forEach(el => {
+                    const key = el.name || el.id;
+                    let value = el.value.trim();
+
+                    // Normalizar campos de comisión vacíos
+                    if (
+                        ['comIncisoA','comIncisoB','comIncisoC','comIncisoD','comisionDict3_7']
+                        .includes(key) && value === ''
+                    ) {
+                        value = '0';
+                    }
+
                     formData.append(key, value);
+                });
+
+            // 2. Inputs hidden (solo si no existen aún)
+            form.querySelectorAll('input[type="hidden"]').forEach(h => {
+                if (h.name && !formData.has(h.name)) {
+                    formData.append(h.name, h.value);
                 }
             });
 
-
-            // Añadir los inputs ocultos que ya existen en el formulario
-            form.querySelectorAll('input[type="hidden"]').forEach(hiddenInput => {
-                if (hiddenInput.name && !formData.has(hiddenInput.name)) {
-                    formData.append(hiddenInput.name, hiddenInput.value);
-            // 2. PRIORIDAD BAJA: Recolectar datos de elementos no editables (spans, tds) definidos en extraFields.
-            // Estos solo se añaden si no fueron ya establecidos por un input.
+            // 3. Campos no editables (spans/tds) definidos en extraFields
             config.extraFields.forEach(field => {
-                if (formData.has(field)) {
-                    return; // Saltar, ya que un input con este nombre tiene prioridad.
-                }
-            });
 
-            // Lógica para sincronizar <td>/<span> a FormData
-            config.extraFields.forEach(field => {
-                // Buscar solo elementos que NO sean inputs, para no procesarlos dos veces.
-                const elements = document.querySelectorAll(
-                    `[id="${field}"]:not(input):not(textarea):not(select), [name="${field}"]:not(input):not(textarea):not(select)`
+                if (formData.has(field)) return; // ya viene desde un input
+
+                const elements = form.querySelectorAll(
+                    `[id="${field}"]:not(input):not(textarea):not(select),
+                     [name="${field}"]:not(input):not(textarea):not(select)`
                 );
 
                 let found = false;
-                if (!formData.has(field)) {
-                    elements.forEach(el => {
-                        // Para spans/tds, solo nos interesa textContent.
-                        const val = el.textContent ?? '';
-                        const key = el.name || el.id || field;
-                        
-                        formData.append(key, val.trim() || '0');
-                        found = true;
-                    });
-                }
 
-                // Si el campo está en extraFields pero no se encontró en el DOM y no está en formData,
-                // se añade con un valor por defecto para evitar errores de "undefined array key" en el backend.
-                if (!found && !formData.has(field)) {
-                    // Para campos de comisión, el valor por defecto es '0'. Para observaciones, es una cadena vacía.
-                    const defaultValue = field.startsWith('comision') ? '0' : '';
-                if (elements.length > 0) {
-                    const val = elements[0].textContent ?? '';
+                elements.forEach(el => {
+                    const val = el.textContent ?? '';
                     formData.append(field, val.trim() || '0');
-                } else if (!formData.has(field)) {
-                    // Si no se encontró ni como input ni como span/td, añadir con valor por defecto.
-                    const defaultValue = field.startsWith('com') ? '0' : '';
-                    formData.append(field, defaultValue);
+                    found = true;
+                });
+
+                if (!found && !formData.has(field)) {
+                    // valor por defecto
+                    const def = field.startsWith('com') ? '0' : '';
+                    formData.append(field, def);
                 }
 
-                // ⚙️ Si no hay campo base, crear uno con el primer valor encontrado con sufijo
-                const hasBase = Array.from(formData.keys()).includes(field);
-                if (!hasBase) {
-                    const firstWithSuffix = Array.from(formData.entries()).find(([k]) => k.startsWith(field + '_'));
+                // generar campo base si solo hay sufijos
+                if (!formData.has(field)) {
+                    const firstWithSuffix = Array.from(formData.entries())
+                        .find(([k]) => k.startsWith(field + '_'));
+
                     if (firstWithSuffix) {
-                        const [, val] = firstWithSuffix;
-                        formData.append(field, val);
+                        formData.append(field, firstWithSuffix[1]);
                     }
                 }
             });
         }
 
-        // 3. FINAL: Añadir inputs ocultos que no hayan sido añadidos aún.
-        form.querySelectorAll('input[type="hidden"]').forEach(hiddenInput => {
-            if (hiddenInput.name && !formData.has(hiddenInput.name)) {
-                formData.append(hiddenInput.name, hiddenInput.value);
-            }
-        });
 
-
-        // ---------- DEBUG OPCIONAL ----------
-        console.group(`📤 Campos que se enviarán al servidor (${formId}):`);
-        for (const [k, v] of formData.entries()) console.log(k, ':', v);
+        // ==========================================================
+        // ================== DEBUG (CONSOLA) =======================
+        // ==========================================================
+        console.group(`📤 Enviando FormData (${formId})`);
+        for (const [k, v] of formData.entries()) {
+            console.log(k, ':', v);
+        }
         console.groupEnd();
 
-        // ---------- CORRECCIÓN AUTOMÁTICA DE RUTA ----------
+
+        // ==========================================================
+        // === CORREGIR AUTOMÁTICAMENTE LA URL SEGÚN formX_Y_Z ======
+        // ==========================================================
         let fixedUrl = url;
+
         if (url.includes('/formato-evaluacion/form')) {
-            const match = formId.match(/^form(\d+(?:_\d+)*)$/); // captura cualquier cantidad de guiones bajos
+            const match = formId.match(/^form(\d+(?:_\d+)*)$/);
             if (match) {
-                // Quita los guiones bajos para seguir tu naming convention
                 const numericPart = match[1].replace(/_/g, '');
                 fixedUrl = `/formato-evaluacion/store-form${numericPart}`;
                 console.info(`🔀 URL corregida automáticamente: ${url} → ${fixedUrl}`);
@@ -189,7 +202,9 @@
         }
 
 
-        // ---------- ENVIAR ----------
+        // ==========================================================
+        // ===================== ENVÍO POST ==========================
+        // ==========================================================
         try {
             const response = await fetch(fixedUrl, {
                 method: 'POST',
@@ -200,41 +215,48 @@
             });
 
             const json = await response.json();
-            
-                // --- manejar errores de validación de Laravel ---
-                if (json.errors) {
-                    const firstError = Object.values(json.errors)[0][0];
-                    showMessage(firstError, "red");
-                    return;
-                }
 
-                // --- detectar formulario duplicado TRADICIONAL (por si usas existing:true) ---
-                if (json.existing === true || json.message?.includes('existente')) {
-                    showMessage(json.message || 'El formulario ya existe', 'red');
-                    return;
-                }
+            // Errores de validación Laravel
+            if (json.errors) {
+                const firstError = Object.values(json.errors)[0][0];
+                showMessage(firstError, "red");
+                return;
+            }
 
-                // --- manejar errores generales ---
-                if (!response.ok || json.success === false) {
-                    showMessage(json.message || 'Error al enviar', 'red');
-                    return;
-                }
+            // Form duplicado tradicional
+            if (json.existing === true || json.message?.includes('existente')) {
+                showMessage(json.message || 'El formulario ya existe', 'red');
+                return;
+            }
 
+            // Errores generales
+            if (!response.ok || json.success === false) {
+                showMessage(json.message || 'Error al enviar', 'red');
+                return;
+            }
 
-                 showMessage('Formulario enviado correctamente', 'green');
-       
-            } catch (error) {
-                console.error('Error de red:', error);
-                showMessage('Problema de red al enviar', 'red');
+            // OK
+            showMessage('Formulario enviado correctamente', 'green');
+
+        } catch (error) {
+            console.error('Error de red:', error);
+            showMessage('Problema de red al enviar', 'red');
         }
     }
 
-    // ---------- EXPOSICIÓN GLOBAL (opcional) ----------
+
+
+    // ============================================
+    // ========== EXPOSICIÓN GLOBAL OPTIONAL ======
+    // ============================================
     if (config.exposeAs) {
         window[config.exposeAs] = submitForm;
     }
 
-    // ---------- CAPTURAR TODOS LOS FORMULARIOS "formX_Y_Z" ----------
+
+    // ===================================================
+    // ========== AUTO CAPTURA DE TODOS LOS FORM ========== 
+    // ===================================================
     document.addEventListener('DOMContentLoaded', () => {
         const allForms = document.querySelectorAll('form[id^="form"]');
         allForms.forEach(f => {
@@ -247,5 +269,6 @@
             }
         });
     });
+
 })();
 </script>

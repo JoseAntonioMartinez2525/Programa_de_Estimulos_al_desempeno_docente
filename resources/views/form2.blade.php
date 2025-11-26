@@ -14,6 +14,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         'docenteMappings' => [
             'horasActv2' => 'horasActv2',
             'puntajeEvaluar' => 'puntajeEvaluar',
+            'input[name="email"]' => 'email', // Llena el input oculto del email
 
         ],
         'dictMappings' => [
@@ -188,6 +189,7 @@ $user_identity = $user->id;
     <main class="container">
         <!-- Form for Part 2 -->
         <form id="form2" method="POST" action="{{ url('/store-form2') }}">
+            
             @csrf
             <div><br>
             <div class="datosConvocatoria">
