@@ -180,8 +180,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td class="elabInput"><input id="elaboracion" name="elaboracion" type="number"
                                                         oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion') }}"></td>
                                                 <td><label id="elaboracionSubTotal1" for="" type="text" placeholder="Comenta aqui"></label></td>
-                                                <td class="comision actv"><input id="comisionIncisoA" placeholder="0"
-                                                        for="" oninput="onActv3Comision()"></input></td>
+                                                <td class="comision actv"><span id="comisionIncisoA"></span></td>
                                                 <td class="td_obs"><input id="obs3_1_1" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
                                             </tr>   
                                                 <tr>
@@ -193,9 +192,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion2') }}"></td>
                                                     <td><label id="elaboracionSubTotal2" for="" type="text" placeholder="Comenta aqui"></label>
                                                     </td>
-                                                    <td class="comision actv"><input id="comisionIncisoB"
-                                                            placeholder="0" for=""
-                                                            oninput="onActv3Comision()"></input></td>
+                                                    <td class="comision actv"><span id="comisionIncisoB"></span></td>
                                                     <td class="td_obs"><input id="obs3_1_2" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
                                                 </tr>
                                                 <tr>
@@ -207,9 +204,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion3') }}"></td>
                                                     <td><label id="elaboracionSubTotal3" for="" type="text" placeholder="Comenta aqui"></label>
                                                     </td>
-                                                    <td class="comision actv"><input id="comisionIncisoC"
-                                                            placeholder="0" for=""
-                                                            oninput="onActv3Comision()"></input></td>
+                                                    <td class="comision actv"><span id="comisionIncisoC"></span></td>
                                                     <td class="td_obs"><input id="obs3_1_3" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
                                                 </tr>
 
@@ -222,9 +217,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                         oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion4') }}"></td>
                                                 <td><label id="elaboracionSubTotal4" for="" type="text" placeholder="Comenta aqui"></label>
                                                 </td>
-                                                <td class="comision actv"><input id="comisionIncisoD"
-                                                        placeholder="0" for=""
-                                                        oninput="onActv3Comision()"></input></td>
+                                                <td class="comision actv"><span id="comisionIncisoD"></span></td>
                                                 <td class="td_obs"><input id="obs3_1_4" class="table-header" type="text" placeholder="Comenta aqui" placeholder="Escribe tu comentario aquí"></td>
                                                 </tr>
                                                 <tr>
@@ -236,9 +229,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                         oninput="onActv3Subtotal()" value="{{ oldValueOrDefault('elaboracion5') }}"></td>
                                                 <td><label id="elaboracionSubTotal5" for="" type="text" placeholder="Comenta aqui"></label>
                                                 </td>
-                                                <td class="comision actv"><input id="comisionIncisoE"
-                                                        placeholder="0" for=""
-                                                        oninput="onActv3Comision()"></input></td>
+                                                <td class="comision actv"><span id="comisionIncisoE"></span></td>
                                                 <td class="td_obs"><input id="obs3_1_5" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                                 </tr>
                                         </tbody>
@@ -308,8 +299,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td class="cantidad-cell"><input id="r1" type="number" placeholder="0"
                                                         oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r1') }}"></td>
                                                 <td id="cant1">0</td>
-                                                <td class="td_obs"><input id="prom90_100" type="value" placeholder="0"
-                                                        oninput="onActv3_2Comision()"></td>
+                                                <td class="td_obs"><span id="prom90_100"></td>
                                                 <td class="td_obs"><input id="obs3_2_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                             <!--prom80-90-->
@@ -321,8 +311,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td class="cantidad-cell"><input id="r2" type="number" placeholder="0"
                                                         oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r2') }}"></td>
                                                 <td id="cant2">0</td>
-                                                <td class="td_obs"><input id="prom80_90" placeholder="0" type="value"
-                                                        oninput="onActv3_2Comision()"></td>
+                                                <td class="td_obs"><span id="prom80_90"></td>
                                                 <td class="td_obs"><input id="obs3_2_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                             <!--prom70-80-->
@@ -334,8 +323,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td class="cantidad-cell"><input id="r3" type="number" placeholder="0"
                                                         oninput="onActv3Puntaje()" value="{{ oldValueOrDefault('r3') }}"></td>
                                                 <td id="cant3">0</td>
-                                                <td class="td_obs"><input id="prom70_80" placeholder="0" type="value"
-                                                        oninput="onActv3_2Comision()"></td>
+                                                <td class="td_obs"><span id="prom70_80"></td>
                                                 <td class="td_obs"><input id="obs3_2_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                         </thead>
@@ -414,8 +402,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <td class="cantidad-cell"><input id="rc1" type="number" oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc1') }}">
                                                     </td>
                                                     <td id="stotal1"></td>
-                                                    <td class="td_obs comision actv"><input id="comIncisoA" placeholder="0" for=""
-                                                            oninput="onActv3Comision3()"></input></td>
+                                                    <td class="td_obs comision actv"> <span id="comIncisoA"></span></td>
                                                     <td class="td_obs"><input id="obs3_3_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                                 </tr>
                                                 <tr>
@@ -429,8 +416,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc2') }}">
                                                     </td>
                                                     <td id="stotal2"></td>
-                                                    <td class="td_obs comision actv"><input id="comIncisoB" placeholder="0" for=""
-                                                            oninput="onActv3Comision3()"></input></td>
+                                                    <td class="td_obs comision actv"> <span id="comIncisoB"></span></td>
                                                     <td class="td_obs"><input id="obs3_3_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                                 </tr>
                                                 <tr>
@@ -446,8 +432,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc3') }}">
                                                     </td>
                                                     <td id="stotal3"></td>
-                                                    <td class="td_obs comision actv"><input id="comIncisoC" placeholder="0" for=""
-                                                            oninput="onActv3Comision3()"></input></td>
+                                                    <td class="td_obs comision actv"> <span id="comIncisoC"></span></td>
                                                     <td class="td_obs"><input id="obs3_3_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                                 </tr>
                                                 <tr>
@@ -463,8 +448,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3()" value="{{ oldValueOrDefault('rc4') }}">
                                                     </td>
                                                     <td id="stotal4"></td>
-                                                    <td class="td_obs comision actv"><input id="comIncisoD" placeholder="0" for=""
-                                                            oninput="onActv3Comision3()"></input></td>
+                                                    <td class="td_obs comision actv"> <span id="comIncisoD"></span></td>
                                                     <td class="td_obs"><input id="obs3_3_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                                 </tr>
                                             </thead>
@@ -527,7 +511,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="p60"><b>60</b></td>
                                                 <td class="td_docente_cantidad"><input type="number" id="cantInternacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantInternacional') }}"></td>
                                                 <td id="cantInternacional2"></td>
-                                                <td class="td_obs"><input type="number" id="comInternacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                                <td class="td_obs"><span id="comInternacional"></span></td>
                                                 <td class="td_obs"><input id="obs3_4_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                             <tr>
@@ -536,7 +520,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="p30Nac"><b>30</b></td>
                                                 <td class="td_docente_cantidad"><input type="number" id="cantNacional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantNacional') }}"></td>
                                                 <td id="cantNacional2"></td>
-                                                <td class="td_obs"><input type="number" id="comNacional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                                <td class="td_obs"><span id="comNacional"></span></td>
                                                 <td class="td_obs"><input id="obs3_4_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                             <tr>
@@ -545,7 +529,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="p20"><b>20</b></td>
                                                 <td class="td_docente_cantidad"><input type="number" id="cantidadRegional" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantidadRegional') }}"></td>
                                                 <td id="cantidadRegional2"></td>
-                                                <td class="td_obs"><input type="number" id="comRegional" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                                <td class="td_obs"><span id="comRegional"></span></td>
                                                 <td class="td_obs"><input id="obs3_4_3" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                             <tr>
@@ -554,7 +538,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td id="p30Prep"><b>30</b></td>
                                                 <td class="td_docente_cantidad"><input type="number" id="cantPreparacion" placeholder="0" oninput="onActv3SubTotal3_4()" value="{{ oldValueOrDefault('cantPreparacion') }}"></td>
                                                 <td id="cantPreparacion2"></td>
-                                                <td class="td_obs"><input type="number" id="comPreparacion" placeholder="0" oninput="onActv3Comision3_4()"></td>
+                                                <td class="td_obs"><span id="comPreparacion"></span></td>
                                                 <td class="td_obs"><input id="obs3_4_4" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                         </tbody>
@@ -572,409 +556,418 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 </form>
                             </div>
                             
+                            <div id="step5" style="display: none">
+                                <form id="form3_5" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store35', 'form3_5');">
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                @csrf
+                                <div>
+                                    <!-- 3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC  -->
+                                    <h4>Puntaje máximo
+                                        <label class="bg-black text-white px-4 mt-3" for="">75</label>
+                                    </h4>
+                                </div>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Actividad</th>
+                                            <th colspan="3" class="table-ajust" scope="col"></th>
+                        
+                                            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                            </th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <thead>
+                                            <tr>
+                                                <th id="seccion3_5" colspan=2 class="punto3_5" scope=col
+                                                    style="padding:30px;">3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC
+                                                </th>
+                                                <td colspan="2"></td>
+                                                <td id="score3_5" for="">0</td>
+                                                <td id="comision3_5">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"></td>
+                                                <td class="punto3_5">Puntaje</td>
+                                                <td class="punto3_5">Cantidad</td>
+                                                <td colspan="2"></td>
+                                                <td class="text-center table-ajust" scope="col">Observaciones</td>
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <td class="punto3_5">a)</td>
+                                            <td>Evaluado por la persona titular de DA</td>
+                                            <td id="p35"><b>35</b></td>
+                                            <td><input type="number" id="cantDA"
+                                                    oninput="onActv3SubTotal3_5()" value="{{ oldValueOrDefault('cantDA') }}"></td>
+                                            <td id="cantDA2"></td>
+                                            <td class="td_obs"><input type="value" id="comDA" placeholder="0"
+                                                    oninput="onActv3Comision3_5()"></td>
+                                            <td class="td_obs"><input id="obs3_5_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <td class="punto3_5">b)</td>
+                                                <td>Evaluado por CAAC</td>
+                                                <td id="pCAAC40"><b>40</b></td>
+                                                <td><input type="number" id="cantCAAC"
+                                                        oninput="onActv3SubTotal3_5()" value="{{ oldValueOrDefault('cantCAAC') }}"></td>
+                                                <td id="cantCAAC2""></td>
+                                                <td class="td_obs"><input type=" value" id="comNCAA" placeholder="0"
+                                                    oninput="onActv3Comision3_5()"></td>
+                                                <td class="td_obs"><input id="obs3_5_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                            </tr>
+                                        </thead>
+                                    </tbody>
+                                </table>
+                                <!--Tabla informativa Acreditacion Actividad 3.5-->
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="acreditacion" scope="col">Acreditacion: </th>
 
-        <form id="form3_5" method="POST"
-        onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store35', 'form3_5');">
-        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-        @csrf
-        <div>
-            <!-- 3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC  -->
+                                            <th class="descripcion"><b>JDA y CAAC</b>
+                                            <th><button id="btn3_5" type="submit" class="btn custom-btn printButtonClass">Enviar</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                </form>
+                            </div>
+
+                            <div id="step6" style="display: none">
+                                <form id="form3_6" method="POST"
+                                    onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store36', 'form3_6');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    @csrf
+                                    <div>
+                                        <!-- 3.6 Capacitación y actualización pedagógica recibida  -->
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">40</label>
+                                        </h4>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Actividad</th>
+                                                <th colspan="2" class="table-ajust" scope="col"></th>
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                </th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <thead>
+                                                <tr>
+                                                    <th id="seccion3_6" colspan="3" class="punto3_6" scope=col>3.6 Capacitación y actualización pedagógica recibida </th>
+                                                    <td id="score3_6" for="">0</td>
+                                                    <td id="comision3_6">0</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"></td>
+                                                    <td class="punto3_6">Factor</td>
+                                                    <td class="punto3_6">Horas</td>
+                                                    <td colspan="1"></td>
+                                                    <td class="text-center table-ajust" scope="col">Observaciones</td>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <td>0.5 por cada hora</td>
+                                                    <td id="pMedio">0.5</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_6"
+                                                            oninput="onActv3SubTotal3_6()" value="{{ oldValueOrDefault('puntaje3_6') }}"></td>
+                                                    <td id="puntajeHoras3_6"></td>
+                                                    <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_6"
+                                                            oninput="onActv3Comision3_6()">
+                                                    </td>
+                                                    <td class="td_obs"><input id="obs3_6" id="obs3_6" class="table-header" type="text" placeholder="Comenta aqui">
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                            <!--Tabla informativa Acreditacion Actividad 3.6-->
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+
+                                                        <th class="descripcion"><b>DDIE</b>
+
+                                                        <th><button id="btn3_6" type="submit" class="btn custom-btn printButtonClass">Enviar
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                            <div id="step7" style="display: none">
+                                <form id="form3_7" method="POST"
+                                    onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store37', 'form3_7');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    @csrf
+                                    <div>
+                                        <!-- 3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento  -->
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">40</label>
+                                        </h4>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Actividad</th>
+                                                <th colspan="2" class="table-ajust" scope="col"></th>
+
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                </th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <thead>
+                                                <tr>
+                                                    <th id="seccion3_7" colspan="3" class="punto3_7" scope=col>3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento </th>
+
+                                                    <td id="score3_7" for="">0</td>
+                                                    <td id="comision3_7">0</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="1"></td>
+                                                    <td class="punto3_7">Factor</td>
+                                                    <td class="punto3_7">Horas</td>
+                                                    <td colspan="2"></td>
+                                                    <td class="text-center table-ajust" scope="col">Observaciones</td>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <td>0.5 por cada hora</td>
+                                                    <td id="pMedio2">0.5</td>
+                                                    <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_7"
+                                                            oninput="onActv3SubTotal3_7()" value="{{ oldValueOrDefault('puntaje3_7') }}"></td>
+                                                    <td id="puntajeHoras3_7"></td>
+                                                    <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_7"
+                                                            oninput="onActv3Comision3_7()">
+                                                    </td>
+                                                    <td class="td_obs"><input id="obs3_7" class="table-header" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
+                                            </thead>
+                                            <!--Tabla informativa Acreditacion Actividad 3.7-->
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+                                                        <th class="descripcion"><b>JD,CAAC, instancia que organiza</b></th>
+                                                        <th><button id="btn3_7" type="submit" class="btn custom-btn printButtonClass">Enviar
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                            
+                            <div id="step8" style="display: none">
+                                <form id="form3_8" method="POST"
+                                    onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store38', 'form3_8');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    @csrf
+                                    <div>
+                                        <!--3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente-->
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">40</label>
+                                        </h4>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Actividad</th>
+                                                <th colspan="2" class="table-ajust" scope="col"></th>
+
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                </th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <thead>
+                                                <tr>
+                                                    <th id="seccion3_8" colspan="3" class="punto3_8" scope=col>3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua ó de formación y capacitación docente </th>
+
+                                                    <td id="score3_8" for="">0</td>
+                                                    <td id="comision3_8">0</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"></td>
+                                                    <td class="text-center punto3_8">Factor</td>
+                                                    <td class="text-center punto3_8">Horas</td>
+                                                    <td colspan="1"></td>
+                                                    <td class="text-center table-ajust" scope="col">Observaciones</td>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <td>1 por cada hora</td>
+                                                    <td id="p3_8">1</td>
+                                                    <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_8"
+                                                            oninput="onActv3SubTotal3_8()" value="{{ oldValueOrDefault('puntaje3_8') }}"></td>
+                                                    <td id="puntajeHoras3_8"></td>
+                                                    <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_8"
+                                                            oninput="onActv3Comision3_8()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_8" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
+                                            </thead>
+                                            <!--Tabla informativa Acreditacion Actividad 3.8-->
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+
+                                                        <th class="descripcion"><b>*JD,CAAC, DDCE, DDIE, SA,DIIP, según
+                                                                corresponda. Cuando sea en
+                                                                instituciones externas, presentar constancia de la
+                                                                institución y el convenio acuerdo con
+                                                                la
+                                                                UABCS.</b> 
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </tbody>
+                                    </table>
+                                    <button id="btn3_8" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+                                </form>
+                            </div>
+                            <div id="step9" style="display: none">
+                                <form id="form3_8_1" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store381', 'form3_8_1');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    @csrf
+                                    <div>
+                                        <!--3.8.1 RSU -->
+                                        <h4>Puntaje máximo 
+                                        @if($userType != 'secretaria') <!-- fetch puntajeMaximo form3_8_1 -->
+                                            <span class="bg-black text-white px-4 mt-3" id="puntajeMaximo" for="">40</span>
+                                        @endif
+                                        </h4>
+                                    </div>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Actividad</th>
+                                                <th colspan="2" class="table-ajust" scope="col"></th>
+                                                
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                </th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <thead>
+                                                <tr>
+                                                    <th id="seccion3_8_1" colspan="3" class="punto3_8_1" scope=col title="Responsabilidad Social Universitaria">3.8.1 RSU</th>
+
+                                                    <td id="score3_8_1" for="">0</td>
+                                                    <td id="comision3_8_1">0</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="1"></td>
+                                                    <td class="text-left punto3_8_1">Factor</td>
+                                                    <td class="text-right punto3_8_1 centerSelect">Horas</td>
+                                                    <td colspan="2"></td>
+                                                    <td class="text-center table-ajust" scope="col">Observaciones</td>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <td>1 por cada hora</td>
+                                                    <td id="p3_8_1">1</td>
+                                                    <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_8_1" oninput="onActv3SubTotal3_8_1()"
+                                                            value="{{ oldValueOrDefault('puntaje3_8_1') }}"></td>
+                                                    <td id="puntajeHoras3_8_1"></td>
+                                                    <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_8_1" oninput="onActv3Comision3_8_1()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_8_1" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
+                                            </thead>
+                                            <!--Tabla informativa Acreditacion Actividad 3.8.1-->
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+
+                                                        <th class="descripcion"><b>*RSU</b> </th>
+                                                        <th><button id="btn3_8_1" type="submit" class="btn custom-btn printButtonClass">Enviar
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                            <div id="step10" style="display: none">    
+                                <form id="form3_9" method="POST"onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store39', 'form3_9');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    <div>
+                                          @csrf
+
             <h4>Puntaje máximo
-                <label class="bg-black text-white px-4 mt-3" for="">75</label>
+                <label class="bg-black text-white px-4 mt-3">200</label>
             </h4>
         </div>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">Actividad</th>
-                    <th colspan="3" class="table-ajust" scope="col"></th>
-   
-                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                    </th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <thead>
-                    <tr>
-                        <th id="seccion3_5" colspan=2 class="punto3_5" scope=col
-                            style="padding:30px;">3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC
-                        </th>
-                        <td colspan="2"></td>
-                        <td id="score3_5" for="">0</td>
-                        <td id="comision3_5">0</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td class="punto3_5">Puntaje</td>
-                        <td class="punto3_5">Cantidad</td>
-                        <td colspan="2"></td>
-                        <td class="text-center table-ajust" scope="col">Observaciones</td>
-                    </tr>
-                </thead>
-                <thead>
-                    <td class="punto3_5">a)</td>
-                    <td>Evaluado por la persona titular de DA</td>
-                    <td id="p35"><b>35</b></td>
-                    <td><input type="number" id="cantDA"
-                            oninput="onActv3SubTotal3_5()" value="{{ oldValueOrDefault('cantDA') }}"></td>
-                    <td id="cantDA2"></td>
-                    <td class="td_obs"><input type="value" id="comDA" placeholder="0"
-                            oninput="onActv3Comision3_5()"></td>
-                    <td class="td_obs"><input id="obs3_5_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <td class="punto3_5">b)</td>
-                        <td>Evaluado por CAAC</td>
-                        <td id="pCAAC40"><b>40</b></td>
-                        <td><input type="number" id="cantCAAC"
-                                oninput="onActv3SubTotal3_5()" value="{{ oldValueOrDefault('cantCAAC') }}"></td>
-                        <td id="cantCAAC2""></td>
-                        <td class="td_obs"><input type=" value" id="comNCAA" placeholder="0"
-                            oninput="onActv3Comision3_5()"></td>
-                        <td class="td_obs"><input id="obs3_5_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                    </tr>
-                </thead>
-            </tbody>
-        </table>
-        <!--Tabla informativa Acreditacion Actividad 3.5-->
-        <table>
-            <thead>
-                <tr>
-                    <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                    <th class="descripcion"><b>JDA y CAAC</b>
-                    <th><button id="btn3_5" type="submit" class="btn custom-btn printButtonClass">Enviar</th>
-                </tr>
-            </thead>
-        </table>
-    </form>
-    <form id="form3_6" method="POST"
-        onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store36', 'form3_6');">
-        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-        @csrf
-        <div>
-            <!-- 3.6 Capacitación y actualización pedagógica recibida  -->
-            <h4>Puntaje máximo
-                <label class="bg-black text-white px-4 mt-3" for="">40</label>
-            </h4>
-        </div>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">Actividad</th>
-                    <th colspan="2" class="table-ajust" scope="col"></th>
-                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                    </th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <thead>
-                    <tr>
-                        <th id="seccion3_6" colspan="3" class="punto3_6" scope=col>3.6 Capacitación y actualización pedagógica recibida </th>
-                        <td id="score3_6" for="">0</td>
-                        <td id="comision3_6">0</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td class="punto3_6">Factor</td>
-                        <td class="punto3_6">Horas</td>
-                        <td colspan="1"></td>
-                        <td class="text-center table-ajust" scope="col">Observaciones</td>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <td>0.5 por cada hora</td>
-                        <td id="pMedio">0.5</td>
-                        <td class="td_docente_cantidad"><input type="number" id="puntaje3_6"
-                                oninput="onActv3SubTotal3_6()" value="{{ oldValueOrDefault('puntaje3_6') }}"></td>
-                        <td id="puntajeHoras3_6"></td>
-                        <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_6"
-                                oninput="onActv3Comision3_6()">
-                        </td>
-                        <td class="td_obs"><input id="obs3_6" id="obs3_6" class="table-header" type="text" placeholder="Comenta aqui">
-                        </td>
-                    </tr>
-                </thead>
-                <!--Tabla informativa Acreditacion Actividad 3.6-->
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="acreditacion" scope="col">Acreditacion: </th>
-
-                            <th class="descripcion"><b>DDIE</b>
-
-                            <th><button id="btn3_6" type="submit" class="btn custom-btn printButtonClass">Enviar
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
-            </tbody>
-        </table>
-    </form>
-    <form id="form3_7" method="POST"
-        onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store37', 'form3_7');">
-        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-        @csrf
-        <div>
-            <!-- 3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento  -->
-            <h4>Puntaje máximo
-                <label class="bg-black text-white px-4 mt-3" for="">40</label>
-            </h4>
-        </div>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">Actividad</th>
-                    <th colspan="2" class="table-ajust" scope="col"></th>
-
-                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                    </th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <thead>
-                    <tr>
-                        <th id="seccion3_7" colspan="3" class="punto3_7" scope=col>3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento </th>
-
-                        <td id="score3_7" for="">0</td>
-                        <td id="comision3_7">0</td>
-
-                    </tr>
-                    <tr>
-                        <td colspan="1"></td>
-                        <td class="punto3_7">Factor</td>
-                        <td class="punto3_7">Horas</td>
-                        <td colspan="2"></td>
-                        <td class="text-center table-ajust" scope="col">Observaciones</td>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <td>0.5 por cada hora</td>
-                        <td id="pMedio2">0.5</td>
-                        <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_7"
-                                oninput="onActv3SubTotal3_7()" value="{{ oldValueOrDefault('puntaje3_7') }}"></td>
-                        <td id="puntajeHoras3_7"></td>
-                        <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_7"
-                                oninput="onActv3Comision3_7()">
-                        </td>
-                        <td class="td_obs"><input id="obs3_7" class="table-header" type="text" placeholder="Comenta aqui"></td>
-                    </tr>
-                </thead>
-                <!--Tabla informativa Acreditacion Actividad 3.7-->
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="acreditacion" scope="col">Acreditacion: </th>
-                            <th class="descripcion"><b>JD,CAAC, instancia que organiza</b></th>
-                            <th><button id="btn3_7" type="submit" class="btn custom-btn printButtonClass">Enviar
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
-            </tbody>
-        </table>
-    </form>
-    <form id="form3_8" method="POST"
-        onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store38', 'form3_8');">
-        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-        @csrf
-        <div>
-            <!--3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente-->
-            <h4>Puntaje máximo
-                <label class="bg-black text-white px-4 mt-3" for="">40</label>
-            </h4>
-        </div>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">Actividad</th>
-                    <th colspan="2" class="table-ajust" scope="col"></th>
-
-                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                    </th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <thead>
-                    <tr>
-                        <th id="seccion3_8" colspan="3" class="punto3_8" scope=col>3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua ó de formación y capacitación docente </th>
-
-                        <td id="score3_8" for="">0</td>
-                        <td id="comision3_8">0</td>
-
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td class="text-center punto3_8">Factor</td>
-                        <td class="text-center punto3_8">Horas</td>
-                        <td colspan="1"></td>
-                        <td class="text-center table-ajust" scope="col">Observaciones</td>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <td>1 por cada hora</td>
-                        <td id="p3_8">1</td>
-                        <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_8"
-                                oninput="onActv3SubTotal3_8()" value="{{ oldValueOrDefault('puntaje3_8') }}"></td>
-                        <td id="puntajeHoras3_8"></td>
-                        <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_8"
-                                oninput="onActv3Comision3_8()">
-                        </td>
-                        <td class="td_obs"><input class="table-header" id="obs3_8" type="text" placeholder="Comenta aqui"></td>
-                    </tr>
-                </thead>
-                <!--Tabla informativa Acreditacion Actividad 3.8-->
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="acreditacion" scope="col">Acreditacion: </th>
-
-                            <th class="descripcion"><b>*JD,CAAC, DDCE, DDIE, SA,DIIP, según
-                                    corresponda. Cuando sea en
-                                    instituciones externas, presentar constancia de la
-                                    institución y el convenio acuerdo con
-                                    la
-                                    UABCS.</b> 
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
-            </tbody>
-        </table>
-        <button id="btn3_8" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
-    </form>
-    <form id="form3_8_1" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store381', 'form3_8_1');">
-        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-        @csrf
-        <div>
-            <!--3.8.1 RSU -->
-            <h4>Puntaje máximo 
-            @if($userType != 'secretaria') <!-- fetch puntajeMaximo form3_8_1 -->
-                <span class="bg-black text-white px-4 mt-3" id="puntajeMaximo" for="">40</span>
-            @endif
-            </h4>
-        </div>
-        <table class="table table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">Actividad</th>
-                    <th colspan="2" class="table-ajust" scope="col"></th>
-                    
-                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                    </th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <thead>
-                    <tr>
-                        <th id="seccion3_8_1" colspan="3" class="punto3_8_1" scope=col title="Responsabilidad Social Universitaria">3.8.1 RSU</th>
-
-                        <td id="score3_8_1" for="">0</td>
-                        <td id="comision3_8_1">0</td>
-
-                    </tr>
-                    <tr>
-                        <td colspan="1"></td>
-                        <td class="text-left punto3_8_1">Factor</td>
-                        <td class="text-right punto3_8_1 centerSelect">Horas</td>
-                        <td colspan="2"></td>
-                        <td class="text-center table-ajust" scope="col">Observaciones</td>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <td>1 por cada hora</td>
-                        <td id="p3_8_1">1</td>
-                        <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_8_1" oninput="onActv3SubTotal3_8_1()"
-                                value="{{ oldValueOrDefault('puntaje3_8_1') }}"></td>
-                        <td id="puntajeHoras3_8_1"></td>
-                        <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_8_1" oninput="onActv3Comision3_8_1()">
-                        </td>
-                        <td class="td_obs"><input class="table-header" id="obs3_8_1" type="text" placeholder="Comenta aqui"></td>
-                    </tr>
-                </thead>
-                <!--Tabla informativa Acreditacion Actividad 3.8-->
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="acreditacion" scope="col">Acreditacion: </th>
-
-                            <th class="descripcion"><b>*RSU</b> </th>
-                            <th><button id="btn3_8_1" type="submit" class="btn custom-btn printButtonClass">Enviar
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
-            </tbody>
-        </table>
-    </form>
-    <form id="form3_9" method="POST"onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store39', 'form3_9');">
-        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-        @csrf
-        <div>
-            <!--3.9 Trabajos dirigidos para la titulación de estudiantes-->
-            <h4>Puntaje máximo
-                <label class="bg-black text-white px-4 mt-3" for="">200</label>
-            </h4>
-        </div>
         <table class="table table-sm tutorias">
+
             <thead>
                 <tr>
                     <th colspan="7" class="text-center">
                         <h3>Tutorias</h3>
                     </th>
-
                 </tr>
             </thead>
+
             <thead>
                 <tr>
                     <th scope="col">Actividad</th>
                     <th colspan="5" class="table-ajust" scope="col"></th>
                     <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                    </th>
+                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
                 </tr>
             </thead>
+
             <thead>
                 <tr>
-                    <th id="seccion3_9" scope="col" class="p3_9" colspan="6">3.9 Trabajos dirigidos
-                        para la
-                        titulación de estudiantes
-                    </th>
+                    <th id="seccion3_9" scope="col" class="p3_9" colspan="6">3.9 Trabajos dirigidos para la titulación de estudiantes</th>
                     <th id="score3_9">0</th>
                     <th id="comision3_9">0</th>
                 </tr>
-                <tr>
-
-                </tr>
+                <tr></tr>
             </thead>
+
             <thead>
                 <tr>
                     <th class="acreditacion">Incisos</th>
@@ -988,770 +981,748 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     <th class="text-center acreditacion">Observaciones</th>
                 </tr>
             </thead>
+
             <tbody>
+
                 <tr>
                     <td>a)</td>
                     <td>Revisión de</td>
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias20_1">20</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_1"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_1') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_1" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_1') }}"></td>
                     <td id="tutorias1">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision1" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision1" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_1" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>b)</td>
                     <td>Proyecto de</td>
                     <td>Tesis</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias15_1">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_2"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_2') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_2" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_2') }}"></td>
                     <td id="tutorias2">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision2" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision2" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_2" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>c)</td>
                     <td>Proyecto de</td>
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias10_1">10</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_3"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_3') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_3" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_3') }}"></td>
                     <td id="tutorias3">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision3" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision3" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_3" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>d)</td>
                     <td>Dirección trabajo en realización</td>
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias55">55</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_4"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_4') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_4" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_4') }}"></td>
                     <td id="tutorias4">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision4" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision4" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_4" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>e)</td>
                     <td>Dirección trabajo en realización</td>
                     <td>Tesis</td>
                     <td>Maestria</td>
                     <td id="puntajeTutorias45">45</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_5"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_5') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_5" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_5') }}"></td>
                     <td id="tutorias5">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision5" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision5" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_5" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>f)</td>
                     <td>Dirección trabajo en realización</td>
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias35">35</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_6"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_6') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_6" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_6') }}"></td>
                     <td id="tutorias6">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision6" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision6" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_6" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>g)</td>
                     <td>Dirección trabajo terminado</td>
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias70">70</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_7"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_7') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_7" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_7') }}"></td>
                     <td id="tutorias7">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision7" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision7" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_7" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>h)</td>
                     <td>Dirección trabajo terminado</td>
                     <td>Tesis</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias60">60</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_8"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_8') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_8" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_8') }}"></td>
                     <td id="tutorias8">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision8" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision8" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_8" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>i)</td>
                     <td>Dirección trabajo terminado</td>
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias50">50</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_9"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_9') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_9" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_9') }}"></td>
                     <td id="tutorias9">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision9" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision9" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_9" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>j)</td>
                     <td>Revisión de trabajo terminado</td>
                     <td>Tesis</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias30_1">30</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_10" 
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_10') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_10" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_10') }}"></td>
                     <td id="tutorias10">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision10" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision10" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_10" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>k)</td>
                     <td>Revisión de trabajo terminado</td>
                     <td>Tesis</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias20_2">50</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_11"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_11') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_11" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_11') }}"></td>
                     <td id="tutorias11">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision11" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision11" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_11" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>l)</td>
                     <td>Revisión de trabajo terminado</td>
                     <td>Tesis y otras</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias15_2">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_12"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_12') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_12" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_12') }}"></td>
                     <td id="tutorias12">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision12" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision12" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_12" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>m)</td>
                     <td>Sinodalía</td>
                     <td>Examen</td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias30_2">30</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_13"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_13') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_13" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_13') }}"></td>
                     <td id="tutorias13">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision13" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision13" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_13" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>n)</td>
                     <td>Sinodalía</td>
                     <td>Examen</td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias20_3">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_14"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_14') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_14" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_14') }}"></td>
                     <td id="tutorias14">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision14" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision14" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_14" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>o)</td>
                     <td>Sinodalía</td>
                     <td>Examen</td>
                     <td>TSU, Lic y especialidad</td>
                     <td id="puntajeTutorias15_3">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_15"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_15') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_15" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_15') }}"></td>
                     <td id="tutorias15">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision15" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision15" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_15" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>p)</td>
                     <td>Distinciones</td>
                     <td></td>
                     <td>Doctorado</td>
                     <td id="puntajeTutorias15_4">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_16"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_16') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_16" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_16') }}"></td>
                     <td id="tutorias16">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision16" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision16" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_16" type="text" placeholder="Comenta aqui"></td>
                 </tr>
+
                 <tr>
                     <td>q)</td>
                     <td>Distinciones</td>
                     <td></td>
                     <td>Maestría</td>
                     <td id="puntajeTutorias10_2">10</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_17"
-                            oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_17') }}"></td>
+                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_17" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_17') }}"></td>
                     <td id="tutorias17">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision17" placeholder="0"
-                            oninput="onActv3Comision3_9()">
-                    </td>
+                    <td class="td_obs"><input type="value" id="tutoriasComision17" placeholder="0" oninput="onActv3Comision3_9()"></td>
                     <td class="td_obs"><input class="table-header" id="obs3_9_17" type="text" placeholder="Comenta aqui"></td>
                 </tr>
-                <!--Tabla informativa Acreditacion Actividad 3.9-->
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                            <th class="descripcion"><b>DSE para pregrado, DIIP para posgrado</b>
-                            </th>
-                            <th><button id="btn3_9" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-                        </tr>
-                    </thead>
-                </table>
             </tbody>
+
         </table>
-    </form>
+
+        <!-- 📌 TABLA INFORMATIVA CORRECTAMENTE COLOCADA FUERA DEL tbody Y FUERA DEL TABLE PRINCIPAL -->
+        <table>
+            <thead>
+                <tr>
+                    <th class="acreditacion" scope="col">Acreditación:</th>
+                    <th class="descripcion"><b>DSE para pregrado, DIIP para posgrado</b></th>
+                    <th>
+                        <button id="btn3_9" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+                                </form>
+                            </div> 
+                            <div id="step11" style="display: none">
                                 <form id="form3_10" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store310', 'form3_10');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
                                     @csrf
-                                <!--3.10 Trabajos dirigidos para la titulación de estudiantes-->
-                                <h4>Puntaje máximo
-                                    <label class="bg-black text-white px-4 mt-3" for="">115</label>
-                                </h4>
-                                <table class="table table-sm tutorias">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" colspan=3>Actividad</th>
-                                            <th colspan="5" class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th id="seccion3_10" class="acreditacion" colspan=2>3.10 Tutorías a estudiantes</th>
-                                            <th colspan="6"></th>
-                                            <th id="score3_10">0</th>
-                                            <th id="comision3_10">0</th>
-
-                                        </tr>
-                                        <tr>
-                                            <th colspan="2"></th>
-                                            <th class="acreditacion">Puntaje</th>
-                                            <th class="text-center acreditacion form3_10Cantidad">Cantidad</th>
-                                            <th colspan="6"></th>
-                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                        <!--3.10 Trabajos dirigidos para la titulación de estudiantes-->
+                                    <h4>Puntaje máximo
+                                        <label class="bg-black text-white px-4 mt-3" for="">115</label>
+                                    </h4>
+                                    <table class="table table-sm tutorias">
                                         <thead>
                                             <tr>
-                                                <!--Tutorias a estudantes 3_10 individuales, grupales -->
-                                                <td>a)</td>
-                                                <td>Por alumno(a) por semestre, grupales</td>
-                                                <td id="puntajeGrupales">3</td>
-                                                <td class="td_docente_cantidad"><input type="number" id="grupalesCant" oninput="onActv3SubTotal3_10()"
-                                                        value="{{ oldValueOrDefault('grupalesCant') }}">
-                                                </td>
-                                                <td colspan="4"></td>
-
-                                                <td id="evaluarGrupales"></td>
-                                                <td class="td_obs"><input type="value" id="comisionGrupal" oninput="onActv3Comision3_10()"
-                                                        placeholder="0">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsGrupal"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>b)</td>
-                                                <td>Por alumno(a) por semestre, individuales</td>
-                                                <td id="puntajeIndividual">6</td>
-                                                <td class="td_docente_cantidad"><input type="number" id="individualCant" oninput="onActv3SubTotal3_10()"
-                                                        value="{{ oldValueOrDefault('individualCant') }}">
-                                                </td>
-                                                <td colspan="4"></td>
-                                                <td id="evaluarIndividual"></td>
-                                                <td class="td_obs"><input type="value" id="comisionIndividual" oninput="onActv3Comision3_10()"
-                                                        placeholder="0">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsIndividual"></td>
+                                                <th scope="col" colspan=3>Actividad</th>
+                                                <th colspan="5" class="table-ajust" scope="col"></th>
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                </th>
                                             </tr>
                                         </thead>
-                                        </tbody> 
-                                        </table>
-                                        <!--Tabla informativa Acreditacion Actividad 3.10-->
-                                        <table>
+                                        <thead>
+                                            <tr>
+                                                <th id="seccion3_10" class="acreditacion" colspan=2>3.10 Tutorías a estudiantes</th>
+                                                <th colspan="6"></th>
+                                                <th id="score3_10">0</th>
+                                                <th id="comision3_10">0</th>
+
+                                            </tr>
+                                            <tr>
+                                                <th colspan="2"></th>
+                                                <th class="acreditacion">Puntaje</th>
+                                                <th class="text-center acreditacion form3_10Cantidad">Cantidad</th>
+                                                <th colspan="6"></th>
+                                                <th class="text-center acreditacion" scope="col">Observaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                             <thead>
                                                 <tr>
-                                                    <th class="acreditacion" scope="col">Acreditacion: </th>
+                                                    <!--Tutorias a estudantes 3_10 individuales, grupales -->
+                                                    <td>a)</td>
+                                                    <td>Por alumno(a) por semestre, grupales</td>
+                                                    <td id="puntajeGrupales">3</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="grupalesCant" oninput="onActv3SubTotal3_10()"
+                                                            value="{{ oldValueOrDefault('grupalesCant') }}">
+                                                    </td>
+                                                    <td colspan="4"></td>
 
-                                                    <th class="descripcion"><b>DDIE</b> </th>
-
-                                                    <th><button id="btn3_10" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-
+                                                    <td id="evaluarGrupales"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionGrupal" oninput="onActv3Comision3_10()"
+                                                            placeholder="0">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsGrupal"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>b)</td>
+                                                    <td>Por alumno(a) por semestre, individuales</td>
+                                                    <td id="puntajeIndividual">6</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="individualCant" oninput="onActv3SubTotal3_10()"
+                                                            value="{{ oldValueOrDefault('individualCant') }}">
+                                                    </td>
+                                                    <td colspan="4"></td>
+                                                    <td id="evaluarIndividual"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionIndividual" oninput="onActv3Comision3_10()"
+                                                            placeholder="0">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsIndividual"></td>
                                                 </tr>
                                             </thead>
+                                            </tbody> 
+                                            </table>
+                                            <!--Tabla informativa Acreditacion Actividad 3.10-->
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                        </table>
+                                                        <th class="descripcion"><b>DDIE</b> </th>
+
+                                                        <th><button id="btn3_10" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
                                 </form>
+                            </div>   
+                            <div id="step12" style="display: none">  
                                 <form id="form3_11" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store311', 'form3_11');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
                                     @csrf
-                                <!--3.11 Trabajos dirigidos para la titulación de estudiantes-->
-                                <h4>Puntaje máximo
-                                    <label class="bg-black text-white px-4 mt-3" for="">95</label>
-                                </h4>
-                                <table class="table table-sm tutorias">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" colspan=3>Actividad</th>
-                                            <th colspan="6" class="table-ajust" scope="col"></th>
+                                    <!--3.11 Trabajos dirigidos para la titulación de estudiantes-->
+                                    <h4>Puntaje máximo
+                                        <label class="bg-black text-white px-4 mt-3" for="">95</label>
+                                    </h4>
+                                    <table class="table table-sm tutorias">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" colspan=3>Actividad</th>
+                                                <th colspan="6" class="table-ajust" scope="col"></th>
 
-                                            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th id="seccion3_11" class="acreditacion" colspan="9">3.11 Asesoría a estudiantes</th>
-                                            <th id="score3_11">0</th>
-                                            <th id="comision3_11">0</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th class="acreditacion">Incisos</th>
-                                            <th class="acreditacion">Documento</th>
-                                            <th class="acreditacion">Actividad</th>
-                                            <th class="acreditacion">Puntaje</th>
-                                            <th class="text-center acreditacion">Cantidad</th>
-                                            <th colspan="4"></th>
-                                            <th class="text-center acreditacion">Subtotal</th>
-                                            <th colspan="1"></th>
-                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--3_11 Asesoria a estudiantes incisos-->
-                                        <tr>
-                                            <td>a)</td>
-                                            <td>Asesorías académicas</td>
-                                            <td>Por alumno(a), por semestre</td>
-                                            <td id="academica">5</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantAsesoria"
-                                                    oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantAsesoria') }}"></td>
-                                            <td colspan="4"></td>
-                                            <td id="subtotalAsesoria"></td>
-                                            <td class="td_obs"><input type="value" id="comisionAsesoria" placeholder="0"
-                                                    oninput="onActv3Comision3_11()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsAsesoria"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>b)</td>
-                                            <td>Servicio social*</td>
-                                            <td>Por alumno(a), por semestre</td>
-                                            <td id="servicio">20</td>
-                                            <td class="td_docente_cantidad"><input type="number" placeholder="0" id="cantServicio"
-                                                    oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantServicio') }}"></td>
-                                            <td colspan="4"></td>
-                                            <td id="subtotalServicio"></td>
-                                            <td class="td_obs"><input type="value" id="comisionServicio" placeholder="0"
-                                                    oninput="onActv3Comision3_11()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsServicio"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>c)</td>
-                                            <td>Prácticas profesionales</td>
-                                            <td>Por alumno(a), por semestre</td>
-                                            <td id="practicas">20</td>
-                                            <td class="td_docente_cantidad"><input type="number" placeholder="0" id="cantPracticas"
-                                                    oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantPracticas') }}"></td>
-                                            <td colspan="4"></td>
-                                            <td id="subtotalPracticas"></td>
-                                            <td class="td_obs"><input type="value" id="comisionPracticas" placeholder="0"
-                                                    oninput="onActv3Comision3_11()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPracticas"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <th id="seccion3_11" class="acreditacion" colspan="9">3.11 Asesoría a estudiantes</th>
+                                                <th id="score3_11">0</th>
+                                                <th id="comision3_11">0</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <th class="acreditacion">Incisos</th>
+                                                <th class="acreditacion">Documento</th>
+                                                <th class="acreditacion">Actividad</th>
+                                                <th class="acreditacion">Puntaje</th>
+                                                <th class="text-center acreditacion">Cantidad</th>
+                                                <th colspan="4"></th>
+                                                <th class="text-center acreditacion">Subtotal</th>
+                                                <th colspan="1"></th>
+                                                <th class="text-center acreditacion" scope="col">Observaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--3_11 Asesoria a estudiantes incisos-->
+                                            <tr>
+                                                <td>a)</td>
+                                                <td>Asesorías académicas</td>
+                                                <td>Por alumno(a), por semestre</td>
+                                                <td id="academica">5</td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantAsesoria"
+                                                        oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantAsesoria') }}"></td>
+                                                <td colspan="4"></td>
+                                                <td id="subtotalAsesoria"></td>
+                                                <td class="td_obs"><input type="value" id="comisionAsesoria" placeholder="0"
+                                                        oninput="onActv3Comision3_11()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsAsesoria"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>b)</td>
+                                                <td>Servicio social*</td>
+                                                <td>Por alumno(a), por semestre</td>
+                                                <td id="servicio">20</td>
+                                                <td class="td_docente_cantidad"><input type="number" placeholder="0" id="cantServicio"
+                                                        oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantServicio') }}"></td>
+                                                <td colspan="4"></td>
+                                                <td id="subtotalServicio"></td>
+                                                <td class="td_obs"><input type="value" id="comisionServicio" placeholder="0"
+                                                        oninput="onActv3Comision3_11()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsServicio"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>c)</td>
+                                                <td>Prácticas profesionales</td>
+                                                <td>Por alumno(a), por semestre</td>
+                                                <td id="practicas">20</td>
+                                                <td class="td_docente_cantidad"><input type="number" placeholder="0" id="cantPracticas"
+                                                        oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantPracticas') }}"></td>
+                                                <td colspan="4"></td>
+                                                <td id="subtotalPracticas"></td>
+                                                <td class="td_obs"><input type="value" id="comisionPracticas" placeholder="0"
+                                                        oninput="onActv3Comision3_11()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPracticas"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                <!--Tabla informativa Acreditacion Actividad 3.11-->
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="acreditacion" scope="col">Acreditacion: </th>
+                                    <!--Tabla informativa Acreditacion Actividad 3.11-->
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                            <th class="descripcion"><b>JD, *DSEs</b> </th>
-                                            <th><button id="btn3_11" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                                <th class="descripcion"><b>JD, *DSEs</b> </th>
+                                                <th><button id="btn3_11" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                 </form>
-                                </tbody>
-                                </table>
-                        <form id="form3_12" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store312', 'form3_12');">
-                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                            <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                            <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                            @csrf
-                                <!--3.12 Trabajos dirigidos para la titulación de estudiantes-->
-                                <h4>Puntaje máximo
-                                    <label class="bg-black text-white px-4 mt-3" for="">150</label>
-                                </h4>
-                                <table class="table table-sm tutorias">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" colspan=3>Actividad</th>
-                                            <th colspan="5" class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th id="seccion3_12" class="acreditacion" colspan="8">3.12 Publicaciones de
-                                                investigación
-                                                relacionadas con el
-                                                contenido
-                                                de los PE que imparte el docente</th>
-                                            
-                                            <th id="score3_12">0</th>
-                                            <th id="comision3_12">0</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th class="acreditacion">Incisos</th>
-                                            <th class="acreditacion">Actividad</th>
-                                            <th class="acreditacion">Obra</th>
-                                            <th class="acreditacion">Nivel</th>
-                                            <th class="acreditacion">Puntaje</th>
-                                            <th class="text-center acreditacion">Cantidad</th>
-                                            <th colspan="2" ></th>
-                                            <th class="acreditacion">Subtotal</th>
-                                            <th colspan="1" ></th>
-                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--3_12 Publicaciones de investigación incisos-->
-                                        <tr>
-                                            <td>a)</td>
-                                            <td>Autor(a) o coautor(a) de libros, técnicos, científicos y humanísticos</td>
-                                            <td>--</td>
-                                            <td>--</td>
-                                            <td id="puntajeCientificos"><b>100</b> </td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantCientifico"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantCientifico') }}"></td>
-                                            <td colspan="2"></td>
-                                            <td id="subtotalCientificos"></td>
-                                            <td class="td_obs"><input type="value" id="comisionCientificos" placeholder="0"
-                                                    oninput="onActv3Comision3_12()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCientificos"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>b)</td>
-                                            <td>Autor(a) o coautor(a) de libros de divulgación</td>
-                                            <td>--</td>
-                                            <td>--</td>
-                                            <td id="puntajeDivulgacion"><b>50</b></td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantDivulgacion"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantDivulgacion') }}"></td>
-                                            <td colspan="2"></td>
-                                            <td id="subtotalDivulgacion"></td>
-                                            <td class="td_obs"><input type="value" id="comisionDivulgacion" placeholder="0"
-                                                    oninput="onActv3Comision3_12()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDivulgacion"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>c)</td>
-                                            <td>Traducción de libros</td>
-                                            <td>--</td>
-                                            <td>--</td>
-                                            <td id="puntajeTraduccion"><b>40</b></td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantTraduccion"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantTraduccion') }}"></td>
-                                            <td colspan="2"></td>
-                                            <td id="subtotalTraduccion"></td>
-                                            <td class="td_obs"><input type="value" id="comisionTraduccion" placeholder="0"
-                                                    oninput="onActv3Comision3_12()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsTraduccion"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>d)</td>
-                                            <td>Autor(a) o coautor(a) de artículos</td>
-                                            <td>Con Arbitraje</td>
-                                            <td>Internacional</td>
-                                            <td id="puntajeArbitrajeInt">60</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantArbitrajeInt"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantArbitrajeInt') }}">
-                                            </td>
-                                            <td colspan="2"></td>
-                                            <td id="subtotalArbitrajeInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionArbitrajeInt" placeholder="0"
-                                                    oninput="onActv3Comision3_12()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbitrajeInt"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>e)</td>
-                                            <td>Autor(a) o coautor(a) de artículos</td>
-                                            <td>Con Arbitraje</td>
-                                            <td>Nacional</td>
-                                            <td id="puntajeArbitrajeNac">30</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantArbitrajeNac"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantArbitrajeNac') }}">
-                                            </td>
-                                            <td colspan="2"></td>
-                                            <td id="subtotalArbitrajeNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionArbitrajeNac" placeholder="0"
-                                                    oninput="onActv3Comision3_12()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbitrajeNac"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>f)</td>
-                                            <td>Autor(a) o coautor(a) de artículos</td>
-                                            <td>Sin Arbitraje</td>
-                                            <td>Internacional</td>
-                                            <td id="puntajeSinInt">15</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantSinInt"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantSinInt') }}"></td>
-                                                <td colspan="2"></td>
-                                            <td id="subtotalSinInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionSinInt" placeholder="0"
-                                                    oninput="onActv3Comision3_12()"></td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsSinInt"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>g)</td>
-                                            <td>Autor(a) o coautor(a) de artículos</td>
-                                            <td>Sin Arbitraje</td>
-                                            <td>Nacional</td>
-                                            <td id="puntajeSinNac">10</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantSinNac"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantSinNac') }}"></td>
-                                                <td colspan="2"></td>
-                                            <td id="subtotalSinNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionSinNac" placeholder="0"
-                                                    oninput="onActv3Comision3_12()"></td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsSinNac"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>h)</td>
-                                            <td>Capítulo de libro especializado</td>
-                                            <td>Autor(a) o coautor (a) de capítulo de libro internacional o nacional</td>
-                                            <td>--</td>
-                                            <td id="puntajeAutor">25</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantAutor"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantAutor') }}"></td>
-                                                <td colspan="2"></td>
-                                            <td id="subtotalAutor"></td>
-                                            <td class="td_obs"><input type="value" id="comisionAutor" placeholder="0"
-                                                    oninput="onActv3Comision3_12()"></td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsAutor"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>i)</td>
-                                            <td>Capítulo de libro especializado</td>
-                                            <td>Editor(a) o coeditor(a) de libro</td>
-                                            <td>--</td>
-                                            <td id="puntajeEditor">25</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantEditor"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantEditor') }}"></td>
-                                                <td colspan="2"></td>
-                                            <td id="subtotalEditor"></td>
-                                            <td class="td_obs"><input type="value" id="comisionEditor" placeholder="0"
-                                                    oninput="onActv3Comision3_12()"></td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsEditor"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>j)</td>
-                                            <td>Sitio web</td>
-                                            <td>Diseño de sitio web</td>
-                                            <td>--</td>
-                                            <td id="puntajeWeb">20</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantWeb"
-                                                    oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantWeb') }}"></td>
-                                                <td colspan="2"></td>
-                                            <td id="subtotalWeb"></td>
-                                            <td class="td_obs"><input type="value" id="comisionWeb" placeholder="0"
-                                                    oninput="onActv3Comision3_12()"></td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsWeb"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <!--Tabla informativa Acreditacion Actividad 3.13-->
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="acreditacion" scope="col">Acreditacion: </th>
+                            </div> 
+                            <div id="step13" style="display: none">     
+                                <form id="form3_12" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store312', 'form3_12');">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                    @csrf
+                                        <!--3.12 Trabajos dirigidos para la titulación de estudiantes-->
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">150</label>
+                                        </h4>
+                                        <table class="table table-sm tutorias">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" colspan=3>Actividad</th>
+                                                    <th colspan="5" class="table-ajust" scope="col"></th>
+                                                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th id="seccion3_12" class="acreditacion" colspan="8">3.12 Publicaciones de
+                                                        investigación
+                                                        relacionadas con el
+                                                        contenido
+                                                        de los PE que imparte el docente</th>
+                                                    
+                                                    <th id="score3_12">0</th>
+                                                    <th id="comision3_12">0</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th class="acreditacion">Incisos</th>
+                                                    <th class="acreditacion">Actividad</th>
+                                                    <th class="acreditacion">Obra</th>
+                                                    <th class="acreditacion">Nivel</th>
+                                                    <th class="acreditacion">Puntaje</th>
+                                                    <th class="text-center acreditacion">Cantidad</th>
+                                                    <th colspan="2" ></th>
+                                                    <th class="acreditacion">Subtotal</th>
+                                                    <th colspan="1" ></th>
+                                                    <th class="text-center acreditacion" scope="col">Observaciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!--3_12 Publicaciones de investigación incisos-->
+                                                <tr>
+                                                    <td>a)</td>
+                                                    <td>Autor(a) o coautor(a) de libros, técnicos, científicos y humanísticos</td>
+                                                    <td>--</td>
+                                                    <td>--</td>
+                                                    <td id="puntajeCientificos"><b>100</b> </td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantCientifico"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantCientifico') }}"></td>
+                                                    <td colspan="2"></td>
+                                                    <td id="subtotalCientificos"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionCientificos" placeholder="0"
+                                                            oninput="onActv3Comision3_12()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCientificos"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>b)</td>
+                                                    <td>Autor(a) o coautor(a) de libros de divulgación</td>
+                                                    <td>--</td>
+                                                    <td>--</td>
+                                                    <td id="puntajeDivulgacion"><b>50</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantDivulgacion"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantDivulgacion') }}"></td>
+                                                    <td colspan="2"></td>
+                                                    <td id="subtotalDivulgacion"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionDivulgacion" placeholder="0"
+                                                            oninput="onActv3Comision3_12()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDivulgacion"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>c)</td>
+                                                    <td>Traducción de libros</td>
+                                                    <td>--</td>
+                                                    <td>--</td>
+                                                    <td id="puntajeTraduccion"><b>40</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantTraduccion"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantTraduccion') }}"></td>
+                                                    <td colspan="2"></td>
+                                                    <td id="subtotalTraduccion"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionTraduccion" placeholder="0"
+                                                            oninput="onActv3Comision3_12()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsTraduccion"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>d)</td>
+                                                    <td>Autor(a) o coautor(a) de artículos</td>
+                                                    <td>Con Arbitraje</td>
+                                                    <td>Internacional</td>
+                                                    <td id="puntajeArbitrajeInt">60</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantArbitrajeInt"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantArbitrajeInt') }}">
+                                                    </td>
+                                                    <td colspan="2"></td>
+                                                    <td id="subtotalArbitrajeInt"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionArbitrajeInt" placeholder="0"
+                                                            oninput="onActv3Comision3_12()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbitrajeInt"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>e)</td>
+                                                    <td>Autor(a) o coautor(a) de artículos</td>
+                                                    <td>Con Arbitraje</td>
+                                                    <td>Nacional</td>
+                                                    <td id="puntajeArbitrajeNac">30</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantArbitrajeNac"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantArbitrajeNac') }}">
+                                                    </td>
+                                                    <td colspan="2"></td>
+                                                    <td id="subtotalArbitrajeNac"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionArbitrajeNac" placeholder="0"
+                                                            oninput="onActv3Comision3_12()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbitrajeNac"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>f)</td>
+                                                    <td>Autor(a) o coautor(a) de artículos</td>
+                                                    <td>Sin Arbitraje</td>
+                                                    <td>Internacional</td>
+                                                    <td id="puntajeSinInt">15</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantSinInt"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantSinInt') }}"></td>
+                                                        <td colspan="2"></td>
+                                                    <td id="subtotalSinInt"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionSinInt" placeholder="0"
+                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsSinInt"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>g)</td>
+                                                    <td>Autor(a) o coautor(a) de artículos</td>
+                                                    <td>Sin Arbitraje</td>
+                                                    <td>Nacional</td>
+                                                    <td id="puntajeSinNac">10</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantSinNac"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantSinNac') }}"></td>
+                                                        <td colspan="2"></td>
+                                                    <td id="subtotalSinNac"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionSinNac" placeholder="0"
+                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsSinNac"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>h)</td>
+                                                    <td>Capítulo de libro especializado</td>
+                                                    <td>Autor(a) o coautor (a) de capítulo de libro internacional o nacional</td>
+                                                    <td>--</td>
+                                                    <td id="puntajeAutor">25</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantAutor"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantAutor') }}"></td>
+                                                        <td colspan="2"></td>
+                                                    <td id="subtotalAutor"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionAutor" placeholder="0"
+                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsAutor"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>i)</td>
+                                                    <td>Capítulo de libro especializado</td>
+                                                    <td>Editor(a) o coeditor(a) de libro</td>
+                                                    <td>--</td>
+                                                    <td id="puntajeEditor">25</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantEditor"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantEditor') }}"></td>
+                                                        <td colspan="2"></td>
+                                                    <td id="subtotalEditor"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionEditor" placeholder="0"
+                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsEditor"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>j)</td>
+                                                    <td>Sitio web</td>
+                                                    <td>Diseño de sitio web</td>
+                                                    <td>--</td>
+                                                    <td id="puntajeWeb">20</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantWeb"
+                                                            oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantWeb') }}"></td>
+                                                        <td colspan="2"></td>
+                                                    <td id="subtotalWeb"></td>
+                                                    <td class="td_obs"><input type="value" id="comisionWeb" placeholder="0"
+                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsWeb"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                                    <!--Tabla informativa Acreditacion Actividad 3.12-->
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                            <th class="descripcion"><b>Instancia que la otorga</b> </th>
-                                            <th><button id="btn3_12" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                                                <th class="descripcion"><b>Instancia que la otorga</b> </th>
+                                                                <th><button id="btn3_12" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
                                 </form>
+                            </div>
+                            <div id="step14" style="display: none">  
                                 <form id="form3_13" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store313', 'form3_13');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
                                     @csrf
-                                <!--3.13 Proyectos académicos de investigación-->
-                                <h4>Puntaje máximo
-                                    <label class="bg-black text-white px-4 mt-3" for="">130</label>
-                                </h4>
-                                <table class="table table-sm tutorias">
-                                    <thead>
+                                    <!--3.13 Proyectos académicos de investigación-->
+                                    <h4>Puntaje máximo
+                                        <label class="bg-black text-white px-4 mt-3" for="">130</label>
+                                    </h4>
+                                    <table class="table table-sm tutorias">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" colspan=3>Actividad</th>
+                                                <th colspan="4" class="table-ajust" scope="col"></th>
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                            </tr>
+                                        </thead>
                                         <tr>
-                                            <th scope="col" colspan=3>Actividad</th>
-                                            <th colspan="4" class="table-ajust" scope="col"></th>
-                                            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                            <th id="seccion3_13" class="acreditacion" colspan="7">3.13 Proyectos académicos de
+                                                investigación</th>
+                                            <th id="score3_13">0</th>
+                                            <th id="comision3_13">0</th>
+                                            
                                         </tr>
-                                    </thead>
-                                    <tr>
-                                        <th id="seccion3_13" class="acreditacion" colspan="7">3.13 Proyectos académicos de
-                                            investigación</th>
-                                        <th id="score3_13">0</th>
-                                        <th id="comision3_13">0</th>
-                                        
-                                    </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th class="acreditacion">Incisos</th>
-                                            <th class="acreditacion">Documento</th>
-                                            <th class="acreditacion">Puntaje</th>
-                                            <th class="text-center acreditacion">Cantidad</th>
-                                            <th colspan="3"></th>
-                                            <th class="acreditacion">Subtotal</th>
-                                            <th colspan="1"></th>
-                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--Incisos 3.13-->
-                                        <tr>
-                                            <td>a)</td>
-                                            <td>Inicio de proyecto de investigación con financiamiento externo</td>
-                                            <td id="puntajeInicioFinanExt">50</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantInicioFinanExt"
-                                                    oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantInicioFinanExt') }}">
-                                            </td>
-                                            <td colspan="3"></td>
-                                            <td id="subtotalInicioFinanExt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionInicioFinancimientoExt" placeholder="0"
-                                                    oninput="onActv3Comision3_13()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioFinancimientoExt"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>b)</td>
-                                            <td>Inicio de proyecto de investigación interno, aprobado por CAAC</td>
-                                            <td id="puntajeInicioInvInterno">25</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantInicioInvInterno"
-                                                    oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantInicioInvInterno') }}">
-                                            </td>
-                                            <td colspan="3"></td>
-                                            <td id="subtotalInicioInvInterno"></td>
-                                            <td class="td_obs"><input type="value" id="comisionInicioInvInterno" placeholder="0"
-                                                    oninput="onActv3Comision3_13()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioInvInterno"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>c)</td>
-                                            <td>Reporte cumplido del periodo anual del proyecto de investigación con
-                                                financiamiento externo
-                                            </td>
-                                            <td id="puntajeReporteFinanciamExt">100</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantReporteFinanciamExt"
-                                                    oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantReporteFinanciamExt') }}">
-                                            </td>
-                                            <td colspan="3"></td>
-                                            <td id="subtotalReporteFinanciamExt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionReporteFinanciamExt" placeholder="0"
-                                                    oninput="onActv3Comision3_13()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteFinanciamExt"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>d)</td>
-                                            <td>Reporte cumplido del periodo anual del proyecto de investigación interno,
-                                                aprobado por CAAC
-                                            </td>
-                                            <td id="puntajeReporteInvInt">50</td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantReporteInvInt"
-                                                    oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantReporteInvInt') }}">
-                                            </td>
-                                            <td colspan="3"></td>
-                                            <td id="subtotalReporteInvInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionReporteInvInt" placeholder="0"
-                                                    oninput="onActv3Comision3_13()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteInvInt"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <!--Tabla informativa Acreditacion Actividad 3.13-->
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="acreditacion" scope="col">Acreditacion: </th>
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <th class="acreditacion">Incisos</th>
+                                                <th class="acreditacion">Documento</th>
+                                                <th class="acreditacion">Puntaje</th>
+                                                <th class="text-center acreditacion">Cantidad</th>
+                                                <th colspan="3"></th>
+                                                <th class="acreditacion">Subtotal</th>
+                                                <th colspan="1"></th>
+                                                <th class="text-center acreditacion" scope="col">Observaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--Incisos 3.13-->
+                                            <tr>
+                                                <td>a)</td>
+                                                <td>Inicio de proyecto de investigación con financiamiento externo</td>
+                                                <td id="puntajeInicioFinanExt">50</td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantInicioFinanExt"
+                                                        oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantInicioFinanExt') }}">
+                                                </td>
+                                                <td colspan="3"></td>
+                                                <td id="subtotalInicioFinanExt"></td>
+                                                <td class="td_obs"><input type="value" id="comisionInicioFinancimientoExt" placeholder="0"
+                                                        oninput="onActv3Comision3_13()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioFinancimientoExt"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>b)</td>
+                                                <td>Inicio de proyecto de investigación interno, aprobado por CAAC</td>
+                                                <td id="puntajeInicioInvInterno">25</td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantInicioInvInterno"
+                                                        oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantInicioInvInterno') }}">
+                                                </td>
+                                                <td colspan="3"></td>
+                                                <td id="subtotalInicioInvInterno"></td>
+                                                <td class="td_obs"><input type="value" id="comisionInicioInvInterno" placeholder="0"
+                                                        oninput="onActv3Comision3_13()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioInvInterno"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>c)</td>
+                                                <td>Reporte cumplido del periodo anual del proyecto de investigación con
+                                                    financiamiento externo
+                                                </td>
+                                                <td id="puntajeReporteFinanciamExt">100</td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantReporteFinanciamExt"
+                                                        oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantReporteFinanciamExt') }}">
+                                                </td>
+                                                <td colspan="3"></td>
+                                                <td id="subtotalReporteFinanciamExt"></td>
+                                                <td class="td_obs"><input type="value" id="comisionReporteFinanciamExt" placeholder="0"
+                                                        oninput="onActv3Comision3_13()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteFinanciamExt"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>d)</td>
+                                                <td>Reporte cumplido del periodo anual del proyecto de investigación interno,
+                                                    aprobado por CAAC
+                                                </td>
+                                                <td id="puntajeReporteInvInt">50</td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantReporteInvInt"
+                                                        oninput="onActv3SubTotal3_13()" value="{{ oldValueOrDefault('cantReporteInvInt') }}">
+                                                </td>
+                                                <td colspan="3"></td>
+                                                <td id="subtotalReporteInvInt"></td>
+                                                <td class="td_obs"><input type="value" id="comisionReporteInvInt" placeholder="0"
+                                                        oninput="onActv3Comision3_13()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteInvInt"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--Tabla informativa Acreditacion Actividad 3.13-->
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                            <th class="descripcion"><b>CAAC, DIIP</b> </th>
+                                                <th class="descripcion"><b>CAAC, DIIP</b> </th>
 
-                                            <th><button id="btn3_13" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                                <th><button id="btn3_13" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                 </form>
+                            </div>   
+                            <div id="step15" style="display: none">  
                                 <form id="form3_14" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store314', 'form3_14');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
@@ -1850,6 +1821,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     </thead>
                                 </table>
                                 </form>
+                            </div>
+                            <div id="step16" style="display: none">  
                                 <form id="form3_15" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store315', 'form3_15');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
@@ -1936,7 +1909,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     </thead>
                                 </table> 
                                 </form>
-                                <br>
+                            </div>    
+                            <br>
+                            <div id="step17" style="display: none">  
                                 <form id="form3_16" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store316', 'form3_16');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
@@ -2100,135 +2075,138 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     </thead>
                                 </table> 
                                 </form>
-                                <br>
+                            </div>    
+                            <br>
+                            <div id="step18" style="display: none">  
                                 <form id="form3_17" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store317', 'form3_17');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                @csrf
-                                <!--3.17 Proyectos académicos de extensión y difusión-->
-                                <h4>Puntaje máximo
-                                    <label class="bg-black text-white px-4 mt-3" for="">50</label>
-                                </h4>
-                                <table class="table table-sm tutorias">
-                                    <thead>
-                                        <tr>
+                                        @csrf
+                                    <!--3.17 Proyectos académicos de extensión y difusión-->
+                                    <h4>Puntaje máximo
+                                        <label class="bg-black text-white px-4 mt-3" for="">50</label>
+                                    </h4>
+                                    <table class="table table-sm tutorias">
+                                        <thead>
+                                            <tr>
 
-                                            <th colspan="6" class="text-center">
-                                                <h3>Cuerpos Colegiados</h3>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" colspan=2>Actividad</th>
-                                            <th colspan="4" class="table-ajust" scope="col"></th>
+                                                <th colspan="6" class="text-center">
+                                                    <h3>Cuerpos Colegiados</h3>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" colspan=2>Actividad</th>
+                                                <th colspan="4" class="table-ajust" scope="col"></th>
 
-                                            <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                            <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                                        </tr>
-                                    </thead>
-                                    <thead>
-                                        <tr>
-                                            <th id="seccion3_17" class="acreditacion" colspan="5"> 3.17 Proyectos académicos de
-                                                extensión y
-                                                difusión</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                            </tr>
+                                        </thead>
+                                        <thead>
+                                            <tr>
+                                                <th id="seccion3_17" class="acreditacion" colspan="5"> 3.17 Proyectos académicos de
+                                                    extensión y
+                                                    difusión</th>
 
-                                            <th></th>
-                                            <th id="score3_17">0</th>
-                                            <th id="comision3_17">0</th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="3"></th>
-                                            <th class="acreditacion">Puntaje</th>
-                                            <th class="text-center acreditacion">Cantidad</th>
-                                            <th colspan="3"></th>
-                                            <th class="text-center acreditacion" scope="col">Observaciones</th>
+                                                <th></th>
+                                                <th id="score3_17">0</th>
+                                                <th id="comision3_17">0</th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3"></th>
+                                                <th class="acreditacion">Puntaje</th>
+                                                <th class="text-center acreditacion">Cantidad</th>
+                                                <th colspan="3"></th>
+                                                <th class="text-center acreditacion" scope="col">Observaciones</th>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>a)</td>
-                                            <td>Inicio de proyectos de extensión y difusión con financiamiento externo</td>
-                                            <td></td>
-                                            <td id="puntajeDifusionExt"><b>15</b></td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantDifusionExt" 
-                                                    oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantDifusionExt') }}">
-                                            </td>
-                                            <td></td>
-                                            <td id="subtotalDifusionExt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionDifusionExt" placeholder="0"
-                                                    oninput="onActv3Comision3_17()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionExt"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>b)</td>
-                                            <td>Inicio de proyectos de extensión y difusión internos, aprobados por CAAC
-                                            </td>
-                                            <td></td>
-                                            <td id="puntajeDifusionInt"><b>10</b></td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantDifusionInt" 
-                                                    oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantDifusionInt') }}">
-                                            </td>
-                                            <td></td>
-                                            <td id="subtotalDifusionInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionDifusionInt" placeholder="0"
-                                                    oninput="onActv3Comision3_17()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionInt"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>c)</td>
-                                            <td>Reporte cumplido del periodo anual de proyecto de extensión y difusión con
-                                                financiamiento
-                                                externo
-                                            </td>
-                                            <td></td>
-                                            <td id="puntajeRepDifusionExt"><b>35</b></td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantRepDifusionExt" 
-                                                    oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantRepDifusionExt') }}">
-                                            </td>
-                                            <td></td>
-                                            <td id="subtotalRepDifusionExt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionRepDifusionExt" placeholder="0"
-                                                    oninput="onActv3Comision3_17()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionExt"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>d)</td>
-                                            <td>Reporte cumplido del periodo anual de proyecto de extensión y difusión
-                                                internos, aprobados por
-                                                CAAC</td>
-                                            <td></td>
-                                            <td id="puntajeRepDifusionInt"><b>20</b></td>
-                                            <td class="td_docente_cantidad"><input type="number" id="cantRepDifusionInt" 
-                                                    oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantRepDifusionInt') }}">
-                                            </td>
-                                            <td></td>
-                                            <td id="subtotalRepDifusionInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionRepDifusionInt" placeholder="0"
-                                                    oninput="onActv3Comision3_17()">
-                                            </td>
-                                            <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionInt"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <!--Tabla informativa Acreditacion Actividad 3.17-->
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="acreditacion" scope="col">Acreditacion: </th>
-                                            <th class="descripcion"><b>CAAC, DDCEU</b></th>
-                                            <th><button id="btn3_17" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>a)</td>
+                                                <td>Inicio de proyectos de extensión y difusión con financiamiento externo</td>
+                                                <td></td>
+                                                <td id="puntajeDifusionExt"><b>15</b></td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantDifusionExt" 
+                                                        oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantDifusionExt') }}">
+                                                </td>
+                                                <td></td>
+                                                <td id="subtotalDifusionExt"></td>
+                                                <td class="td_obs"><input type="value" id="comisionDifusionExt" placeholder="0"
+                                                        oninput="onActv3Comision3_17()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionExt"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>b)</td>
+                                                <td>Inicio de proyectos de extensión y difusión internos, aprobados por CAAC
+                                                </td>
+                                                <td></td>
+                                                <td id="puntajeDifusionInt"><b>10</b></td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantDifusionInt" 
+                                                        oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantDifusionInt') }}">
+                                                </td>
+                                                <td></td>
+                                                <td id="subtotalDifusionInt"></td>
+                                                <td class="td_obs"><input type="value" id="comisionDifusionInt" placeholder="0"
+                                                        oninput="onActv3Comision3_17()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionInt"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>c)</td>
+                                                <td>Reporte cumplido del periodo anual de proyecto de extensión y difusión con
+                                                    financiamiento
+                                                    externo
+                                                </td>
+                                                <td></td>
+                                                <td id="puntajeRepDifusionExt"><b>35</b></td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantRepDifusionExt" 
+                                                        oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantRepDifusionExt') }}">
+                                                </td>
+                                                <td></td>
+                                                <td id="subtotalRepDifusionExt"></td>
+                                                <td class="td_obs"><input type="value" id="comisionRepDifusionExt" placeholder="0"
+                                                        oninput="onActv3Comision3_17()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionExt"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>d)</td>
+                                                <td>Reporte cumplido del periodo anual de proyecto de extensión y difusión
+                                                    internos, aprobados por
+                                                    CAAC</td>
+                                                <td></td>
+                                                <td id="puntajeRepDifusionInt"><b>20</b></td>
+                                                <td class="td_docente_cantidad"><input type="number" id="cantRepDifusionInt" 
+                                                        oninput="onActv3SubTotal3_17()" value="{{ oldValueOrDefault('cantRepDifusionInt') }}">
+                                                </td>
+                                                <td></td>
+                                                <td id="subtotalRepDifusionInt"></td>
+                                                <td class="td_obs"><input type="value" id="comisionRepDifusionInt" placeholder="0"
+                                                        oninput="onActv3Comision3_17()">
+                                                </td>
+                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionInt"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--Tabla informativa Acreditacion Actividad 3.17-->
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="acreditacion" scope="col">Acreditacion: </th>
+                                                <th class="descripcion"><b>CAAC, DDCEU</b></th>
+                                                <th><button id="btn3_17" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                 </form>
-                                <br>
-
+                            </div>
+                            <br>
+                            <div id="step19" style="display: none">  
                                 <form id="form3_18" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store318', 'form3_18');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
@@ -2482,626 +2460,629 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     </thead>
                                 </table>
                                 </form>
-                                <br>
+                            </div>    
+                            <br>
+                            <div id="step20" style="display: none">  
                                 <form id="form3_19" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store319', 'form3_19');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
 
-                                @csrf
-                                <!--3.19 Participación en cuerpos colegiados-->
-                                <h4>Puntaje máximo
-                                        <label class="bg-black text-white px-4 mt-3" for="">40</label>
-                                </h4>
-                                    <table class="table table-sm tutorias">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" colspan=2>Actividad</th>
-                                                <th colspan="5" class="table-ajust" scope="col"></th>
+                                    @csrf
+                                    <!--3.19 Participación en cuerpos colegiados-->
+                                    <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">40</label>
+                                    </h4>
+                                        <table class="table table-sm tutorias">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" colspan=2>Actividad</th>
+                                                    <th colspan="5" class="table-ajust" scope="col"></th>
 
-                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th id="seccion3_19" class="acreditacion" colspan="7"> 3.19 Participación en
-                                                    cuerpos colegiados
-                                                </th>
+                                                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th id="seccion3_19" class="acreditacion" colspan="7"> 3.19 Participación en
+                                                        cuerpos colegiados
+                                                    </th>
 
-                                                <th id="score3_19">0</th>
-                                                <th id="comision3_19">0</th>
-                                                
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th class="acreditacion">Incisos</th>
-                                                <th class="acreditacion" colspan="2" style="padding-left: 170px;">Actividad
-                                                </th>
-                                                
-                                                <th class="acreditacion">Nivel</th>
-                                                <th class="acreditacion">Puntaje</th>
-                                                <th class="acreditacion text-center">Cantidad</th>
-                                                <th></th>
-                                                <th class="acreditacion">Subtotal</th>
-                                                <th></th>
-                                                <th class="acreditacion" scope="col">Observaciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>a)</td>
-                                                <td>Representante del profesorado ante H. CGU</td>
-                                                <td></td>
-                                                <td>Titular o suplente</td>
-                                                <td id="puntajeCGUtitular"><b>20</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantCGUtitular" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCGUtitular') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalCGUtitular"></td>
-                                                <td class="td_obs"><input type="value" id="comCGUtitular" placeholder="0"
-                                                        oninput="onActv3Comision3_19()"></td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUtitular"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>b)</td>
-                                                <td>Representante del profesorado ante H. CGU</td>
-                                                <td></td>
-                                                <td>Participación como miembro de comisión especial</td>
-                                                <td id="puntajeCGUespecial"><b>15</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantCGUespecial" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCGUespecial') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalCGUespecial"></td>
-                                                <td class="td_obs"><input type="value" id="comCGUespecial" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUespecial"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>c)</td>
-                                                <td>Representante del profesorado ante H. CGU</td>
-                                                <td></td>
-                                                <td>Participación como miembro en comisión permanente</td>
-                                                <td id="puntajeCGUpermanente"><b>10</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantCGUpermanente" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCGUpermanente') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalCGUpermanente"></td>
-                                                <td class="td_obs"><input type="value" id="comCGUpermanente" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUpermanente"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>d)</td>
-                                                <td>Representante del profesorado ante CAAC</td>
-                                                <td></td>
-                                                <td>Titular o suplente</td>
-                                                <td id="puntajeCAACtitular"><b>10</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantCAACtitular" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCAACtitular') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalCAACtitular"></td>
-                                                <td class="td_obs"><input type="value" id="comCAACtitular" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCAACtitular"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>e)</td>
-                                                <td>Representante del profesorado ante CAAC</td>
-                                                <td></td>
-                                                <td>Participación como integrante de comisión</td>
-                                                <td id="puntajeCAACintegCom"><b>5</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantCAACintegCom" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCAACintegCom') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalCAACintegCom"></td>
-                                                <td class="td_obs"><input type="value" id="comCAACintegCom" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCAACintegCom"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>f)</td>
-                                                <td>Comisiones</td>
-                                                <td></td>
-                                                <td>Departamentales</td>
-                                                <td id="puntajeComDepart"><b>15</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantComDepart" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantComDepart') }}"></td>
-                                                <td></td>
-                                                <td id="subtotalComDepart"></td>
-                                                <td class="td_obs"><input type="value" id="comComDepart" placeholder="0"
-                                                        oninput="onActv3Comision3_19()"></td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComDepart"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>g)</td>
-                                                <td>Comisiones</td>
-                                                <td></td>
-                                                <td>Dictaminadora del PEDPD</td>
-                                                <td id="puntajeComPEDPD"><b>15</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantComPEDPD"
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantComPEDPD') }}"></td>
-                                                <td></td>
-                                                <td id="subtotalComPEDPD"></td>
-                                                <td class="td_obs"><input type="value" id="comComPEDPD" placeholder="0"
-                                                        oninput="onActv3Comision3_19()"></td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComPEDPD"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>h)</td>
-                                                <td>Comisiones</td>
-                                                <td></td>
-                                                <td>Participación como integrante del Comité Académico de Posgrado</td>
-                                                <td id="puntajeComPartPos"><b>5</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantComPartPos" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantComPartPos') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalComPartPos"></td>
-                                                <td class="td_obs"><input type="value" id="comComPartPos" placeholder="0"
-                                                        oninput="onActv3Comision3_19()"></td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComPartPos"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>i)</td>
-                                                <td>Responsable</td>
-                                                <td></td>
-                                                <td>De posgrado</td>
-                                                <td id="puntajeRespPos"><b>25</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantRespPos" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespPos') }}"></td>
-                                                <td></td>
-                                                <td id="subtotalRespPos"></td>
-                                                <td class="td_obs"><input type="value" id="comRespPos" placeholder="0"
-                                                        oninput="onActv3Comision3_19()"></td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespPos"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>j)</td>
-                                                <td>Responsable</td>
-                                                <td></td>
-                                                <td>De carrera</td>
-                                                <td id="puntajeRespCarrera"><b>15</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantRespCarrera" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespCarrera') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalRespCarrera"></td>
-                                                <td class="td_obs"><input type="value" id="comRespCarrera" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespCarrera"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>k)</td>
-                                                <td>Responsable</td>
-                                                <td></td>
-                                                <td>De unidad de producción</td>
-                                                <td id="puntajeRespProd"><b>20</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantRespProd" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespProd') }}"></td>
-                                                <td></td>
-                                                <td id="subtotalRespProd"></td>
-                                                <td class="td_obs"><input type="value" id="comRespProd" placeholder="0"
-                                                        oninput="onActv3Comision3_19()"></td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespProd"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>l)</td>
-                                                <td>Responsable</td>
-                                                <td></td>
-                                                <td>De laboratorio de docencia e investigación</td>
-                                                <td id="puntajeRespLab"><b>15</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantRespLab" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespLab') }}"></td>
-                                                <td></td>
-                                                <td id="subtotalRespLab"></td>
-                                                <td class="td_obs"><input type="value" id="comRespLab" placeholder="0"
-                                                        oninput="onActv3Comision3_19()"></td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespLab"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>m)</td>
-                                                <td>Sinodalías de examen de oposición</td>
-                                                <td></td>
-                                                <td>Profesorado</td>
-                                                <td id="puntajeExamProf"><b>15</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantExamProf" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantExamProf') }}"></td>
-                                                <td></td>
-                                                <td id="subtotalExamProf"></td>
-                                                <td class="td_obs"><input type="value" id="comExamProf" placeholder="0"
-                                                        oninput="onActv3Comision3_19()"></td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsExamProf"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>n)</td>
-                                                <td>Sinodalías de examen de oposición</td>
-                                                <td></td>
-                                                <td>Ayudantes académicos</td>
-                                                <td id="puntajeExamAcademicos"><b>5</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantExamAcademicos" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantExamAcademicos') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalExamAcademicos"></td>
-                                                <td class="td_obs"><input type="value" id="comExamAcademicos" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsExamAcademicos"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>o1)</td>
-                                                <td>Cuerpo académico registrado ante PRODEP</td>
-                                                <td>En formación</td>
-                                                <td>Responsable</td>
-                                                <td id="puntajePRODEPformResp"><b>15</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantPRODEPformResp" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPformResp') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalPRODEPformResp"></td>
-                                                <td class="td_obs"><input type="value" id="comPRODEPformResp" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPformResp"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>o2)</td>
-                                                <td>Cuerpo académico registrado ante PRODEP</td>
-                                                <td>En formación</td>
-                                                <td>Integrante</td>
-                                                <td id="puntajePRODEPformInteg"><b>10</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantPRODEPformInteg" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPformInteg') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalPRODEPformInteg"></td>
-                                                <td class="td_obs"><input type="value" id="comPRODEPformInteg" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPformInteg"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>p1)</td>
-                                                <td>Cuerpo académico registrado ante PRODEP</td>
-                                                <td>En consolidación</td>
-                                                <td>Responsable</td>
-                                                <td id="puntajePRODEPenconsResp"><b>25</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantPRODEPenconsResp"
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPenconsResp') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalPRODEPenconsResp"></td>
-                                                <td class="td_obs"><input type="value" id="comPRODEPenconsResp" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPenconsResp"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>p2)</td>
-                                                <td>Cuerpo académico registrado ante PRODEP</td>
-                                                <td>En consolidación</td>
-                                                <td>Integrante</td>
-                                                <td id="puntajePRODEPenconsInteg"><b>15</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantPRODEPenconsInteg" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPenconsInteg') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalPRODEPenconsInteg"></td>
-                                                <td class="td_obs"><input type="value" id="comPRODEPenconsInteg" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPenconsInteg"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>q1)</td>
-                                                <td>Cuerpo académico registrado ante PRODEP</td>
-                                                <td>Consolidado</td>
-                                                <td>Responsable</td>
-                                                <td id="puntajePRODEPconsResp"><b>35</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantPRODEPconsResp" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPconsResp') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalPRODEPconsResp"></td>
-                                                <td class="td_obs"><input type="value" id="comPRODEPconsResp" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPconsResp"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>q2)</td>
-                                                <td>Cuerpo académico registrado ante PRODEP</td>
-                                                <td>Consolidado</td>
-                                                <td>Integrante</td>
-                                                <td id="puntajePRODEPconsInteg"><b>25</b></td>
-                                                <td class="td_docente_cantidad"><input type="number" id="cantPRODEPconsInteg" 
-                                                        oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPconsInteg') }}">
-                                                </td>
-                                                <td></td>
-                                                <td id="subtotalPRODEPconsInteg"></td>
-                                                <td class="td_obs"><input type="value" id="comPRODEPconsInteg" placeholder="0"
-                                                        oninput="onActv3Comision3_19()">
-                                                </td>
-                                                <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPconsInteg"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <!--Tabla informativa Acreditacion Actividad 3.19-->
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="acreditacion" scope="col" colspan=2> **Coparticipación técnica
-                                                    y/o académica y/o
-                                                    financiera de institución extranjera</th>
-                                                <th class="acreditacion" style="padding-left: 100px;">Acreditacion:</th>
-                                                <th class="descripcion"><b>Institución que lo solicite, SG, CA, JD, DGAA</b></th>
+                                                    <th id="score3_19">0</th>
+                                                    <th id="comision3_19">0</th>
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th class="acreditacion">Incisos</th>
+                                                    <th class="acreditacion" colspan="2" style="padding-left: 170px;">Actividad
+                                                    </th>
+                                                    
+                                                    <th class="acreditacion">Nivel</th>
+                                                    <th class="acreditacion">Puntaje</th>
+                                                    <th class="acreditacion text-center">Cantidad</th>
+                                                    <th></th>
+                                                    <th class="acreditacion">Subtotal</th>
+                                                    <th></th>
+                                                    <th class="acreditacion" scope="col">Observaciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>a)</td>
+                                                    <td>Representante del profesorado ante H. CGU</td>
+                                                    <td></td>
+                                                    <td>Titular o suplente</td>
+                                                    <td id="puntajeCGUtitular"><b>20</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantCGUtitular" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCGUtitular') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalCGUtitular"></td>
+                                                    <td class="td_obs"><input type="value" id="comCGUtitular" placeholder="0"
+                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUtitular"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>b)</td>
+                                                    <td>Representante del profesorado ante H. CGU</td>
+                                                    <td></td>
+                                                    <td>Participación como miembro de comisión especial</td>
+                                                    <td id="puntajeCGUespecial"><b>15</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantCGUespecial" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCGUespecial') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalCGUespecial"></td>
+                                                    <td class="td_obs"><input type="value" id="comCGUespecial" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUespecial"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>c)</td>
+                                                    <td>Representante del profesorado ante H. CGU</td>
+                                                    <td></td>
+                                                    <td>Participación como miembro en comisión permanente</td>
+                                                    <td id="puntajeCGUpermanente"><b>10</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantCGUpermanente" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCGUpermanente') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalCGUpermanente"></td>
+                                                    <td class="td_obs"><input type="value" id="comCGUpermanente" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUpermanente"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>d)</td>
+                                                    <td>Representante del profesorado ante CAAC</td>
+                                                    <td></td>
+                                                    <td>Titular o suplente</td>
+                                                    <td id="puntajeCAACtitular"><b>10</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantCAACtitular" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCAACtitular') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalCAACtitular"></td>
+                                                    <td class="td_obs"><input type="value" id="comCAACtitular" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCAACtitular"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>e)</td>
+                                                    <td>Representante del profesorado ante CAAC</td>
+                                                    <td></td>
+                                                    <td>Participación como integrante de comisión</td>
+                                                    <td id="puntajeCAACintegCom"><b>5</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantCAACintegCom" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantCAACintegCom') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalCAACintegCom"></td>
+                                                    <td class="td_obs"><input type="value" id="comCAACintegCom" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCAACintegCom"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>f)</td>
+                                                    <td>Comisiones</td>
+                                                    <td></td>
+                                                    <td>Departamentales</td>
+                                                    <td id="puntajeComDepart"><b>15</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantComDepart" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantComDepart') }}"></td>
+                                                    <td></td>
+                                                    <td id="subtotalComDepart"></td>
+                                                    <td class="td_obs"><input type="value" id="comComDepart" placeholder="0"
+                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComDepart"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>g)</td>
+                                                    <td>Comisiones</td>
+                                                    <td></td>
+                                                    <td>Dictaminadora del PEDPD</td>
+                                                    <td id="puntajeComPEDPD"><b>15</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantComPEDPD"
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantComPEDPD') }}"></td>
+                                                    <td></td>
+                                                    <td id="subtotalComPEDPD"></td>
+                                                    <td class="td_obs"><input type="value" id="comComPEDPD" placeholder="0"
+                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComPEDPD"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>h)</td>
+                                                    <td>Comisiones</td>
+                                                    <td></td>
+                                                    <td>Participación como integrante del Comité Académico de Posgrado</td>
+                                                    <td id="puntajeComPartPos"><b>5</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantComPartPos" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantComPartPos') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalComPartPos"></td>
+                                                    <td class="td_obs"><input type="value" id="comComPartPos" placeholder="0"
+                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComPartPos"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>i)</td>
+                                                    <td>Responsable</td>
+                                                    <td></td>
+                                                    <td>De posgrado</td>
+                                                    <td id="puntajeRespPos"><b>25</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantRespPos" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespPos') }}"></td>
+                                                    <td></td>
+                                                    <td id="subtotalRespPos"></td>
+                                                    <td class="td_obs"><input type="value" id="comRespPos" placeholder="0"
+                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespPos"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>j)</td>
+                                                    <td>Responsable</td>
+                                                    <td></td>
+                                                    <td>De carrera</td>
+                                                    <td id="puntajeRespCarrera"><b>15</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantRespCarrera" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespCarrera') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalRespCarrera"></td>
+                                                    <td class="td_obs"><input type="value" id="comRespCarrera" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespCarrera"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>k)</td>
+                                                    <td>Responsable</td>
+                                                    <td></td>
+                                                    <td>De unidad de producción</td>
+                                                    <td id="puntajeRespProd"><b>20</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantRespProd" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespProd') }}"></td>
+                                                    <td></td>
+                                                    <td id="subtotalRespProd"></td>
+                                                    <td class="td_obs"><input type="value" id="comRespProd" placeholder="0"
+                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespProd"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>l)</td>
+                                                    <td>Responsable</td>
+                                                    <td></td>
+                                                    <td>De laboratorio de docencia e investigación</td>
+                                                    <td id="puntajeRespLab"><b>15</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantRespLab" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespLab') }}"></td>
+                                                    <td></td>
+                                                    <td id="subtotalRespLab"></td>
+                                                    <td class="td_obs"><input type="value" id="comRespLab" placeholder="0"
+                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespLab"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>m)</td>
+                                                    <td>Sinodalías de examen de oposición</td>
+                                                    <td></td>
+                                                    <td>Profesorado</td>
+                                                    <td id="puntajeExamProf"><b>15</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantExamProf" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantExamProf') }}"></td>
+                                                    <td></td>
+                                                    <td id="subtotalExamProf"></td>
+                                                    <td class="td_obs"><input type="value" id="comExamProf" placeholder="0"
+                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsExamProf"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>n)</td>
+                                                    <td>Sinodalías de examen de oposición</td>
+                                                    <td></td>
+                                                    <td>Ayudantes académicos</td>
+                                                    <td id="puntajeExamAcademicos"><b>5</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantExamAcademicos" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantExamAcademicos') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalExamAcademicos"></td>
+                                                    <td class="td_obs"><input type="value" id="comExamAcademicos" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsExamAcademicos"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>o1)</td>
+                                                    <td>Cuerpo académico registrado ante PRODEP</td>
+                                                    <td>En formación</td>
+                                                    <td>Responsable</td>
+                                                    <td id="puntajePRODEPformResp"><b>15</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantPRODEPformResp" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPformResp') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalPRODEPformResp"></td>
+                                                    <td class="td_obs"><input type="value" id="comPRODEPformResp" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPformResp"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>o2)</td>
+                                                    <td>Cuerpo académico registrado ante PRODEP</td>
+                                                    <td>En formación</td>
+                                                    <td>Integrante</td>
+                                                    <td id="puntajePRODEPformInteg"><b>10</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantPRODEPformInteg" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPformInteg') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalPRODEPformInteg"></td>
+                                                    <td class="td_obs"><input type="value" id="comPRODEPformInteg" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPformInteg"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>p1)</td>
+                                                    <td>Cuerpo académico registrado ante PRODEP</td>
+                                                    <td>En consolidación</td>
+                                                    <td>Responsable</td>
+                                                    <td id="puntajePRODEPenconsResp"><b>25</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantPRODEPenconsResp"
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPenconsResp') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalPRODEPenconsResp"></td>
+                                                    <td class="td_obs"><input type="value" id="comPRODEPenconsResp" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPenconsResp"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>p2)</td>
+                                                    <td>Cuerpo académico registrado ante PRODEP</td>
+                                                    <td>En consolidación</td>
+                                                    <td>Integrante</td>
+                                                    <td id="puntajePRODEPenconsInteg"><b>15</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantPRODEPenconsInteg" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPenconsInteg') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalPRODEPenconsInteg"></td>
+                                                    <td class="td_obs"><input type="value" id="comPRODEPenconsInteg" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPenconsInteg"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>q1)</td>
+                                                    <td>Cuerpo académico registrado ante PRODEP</td>
+                                                    <td>Consolidado</td>
+                                                    <td>Responsable</td>
+                                                    <td id="puntajePRODEPconsResp"><b>35</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantPRODEPconsResp" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPconsResp') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalPRODEPconsResp"></td>
+                                                    <td class="td_obs"><input type="value" id="comPRODEPconsResp" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPconsResp"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>q2)</td>
+                                                    <td>Cuerpo académico registrado ante PRODEP</td>
+                                                    <td>Consolidado</td>
+                                                    <td>Integrante</td>
+                                                    <td id="puntajePRODEPconsInteg"><b>25</b></td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="cantPRODEPconsInteg" 
+                                                            oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantPRODEPconsInteg') }}">
+                                                    </td>
+                                                    <td></td>
+                                                    <td id="subtotalPRODEPconsInteg"></td>
+                                                    <td class="td_obs"><input type="value" id="comPRODEPconsInteg" placeholder="0"
+                                                            oninput="onActv3Comision3_19()">
+                                                    </td>
+                                                    <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPconsInteg"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--Tabla informativa Acreditacion Actividad 3.19-->
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="acreditacion" scope="col" colspan=2> **Coparticipación técnica
+                                                        y/o académica y/o
+                                                        financiera de institución extranjera</th>
+                                                    <th class="acreditacion" style="padding-left: 100px;">Acreditacion:</th>
+                                                    <th class="descripcion"><b>Institución que lo solicite, SG, CA, JD, DGAA</b></th>
 
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                    <button id="btn3_19" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
-                                    </form>
-                                    <br>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <button id="btn3_19" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+                                </form>
+                            </div>        
+                            <br>
 
-                                    </main>
+</main>
 
-                                    <footer>
-                                        <p class="text-center">Convocatoria actual: {{ $convocatoria ?? 'No asignada' }}</p>
-                                        <p class="text-center">Periodo: {{ $periodo ?? 'Sin definir' }}</p>
-                                        @component('components.pie-pag', ['number' => '2'])@endcomponent
-                                    </footer>
+<footer>
+    <p class="text-center">Convocatoria actual: {{ $convocatoria ?? 'No asignada' }}</p>
+    <p class="text-center">Periodo: {{ $periodo ?? 'Sin definir' }}</p>
+    @component('components.pie-pag', ['number' => '2'])@endcomponent
+</footer>
                     </div>
                 </div>
             </div>
+@endif
+<script>
 
-            <script>
+const placeholderObs = "Escribe tu comentario aquí";
 
-                const placeholderObs = "Escribe tu comentario aquí";
+const A40 = 6.25;
+const B56 = 17;
+const B57 = 50;
+const variables = {};
+const variablesMultiplicadas = {};
 
-                const A40 = 6.25;
-                const B56 = 17;
-                const B57 = 50;
-                const variables = {};
-                const variablesMultiplicadas = {};
+for (let i = 40; i <= 55; i++) {
+    variables[`B${i}`] = i - 39;
+    variablesMultiplicadas[`C${i}`] = A40 * variables[`B${i}`]; // Calculate and store in variablesMultiplicated object
+}
 
-                for (let i = 40; i <= 55; i++) {
-                    variables[`B${i}`] = i - 39;
-                    variablesMultiplicadas[`C${i}`] = A40 * variables[`B${i}`]; // Calculate and store in variablesMultiplicated object
-                }
+const C56 = B56 * A40;
+const C57 = B57 * A40;
+console.log(variablesMultiplicadas);
+const elaboracion = document.getElementById('elaboracion').value;
 
-                const C56 = B56 * A40;
-                const C57 = B57 * A40;
-                console.log(variablesMultiplicadas);
-                const elaboracion = document.getElementById('elaboracion').value;
-
-                const rc1 = document.getElementById('rc1').value;
-                const rc2 = document.getElementById('rc2').value;
-                const rc3 = document.getElementById('rc3').value;
-                const rc4 = document.getElementById('rc4').value;
-                const comisionIncisoA = document.getElementById('comisionIncisoA').value;
-                const comisionIncisoB = document.getElementById('comisionIncisoB').value;
-                const comisionIncisoC = document.getElementById('comisionIncisoC').value;
-                const comisionIncisoD = document.getElementById('comisionIncisoD').value;
-                const obs3_10 = ['obsGrupal', 'obsIndividual'];
-                const obs3_11 = ['obsAsesoria', 'obsServicio', 'obsPracticas'];
-                const obs3_12 = ['obsCientificos', 'obsDivulgacion', 'obsTraduccion', 'obsArbitrajeInt', 'obsArbitrajeNac', 'obsSinInt', 'obsSinNac', 'obsAutor', 'obsEditor', 'obsWeb'];
-                const obs3_13 = ['obsInicioFinancimientoExt', 'obsInicioInvInterno', 'obsReporteFinanciamExt', 'obsReporteInvInt'];
-                const obs3_14 = ['obsCongresoInt', 'obsCongresoNac', 'obsCongresoLoc'];
-                const obs3_15 = ['obsPatentes', 'obsPrototipos'];
-                const obs3_16 = ['obsArbInt', 'obsArbNac', 'obsPubInt', 'obsPubNac', 'obsRevInt', 'obsRevNac', 'obsRevista'];
-                const obs3_17 = ['obsDifusionExt', 'obsDifusionInt', 'obsRepDifusionExt', 'obsRepDifusionInt'];
-                const obs3_18 = ['obsComOrgInt', 'obsComOrgNac', 'obsComOrgReg',
-                    'obsComApoyoInt', 'obsComApoyoNac', 'obsComApoyoReg', 'obsCicloComOrgInt', 'obsCicloComOrgNac', 'obsCicloComOrgReg', 'obsCicloComApoyoInt', 'obsCicloComApoyoNac', 'obsCicloComApoyoReg'];
-                const obs3_19 = ['obsCGUtitular', 'obsCGUespecial',
-                    'obsCGUpermanente', 'obsCAACtitular', 'obsCAACintegCom', 'obsComDepart', 'obsComPEDPD',
-                    'obsComPartPos', 'obsRespPos', 'obsRespCarrera', 'obsRespProd', 'obsRespLab', 'obsExamProf',
-                    'obsExamAcademicos', 'obsPRODEPformResp', 'obsPRODEPformInteg', 'obsPRODEPenconsResp',
-                    'obsPRODEPenconsInteg', 'obsPRODEPconsResp', 'obsPRODEPconsInteg'
-                ];
-
-
-                let dataDocentes = {
-
-                    elaboracion: elaboracion,
-                    cant1: cant1,
-                    cant2: cant2,
-                    cant3: cant3,
-                    rc1: rc1,
-                    rc2: rc2,
-                    rc3: rc3,
-                    rc4: rc4,
-                    comisionIncisoA: comisionIncisoA,
-                    comisionIncisoB: comisionIncisoB,
-                    comisionIncisoC: comisionIncisoC,
-                    comisionIncisoD: comisionIncisoD,
-                    score3_1: score3_1,
-                    score3_2: score3_2,
-                    comision3_2: comision3_2,
-                    score3_3: score3_3,
-                    comision3_3: comision3_3,
-                    score3_4: score3_4,
-                    comision3_4: comision3_4,
-                    score3_5: score3_5,
-                    comision3_5: comision3_5,
-                    score3_6: score3_6,
-                    comision3_6: comision3_6,
-                    score3_8: score3_8,
-                    comision3_8: comision3_8,
-                    score3_8_1: score3_8_1,
-                    comision3_8_1: comision3_8_1,
-                    score3_9: score3_9,
-                    comision3_9: comision3_9,
-                    score3_10: score3_10,
-                    comision3_10: comision3_10,
-                    score3_11: score3_11,
-                    comision3_11: comision3_11,
-                    score3_12: score3_12,
-                    comision3_12: comision3_12,
-                    score3_13: score3_13,
-                    comision3_13: comision3_13,
-                    score3_14: score3_14,
-                    comision3_14: comision3_14,
-                    score3_15: score3_15,
-                    comision3_15: comision3_15,
-                    score3_16: score3_16,
-                    comision3_16: comision3_16,
-                    score3_17: score3_17,
-                    comision3_17: comision3_17,
-                    score3_18: score3_18,
-                    comision3_18: comision3_18,
-                    score3_19: score3_19,
-                    comision3_19: comision3_19,
-                    docencia: docencia,
-                    obs3_1_1: obs3_1_1,
-                    obs3_1_2: obs3_1_2,
-                    obs3_1_3: obs3_1_3,
-                    obs3_1_4: obs3_1_4,
-                    obs3_1_5: obs3_1_5,
-                    obs3_2_1: obs3_2_1,
-                    obs3_2_2: obs3_2_2,
-                    obs3_2_3: obs3_2_3,
+const rc1 = document.getElementById('rc1').value;
+const rc2 = document.getElementById('rc2').value;
+const rc3 = document.getElementById('rc3').value;
+const rc4 = document.getElementById('rc4').value;
+const comisionIncisoA = document.getElementById('comisionIncisoA').value;
+const comisionIncisoB = document.getElementById('comisionIncisoB').value;
+const comisionIncisoC = document.getElementById('comisionIncisoC').value;
+const comisionIncisoD = document.getElementById('comisionIncisoD').value;
+const obs3_10 = ['obsGrupal', 'obsIndividual'];
+const obs3_11 = ['obsAsesoria', 'obsServicio', 'obsPracticas'];
+const obs3_12 = ['obsCientificos', 'obsDivulgacion', 'obsTraduccion', 'obsArbitrajeInt', 'obsArbitrajeNac', 'obsSinInt', 'obsSinNac', 'obsAutor', 'obsEditor', 'obsWeb'];
+const obs3_13 = ['obsInicioFinancimientoExt', 'obsInicioInvInterno', 'obsReporteFinanciamExt', 'obsReporteInvInt'];
+const obs3_14 = ['obsCongresoInt', 'obsCongresoNac', 'obsCongresoLoc'];
+const obs3_15 = ['obsPatentes', 'obsPrototipos'];
+const obs3_16 = ['obsArbInt', 'obsArbNac', 'obsPubInt', 'obsPubNac', 'obsRevInt', 'obsRevNac', 'obsRevista'];
+const obs3_17 = ['obsDifusionExt', 'obsDifusionInt', 'obsRepDifusionExt', 'obsRepDifusionInt'];
+const obs3_18 = ['obsComOrgInt', 'obsComOrgNac', 'obsComOrgReg',
+    'obsComApoyoInt', 'obsComApoyoNac', 'obsComApoyoReg', 'obsCicloComOrgInt', 'obsCicloComOrgNac', 'obsCicloComOrgReg', 'obsCicloComApoyoInt', 'obsCicloComApoyoNac', 'obsCicloComApoyoReg'];
+const obs3_19 = ['obsCGUtitular', 'obsCGUespecial',
+    'obsCGUpermanente', 'obsCAACtitular', 'obsCAACintegCom', 'obsComDepart', 'obsComPEDPD',
+    'obsComPartPos', 'obsRespPos', 'obsRespCarrera', 'obsRespProd', 'obsRespLab', 'obsExamProf',
+    'obsExamAcademicos', 'obsPRODEPformResp', 'obsPRODEPformInteg', 'obsPRODEPenconsResp',
+    'obsPRODEPenconsInteg', 'obsPRODEPconsResp', 'obsPRODEPconsInteg'
+];
 
 
-                };
+let dataDocentes = {
 
-                const dse = document.querySelector("#DSE");
-                const puntajeAEvaluarPosgrado = document.querySelector("#horasPosgrado");
-
-                const dse2 = document.querySelector("#DSE2");
-                const puntajeAEvaluarSemestre = document.querySelector("#horasSemestre");
-                const puntajePosgrado = 0, puntajeSemestre = 0, dsePosgrado = "", dseSemestre = "";
-                function onload() {
-                    // Setup some event handlers. 
-                    var buttons = document.getElementsByClassName('button');
-                    for (var i = 0; i < buttons.length; i++) { buttons[i].addEventListener('click', handleClick); }
-
-                }
-
-                function handleClick(event) {
-                    var currentTarget = event.currentTarget;
-                    // Use the event data here. 
-                    console.log('Button clicked: ' + currentTarget.getAttribute('data-id'));
-                } document.addEventListener('DOMContentLoaded', onload);
-
-
-                function hayObservacion(indiceActividad) {
-                    var selectEscala = document.getElementById('selectEscala' + indiceActividad);
-                    var selectActividad = document.getElementById('selectActividad' + indiceActividad);
-                    var inputObservacion = document.getElementById('observacion' + indiceActividad);
-                    var mensajeObservacion = document.getElementById('mensajeObservacion' + indiceActividad);
-
-                    if (selectActividad.value != 0 && selectEscala.value != 0) {
-                        mensajeObservacion.textContent = 'Observación: ' + inputObservacion.value;
-                        mensajeObservacion.style.display = 'block';
-                        return true;
-                    } else {
-                        mensajeObservacion.style.display = 'none';
-                        return false;
-                    }
-                }
-
-
-                const nav = document.querySelector('nav');
-                let lastScrollLeft = 0;
-                let lastScrollTop = 0;
-
-                window.addEventListener('scroll', () => {
-                    let currentScrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-                    let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                    // Solo ocultar la navegación si el desplazamiento es horizontal hacia la derecha
-                    if (currentScrollLeft > lastScrollLeft) {
-                        nav.style.display = 'none';
-
-                    } else if (currentScrollLeft < lastScrollLeft) {
-                        nav.style.display = 'block';
-                    }
-
-                    // Actualizar las posiciones de desplazamiento
-                    lastScrollLeft = currentScrollLeft <= 0 ? 0 : currentScrollLeft;
-                    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-                });
-
-
-                // Function to check if there is an observation for a specific activity
-                function hayObservacion(actividad) {
-                    const obs = document.querySelector(`#obs${actividad}`).value;
-                    return obs.trim() !== '';
-                }
-
-                function minWithSum(value1, value2) {
-                    const sum = value1 + value2;
-                    return Math.min(sum, 200);
+    elaboracion: elaboracion,
+    cant1: cant1,
+    cant2: cant2,
+    cant3: cant3,
+    rc1: rc1,
+    rc2: rc2,
+    rc3: rc3,
+    rc4: rc4,
+    comisionIncisoA: comisionIncisoA,
+    comisionIncisoB: comisionIncisoB,
+    comisionIncisoC: comisionIncisoC,
+    comisionIncisoD: comisionIncisoD,
+    score3_1: score3_1,
+    score3_2: score3_2,
+    comision3_2: comision3_2,
+    score3_3: score3_3,
+    comision3_3: comision3_3,
+    score3_4: score3_4,
+    comision3_4: comision3_4,
+    score3_5: score3_5,
+    comision3_5: comision3_5,
+    score3_6: score3_6,
+    comision3_6: comision3_6,
+    score3_8: score3_8,
+    comision3_8: comision3_8,
+    score3_8_1: score3_8_1,
+    comision3_8_1: comision3_8_1,
+    score3_9: score3_9,
+    comision3_9: comision3_9,
+    score3_10: score3_10,
+    comision3_10: comision3_10,
+    score3_11: score3_11,
+    comision3_11: comision3_11,
+    score3_12: score3_12,
+    comision3_12: comision3_12,
+    score3_13: score3_13,
+    comision3_13: comision3_13,
+    score3_14: score3_14,
+    comision3_14: comision3_14,
+    score3_15: score3_15,
+    comision3_15: comision3_15,
+    score3_16: score3_16,
+    comision3_16: comision3_16,
+    score3_17: score3_17,
+    comision3_17: comision3_17,
+    score3_18: score3_18,
+    comision3_18: comision3_18,
+    score3_19: score3_19,
+    comision3_19: comision3_19,
+    docencia: docencia,
+    obs3_1_1: obs3_1_1,
+    obs3_1_2: obs3_1_2,
+    obs3_1_3: obs3_1_3,
+    obs3_1_4: obs3_1_4,
+    obs3_1_5: obs3_1_5,
+    obs3_2_1: obs3_2_1,
+    obs3_2_2: obs3_2_2,
+    obs3_2_3: obs3_2_3,
 
 
-                }
+};
 
-                function min40(...values) {
-                    const sum40 = values.reduce((acc, val) => acc + val, 0);
-                    return Math.min(sum40, 40);
-                }
+const dse = document.querySelector("#DSE");
+const puntajeAEvaluarPosgrado = document.querySelector("#horasPosgrado");
 
-                function min30(...values) {
-                    const sum30 = values.reduce((acc, val) => acc + val, 0);
-                    return Math.min(sum30, 30);
-                }
+const dse2 = document.querySelector("#DSE2");
+const puntajeAEvaluarSemestre = document.querySelector("#horasSemestre");
+const puntajePosgrado = 0, puntajeSemestre = 0, dsePosgrado = "", dseSemestre = "";
+function onload() {
+    // Setup some event handlers. 
+    var buttons = document.getElementsByClassName('button');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].addEventListener('click', handleClick); }
+
+}
+
+function handleClick(event) {
+    var currentTarget = event.currentTarget;
+    // Use the event data here. 
+    console.log('Button clicked: ' + currentTarget.getAttribute('data-id'));
+} document.addEventListener('DOMContentLoaded', onload);
 
 
-                function min60(...values) {
-                    const sum60 = values.reduce((acc, val) => acc + val, 0);
-                    return Math.min(sum60, 60);
-                }
+function hayObservacion(indiceActividad) {
+    var selectEscala = document.getElementById('selectEscala' + indiceActividad);
+    var selectActividad = document.getElementById('selectActividad' + indiceActividad);
+    var inputObservacion = document.getElementById('observacion' + indiceActividad);
+    var mensajeObservacion = document.getElementById('mensajeObservacion' + indiceActividad);
 
-                function minWithSumThree(value1, value2, value3, value4) {
-                    const ms = value1 + value2 + value3 + value4;
-                    return Math.min(ms, 100);
-                }
+    if (selectActividad.value != 0 && selectEscala.value != 0) {
+        mensajeObservacion.textContent = 'Observación: ' + inputObservacion.value;
+        mensajeObservacion.style.display = 'block';
+        return true;
+    } else {
+        mensajeObservacion.style.display = 'none';
+        return false;
+    }
+}
 
-                function min50(...values) {
-                    const ms = values.reduce((acc, val) => acc + val, 0);
-                    return Math.min(ms, 50);
-                }
 
-                function minWithSumThreeFive(value1, value2) {
-                    const ms = value1 + value2;
-                    return Math.min(ms, 75);
-                }
+const nav = document.querySelector('nav');
+let lastScrollLeft = 0;
+let lastScrollTop = 0;
 
-                function minTutorias() {
-                    // convert the arguments object to an array
-                    const values = Array.from(arguments);
+window.addEventListener('scroll', () => {
+    let currentScrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-                    // use reduce to sum the values
-                    const ms = values.reduce((acc, current) => {
-                        return acc + current;
-                    }, 0);
+    // Solo ocultar la navegación si el desplazamiento es horizontal hacia la derecha
+    if (currentScrollLeft > lastScrollLeft) {
+        nav.style.display = 'none';
 
-                    // return the minimum of ms and 200
-                    return Math.min(ms, 200);
-                }
+    } else if (currentScrollLeft < lastScrollLeft) {
+        nav.style.display = 'block';
+    }
 
-                function min700(...values) {
-                    const ms = values.reduce((acc, val) => acc + val, 0);
-                    return Math.min(ms, 700);
-                }
+    // Actualizar las posiciones de desplazamiento
+    lastScrollLeft = currentScrollLeft <= 0 ? 0 : currentScrollLeft;
+    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+});
 
-                // Función para actualizar el objeto data con los valores de los campos del formulario
-                function actualizarData() {
-                    dataDocentes[this.id] = this.value;
-                }
+
+// Function to check if there is an observation for a specific activity
+function hayObservacion(actividad) {
+    const obs = document.querySelector(`#obs${actividad}`).value;
+    return obs.trim() !== '';
+}
+
+function minWithSum(value1, value2) {
+    const sum = value1 + value2;
+    return Math.min(sum, 200);
+
+
+}
+
+function min40(...values) {
+    const sum40 = values.reduce((acc, val) => acc + val, 0);
+    return Math.min(sum40, 40);
+}
+
+function min30(...values) {
+    const sum30 = values.reduce((acc, val) => acc + val, 0);
+    return Math.min(sum30, 30);
+}
+
+
+function min60(...values) {
+    const sum60 = values.reduce((acc, val) => acc + val, 0);
+    return Math.min(sum60, 60);
+}
+
+function minWithSumThree(value1, value2, value3, value4) {
+    const ms = value1 + value2 + value3 + value4;
+    return Math.min(ms, 100);
+}
+
+function min50(...values) {
+    const ms = values.reduce((acc, val) => acc + val, 0);
+    return Math.min(ms, 50);
+}
+
+function minWithSumThreeFive(value1, value2) {
+    const ms = value1 + value2;
+    return Math.min(ms, 75);
+}
+
+function minTutorias() {
+    // convert the arguments object to an array
+    const values = Array.from(arguments);
+
+    // use reduce to sum the values
+    const ms = values.reduce((acc, current) => {
+        return acc + current;
+    }, 0);
+
+    // return the minimum of ms and 200
+    return Math.min(ms, 200);
+}
+
+function min700(...values) {
+    const ms = values.reduce((acc, val) => acc + val, 0);
+    return Math.min(ms, 700);
+}
+
+// Función para actualizar el objeto data con los valores de los campos del formulario
+function actualizarData() {
+    dataDocentes[this.id] = this.value;
+}
 
 
  // MAPA DE RUTAS
@@ -3648,74 +3629,82 @@ const stepMap = {
                         console.log('Form data:', formData); // Log form data to check values
 
                         // Enviar datos al servidor
-                            try {
-                                const response = await fetch(url, {
-                                    method: "POST",
-                                    body: formData
-                                });
+                        try {
+                            const response = await fetch(url, {
+                                method: 'POST',
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "X-CSRF-TOKEN": csrfToken
+                                },
+                                body: JSON.stringify(formData)
+                            });
 
-                                const data = await response.json();
+                            const data = await response.json();
 
-                                // Validación fallida
-                                if (!data.success) {
-                                    showMessage('Formulario no enviado', 'red');
-                                    console.error("Errores:", data.errors);
-                                    return;
-                                }
-
-                                // Todo bien
-                                showMessage('Formulario enviado', 'green');
-                                return true;
-
-                            } catch (error) {
-                                // Error inesperado (500, Laravel exception, etc)
-                                console.error("Error en submitForm:", error);
-                                showMessage('Error interno del servidor', 'red');
-                                return false;
+                            // =============================
+                            //   VALIDACIÓN FALLIDA
+                            // =============================
+                            if (!data.success) {
+                                showMessage('Formulario no enviado', 'red');
+                                console.error("Errores:", data.errors);
+                                return;
                             }
+
+                            // =============================
+                            //   TODO BIEN
+                            // =============================
+                            showMessage('Formulario enviado', 'green');
+
+                            // =============================
+                            //   AVANZAR AL SIGUIENTE STEP
+                            // =============================
+                            const currentStep = stepMap[formId];
+                            const nextStep = currentStep + 1;
+
+                            if (document.getElementById(`step${nextStep}`)) {
+                                showStep(nextStep);
+                                localStorage.setItem("ultimoStepDocencia", nextStep);
+                            } else {
+                                showMessage("Proceso completado", "green");
+                                localStorage.setItem("ultimoStepDocencia", "FIN");
+                            }
+
+                        } catch (error) {
+                            showMessage("Error de conexión", "red");
+                            console.error("Error al enviar:", error);
                         }
-                    
+                    }
 
+                    // =============================
+                    //       RESTAURAR PROGRESO
+                    // =============================
+                    const ultimo = localStorage.getItem("ultimoStepDocencia");
 
-        // Cuando el DOM se ha cargado completamente, puedes agregar los controladores de eventos
-/* ============================================================
-   LISTENER PRINCIPAL
-   Se ejecuta cuando carga la página
-   - Detecta todos los formularios form3_x
-   - Bloquea el submit normal
-   - Ejecuta submitForm()
-   - Cambia de step automáticamente
-   ============================================================ */
-document.addEventListener('DOMContentLoaded', function () {
+                    if (ultimo) {
+                        if (ultimo === "FIN") {
+                            // buscar el último step disponible dinámicamente
+                        const steps = document.querySelectorAll('[id^="step"]');
+                        const max = Math.max(...[...steps].map(s => Number(s.id.replace("step", ""))));
+                        showStep(max);
+                        } else {
+                            showStep(parseInt(ultimo));
+                        }
+                    } else {
+                        showStep(1);
+                    }
 
-    // Buscar TODOS los formularios form3_...
-    const forms = document.querySelectorAll('form[id^="form3_"]');
+                    // =============================
+                    //     ASIGNAR ÓNSUBMIT
+                    // =============================
+                    Object.keys(routeMap).forEach(formId => {
+                        const form = document.getElementById(formId);
+                        if (!form) return;
 
-    forms.forEach(form => {
-
-        form.addEventListener('submit', async function (event) {
-            event.preventDefault();
-
-            // Obtener ruta del mapa
-            const route = routeMap[form.id];
-            if (!route) {
-                showMessage(`Ruta no encontrada para ${form.id}`, 'red');
-                return;
-            }
-
-            // Enviar formulario
-            const success = await submitForm(route, form.id);
-            if (!success) return; // No avanzar si falló
-
-            // Mover al siguiente step
-            const currentStep = stepMap[form.id];
-            const nextStep = currentStep + 1;
-
-            showStep(nextStep);
-        });
-
-    });
-});
+                        form.onsubmit = function (event) {
+                            event.preventDefault();
+                            submitForm(routeMap[formId], formId);
+                        };
+                    });
 
 
 
@@ -4012,6 +4001,5 @@ if (!isNaN(score3_9)) {
 
         </script>
         </body>
-@endif
 
 </html>
