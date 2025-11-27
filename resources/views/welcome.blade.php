@@ -22,6 +22,17 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     }
   }
 
+
+body.dark-mode #continuar{
+  background-color: #456483!important;
+}
+
+body.dark-mode #continuar:hover{
+    background-color: #6a5b9f!important;
+    font-weight: bold;
+}
+
+
 </style>
 <script>
     window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
@@ -138,7 +149,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
           <label id="puntajeEvaluarText">0</label>
           </td>
           <td class="table-header comision">
-          <input type="number" id="comision1" name="comision1" class="table-header comision" step="any">
+            <span id="comision1" name="comision1" class="table-header comision"></span>
+          {{-- <input type="number" id="comision1" name="comision1" class="table-header comision" step="any"> --}}
           </td>
           <td>
           <input id="obs1" name="obs1" class="table-header" type="text"></input>
@@ -195,8 +207,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             </td>
             <td><input id="horasPosgrado" name="horasPosgrado" class="horasActv2" placeholder="0" type="number" value="{{ oldValueOrDefault('horasPosgrado') }}"></td>
             <td class="puntajeEvaluar2"><label id="DSE" name="dse"class="puntajeEvaluar" type="text"></label></td>
-            <td class="comision actv"><input id="comisionPosgrado" placeholder="0" for=""
-            oninput="onActv2Comision()"></input></td>
+            <td class="comision actv"><span id="comisionPosgrado"></span></td>
             <td><input id="obs2" name="obs2" class="table-header" type="text"></td>
             </tr>
             <tr>
@@ -207,7 +218,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             <input id="horasSemestre" name="horasSemestre" class="horasActv2" placeholder="0" type="number"  value="{{ oldValueOrDefault('horasSemestre') }}">
             </td>
             <td class="puntajeEvaluar2"><label id="DSE2" name="dse2" class="puntajeEvaluar" type="text"></label></td>
-            <td class="comision actv"><input id="comisionLic" placeholder="0" oninput="onActv2Comision()"></input>
+            <td class="comision actv"><span id="comisionLic"></span>
             </td>
             <td><input id="obs2_2" name="obs2_2" class="table-header" type="text"></input></td>
             </tr>
@@ -231,9 +242,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         </div>
 
         <div id="continueButtonWrapper" style="display:none; text-align:center; margin-top:20px;">
-          <a href="{{ url('docencia') }}" class="btn btn-primary">Continuar a Actividad 3 — Calidad en la Docencia</a>
+          <a href="{{ url('docencia') }}" class="btn" id="continuar">Continuar a Actividad 3 — Calidad en la Docencia</a>
         </div>
-  </div>    
+   </div>    
 
     @endif
     </div>
@@ -255,6 +266,43 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
   </div>
 
   <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const btnContinue = document.getElementById('continuar');
+    const body = document.body;
+
+    // Detectar el modo actual
+    let isDarkMode = body.classList.contains('dark-mode');
+
+    // Función para aplicar colores normales según el modo
+    function applyNormalColors() {
+        if (isDarkMode) {
+            btnContinue.style.backgroundColor = "#456483";
+            btnContinue.style.color = "floralwhite";
+        } else {
+            btnContinue.style.backgroundColor = "#72aaca";
+            btnContinue.style.color = "white";
+        }
+    }
+
+    // Estilo inicial
+    applyNormalColors();
+    btnContinue.style.transition = "background-color 0.3s"; // suaviza hover
+
+    // Hover dinámico
+    btnContinue.addEventListener("mouseenter", () => {
+        btnContinue.style.backgroundColor = isDarkMode ? "#6a5b9f" : "#7ac1ca";
+    });
+
+    btnContinue.addEventListener("mouseleave", () => {
+        applyNormalColors(); // vuelve al color normal según el modo
+    });
+});
+
+
+
+
+
+
 
     const convocatoria = document.querySelector('nav a').textContent.trim();
     const periodo = document.getElementById('periodo').textContent;
@@ -559,37 +607,64 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         }
       }
 
-      // Cuando el DOM se ha cargado completamente, puedes agregar los controladores de eventos
       document.addEventListener('DOMContentLoaded', function () {
-        // Asociar la función a los formularios
-        const form1 = document.getElementById('form1');
-        if (form1) {
-          form1.onsubmit = function (event) {
-            event.preventDefault(); // Previene el envío por defecto
-            submitForm('/formato-evaluacion/store', 'form1'); // Llama a la función submitForm
-            document.getElementById("step1").style.display = "none";
-            document.getElementById("step2").style.display = "block";
-          };
-        }
-        const form2 = document.getElementById('form2');
-        if (form2) {
-          form2.onsubmit = function (event) {
-            event.preventDefault(); // Previene el envío por defecto
-            submitForm('/formato-evaluacion/store2', 'form2'); // Llama a la función submitForm
-            document.getElementById("step2").style.display = "none";
-            document.getElementById("step3").style.display = "block";
-          };
-        }
+          // Recuperamos el paso actual desde localStorage
+          let pasoActual = localStorage.getItem('pasoActual') || '1';
 
-        const form2_2 = document.getElementById('form2_2');
-        if (form2_2) {
-          form2_2.onsubmit = function (event) {
-            event.preventDefault(); // Previene el envío por defecto
-            submitForm('/formato-evaluacion/store3', 'form2_2'); // Llama a la función submitForm
-            document.getElementById("continueButtonWrapper").style.display = "block";
-          };
-        }
+          function mostrarPaso(paso) {
+              document.getElementById("step1").style.display = "none";
+              document.getElementById("step2").style.display = "none";
+              document.getElementById("step3").style.display = "none";
+              document.getElementById("continueButtonWrapper").style.display = "none";
+
+              if (paso === '1') document.getElementById("step1").style.display = "block";
+              if (paso === '2') document.getElementById("step2").style.display = "block";
+              if (paso === '3') document.getElementById("step3").style.display = "block";
+              if (paso === '4') {
+                document.getElementById("step3").style.display = "block"; // form2_2 sigue visible
+                document.getElementById("continueButtonWrapper").style.display = "block"; // botón aparece
+            }
+          }
+
+          mostrarPaso(pasoActual); // mostramos el paso correcto al cargar
+
+          // Form 1
+          const form1 = document.getElementById('form1');
+          if (form1) {
+              form1.onsubmit = function (event) {
+                  event.preventDefault();
+                  submitForm('/formato-evaluacion/store', 'form1');
+                  pasoActual = '2';
+                  localStorage.setItem('pasoActual', pasoActual);
+                  mostrarPaso(pasoActual);
+              };
+          }
+
+          // Form 2
+          const form2 = document.getElementById('form2');
+          if (form2) {
+              form2.onsubmit = function (event) {
+                  event.preventDefault();
+                  submitForm('/formato-evaluacion/store2', 'form2');
+                  pasoActual = '3';
+                  localStorage.setItem('pasoActual', pasoActual);
+                  mostrarPaso(pasoActual);
+              };
+          }
+
+          // Form 2_2
+          const form2_2 = document.getElementById('form2_2');
+          if (form2_2) {
+              form2_2.onsubmit = function (event) {
+                  event.preventDefault();
+                  submitForm('/formato-evaluacion/store3', 'form2_2');
+                  pasoActual = '4';
+                  localStorage.setItem('pasoActual', pasoActual);
+                  mostrarPaso(pasoActual);
+              };
+          }
       });
+
 
 
 

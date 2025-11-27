@@ -3103,6 +3103,69 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                     dataDocentes[this.id] = this.value;
                 }
 
+
+ // MAPA DE RUTAS
+const routeMap = {
+    form3_1: '/formato-evaluacion/store31',
+    form3_2: '/formato-evaluacion/store32',
+    form3_3: '/formato-evaluacion/store33',
+    form3_4: '/formato-evaluacion/store34',
+    form3_5: '/formato-evaluacion/store35',
+    form3_6: '/formato-evaluacion/store36',
+    form3_7: '/formato-evaluacion/store37',
+    form3_8: '/formato-evaluacion/store38',
+    form3_8_1: '/formato-evaluacion/store381',
+    form3_9: '/formato-evaluacion/store39',
+    form3_10: '/formato-evaluacion/store310',
+    form3_11: '/formato-evaluacion/store311',
+    form3_12: '/formato-evaluacion/store312',
+    form3_13: '/formato-evaluacion/store313',
+    form3_14: '/formato-evaluacion/store314',
+    form3_15: '/formato-evaluacion/store315',
+    form3_16: '/formato-evaluacion/store316',
+    form3_17: '/formato-evaluacion/store317',
+    form3_18: '/formato-evaluacion/store318',
+    form3_19: '/formato-evaluacion/store319',
+};
+
+
+//steps de los formularios
+const stepMap = {
+    form3_1: 1,
+    form3_2: 2,
+    form3_3: 3,
+    form3_4: 4,
+    form3_5: 5,
+    form3_6: 6,
+    form3_7: 7,
+    form3_8: 8,
+    form3_8_1: 9,
+    form3_9: 10,
+    form3_10: 11,
+    form3_11: 12,
+    form3_12: 13,
+    form3_13: 14,
+    form3_14: 15,
+    form3_15: 16,
+    form3_16: 17,
+    form3_17: 18,
+    form3_18: 19,
+    form3_19: 20,
+};
+
+    function showStep(stepNumber) {
+        document.querySelectorAll('[id^="step"]').forEach(step => {
+            step.style.display = "none";
+        });
+
+        const current = document.getElementById(`step${stepNumber}`);
+        if (current) {
+            current.style.display = "block";
+        }
+    }
+
+
+
                     async function submitForm(url, formId) {
                         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                         // Get form data
@@ -3140,9 +3203,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
 
                         // Collect common form data (if any)
-                        formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-                        formData['email'] = form.querySelector('input[name="email"]').value;
-                        formData['user_type'] = form.querySelector('input[name="user_type"]').value;
+                        formData['user_id'] = document.querySelector('input[name="user_id"]').value;
+                        formData['email'] = document.querySelector('input[name="email"]').value;
+                        formData['user_type'] = document.querySelector('input[name="user_type"]').value;
                         switch (formId) {
 
                             case 'form3_1':
@@ -3585,54 +3648,74 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                         console.log('Form data:', formData); // Log form data to check values
 
                         // Enviar datos al servidor
-                        try {
-                            let response = await fetch(url, {
-                                method: 'POST',
-                                headers: {
-                                    'X-CSRF-TOKEN': csrfToken,
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(formData),
-                            });
+                            try {
+                                const response = await fetch(url, {
+                                    method: "POST",
+                                    body: formData
+                                });
 
-                            const responseText = await response.text(); // Obtener la respuesta como texto
-                            console.log('Raw response from server:', responseText); // Ver qué se devuelve
+                                const data = await response.json();
 
-                            if (responseText.success) {
-                                showMessage('Formulario no enviado', 'red');
-                            } else {
-                                showMessage('Formulario enviado', 'green'); 
+                                // Validación fallida
+                                if (!data.success) {
+                                    showMessage('Formulario no enviado', 'red');
+                                    console.error("Errores:", data.errors);
+                                    return;
+                                }
+
+                                // Todo bien
+                                showMessage('Formulario enviado', 'green');
+                                return true;
+
+                            } catch (error) {
+                                // Error inesperado (500, Laravel exception, etc)
+                                console.error("Error en submitForm:", error);
+                                showMessage('Error interno del servidor', 'red');
+                                return false;
                             }
-
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok ' + response.statusText);
-                            }
-
-                            let data2 = await response.json(); // si la respuesta es JSON
-                            console.log('Response received from server:', data2);
-
-                        } catch (error) {
-                            console.error('There was a problem with the fetch operation:', error);
                         }
-                    }
+                    
 
 
         // Cuando el DOM se ha cargado completamente, puedes agregar los controladores de eventos
-        document.addEventListener('DOMContentLoaded', function () {
-            // Asociar la función a los formularios
-            const form3_1 = document.getElementById('form3_1');
-            if (form3_1) {
-                form3_1.onsubmit = function (event) {
-                    event.preventDefault(); // Previene el envío por defecto
-                    submitForm('/formato-evaluacion/store31', 'form3_1'); // Llama a la función submitForm
-                     document.getElementById("step1").style.display = "none";
-                    document.getElementById("step2").style.display = "block";
-                };
+/* ============================================================
+   LISTENER PRINCIPAL
+   Se ejecuta cuando carga la página
+   - Detecta todos los formularios form3_x
+   - Bloquea el submit normal
+   - Ejecuta submitForm()
+   - Cambia de step automáticamente
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Buscar TODOS los formularios form3_...
+    const forms = document.querySelectorAll('form[id^="form3_"]');
+
+    forms.forEach(form => {
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            // Obtener ruta del mapa
+            const route = routeMap[form.id];
+            if (!route) {
+                showMessage(`Ruta no encontrada para ${form.id}`, 'red');
+                return;
             }
 
-            /*Array regex que identifique desde form3_2 hasta form3_19 y los step sean desde el 3 hasta el ultimo, el style display de la primera parte es none y el segundo es block*/
+            // Enviar formulario
+            const success = await submitForm(route, form.id);
+            if (!success) return; // No avanzar si falló
 
+            // Mover al siguiente step
+            const currentStep = stepMap[form.id];
+            const nextStep = currentStep + 1;
+
+            showStep(nextStep);
         });
+
+    });
+});
 
 
 
