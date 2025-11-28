@@ -3024,27 +3024,27 @@ function actualizarData() {
 
 
  // MAPA DE RUTAS
-const routeMap = {
-    form3_1: '/formato-evaluacion/store31',
-    form3_2: '/formato-evaluacion/store32',
-    form3_3: '/formato-evaluacion/store33',
-    form3_4: '/formato-evaluacion/store34',
-    form3_5: '/formato-evaluacion/store35',
-    form3_6: '/formato-evaluacion/store36',
-    form3_7: '/formato-evaluacion/store37',
-    form3_8: '/formato-evaluacion/store38',
-    form3_8_1: '/formato-evaluacion/store381',
-    form3_9: '/formato-evaluacion/store39',
-    form3_10: '/formato-evaluacion/store310',
-    form3_11: '/formato-evaluacion/store311',
-    form3_12: '/formato-evaluacion/store312',
-    form3_13: '/formato-evaluacion/store313',
-    form3_14: '/formato-evaluacion/store314',
-    form3_15: '/formato-evaluacion/store315',
-    form3_16: '/formato-evaluacion/store316',
-    form3_17: '/formato-evaluacion/store317',
-    form3_18: '/formato-evaluacion/store318',
-    form3_19: '/formato-evaluacion/store319',
+ const routeMap = {
+    form3_1: { store: '/formato-evaluacion/store31'},
+    form3_2: { store: '/formato-evaluacion/store32'},
+    form3_3: { store: '/formato-evaluacion/store33'},
+    form3_4: { store: '/formato-evaluacion/store34'},
+    form3_5: { store: '/formato-evaluacion/store35'},
+    form3_6: { store: '/formato-evaluacion/store36'},
+    form3_7: { store: '/formato-evaluacion/store37'},
+    form3_8: { store: '/formato-evaluacion/store38'},
+    form3_8_1: { store: '/formato-evaluacion/store381'},
+    form3_9: { store: '/formato-evaluacion/store39'},
+    form3_10: { store: '/formato-evaluacion/store310'},
+    form3_11: { store: '/formato-evaluacion/store311'},
+    form3_12: { store: '/formato-evaluacion/store312'},
+    form3_13: { store: '/formato-evaluacion/store313'},
+    form3_14: { store: '/formato-evaluacion/store314'},
+    form3_15: { store: '/formato-evaluacion/store315'},
+    form3_16: { store: '/formato-evaluacion/store316'},
+    form3_17: { store: '/formato-evaluacion/store317'},
+    form3_18: { store: '/formato-evaluacion/store318'},
+    form3_19: { store: '/formato-evaluacion/store319'},
 };
 
 
@@ -3603,7 +3603,7 @@ const stepMap = {
                                 showStep(nextStep);
                                 localStorage.setItem("ultimoStepDocencia", nextStep);
                             } else {
-                                showMessage("Proceso completado", "green");
+                                // showMessage("Proceso completado", "green");
                                 localStorage.setItem("ultimoStepDocencia", "FIN");
                             }
 
@@ -3640,7 +3640,8 @@ const stepMap = {
 
                         form.onsubmit = function (event) {
                             event.preventDefault();
-                            submitForm(routeMap[formId], formId);
+                            const storeUrl = routeMap[formId].store;
+                            submitForm(storeUrl, formId);
                         };
                     });
 
@@ -3936,43 +3937,75 @@ if (!isNaN(score3_9)) {
       return st;
     }
 
-document.getElementById('edit-form-btn').addEventListener('click', async function() {
-    const currentStepDiv = document.querySelector('[id^="step"]:not([style*="display: none"])');
-    if (!currentStepDiv) {
-        showMessage('No hay un formulario visible para editar.', 'orange');
-        return;
+    // --- New Data Fetching and Populating Logic ---
+
+    let docenteDataCache = null; // Cache to store all form data
+
+    /**
+     * Fetches all form data for the logged-in user and stores it in the cache.
+     */
+    async function fetchAllDocenteData() {
+        if (docenteDataCache) {
+            return docenteDataCache; // Return cached data if available
+        }
+
+        // This endpoint should return all form data for the authenticated user.
+        // It's similar to '/get-docente-data' but doesn't require an email parameter.
+        const allDataEndpoint = '/formato-evaluacion/get-docente-data'; 
+
+        try {
+            const response = await fetch(allDataEndpoint);
+            if (!response.ok) {
+                throw new Error('No se pudieron obtener los datos del servidor.');
+            }
+            docenteDataCache = await response.json();
+            return docenteDataCache;
+        } catch (error) {
+            showMessage(error.message, 'red');
+            console.error('Error fetching all docente data:', error);
+            return null;
+        }
     }
 
-    const formId = currentStepDiv.querySelector('form').id;
-    const stepNumber = stepMap[formId];
-    const endpoint = `/formato-evaluacion/data/${stepNumber}`;
-
-    try {
-        const response = await fetch(endpoint);
-        if (!response.ok) {
-            throw new Error('No se pudieron obtener los datos para editar.');
+    /**
+     * Populates the currently visible form with data from the cache.
+     */
+    async function populateCurrentForm() {
+        const allData = await fetchAllDocenteData();
+        if (!allData) {
+            showMessage('No se pudieron cargar los datos para editar.', 'orange');
+            return;
         }
-        const data = await response.json();
 
-        if (data.error) {
-            showMessage(data.error, 'orange');
+        const currentStepDiv = document.querySelector('[id^="step"]:not([style*="display: none"])');
+        if (!currentStepDiv) {
+            showMessage('No hay un formulario visible para editar.', 'orange');
+            return;
+        }
+
+        const formId = currentStepDiv.querySelector('form').id;
+        const formData = allData[formId]; // e.g., allData['form3_1']
+
+        if (!formData) {
+            showMessage('No hay datos guardados para este formulario.', 'blue');
             return;
         }
 
         const form = document.getElementById(formId);
-        for (const key in data) {
-            if (Object.hasOwnProperty.call(data, key)) {
+        for (const key in formData) {
+            if (Object.hasOwnProperty.call(formData, key)) {
                 const input = form.querySelector(`[name="${key}"], [id="${key}"]`);
                 if (input) {
-                    input.value = data[key];
+                    input.value = formData[key];
                 }
             }
         }
-        showMessage('Datos cargados. Ahora puedes editar el formulario.', 'blue');
-    } catch (error) {
-        showMessage(error.message, 'red');
+        showMessage('Datos cargados. Ahora puedes editar el formulario.', 'green');
     }
-});
+
+    document.getElementById('edit-form-btn').addEventListener('click', populateCurrentForm);
+
+    // --- End of New Logic ---
 
         </script>
         </body>
