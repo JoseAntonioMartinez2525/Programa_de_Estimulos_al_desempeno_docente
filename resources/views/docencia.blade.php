@@ -685,8 +685,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <td class="td_docente_cantidad"><input type="number" id="puntaje3_6"
                                                             oninput="onActv3SubTotal3_6()" value="{{ oldValueOrDefault('puntaje3_6') }}"></td>
                                                     <td id="puntajeHoras3_6"></td>
-                                                    <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_6"
-                                                            oninput="onActv3Comision3_6()">
+                                                    <td class="td_obs"><span id="comisionDict3_6"></span>
                                                     </td>
                                                     <td class="td_obs"><input id="obs3_6" id="obs3_6" class="table-header" type="text" placeholder="Comenta aqui">
                                                     </td>
@@ -758,8 +757,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_7"
                                                             oninput="onActv3SubTotal3_7()" value="{{ oldValueOrDefault('puntaje3_7') }}"></td>
                                                     <td id="puntajeHoras3_7"></td>
-                                                    <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_7"
-                                                            oninput="onActv3Comision3_7()">
+                                                    <td class="td_obs"><span id="comisionDict3_7"></span>
                                                     </td>
                                                     <td class="td_obs"><input id="obs3_7" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                                 </tr>
@@ -829,8 +827,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_8"
                                                             oninput="onActv3SubTotal3_8()" value="{{ oldValueOrDefault('puntaje3_8') }}"></td>
                                                     <td id="puntajeHoras3_8"></td>
-                                                    <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_8"
-                                                            oninput="onActv3Comision3_8()">
+                                                    <td class="td_obs"><span id="comisionDict3_8"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" id="obs3_8" type="text" placeholder="Comenta aqui"></td>
                                                 </tr>
@@ -906,7 +903,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <td class="td_docente_cantidad"><input type="number" placeholder="0" id="puntaje3_8_1" oninput="onActv3SubTotal3_8_1()"
                                                             value="{{ oldValueOrDefault('puntaje3_8_1') }}"></td>
                                                     <td id="puntajeHoras3_8_1"></td>
-                                                    <td class="td_obs"><input type="number" placeholder="0" id="comisionDict3_8_1" oninput="onActv3Comision3_8_1()">
+                                                    <td class="td_obs"><span id="comisionDict3_8_1"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" id="obs3_8_1" type="text" placeholder="Comenta aqui"></td>
                                                 </tr>
@@ -934,276 +931,272 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
                                     <div>
                                           @csrf
+                                    <h4>Puntaje máximo
+                                        <label class="bg-black text-white px-4 mt-3">200</label>
+                                    </h4>
+                                        <table class="table table-sm tutorias">
 
-            <h4>Puntaje máximo
-                <label class="bg-black text-white px-4 mt-3">200</label>
-            </h4>
-        </div>
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="7" class="text-center">
+                                                        <h3>Tutorias</h3>
+                                                    </th>
+                                                </tr>
+                                            </thead>
 
-        <table class="table table-sm tutorias">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Actividad</th>
+                                                    <th colspan="5" class="table-ajust" scope="col"></th>
+                                                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
+                                                </tr>
+                                            </thead>
 
-            <thead>
-                <tr>
-                    <th colspan="7" class="text-center">
-                        <h3>Tutorias</h3>
-                    </th>
-                </tr>
-            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th id="seccion3_9" scope="col" class="p3_9" colspan="6">3.9 Trabajos dirigidos para la titulación de estudiantes</th>
+                                                    <th id="score3_9">0</th>
+                                                    <th id="comision3_9">0</th>
+                                                </tr>
+                                                <tr></tr>
+                                            </thead>
 
-            <thead>
-                <tr>
-                    <th scope="col">Actividad</th>
-                    <th colspan="5" class="table-ajust" scope="col"></th>
-                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora</th>
-                </tr>
-            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th class="acreditacion">Incisos</th>
+                                                    <th class="acreditacion">Actividad</th>
+                                                    <th class="acreditacion">Obra</th>
+                                                    <th class="acreditacion">Nivel</th>
+                                                    <th class="acreditacion">Puntaje</th>
+                                                    <th class="text-center acreditacion">Cantidad</th>
+                                                    <th class="acreditacion">Subtotal</th>
+                                                    <th class="table-ajust" scope="col"></th>
+                                                    <th class="text-center acreditacion">Observaciones</th>
+                                                </tr>
+                                            </thead>
 
-            <thead>
-                <tr>
-                    <th id="seccion3_9" scope="col" class="p3_9" colspan="6">3.9 Trabajos dirigidos para la titulación de estudiantes</th>
-                    <th id="score3_9">0</th>
-                    <th id="comision3_9">0</th>
-                </tr>
-                <tr></tr>
-            </thead>
+                                            <tbody>
 
-            <thead>
-                <tr>
-                    <th class="acreditacion">Incisos</th>
-                    <th class="acreditacion">Actividad</th>
-                    <th class="acreditacion">Obra</th>
-                    <th class="acreditacion">Nivel</th>
-                    <th class="acreditacion">Puntaje</th>
-                    <th class="text-center acreditacion">Cantidad</th>
-                    <th class="acreditacion">Subtotal</th>
-                    <th class="table-ajust" scope="col"></th>
-                    <th class="text-center acreditacion">Observaciones</th>
-                </tr>
-            </thead>
+                                                <tr>
+                                                    <td>a)</td>
+                                                    <td>Revisión de</td>
+                                                    <td>Tesis</td>
+                                                    <td>Doctorado</td>
+                                                    <td id="puntajeTutorias20_1">20</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_1" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_1') }}"></td>
+                                                    <td id="tutorias1">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision1"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_1" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-            <tbody>
+                                                <tr>
+                                                    <td>b)</td>
+                                                    <td>Proyecto de</td>
+                                                    <td>Tesis</td>
+                                                    <td>Maestría</td>
+                                                    <td id="puntajeTutorias15_1">15</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_2" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_2') }}"></td>
+                                                    <td id="tutorias2">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision2"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_2" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>a)</td>
-                    <td>Revisión de</td>
-                    <td>Tesis</td>
-                    <td>Doctorado</td>
-                    <td id="puntajeTutorias20_1">20</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_1" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_1') }}"></td>
-                    <td id="tutorias1">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision1" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_1" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>c)</td>
+                                                    <td>Proyecto de</td>
+                                                    <td>Tesis y otras</td>
+                                                    <td>TSU, Lic y especialidad</td>
+                                                    <td id="puntajeTutorias10_1">10</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_3" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_3') }}"></td>
+                                                    <td id="tutorias3">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision3"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_3" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>b)</td>
-                    <td>Proyecto de</td>
-                    <td>Tesis</td>
-                    <td>Maestría</td>
-                    <td id="puntajeTutorias15_1">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_2" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_2') }}"></td>
-                    <td id="tutorias2">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision2" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_2" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>d)</td>
+                                                    <td>Dirección trabajo en realización</td>
+                                                    <td>Tesis</td>
+                                                    <td>Doctorado</td>
+                                                    <td id="puntajeTutorias55">55</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_4" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_4') }}"></td>
+                                                    <td id="tutorias4">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision4"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_4" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>c)</td>
-                    <td>Proyecto de</td>
-                    <td>Tesis y otras</td>
-                    <td>TSU, Lic y especialidad</td>
-                    <td id="puntajeTutorias10_1">10</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_3" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_3') }}"></td>
-                    <td id="tutorias3">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision3" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_3" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>e)</td>
+                                                    <td>Dirección trabajo en realización</td>
+                                                    <td>Tesis</td>
+                                                    <td>Maestria</td>
+                                                    <td id="puntajeTutorias45">45</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_5" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_5') }}"></td>
+                                                    <td id="tutorias5">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision5"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_5" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>d)</td>
-                    <td>Dirección trabajo en realización</td>
-                    <td>Tesis</td>
-                    <td>Doctorado</td>
-                    <td id="puntajeTutorias55">55</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_4" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_4') }}"></td>
-                    <td id="tutorias4">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision4" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_4" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>f)</td>
+                                                    <td>Dirección trabajo en realización</td>
+                                                    <td>Tesis y otras</td>
+                                                    <td>TSU, Lic y especialidad</td>
+                                                    <td id="puntajeTutorias35">35</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_6" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_6') }}"></td>
+                                                    <td id="tutorias6">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision6"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_6" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>e)</td>
-                    <td>Dirección trabajo en realización</td>
-                    <td>Tesis</td>
-                    <td>Maestria</td>
-                    <td id="puntajeTutorias45">45</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_5" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_5') }}"></td>
-                    <td id="tutorias5">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision5" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_5" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>g)</td>
+                                                    <td>Dirección trabajo terminado</td>
+                                                    <td>Tesis</td>
+                                                    <td>Doctorado</td>
+                                                    <td id="puntajeTutorias70">70</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_7" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_7') }}"></td>
+                                                    <td id="tutorias7">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision7"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_7" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>f)</td>
-                    <td>Dirección trabajo en realización</td>
-                    <td>Tesis y otras</td>
-                    <td>TSU, Lic y especialidad</td>
-                    <td id="puntajeTutorias35">35</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_6" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_6') }}"></td>
-                    <td id="tutorias6">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision6" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_6" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>h)</td>
+                                                    <td>Dirección trabajo terminado</td>
+                                                    <td>Tesis</td>
+                                                    <td>Maestría</td>
+                                                    <td id="puntajeTutorias60">60</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_8" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_8') }}"></td>
+                                                    <td id="tutorias8">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision8"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_8" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>g)</td>
-                    <td>Dirección trabajo terminado</td>
-                    <td>Tesis</td>
-                    <td>Doctorado</td>
-                    <td id="puntajeTutorias70">70</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_7" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_7') }}"></td>
-                    <td id="tutorias7">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision7" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_7" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>i)</td>
+                                                    <td>Dirección trabajo terminado</td>
+                                                    <td>Tesis y otras</td>
+                                                    <td>TSU, Lic y especialidad</td>
+                                                    <td id="puntajeTutorias50">50</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_9" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_9') }}"></td>
+                                                    <td id="tutorias9">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision9"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_9" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>h)</td>
-                    <td>Dirección trabajo terminado</td>
-                    <td>Tesis</td>
-                    <td>Maestría</td>
-                    <td id="puntajeTutorias60">60</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_8" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_8') }}"></td>
-                    <td id="tutorias8">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision8" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_8" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>j)</td>
+                                                    <td>Revisión de trabajo terminado</td>
+                                                    <td>Tesis</td>
+                                                    <td>Doctorado</td>
+                                                    <td id="puntajeTutorias30_1">30</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_10" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_10') }}"></td>
+                                                    <td id="tutorias10">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision10"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_10" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>i)</td>
-                    <td>Dirección trabajo terminado</td>
-                    <td>Tesis y otras</td>
-                    <td>TSU, Lic y especialidad</td>
-                    <td id="puntajeTutorias50">50</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_9" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_9') }}"></td>
-                    <td id="tutorias9">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision9" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_9" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>k)</td>
+                                                    <td>Revisión de trabajo terminado</td>
+                                                    <td>Tesis</td>
+                                                    <td>Maestría</td>
+                                                    <td id="puntajeTutorias20_2">50</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_11" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_11') }}"></td>
+                                                    <td id="tutorias11">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision11"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_11" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>j)</td>
-                    <td>Revisión de trabajo terminado</td>
-                    <td>Tesis</td>
-                    <td>Doctorado</td>
-                    <td id="puntajeTutorias30_1">30</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_10" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_10') }}"></td>
-                    <td id="tutorias10">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision10" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_10" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>l)</td>
+                                                    <td>Revisión de trabajo terminado</td>
+                                                    <td>Tesis y otras</td>
+                                                    <td>TSU, Lic y especialidad</td>
+                                                    <td id="puntajeTutorias15_2">15</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_12" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_12') }}"></td>
+                                                    <td id="tutorias12">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision12"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_12" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>k)</td>
-                    <td>Revisión de trabajo terminado</td>
-                    <td>Tesis</td>
-                    <td>Maestría</td>
-                    <td id="puntajeTutorias20_2">50</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_11" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_11') }}"></td>
-                    <td id="tutorias11">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision11" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_11" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>m)</td>
+                                                    <td>Sinodalía</td>
+                                                    <td>Examen</td>
+                                                    <td>Doctorado</td>
+                                                    <td id="puntajeTutorias30_2">30</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_13" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_13') }}"></td>
+                                                    <td id="tutorias13">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision13"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_13" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>l)</td>
-                    <td>Revisión de trabajo terminado</td>
-                    <td>Tesis y otras</td>
-                    <td>TSU, Lic y especialidad</td>
-                    <td id="puntajeTutorias15_2">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_12" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_12') }}"></td>
-                    <td id="tutorias12">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision12" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_12" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>n)</td>
+                                                    <td>Sinodalía</td>
+                                                    <td>Examen</td>
+                                                    <td>Maestría</td>
+                                                    <td id="puntajeTutorias20_3">15</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_14" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_14') }}"></td>
+                                                    <td id="tutorias14">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision14"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_14" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>m)</td>
-                    <td>Sinodalía</td>
-                    <td>Examen</td>
-                    <td>Doctorado</td>
-                    <td id="puntajeTutorias30_2">30</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_13" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_13') }}"></td>
-                    <td id="tutorias13">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision13" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_13" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>o)</td>
+                                                    <td>Sinodalía</td>
+                                                    <td>Examen</td>
+                                                    <td>TSU, Lic y especialidad</td>
+                                                    <td id="puntajeTutorias15_3">15</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_15" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_15') }}"></td>
+                                                    <td id="tutorias15">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision15"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_15" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>n)</td>
-                    <td>Sinodalía</td>
-                    <td>Examen</td>
-                    <td>Maestría</td>
-                    <td id="puntajeTutorias20_3">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_14" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_14') }}"></td>
-                    <td id="tutorias14">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision14" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_14" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>p)</td>
+                                                    <td>Distinciones</td>
+                                                    <td></td>
+                                                    <td>Doctorado</td>
+                                                    <td id="puntajeTutorias15_4">15</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_16" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_16') }}"></td>
+                                                    <td id="tutorias16">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision16"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_16" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>o)</td>
-                    <td>Sinodalía</td>
-                    <td>Examen</td>
-                    <td>TSU, Lic y especialidad</td>
-                    <td id="puntajeTutorias15_3">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_15" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_15') }}"></td>
-                    <td id="tutorias15">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision15" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_15" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                                <tr>
+                                                    <td>q)</td>
+                                                    <td>Distinciones</td>
+                                                    <td></td>
+                                                    <td>Maestría</td>
+                                                    <td id="puntajeTutorias10_2">10</td>
+                                                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_17" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_17') }}"></td>
+                                                    <td id="tutorias17">0</td>
+                                                    <td class="td_obs"><span id="tutoriasComision17"></span></td>
+                                                    <td class="td_obs"><input class="table-header" id="obs3_9_17" type="text" placeholder="Comenta aqui"></td>
+                                                </tr>
 
-                <tr>
-                    <td>p)</td>
-                    <td>Distinciones</td>
-                    <td></td>
-                    <td>Doctorado</td>
-                    <td id="puntajeTutorias15_4">15</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_16" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_16') }}"></td>
-                    <td id="tutorias16">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision16" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_16" type="text" placeholder="Comenta aqui"></td>
-                </tr>
+                                            </tbody>
 
-                <tr>
-                    <td>q)</td>
-                    <td>Distinciones</td>
-                    <td></td>
-                    <td>Maestría</td>
-                    <td id="puntajeTutorias10_2">10</td>
-                    <td class="td_docente_cantidad"><input type="number" id="puntaje3_9_17" oninput="onActv3SubTotal3_9()" value="{{ oldValueOrDefault('puntaje3_9_17') }}"></td>
-                    <td id="tutorias17">0</td>
-                    <td class="td_obs"><input type="value" id="tutoriasComision17" placeholder="0" oninput="onActv3Comision3_9()"></td>
-                    <td class="td_obs"><input class="table-header" id="obs3_9_17" type="text" placeholder="Comenta aqui"></td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <!-- 📌 TABLA INFORMATIVA CORRECTAMENTE COLOCADA FUERA DEL tbody Y FUERA DEL TABLE PRINCIPAL -->
-        <table>
-            <thead>
-                <tr>
-                    <th class="acreditacion" scope="col">Acreditación:</th>
-                    <th class="descripcion"><b>DSE para pregrado, DIIP para posgrado</b></th>
-                    <th>
-                        <button id="btn3_9" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
-                    </th>
-                </tr>
-            </thead>
-        </table>
+                                        </table>
+                                        <!-- 📌 TABLA INFORMATIVA CORRECTAMENTE COLOCADA FUERA DEL tbody Y FUERA DEL TABLE PRINCIPAL -->
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th class="acreditacion" scope="col">Acreditación:</th>
+                                                    <th class="descripcion"><b>DSE para pregrado, DIIP para posgrado</b></th>
+                                                    <th>
+                                                        <button id="btn3_9" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                        </table>
                                 </form>
                             </div> 
                             <div id="step11" style="display: none">
@@ -1289,10 +1282,10 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
                                                     </tr>
                                                 </thead>
-
                                             </table>
                                 </form>
-                            </div>   
+                            </div>  
+                             
                             <div id="step12" style="display: none">  
                                 <form id="form3_11" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store311', 'form3_11');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
