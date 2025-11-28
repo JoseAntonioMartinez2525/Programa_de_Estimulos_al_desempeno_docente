@@ -31,6 +31,17 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         div#step11, div#step12, div#step13, div#step14, div#step15, div#step16, div#step17, div#step18, div#step19, div#step20{
             margin-inline-start: 10rem;
         }
+
+        button#edit-form-btn{
+         margin-inline-start: 10rem;
+         background-color: #82bdb2;
+         border-color: transparent;
+         color: white;
+        }
+
+         div#step9, div#step8{
+            margin-bottom: 3rem;
+         }
     </style>
 </head>
 @if (Route::has('login'))
@@ -79,41 +90,42 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                 </li>   
             @endif
             <ul class="actv3"><i class="fas fa-chalkboard-teacher"></i>&nbspCalidad en la docencia:
-                <li><a href="#seccion3_1">3.1 Participación en actividades de diseño curricular</a></li>
-                <li><a href="#seccion3_2">3.2 Calidad del desempeño docente evaluada por el alumnado</a></li>
-                <li><a href="#seccion3_3">3.3 Publicaciones relacionadas con la docencia</a></li>
-                <li><a href="#seccion3_4">3.4 Distinciones académicas recibidas por el docente</a></li>
-                <li><a href="#seccion3_5">3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD
+                <li><a href="javascript:void(0);" onclick="showStep(1)">3.1 Participación en actividades de diseño curricular</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(2)">3.2 Calidad del desempeño docente evaluada por el alumnado</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(3)">3.3 Publicaciones relacionadas con la docencia</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(4)">3.4 Distinciones académicas recibidas por el docente</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(5)">3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD
                         y
                         por CAAC</a></li>
-                <li><a href="#seccion3_6">3.6 Capacitación y actualización pedagógica recibida</a></li>
-                <li><a href="#seccion3_7">3.7 Cursos de actualización disciplinaria recibidos dentro de su área de
+                <li><a href="javascript:void(0);" onclick="showStep(6)">3.6 Capacitación y actualización pedagógica recibida</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(7)">3.7 Cursos de actualización disciplinaria recibidos dentro de su área de
                         conocimiento</a>
                 </li>
-                <li><a href="#seccion3_8">3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de
+                <li><a href="javascript:void(0);" onclick="showStep(8)">3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de
                         educación, continua o de formación y capacitación docente</a></li>
-                <li><a href="#seccion3_8_1">3.8.1 RSU </a></li>
-                <li><a href="#seccion3_9">3.9 Trabajos dirigidos para la titulación de estudiantes</a></li>
-                <li><a href="#seccion3_10">3.10 Tutorías a estudiantes</a></li>
-                <li><a href="#seccion3_11">3.11 Asesoría a estudiantes</a></li>
-                <li><a href="#seccion3_12">3.12 Publicaciones de investigación relacionadas con el contenido de los PE que
+                <li><a href="javascript:void(0);" onclick="showStep(9)">3.8.1 RSU </a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(10)">3.9 Trabajos dirigidos para la titulación de estudiantes</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(11)">3.10 Tutorías a estudiantes</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(12)">3.11 Asesoría a estudiantes</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(13)">3.12 Publicaciones de investigación relacionadas con el contenido de los PE que
                         imparte el docente</a></li>
-                <li><a href="#seccion3_13">3.13 Proyectos académicos de investigación</a></li>
-                <li><a href="#seccion3_14">3.14 Participación como ponente en congresos o eventos académicos del
+                <li><a href="javascript:void(0);" onclick="showStep(14)">3.13 Proyectos académicos de investigación</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(15)">3.14 Participación como ponente en congresos o eventos académicos del
                         Área de Conocimiento o afines del docente</a></li>
-                <li><a href="#seccion3_15">3.15 Registro de patentes y productos de investigación tecnológica y educativa</a>
+                <li><a href="javascript:void(0);" onclick="showStep(16)">3.15 Registro de patentes y productos de investigación tecnológica y educativa</a>
                 </li>
-                <li><a href="#seccion3_16">3.16 Actividades de arbitraje, revisión, correción y edición </a></li>
-                <li><a href="#seccion3_17">3.17 Proyectos académicos de extensión y difusión </a></li>
-                <li><a href="#seccion3_18">3.18 Organización de congresos o eventos institucionales del área de conocimiento de
+                <li><a href="javascript:void(0);" onclick="showStep(17)">3.16 Actividades de arbitraje, revisión, correción y edición </a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(18)">3.17 Proyectos académicos de extensión y difusión </a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(19)">3.18 Organización de congresos o eventos institucionales del área de conocimiento de
                         la ó el Docente </a></li>
-                <li><a href="#seccion3_19">3.19 Participación en cuerpos colegiados</a></li>
+                <li><a href="javascript:void(0);" onclick="showStep(20)">3.19 Participación en cuerpos colegiados</a></li>
             </ul>
         </nav>
 
         <body class="font-sans antialiased" style="margin-left: 300px;">
             <x-general-header />
             <button id="toggle-dark-mode" class="btn btn-secondary"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
+            <button id="edit-form-btn" class="btn btn-info"><i class="fa-solid fa-pencil"></i>&nbsp;Editar Formulario</button>
 
             <div class="bg-gray-50 text-black/50">
                 <div class="relative min-h-screen flex flex-col items-center justify-center">
@@ -610,8 +622,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td><input type="number" id="cantDA"
                                                     oninput="onActv3SubTotal3_5()" value="{{ oldValueOrDefault('cantDA') }}"></td>
                                             <td id="cantDA2"></td>
-                                            <td class="td_obs"><input type="value" id="comDA" placeholder="0"
-                                                    oninput="onActv3Comision3_5()"></td>
+                                            <td class="td_obs"><span id="comDA"></span></td>
                                             <td class="td_obs"><input id="obs3_5_1" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                         </thead>
@@ -623,8 +634,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 <td><input type="number" id="cantCAAC"
                                                         oninput="onActv3SubTotal3_5()" value="{{ oldValueOrDefault('cantCAAC') }}"></td>
                                                 <td id="cantCAAC2""></td>
-                                                <td class="td_obs"><input type=" value" id="comNCAA" placeholder="0"
-                                                    oninput="onActv3Comision3_5()"></td>
+                                                <td class="td_obs"><input type=" value" id="comNCAA"></span></td>
                                                 <td class="td_obs"><input id="obs3_5_2" class="table-header" type="text" placeholder="Comenta aqui"></td>
                                             </tr>
                                         </thead>
@@ -1250,8 +1260,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <td colspan="4"></td>
 
                                                     <td id="evaluarGrupales"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionGrupal" oninput="onActv3Comision3_10()"
-                                                            placeholder="0">
+                                                    <td class="td_obs"><span id="comisionGrupal"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsGrupal"></td>
                                                 </tr>
@@ -1264,8 +1273,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td colspan="4"></td>
                                                     <td id="evaluarIndividual"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionIndividual" oninput="onActv3Comision3_10()"
-                                                            placeholder="0">
+                                                    <td class="td_obs"><span id="comisionIndividual"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsIndividual"></td>
                                                 </tr>
@@ -1341,8 +1349,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                         oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantAsesoria') }}"></td>
                                                 <td colspan="4"></td>
                                                 <td id="subtotalAsesoria"></td>
-                                                <td class="td_obs"><input type="value" id="comisionAsesoria" placeholder="0"
-                                                        oninput="onActv3Comision3_11()">
+                                                <td class="td_obs"><span id="comisionAsesoria"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsAsesoria"></td>
                                             </tr>
@@ -1355,8 +1362,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                         oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantServicio') }}"></td>
                                                 <td colspan="4"></td>
                                                 <td id="subtotalServicio"></td>
-                                                <td class="td_obs"><input type="value" id="comisionServicio" placeholder="0"
-                                                        oninput="onActv3Comision3_11()">
+                                                <td class="td_obs"><span id="comisionServicio"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsServicio"></td>
                                             </tr>
@@ -1369,8 +1375,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                         oninput="onActv3SubTotal3_11()" value="{{ oldValueOrDefault('cantPracticas') }}"></td>
                                                 <td colspan="4"></td>
                                                 <td id="subtotalPracticas"></td>
-                                                <td class="td_obs"><input type="value" id="comisionPracticas" placeholder="0"
-                                                        oninput="onActv3Comision3_11()">
+                                                <td class="td_obs"><span id="comisionPracticas"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPracticas"></td>
                                             </tr>
@@ -1448,8 +1453,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantCientifico') }}"></td>
                                                     <td colspan="2"></td>
                                                     <td id="subtotalCientificos"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionCientificos" placeholder="0"
-                                                            oninput="onActv3Comision3_12()">
+                                                    <td class="td_obs"><span id="comisionCientificos"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCientificos"></td>
                                                 </tr>
@@ -1463,8 +1467,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantDivulgacion') }}"></td>
                                                     <td colspan="2"></td>
                                                     <td id="subtotalDivulgacion"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionDivulgacion" placeholder="0"
-                                                            oninput="onActv3Comision3_12()">
+                                                    <td class="td_obs"><span id="comisionDivulgacion"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDivulgacion"></td>
                                                 </tr>
@@ -1478,8 +1481,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantTraduccion') }}"></td>
                                                     <td colspan="2"></td>
                                                     <td id="subtotalTraduccion"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionTraduccion" placeholder="0"
-                                                            oninput="onActv3Comision3_12()">
+                                                    <td class="td_obs"><span id="comisionTraduccion"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsTraduccion"></td>
                                                 </tr>
@@ -1494,8 +1496,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td colspan="2"></td>
                                                     <td id="subtotalArbitrajeInt"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionArbitrajeInt" placeholder="0"
-                                                            oninput="onActv3Comision3_12()">
+                                                    <td class="td_obs"><span id="comisionArbitrajeInt"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbitrajeInt"></td>
                                                 </tr>
@@ -1510,8 +1511,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td colspan="2"></td>
                                                     <td id="subtotalArbitrajeNac"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionArbitrajeNac" placeholder="0"
-                                                            oninput="onActv3Comision3_12()">
+                                                    <td class="td_obs"><span id="comisionArbitrajeNac"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbitrajeNac"></td>
                                                 </tr>
@@ -1525,8 +1525,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantSinInt') }}"></td>
                                                         <td colspan="2"></td>
                                                     <td id="subtotalSinInt"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionSinInt" placeholder="0"
-                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><span id="comisionSinInt"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsSinInt"></td>
                                                 </tr>
                                                 <tr>
@@ -1539,8 +1538,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantSinNac') }}"></td>
                                                         <td colspan="2"></td>
                                                     <td id="subtotalSinNac"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionSinNac" placeholder="0"
-                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><span id="comisionSinNac"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsSinNac"></td>
                                                 </tr>
                                                 <tr>
@@ -1553,8 +1551,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantAutor') }}"></td>
                                                         <td colspan="2"></td>
                                                     <td id="subtotalAutor"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionAutor" placeholder="0"
-                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><span id="comisionAutor"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsAutor"></td>
                                                 </tr>
                                                 <tr>
@@ -1567,8 +1564,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantEditor') }}"></td>
                                                         <td colspan="2"></td>
                                                     <td id="subtotalEditor"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionEditor" placeholder="0"
-                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><span id="comisionEditor"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsEditor"></td>
                                                 </tr>
                                                 <tr>
@@ -1581,8 +1577,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_12()" value="{{ oldValueOrDefault('cantWeb') }}"></td>
                                                         <td colspan="2"></td>
                                                     <td id="subtotalWeb"></td>
-                                                    <td class="td_obs"><input type="value" id="comisionWeb" placeholder="0"
-                                                            oninput="onActv3Comision3_12()"></td>
+                                                    <td class="td_obs"><span id="comisionWeb"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsWeb"></td>
                                                 </tr>
                                             </tbody>
@@ -1650,8 +1645,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </td>
                                                 <td colspan="3"></td>
                                                 <td id="subtotalInicioFinanExt"></td>
-                                                <td class="td_obs"><input type="value" id="comisionInicioFinancimientoExt" placeholder="0"
-                                                        oninput="onActv3Comision3_13()">
+                                                <td class="td_obs"><span id="comisionInicioFinancimientoExt"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioFinancimientoExt"></td>
                                             </tr>
@@ -1664,8 +1658,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </td>
                                                 <td colspan="3"></td>
                                                 <td id="subtotalInicioInvInterno"></td>
-                                                <td class="td_obs"><input type="value" id="comisionInicioInvInterno" placeholder="0"
-                                                        oninput="onActv3Comision3_13()">
+                                                <td class="td_obs"><span id="comisionInicioInvInterno"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsInicioInvInterno"></td>
                                             </tr>
@@ -1680,8 +1673,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </td>
                                                 <td colspan="3"></td>
                                                 <td id="subtotalReporteFinanciamExt"></td>
-                                                <td class="td_obs"><input type="value" id="comisionReporteFinanciamExt" placeholder="0"
-                                                        oninput="onActv3Comision3_13()">
+                                                <td class="td_obs"><span id="comisionReporteFinanciamExt"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteFinanciamExt"></td>
                                             </tr>
@@ -1696,8 +1688,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </td>
                                                 <td colspan="3"></td>
                                                 <td id="subtotalReporteInvInt"></td>
-                                                <td class="td_obs"><input type="value" id="comisionReporteInvInt" placeholder="0"
-                                                        oninput="onActv3Comision3_13()">
+                                                <td class="td_obs"><span id="comisionReporteInvInt"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsReporteInvInt"></td>
                                             </tr>
@@ -1770,8 +1761,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td colspan="3"></td>
 
                                             <td id="subtotalCongresoInt">0</td>
-                                            <td class="td_obs"><input type="value" id="comisionCongresoInt" placeholder="0"
-                                                    oninput="onActv3Comision3_14()">
+                                            <td class="td_obs"><span id="comisionCongresoInt"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoInt"></td>
                                         </tr>
@@ -1783,8 +1773,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_14()" value="{{ oldValueOrDefault('cantCongresoNac') }}"></td>
                                             <td colspan="3"></td>
                                             <td id="subtotalCongresoNac">0</td>
-                                            <td class="td_obs"><input type="value" id="comisionCongresoNac" placeholder="0"
-                                                    oninput="onActv3Comision3_14()">
+                                            <td class="td_obs"><span id="comisionCongresoNac"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoNac"></td>
                                         </tr>
@@ -1796,8 +1785,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_14()" value="{{ oldValueOrDefault('cantCongresoLoc') }}"></td>
                                             <td colspan="3"></td>
                                             <td id="subtotalCongresoLoc">0</td>
-                                            <td class="td_obs"><input type="value" id="comisionCongresoLoc" placeholder="0"
-                                                    oninput="onActv3Comision3_14()">
+                                            <td class="td_obs"><span id="comisionCongresoLoc"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCongresoLoc"></td>
                                         </tr>
@@ -1868,8 +1856,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td colspan="3"></td>
 
                                             <td id="subtotalPatentes">0</td>
-                                            <td class="td_obs"><input type="value" id="comisionPatententes" placeholder="0"
-                                                    oninput="onActv3Comision3_15()">
+                                            <td class="td_obs"><span id="comisionPatententes"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPatentes"></td>
                                         </tr>
@@ -1883,8 +1870,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_15()" value="{{ oldValueOrDefault('cantPrototipos') }}"></td>
                                             <td colspan="3"></td>
                                             <td id="subtotalPrototipos">0</td>
-                                            <td class="td_obs"><input type="value" id="comisionPrototipos" placeholder="0"
-                                                    oninput="onActv3Comision3_15()">
+                                            <td class="td_obs"><span id="comisionPrototipos"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPrototipos"></td>
                                         </tr>
@@ -1970,8 +1956,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td colspan="2"></td>
                                             
                                             <td id="subtotalArbInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionArbInt" placeholder="0"
-                                                    oninput="onActv3Comision3_16()"></td>
+                                            <td class="td_obs"><span id="comisionArbInt"></span></td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbInt"></td>
                                         </tr>
                                         <tr>
@@ -1984,8 +1969,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <td colspan="2"></td>
                                             
                                             <td id="subtotalArbNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionArbNac" placeholder="0"
-                                                    oninput="onActv3Comision3_16()"></td>
+                                            <td class="td_obs"><span id="comisionArbNac"></span></td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsArbNac"></td>
                                         </tr>
                                         <tr>
@@ -1997,8 +1981,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantPubInt') }}"></td>
                                             <td colspan="2"></td>
                                             <td id="subtotalPubInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionPubInt" placeholder="0"
-                                                    oninput="onActv3Comision3_16()"></td>
+                                            <td class="td_obs"><span id="comisionPubInt"></span></td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPubInt"></td>
                                         </tr>
                                         <tr>
@@ -2010,8 +1993,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantPubNac') }}"></td>
                                             <td colspan="2"></td>
                                             <td id="subtotalPubNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionPubNac" placeholder="0"
-                                                    oninput="onActv3Comision3_16()"></td>
+                                            <td class="td_obs"><span id="comisionPubNac"></span></td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPubNac"></td>
                                         </tr>
                                         <tr>
@@ -2023,8 +2005,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantRevInt') }}"></td>
                                             <td colspan="2"></td>
                                             <td id="subtotalRevInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionRevInt" placeholder="0"
-                                                    oninput="onActv3Comision3_16()"></td>
+                                            <td class="td_obs"><span id="comisionRevInt"></span></td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevInt"></td>
                                         </tr>
                                         <tr>
@@ -2036,8 +2017,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantRevNac') }}"></td>
                                             <td colspan="2"></td>
                                             <td id="subtotalRevNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionRevNac" placeholder="0"
-                                                    oninput="onActv3Comision3_16()"></td>
+                                            <td class="td_obs"><span id="comisionRevNac"></span></td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevNac"></td>
                                         </tr>
                                         <tr>
@@ -2049,8 +2029,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_16()" value="{{ oldValueOrDefault('cantRevista') }}"></td>
                                             <td colspan="2"></td>
                                             <td id="subtotalRevista"></td>
-                                            <td class="td_obs"><input type="value" id="comisionRevista" placeholder="0"
-                                                    oninput="onActv3Comision3_16()"></td>
+                                            <td class="td_obs"><span id="comisionRevista"></span></td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRevista"></td>
                                         </tr>
                                     </tbody>
@@ -2130,8 +2109,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </td>
                                                 <td></td>
                                                 <td id="subtotalDifusionExt"></td>
-                                                <td class="td_obs"><input type="value" id="comisionDifusionExt" placeholder="0"
-                                                        oninput="onActv3Comision3_17()">
+                                                <td class="td_obs"><span id="comisionDifusionExt"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionExt"></td>
                                             </tr>
@@ -2146,8 +2124,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </td>
                                                 <td></td>
                                                 <td id="subtotalDifusionInt"></td>
-                                                <td class="td_obs"><input type="value" id="comisionDifusionInt" placeholder="0"
-                                                        oninput="onActv3Comision3_17()">
+                                                <td class="td_obs"><span id="comisionDifusionInt"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsDifusionInt"></td>
                                             </tr>
@@ -2164,8 +2141,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </td>
                                                 <td></td>
                                                 <td id="subtotalRepDifusionExt"></td>
-                                                <td class="td_obs"><input type="value" id="comisionRepDifusionExt" placeholder="0"
-                                                        oninput="onActv3Comision3_17()">
+                                                <td class="td_obs"><span id="comisionRepDifusionExt"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionExt"></td>
                                             </tr>
@@ -2181,8 +2157,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </td>
                                                 <td></td>
                                                 <td id="subtotalRepDifusionInt"></td>
-                                                <td class="td_obs"><input type="value" id="comisionRepDifusionInt" placeholder="0"
-                                                        oninput="onActv3Comision3_17()">
+                                                <td class="td_obs"><span id="comisionRepDifusionInt"></span>
                                                 </td>
                                                 <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRepDifusionInt"></td>
                                             </tr>
@@ -2259,8 +2234,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_18()" value="{{ oldValueOrDefault('cantComOrgInt') }}"></td>
                                             <td></td>
                                             <td id="subtotalComOrgInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionComOrgInt" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionComOrgInt"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComOrgInt"></td>
                                         </tr>
@@ -2274,8 +2248,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_18()" value="{{ oldValueOrDefault('cantComOrgNac') }}"></td>
                                             <td></td>
                                             <td id="subtotalComOrgNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionComOrgNac" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionComOrgNac"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComOrgNac"></td>
                                         </tr>
@@ -2289,8 +2262,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     oninput="onActv3SubTotal3_18()" value="{{ oldValueOrDefault('cantComOrgReg') }}"></td>
                                             <td></td>
                                             <td id="subtotalComOrgReg"></td>
-                                            <td class="td_obs"><input type="value" id="comisionComOrgReg" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionComOrgReg"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComOrgReg"></td>
                                         </tr>
@@ -2305,8 +2277,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalComApoyoInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionComApoyoInt" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionComApoyoInt"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComApoyoInt"></td>
                                         </tr>
@@ -2321,8 +2292,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalComApoyoNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionComApoyoNac" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionComApoyoNac"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComApoyoNac"></td>
                                         </tr>
@@ -2337,8 +2307,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalComApoyoReg"></td>
-                                            <td class="td_obs"><input type="value" id="comisionComApoyoReg" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionComApoyoReg"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComApoyoReg"></td>
                                         </tr>
@@ -2353,8 +2322,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalCicloComOrgInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionCicloComOrgInt" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionCicloComOrgInt"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComOrgInt"></td>
                                         </tr>
@@ -2369,8 +2337,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalCicloComOrgNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionCicloComOrgNac" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionCicloComOrgNac"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComOrgNac"></td>
                                         </tr>
@@ -2385,8 +2352,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalCicloComOrgReg"></td>
-                                            <td class="td_obs"><input type="value" id="comisionCicloComOrgReg" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionCicloComOrgReg"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComOrgReg"></td>
                                         </tr>
@@ -2401,8 +2367,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalCicloComApoyoInt"></td>
-                                            <td class="td_obs"><input type="value" id="comisionCicloComApoyoInt" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionCicloComApoyoInt"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComApoyoInt"></td>
                                         </tr>
@@ -2417,8 +2382,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalCicloComApoyoNac"></td>
-                                            <td class="td_obs"><input type="value" id="comisionCicloComApoyoNac" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionCicloComApoyoNac"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComApoyoNac"></td>
                                         </tr>
@@ -2433,8 +2397,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             </td>
                                             <td></td>
                                             <td id="subtotalCicloComApoyoReg"></td>
-                                            <td class="td_obs"><input type="value" id="comisionCicloComApoyoReg" placeholder="0"
-                                                    oninput="onActv3Comision3_18()">
+                                            <td class="td_obs"><span id="comisionCicloComApoyoReg"></span>
                                             </td>
                                             <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCicloComApoyoReg"></td>
                                         </tr>
@@ -2517,8 +2480,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalCGUtitular"></td>
-                                                    <td class="td_obs"><input type="value" id="comCGUtitular" placeholder="0"
-                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><span id="comCGUtitular"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUtitular"></td>
                                                 </tr>
                                                 <tr>
@@ -2532,8 +2494,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalCGUespecial"></td>
-                                                    <td class="td_obs"><input type="value" id="comCGUespecial" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comCGUespecial"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUespecial"></td>
                                                 </tr>
@@ -2548,8 +2509,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalCGUpermanente"></td>
-                                                    <td class="td_obs"><input type="value" id="comCGUpermanente" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comCGUpermanente"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCGUpermanente"></td>
                                                 </tr>
@@ -2564,8 +2524,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalCAACtitular"></td>
-                                                    <td class="td_obs"><input type="value" id="comCAACtitular" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comCAACtitular"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCAACtitular"></td>
                                                 </tr>
@@ -2580,8 +2539,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalCAACintegCom"></td>
-                                                    <td class="td_obs"><input type="value" id="comCAACintegCom" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comCAACintegCom"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsCAACintegCom"></td>
                                                 </tr>
@@ -2595,8 +2553,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantComDepart') }}"></td>
                                                     <td></td>
                                                     <td id="subtotalComDepart"></td>
-                                                    <td class="td_obs"><input type="value" id="comComDepart" placeholder="0"
-                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><span id="comComDepart"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComDepart"></td>
                                                 </tr>
                                                 <tr>
@@ -2609,8 +2566,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantComPEDPD') }}"></td>
                                                     <td></td>
                                                     <td id="subtotalComPEDPD"></td>
-                                                    <td class="td_obs"><input type="value" id="comComPEDPD" placeholder="0"
-                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><span id="comComPEDPD"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComPEDPD"></td>
                                                 </tr>
                                                 <tr>
@@ -2624,8 +2580,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalComPartPos"></td>
-                                                    <td class="td_obs"><input type="value" id="comComPartPos" placeholder="0"
-                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><span id="comComPartPos"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsComPartPos"></td>
                                                 </tr>
                                                 <tr>
@@ -2638,8 +2593,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespPos') }}"></td>
                                                     <td></td>
                                                     <td id="subtotalRespPos"></td>
-                                                    <td class="td_obs"><input type="value" id="comRespPos" placeholder="0"
-                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><span id="comRespPos"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespPos"></td>
                                                 </tr>
                                                 <tr>
@@ -2653,8 +2607,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalRespCarrera"></td>
-                                                    <td class="td_obs"><input type="value" id="comRespCarrera" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comRespCarrera"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespCarrera"></td>
                                                 </tr>
@@ -2668,8 +2621,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespProd') }}"></td>
                                                     <td></td>
                                                     <td id="subtotalRespProd"></td>
-                                                    <td class="td_obs"><input type="value" id="comRespProd" placeholder="0"
-                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><span id="comRespProd"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespProd"></td>
                                                 </tr>
                                                 <tr>
@@ -2682,8 +2634,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantRespLab') }}"></td>
                                                     <td></td>
                                                     <td id="subtotalRespLab"></td>
-                                                    <td class="td_obs"><input type="value" id="comRespLab" placeholder="0"
-                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><span id="comRespLab"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsRespLab"></td>
                                                 </tr>
                                                 <tr>
@@ -2696,8 +2647,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                             oninput="onActv3SubTotal3_19()" value="{{ oldValueOrDefault('cantExamProf') }}"></td>
                                                     <td></td>
                                                     <td id="subtotalExamProf"></td>
-                                                    <td class="td_obs"><input type="value" id="comExamProf" placeholder="0"
-                                                            oninput="onActv3Comision3_19()"></td>
+                                                    <td class="td_obs"><span id="comExamProf"></span></td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsExamProf"></td>
                                                 </tr>
                                                 <tr>
@@ -2711,8 +2661,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalExamAcademicos"></td>
-                                                    <td class="td_obs"><input type="value" id="comExamAcademicos" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comExamAcademicos"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsExamAcademicos"></td>
                                                 </tr>
@@ -2727,8 +2676,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalPRODEPformResp"></td>
-                                                    <td class="td_obs"><input type="value" id="comPRODEPformResp" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comPRODEPformResp"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPformResp"></td>
                                                 </tr>
@@ -2743,8 +2691,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalPRODEPformInteg"></td>
-                                                    <td class="td_obs"><input type="value" id="comPRODEPformInteg" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comPRODEPformInteg"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPformInteg"></td>
                                                 </tr>
@@ -2759,8 +2706,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalPRODEPenconsResp"></td>
-                                                    <td class="td_obs"><input type="value" id="comPRODEPenconsResp" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comPRODEPenconsResp"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPenconsResp"></td>
                                                 </tr>
@@ -2775,8 +2721,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalPRODEPenconsInteg"></td>
-                                                    <td class="td_obs"><input type="value" id="comPRODEPenconsInteg" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comPRODEPenconsInteg"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPenconsInteg"></td>
                                                 </tr>
@@ -2791,8 +2736,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalPRODEPconsResp"></td>
-                                                    <td class="td_obs"><input type="value" id="comPRODEPconsResp" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comPRODEPconsResp"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPconsResp"></td>
                                                 </tr>
@@ -2807,8 +2751,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     </td>
                                                     <td></td>
                                                     <td id="subtotalPRODEPconsInteg"></td>
-                                                    <td class="td_obs"><input type="value" id="comPRODEPconsInteg" placeholder="0"
-                                                            oninput="onActv3Comision3_19()">
+                                                    <td class="td_obs"><span id="comPRODEPconsInteg"></span>
                                                     </td>
                                                     <td class="td_obs"><input class="table-header" type="text" placeholder="Comenta aqui" id="obsPRODEPconsInteg"></td>
                                                 </tr>
@@ -3993,6 +3936,43 @@ if (!isNaN(score3_9)) {
       return st;
     }
 
+document.getElementById('edit-form-btn').addEventListener('click', async function() {
+    const currentStepDiv = document.querySelector('[id^="step"]:not([style*="display: none"])');
+    if (!currentStepDiv) {
+        showMessage('No hay un formulario visible para editar.', 'orange');
+        return;
+    }
+
+    const formId = currentStepDiv.querySelector('form').id;
+    const stepNumber = stepMap[formId];
+    const endpoint = `/formato-evaluacion/data/${stepNumber}`;
+
+    try {
+        const response = await fetch(endpoint);
+        if (!response.ok) {
+            throw new Error('No se pudieron obtener los datos para editar.');
+        }
+        const data = await response.json();
+
+        if (data.error) {
+            showMessage(data.error, 'orange');
+            return;
+        }
+
+        const form = document.getElementById(formId);
+        for (const key in data) {
+            if (Object.hasOwnProperty.call(data, key)) {
+                const input = form.querySelector(`[name="${key}"], [id="${key}"]`);
+                if (input) {
+                    input.value = data[key];
+                }
+            }
+        }
+        showMessage('Datos cargados. Ahora puedes editar el formulario.', 'blue');
+    } catch (error) {
+        showMessage(error.message, 'red');
+    }
+});
 
         </script>
         </body>
