@@ -27,6 +27,11 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <script>
         window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
     </script>
+    <style>
+        div#step11, div#step12, div#step13, div#step14, div#step15, div#step16, div#step17, div#step18, div#step19, div#step20{
+            margin-inline-start: 10rem;
+        }
+    </style>
 </head>
 @if (Route::has('login'))
         @csrf
@@ -925,15 +930,16 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                 </form>
                             </div>
                             <div id="step10" style="display: none">    
-                                <form id="form3_9" method="POST"onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store39', 'form3_9');">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="email" value="{{ auth()->user()->email }}">
-                                    <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
-                                    <div>
-                                          @csrf
+                                <div>
                                     <h4>Puntaje máximo
                                         <label class="bg-black text-white px-4 mt-3">200</label>
                                     </h4>
+                                </div>    
+                                    <form id="form3_9" method="POST"onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store39', 'form3_9');">
+                                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                                        <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
+                                        @csrf
                                         <table class="table table-sm tutorias">
 
                                             <thead>
@@ -959,10 +965,6 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <th id="score3_9">0</th>
                                                     <th id="comision3_9">0</th>
                                                 </tr>
-                                                <tr></tr>
-                                            </thead>
-
-                                            <thead>
                                                 <tr>
                                                     <th class="acreditacion">Incisos</th>
                                                     <th class="acreditacion">Actividad</th>
@@ -975,7 +977,6 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                     <th class="text-center acreditacion">Observaciones</th>
                                                 </tr>
                                             </thead>
-
                                             <tbody>
 
                                                 <tr>
@@ -1197,45 +1198,46 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </tr>
                                             </thead>
                                         </table>
-                                </form>
+                                    </form>
                             </div> 
-                            <div id="step11" style="display: none">
+                        </div>
+                        <div id="step11" style="display: none">
                                 <form id="form3_10" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store310', 'form3_10');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
                                     <input type="hidden" name="user_type" value="{{ auth()->user()->user_type }}">
                                     @csrf
                                         <!--3.10 Trabajos dirigidos para la titulación de estudiantes-->
-                                    <h4>Puntaje máximo
-                                        <label class="bg-black text-white px-4 mt-3" for="">115</label>
-                                    </h4>
-                                    <table class="table table-sm tutorias">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" colspan=3>Actividad</th>
-                                                <th colspan="5" class="table-ajust" scope="col"></th>
-                                                <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
-                                                <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th id="seccion3_10" class="acreditacion" colspan=2>3.10 Tutorías a estudiantes</th>
-                                                <th colspan="6"></th>
-                                                <th id="score3_10">0</th>
-                                                <th id="comision3_10">0</th>
+                                        <h4>Puntaje máximo
+                                            <label class="bg-black text-white px-4 mt-3" for="">115</label>
+                                        </h4>
+                                        <table class="table table-sm tutorias">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" colspan=3>Actividad</th>
+                                                    <th colspan="5" class="table-ajust" scope="col"></th>
+                                                    <th class="table-ajust cd" scope="col">Puntaje a evaluar</th>
+                                                    <th class="table-ajust cd" scope="col">Puntaje de la Comisión Dictaminadora
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th id="seccion3_10" class="acreditacion" colspan=2>3.10 Tutorías a estudiantes</th>
+                                                    <th colspan="6"></th>
+                                                    <th id="score3_10">0</th>
+                                                    <th id="comision3_10">0</th>
 
-                                            </tr>
-                                            <tr>
-                                                <th colspan="2"></th>
-                                                <th class="acreditacion">Puntaje</th>
-                                                <th class="text-center acreditacion form3_10Cantidad">Cantidad</th>
-                                                <th colspan="6"></th>
-                                                <th class="text-center acreditacion" scope="col">Observaciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="2"></th>
+                                                    <th class="acreditacion">Puntaje</th>
+                                                    <th class="text-center acreditacion form3_10Cantidad">Cantidad</th>
+                                                    <th colspan="6"></th>
+                                                    <th class="text-center acreditacion" scope="col">Observaciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                             <thead>
                                                 <tr>
                                                     <!--Tutorias a estudantes 3_10 individuales, grupales -->
@@ -1269,24 +1271,24 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                                 </tr>
                                             </thead>
                                             </tbody> 
-                                            </table>
-                                            <!--Tabla informativa Acreditacion Actividad 3.10-->
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th class="acreditacion" scope="col">Acreditacion: </th>
+                                        </table>
+                                                <!--Tabla informativa Acreditacion Actividad 3.10-->
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="acreditacion" scope="col">Acreditacion: </th>
 
-                                                        <th class="descripcion"><b>DDIE</b> </th>
+                                                            <th class="descripcion"><b>DDIE</b> </th>
 
-                                                        <th><button id="btn3_10" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
+                                                            <th><button id="btn3_10" type="submit" class="btn custom-btn printButtonClass">Enviar</button></th>
 
-                                                    </tr>
-                                                </thead>
-                                            </table>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                               
                                 </form>
-                            </div>  
-                             
-                            <div id="step12" style="display: none">  
+                        </div>
+                        <div id="step12" style="display: none">
                                 <form id="form3_11" method="POST" onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store311', 'form3_11');">
                                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                     <input type="hidden" name="email" value="{{ auth()->user()->email }}">
@@ -3956,7 +3958,7 @@ function onActv3SubTotal3_9(){
     console.log("🚀 ~ onActv3SubTotal3_9 ~ tutorias17:", tutorias17)
 
 //subtotal minimo resultante
-    const score3_9 = minTutorias(tutorias1,tutorias2,tutorias3, tutorias4, tutorias6, tutorias7, tutorias8, tutorias9, tutorias10, tutorias11, tutorias12, tutorias13, tutorias14, tutorias15, tutorias16, tutorias17);
+    const score3_9 = minTutorias(tutorias1,tutorias2,tutorias3, tutorias4, tutorias5, tutorias6, tutorias7, tutorias8, tutorias9, tutorias10, tutorias11, tutorias12, tutorias13, tutorias14, tutorias15, tutorias16, tutorias17);
     scoreElement.textContent = score3_9.toFixed(2);
     console.log(`Puntaje tabla ${componentIndex}:`, score3_9);
  
