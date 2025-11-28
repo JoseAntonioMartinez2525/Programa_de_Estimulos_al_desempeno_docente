@@ -42,6 +42,12 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
          div#step9, div#step8{
             margin-bottom: 3rem;
          }
+
+         div#instrucionEdit{
+            margin-inline-start: 10rem;
+            margin-top: 8rem;
+            margin-bottom: 3rem;
+         }
     </style>
 </head>
 @if (Route::has('login'))
@@ -124,6 +130,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
         <body class="font-sans antialiased" style="margin-left: 300px;">
             <x-general-header />
+            <div id="instrucionEdit">
+            <p>*Nota: Para editar una de las tablas de los formularios, haga clic en el botón ✎ Editar Formulario. <br> También podrá dirigirse a este elemento haciendo clic en cualquiera de los formularios deseados, ubicados en la barra de menú al lado izquierdo.</p>
+            </div>
             <button id="toggle-dark-mode" class="btn btn-secondary"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
             <button id="edit-form-btn" class="btn btn-info"><i class="fa-solid fa-pencil"></i>&nbsp;Editar Formulario</button>
 
@@ -134,6 +143,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                             <div class="flex lg:justify-center lg:col-start-2"></div>
 
                             <nav class="-mx-3 flex flex-1 justify-end"></nav>
+
                             <div id="step1" style="display: block">
                                 <form id="form3_1" method="POST"
                                     onsubmit="event.preventDefault(); submitForm('/formato-evaluacion/store31', 'form3_1');">
@@ -3025,26 +3035,26 @@ function actualizarData() {
 
  // MAPA DE RUTAS
  const routeMap = {
-    form3_1: { store: '/formato-evaluacion/store31'},
-    form3_2: { store: '/formato-evaluacion/store32'},
-    form3_3: { store: '/formato-evaluacion/store33'},
-    form3_4: { store: '/formato-evaluacion/store34'},
-    form3_5: { store: '/formato-evaluacion/store35'},
-    form3_6: { store: '/formato-evaluacion/store36'},
-    form3_7: { store: '/formato-evaluacion/store37'},
-    form3_8: { store: '/formato-evaluacion/store38'},
-    form3_8_1: { store: '/formato-evaluacion/store381'},
-    form3_9: { store: '/formato-evaluacion/store39'},
-    form3_10: { store: '/formato-evaluacion/store310'},
-    form3_11: { store: '/formato-evaluacion/store311'},
-    form3_12: { store: '/formato-evaluacion/store312'},
-    form3_13: { store: '/formato-evaluacion/store313'},
-    form3_14: { store: '/formato-evaluacion/store314'},
-    form3_15: { store: '/formato-evaluacion/store315'},
-    form3_16: { store: '/formato-evaluacion/store316'},
-    form3_17: { store: '/formato-evaluacion/store317'},
-    form3_18: { store: '/formato-evaluacion/store318'},
-    form3_19: { store: '/formato-evaluacion/store319'},
+    form3_1: { store: '/formato-evaluacion/store31', fetch: '/formato-evaluacion/get-data-31' },
+    form3_2: { store: '/formato-evaluacion/store32', fetch: '/formato-evaluacion/get-data-32' },
+    form3_3: { store: '/formato-evaluacion/store33', fetch: '/formato-evaluacion/get-data-33' },
+    form3_4: { store: '/formato-evaluacion/store34', fetch: '/formato-evaluacion/get-data-34' },
+    form3_5: { store: '/formato-evaluacion/store35', fetch: '/formato-evaluacion/get-data-35' },
+    form3_6: { store: '/formato-evaluacion/store36', fetch: '/formato-evaluacion/get-data-36' },
+    form3_7: { store: '/formato-evaluacion/store37', fetch: '/formato-evaluacion/get-data-37' },
+    form3_8: { store: '/formato-evaluacion/store38', fetch: '/formato-evaluacion/get-data-38' },
+    form3_8_1: { store: '/formato-evaluacion/store381', fetch: '/formato-evaluacion/get-data-381' },
+    form3_9: { store: '/formato-evaluacion/store39', fetch: '/formato-evaluacion/get-data-39' },
+    form3_10: { store: '/formato-evaluacion/store310', fetch: '/formato-evaluacion/get-data-310' },
+    form3_11: { store: '/formato-evaluacion/store311', fetch: '/formato-evaluacion/get-data-311' },
+    form3_12: { store: '/formato-evaluacion/store312', fetch: '/formato-evaluacion/get-data-312' },
+    form3_13: { store: '/formato-evaluacion/store313', fetch: '/formato-evaluacion/get-data-313' },
+    form3_14: { store: '/formato-evaluacion/store314', fetch: '/formato-evaluacion/get-data-314' },
+    form3_15: { store: '/formato-evaluacion/store315', fetch: '/formato-evaluacion/get-data-315' },
+    form3_16: { store: '/formato-evaluacion/store316', fetch: '/formato-evaluacion/get-data-316' },
+    form3_17: { store: '/formato-evaluacion/store317', fetch: '/formato-evaluacion/get-data-317' },
+    form3_18: { store: '/formato-evaluacion/store318', fetch: '/formato-evaluacion/get-data-318' },
+    form3_19: { store: '/formato-evaluacion/store319', fetch: '/formato-evaluacion/get-data-319' },
 };
 
 
@@ -3604,6 +3614,7 @@ const stepMap = {
                                 localStorage.setItem("ultimoStepDocencia", nextStep);
                             } else {
                                 // showMessage("Proceso completado", "green");
+                                
                                 localStorage.setItem("ultimoStepDocencia", "FIN");
                             }
 
@@ -3949,9 +3960,8 @@ if (!isNaN(score3_9)) {
             return docenteDataCache; // Return cached data if available
         }
 
-        // This endpoint should return all form data for the authenticated user.
-        // It's similar to '/get-docente-data' but doesn't require an email parameter.
-        const allDataEndpoint = '/formato-evaluacion/get-docente-data'; 
+        // This is our new endpoint for the logged-in teacher
+        const allDataEndpoint = '/formato-evaluacion/get-authenticated-docente-data'; 
 
         try {
             const response = await fetch(allDataEndpoint);

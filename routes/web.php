@@ -144,6 +144,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/show-all-users', [ProfileController::class, 'showAllUsers'])->name('show-all-users');
     Route::get('/get-docentes', [DictaminatorController::class, 'getDocentes'])->name('getDocentes');
     Route::get('/get-docente-data', [DictaminatorController::class, 'getDocenteData'])->name('getDocenteData');
+    Route::get('/get-authenticated-docente-data', [DictaminatorController::class, 'getAuthenticatedDocenteData']);
     //Route::get('/get-form-content/{form}', [FormContentController::class, 'getFormContent']);
     Route::get('/get-dictaminadores', [FormsController::class, 'getdictaminadores'])->name('getdictaminadores');
     Route::get('/form4', [ConsolidatedResponseController::class, 'showResumen'])->name('form4');
