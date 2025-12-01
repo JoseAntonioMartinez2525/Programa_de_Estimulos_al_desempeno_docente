@@ -49,7 +49,7 @@ class ResponseForm3_3Controller extends Controller
 
             // Pasar el valor a $validatedData para asegurar que esté disponible en la vista
                 $validatedData['comision3_3'] = $docenteData->comision3_3 ?? null;
-            UsersResponseForm3_3::create($validatedData);
+            UsersResponseForm3_3::updateOrCreate(['user_id' => $validatedData['user_id']], $validatedData);
 
             // Disparar evento después de la creación del registro
             event(new EvaluationCompleted($validatedData['user_id']));

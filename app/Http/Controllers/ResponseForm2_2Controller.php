@@ -47,7 +47,7 @@ class ResponseForm2_2Controller extends Controller
             $validatedData['actv2Comision'] = $docenteData->actv2Comision ?? null;
         // Guardar en la tabla correspondiente según el tipo de usuario
 
-        UsersResponseForm2_2::create($validatedData);
+        UsersResponseForm2_2::updateOrCreate(['user_id' => $validatedData['user_id']], $validatedData);
 
             // Intentar disparar el evento pero no permitir que cualquier error posterior impida la respuesta de éxito
             try {
@@ -76,4 +76,3 @@ class ResponseForm2_2Controller extends Controller
         return response()->json($data);
     }
 }
-
