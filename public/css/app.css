@@ -14,7 +14,11 @@ body {
     border: 2px solid rgba(86, 148, 210, 0.8); /* Cambia el color y grosor del borde */
 }
 
-
+div#instrucionEdit{
+margin-inline-start: 10rem;
+margin-top: 8rem;
+margin-bottom: 3rem;
+}
 
 @media (min-width: 768px) {
     body {

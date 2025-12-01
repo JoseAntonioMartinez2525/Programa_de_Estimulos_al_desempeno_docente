@@ -5,7 +5,7 @@
     <form class="printButtonClass">
         @csrf
         <nav class="nav flex-column {{ $navClass }}"
-            style="padding-top: 0.125rem; height: 100.25rem; background: linear-gradient(90deg, #afc7ce, #4281a4);"
+            style="padding-top: 0.125rem; height: 100.25rem; background: linear-gradient(90deg, #afc7ce, #4281a4); width:15%;"
             id="navPrint">
             <div class="nav-header" style="display: flex;padding-top: 2rem;justify-content: flex-start;align-content: flex-start;flex-direction: row-reverse;align-items: baseline;">
                 <li style="list-style: none; margin-right: 20px;">

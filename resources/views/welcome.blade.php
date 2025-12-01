@@ -32,6 +32,16 @@ body.dark-mode #continuar:hover{
     font-weight: bold;
 }
 
+button#edit-form-btn{
+ margin-inline-start: 10rem;
+ background-color: #82bdb2;
+ border-color: transparent;
+ color: white;
+}
+
+.docentes-nav{
+  width: min-content;
+}
 
 </style>
 <script>
@@ -45,9 +55,22 @@ body.dark-mode #continuar:hover{
     <div class="relative min-h-screen flex flex-col items-center justify-center">
       @if (Route::has('login'))
         @if (Auth::check())
-        <x-nav-docentes :user="Auth::user()" />
+        <x-nav-docentes :user="Auth::user()" class="docentes-nav">
+          <li class="nav-item">
+            <a class="nav-link active enlaceSN" style="width: 300px;font-size: 20px;" href="javascript:void(0);" onclick="showStep(1)" title="Formato de Evaluación docente"><i class="fa-solid fa-align-justify"></i>&nbsp;Evaluación</a>
+          </li>
+          <ul class="actv3"><i class="fa-solid fa-clipboard-user"></i>&nbsp;Convocatoria:
+            <li><a href="javascript:void(0);" onclick="showStep(2)">1. Permanencia en las actividades de la docencia</a></li>
+            <li><a href="javascript:void(0);" onclick="showStep(3)">2. Dedicación en el desempeño docente</a></li>
+          </ul>
+          {{-- <li class="nav-item"><a class="nav-link active enlaceSN" style="width: 300px;font-size: 20px;" href="{{ route('docencia') }}" title="Formato de Evaluación docente"><i class="fas fa-chalkboard-teacher"></i>&nbsp;Calidad en la docencia</a></li> --}}
+        </x-nav-docentes>
         @endif
+            <div id="instrucionEdit" style="margin-inline-start: 10rem;">
+              <p>*Nota: Para editar una de las tablas de los formularios, haga clic en el botón ✎ Editar Formulario. <br> También podrá dirigirse a este elemento haciendo clic en cualquiera de los formularios deseados, ubicados en la barra de menú al lado izquierdo.</p>
+            </div>
         <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
+        <button id="edit-form-btn" class="btn btn-info"><i class="fa-solid fa-pencil"></i>&nbsp;Editar Formulario</button>
 
         </section>
 
@@ -239,6 +262,8 @@ body.dark-mode #continuar:hover{
             </thead>
             </table>      
           </form>
+
+          <input type="hidden" id="hoursHidden" name="hours" value="0">
         </div>
 
         <div id="continueButtonWrapper" style="display:none; text-align:center; margin-top:20px;">
@@ -270,7 +295,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnContinue = document.getElementById('continuar');
     const body = document.body;
 
-    // Detectar el modo actual
     let isDarkMode = body.classList.contains('dark-mode');
 
     // Función para aplicar colores normales según el modo
@@ -336,32 +360,43 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log('Button clicked: ' + currentTarget.getAttribute('data-id'));
     } document.addEventListener('DOMContentLoaded', onload);
     
-    function onChange() {
-      // Obtener los valores de los inputs
-      const puntajePosgrado = parseFloat(document.getElementById("horasPosgrado").value);
-      const puntajeSemestre = parseFloat(document.getElementById("horasSemestre").value);
-      const h = parseFloat(document.querySelector('#hoursText'));
+function onChange() {
+    // Obtener elementos (si no existen, salimos sin error)
+    const horasPosgradoEl = document.getElementById("horasPosgrado");
+    const horasSemestreEl = document.getElementById("horasSemestre");
+    const dseEl = document.getElementById("DSE");
+    const dse2El = document.getElementById("DSE2");
+    const hoursTextEl = document.getElementById("hoursText");
 
-      // Realizar los cálculos
-      const dsePosgrado = puntajePosgrado * 8.5;
-      const dseSemestre = puntajeSemestre * 8.5;
-      const hora = (dsePosgrado + dseSemestre);
+    // Si ninguno de los inputs existe, no hay nada que calcular
+    if (!horasPosgradoEl && !horasSemestreEl) return;
 
-      // Actualizar el contenido de las etiquetas <label>
-      document.getElementById("DSE").innerText = dsePosgrado;
-      document.getElementById("DSE2").innerText = dseSemestre;
+    // Leer valores de forma segura (0 por defecto)
+    const puntajePosgrado = parseFloat(horasPosgradoEl?.value) || 0;
+    const puntajeSemestre = parseFloat(horasSemestreEl?.value) || 0;
 
-      // Mostrar los valores actualizados en la consola
-      console.log(dsePosgrado);
-      console.log(dseSemestre);
+    // Cálculos
+    const dsePosgrado = puntajePosgrado * 8.5;
+    const dseSemestre = puntajeSemestre * 8.5;
+    const hora = dsePosgrado + dseSemestre;
 
-      const minimo = minWithSum(dsePosgrado, dseSemestre);
+    // Actualizar elementos si existen
+    if (dseEl) dseEl.innerText = Number.isFinite(dsePosgrado) ? dsePosgrado : 0;
+    if (dse2El) dse2El.innerText = Number.isFinite(dseSemestre) ? dseSemestre : 0;
 
-      document.getElementById("hoursText").innerText = minimo;
-      console.log(minimo);
+    // minWithSum puede ser tu función existente; si no existe, usamos hora directamente
+    const minimo = (typeof minWithSum === 'function') ? minWithSum(dsePosgrado, dseSemestre) : hora;
+
+    if (hoursTextEl) hoursTextEl.innerText = Number.isFinite(minimo) ? minimo : 0;
+
+    const hoursHidden = document.getElementById("hoursHidden");
+    if (hoursHidden) hoursHidden.value = minimo;
+
+    // Para debugging (opcional)
+    console.log('onChange ->', { puntajePosgrado, puntajeSemestre, dsePosgrado, dseSemestre, minimo, hoursHidden });
+}
 
 
-    }
 
 
     function hayObservacion(indiceActividad) {
@@ -507,163 +542,280 @@ document.addEventListener("DOMContentLoaded", () => {
       puntajeEvaluarElement.innerText = puntajeEvaluar.toFixed(2);
       document.getElementById('puntajeEvaluarInput').value = puntajeEvaluar.toFixed(2);
     });
-    // Definir la función submitForm fuera de DOMContentLoaded
-    
-      async function submitForm(url, formId) {
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    // Define the submitForm function globally
+    async function submitForm(url, formId) {
+      const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-        // Get form data
-        let formData = {};
-        let form = document.getElementById(formId);
-        // Ensure the form element exists
-        if (!form) {
-          console.error(`Form with id "${formId}" not found.`);
+      // Get form data
+      let formData = {};
+      let form = document.getElementById(formId);
+      // Ensure the form element exists
+      if (!form) {
+        console.error(`Form with id "${formId}" not found.`);
+        return;
+      }
+
+      // Recoge los datos dependiendo del formulario actual
+      switch (formId) {
+        case 'form1':
+          formData['convocatoria'] = form.querySelector('input[name="convocatoria"]').value;
+          formData['periodo'] = form.querySelector('input[name="periodo"]').value;
+          formData['nombre'] = form.querySelector('input[name="nombre"]').value;
+          formData['area'] = form.querySelector('select[name="area"]').selectedOptions[0].textContent;
+          formData['departamento'] = form.querySelector('select[name="departamento"]').selectedOptions[0].textContent;
+          break;
+
+        case 'form2':
+          formData['user_id'] = form.querySelector('input[name="user_id"]').value;
+          formData['email'] = form.querySelector('input[name="email"]').value;
+          formData['user_type'] = form.querySelector('input[name="user_type"]').value;
+          formData['horasActv2'] = form.querySelector('input[name="horasActv2"]').value;
+          formData['puntajeEvaluar'] = form.querySelector('#puntajeEvaluarInput')?.value || 0; // Use the hidden input for the value
+          formData['obs1'] = form.querySelector('input[name="obs1"]').value;
+          break;
+
+        case 'form2_2':
+          formData['user_id'] = form.querySelector('input[name="user_id"]').value;
+          formData['email'] = form.querySelector('input[name="email"]').value;
+          formData['user_type'] = form.querySelector('input[name="user_type"]').value;
+          console.log('User Type:', formData['user_type']);
+          formData['horasPosgrado'] = form.querySelector('input[name="horasPosgrado"]').value || '';
+          formData['horasSemestre'] = form.querySelector('input[name="horasSemestre"]').value || '';
+          formData['dse'] = form.querySelector('label[name="dse"]').textContent || '';
+          formData['dse2'] = form.querySelector('label[name="dse2"]').textContent || '';
+          
+          let hoursLabel = form.querySelector('label[id="hoursText"]');
+
+          if (!hoursLabel) {
+            console.error('Label with id "hoursText" not found.');
+          } else {
+            formData['hours'] = hoursLabel.innerText;
+          }
+          formData['obs2'] = form.querySelector('input[name="obs2"]').value || '';
+          formData['obs2_2'] = form.querySelector('input[name="obs2_2"]').value || '';
+          break;
+      }
+
+      console.log('Form data:', formData);
+      
+      // Enviar datos al servidor
+      try {
+        let response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'X-CSRF-TOKEN': csrfToken,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        // Read response body as text and attempt to parse JSON (so we can show server error messages)
+        const responseText = await response.text();
+        let responseData;
+        try {
+          responseData = responseText ? JSON.parse(responseText) : {};
+        } catch (err) {
+          responseData = { success: false, message: responseText || 'Invalid JSON response from server' };
+        }
+
+        if (!response.ok) {
+          console.error('Server responded with an error:', responseData);
+          // Mostrar el mensaje de error devuelto por el servidor si existe
+          showMessage('Error de servidor', 'red');
           return;
         }
 
-        // Recoge los datos dependiendo del formulario actual
-        switch (formId) {
-          case 'form1':
-            formData['convocatoria'] = form.querySelector('input[name="convocatoria"]').value;
-            formData['periodo'] = form.querySelector('input[name="periodo"]').value;
-            formData['nombre'] = form.querySelector('input[name="nombre"]').value;
-            formData['area'] = form.querySelector('select[name="area"]').selectedOptions[0].textContent;
-            formData['departamento'] = form.querySelector('select[name="departamento"]').selectedOptions[0].textContent;
-            break;
+      // Solo mostrar éxito si el servidor marca success === true
+        if (responseData && responseData.success === true) {
+          showMessage('Formulario enviado', 'green');
+            // --- Lógica para avanzar al siguiente paso ---
+            const currentStep = stepMap[formId];
+            const nextStep = currentStep + 1;
 
-          case 'form2':
-            formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = form.querySelector('input[name="email"]').value;
-            formData['user_type'] = form.querySelector('input[name="user_type"]').value;
-            formData['horasActv2'] = form.querySelector('input[name="horasActv2"]').value;
-            formData['puntajeEvaluar'] = form.querySelector('input[name="puntajeEvaluar"]').value;
-            formData['obs1'] = form.querySelector('input[name="obs1"]').value;
-            break;
-
-          case 'form2_2':
-            formData['user_id'] = form.querySelector('input[name="user_id"]').value;
-            formData['email'] = form.querySelector('input[name="email"]').value;
-            formData['user_type'] = form.querySelector('input[name="user_type"]').value;
-            console.log('User Type:', formData['user_type']);
-            formData['horasPosgrado'] = form.querySelector('input[name="horasPosgrado"]').value;
-            formData['horasSemestre'] = form.querySelector('input[name="horasSemestre"]').value;
-            formData['dse'] = form.querySelector('label[name="dse"]').textContent;
-            formData['dse2'] = form.querySelector('label[name="dse2"]').textContent;
-            
-            let hoursLabel = form.querySelector('label[id="hoursText"]');
-
-            if (!hoursLabel) {
-              console.error('Label with id "hoursText" not found.');
+            if (document.getElementById(`step${nextStep}`) || (formId === 'form2_2' && document.getElementById('continueButtonWrapper'))) {
+                showStep(nextStep);
+                localStorage.setItem("ultimoStepWelcome", nextStep);
             } else {
-              formData['hours'] = hoursLabel.innerText;
+                // Si es el último formulario (form2_2), mostramos el botón para continuar a 'docencia'
+                if (formId === 'form2_2') {
+                    document.getElementById('continueButtonWrapper').style.display = 'block';
+                    localStorage.setItem("ultimoStepWelcome", "FIN");
+                }
             }
-            formData['obs2'] = form.querySelector('input[name="obs2"]').value;
-            formData['obs2_2'] = form.querySelector('input[name="obs2_2"]').value;
-            break;
+
+        } else {
+          console.error('Submission failed:', responseData);
+          showMessage('Formulario no enviado', 'red');
         }
 
-        console.log('Form data:', formData);
-        
-        // Enviar datos al servidor
-        try {
-          // let appUrl = `/formato-evaluacion/`+url;
-          let response = await fetch(url, {
-            method: 'POST',
-            headers: {
-              'X-CSRF-TOKEN': csrfToken,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+         showMessage('Formulario no enviado', 'red');
 
-          // Read response body as text and attempt to parse JSON (so we can show server error messages)
-          const responseText = await response.text();
-          let responseData;
-          try {
-            responseData = responseText ? JSON.parse(responseText) : {};
-          } catch (err) {
-            responseData = { success: false, message: responseText || 'Invalid JSON response from server' };
-          }
-
-          if (!response.ok) {
-            console.error('Server responded with an error:', responseData);
-            // Mostrar el mensaje de error devuelto por el servidor si existe
-            showMessage(responseData.message || `Server error (${response.status})`, 'red');
-            return;
-          }
-
-        // Solo mostrar éxito si el servidor marca success === true
-          if (responseData && responseData.success === true) {
-            showMessage('Formulario enviado', 'green');
-          } else {
-            console.error('Submission failed:', responseData);
-            showMessage(responseData.message || 'Formulario no enviado', 'red');
-          }
-
-        } catch (error) {
-          console.error('There was a problem with the fetch operation:', error);
-           showMessage('Formulario no enviado', 'red');
-
-        }
       }
+    }
 
-      document.addEventListener('DOMContentLoaded', function () {
-          // Recuperamos el paso actual desde localStorage
-          let pasoActual = localStorage.getItem('pasoActual') || '1';
+    let docenteDataCache = null; // Cache to store all form data
 
-          function mostrarPaso(paso) {
-              document.getElementById("step1").style.display = "none";
-              document.getElementById("step2").style.display = "none";
-              document.getElementById("step3").style.display = "none";
-              document.getElementById("continueButtonWrapper").style.display = "none";
+    /**
+     * Fetches all form data for the logged-in user and stores it in the cache.
+     */
+    async function fetchAllDocenteData() {
+        if (docenteDataCache) {
+            return docenteDataCache; // Return cached data if available
+        }
 
-              if (paso === '1') document.getElementById("step1").style.display = "block";
-              if (paso === '2') document.getElementById("step2").style.display = "block";
-              if (paso === '3') document.getElementById("step3").style.display = "block";
-              if (paso === '4') {
-                document.getElementById("step3").style.display = "block"; // form2_2 sigue visible
-                document.getElementById("continueButtonWrapper").style.display = "block"; // botón aparece
+        // This is our new endpoint for the logged-in teacher
+        const allDataEndpoint = '/formato-evaluacion/get-authenticated-docente-data'; 
+
+        try {
+            const response = await fetch(allDataEndpoint);
+            if (!response.ok) {
+                throw new Error('No se pudieron obtener los datos del servidor.');
             }
+            docenteDataCache = await response.json();
+            return docenteDataCache;
+        } catch (error) {
+            showMessage(error.message, 'red');
+            console.error('Error fetching all docente data:', error);
+            return null;
+        }
+    }
+
+    /**
+     * Populates the currently visible form with data from the cache.
+     */
+    async function populateCurrentForm() {
+        const allData = await fetchAllDocenteData();
+        if (!allData) {
+            showMessage('No se pudieron cargar los datos para editar.', 'orange');
+            return;
+        }
+
+        // Determine the currently visible step/form
+        let currentFormId = null;
+        const currentStepDiv = document.querySelector('[id^="step"]:not([style*="display: none"])');
+        if (!currentStepDiv) {
+            showMessage('No hay un formulario visible para editar.', 'orange');
+            return;
+        }
+        currentFormId = currentStepDiv.querySelector('form').id;
+
+        if (!currentFormId) {
+            return;
+        }
+
+        const formData = allData[currentFormId]; // e.g., allData['form1']
+
+        if (!formData) {
+            showMessage('No hay datos guardados para este formulario.', 'blue');
+            return;
+        }
+
+        const form = document.getElementById(currentFormId);
+          for (const key in formData) {
+              if (Object.hasOwnProperty.call(formData, key)) {
+                  const element = form.querySelector(`[name="${key}"], [id="${key}"]`);
+                  if (element) {
+                      if (element.tagName === 'INPUT' || element.tagName === 'SELECT' || element.tagName === 'TEXTAREA') {
+                          element.value = formData[key];
+
+                          if (element.id === 'horasPosgrado' || element.id === 'horasSemestre' || element.id === 'horasActv2') {
+                              if (currentFormId === 'form2_2') {
+                                  element.dispatchEvent(new Event('input'));
+                              }
+                          }
+
+                      } else if (element.tagName === 'LABEL' || element.tagName === 'SPAN') {
+                            // Etiquetas simples: actualizamos su texto
+                            element.textContent = formData[key];
+                        } else if (element.tagName === 'TD' || element.tagName === 'TH') {
+                            // Si el TD/TH contiene labels/spans con ids conocidos, actualizamos esos hijos
+                            // (esto evita borrar <label id="hoursText"> o <label id="DSE"> dentro del td)
+                            const childHours = element.querySelector('#hoursText');
+                            const childDSE = element.querySelector('#DSE');
+                            const childDSE2 = element.querySelector('#DSE2');
+
+                            if (childHours) {
+                                childHours.innerText = formData[key];
+                            } else if (childDSE) {
+                                childDSE.innerText = formData[key];
+                            } else if (childDSE2) {
+                                childDSE2.innerText = formData[key];
+                            } else {
+                                // Ningún child específico encontrado: ponemos el texto directo en el TD
+                                element.textContent = formData[key];
+                            }
+                        }
+                  }
+              }
           }
 
-          mostrarPaso(pasoActual); // mostramos el paso correcto al cargar
+          if (currentFormId === 'form2_2') {
+        // Llamada única y segura una vez que ya se asignaron todos los values
+        setTimeout(() => {
+            try { onChange(); } catch (e) { console.error('onChange error:', e); }
+        }, 50);
+    }
 
-          // Form 1
-          const form1 = document.getElementById('form1');
-          if (form1) {
-              form1.onsubmit = function (event) {
-                  event.preventDefault();
-                  submitForm('/formato-evaluacion/store', 'form1');
-                  pasoActual = '2';
-                  localStorage.setItem('pasoActual', pasoActual);
-                  mostrarPaso(pasoActual);
-              };
-          }
+        showMessage('Datos cargados. Ahora puedes editar el formulario.', 'green');
+    }
 
-          // Form 2
-          const form2 = document.getElementById('form2');
-          if (form2) {
-              form2.onsubmit = function (event) {
-                  event.preventDefault();
-                  submitForm('/formato-evaluacion/store2', 'form2');
-                  pasoActual = '3';
-                  localStorage.setItem('pasoActual', pasoActual);
-                  mostrarPaso(pasoActual);
-              };
-          }
+    // MAPA DE RUTAS Y STEPS (similar a docencia.blade.php)
+    const routeMap = {
+        form1: { store: '/formato-evaluacion/store' },
+        form2: { store: '/formato-evaluacion/store2' },
+        form2_2: { store: '/formato-evaluacion/store3' },
+    };
 
-          // Form 2_2
-          const form2_2 = document.getElementById('form2_2');
-          if (form2_2) {
-              form2_2.onsubmit = function (event) {
-                  event.preventDefault();
-                  submitForm('/formato-evaluacion/store3', 'form2_2');
-                  pasoActual = '4';
-                  localStorage.setItem('pasoActual', pasoActual);
-                  mostrarPaso(pasoActual);
-              };
-          }
-      });
+    const stepMap = {
+        form1: 1,
+        form2: 2,
+        form2_2: 3, // Usamos 3 para diferenciarlo
+    };
+
+    function showStep(stepNumber) {
+        document.querySelectorAll('[id^="step"]').forEach(step => {
+            step.style.display = "none";
+        });
+        document.getElementById("continueButtonWrapper").style.display = "none";
+
+        const stepId = `step${stepNumber.toString().replace('.', '_')}`;
+        const current = document.getElementById(stepId);
+        if (current) {
+            current.style.display = "block";
+        } else if (stepNumber > 3) { // Si hemos pasado el último formulario
+            document.getElementById('continueButtonWrapper').style.display = 'block';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Restaurar progreso
+        const ultimo = localStorage.getItem("ultimoStepWelcome");
+        if (ultimo) {
+            if (ultimo === "FIN") {
+                showStep(3); // Un número mayor que el último step para mostrar el botón
+            } else {
+                showStep(parseFloat(ultimo));
+            }
+        } else {
+            showStep(1);
+        }
+
+        // Asignar onsubmit
+        Object.keys(routeMap).forEach(formId => {
+            const form = document.getElementById(formId);
+            if (!form) return;
+
+            form.onsubmit = function (event) {
+                event.preventDefault();
+                const storeUrl = routeMap[formId].store;
+                submitForm(storeUrl, formId);
+            };
+        });
+
+        document.getElementById('edit-form-btn').addEventListener('click', populateCurrentForm);
+    });
 
 
 
