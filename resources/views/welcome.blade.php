@@ -81,7 +81,7 @@ button#edit-form-btn{
 
   <div id="timer">   
 
-        <div id="step1" style="display:block;">
+        <div id="step1" style="display:block; margin-inline-start:10rem;">
             <form id="form1" method="POST" onsubmit="event.preventDefault(); submitForm('store', 'form1');">
 
             <br>

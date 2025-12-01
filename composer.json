@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.9.0",
         "laravel/ui": "^4.5.2",
         "meyfa/php-svg": "^0.16.1",
-        "spatie/image": "^3.8"
+        "spatie/image": "^3.8",
+        "spatie/laravel-permission": "^6.23"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.6",

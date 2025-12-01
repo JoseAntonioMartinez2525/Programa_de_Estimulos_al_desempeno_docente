@@ -65,6 +65,156 @@ $existingFormNames = [];
             top: 20px;
             right: 20px;
         }
+
+        /* Hierarchy Layout Styles */
+        .hierarchy-container {
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+            align-items: flex-start;
+        }
+
+        .hierarchy-column-left {
+            flex: 0 0 auto;
+            min-width: 300px;
+        }
+
+        .hierarchy-column-right {
+            flex: 1;
+            position: relative;
+        }
+
+        .hierarchy-level-1 {
+            margin-bottom: 15px;
+        }
+
+        .hierarchy-level-1 .hierarchy-button {
+            width: 100%;
+            text-align: left;
+            font-weight: 500;
+            background-color: #528fb3;
+            color: white;
+            border-color: #528fb3;
+        }
+
+        .hierarchy-level-1 .hierarchy-button:hover {
+            background-color: #4280a3;
+            border-color: #4280a3;
+            color: white;
+        }
+
+        .hierarchy-level-1 .hierarchy-button.category-header {
+            background-color: #528fb3;
+            color: white;
+            border-color: #528fb3;
+            pointer-events: none;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        /* Horizontal line connecting category 3 to bracket */
+        .hierarchy-level-1 .hierarchy-button.category-header::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            width: 30px;
+            height: 3px;
+            background-color: #528fb3;
+            transform: translateY(-50%);
+        }
+
+        .bracket-container {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .bracket-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 25px;
+            border-left: 3px solid #528fb3;
+            border-top: 3px solid #528fb3;
+            border-bottom: 3px solid #528fb3;
+            border-radius: 15px 0 0 15px;
+        }
+
+        .bracket-item {
+            margin-bottom: 12px;
+        }
+
+        .bracket-item .hierarchy-button {
+            width: 100%;
+            text-align: left;
+            background-color: #528fb3;
+            color: white;
+            border-color: #528fb3;
+        }
+
+        .bracket-item .hierarchy-button:hover {
+            background-color: #4280a3;
+            border-color: #4280a3;
+            color: white;
+        }
+
+        /* Dark mode adjustments */
+        body.dark-mode .hierarchy-level-1 .hierarchy-button,
+        body.dark-mode .bracket-item .hierarchy-button {
+            background-color: #22426d;
+            border-color: #22426d;
+        }
+
+        body.dark-mode .hierarchy-level-1 .hierarchy-button:hover,
+        body.dark-mode .bracket-item .hierarchy-button:hover {
+            background-color: #1a3555;
+            border-color: #1a3555;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hierarchy-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hierarchy-column-left {
+                min-width: 100%;
+            }
+
+            .hierarchy-column-right {
+                width: 100%;
+            }
+
+            /* Hide connecting line on mobile */
+            .hierarchy-level-1 .hierarchy-button.category-header::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .bracket-container {
+                padding-left: 25px;
+            }
+
+            .bracket-container::before {
+                width: 15px;
+                border-width: 2px;
+                border-radius: 10px 0 0 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hierarchy-container {
+                padding: 10px;
+            }
+
+            .bracket-container {
+                padding-left: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -106,84 +256,150 @@ $existingFormNames = [];
                     <div class="container mt-4 printButtonClass">
                         <!-- Selector para elegir el formulario -->
                         <label for="formGrid">Buscar Evaluación:</label>
-                        <div id="formGrid" class="container mt-4">
-                           <div class="row g-3">
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form2')">1. Permanencia en las actividades de la docencia</button>
+                        
+                        <div id="formGrid" class="hierarchy-container mt-4">
+                            <!-- Left Column: Categories 1, 2, and 3 -->
+                            <div class="hierarchy-column-left">
+                                <!-- Level 1: Category 1 -->
+                                <div class="hierarchy-level-1">
+                                    <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form2')">
+                                        1. Permanencia en las actividades de la docencia
+                                    </button>
+                                </div>
+
+                                <!-- Level 1: Category 2 -->
+                                <div class="hierarchy-level-1">
+                                    <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form2_2')">
+                                        2. Dedicación en el desempeño docente
+                                    </button>
+                                </div>
+
+                                <!-- Level 1: Category 3 -->
+                                <div class="hierarchy-level-1">
+                                    <button class="btn hierarchy-button category-header">
+                                        3. Calidad en la docencia
+                                    </button>
+                                </div>
                             </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form2_2')">2. Dedicación en el desempeño docente</button>
+
+                            <!-- Right Column: Sub-categories with left bracket -->
+                            <div class="hierarchy-column-right">
+                                <div class="bracket-container">
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_1')">
+                                            3.1 Participación en actividades de diseño curricular
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_2')">
+                                            3.2 Calidad del desempeño docente evaluada por el alumnado
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_3')">
+                                            3.3 Publicaciones relacionadas con la docencia
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_4')">
+                                            3.4 Distinciones académicas recibidas por el docente
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_5')">
+                                            3.5 Asistencia, puntualidad y permanencia en el desempeño docente
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_6')">
+                                            3.6 Capacitación y actualización pedagógica recibida
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_7')">
+                                            3.7 Cursos de actualización disciplinaria
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_8')">
+                                            3.8 Impartición de cursos, diplomados, seminarios
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_8_1')" title="Responsabilidad Social Universitaria">
+                                            3.8.1 RSU
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_9')">
+                                            3.9 Trabajos dirigidos para la titulación
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_10')">
+                                            3.10 Tutorías a estudiantes
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_11')">
+                                            3.11 Asesoría a estudiantes
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_12')">
+                                            3.12 Publicaciones de investigación
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_13')">
+                                            3.13 Proyectos académicos de investigación
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_14')">
+                                            3.14 Participación como ponente en congresos
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_15')">
+                                            3.15 Registro de patentes y productos de investigación
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_16')">
+                                            3.16 Actividades de arbitraje y edición
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_17')">
+                                            3.17 Proyectos académicos de extensión
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_18')">
+                                            3.18 Organización de congresos institucionales
+                                        </button>
+                                    </div>
+                                    <div class="bracket-item">
+                                        <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/form3_19')">
+                                            3.19 Participación en cuerpos colegiados
+                                        </button>
+                                    </div>
+
+                                    <!-- Dynamic options -->
+                                    @foreach($forms as $form)
+                                        @if(!in_array($form->form_name, $existingFormNames))
+                                            <div class="bracket-item">
+                                                <button class="btn hierarchy-button form-option" onclick="navigateToRoute('/formato-evaluacion/{{ $form->form_name }}')">
+                                                    {{ $form->form_name }}
+                                                </button>
+                                            </div>
+                                            @php $existingFormNames[] = $form->form_name; @endphp
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_1')">3.1 Participación en actividades de diseño curricular</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_2')">3.2 Calidad del desempeño docente evaluada por el alumnado</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_3')">3.3 Publicaciones relacionadas con la docencia</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_4')">3.4 Distinciones académicas recibidas por el docente</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_5')">3.5 Asistencia, puntualidad y permanencia en el desempeño docente</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_6')">3.6 Capacitación y actualización pedagógica recibida</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_7')">3.7 Cursos de actualización disciplinaria</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_8')">3.8 Impartición de cursos, diplomados, seminarios</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_8_1')" title="Responsabilidad Social Universitaria">3.8.1 RSU</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_9')">3.9 Trabajos dirigidos para la titulación</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_10')">3.10 Tutorías a estudiantes</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_11')">3.11 Asesoría a estudiantes</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_12')">3.12 Publicaciones de investigación</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_13')">3.13 Proyectos académicos de investigación</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_14')">3.14 Participación como ponente en congresos</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_15')">3.15 Registro de patentes y productos de investigación</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_16')">3.16 Actividades de arbitraje y edición</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_17')">3.17 Proyectos académicos de extensión</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_18')">3.18 Organización de congresos institucionales</button>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                            <button class="btn btn-outline-primary w-100 form-option" onclick="navigateToRoute('/formato-evaluacion/form3_19')">3.19 Participación en cuerpos colegiados</button>
-                            </div>
-                       
-                    
-                            <!-- Dynamic options -->
-                            @foreach($forms as $form)
-                                @if(!in_array($form->form_name, $existingFormNames)) <!-- Check for duplicates -->
-                                    <option value="{{ $form->form_name }}" data-id="{{ $form->id }}">{{ $form->form_name }}</option>
-                                    @php $existingFormNames[] = $form->form_name; @endphp <!-- Add to existing names -->
-                                @endif
-                            @endforeach
-                            </div>
+                        </div>
                     </div>
 
                     <div id="formContainer" class="mt-4">
