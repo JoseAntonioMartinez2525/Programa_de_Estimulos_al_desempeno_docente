@@ -619,14 +619,14 @@ function onChange() {
         }
 
         if (!response.ok) {
-          console.error('Server responded with an error:', responseData);
-          // Mostrar el mensaje de error devuelto por el servidor si existe
-          showMessage('Error de servidor', 'red');
+          console.error('Server responded with an error:', responseData.message || responseText);
+          showMessage('Error de servidor: ' + ('No se pudo procesar la solicitud.'), 'red');
           return;
         }
 
       // Solo mostrar éxito si el servidor marca success === true
         if (responseData && responseData.success === true) {
+          // Mensaje de éxito manual
           showMessage('Formulario enviado', 'green');
             // --- Lógica para avanzar al siguiente paso ---
             const currentStep = stepMap[formId];
@@ -645,12 +645,12 @@ function onChange() {
 
         } else {
           console.error('Submission failed:', responseData);
-          showMessage('Formulario no enviado', 'red');
+          showMessage('Formulario no enviado. Verifique los datos.', 'red');
         }
 
       } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
-         showMessage('Formulario no enviado', 'red');
+         showMessage('Error de conexión. Intente de nuevo.', 'red');
 
       }
     }
@@ -686,9 +686,10 @@ function onChange() {
      * Populates the currently visible form with data from the cache.
      */
     async function populateCurrentForm() {
+        // Los mensajes aquí son informativos para el usuario durante la edición.
         const allData = await fetchAllDocenteData();
         if (!allData) {
-            showMessage('No se pudieron cargar los datos para editar.', 'orange');
+            showMessage('No se pudieron cargar los datos para editar.', 'red');
             return;
         }
 
@@ -696,7 +697,7 @@ function onChange() {
         let currentFormId = null;
         const currentStepDiv = document.querySelector('[id^="step"]:not([style*="display: none"])');
         if (!currentStepDiv) {
-            showMessage('No hay un formulario visible para editar.', 'orange');
+            // No mostramos mensaje si no hay formulario, es un estado normal al inicio.
             return;
         }
         currentFormId = currentStepDiv.querySelector('form').id;
@@ -708,7 +709,7 @@ function onChange() {
         const formData = allData[currentFormId]; // e.g., allData['form1']
 
         if (!formData) {
-            showMessage('No hay datos guardados para este formulario.', 'blue');
+            showMessage('No hay datos previos para este formulario.', 'blue');
             return;
         }
 
@@ -719,11 +720,9 @@ function onChange() {
                   if (element) {
                       if (element.tagName === 'INPUT' || element.tagName === 'SELECT' || element.tagName === 'TEXTAREA') {
                           element.value = formData[key];
-
+                          // Disparamos el evento input para recalcular valores dinámicos
                           if (element.id === 'horasPosgrado' || element.id === 'horasSemestre' || element.id === 'horasActv2') {
-                              if (currentFormId === 'form2_2') {
-                                  element.dispatchEvent(new Event('input'));
-                              }
+                              element.dispatchEvent(new Event('input'));
                           }
 
                       } else if (element.tagName === 'LABEL' || element.tagName === 'SPAN') {
@@ -763,9 +762,9 @@ function onChange() {
 
     // MAPA DE RUTAS Y STEPS (similar a docencia.blade.php)
     const routeMap = {
-        form1: { store: '/formato-evaluacion/store' },
-        form2: { store: '/formato-evaluacion/store2' },
-        form2_2: { store: '/formato-evaluacion/store3' },
+        form1: { store: '/formato-evaluacion/store', fetch: '/formato-evaluacion/get-data1' },
+        form2: { store: '/formato-evaluacion/store2', fetch: '/formato-evaluacion/get-data2' },
+        form2_2: { store: '/formato-evaluacion/store3', fetch: '/formato-evaluacion/get-data22' },
     };
 
     const stepMap = {
