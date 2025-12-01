@@ -40,7 +40,7 @@ class ResponseForm3_7Controller extends Controller
 
 
             // Create a new record using Eloquent ORM
-            UsersResponseForm3_7::create($validatedData);
+            UsersResponseForm3_7::updateOrCreate(['user_id' => $validatedData['user_id']], $validatedData);
             // Disparar evento después de la creación del registro
             event(new EvaluationCompleted($validatedData['user_id']));
 

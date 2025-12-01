@@ -42,7 +42,7 @@ class ResponseForm2Controller extends Controller
 
             $validatedData['comision1'] = $docenteData->comision1 ?? null;
 
-            UsersResponseForm2::create($validatedData);
+            UsersResponseForm2::updateOrCreate(['user_id' => $validatedData['user_id']], $validatedData);
 
 
              // Intentar operaciones posteriores (evento / consolidado) pero no dejar que arrojen error al cliente

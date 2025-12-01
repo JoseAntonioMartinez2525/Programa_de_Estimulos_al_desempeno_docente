@@ -52,7 +52,7 @@ class ResponseForm3_17Controller extends Controller
             $validatedData['comision3_17'] = $docenteData->comision3_17 ?? null;
 
             // Create a new record using Eloquent ORM
-            UsersResponseForm3_17::create($validatedData);
+            UsersResponseForm3_17::updateOrCreate(['user_id' => $validatedData['user_id']], $validatedData);
             // Disparar evento después de la creación del registro
             event(new EvaluationCompleted($validatedData['user_id']));
 
