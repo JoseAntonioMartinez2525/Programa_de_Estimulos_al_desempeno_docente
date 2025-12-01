@@ -33,13 +33,13 @@ body.dark-mode #continuar:hover{
 }
 
 button#edit-form-btn{
- margin-inline-start: 10rem;
+ margin-inline-start: 20rem;
  background-color: #82bdb2;
  border-color: transparent;
  color: white;
 }
 
-.docentes-nav{
+{
   width: min-content;
 }
 
@@ -55,7 +55,7 @@ button#edit-form-btn{
     <div class="relative min-h-screen flex flex-col items-center justify-center">
       @if (Route::has('login'))
         @if (Auth::check())
-        <x-nav-docentes :user="Auth::user()" class="docentes-nav">
+        <x-nav-docentes :user="Auth::user()">
           <li class="nav-item">
             <a class="nav-link active enlaceSN" style="width: 300px;font-size: 20px;" href="javascript:void(0);" onclick="showStep(1)" title="Formato de Evaluación docente"><i class="fa-solid fa-align-justify"></i>&nbsp;Evaluación</a>
           </li>
@@ -66,7 +66,7 @@ button#edit-form-btn{
           {{-- <li class="nav-item"><a class="nav-link active enlaceSN" style="width: 300px;font-size: 20px;" href="{{ route('docencia') }}" title="Formato de Evaluación docente"><i class="fas fa-chalkboard-teacher"></i>&nbsp;Calidad en la docencia</a></li> --}}
         </x-nav-docentes>
         @endif
-            <div id="instrucionEdit" style="margin-inline-start: 10rem;">
+            <div id="instrucionEdit" style="margin-inline-start: 20rem;">
               <p>*Nota: Para editar una de las tablas de los formularios, haga clic en el botón ✎ Editar Formulario. <br> También podrá dirigirse a este elemento haciendo clic en cualquiera de los formularios deseados, ubicados en la barra de menú al lado izquierdo.</p>
             </div>
         <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
