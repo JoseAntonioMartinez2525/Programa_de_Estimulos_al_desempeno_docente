@@ -43,11 +43,6 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             margin-bottom: 3rem;
          }
 
-         div#instrucionEdit{
-            margin-inline-start: 10rem;
-            margin-top: 8rem;
-            margin-bottom: 3rem;
-         }
     </style>
 </head>
 @if (Route::has('login'))
@@ -73,16 +68,23 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
            @endif
             
 
+</head> 
+<body class="font-sans antialiased">
+    <x-general-header />
+    @if (Auth::check())
+        <x-nav-docentes :user="Auth::user()">
             <li class="nav-item">
             @if(Auth::user()->user_type === 'dictaminador')
                 <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('comision_dictaminadora') }}">Selección de Formatos</a>
             @elseif(Auth::user()->user_type === 'secretaria')
                 <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('secretaria') }}">Selección de Formatos</a>
             @endif
+                <a class="nav-link active enlaceSN" style="width: 300px;font-size: 20px;" href="{{ route('welcome') }}" title="Formato de Evaluación docente"><i class="fa-solid fa-align-justify"></i>&nbsp;Evaluación</a>
             </li>
             @if($userType !== 'docente')
             <li class="nav-item">
                 <a class="nav-link active enlaceSN" href="{{ route('resumen') }}">Resumen</a>  
+                <a class="nav-link active enlaceSN" style="width: 300px;font-size: 20px;" href="javascript:void(0);" onclick="showStep(1)" title="Formato de Evaluación docente"><i class="fas fa-chalkboard-teacher"></i>&nbsp;Calidad en la docencia</a>
             </li>
             @else
                 <li class=" nav-item">
@@ -130,6 +132,31 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
         <body class="font-sans antialiased" style="margin-left: 300px;">
             <x-general-header />
+             <ul class="actv3"><i class="fas fa-chalkboard-teacher"></i>&nbsp;Calidad en la docencia:
+                 <li><a href="javascript:void(0);" onclick="showStep(1)">3.1 Participación en actividades de diseño curricular</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(2)">3.2 Calidad del desempeño docente evaluada por el alumnado</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(3)">3.3 Publicaciones relacionadas con la docencia</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(4)">3.4 Distinciones académicas recibidas por el docente</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(5)">3.5 Asistencia, puntualidad y permanencia en el desempeño docente, evaluada por el JD y por CAAC</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(6)">3.6 Capacitación y actualización pedagógica recibida</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(7)">3.7 Cursos de actualización disciplinaria recibidos dentro de su área de conocimiento</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(8)">3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(9)">3.8.1 RSU </a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(10)">3.9 Trabajos dirigidos para la titulación de estudiantes</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(11)">3.10 Tutorías a estudiantes</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(12)">3.11 Asesoría a estudiantes</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(13)">3.12 Publicaciones de investigación relacionadas con el contenido de los PE que imparte el docente</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(14)">3.13 Proyectos académicos de investigación</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(15)">3.14 Participación como ponente en congresos o eventos académicos del Área de Conocimiento o afines del docente</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(16)">3.15 Registro de patentes y productos de investigación tecnológica y educativa</a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(17)">3.16 Actividades de arbitraje, revisión, correción y edición </a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(18)">3.17 Proyectos académicos de extensión y difusión </a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(19)">3.18 Organización de congresos o eventos institucionales del área de conocimiento de la ó el Docente </a></li>
+                 <li><a href="javascript:void(0);" onclick="showStep(20)">3.19 Participación en cuerpos colegiados</a></li>
+             </ul>
+        </x-nav-docentes>
+    @endif
+    <div class="bg-gray-50 text-black/50" style="margin-left: 330px;">
             <div id="instrucionEdit">
             <p>*Nota: Para editar una de las tablas de los formularios, haga clic en el botón ✎ Editar Formulario. <br> También podrá dirigirse a este elemento haciendo clic en cualquiera de los formularios deseados, ubicados en la barra de menú al lado izquierdo.</p>
             </div>
@@ -2791,11 +2818,14 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
     <p class="text-center">Convocatoria actual: {{ $convocatoria ?? 'No asignada' }}</p>
     <p class="text-center">Periodo: {{ $periodo ?? 'Sin definir' }}</p>
     @component('components.pie-pag', ['number' => '2'])@endcomponent
+    @component('components.pie-pag', ['number' => '2'])@endcomponent 
 </footer>
                     </div>
                 </div>
             </div>
 @endif
+</div>
+
 <script>
 
 const placeholderObs = "Escribe tu comentario aquí";

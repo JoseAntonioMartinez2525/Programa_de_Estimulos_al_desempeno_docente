@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConsolidatedResponseController;
+use App\Http\Controllers\DocenteFormsController;
 use App\Http\Controllers\DictaminatorForm2_2Controller;
 use App\Http\Controllers\DictaminatorForm2_Controller;
 use App\Http\Controllers\DictaminatorForm3_10Controller;
@@ -145,6 +146,10 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/get-docentes', [DictaminatorController::class, 'getDocentes'])->name('getDocentes');
     Route::get('/get-docente-data', [DictaminatorController::class, 'getDocenteData'])->name('getDocenteData');
     Route::get('/get-authenticated-docente-data', [DictaminatorController::class, 'getAuthenticatedDocenteData']);
+    
+    // Routes for viewing completed forms by docente
+    Route::get('/docentes-asignados', [DocenteFormsController::class, 'index'])->name('docente.forms.index');
+    Route::get('/docente-formularios/{docenteEmail}', [DocenteFormsController::class, 'show'])->name('docente.forms.show');
     //Route::get('/get-form-content/{form}', [FormContentController::class, 'getFormContent']);
     Route::get('/get-dictaminadores', [FormsController::class, 'getdictaminadores'])->name('getdictaminadores');
     Route::get('/form4', [ConsolidatedResponseController::class, 'showResumen'])->name('form4');

@@ -60,6 +60,14 @@ body.dark-mode .nav {
                             <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('secretaria') }}"><i class="fa-regular fa-folder-open"></i>&nbspBuscar evaluaciones</a>
                         @endif
                     </li>
+                    @if($user->user_type === 'dictaminador')
+                    <li class="nav-item">
+                        <a class="nav-link active enlaceSN" style="width: 200px;" 
+                           href="{{ route('docente.forms.index') }}">
+                            <i class="fas fa-clipboard-list"></i>&nbspFormularios completados
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </div>
 
