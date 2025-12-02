@@ -159,8 +159,16 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         <span class="status-badge status-completed mb-2 d-block">
                                             <i class="fa-solid fa-check-circle"></i> Completado
                                         </span>
-                                        @if($form['route'] != '#')
-                                            <a href="{{ $form['route'] }}" 
+                                        @if($form['route'] !== '#')
+                                            @php
+                                                // Construir la URL para ir a la vista del formulario con los datos del docente.
+                                                // Apunta a la vista principal de la comisión y pasa los parámetros necesarios.
+                                                $routeWithParams = route('comision_dictaminadora', [
+                                                    'formName' => $form['form_name'],
+                                                    'teacher' => $docenteEmail,
+                                                ]);
+                                            @endphp
+                                            <a href="{{ $routeWithParams }}" 
                                                class="btn btn-view-form btn-sm"
                                                target="_blank">
                                                 <i class="fa-solid fa-eye"></i> Ver Detalles

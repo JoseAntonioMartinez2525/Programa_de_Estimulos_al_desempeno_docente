@@ -158,16 +158,54 @@ class ResponseForm3_19Controller extends Controller
     public function getData319(Request $request)
     {
         try {
-            $data = UsersResponseForm3_19::where('user_id', $request->query('user_id'))->first();
-            return response()->json($data);
-        } catch (\Exception $e) {
-            \Log::error('Error retrieving data: ' . $e->getMessage());
+
+        // 1. Si viene teacher=email, obtener el user_id automáticamente
+        if ($request->has('teacher')) {
+            $email = $request->query('teacher');
+
+            $user = DB::table('users')->where('email', $email)->first();
+
+            if (!$user) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Docente no encontrado con el email proporcionado.'
+                ], 404);
+            }
+
+            // Sobrescribir user_id con el encontrado automáticamente
+            $request->merge(['user_id' => $user->id]);
+        }
+
+        // 2. Si no hay user_id ni teacher → error
+        if (!$request->has('user_id')) {
             return response()->json([
                 'success' => false,
-                'message' => 'Error retrieving data: ' . $e->getMessage(),
-            ], 500);
+                'message' => 'Debe proporcionar user_id o teacher.'
+            ], 400);
         }
+
+        // 3. Obtener datos del formulario (flujo normal o automático)
+        $data = UsersResponseForm3_19::where('user_id', $request->query('user_id'))->first();
+
+        if (!$data) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No existe registro para este usuario.'
+            ], 404);
+        }
+
+        return response()->json($data);
+
+    } catch (\Exception $e) {
+
+        \Log::error('Error retrieving data: ' . $e->getMessage());
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Error retrieving data: ' . $e->getMessage(),
+        ], 500);
     }
+}
 
     public function generatePdf(Request $request)
     {

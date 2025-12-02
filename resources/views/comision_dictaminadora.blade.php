@@ -1321,6 +1321,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    });
+
+    document.addEventListener("docenteSelected", function(e) {
+    const docente = e.detail;
+    if (!docente || !docente.email) return;
+
+    // Redirección automática
+    window.location.href = `/docente/forms?email=${encodeURIComponent(docente.email)}`;
 });
        
     </script>
