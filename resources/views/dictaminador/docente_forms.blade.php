@@ -95,6 +95,8 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         .back-button {
             margin-bottom: 20px;
         }
+
+
     </style>
 </head>
 
@@ -140,13 +142,13 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         <h5 class="mb-2">
                                             <i class="fa-solid fa-file-alt"></i> {{ $form['form_name'] }}
                                         </h5>
-                                        <p class="mb-1 text-muted">
+                                        <p class="mb-1 text-xs">
                                             <i class="fa-solid fa-calendar-check"></i> 
                                             <strong>Completado:</strong> 
                                             {{ $form['completed_at'] ? \Carbon\Carbon::parse($form['completed_at'])->format('d/m/Y H:i') : 'N/A' }}
                                         </p>
                                         @if($form['updated_at'] && $form['updated_at'] != $form['completed_at'])
-                                            <p class="mb-0 text-muted">
+                                            <p class="mb-0 text-xs">
                                                 <i class="fa-solid fa-clock"></i> 
                                                 <strong>Actualizado:</strong> 
                                                 {{ \Carbon\Carbon::parse($form['updated_at'])->format('d/m/Y H:i') }}
@@ -193,6 +195,25 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
             toggleDarkMode();
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const darkModeTextMuted = document.querySelectorAll('.text-muted');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+
+            if (isDarkMode) {
+                darkModeTextMuted.forEach(el => {
+                    el.style.color = "white";
+                });
+            } else {
+                darkModeTextMuted.forEach(el => {
+                    el.style.color = "";
+                });
+            }
+
+        });
+
+
     </script>
 </body>
 </html>
