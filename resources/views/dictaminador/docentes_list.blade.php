@@ -93,7 +93,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                         <h5 class="mb-1">
                                             <i class="fa-solid fa-user"></i> {{ $docente->name }}
                                         </h5>
-                                        <p class="mb-0 text-muted">
+                                        <p class="mb-0 text-xs">
                                             <i class="fa-solid fa-envelope"></i> {{ $docente->email }}
                                         </p>
                                     </div>
