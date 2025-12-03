@@ -53,10 +53,10 @@ body.dark-mode .nav {
                         @endif   
                     @endif
                     <li class="nav-item">
-                        @if($user->user_type === 'dictaminador')
+                        {{-- @if($user->user_type === 'dictaminador')
                             <a class="nav-link active enlaceSN" style="width: 200px;"
-                                href="{{ route('comision_dictaminadora') }}"><i class="fa-regular fa-folder-open"></i>&nbspBuscar evaluaciones</a>
-                        @elseif($user->user_type === 'secretaria')
+                                href="{{ route('comision_dictaminadora') }}"><i class="fa-regular fa-folder-open"></i>&nbspBuscar evaluaciones</a> --}}
+                        @if($user->user_type === 'secretaria')
                             <a class="nav-link active enlaceSN" style="width: 200px;" href="{{ route('secretaria') }}"><i class="fa-regular fa-folder-open"></i>&nbspBuscar evaluaciones</a>
                         @endif
                     </li>

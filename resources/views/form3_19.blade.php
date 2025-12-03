@@ -43,12 +43,10 @@ $docenteConfig = $docenteConfig ?? array_merge([
 
     // ---- Mapeos de datos desde dictaminadores ----
     'dictMappings' => array_merge(
-        mapFields($secciones, ['cant', 'subtotal', 'com', 'obs']),
+        mapFields($secciones, ['com', 'obs']), // 🔹 CORRECCIÓN: Solo mapear campos 'com' y 'obs'
         [
             'score3_19'   => 'score3_19',
             'comision3_19'=> 'comision3_19',
-            '.comision3_19'=> 'comision3_19',
-            '#comision3_19'=> 'comision3_19',
         ]
     ),
 

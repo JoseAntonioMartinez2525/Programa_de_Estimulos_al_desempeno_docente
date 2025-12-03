@@ -139,8 +139,8 @@ Route::middleware(['auth'])->group(function (){
     // Rutas para visualizar los formularios de evaluación con datos de un docente específico.
 // El parámetro {teacher?} es opcional para permitir la carga de datos.
 Route::middleware(['auth'])->group(function () {
-    Route::get('/form2/{teacher?}', [ResponseForm2Controller::class, 'showForm2'])->name('form2');
-    Route::get('/form2_2/{teacher?}', [ResponseForm2_2Controller::class, 'showForm2_2'])->name('form2_2');
+    Route::get('/form2/{teacher?}', [DictaminatorForm2_Controller::class, 'showForm2'])->name('form2');
+    Route::get('/form2_2/{teacher?}', [DictaminatorForm2_2Controller::class, 'showForm2_2'])->name('form2_2');
     Route::get('/form3_1/{teacher?}', [DictaminatorForm3_1Controller::class, 'showForm31NoSearch'])->name('form3_1');
     Route::get('/form3_2/{teacher?}', [DictaminatorForm3_2Controller::class, 'showForm32'])->name('form3_2');
     Route::get('/form3_3/{teacher?}', [DictaminatorForm3_3Controller::class, 'showForm33'])->name('form3_3');

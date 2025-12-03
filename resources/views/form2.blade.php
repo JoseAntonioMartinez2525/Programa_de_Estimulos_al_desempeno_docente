@@ -47,15 +47,14 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
 
     ],
+    (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) ? ['preselectedEmail' => $teacherEmailFromUrl] : [], 
     'convocatoriaSelectors' => [
         '#convocatoria',
         '#convocatoria2',
-    ],
+    ]
   
     ];
 
-
-    (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) ? ['preselectedEmail' => $teacherEmailFromUrl] : []
 
     if (!isset($docenteConfigForm)) {
     $docenteConfigForm = [
@@ -378,18 +377,25 @@ document.addEventListener('docenteSelected', async (e) => {
             document.getElementById('departamento2').textContent = departamento || '';
         }
 
-        // === Llenar datos de dictaminador para 'secretaria' ===
-        if (userType === 'secretaria') {
-            const dictResp = await axios.get(dictEndpoint);
+        // === Llenar datos de dictaminador para 'secretaria' o 'dictaminador' ===
+        if (userType === 'secretaria' || userType === 'dictaminador') {
+            let dictResp;
+            if (userType === 'secretaria') {
+                dictResp = await axios.get(dictEndpoint);
+            } else {
+                // For dictaminador, use the specific endpoint with user_id
+                const userId = @json($user_identity ?? '');
+                dictResp = await axios.get('/formato-evaluacion/get-dictaminators-responses-id?user_id=' + userId);
+            }
             const dictData = dictResp.data;
 
             if (dictData && dictData[dictCollectionKey]) {
                 const dictaminadorResponse = dictData[dictCollectionKey].find(d => d.email === email);
                 if (dictaminadorResponse) {
-                    document.getElementById('comision1').textContent = dictaminadorResponse.comision1 || '0';
+                    document.getElementById('comision1').value = dictaminadorResponse.comision1 || '0';
                     setObservationValue(dictaminadorResponse.obs1 || '');
                 } else {
-                    document.getElementById('comision1').textContent = '0';
+                    document.getElementById('comision1').value = '0';
                     setObservationValue('');
                 }
             }

@@ -9,7 +9,7 @@ class ItemController extends Controller
 {
     public function index() 
     { $items = Item::paginate(10); // Obtener 10 elementos por página 
-        return view('comision_dictaminadora', compact('items'));
+        return view('docentes_list', compact('items'));
     }
 }
 
