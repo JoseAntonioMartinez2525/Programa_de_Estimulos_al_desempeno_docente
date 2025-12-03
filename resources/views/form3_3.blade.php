@@ -133,8 +133,7 @@ if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <x-head-resources />
-    @include('partials.autocompleteForm3_3', ['config' => $docenteConfig])
-    @include('partials.submitForm3_3', ['config' => $docenteConfigForm])
+
     <style>
         @media print {
             body.chrome #convocatoria, 
@@ -396,7 +395,7 @@ window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
 <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
 <div class="container mt-4" id="seleccionDocente">
-    @if($userType !== 'docente')
+    @if(isset($showSearch) && $userType !== 'docente' && $showSearch)
         <!-- Buscando docentes -->
         <x-docente-search />
     @endif
@@ -652,6 +651,8 @@ window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
         });
     </script>
 
+    @include('partials.autocompleteForm3_3', ['config' => $docenteConfig])
+    @include('partials.submitForm3_3', ['config' => $docenteConfigForm])
 </body>
 
 </html>

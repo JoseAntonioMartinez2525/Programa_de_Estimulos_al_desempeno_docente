@@ -95,8 +95,7 @@ if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
     <script>
         window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
     </script>
-    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
-    @include('partials.submit-form', ['config' => $docenteConfigForm])
+
     <link href="{{ asset('css/onePage.css') }}" rel="stylesheet">
     <style>
         .descripcion{
@@ -124,7 +123,7 @@ $user_identity = $user->id;
     <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
     <div class="container mt-4" id="seleccionDocente">
-        @if($userType !== 'docente')
+        @if(isset($showSearch) && $userType !== 'docente' && $showSearch)
             <x-docente-search />
         @endif
     </div>
@@ -276,6 +275,8 @@ continua o de formación y capacitación docente </td>
     });            
     </script>
 
+    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+    @include('partials.submit-form', ['config' => $docenteConfigForm])
 </body>
 
 </html>

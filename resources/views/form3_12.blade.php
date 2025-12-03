@@ -250,8 +250,7 @@ if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <x-head-resources />
-    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
-    @include('partials.submit-form', ['config' => $docenteConfigForm])
+
     <style>
         body.chrome @media print {
             #convocatoria {
@@ -367,7 +366,7 @@ $user_identity = $user->id;
         Obscuro</button>
 
     <div class="container mt-4" id="seleccionDocente">
-        @if($userType !== 'docente')
+        @if(isset($showSearch) && $userType !== 'docente' && $showSearch)
             {{-- Buscar Docentes: --}}
             <x-docente-search />
         @endif
@@ -733,6 +732,8 @@ $user_identity = $user->id;
         });    
     </script>
 
+    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+    @include('partials.submit-form', ['config' => $docenteConfigForm])
 </body>
 
 </html>

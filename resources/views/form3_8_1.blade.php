@@ -91,8 +91,7 @@ if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <x-head-resources />
-    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
-    @include('partials.submit-form', ['config' => $docenteConfigForm])
+
 
     <link href="{{ asset('css/onePage.css') }}" rel="stylesheet">
 <style>
@@ -130,7 +129,7 @@ $user_identity = $user->id;
     <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
     <div class="container mt-4" id="seleccionDocente">
-        @if($userType !== 'docente')
+        @if(isset($showSearch) && $userType !== 'docente' && $showSearch)
         {{-- Buscar Docentes: --}}
         <x-docente-search />
         @endif
@@ -396,6 +395,8 @@ $user_identity = $user->id;
 
     </script>
 
+    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+    @include('partials.submit-form', ['config' => $docenteConfigForm])
 </body>
 
 </html>
