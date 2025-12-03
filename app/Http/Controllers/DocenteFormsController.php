@@ -49,112 +49,134 @@ class DocenteFormsController extends Controller
             'form2' => [
                 'table' => 'users_response_form2',
                 'name' => '1. Permanencia en las actividades de la docencia',
-                'route' => 'getData2'
+                'route' => 'getData2',
+                'view_route' => 'form2'
             ],
             'form2_2' => [
                 'table' => 'users_response_form2_2',
                 'name' => '2. Dedicación en el desempeño docente',
-                'route' => 'getData22'
+                'route' => 'getData22',
+                'view_route' => 'form2_2'
             ],
             'form3_1' => [
                 'table' => 'users_response_form3_1',
                 'name' => '3.1 Participación en actividades de diseño curricular',
-                'route' => 'getData31'
+                'route' => 'getData31',
+                'view_route' => 'form3_1'
             ],
             'form3_2' => [
                 'table' => 'users_response_form3_2',
                 'name' => '3.2 Calidad del desempeño docente evaluada por el alumnado',
-                'route' => 'getData32'
+                'route' => 'getData32',
+                'view_route' => 'form3_2'
             ],
             'form3_3' => [
                 'table' => 'users_response_form3_3',
                 'name' => '3.3 Publicaciones relacionadas con la docencia',
-                'route' => 'getData33'
+                'route' => 'getData33',
+                'view_route' => 'form3_3'
             ],
             'form3_4' => [
                 'table' => 'users_response_form3_4',
                 'name' => '3.4 Distinciones académicas recibidas por el docente',
-                'route' => 'getData34'
+                'route' => 'getData34',
+                'view_route' => 'form3_4'
             ],
             'form3_5' => [
                 'table' => 'users_response_form3_5',
                 'name' => '3.5 Asistencia, puntualidad y permanencia en el desempeño docente',
-                'route' => 'getData35'
+                'route' => 'getData35',
+                'view_route' => 'form3_5'
             ],
             'form3_6' => [
                 'table' => 'users_response_form3_6',
                 'name' => '3.6 Capacitación y actualización pedagógica recibida',
-                'route' => 'getData36'
+                'route' => 'getData36',
+                'view_route' => 'form3_6'
             ],
             'form3_7' => [
                 'table' => 'users_response_form3_7',
                 'name' => '3.7 Cursos de actualización disciplinaria',
-                'route' => 'getData37'
+                'route' => 'getData37',
+                'view_route' => 'form3_7'
             ],
             'form3_8' => [
                 'table' => 'users_response_form3_8',
                 'name' => '3.8 Impartición de cursos, diplomados, seminarios',
-                'route' => 'getData38'
+                'route' => 'getData38',
+                'view_route' => 'form3_8'
             ],
             'form3_8_1' => [
                 'table' => 'users_response_form3_8_1',
                 'name' => '3.8.1 RSU',
-                'route' => 'getData381'
+                'route' => 'getData381',
+                'view_route' => 'form3_8_1'
             ],
             'form3_9' => [
                 'table' => 'users_response_form3_9',
                 'name' => '3.9 Trabajos dirigidos para la titulación',
-                'route' => 'getData39'
+                'route' => 'getData39',
+                'view_route' => 'form3_9'
             ],
             'form3_10' => [
                 'table' => 'users_response_form3_10',
                 'name' => '3.10 Tutorías a estudiantes',
-                'route' => 'getData310'
+                'route' => 'getData310',
+                'view_route' => 'form3_10'
             ],
             'form3_11' => [
                 'table' => 'users_response_form3_11',
                 'name' => '3.11 Asesoría a estudiantes',
-                'route' => 'getData311'
+                'route' => 'getData311',
+                'view_route' => 'form3_11'
             ],
             'form3_12' => [
                 'table' => 'users_response_form3_12',
                 'name' => '3.12 Publicaciones de investigación',
-                'route' => 'getData312'
+                'route' => 'getData312',
+                'view_route' => 'form3_12'
             ],
             'form3_13' => [
                 'table' => 'users_response_form3_13',
                 'name' => '3.13 Proyectos académicos de investigación',
-                'route' => 'getData313'
+                'route' => 'getData313',
+                'view_route' => 'form3_13'
             ],
             'form3_14' => [
                 'table' => 'users_response_form3_14',
                 'name' => '3.14 Participación como ponente en congresos',
-                'route' => 'getData314'
+                'route' => 'getData314',
+                'view_route' => 'form3_14'
             ],
             'form3_15' => [
                 'table' => 'users_response_form3_15',
                 'name' => '3.15 Registro de patentes y productos de investigación',
-                'route' => 'getData315'
+                'route' => 'getData315',
+                'view_route' => 'form3_15'
             ],
             'form3_16' => [
                 'table' => 'users_response_form3_16',
                 'name' => '3.16 Actividades de arbitraje y edición',
-                'route' => 'getData316'
+                'route' => 'getData316',
+                'view_route' => 'form3_16'
             ],
             'form3_17' => [
                 'table' => 'users_response_form3_17',
                 'name' => '3.17 Proyectos académicos de extensión',
-                'route' => 'getData317'
+                'route' => 'getData317',
+                'view_route' => 'form3_17'
             ],
             'form3_18' => [
                 'table' => 'users_response_form3_18',
                 'name' => '3.18 Organización de congresos institucionales',
-                'route' => 'getData318'
+                'route' => 'getData318',
+                'view_route' => 'form3_18'
             ],
             'form3_19' => [
                 'table' => 'users_response_form3_19',
                 'name' => '3.19 Participación en cuerpos colegiados',
-                'route' => 'getData319'
+                'route' => 'getData319',
+                'view_route' => 'form3_19'
             ]
         ];
 
@@ -172,7 +194,7 @@ class DocenteFormsController extends Controller
                     'form_name' => $formInfo['name'],
                     'completed_at' => $formData->created_at ?? null,
                     'updated_at' => $formData->updated_at ?? null,
-                    'route' => route($formInfo['route'], ['teacher' => $docenteEmail]),
+                    'route' => isset($formInfo['view_route']) ? route($formInfo['view_route'], ['teacher' => $docenteEmail]) : '#',
                     'status' => 'completed'
                 ];
             }

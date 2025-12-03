@@ -135,6 +135,34 @@ Route::middleware(['auth'])->group(function (){
     Route::get('form5', function () {return view('form5'); })->name('form5');
     Route::get('resumen_comision', function () {return view('resumen_comision'); })->name('resumen_comision');
 
+
+    // Rutas para visualizar los formularios de evaluación con datos de un docente específico.
+// El parámetro {teacher?} es opcional para permitir la carga de datos.
+Route::middleware(['auth'])->group(function () {
+    Route::get('/form2/{teacher?}', [ResponseForm2Controller::class, 'showForm2'])->name('form2');
+    Route::get('/form2_2/{teacher?}', [ResponseForm2_2Controller::class, 'showForm2_2'])->name('form2_2');
+    Route::get('/form3_1/{teacher?}', [DictaminatorForm3_1Controller::class, 'showForm31'])->name('form3_1');
+    Route::get('/form3_2/{teacher?}', [DictaminatorForm3_2Controller::class, 'showForm32'])->name('form3_2');
+    Route::get('/form3_3/{teacher?}', [DictaminatorForm3_3Controller::class, 'showForm33'])->name('form3_3');
+    Route::get('/form3_4/{teacher?}', [DictaminatorForm3_4Controller::class, 'showForm34'])->name('form3_4');
+    Route::get('/form3_5/{teacher?}', [DictaminatorForm3_5Controller::class, 'showForm35'])->name('form3_5');
+    Route::get('/form3_6/{teacher?}', [DictaminatorForm3_6Controller::class, 'showForm36'])->name('form3_6');
+    Route::get('/form3_7/{teacher?}', [DictaminatorForm3_7Controller::class, 'showForm37'])->name('form3_7');
+    Route::get('/form3_8/{teacher?}', [DictaminatorForm3_8Controller::class, 'showForm38'])->name('form3_8');
+    Route::get('/form3_8_1/{teacher?}', [DictaminatorForm3_8_1Controller::class, 'showForm381'])->name('form3_8_1');
+    Route::get('/form3_9/{teacher?}', [DictaminatorForm3_9Controller::class, 'showForm39'])->name('form3_9');
+    Route::get('/form3_10/{teacher?}', [DictaminatorForm3_10Controller::class, 'showForm310'])->name('form3_10');
+    Route::get('/form3_11/{teacher?}', [DictaminatorForm3_11Controller::class, 'showForm311'])->name('form3_11');
+    Route::get('/form3_12/{teacher?}', [DictaminatorForm3_12Controller::class, 'showForm312'])->name('form3_12');
+    Route::get('/form3_13/{teacher?}', [DictaminatorForm3_13Controller::class, 'showForm313'])->name('form3_13');
+    Route::get('/form3_14/{teacher?}', [DictaminatorForm3_14Controller::class, 'showForm314'])->name('form3_14');
+    Route::get('/form3_15/{teacher?}', [DictaminatorForm3_15Controller::class, 'showForm315'])->name('form3_15');
+    Route::get('/form3_16/{teacher?}', [DictaminatorForm3_16Controller::class, 'showForm316'])->name('form3_16');
+    Route::get('/form3_17/{teacher?}', [DictaminatorForm3_17Controller::class, 'showForm317'])->name('form3_17');
+    Route::get('/form3_18/{teacher?}', [DictaminatorForm3_18Controller::class, 'showForm318'])->name('form3_18');
+    Route::get('/form3_19/{teacher?}', [DictaminatorForm3_19Controller::class, 'showForm319'])->name('form3_19');
+});
+
     Route::get('/reporte_pdf', [App\Http\Controllers\DictaminatorController::class, 'generarPDF'])->name('reporte_pdf');
     // Route::get('comision_dictaminadora', function () {return view('comision_dictaminadora'); })->name('comision_dictaminadora');
     Route::get('dynamic_forms', function () {return view('dynamic_forms'); })->name('dynamic_forms');

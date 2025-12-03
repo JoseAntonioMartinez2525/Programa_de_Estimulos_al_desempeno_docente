@@ -160,15 +160,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
                                             <i class="fa-solid fa-check-circle"></i> Completado
                                         </span>
                                         @if($form['route'] !== '#')
-                                            @php
-                                                // Construir la URL para ir a la vista del formulario con los datos del docente.
-                                                // Apunta a la vista principal de la comisión y pasa los parámetros necesarios.
-                                                $routeWithParams = route('comision_dictaminadora', [
-                                                    'formName' => $form['form_name'],
-                                                    'teacher' => $docenteEmail,
-                                                ]);
-                                            @endphp
-                                            <a href="{{ $routeWithParams }}" 
+                                            <a href="{{ $form['route'] }}"
                                                class="btn btn-view-form btn-sm"
                                                target="_blank">
                                                 <i class="fa-solid fa-eye"></i> Ver Detalles
@@ -220,7 +212,6 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
             }
 
         });
-
 
     </script>
 </body>
