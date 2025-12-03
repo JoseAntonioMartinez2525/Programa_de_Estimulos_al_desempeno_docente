@@ -27,7 +27,7 @@ $commonFields = [
 ];
 
 // --- Configuración principal ---
-$docenteConfig = [
+$docenteConfig = array_merge([
     'formKey' => 'form3_1',
     'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data',
     'docentesEndpoint' => '/formato-evaluacion/get-docentes',
@@ -78,7 +78,9 @@ $docenteConfig = [
     })(),
 
     'printPagePairs' => [[2,3]],
-];
+],
+    (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) ? ['preselectedEmail' => $teacherEmailFromUrl] : []
+);
 
 // --- Configuración del formulario docente ---
 if (!isset($docenteConfigForm)) {
@@ -100,11 +102,6 @@ if (!isset($docenteConfigForm)) {
         'selectedEmailInputId' => 'selectedDocenteEmail',
         'searchInputId' => 'docenteSearch',
     ];
-}
-
-// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
-if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
-    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
 }
 @endphp
 <!DOCTYPE html>

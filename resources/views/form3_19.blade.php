@@ -30,7 +30,7 @@ if (!function_exists('mapFields')) {
 }
  
 // Configuración principal
-$docenteConfig = $docenteConfig ?? [
+$docenteConfig = $docenteConfig ?? array_merge([
     'formKey' => 'form3_19',
     'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data',
     'docentesEndpoint'    => '/formato-evaluacion/get-docentes',
@@ -85,8 +85,10 @@ $docenteConfig = $docenteConfig ?? [
         '#convocatoria',
         '#convocatoria2',
         '#convocatoria3',
-    ],
-];
+    ]
+], 
+    (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) ? ['preselectedEmail' => $teacherEmailFromUrl] : []
+);
 
 // Configuración del formulario
 if (!isset($docenteConfigForm)) {
@@ -99,11 +101,6 @@ if (!isset($docenteConfigForm)) {
         'selectedEmailInputId' => 'selectedDocenteEmail',
         'searchInputId' => 'docenteSearch',
     ];
-}
-
-// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
-if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
-    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
 }
 @endphp
 

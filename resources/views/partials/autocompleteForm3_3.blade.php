@@ -117,11 +117,15 @@
         // Si se ha preseleccionado un email desde la vista (pasado por la URL),
         // disparamos el evento 'docenteSelected' para cargar sus datos automáticamente.
         if (config.preselectedEmail) {
-            console.log('Docente preseleccionado por URL:', config.preselectedEmail);
-            // Creamos un objeto 'docente' simulado para que el listener funcione igual.
-            const preselectedDocente = { email: config.preselectedEmail };
-            // Disparamos el evento para que se carguen los datos.
-            document.dispatchEvent(new CustomEvent('docenteSelected', { detail: preselectedDocente }));
+            // Usamos setTimeout para asegurar que el DOM esté completamente listo
+            // antes de disparar el evento. Esto resuelve problemas de "race condition"
+            // donde el script se ejecuta antes de que los elementos del formulario existan.
+            setTimeout(() => {
+                console.log('Docente preseleccionado por URL:', config.preselectedEmail);
+                const preselectedDocente = { email: config.preselectedEmail };
+                // Disparamos el evento para que se carguen los datos.
+                document.dispatchEvent(new CustomEvent('docenteSelected', { detail: preselectedDocente }));
+            }, 0); // Un retardo de 0ms es suficiente para moverlo al final de la cola de ejecución.
         }
 
         // Manejo cuando se selecciona docente: usa axios para /get-docente-data por defecto

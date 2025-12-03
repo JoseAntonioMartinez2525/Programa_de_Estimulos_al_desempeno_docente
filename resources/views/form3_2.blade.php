@@ -3,7 +3,7 @@ $locale = app()->getLocale() ?: 'en';
 $newLocale = str_replace('_', '-', $locale);
 $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
- $docenteConfig = [
+ $docenteConfig = array_merge([
         'formKey' => 'form3_2',
         'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data', 
         'docentesEndpoint' => '/formato-evaluacion/get-docentes',
@@ -58,7 +58,9 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
     ],
         'printPagePairs' => [[3,4]],
-    ];
+    ],
+    (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) ? ['preselectedEmail' => $teacherEmailFromUrl] : []
+);
 
     if (!isset($docenteConfigForm)) {
     $docenteConfigForm = [
@@ -82,11 +84,6 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         'selectedEmailInputId' => 'selectedDocenteEmail',
         'searchInputId' => 'docenteSearch',
     ];
-}
-
-// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
-if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
-    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
 }
 @endphp
 <!DOCTYPE html>
