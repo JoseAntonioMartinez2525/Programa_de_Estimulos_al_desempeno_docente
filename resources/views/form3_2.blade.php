@@ -83,7 +83,11 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         'searchInputId' => 'docenteSearch',
     ];
 }
-    
+
+// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
+if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
+    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
+}
 @endphp
 <!DOCTYPE html>
 <html lang="">

@@ -107,6 +107,11 @@ if (!isset($docenteConfigForm)) {
         'searchInputId' => 'docenteSearch',
     ];
 }
+
+// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
+if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
+    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
+}
 @endphp
 <!DOCTYPE html>
 <html lang="">

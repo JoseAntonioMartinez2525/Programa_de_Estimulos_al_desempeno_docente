@@ -113,6 +113,17 @@
             }
         });
 
+                // --- LÓGICA DE CARGA AUTOMÁTICA ---
+        // Si se ha preseleccionado un email desde la vista (pasado por la URL),
+        // disparamos el evento 'docenteSelected' para cargar sus datos automáticamente.
+        if (config.preselectedEmail) {
+            console.log('Docente preseleccionado por URL:', config.preselectedEmail);
+            // Creamos un objeto 'docente' simulado para que el listener funcione igual.
+            const preselectedDocente = { email: config.preselectedEmail };
+            // Disparamos el evento para que se carguen los datos.
+            document.dispatchEvent(new CustomEvent('docenteSelected', { detail: preselectedDocente }));
+        }
+
         // Manejo cuando se selecciona docente: usa axios para /get-docente-data por defecto
         document.addEventListener('docenteSelected', async (e) => {
             const docente = e.detail;
