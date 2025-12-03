@@ -149,4 +149,16 @@ class DictaminatorForm2_2Controller extends TransferController
             $userResponse->save();
         }
     }
+
+        public function showForm2_2($teacherEmail = null)
+    {
+        // Si se proporciona un email de docente en la URL, no necesitamos mostrar el buscador.
+        // El script de autocompletado cargará los datos automáticamente.
+        $showSearchComponent = is_null($teacherEmail);
+
+        return view('form2_2', [
+            'teacherEmailFromUrl' => $teacherEmail,
+            'showSearch' => $showSearchComponent
+        ]);
+    }
 }

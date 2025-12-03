@@ -97,6 +97,7 @@ public function adminResetTimer(Request $request)
     return response()->json($docentes);
 }
 
+
     public function getDocenteData(Request $request)
     {
 
@@ -172,7 +173,6 @@ public function adminResetTimer(Request $request)
 
         ]);
     }
-
     public function getAuthenticatedDocenteData(Request $request)
     {
         $docente = Auth::user();

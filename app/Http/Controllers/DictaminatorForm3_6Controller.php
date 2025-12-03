@@ -142,4 +142,16 @@ class DictaminatorForm3_6Controller extends TransferController
             $userResponse->save();
         }
     }
+
+                public function showForm36($teacherEmail = null)
+    {
+        // Si se proporciona un email de docente en la URL, no necesitamos mostrar el buscador.
+        // El script de autocompletado cargará los datos automáticamente.
+        $showSearchComponent = is_null($teacherEmail);
+
+        return view('form3_6', [
+            'teacherEmailFromUrl' => $teacherEmail,
+            'showSearch' => $showSearchComponent
+        ]);
+    }
 }

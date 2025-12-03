@@ -16,17 +16,19 @@ $secciones = [
 ];
 
 // 🔹 Función para generar pares clave => valor automáticamente
-function mapFields($secciones, $tipos = ['cant', 'subtotal', 'com', 'obs']) {
-    $map = [];
-    foreach ($secciones as $sec) {
-        foreach ($tipos as $tipo) {
-            $campo = "{$tipo}{$sec}";
-            $map[$campo] = $campo;
+if (!function_exists('mapFields')) {
+    function mapFields($secciones, $tipos = ['cant', 'subtotal', 'com', 'obs']) {
+        $map = [];
+        foreach ($secciones as $sec) {
+            foreach ($tipos as $tipo) {
+                $campo = "{$tipo}{$sec}";
+                $map[$campo] = $campo;
+            }
         }
+        return $map;
     }
-    return $map;
 }
-
+ 
 // Configuración principal
 $docenteConfig = $docenteConfig ?? [
     'formKey' => 'form3_19',
@@ -97,6 +99,11 @@ if (!isset($docenteConfigForm)) {
         'selectedEmailInputId' => 'selectedDocenteEmail',
         'searchInputId' => 'docenteSearch',
     ];
+}
+
+// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
+if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
+    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
 }
 @endphp
 
@@ -320,7 +327,7 @@ $page_counter = 28;
         Obscuro</button>
 
     <div class="container mt-4" id="seleccionDocente">
-        @if($userType !== 'docente')
+        @if($userType !== 'docente' && $showSearch)
             {{-- Buscar Docentes: --}}
             <x-docente-search />
         @endif
