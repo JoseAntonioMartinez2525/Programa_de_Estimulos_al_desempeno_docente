@@ -219,7 +219,6 @@
                 }               
 
              // Ejecutar para secretaria (userType === 'secretaria') y para el tipo configurado de dictaminador
-<<<<<<< HEAD
                     // --- CARGA DE RESPUESTA DE DICTAMINADOR ---
                     if (config.dictEndpoint) {
                         try {
@@ -253,38 +252,6 @@
                         }
                     }
 
-=======
-                if (userType === 'secretaria' || userType === (config.userTypeForDict ?? '')) {
-                    try {
-                        const dictRespUrl = config.dictEndpoint || '/formato-evaluacion/get-dictaminators-responses';
-                        const resp = await fetch(dictRespUrl);
-                        const dictData = await resp.json();
-                        console.log('>> Dictaminadores:', dictData.form3_3);
-                        console.log('>> Buscando dictaminador para email:', email);
-
-                        const collectionKey = config.dictCollectionKey || config.formKey;
-                        const collection = dictData[collectionKey] || [];
-                        const selected = collection.find(r => r.email === email);
-                        if (selected && config.dictMappings) {
-                            console.log('>> Dictaminador encontrado:', selected);
-                            Object.entries(config.dictMappings).forEach(([target, propPath]) => {
-                                setValue(target, readProp(selected, propPath));
-                            });
-
-                            if (config.fillHiddenFromDict) {
-                                Object.entries(config.fillHiddenFromDict).forEach(([inputName, propPath]) => {
-                                    const input = document.querySelector(`input[name="${inputName}"]`);
-                                    if (input) input.value = readProp(selected, propPath) ?? '';
-                                });
-                            }
-                        } else if (config.resetOnNotFound && config.dictMappings) {
-                            Object.keys(config.dictMappings).forEach(target => setValue(target, config.resetValues?.[target] ?? ''));
-                        } else {
-                            console.warn('>> No se encontró dictaminador para:', email);                            console.warn('>> Datos disponibles:', collection);
-                       }
-                  } catch (err) { console.error('Error fetching dictaminators responses:', err); }
-               }
->>>>>>> b94b5bcd4ffc7e2f8aefcef6e4f8e8061b88ffa4
                 
 
             } catch (err) {

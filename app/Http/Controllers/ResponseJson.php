@@ -181,7 +181,6 @@ class ResponseJson extends Controller
 
     public function getDictaminatorResponses()
     {
-<<<<<<< HEAD
 
         // Obtiene las respuestas de los formularios generados por dictaminadores
         // Para dictaminadores, filtra por su propio ID; para secretaria, muestra todas
@@ -210,32 +209,6 @@ class ResponseJson extends Controller
         $dictaminators_responses3_17 = DictaminatorsResponseForm3_17::where($queryFilter)->get();
         $dictaminators_responses3_18 = DictaminatorsResponseForm3_18::where($queryFilter)->get();
         $dictaminators_responses3_19 = DictaminatorsResponseForm3_19::where($queryFilter)->get();
-=======
-        
-        // Obtiene las respuestas de los formularios generados por dictaminadores
-        $dictaminators_responses2 = DictaminatorsResponseForm2::all()->filter()->values();
-        $dictaminators_responses2_2 = DictaminatorsResponseForm2_2::all()->filter()->values();
-        $dictaminators_responses3_1 = DictaminatorsResponseForm3_1::all()->filter()->values();
-        $dictaminators_responses3_2 = DictaminatorsResponseForm3_2::all()->filter()->values();
-        $dictaminators_responses3_3 = DictaminatorsResponseForm3_3::all()->filter()->values();
-        $dictaminators_responses3_4 = DictaminatorsResponseForm3_4::all()->filter()->values();
-        $dictaminators_responses3_5 = DictaminatorsResponseForm3_5::all()->filter()->values();
-        $dictaminators_responses3_6 = DictaminatorsResponseForm3_6::all()->filter()->values();
-        $dictaminators_responses3_7 = DictaminatorsResponseForm3_7::all()->filter()->values();
-        $dictaminators_responses3_8 = DictaminatorsResponseForm3_8::all()->filter()->values();
-        $dictaminators_responses3_8_1 = DictaminatorsResponseForm3_8_1::all()->filter()->values();
-        $dictaminators_responses3_9 = DictaminatorsResponseForm3_9::all()->filter()->values();
-        $dictaminators_responses3_10 = DictaminatorsResponseForm3_10::all()->filter()->values();
-        $dictaminators_responses3_11 = DictaminatorsResponseForm3_11::all()->filter()->values();
-        $dictaminators_responses3_12 = DictaminatorsResponseForm3_12::all()->filter()->values();
-        $dictaminators_responses3_13 = DictaminatorsResponseForm3_13::all()->filter()->values();
-        $dictaminators_responses3_14 = DictaminatorsResponseForm3_14::all()->filter()->values();
-        $dictaminators_responses3_15 = DictaminatorsResponseForm3_15::all()->filter()->values();
-        $dictaminators_responses3_16 = DictaminatorsResponseForm3_16::all()->filter()->values();
-        $dictaminators_responses3_17 = DictaminatorsResponseForm3_17::all()->filter()->values();
-        $dictaminators_responses3_18 = DictaminatorsResponseForm3_18::all()->filter()->values();
-        $dictaminators_responses3_19 = DictaminatorsResponseForm3_19::all()->filter()->values();
->>>>>>> b94b5bcd4ffc7e2f8aefcef6e4f8e8061b88ffa4
 
 
         // Retorna ambas respuestas en un array JSON estructurado
