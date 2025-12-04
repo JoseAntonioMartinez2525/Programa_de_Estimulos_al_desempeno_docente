@@ -33,7 +33,11 @@ $docenteConfig = array_merge([
     'docentesEndpoint' => '/formato-evaluacion/get-docentes',
     'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
     'dictCollectionKey' => 'form3_1',
+<<<<<<< HEAD
     'userTypeForDict' => 'dictaminador',
+=======
+    'userTypeForDict' => '',
+>>>>>>> b94b5bcd4ffc7e2f8aefcef6e4f8e8061b88ffa4
 
     // --- Mappings ---
     'docenteMappings' => array_merge(['elaboracion' => 'elaboracion'], $elaboracionMappings, ['score3_1' => 'score3_1']),

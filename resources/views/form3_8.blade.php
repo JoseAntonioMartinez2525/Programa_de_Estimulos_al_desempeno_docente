@@ -81,10 +81,13 @@ if (!isset($docenteConfigForm)) {
 if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
     $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
 }
+<<<<<<< HEAD
 
 $user = Auth::user();
 $userType = $user->user_type;
 $user_identity = $user->id; 
+=======
+>>>>>>> b94b5bcd4ffc7e2f8aefcef6e4f8e8061b88ffa4
 @endphp
 <!DOCTYPE html>
 <html lang="">
@@ -118,6 +121,14 @@ $user_identity = $user->id;
         @endif
     </div>
     <x-general-header />
+<<<<<<< HEAD
+=======
+@php
+$user = Auth::user();
+$userType = $user->user_type;
+$user_identity = $user->id; 
+@endphp
+>>>>>>> b94b5bcd4ffc7e2f8aefcef6e4f8e8061b88ffa4
 
     <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 

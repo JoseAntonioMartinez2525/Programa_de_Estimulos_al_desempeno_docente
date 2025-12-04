@@ -125,7 +125,11 @@ private function redirectByUserType($user)
     }
 
     if ($user->user_type === 'dictaminador') {
+<<<<<<< HEAD
         return redirect()->route('docente.forms.index')
+=======
+        return redirect()->route('comision_dictaminadora')
+>>>>>>> b94b5bcd4ffc7e2f8aefcef6e4f8e8061b88ffa4
             ->header('Cache-Control', $noCache)
             ->header('Pragma', $pragmaNoCache)
             ->header('Expires', $expiresZero);

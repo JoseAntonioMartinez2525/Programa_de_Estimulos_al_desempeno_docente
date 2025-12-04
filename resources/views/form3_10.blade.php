@@ -9,7 +9,11 @@ $docenteConfig = $docenteConfig ?? [
     // Endpoints base
     'docenteDataEndpoint' => '/formato-evaluacion/get-docente-data',
     'docentesEndpoint'    => '/formato-evaluacion/get-docentes',
+<<<<<<< HEAD
     'dictEndpoint' => '/formato-evaluacion/get-dictaminators-responses',
+=======
+    'dictEndpoint'        => '/formato-evaluacion/get-dictaminators-responses',
+>>>>>>> b94b5bcd4ffc7e2f8aefcef6e4f8e8061b88ffa4
 
     // Clave de colección dentro del JSON de dictaminadores
     'dictCollectionKey'   => 'form3_10',

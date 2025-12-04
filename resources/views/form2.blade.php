@@ -385,7 +385,11 @@ document.addEventListener('docenteSelected', async (e) => {
             } else {
                 // For dictaminador, use the specific endpoint with user_id
                 const userId = @json($user_identity ?? '');
+<<<<<<< HEAD
                 dictResp = await axios.get('/formato-evaluacion/get-dictaminators-responses?user_id=' + userId);
+=======
+                dictResp = await axios.get('/formato-evaluacion/get-dictaminators-responses-id?user_id=' + userId);
+>>>>>>> b94b5bcd4ffc7e2f8aefcef6e4f8e8061b88ffa4
             }
             const dictData = dictResp.data;
 
