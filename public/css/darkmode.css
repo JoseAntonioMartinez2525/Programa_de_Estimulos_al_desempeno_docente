@@ -1,0 +1,74 @@
+body.dark-mode {
+    background-color: #282828;
+    color: #ffffff;
+}
+
+body.dark-mode .table {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .nav {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .btn {
+    background-color: #444444;
+    color: #ffffff;
+}
+
+body.light-mode .btn {
+    background-color: #f8f9fa;
+    color: #000000;
+}
+
+
+body.light-mode{
+    background-color: #ffffff;
+}
+
+
+
+body.light-mode button.btn.btn-outline-primary.w-100.form-option{
+    background-color: #528fb3;
+    color: white;
+    border-color: transparent;
+}
+
+body.light-mode button.btn-outline-primary.w-100.form-option:hover {
+    background-color: #719dd1;
+    color: white;
+    border-color: transparent;
+
+}
+
+body.light-mode button[id^="btn3_"] {
+        background-color: #72aaca;
+        color: whitesmoke;
+}
+
+body.light-mode button[id^="btn3_"]:hover {
+    background-color: #7ac1ca;
+    color: floralwhite;
+    font-weight: bold;
+
+}
+
+body.dark-mode #toggle-dark-mode{
+    margin-left: 95rem !important;
+}
+
+
+body.light.mode .custom-btn{
+        background-color: #9ccbdd;
+        color: #0b3b67;
+}
+
+body.light.mode .custom-btn:hover {
+
+    background-color: #afc7ce;
+    color: floralwhite;
+    font-weight: 500;
+}
+

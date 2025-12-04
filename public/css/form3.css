@@ -1,0 +1,390 @@
+body {
+    height: 100%;
+    margin-left: 260px;
+
+}
+
+a {
+    text-decoration: none;
+    color: #555385;
+}
+
+.main-container {
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+
+nav {
+    position: fixed;
+    background-color: #afc7ce;
+    padding-top: 0px;
+    overflow-y: auto;
+    width: 295px;
+    
+
+}
+
+.actv3 {
+    margin-left: -15px;
+    height: 70vh;
+    overflow-y: auto;
+    background-color: transparent;
+    color: white;
+
+}
+
+
+.actv3 ul {
+    list-style-type: none;
+    padding: 0;
+    color: white;
+
+
+}
+
+.actv3 a{
+    color: white;
+    font-weight: bold;
+}
+
+.actv3 a:hover{
+    color: #0b5967;
+}
+
+.actv3 li {
+    margin-bottom: 80px;
+    margin-left: 3px;
+    list-style-type: none;
+    margin-top: 20px;
+
+}
+
+.actv3::-webkit-scrollbar {
+    width: 10px;
+    
+}
+
+.actv3::-webkit-scrollbar-track {
+    background: #afc7ce;
+}
+
+.actv3::-webkit-scrollbar-thumb {
+    background: #555385;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actv3::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+
+.userMenu{
+        background-color: transparent;
+        margin-top: 100px;
+}
+
+[id^="obs3_9_"], [id^="obs3_3_"] , [class^="obs3_3_"]{
+    background-color: #d6fff7;
+    border-color: transparent;
+    text-align: center;
+}
+
+[id^="obs3_1_"]{
+    padding-left: 0rem;
+    padding-right: 2rem;
+
+    
+}
+
+
+#puntajeIndividual, #individualCant ,#comisionIndividual ,#obsIndividual,
+#puntajeGrupales ,#grupalesCant ,#comisionGrupal ,#obsGrupal,
+#cantAsesoria, #subtotalAsesoria, #cantServicio, #subtotalServicio,
+ #cantPracticas, #subtotalPracticas {
+    text-align: center;
+}
+
+td[id^="puntaje3_9_"], input[id^="puntaje3_9_"]{
+    border-color: transparent;
+    background-color: #c1cfd3;
+    text-align: center!important;
+}
+
+#evaluarIndividual, #evaluarGrupales
+{
+    text-align: center;
+}
+#individualCant, #grupalesCant, 
+#cantAsesoria, #cantServicio, #cantPracticas, .cantidad,
+#cantCongresoInt, #cantCongresoNac, #cantCongresoLoc, 
+#cantDifusionExt, #cantDifusionInt, #cantRepDifusionExt, #cantRepDifusionInt, #puntaje3_7,
+#cantInicioFinanExt, #cantInicioInvInterno, #cantReporteFinanciamExt, #cantReporteInvInt, 
+#puntaje3_8, #puntaje3_6, #puntaje3_8_1, #cantCientifico, #cantDivulgacion, #cantTraduccion, #cantArbitrajeInt, 
+#cantArbitrajeNac, #cantSinInt, #cantSinNac, #cantAutor, #cantEditor, #cantWeb{
+    border-color: transparent;
+    background-color: #c1cfd3;
+    text-align: center;
+}
+
+td.punto3_5, #cantDA, #cantCAAC{
+    text-align: center;
+}
+
+#cantDA, #cantCAAC{
+    border-color: transparent;
+    background-color: #c1cfd3;
+}
+
+ body.dark-mode input#cantDA, body.dark-mode input#cantCAAC 
+{
+    background-color: #9b9a9a!important;
+    color: white!important;
+}
+
+
+
+#comisionIndividual, #comisionGrupal, #obsGrupal, #obsIndividual, #comisionAsesoria,
+#obsAsesoria, #comisionServicio, #obsServicio, #comisionPracticas, #obsPracticas,
+#obsCientificos, #obsDivulgacion, #obsTraduccion, #obsArbitrajeInt, #obsArbitrajeNac, #obsSinInt, #obsSinNac, #obsAutor, #obsEditor, #obsWeb,
+#comisionCientificos, #comisionDivulgacion, #comisionTraduccion, #comisionArbitrajeInt, #comisionArbitrajeNac, #comisionSinInt, #comisionSinNac, #comisionAutor, #comisionEditor, #comisionWeb, .comision3_13{
+    background-color: #d6fff7;
+    border-color: transparent;
+    text-align: center;
+    border-width: thin;
+    border-color: white;
+}
+
+/* border-width: thin;
+    border-color: white; */
+
+
+#academica , #servicio , #practicas{
+    font-weight: bold;
+    text-align: center;
+}
+
+
+#obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteInvInt,  #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt
+
+{
+     border-color: transparent;
+    text-align: right;
+}
+
+#obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt{
+background-color: transparent;
+}
+
+#comisionInicioFinancimientoExt, #comisionInicioInvInterno, #comisionReporteFinanciamExt, #comisionReporteInvInt, #comisionArbInt,
+#comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, 
+#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista, #comisionDifusionExt,
+#comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
+#comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg, 
+#obsComOrgInt, #obsComOrgNac, #obsComOrgReg, #obsComApoyoInt, #obsComApoyoNac, #obsComApoyoReg, #obsCicloComOrgInt, #obsCicloComOrgNac, #obsCicloComOrgReg, #obsCicloComApoyoInt, #obsCicloComApoyoNac, #obsCicloComApoyoReg,
+#obsCGUtitular, #obsCGUespecial, #obsCGUpermanente, #obsCAACtitular, #obsCAACintegCom, #obsComDepart, #obsComPEDPD, #obsComPartPos, #obsRespPos, #obsRespCarrera, #obsRespProd, #obsRespLab,
+#obsExamProf, #obsExamAcademicos, #obsPRODEPformResp, #obsPRODEPformInteg, #obsPRODEPenconsResp, #obsPRODEPenconsInteg, #obsPRODEPconsResp, #obsPRODEPconsInteg{
+    background-color: transparent;
+    border-color: transparent;
+    text-align: center;
+    
+
+}
+
+.nav-item, .nav-link, .nav-link2 {
+    border-style: none;
+    
+}
+
+.nav-link2{
+    font-size: medium;
+}
+
+
+#cantCGUtitular, #cantCGUespecial, #cantCGUpermanente, #cantCAACtitular, #cantCAACintegCom, #cantComDepart, #cantComPEDPD, #cantComPartPos,
+#cantRespPos, #cantRespCarrera, #cantRespProd, #cantRespLab, #cantExamProf, #cantExamAcademicos, #cantPRODEPformResp, #cantPRODEPformInteg, #cantPRODEPenconsResp,
+#cantPRODEPenconsInteg, #cantPRODEPconsResp, #cantPatentes, #cantPrototipos, #cantPRODEPconsInteg, #cantComOrgInt, #cantCicloComApoyoReg, #cantComOrgReg, #cantCicloComApoyoNac,
+#cantComOrgNac, #cantComOrgReg, #cantComApoyoInt, #cantComApoyoNac, #cantComApoyoReg, #cantCicloComOrgInt, #cantCicloComOrgNac, #cantCicloComOrgReg, #cantCicloComApoyoInt{
+    background-color: #c1cfd3;
+    text-align: center;
+    border-color:transparent;
+}
+
+#cantArbInt, #cantArbNac, #cantPubInt,#cantPubNac,#cantRevInt, #cantRevNac,#cantRevista, #r1, #r2, #r3{
+      background-color: #c1cfd3;
+    text-align: center;
+    border-color:transparent;  
+}
+
+td.td_docente_cantidad {
+    text-align: center;
+}
+
+
+
+#actvCant, #cantidadTd{
+    text-align: right;
+}
+
+#obsCongresoInt, #obsCongresoNac, #obsCongresoLoc, #obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt, #obsRevNac, #obsRevista, #obsPatentes, #obsPrototipos, #obsInicioFinancimientoExt, #obsInicioInvInterno, #obsReporteFinanciamExt, #obsReporteInvInt, #obsDifusionExt, #obsDifusionInt, #obsRepDifusionExt, #obsRepDifusionInt, 
+#obsComOrgInt, #obsComOrgNac, #obsComOrgReg, #obsComApoyoInt, #obsComApoyoNac, #obsComApoyoReg, #obsCicloComOrgInt, #obsCicloComOrgNac, #obsCicloComOrgReg, #obsCicloComApoyoInt, #obsCicloComApoyoNac, #obsCicloComApoyoReg, #obsCGUtitular, #obsCGUespecial, #obsCGUpermanente, #obsCAACtitular, #obsCAACintegCom, #obsComDepart, #obsComPEDPD, 
+#obsComPartPos, #obsRespPos, #obsRespCarrera, #obsRespProd, #obsRespLab, #obsExamProf, #obsExamAcademicos, #obsPRODEPformResp, #obsPRODEPformInteg, #obsPRODEPenconsResp, #obsPRODEPenconsInteg, #obsPRODEPconsResp, #obsPRODEPconsInteg{
+    font-size: .7rem;
+}
+
+
+
+td[id^="form3_17_"] {
+width: 200px;
+}
+
+td#comisionAsesoria, td#comisionServicio, td#comisionPracticas,
+td#obsAsesoria, td#obsServicio,  td#obsPracticas{
+    border-width: thin;
+    border-color: white;
+
+}
+
+body.dark-mode td#comisionAsesoria, body.dark-mode td#comisionServicio, body.dark-mode td#comisionPracticas,
+body.dark-mode td#obsAsesoria, body.dark-mode td#obsServicio, body.dark-mode td#obsPracticas, body.dark-mode td.td_form3_15{
+    background-color: #82bdb2!important;
+    border-width: thin;
+    border-color: white;
+
+}
+
+#comisionCongresoInt, #obsCongresoInt, #comisionCongresoNac, #obsCongresoNac, #comisionCongresoLoc, #obsCongresoLoc{
+    background-color: transparent;
+}
+
+span#comDA, span#comNCAA
+{
+    background-color: transparent;
+    border-color: transparent;
+    text-align: center;
+    padding-inline-start: 50px;
+}
+
+#comisionAsesoria, #obsAsesoria,
+#comisionServicio, #obsServicio,
+#comisionPracticas,#obsPracticas, td#subtotalCientificos, td#subtotalDivulgacion, 
+td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subtotalSinInt, td#subtotalSinNac, td#subtotalAutor, td#subtotalEditor, td#subtotalWeb,
+td#subtotalComOrgInt, td#subtotalComOrgNac, td#subtotalComOrgReg, td#subtotalComApoyoInt, td#subtotalComApoyoNac, td#subtotalComApoyoReg, td#subtotalCicloComOrgInt, td#subtotalCicloComOrgNac, td#subtotalCicloComOrgReg, td#subtotalCicloComApoyoInt, td#subtotalCicloComApoyoNac, td#subtotalCicloComApoyoReg
+{
+    text-align: center;
+}
+td#subtotalCientificos, td#subtotalDivulgacion, 
+td#subtotalTraduccion, td#subtotalArbitrajeInt, td#subtotalArbitrajeNac, td#subtotalSinInt, td#subtotalSinNac, td#subtotalAutor, td#subtotalEditor, td#subtotalWeb{
+    padding-inline-start: 5px; 
+}
+
+ 
+#obsArbInt, #obsArbNac, #obsPubInt, #obsPubNac, #obsRevInt,#obsRevNac, #obsRevista, #comisionComOrgInt, #comisionComOrgNac, #comisionComOrgReg, #comisionComApoyoInt, #comisionComApoyoNac, 
+#comisionComApoyoReg, #comisionCicloComOrgInt, #comisionCicloComOrgNac, #comisionCicloComOrgReg, #comisionCicloComApoyoInt, #comisionCicloComApoyoNac, #comisionCicloComApoyoReg{
+    padding-inline-start: 65px; 
+}
+
+body.dark-mode #comisionComOrgInt, body.dark-mode #comisionComOrgNac, body.dark-mode #comisionComOrgReg, body.dark-mode #comisionComApoyoInt, body.dark-mode #comisionComApoyoNac, body.dark-mode #comisionComApoyoReg, 
+body.dark-mode #comisionCicloComOrgInt, body.dark-mode #comisionCicloComOrgNac, body.dark-mode #comisionCicloComOrgReg, body.dark-mode #comisionCicloComApoyoInt, body.dark-mode #comisionCicloComApoyoNac, body.dark-mode #comisionCicloComApoyoReg{
+    color: white;
+}
+
+
+#comisionArbInt,
+#comisionArbNac, #comisionPubInt, #comisionPubNac,#comisionRevInt, #comisionRevNac,#comisionRevista, #comisionDifusionExt, #comisionDifusionInt, #comisionRepDifusionExt, #comisionRepDifusionInt{
+    padding-inline-start: 9px;
+}
+   
+body.dark-mode span#comisionComOrgInt, body.dark-mode span#comisionComOrgNac, body.dark-mode span#comisionComOrgReg, body.dark-mode span#comisionComApoyoInt, body.dark-mode span#comisionComApoyoNac, body.dark-mode span#comisionComApoyoReg, body.dark-mode span#comisionCicloComOrgInt, body.dark-mode span#comisionCicloComOrgNac, body.dark-mode span#comisionCicloComOrgReg, body.dark-mode span#comisionCicloComApoyoInt, body.dark-mode span#comisionCicloComApoyoNac, body.dark-mode span#comisionCicloComApoyoReg,
+body.dark-mode input#comDA, body.dark-mode input#comNCAA{
+    color: white!important;
+}
+
+body.darl-mode span#obsComOrgInt, body.dark-mode span#obsComOrgNac, body.dark-mode span#obsComOrgReg, body.dark-mode span#obsComApoyoInt, body.dark-mode span#obsComApoyoNac, body.dark-mode span#obsComApoyoReg, body.dark-mode span#obsCicloComOrgInt, body.dark-mode span#obsCicloComOrgNac, body.dark-mode span#obsCicloComOrgReg, body.dark-mode span#obsCicloComApoyoInt, body.dark-mode span#obsCicloComApoyoNac, body.dark-mode span#obsCicloComApoyoReg,
+body.dark-mode span#obsCGUtitular, body.dark-mode span#obsCGUespecial, body.dark-mode span#obsCGUpermanente, body.dark-mode span#obsCAACtitular, body.dark-mode span#obsCAACintegCom, body.dark-mode span#obsComDepart, body.dark-mode span#obsComPEDPD, body.dark-mode span#obsComPartPos, body.dark-mode span#obsRespPos, body.dark-mode span#obsRespCarrera, body.dark-mode span#obsRespProd, body.dark-mode span#obsRespLab,
+body.dark-mode span#obsExamProf, body.dark-mode span#obsExamAcademicos, body.dark-mode span#obsPRODEPformResp, body.dark-mode span#obsPRODEPformInteg, body.dark-mode span#obsPRODEPenconsResp, body.dark-mode span#obsPRODEPenconsInteg, body.dark-mode span#obsPRODEPconsResp, body.dark-mode span#obsPRODEPconsInteg, body.dark-mode span#obsComOrgInt
+{
+    background-color: transparent!important;
+    color: white!important;
+}      
+
+#comCGUtitular, #comCGUespecial, #comCGUpermanente, #comCAACtitular, #comCAACintegCom, #comComDepart, #comComPEDPD, #comComPartPos, #comRespPos, #comRespCarrera, #comRespProd, #comRespLab,
+#comExamProf, #comExamAcademicos, #comPRODEPformResp, #comPRODEPformInteg, #comPRODEPenconsResp, #comPRODEPenconsInteg, #comPRODEPconsResp, #comPRODEPconsInteg{
+    padding-inline-start: 7px;
+    border-color: transparent;
+    text-align: center;
+    background-color: #d6fff7;
+}
+
+/* color de 'cantidad' en modo obscuro */
+body.dark-mode td#cantCGUtitular, body.dark-mode td#cantCGUespecial, body.dark-mode td#cantCGUpermanente, 
+body.dark-mode td#cantCAACtitular, body.dark-mode td#cantCAACintegCom, body.dark-mode td#cantComDepart, 
+body.dark-mode td#cantComPEDPD, body.dark-mode td#cantComPartPos, body.dark-mode td#cantRespPos, body.dark-mode td#cantRespCarrera, 
+body.dark-mode td#cantRespProd, body.dark-mode td#cantRespLab, body.dark-mode td#cantExamProf, body.dark-mode td#cantExamAcademicos, 
+body.dark-mode td#cantPRODEPformResp, body.dark-mode td#cantPRODEPformInteg, body.dark-mode td#cantPRODEPenconsResp, body.dark-mode td#cantPRODEPenconsInteg, 
+body.dark-mode td#cantPRODEPconsResp, body.dark-mode td#cantPRODEPconsInteg, body.dark-mode input#puntaje3_6,
+body.dark-mode #cantArbNac, body.dark-mode #cantArbInt, body.dark-mode #cantPubInt, body.dark-mode #cantPubNac, body.dark-mode #cantRevInt, body.dark-mode #cantRevNac,
+body.dark-mode #cantRevista, body.dark-mode #cantPatentes, body.dark-mode #cantPrototipos, body.dark-mode #cantCongresoInt, body.dark-mode #cantCongresoNac, body.dark-mode #cantCongresoLoc,
+body.dark-mode #cantCientifico, body.dark-mode #cantDivulgacion, body.dark-mode #cantTraduccion, body.dark-mode #cantArbitrajeInt, body.dark-mode #cantArbitrajeNac, 
+body.dark-mode #cantSinInt, body.dark-mode #cantSinNac, body.dark-mode #cantAutor, body.dark-mode #cantEditor, body.dark-mode #cantWeb,  body.dark-mode #cantAsesoria, 
+body.dark-mode #cantServicio, body.dark-mode #cantPracticas
+{
+    background-color: #9b9a9a!important;
+    color: white!important;
+}
+
+button#toggle-dark-mode {
+    position: fixed;
+}
+
+body.light-mode button#toggle-dark-mode{
+    margin-left: 95rem!important;
+}
+th#seccion3_5 {
+    padding: 0px !important;
+}
+
+input#obs3_5_1, input#obs3_5_2, input#obs3_6, td.punto3_6, td.punto3_7{
+    text-align: center!important;
+}
+
+
+
+input#obs3_6 {
+    padding-right: 150px;
+    padding-inline-start: 150px;
+}
+
+button#btn3_6{
+    margin-left: 276px!important;
+}
+
+td.text-right.punto3_8_1.centerSelect{
+    padding-inline-start: 70px;
+}
+
+ body.dark-mode #cantCGUtitular , body.dark-mode #cantCGUespecial, body.dark-mode #cantCGUpermanente, body.dark-mode #cantCAACtitular, body.dark-mode #cantCAACintegCom, body.dark-mode #cantComDepart, body.dark-mode #cantComPEDPD, body.dark-mode #cantComPartPos, body.dark-mode #cantRespPos, body.dark-mode #cantRespCarrera, 
+ body.dark-mode #cantRespProd, body.dark-mode #cantRespLab, body.dark-mode #cantExamProf, body.dark-mode #cantExamAcademicos, body.dark-mode #cantPRODEPformResp, body.dark-mode #cantPRODEPformInteg, body.dark-mode #cantPRODEPenconsResp, body.dark-mode #cantPRODEPenconsInteg, body.dark-mode #cantPRODEPconsResp, body.dark-mode #cantPRODEPconsInteg,
+ body.dark-mode #comCGUtitular, body.dark-mode #comCGUespecial, body.dark-mode #comCGUpermanente, body.dark-mode #comCAACtitular, body.dark-mode #comCAACintegCom, body.dark-mode #comComDepart, 
+ body.dark-mode #comComPEDPD, body.dark-mode #comComPartPos, body.dark-mode #comRespPos, body.dark-mode #comRespCarrera, body.dark-mode #comRespProd, body.dark-mode #comRespLab, body.dark-mode #comExamProf, 
+ body.dark-mode #comExamAcademicos, body.dark-mode #comPRODEPformResp, body.dark-mode #comPRODEPformInteg, body.dark-mode #comPRODEPenconsResp, body.dark-mode #comPRODEPenconsInteg, 
+ body.dark-mode #comPRODEPconsResp, body.dark-mode #comPRODEPconsInteg {
+    background-color: transparent!important;
+    color: white!important;
+    
+ }
+
+ body.light-mode{
+    background-color: #f8f9fa;
+    color: #000000;
+}
+
+input#comisionIndividual, input#comisionGrupal, input#comisionIndividual, input#comisionAsesoria, input#comisionServicio, input#comisionPracticas, 
+input#comisionCientificos, input#comisionDivulgacion, input#comisionTraduccion, input#comisionArbitrajeInt, input#comisionArbitrajeNac, input#comisionSinInt, input#comisionSinNac, input#comisionAutor, input#comisionEditor, input#comisionWeb{
+    border: hidden;
+}
+
+
+
+
+
