@@ -18,7 +18,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
         ],
         'dictMappings' => [
-
+            'dictMode' => 'byEmail', 
             'horasActv2' => 'horasActv2',
             'puntajeEvaluar' => 'puntajeEvaluar',
             'comision1' => 'comision1',
@@ -138,7 +138,7 @@ textarea#obs1_input{
 }
 
 @media print {
-    #obs1_input {
+    #obs1 {
         display: block; /* Oculta el textarea al imprimir */
 
     }
@@ -188,11 +188,11 @@ $user_identity = $user->id;
 <div class="mostrar">
     <main class="container">
         <!-- Form for Part 2 -->
-        <form id="form2" method="POST" action="{{ url('/store-form2') }}">
+        <form id="form2" method="POST">
             
             @csrf
             <div><br>
-            <div class="datosConvocatoria">
+            {{-- <div class="datosConvocatoria">
                 <div class="row">
                     <label for="convocatoria">Convocatoria:</label>
                     <div class="valor"><span class="input-header" id="convocatoria2"></span></div>
@@ -213,7 +213,7 @@ $user_identity = $user->id;
                     <label for="departamento">Departamento Académico:</label>
                     <div class="valor"><span id="departamento2" class="input-header"></span></div>
                 </div>
-            </div><br>   
+            </div><br>    --}}
             
             
             <center class="printCenter"><h5>Instrucciones</h5></center>
@@ -262,7 +262,7 @@ $user_identity = $user->id;
                             <span id="horasActv2"></span>
                         </td>
                         <td class="puntajeEvaluar">
-                            <span id="puntajeEvaluarText">0</span>
+                            <span id="puntajeEvaluar">0</span>
                         </td>
                         <td class="td_obs table-header comision">
                             <div class="filled">
@@ -280,7 +280,7 @@ $user_identity = $user->id;
                             <div class="filled">
                         @if($userType == 'dictaminador')
                             <!-- Mostrar textarea para edición -->
-                            <textarea id="obs1_input" name="obs1" class="table-header" oninput="document.getElementById('obs1_print').textContent = this.value"></textarea>
+                            <textarea id="obs1" name="obs1" class="table-header" oninput="document.getElementById('obs1_print').textContent = this.value"></textarea>
                             <!-- Span solo para impresión -->
                             <span id="obs1_print" class="d-none d-print-block"></span>
                         @else
@@ -336,75 +336,6 @@ $user_identity = $user->id;
 
 document.getElementById('horasActv2Input').value =
     document.getElementById('horasActv2')?.textContent?.trim() || '0';
-
-  // Evento cuando se selecciona un docente
-document.addEventListener('docenteSelected', async (e) => {
-    const docente = e.detail;
-    const email = docente.email;
-    selectedEmail = email;
-
-    // *** THE DEFINITIVE FIX ***
-    // This populates the global variable that the submit-form script relies on.
-    window.selectedDocente = docente;
-
-    try {
-        // === Comunes: cargar datos de docente ===
-        const docenteDataEndpoint = @json($docenteConfig['docenteDataEndpoint'] ?? '/formato-evaluacion/get-docente-data');
-        const dictEndpoint = @json($docenteConfig['dictEndpoint'] ?? '/formato-evaluacion/get-dictaminators-responses');
-        const dictCollectionKey = @json($docenteConfig['dictCollectionKey'] ?? 'form2');
-        const userType = @json($userType ?? 'docente');
-
-        // Helper para asignar valor a los campos de observaciones
-        function setObservationValue(value) {
-            const obsInput = document.getElementById('obs1_input');
-            const obsPrint = document.getElementById('obs1_print');
-            const obsSpan = document.getElementById('obs1');
-
-            if (obsInput) obsInput.value = value;
-            if (obsPrint) obsPrint.textContent = value;
-            if (obsSpan) obsSpan.textContent = value;
-        }
-        const axiosResponse = await axios.get('/formato-evaluacion/get-docente-data', { params: { email } });
-        const docenteData = axiosResponse.data;
-
-        if (docenteData.docente) {
-            const { convocatoria, periodo, nombre, area, departamento } = docenteData.docente;
-            document.getElementById('convocatoria').textContent = convocatoria || '';
-            document.getElementById('convocatoria2').textContent = convocatoria || '';
-            document.getElementById('periodo2').textContent = periodo || '';
-            document.getElementById('nombre2').textContent = nombre || '';
-            document.getElementById('area2').textContent = area || '';
-            document.getElementById('departamento2').textContent = departamento || '';
-        }
-
-        // === Llenar datos de dictaminador para 'secretaria' o 'dictaminador' ===
-        if (userType === 'secretaria' || userType === 'dictaminador') {
-            let dictResp;
-            if (userType === 'secretaria') {
-                dictResp = await axios.get(dictEndpoint);
-            } else {
-                // For dictaminador, use the specific endpoint with user_id
-                const userId = @json($user_identity ?? '');
-                dictResp = await axios.get('/formato-evaluacion/get-dictaminators-responses?user_id=' + userId);
-            }
-            const dictData = dictResp.data;
-
-            if (dictData && dictData[dictCollectionKey]) {
-                const dictaminadorResponse = dictData[dictCollectionKey].find(d => d.email === email);
-                if (dictaminadorResponse) {
-                    document.getElementById('comision1').value = dictaminadorResponse.comision1 || '0';
-                    setObservationValue(dictaminadorResponse.obs1 || '');
-                } else {
-                    document.getElementById('comision1').value = '0';
-                    setObservationValue('');
-                }
-            }
-        }
-    } catch (error) {
-        console.error('Error general al procesar datos del docente:', error);
-    }
-});
-
 
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -490,7 +421,7 @@ document.addEventListener('docenteSelected', async (e) => {
         });
 
     </script>
-    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
+
     @include('partials.submit-form', ['config' => $docenteConfigForm])
 </body>
 

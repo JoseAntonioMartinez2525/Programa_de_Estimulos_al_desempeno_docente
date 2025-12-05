@@ -30,6 +30,7 @@ use App\Models\UserResume;
 use App\Models\UsersResponseForm1;
 use App\Models\UsersResponseForm2;
 use App\Models\DictaminatorsResponseForm2;
+use App\Models\User;
 use App\Models\UsersResponseForm2_2;
 use App\Models\UsersResponseForm3_1;
 use App\Models\UsersResponseForm3_11;
@@ -188,6 +189,13 @@ class ResponseJson extends Controller
         $queryFilter = $user->user_type === 'secretaria' ? [] : ['dictaminador_id' => $user->id];
 
         $dictaminators_responses2 = DictaminatorsResponseForm2::where($queryFilter)->get();
+
+        $dictaminators_responses2->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses2_2 = DictaminatorsResponseForm2_2::where($queryFilter)->get();
         $dictaminators_responses3_1 = DictaminatorsResponseForm3_1::where($queryFilter)->get();
         $dictaminators_responses3_2 = DictaminatorsResponseForm3_2::where($queryFilter)->get();

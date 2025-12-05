@@ -236,7 +236,7 @@
                                     const specialForms = [
                                         "form3_11","form3_12","form3_13","form3_14","form3_15",
                                         "form3_16","form3_17","form3_18","form3_19",
-                                        "form2", "form3_1", "form3_9"
+                                         "form3_1", "form3_9"
                                     ];
 
                                     if (specialForms.includes(config.formKey)) {
