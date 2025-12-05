@@ -229,8 +229,35 @@
                             const collectionKey = config.dictCollectionKey || config.formKey;
                             const collection = dictData[collectionKey] || [];
 
+                                    // Determinar el MODO de selección segun el formulario
+                                    let mode = "byEmail"; // por defecto
+
+                                    // Formularios especiales → usar el primer registro
+                                    const specialForms = [
+                                        "form3_11","form3_12","form3_13","form3_14","form3_15",
+                                        "form3_16","form3_17","form3_18","form3_19",
+                                        "form2", "form3_1", "form3_9"
+                                    ];
+
+                                    if (specialForms.includes(config.formKey)) {
+                                        mode = "first";
+                                    }
+
+                                    // función auxiliar
+                                    function getDictaminadorRecord(collection, email, mode) {
+                                        if (mode === "byEmail") {
+                                            return collection.find(r => r.email === email) || null;
+                                        }
+                                        if (mode === "first") {
+                                            return Array.isArray(collection) && collection.length > 0
+                                                ? collection[0]
+                                                : null;
+                                        }
+                                        return null;
+                                    }
+
                             // buscar respuesta del dictaminador 
-                            const selected = collection.find(r => r.email === email);
+                            const selected = getDictaminadorRecord(collection, email, mode);
 
                             if (selected && config.dictMappings) {
                                 Object.entries(config.dictMappings).forEach(([target, propPath]) => {
@@ -244,7 +271,7 @@
                                     });
                                 }
                             } else {
-                                console.warn('>> No hay dictaminador para este docente:', email);
+                                console.warn(`>> No hay dictaminador (${mode}) para este docente:`, email);
                             }
 
                         } catch (err) {
@@ -314,6 +341,8 @@
                     if (globalSecond) globalSecond.style.display = '';
                 });
             })();
+
+            
     });
 })();
 </script>
