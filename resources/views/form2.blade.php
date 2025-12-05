@@ -18,7 +18,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
         ],
         'dictMappings' => [
-            'dictMode' => 'byEmail', 
+            'dictMode' => '', 
             'horasActv2' => 'horasActv2',
             'puntajeEvaluar' => 'puntajeEvaluar',
             'comision1' => 'comision1',
@@ -47,13 +47,17 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
 
     ],
-    (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) ? ['preselectedEmail' => $teacherEmailFromUrl] : [], 
     'convocatoriaSelectors' => [
         '#convocatoria',
         '#convocatoria2',
     ]
-  
+
     ];
+
+// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
+if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
+    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
+}
 
 
     if (!isset($docenteConfigForm)) {
@@ -421,7 +425,7 @@ document.getElementById('horasActv2Input').value =
         });
 
     </script>
-
+    @include('partials.docente-autocomplete', ['config' => $docenteConfig])
     @include('partials.submit-form', ['config' => $docenteConfigForm])
 </body>
 

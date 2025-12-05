@@ -242,6 +242,9 @@
                                     if (specialForms.includes(config.formKey)) {
                                         mode = "first";
                                     }
+                                    // else if (mode === "dictaminadorById") {
+                                    //     return collection.find(r => r.dictaminador_id == AUTH_ID);
+                                    // }
 
                                     // función auxiliar
                                     function getDictaminadorRecord(collection, email, mode) {
