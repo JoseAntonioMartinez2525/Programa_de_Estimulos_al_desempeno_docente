@@ -256,9 +256,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store-dictaminator_signatures', [FirmaDictaminadorController::class, 'storeFirma'])->name('firmaDictaminador.store');
     Route::get('/formato-evaluacion/get-signatures', [FirmaDictaminadorController::class, 'getSignatures'])
      ->name('get.signatures');
+    // Ruta para agregar un solo docente a un dictaminador
+    Route::post('/agregar-docente/{dictaminador_id}', [DictaminatorForm2_Controller::class, 'agregarDocente'])
+        ->name('agregar.docente');
 
-    Route::post('/generate-pdf', [ResponseForm3_19Controller::class, 'generatePdf'])->name('generate.pdf');
-    // Ruta para asignar varios docentes a un dictaminador
     Route::post('/asignar-docentes/{dictaminador_id}', [DictaminatorForm2_Controller::class, 'asignarDocentes'])
         ->name('asignar.docentes');
     
@@ -266,19 +267,26 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/firma-dictaminador', [FirmaDictaminadorController::class, 'index'])
         ->name('firmaDictaminador.index');
 
-        Route::get('/dictaminador-signatures', [FirmaDictaminadorController::class, 'getFirmasPorDocente']);
+    Route::get('/dictaminador-signatures', [FirmaDictaminadorController::class, 'getFirmasPorDocente']);
 
+    Route::get('/get-dictaminators-responses', [ResponseJson::class, 'getDictaminatorResponses']);
+    Route::get('/get-dictaminators-responses-id', [ResponseJson::class, 'getDictaminatorResponsesId']);
+    Route::get('/get-docentes-by-dictaminador', [DictaminatorForm2_Controller::class, 'getDocentesByDictaminador']);
+    Route::get('/comision_dictaminadora', [FirmaDictaminadorController::class, 'showForm'])->name('comision_dictaminadora');
+    Route::get('/get-user-id', [DictaminatorController::class, 'getUserId']);
+
+    Route::post('/generate-pdf', [ResponseForm3_19Controller::class, 'generatePdf'])->name('generate.pdf');
+    // Ruta para asignar varios docentes a un dictaminador
 
 
     Route::post('/update-form/{formId}', [DynamicFormController::class, 'updateFormData']);
-    // Ruta para agregar un solo docente a un dictaminador
-    Route::post('/agregar-docente/{dictaminador_id}', [DictaminatorForm2_Controller::class, 'agregarDocente'])
-        ->name('agregar.docente');
+
 
     //Ruta para la tabla fragmentada de comision de formularios dinamicos
     Route::get('/get-teacher-form-data/{email}/{formName}', [DynamicFormController::class, 'getTeacherFormData']);
     Route::post('/update-commission-data/{formId}', [DynamicFormController::class, 'updateCommissionData']);
-    //GET formularios
+
+    //GET formularios utilizados por Docentes
     Route::get('/get-data1', [ResponseController::class, 'getData1'])->name('getData1');
     Route::get('/get-data2', [ResponseForm2Controller::class, 'getData2'])->name('getData2');
     Route::get('/get-data22', [ResponseForm2_2Controller::class, 'getData22'])->name('getData22');
@@ -309,12 +317,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-data-resume', [ResumeController::class, 'getDataResume'])->name('get-data-resume');
     Route::get('/get-evaluator-signature', [EvaluatorSignatureController1::class, 'getEvaluatorSignature'])->name('get-evaluator-signature');
 
-    Route::get('/get-dictaminators-responses', [ResponseJson::class, 'getDictaminatorResponses']);
-    Route::get('/get-dictaminators-responses-id', [ResponseJson::class, 'getDictaminatorResponsesId']);
+
     Route::get('/fetch-convocatoria/{user_id}', [ResumenComisionController::class, 'fetchConvocatoria'])->name('fetch-convocatoria');
-    Route::get('/get-docentes-by-dictaminador', [DictaminatorForm2_Controller::class, 'getDocentesByDictaminador']);
-    Route::get('/comision_dictaminadora', [FirmaDictaminadorController::class, 'showForm'])->name('comision_dictaminadora');
-    Route::get('/get-user-id', [DictaminatorController::class, 'getUserId']);
+
     Route::get('/general', [ReportsController::class, 'index'])->name('general');
     Route::get('/show-profile', [ReportsController::class, 'showProfile'])->name('show-profile');
     //Route::get('/perfil', [ProfileController::class, 'showProfile'])->name('perfil.show');
