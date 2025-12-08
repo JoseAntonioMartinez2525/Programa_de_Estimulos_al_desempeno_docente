@@ -180,20 +180,13 @@ class ResponseJson extends Controller
             ->header('Content-Type', 'application/json');
     }
 
-    public function getDictaminatorResponses(Request $request)
+    public function getDictaminatorResponses()
     {
 
         // Obtiene las respuestas de los formularios generados por dictaminadores
         // Para dictaminadores, filtra por su propio ID; para secretaria, muestra todas
         $user = Auth::user();
         $queryFilter = $user->user_type === 'secretaria' ? [] : ['dictaminador_id' => $user->id];
-
-        if ($request->has('email')) {
-            $targetUser = User::where('email', $request->email)->first();
-            if ($targetUser) {
-                $queryFilter['user_id'] = $targetUser->id;
-            }
-        }
 
         $dictaminators_responses2 = DictaminatorsResponseForm2::where($queryFilter)->get();
 
