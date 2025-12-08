@@ -197,7 +197,7 @@ class DictaminatorForm3_2Controller extends TransferController
 
     } catch (\Exception $e) {
         // Log del error para depuración
-        \Log::error('Error al actualizar el formulario 3.1: ' . $e->getMessage());
+        \Log::error('Error al actualizar el formulario 3.2: ' . $e->getMessage());
 
         return response()->json([
             'success' => false,

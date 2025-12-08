@@ -151,7 +151,7 @@ $user_identity = $user->id;
 </div>
     <main class="container">
         <!-- Form for Part 2_2 -->
-        <form id="form2_2" method="POST">
+        <form id="form2_2" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}">
             @csrf
             <div>
                 <!-- Activity 2: Commitment in Teaching Performance -->
@@ -162,7 +162,7 @@ $user_identity = $user->id;
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="user_id" value="">
-            <input type="hidden" name="email" value="">
+            <input type="hidden" name="email" value="{{ $teacherEmailFromUrl ?? '' }}">
             <input type="hidden" name="user_type" value="">
             <table class="table table-sm">
                 <thead>
