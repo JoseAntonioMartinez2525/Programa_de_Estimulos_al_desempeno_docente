@@ -129,12 +129,12 @@ $user_identity = $user->id;
 
     <main class="container">
         <!-- Form for Part 3_8 -->
-        <form id="form3_8" method="POST">
+        <form id="form3_8" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="user_id" value="">
-            <input type="hidden" name="email" value="">
+             <input type="hidden" name="email" value="{{ $teacherEmailFromUrl ?? '' }}">
             <input type="hidden" name="user_type" value="">
             <div>
                 <!--3.8 Impartición de cursos, diplomados, seminarios, talleres extracurriculares, de educación, continua o de formación y capacitación docente-->

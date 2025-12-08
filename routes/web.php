@@ -241,6 +241,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store-form36', [DictaminatorForm3_6Controller ::class, 'storeform36'])->name('form3_6.store')->withoutMiddleware('auth');
     Route::post('/store-form37', [DictaminatorForm3_7Controller::class, 'storeform37'])->name('form3_7.store')->withoutMiddleware('auth');
     Route::post('/store-form38', [DictaminatorForm3_8Controller::class, 'storeform38'])->name('form3_8.store')->withoutMiddleware('auth');
+    Route::get('/get-form38', [DictaminatorForm3_8Controller::class, 'getFormData38'])->name('form3_8.get')->withoutMiddleware('auth');
     Route::post('/store-form381', [DictaminatorForm3_8_1Controller::class, 'storeform381'])->name('form3_8_1.store')->withoutMiddleware('auth');
     Route::post('/store-form39', [DictaminatorForm3_9Controller::class, 'storeform39'])->name('form3_9.store_9')->withoutMiddleware('auth');
     Route::post('/store-form310', [DictaminatorForm3_10Controller::class, 'storeform310'])->name('form3_10.store_10')->withoutMiddleware('auth');
@@ -254,6 +255,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store-form318', [DictaminatorForm3_18Controller::class, 'storeform318'])->name('form3_18.store_18')->withoutMiddleware('auth');
     Route::post('/store-form319', [DictaminatorForm3_19Controller::class, 'storeform319'])->name('form3_19.store_19')->withoutMiddleware('auth');
     Route::post('/store-dictaminator_signatures', [FirmaDictaminadorController::class, 'storeFirma'])->name('firmaDictaminador.store');
+    
+    // Ruta PUT genérica para ACTUALIZAR cualquier formulario de dictaminador
+    // El JavaScript ya construye la URL correctamente (ej: /update-form31)
+    Route::put('/update-form{formIdentifier}', [DictaminatorController::class, 'updateForm'])
+        ->name('dictaminator.form.update')
+        ->withoutMiddleware('auth');
+
     Route::get('/formato-evaluacion/get-signatures', [FirmaDictaminadorController::class, 'getSignatures'])
      ->name('get.signatures');
     // Ruta para agregar un solo docente a un dictaminador

@@ -259,8 +259,11 @@
                                         return null;
                                     }
 
-                            // buscar respuesta del dictaminador 
+                            // buscar respuesta del dictaminador
                             const selected = getDictaminadorRecord(collection, email, mode);
+
+                            // Set global flag for existing data
+                            window.existingDictData = selected;
 
                             if (selected && config.dictMappings) {
                                 Object.entries(config.dictMappings).forEach(([target, propPath]) => {

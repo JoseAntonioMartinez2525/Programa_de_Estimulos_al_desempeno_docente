@@ -39,6 +39,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Validator;
 class DictaminatorController extends Controller
 {
 public function adminResetTimer(Request $request)
@@ -472,6 +473,87 @@ public function adminResetTimer(Request $request)
         $imageData = ob_get_clean();
 
         return 'data:image/' . $mime . ';base64,' . base64_encode($imageData);
+    }
+
+
+    public function updateForm(Request $request, $formIdentifier)
+    {
+        // 1. Mapeo de identificadores de formulario a sus modelos y reglas de validación
+        $formConfig = $this->getFormConfig($formIdentifier);
+
+        if (!$formConfig) {
+            return response()->json(['success' => false, 'message' => 'Formulario no válido.'], 404);
+        }
+
+        // 2. Obtener las reglas de validación
+        $controllerClass = $formConfig['controller'];
+        $validationRules = $controllerClass::getValidationRules();
+
+        // 3. Obtener la clase del modelo
+        $modelClass = $formConfig['model'];
+
+        // 3. Validar la petición
+        $validator = Validator::make($request->all(), $validationRules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error de validación.',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $validatedData = $validator->validated();
+
+        try {
+            // 4. Usar updateOrCreate para actualizar o crear el registro
+            $record = $modelClass::updateOrCreate(
+                [
+                    'user_id' => $validatedData['user_id'],
+                    'dictaminador_id' => $validatedData['dictaminador_id']
+                ],
+                $validatedData
+            );
+
+            // 5. Devolver una respuesta exitosa
+            return response()->json([
+                'success' => true,
+                'message' => 'Formulario actualizado correctamente.',
+                'data' => $record
+            ]);
+
+        } catch (\Exception $e) {
+            \Log::error("Error al actualizar form_{$formIdentifier}: " . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Ocurrió un error en el servidor al actualizar.'
+            ], 500);
+        }
+    }
+
+    /**
+     * Devuelve la configuración (modelo y reglas) para un identificador de formulario.
+     */
+    private function getFormConfig($identifier)
+    {
+        // Este es el "cerebro" que conecta todo.
+        // Aquí defines qué modelo y qué reglas usar para cada formulario.
+        $config = [
+            '31' => [
+                'controller' => \App\Http\Controllers\DictaminatorForm3_1Controller::class,
+                'model' => \App\Models\DictaminatorsResponseForm3_1::class,
+            ],
+            // --- AÑADE AQUÍ LA CONFIGURACIÓN PARA LOS OTROS 21 FORMULARIOS ---
+            // Ejemplo para form3_2:
+            /*
+            '32' => [
+                'controller' => \App\Http\Controllers\DictaminatorForm3_2Controller::class,
+                'model' => \App\Models\DictaminatorsResponseForm3_2::class,
+            ],
+            */
+        ];
+
+        return $config[$identifier] ?? null;
     }
 
 

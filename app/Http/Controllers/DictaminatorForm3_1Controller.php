@@ -35,6 +35,39 @@ use App\Traits\ValidatesDictaminatorPeriod;
 class DictaminatorForm3_1Controller extends TransferController
 {
     use ValidatesDictaminatorPeriod;
+
+    /**
+     * Devuelve las reglas de validación para el formulario 3.1.
+     * @return array
+     */
+    public static function getValidationRules(): array
+    {
+        return [
+            'dictaminador_id' => 'required|numeric',
+            'user_id' => 'required|exists:users,id',
+            'email' => 'required|email', // 'exists:users,email' se puede omitir si ya validamos user_id
+            'elaboracion' => 'required|numeric',
+            'elaboracionSubTotal1' => 'required|numeric',
+            'comisionIncisoA' => 'required|numeric',
+            'elaboracion2' => 'required|numeric',
+            'elaboracionSubTotal2' => 'required|numeric',
+            'comisionIncisoB' => 'required|numeric',
+            'elaboracion3' => 'required|numeric',
+            'elaboracionSubTotal3' => 'required|numeric',
+            'comisionIncisoC' => 'required|numeric',
+            'elaboracion4' => 'required|numeric',
+            'elaboracionSubTotal4' => 'required|numeric',
+            'comisionIncisoD' => 'required|numeric',
+            'elaboracion5' => 'required|numeric',
+            'elaboracionSubTotal5' => 'required|numeric',
+            'comisionIncisoE' => 'required|numeric',
+            'score3_1' => 'required|numeric',
+            'actv3Comision' => 'required|numeric',
+            'obs3_1_1' => 'nullable|string', 'obs3_1_2' => 'nullable|string', 'obs3_1_3' => 'nullable|string', 'obs3_1_4' => 'nullable|string', 'obs3_1_5' => 'nullable|string',
+            'user_type' => 'sometimes|in:user,docente,dictaminator',
+        ];
+    }
+
     public function storeform31(Request $request)
     {
         
@@ -54,34 +87,7 @@ class DictaminatorForm3_1Controller extends TransferController
             //3. validad formulario unico
              $this->validarFormularioUnico($request, 'dictaminators_response_form3_1');
 
-            $validatedData = $request->validate([
-                'dictaminador_id' => 'required|numeric',
-                'user_id' => 'required|exists:users,id',
-                'email' => 'required|exists:users,email',
-                'elaboracion' => 'required|numeric',
-                'elaboracionSubTotal1' => 'required|numeric', // Allow nullable
-                'comisionIncisoA' => 'required|numeric',
-                'elaboracion2' => 'required|numeric',
-                'elaboracionSubTotal2' => 'required|numeric',
-                'comisionIncisoB' => 'required|numeric',
-                'elaboracion3' => 'required|numeric',
-                'elaboracionSubTotal3' => 'required|numeric',
-                'comisionIncisoC' => 'required|numeric',
-                'elaboracion4' => 'required|numeric',
-                'elaboracionSubTotal4' => 'required|numeric',
-                'comisionIncisoD' => 'required|numeric',
-                'elaboracion5' => 'required|numeric',
-                'elaboracionSubTotal5' => 'required|numeric',
-                'comisionIncisoE' => 'required|numeric',
-                'score3_1' => 'required|numeric',
-                'actv3Comision' => 'required|numeric',
-                'obs3_1_1' => 'nullable|string',
-                'obs3_1_2' => 'nullable|string',
-                'obs3_1_3' => 'nullable|string',
-                'obs3_1_4' => 'nullable|string',
-                'obs3_1_5' => 'nullable|string',
-                'user_type' => 'required|in:user,docente,dictaminator',
-            ]);
+            $validatedData = $request->validate(self::getValidationRules());
 
             \Log::info('Datos validados:', $validatedData);
 
@@ -387,4 +393,36 @@ class DictaminatorForm3_1Controller extends TransferController
             'showSearch' => $showSearchComponent
         ]);
     }
+
+    public function updateform31(Request $request)
+{
+    // Validar los datos de entrada
+    $validatedData = $request->validate(self::getValidationRules());
+
+    try {
+        // Buscar el registro existente por user_id y dictaminador_id
+        $response = DictaminatorsResponseForm3_1::updateOrCreate(
+            [
+                'user_id' => $validatedData['user_id'],
+                'dictaminador_id' => $validatedData['dictaminador_id']
+            ],
+            $validatedData // Los datos con los que se actualizará o creará
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Formulario actualizado correctamente.',
+            'data' => $response
+        ]);
+
+    } catch (\Exception $e) {
+        // Log del error para depuración
+        \Log::error('Error al actualizar el formulario 3.1: ' . $e->getMessage());
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Ocurrió un error en el servidor al actualizar.'
+        ], 500);
+    }
+}
 }

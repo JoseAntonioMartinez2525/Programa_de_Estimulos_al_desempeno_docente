@@ -25,6 +25,7 @@ class DictaminatorForm3_8Controller extends TransferController
             if ($error = $this->validateEvaluationPeriod($request, 'form3_8')) {
                 return $error;
             }
+
             $validatedData = $request->validate([
                 'dictaminador_id' => 'required|numeric',
                 'user_id' => 'required|exists:users,id',
@@ -44,18 +45,6 @@ class DictaminatorForm3_8Controller extends TransferController
             $validatedData['obs3_8_1'] = trim($validatedData['obs3_8_1'])!== '' ? $validatedData['obs_3_8_1'] : 'sin comentarios';
 
             $validatedData['form_type'] = 'form3_8';
-
-                // 3. VERIFICAR SI YA EXISTE UN REGISTRO PARA ESTE DICTAMINADOR Y DOCENTE
-                $existingRecord = DictaminatorsResponseForm3_8::where('dictaminador_id', $dictaminadorId)
-                    ->where('user_id', $validatedData['user_id'])
-                    ->first();
-
-                if ($existingRecord) {
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'Error al enviar, formulario ya existente'
-                    ], 409);
-                }
 
             $response = DictaminatorsResponseForm3_8::updateOrCreate(
                 [
