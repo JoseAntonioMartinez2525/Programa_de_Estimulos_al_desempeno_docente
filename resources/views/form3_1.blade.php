@@ -385,12 +385,12 @@ $user_identity = $user->id;
 
     <main class="container">
         <!--Form for Part 3_1 -->
-        <form id="form3_1" method="POST">
+        <form id="form3_1" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="user_id" value="">
-            <input type="hidden" name="email" value="">
+            <input type="hidden" name="email" value="{{ $teacherEmailFromUrl ?? '' }}">
             <input type="hidden" name="user_type" value="">
             <input type="hidden" name="score3_1" id="score3_1_hidden">
             <input type="hidden" name="actv3Comision" id="actv3Comision_hidden">

@@ -167,7 +167,12 @@ class DictaminatorForm3_1Controller extends TransferController
     public function getFormData31(Request $request)
     {
         try {
-            $data = DictaminatorsResponseForm3_1::where('user_id', $request->query('user_id'))->first();
+            $dictaminadorId = \Auth::id();
+            $docenteUserId = $request->query('user_id');
+
+            $data = DictaminatorsResponseForm3_1::where('user_id', $docenteUserId)
+                                                 ->where('dictaminador_id', $dictaminadorId)
+                                                 ->first();
             if (!$data) {
                 return response()->json([
                     'success' => false,

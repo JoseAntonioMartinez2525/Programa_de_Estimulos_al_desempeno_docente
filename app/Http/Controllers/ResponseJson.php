@@ -180,13 +180,20 @@ class ResponseJson extends Controller
             ->header('Content-Type', 'application/json');
     }
 
-    public function getDictaminatorResponses()
+    public function getDictaminatorResponses(Request $request)
     {
 
         // Obtiene las respuestas de los formularios generados por dictaminadores
         // Para dictaminadores, filtra por su propio ID; para secretaria, muestra todas
         $user = Auth::user();
         $queryFilter = $user->user_type === 'secretaria' ? [] : ['dictaminador_id' => $user->id];
+
+        if ($request->has('email')) {
+            $targetUser = User::where('email', $request->email)->first();
+            if ($targetUser) {
+                $queryFilter['user_id'] = $targetUser->id;
+            }
+        }
 
         $dictaminators_responses2 = DictaminatorsResponseForm2::where($queryFilter)->get();
 
@@ -197,26 +204,151 @@ class ResponseJson extends Controller
         });
 
         $dictaminators_responses2_2 = DictaminatorsResponseForm2_2::where($queryFilter)->get();
+        $dictaminators_responses2_2->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_1 = DictaminatorsResponseForm3_1::where($queryFilter)->get();
+        $dictaminators_responses3_1->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_2 = DictaminatorsResponseForm3_2::where($queryFilter)->get();
+        $dictaminators_responses3_2->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_3 = DictaminatorsResponseForm3_3::where($queryFilter)->get();
+        $dictaminators_responses3_3->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_4 = DictaminatorsResponseForm3_4::where($queryFilter)->get();
+        $dictaminators_responses3_4->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_5 = DictaminatorsResponseForm3_5::where($queryFilter)->get();
+        $dictaminators_responses3_5->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_6 = DictaminatorsResponseForm3_6::where($queryFilter)->get();
+        $dictaminators_responses3_6->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_7 = DictaminatorsResponseForm3_7::where($queryFilter)->get();
+        $dictaminators_responses3_7->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_8 = DictaminatorsResponseForm3_8::where($queryFilter)->get();
+        $dictaminators_responses3_8->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_8_1 = DictaminatorsResponseForm3_8_1::where($queryFilter)->get();
+        $dictaminators_responses3_8_1->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_9 = DictaminatorsResponseForm3_9::where($queryFilter)->get();
+        $dictaminators_responses3_9->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_10 = DictaminatorsResponseForm3_10::where($queryFilter)->get();
+        $dictaminators_responses3_10->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_11 = DictaminatorsResponseForm3_11::where($queryFilter)->get();
+        $dictaminators_responses3_11->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_12 = DictaminatorsResponseForm3_12::where($queryFilter)->get();
+        $dictaminators_responses3_12->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_13 = DictaminatorsResponseForm3_13::where($queryFilter)->get();
+        $dictaminators_responses3_13->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_14 = DictaminatorsResponseForm3_14::where($queryFilter)->get();
+        $dictaminators_responses3_14->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_15 = DictaminatorsResponseForm3_15::where($queryFilter)->get();
+        $dictaminators_responses3_15->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_16 = DictaminatorsResponseForm3_16::where($queryFilter)->get();
+        $dictaminators_responses3_16->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_17 = DictaminatorsResponseForm3_17::where($queryFilter)->get();
+        $dictaminators_responses3_17->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_18 = DictaminatorsResponseForm3_18::where($queryFilter)->get();
+        $dictaminators_responses3_18->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
+
         $dictaminators_responses3_19 = DictaminatorsResponseForm3_19::where($queryFilter)->get();
+        $dictaminators_responses3_19->transform(function($item){
+            $user = User::find($item->user_id);
+            $item->email = $user->email ?? null;
+            return $item;
+        });
 
 
         // Retorna ambas respuestas en un array JSON estructurado

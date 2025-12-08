@@ -23,11 +23,13 @@
         // ========== PROCESAMIENTO DE EMAIL ==========
         // =========================================
         const hiddenEmailInput = form.querySelector('input[name="email"]');
+        const formEmailData = form.dataset.teacherEmail;
         const hiddenUserIdInput = form.querySelector('input[name="user_id"]');
         const selectedDocenteEmailInput = document.getElementById(config.selectedEmailInputId || 'selectedDocenteEmail');
         const docenteSearch = document.getElementById(config.searchInputId || 'docenteSearch');
 
         let email =
+            (formEmailData?.trim()) ||
             (hiddenEmailInput?.value?.trim()) ||
             (selectedDocenteEmailInput?.value?.trim()) ||
             ((docenteSearch?.value?.match(/\(([^)]+)\)$/) || [])[1]) ||

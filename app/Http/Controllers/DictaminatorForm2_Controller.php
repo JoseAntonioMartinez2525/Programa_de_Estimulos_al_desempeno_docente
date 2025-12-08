@@ -215,36 +215,27 @@ class DictaminatorForm2_Controller extends TransferController
 
         return response()->json(['success' => true, 'message' => 'Docente agregado correctamente']);
     }
-    public function showForm()
-    {
-        $docentes = UsersResponseForm2::all(); // O cualquier lógica para obtener los docentes
-
-        return view('form2', [
-            
-            'docentes' => $docentes,
-            // Otras variables que necesites pasar a la vista
-        ]);
-    }
 
     private function updateUserResponseComision($userId, $comisionValue)
     {
         // Buscar el registro de UsersResponseForm2 correspondiente y actualizar comision1
         $userResponse = UsersResponseForm2::where('user_id', $userId)->first();
-
+ 
         if ($userResponse) {
             $userResponse->comision1 = $comisionValue;
             $userResponse->save();
         }
     }
     
-    public function showForm2($teacherEmail = null)
+    public function showForm2(Request $request, $teacherEmail = null)
     {
         // Si se proporciona un email de docente en la URL, no necesitamos mostrar el buscador.
         // El script de autocompletado cargará los datos automáticamente.
-        $showSearchComponent = is_null($teacherEmail);
+        $emailFromUrl = $teacherEmail ?: $request->query('docente_email');
+        $showSearchComponent = is_null($emailFromUrl);
 
         return view('form2', [
-            'teacherEmailFromUrl' => $teacherEmail,
+            'teacherEmailFromUrl' => $emailFromUrl,
             'showSearch' => $showSearchComponent
         ]);
     }
