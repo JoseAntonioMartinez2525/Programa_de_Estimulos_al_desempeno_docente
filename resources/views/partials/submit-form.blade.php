@@ -220,6 +220,13 @@
         // ===================== ENVÍO POST ==========================
         // ==========================================================
         try {
+            // Validar que la URL corregida sea válida
+            if (!fixedUrl.startsWith('/formato-evaluacion/')) {
+                console.error('URL corregida no válida:', fixedUrl);
+                alert('Error interno: URL no válida. Contacte al administrador.');
+                return;
+            }
+
             const response = await fetch(fixedUrl, {
                 method: 'POST',
                 body: formData,
@@ -248,6 +255,12 @@
 
             // OK
             showMessage(isUpdate ? 'Formulario actualizado correctamente' : 'Formulario enviado correctamente', 'green');
+
+            // Cambiar el estilo del botón si es una actualización
+            if (isUpdate && submitButton) {
+                submitButton.style.backgroundColor = '#00D1B2';
+                submitButton.textContent = 'Editar';
+            }
 
             // Replace submit with edit button after sending
             const submitBtn = document.querySelector('input[type="submit"], button[type="submit"]');
@@ -363,16 +376,28 @@
         const isButton = submitBtn.tagName.toLowerCase() === 'button';
         const editBtn = document.createElement(isButton ? 'button' : 'input');
         if (!isButton) {
+            editBtn.style.backgroundColor = '#54BDAD';
+            editBtn.style.borderColor = 'transparent';
+            editBtn.style.borderRadius = '90px 90px 90px 90px';
+            editBtn.style.padding = '0.5rem 4rem 0.5rem 4rem';
+            editBtn.style.fontWeight = 'bold';
+            editBtn.style.marginRight = '70rem';
+            editBtn.style.setProperty('color', '#FFFFFF', 'important'); // Asegurar que el estilo no sea sobrescrito
             editBtn.type = 'button';
             editBtn.value = 'Editar';
+
         } else {
             editBtn.textContent = 'Editar';
         }
         editBtn.className = submitBtn.className;
         editBtn.style.cssText = submitBtn.style.cssText;
         // Change color to green for edit
-        editBtn.style.backgroundColor = '#28a745';
-        editBtn.style.borderColor = '#28a745';
+        editBtn.style.backgroundColor = '#00D1B2';
+        editBtn.style.borderColor = 'transparent';
+        editBtn.classList.add('edit-button'); // Aplicar clase específica para estilos
+        editBtn.style.color = '#FFFFFF'; // Aplicar color blanco directamente
+        editBtn.style.position = 'absolute';
+        editBtn.style.right = '30rem';
         editBtn.addEventListener('click', async () => {
             console.log('Edit button clicked');
             // Fetch existing data and populate form
@@ -399,7 +424,7 @@
             newSubmitBtn.className = editBtn.className;
             newSubmitBtn.style.cssText = editBtn.style.cssText;
             // Reset color
-            newSubmitBtn.style.backgroundColor = '';
+            newSubmitBtn.style.backgroundColor = '00D1B2';
             newSubmitBtn.style.borderColor = '';
  
             // No es necesario un listener de 'click'. El 'submit' listener del formulario se encargará.

@@ -535,26 +535,46 @@ public function adminResetTimer(Request $request)
      * Devuelve la configuración (modelo y reglas) para un identificador de formulario.
      */
     private function getFormConfig($identifier)
-    {
-        // Este es el "cerebro" que conecta todo.
-        // Aquí defines qué modelo y qué reglas usar para cada formulario.
-        $config = [
-            '31' => [
-                'controller' => \App\Http\Controllers\DictaminatorForm3_1Controller::class,
-                'model' => \App\Models\DictaminatorsResponseForm3_1::class,
-            ],
-            // --- AÑADE AQUÍ LA CONFIGURACIÓN PARA LOS OTROS 21 FORMULARIOS ---
-            // Ejemplo para form3_2:
-            /*
-            '32' => [
-                'controller' => \App\Http\Controllers\DictaminatorForm3_2Controller::class,
-                'model' => \App\Models\DictaminatorsResponseForm3_2::class,
-            ],
-            */
-        ];
+{
+    // Formularios con configuraciones específicas
+    $specificConfig = [
+        '38' => [
+            'controller' => \App\Http\Controllers\DictaminatorForm3_8Controller::class,
+            'model' => \App\Models\DictaminatorsResponseForm3_8::class,
+        ],
+        '381' => [
+            'controller' => \App\Http\Controllers\DictaminatorForm3_8_1Controller::class,
+            'model' => \App\Models\DictaminatorsResponseForm3_8_1::class,
+        ],
+        '2' => [
+            'controller' => \App\Http\Controllers\DictaminatorForm2_Controller::class,
+            'model' => \App\Models\UsersResponseForm2::class,
+        ],
+        '22' => [
+            'controller' => \App\Http\Controllers\DictaminatorForm2_2Controller::class,
+            'model' => \App\Models\UsersResponseForm2_2::class,
+        ],
+    ];
 
-        return $config[$identifier] ?? null;
+    // Si el identificador está en las configuraciones específicas, devolverlo
+    if (isset($specificConfig[$identifier])) {
+        return $specificConfig[$identifier];
     }
+
+    // Generar configuraciones dinámicas para formularios restantes
+    $dynamicConfig = [];
+    for ($i = 1; $i <= 19; $i++) {
+        $dynamicConfig["3{$i}"] = [
+            'controller' => "\\App\\Http\\Controllers\\DictaminatorForm3_{$i}Controller",
+            'model' => "\\App\\Models\\DictaminatorsResponseForm3_{$i}",
+        ];
+    }
+
+    // Combinar configuraciones específicas y dinámicas
+    $config = array_merge($specificConfig, $dynamicConfig);
+
+    return $config[$identifier] ?? null;
+}
 
 
 }

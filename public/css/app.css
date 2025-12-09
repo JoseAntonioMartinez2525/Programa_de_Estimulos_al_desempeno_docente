@@ -288,6 +288,11 @@ body.dark-mode [id^="btn3_"]:hover , body.dark-mode .dynamicBtn:hover{
     
 }
 
+button.edit-button{
+    color: #FFFFFF !important;
+    margin-right: 70rem;
+}
+
 button#btn3_15 {
     margin-inline-start: 60rem;
 }

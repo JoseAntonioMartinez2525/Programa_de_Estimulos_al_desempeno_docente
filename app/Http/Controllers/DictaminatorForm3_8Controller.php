@@ -13,6 +13,23 @@ use App\Traits\ValidatesDictaminatorPeriod;
 class DictaminatorForm3_8Controller extends TransferController
 {
     use ValidatesDictaminatorPeriod;
+    
+        public static function getValidationRules(): array
+    {
+        return [
+                'dictaminador_id' => 'required|numeric',
+                'user_id' => 'required|exists:users,id',
+                'email' => 'required|exists:users,email',
+                'score3_8' => 'required|numeric',
+                'comision3_8' => 'required|numeric',
+                'comisionDict3_8' => 'required|numeric',
+                'puntaje3_8' => 'required|numeric',
+                'puntajeHoras3_8' => 'required|numeric',
+                'obs3_8_1' => 'nullable|string',
+                'user_type' => 'required|in:user,docente,dictaminator',
+        ];
+    }
+
     public function storeform38(Request $request)
     {
 
@@ -26,23 +43,18 @@ class DictaminatorForm3_8Controller extends TransferController
                 return $error;
             }
 
-            $validatedData = $request->validate([
-                'dictaminador_id' => 'required|numeric',
-                'user_id' => 'required|exists:users,id',
-                'email' => 'required|exists:users,email',
-                'score3_8' => 'required|numeric',
-                'comision3_8' => 'required|numeric',
-                'comisionDict3_8' => 'required|numeric',
-                'puntaje3_8' => 'required|numeric',
-                'puntajeHoras3_8' => 'required|numeric',
-                'obs3_8_1' => 'nullable|string',
-                'user_type' => 'required|in:user,docente,dictaminator',
-            ]);
+            //3. validad formulario unico
+             $this->validarFormularioUnico($request, 'dictaminators_response_form3_8');
+
+            $validatedData = $request->validate(self::getValidationRules());
 
             if (!isset($validatedData['score3_8'])) {
                 $validatedData['score3_8'] = 0;
             }
-            $validatedData['obs3_8_1'] = trim($validatedData['obs3_8_1'])!== '' ? $validatedData['obs_3_8_1'] : 'sin comentarios';
+            $validatedData['obs3_8_1'] = trim($validatedData['obs3_8_1']) !== '' ? $validatedData['obs3_8_1'] : 'sin comentarios';
+
+            // Agregar registro temporal para depuración
+            \Log::info('Datos recibidos en storeform38:', $request->all());
 
             $validatedData['form_type'] = 'form3_8';
 
@@ -138,5 +150,38 @@ class DictaminatorForm3_8Controller extends TransferController
             'showSearch' => $showSearchComponent
         ]);
     }
+
+        public function updateForm38(Request $request)
+{
+    // Validar los datos de entrada
+    $validatedData = $request->validate(self::getValidationRules());
+
+    try {
+        // Buscar el registro existente por user_id y dictaminador_id
+        $response = DictaminatorsResponseForm3_8::updateOrCreate(
+            [
+                'user_id' => $validatedData['user_id'],
+                'dictaminador_id' => $validatedData['dictaminador_id'],
+                'form_type' => $validatedData['form_type']
+            ],
+            $validatedData // Los datos con los que se actualizará o creará
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Formulario actualizado correctamente.',
+            'data' => $response
+        ]);
+
+    } catch (\Exception $e) {
+        // Log del error para depuración
+        \Log::error('Error al actualizar el formulario 3.8: ' . $e->getMessage());
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Ocurrió un error en el servidor al actualizar.'
+        ], 500);
+    }
+}
 }
 

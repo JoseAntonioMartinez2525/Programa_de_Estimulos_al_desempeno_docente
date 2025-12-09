@@ -17,21 +17,9 @@ class DictaminatorForm2_2Controller extends TransferController
 {
     use ValidatesDictaminatorPeriod;
 
-    public function storeform22(Request $request)
+    public static function getValidationRules(): array
     {
-        try {
-            // 1. Obtener el ID del dictaminador autenticado y añadirlo al request.
-            $dictaminadorId = \Auth::id();
-            $request->merge(['dictaminador_id' => $dictaminadorId]);
-
-            // 2. Llamar a la validación de fecha al inicio del método
-            if ($error = $this->validateEvaluationPeriod($request, 'form2_2')) {
-                return $error;
-            }
-
-            //3. validad formulario unico
-             $this->validarFormularioUnico($request, 'dictaminators_response_form2_2');
-            $validatedData = $request->validate([
+        return [
                 'dictaminador_id' => 'required|numeric',
                 'user_id' => 'required|exists:users,id',
                 'email' => 'required|exists:users,email',
@@ -46,7 +34,25 @@ class DictaminatorForm2_2Controller extends TransferController
                 'obs2' => 'nullable|string',
                 'obs2_2' => 'nullable|string',
                 'user_type' => 'required|in:user,docente,dictaminator',
-            ]);
+        ];
+    }
+
+    public function storeform22(Request $request)
+    {
+        try {
+            // 1. Obtener el ID del dictaminador autenticado y añadirlo al request.
+            $dictaminadorId = \Auth::id();
+            $request->merge(['dictaminador_id' => $dictaminadorId]);
+
+            // 2. Llamar a la validación de fecha al inicio del método
+            if ($error = $this->validateEvaluationPeriod($request, 'form2_2')) {
+                return $error;
+            }
+
+            //3. validad formulario unico
+             $this->validarFormularioUnico($request, 'dictaminators_response_form2_2');
+            
+             $validatedData = $request->validate(self::getValidationRules());
 
             $validatedData['form_type'] = 'form2_2';
 
@@ -160,5 +166,38 @@ class DictaminatorForm2_2Controller extends TransferController
             'teacherEmailFromUrl' => $teacherEmail,
             'showSearch' => $showSearchComponent
         ]);
+    }
+
+     public function updateForm22(Request $request)
+    {
+        // Validar los datos de entrada
+        $validatedData = $request->validate(self::getValidationRules());
+
+        try {
+            // Buscar el registro existente por user_id y dictaminador_id
+            $response = DictaminatorsResponseForm2_2::updateOrCreate(
+                [
+                    'user_id' => $validatedData['user_id'],
+                    'dictaminador_id' => $validatedData['dictaminador_id'],
+                    'form_type' => $validatedData['form_type']
+                ],
+                $validatedData // Los datos con los que se actualizará o creará
+            );
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Formulario actualizado correctamente.',
+                'data' => $response
+            ]);
+
+        } catch (\Exception $e) {
+            // Log del error para depuración
+            \Log::error('Error al actualizar el formulario 2_2: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Ocurrió un error en el servidor al actualizar.'
+            ], 500);
+        }
     }
 }

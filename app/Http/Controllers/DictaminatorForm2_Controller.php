@@ -18,6 +18,20 @@ class DictaminatorForm2_Controller extends TransferController
     
     use ValidatesDictaminatorPeriod;
 
+    public static function getValidationRules(): array
+    {
+        return [
+                'dictaminador_id'=>'required|numeric',
+                'user_id' => 'required|exists:users,id',
+                'email' => 'required|exists:users,email',
+                'horasActv2' => 'required|numeric',
+                'puntajeEvaluar' => 'required|numeric', 
+                'comision1' => 'required|numeric',
+                'obs1' => 'nullable|string',
+                'user_type' => 'required|in:user,docente,dictaminator',
+        ];
+    }
+
     public function storeform2(Request $request)
     {
         try {
@@ -34,17 +48,7 @@ class DictaminatorForm2_Controller extends TransferController
              $this->validarFormularioUnico($request, 'dictaminators_response_form2');
 
              //4. validaciones propias del formulario
-            $validatedData = $request->validate([
-                'dictaminador_id'=>'required|numeric',
-                'user_id' => 'required|exists:users,id',
-                'email' => 'required|exists:users,email',
-                'horasActv2' => 'required|numeric',
-                'puntajeEvaluar' => 'required|numeric', 
-                'comision1' => 'required|numeric',
-                'obs1' => 'nullable|string',
-                'user_type' => 'required|in:user,docente,dictaminator',
-                
-            ]);
+            $validatedData = $request->validate(self::getValidationRules());
 
             $validatedData['form_type'] = 'form2';
             
@@ -238,6 +242,39 @@ class DictaminatorForm2_Controller extends TransferController
             'teacherEmailFromUrl' => $emailFromUrl,
             'showSearch' => $showSearchComponent
         ]);
+    }
+
+         public function updateForm2(Request $request)
+    {
+        // Validar los datos de entrada
+        $validatedData = $request->validate(self::getValidationRules());
+
+        try {
+            // Buscar el registro existente por user_id y dictaminador_id
+            $response = DictaminatorsResponseForm2::updateOrCreate(
+                [
+                    'user_id' => $validatedData['user_id'],
+                    'dictaminador_id' => $validatedData['dictaminador_id'],
+                    'form_type' => $validatedData['form_type']
+                ],
+                $validatedData // Los datos con los que se actualizará o creará
+            );
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Formulario actualizado correctamente.',
+                'data' => $response
+            ]);
+
+        } catch (\Exception $e) {
+            // Log del error para depuración
+            \Log::error('Error al actualizar el formulario 2: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Ocurrió un error en el servidor al actualizar.'
+            ], 500);
+        }
     }
 
 }
