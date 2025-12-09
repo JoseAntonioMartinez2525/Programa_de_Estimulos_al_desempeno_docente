@@ -319,6 +319,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/get-data-318', [ResponseForm3_18Controller::class, 'getData318'])->name('getData318');
     Route::get('/get-data-319', [ResponseForm3_19Controller::class, 'getData319'])->name('getData319');
 
+
+    Route::get('/get-form2', function () {return redirect()->route('getFormData2');});
     Route::get('/get-form-data2', [DictaminatorForm2_Controller::class, 'getFormData2'])->name('getFormData2');
     // Route::get('/get-form-data-22', [DictaminatorForm2_2Controller::class, 'getFormData22'])->name('getFormData22');
     Route::get('/get-form-data', [DictaminatorFormsGroupsController::class, 'getDictaminadorData']);

@@ -548,11 +548,11 @@ public function adminResetTimer(Request $request)
         ],
         '2' => [
             'controller' => \App\Http\Controllers\DictaminatorForm2_Controller::class,
-            'model' => \App\Models\UsersResponseForm2::class,
+            'model' => \App\Models\DictaminatorsResponseForm2::class,
         ],
         '22' => [
             'controller' => \App\Http\Controllers\DictaminatorForm2_2Controller::class,
-            'model' => \App\Models\UsersResponseForm2_2::class,
+            'model' => \App\Models\DictaminatorsResponseForm2_2::class,
         ],
     ];
 

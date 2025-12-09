@@ -54,12 +54,6 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
     ];
 
-// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
-if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
-    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
-}
-
-
     if (!isset($docenteConfigForm)) {
     $docenteConfigForm = [
         'extraFields' => [
@@ -72,6 +66,11 @@ if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
         'selectedEmailInputId' => 'selectedDocenteEmail',
         'searchInputId' => 'docenteSearch',
     ];
+
+    // Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
+if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
+    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
+}
 }
 
 @endphp
@@ -192,8 +191,7 @@ $user_identity = $user->id;
 <div class="mostrar">
     <main class="container">
         <!-- Form for Part 2 -->
-        <form id="form2" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}">
-            
+    <form id="form2" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}" data-custom-url="true">            
             @csrf
             <div><br>
             {{-- <div class="datosConvocatoria">
@@ -242,6 +240,7 @@ $user_identity = $user->id;
                     <label class="bg-black text-white px-4" for="">100</label>
                 </h4>
             </div>
+            <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
             <input type="hidden" name="user_id" value="">
             <input type="hidden" name="email" value="{{ $teacherEmailFromUrl ?? '' }}">

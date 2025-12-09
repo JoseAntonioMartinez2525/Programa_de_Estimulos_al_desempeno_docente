@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 use App\Events\EvaluationCompleted;
 use App\Models\UsersResponseForm1;
 use App\Traits\ValidatesDictaminatorPeriod;
-
+use Illuminate\Support\Facades\Log;
 
 class DictaminatorForm2_Controller extends TransferController
 {
@@ -117,15 +117,10 @@ class DictaminatorForm2_Controller extends TransferController
 
     }
 
-    public function getFormData2(Request $request)
+public function getFormData2(Request $request)
     {
         try {
-            if (!$request->has('user_id')) {
-                return response()->json(['error' => 'user_id is required'], 400);
-            }
-
             $data = DictaminatorsResponseForm2::where('user_id', $request->query('user_id'))->first();
-
             if (!$data) {
                 return response()->json([
                     'success' => false,
@@ -142,8 +137,9 @@ class DictaminatorForm2_Controller extends TransferController
             return response()->json([
                 'success' => false,
                 'message' => 'An error occurred while retrieving data: ' . $e->getMessage(),
-            ], 500);
+            ], 800);
         }
+
     }
 
 
