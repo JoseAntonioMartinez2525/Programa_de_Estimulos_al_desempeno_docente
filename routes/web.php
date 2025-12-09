@@ -322,7 +322,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/get-form2', function () {return redirect()->route('getFormData2');});
     Route::get('/get-form-data2', [DictaminatorForm2_Controller::class, 'getFormData2'])->name('getFormData2');
-    // Route::get('/get-form-data-22', [DictaminatorForm2_2Controller::class, 'getFormData22'])->name('getFormData22');
+    Route::get('/get-form-data22', [DictaminatorForm2_2Controller::class, 'getFormData22'])->name('getFormData22');
     Route::get('/get-form-data', [DictaminatorFormsGroupsController::class, 'getDictaminadorData']);
     Route::get('/get-data-resume', [ResumeController::class, 'getDataResume'])->name('get-data-resume');
     Route::get('/get-evaluator-signature', [EvaluatorSignatureController1::class, 'getEvaluatorSignature'])->name('get-evaluator-signature');

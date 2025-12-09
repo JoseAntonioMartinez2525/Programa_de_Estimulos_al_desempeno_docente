@@ -60,8 +60,6 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
 
 
     ],
-    // (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) ? ['preselectedEmail' => $teacherEmailFromUrl] : []
-    
   
     ];
 
@@ -151,7 +149,7 @@ $user_identity = $user->id;
 </div>
     <main class="container">
         <!-- Form for Part 2_2 -->
-        <form id="form2_2" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}">
+        <form id="form2_2" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}" data-custom-url="true">
             @csrf
             <div>
                 <!-- Activity 2: Commitment in Teaching Performance -->
