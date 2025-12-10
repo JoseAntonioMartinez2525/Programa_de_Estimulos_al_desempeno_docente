@@ -256,6 +256,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/store-form319', [DictaminatorForm3_19Controller::class, 'storeform319'])->name('form3_19.store_19')->withoutMiddleware('auth');
     Route::post('/store-dictaminator_signatures', [FirmaDictaminadorController::class, 'storeFirma'])->name('firmaDictaminador.store');
     
+
+        // 
     // Ruta PUT genérica para ACTUALIZAR cualquier formulario de dictaminador
     // El JavaScript ya construye la URL correctamente (ej: /update-form31)
     Route::put('/update-form{formIdentifier}', [DictaminatorController::class, 'updateForm'])
@@ -393,6 +395,12 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+Route::get('/formato-evaluacion/get-form31', 
+    [DictaminatorForm3_1Controller::class, 'getFormData31']
+)->name('formato-evaluacion.get-form31');
+
+
+// Route::get('/get-form38', [DictaminatorForm3_8Controller::class, 'getFormData38'])->name('form3_8.get');
 Route::post('/logout', action: [SessionsController::class, 'logout'])->name('logout');
 
 Route::get('/formato-evaluacion//test-dompdf', function () {
@@ -425,3 +433,10 @@ Route::post('/evaluation-dates/docentes-llenado', [EvaluationDateController::cla
 Route::post('/evaluation-dates/docentes-evaluacion', [EvaluationDateController::class, 'storeDocentesEvaluacion']);
 Route::post('/evaluation-dates/evaluadores-captura', [EvaluationDateController::class, 'storeEvaluadoresCaptura']);
 Route::get('/evaluation-dates', [EvaluationDateController::class, 'getFechas']);
+
+for ($i = 1; $i <= 19; $i++) {
+    Route::get("/get-form3{$i}", [ 
+        '\App\Http\Controllers\DictaminatorForm3_'.$i.'Controller',
+        'getFormData3'.$i
+    ])->name("form3_{$i}.get")->withoutMiddleware('auth');
+}

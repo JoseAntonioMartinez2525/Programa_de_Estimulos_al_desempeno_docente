@@ -207,6 +207,13 @@
                     }
                 }
 
+                // --- respaldo: si el user_id no se llenó, tomarlo del docente ---
+                const userIdInput = document.querySelector(`input[name="user_id"]`);
+                if (userIdInput && !userIdInput.value) {
+                    userIdInput.value = readProp(docenteData, 'docente.id') || '';
+                    console.log('User ID de respaldo asignado:', userIdInput.value);
+                }
+
 
                 // Si hay convocatorias adicionales configuradas, poblarlas
                 if (docenteData && docenteData.form1 && Array.isArray(config.convocatoriaSelectors)) {

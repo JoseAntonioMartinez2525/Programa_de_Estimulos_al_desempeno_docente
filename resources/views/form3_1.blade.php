@@ -394,7 +394,7 @@ $user_identity = $user->id;
 
     <main class="container">
         <!--Form for Part 3_1 -->
-        <form id="form3_1" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}" data-custom-url="true">
+        <form id="form3_1" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">

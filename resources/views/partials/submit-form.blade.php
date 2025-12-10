@@ -263,11 +263,15 @@
             }
 
             // Replace submit with edit button after sending
-            const submitBtn = document.querySelector('input[type="submit"], button[type="submit"]');
-            if (submitBtn) {
-                console.log('Replacing after submit');
-                replaceSubmitWithEdit(submitBtn);
+            const forms = document.querySelectorAll('form[id^="form"]');
+
+            for (const form of forms) {
+                const submitBtn = form.querySelector('input[type="submit"], button[type="submit"]');
+                if (submitBtn && await hasExistingData(form.id)) {
+                    replaceSubmitWithEdit(submitBtn);
+                }
             }
+
 
         } catch (error) {
             console.error('Error de red:', error);
@@ -303,11 +307,11 @@
             const match = formId.match(/^form(\d+(?:_\d+)*)$/);
             if (!match) return false;
             const numericPart = match[1].replace(/_/g, '');
-            let url = `/formato-evaluacion/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+            let url = `/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
 
             // Check if the form requires a custom URL
             if (form.dataset.customUrl === "true") {
-                url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+                url = `/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
             }
 
             console.log('Fetching existing data from:', url);
@@ -434,7 +438,7 @@
             newSubmitBtn.className = editBtn.className;
             newSubmitBtn.style.cssText = editBtn.style.cssText;
             // Reset color
-            newSubmitBtn.style.backgroundColor = '00D1B2';
+            newSubmitBtn.style.backgroundColor = '#00D1B2';
             newSubmitBtn.style.borderColor = '';
  
             // No es necesario un listener de 'click'. El 'submit' listener del formulario se encargará.
