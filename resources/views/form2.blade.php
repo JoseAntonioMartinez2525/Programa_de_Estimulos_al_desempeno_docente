@@ -157,6 +157,11 @@ body.dark-mode .table-header {
     color: white!important;
     
 }
+
+.edit-button {
+    margin-top: 2rem!important;
+    right: 25rem!important;
+}
   
 </style>
 <script>

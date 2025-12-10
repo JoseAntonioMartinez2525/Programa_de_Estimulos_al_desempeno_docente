@@ -536,7 +536,7 @@ public function adminResetTimer(Request $request)
      */
     private function getFormConfig($identifier)
 {
-    // Formularios con configuraciones específicas
+    // Formularios con configuraciones específicas o que no siguen el patrón numérico simple.
     $specificConfig = [
         '38' => [
             'controller' => \App\Http\Controllers\DictaminatorForm3_8Controller::class,
@@ -556,24 +556,22 @@ public function adminResetTimer(Request $request)
         ],
     ];
 
-    // Si el identificador está en las configuraciones específicas, devolverlo
     if (isset($specificConfig[$identifier])) {
         return $specificConfig[$identifier];
     }
 
-    // Generar configuraciones dinámicas para formularios restantes
-    $dynamicConfig = [];
-    for ($i = 1; $i <= 19; $i++) {
-        $dynamicConfig["3{$i}"] = [
-            'controller' => "\\App\\Http\\Controllers\\DictaminatorForm3_{$i}Controller",
-            'model' => "\\App\\Models\\DictaminatorsResponseForm3_{$i}",
-        ];
+    // Generar configuraciones dinámicas para el resto de los formularios form3_X
+    if (preg_match('/^3(\d+)$/', $identifier, $matches)) {
+        $i = $matches[1];
+        if ($i >= 1 && $i <= 19) {
+            return [
+                'controller' => "\\App\\Http\\Controllers\\DictaminatorForm3_{$i}Controller",
+                'model' => "\\App\\Models\\DictaminatorsResponseForm3_{$i}",
+            ];
+        }
     }
 
-    // Combinar configuraciones específicas y dinámicas
-    $config = array_merge($specificConfig, $dynamicConfig);
-
-    return $config[$identifier] ?? null;
+    return null;
 }
 
 

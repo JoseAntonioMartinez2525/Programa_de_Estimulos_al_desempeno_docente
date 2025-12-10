@@ -335,7 +335,12 @@
             const match = formId.match(/^form(\d+(?:_\d+)*)$/);
             if (!match) return null;
             const numericPart = match[1].replace(/_/g, '');
-            const url = `/formato-evaluacion/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+            let url = `/formato-evaluacion/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+
+            // Check if the form requires a custom URL
+            if (form.dataset.customUrl === "true") {
+                url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+            }
 
             const response = await fetch(url);
             const json = await response.json();

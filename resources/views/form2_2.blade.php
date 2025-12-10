@@ -118,6 +118,11 @@ body.dark-mode nav.nav.flex-column a:hover {
    color:  rgb(122, 164, 237);
 }
 
+.edit-button {
+    margin-top: 2rem!important;
+    right: 28rem!important;
+}
+
 </style>  
 <script>
     window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};

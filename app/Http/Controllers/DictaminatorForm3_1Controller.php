@@ -173,12 +173,7 @@ class DictaminatorForm3_1Controller extends TransferController
     public function getFormData31(Request $request)
     {
         try {
-            $dictaminadorId = \Auth::id();
-            $docenteUserId = $request->query('user_id');
-
-            $data = DictaminatorsResponseForm3_1::where('user_id', $docenteUserId)
-                                                 ->where('dictaminador_id', $dictaminadorId)
-                                                 ->first();
+            $data = DictaminatorsResponseForm3_1::where('user_id', $request->query('user_id'))->first();
             if (!$data) {
                 return response()->json([
                     'success' => false,
@@ -195,11 +190,10 @@ class DictaminatorForm3_1Controller extends TransferController
             return response()->json([
                 'success' => false,
                 'message' => 'An error occurred while retrieving data: ' . $e->getMessage(),
-            ], 500);
+            ], 800);
         }
 
     }
-
     private function updateUserResponseComision($userId, $comisionValue)
     {
         // Buscar el registro de UsersResponseForm2 correspondiente y actualizar comision1
@@ -404,7 +398,8 @@ class DictaminatorForm3_1Controller extends TransferController
         $response = DictaminatorsResponseForm3_1::updateOrCreate(
             [
                 'user_id' => $validatedData['user_id'],
-                'dictaminador_id' => $validatedData['dictaminador_id']
+                'dictaminador_id' => $validatedData['dictaminador_id'],
+                'form_type' => $validatedData['form_type']
             ],
             $validatedData // Los datos con los que se actualizará o creará
         );

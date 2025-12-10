@@ -79,7 +79,6 @@ $docenteConfig = array_merge([
 
     'printPagePairs' => [[2,3]],
 ],
-    (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) ? ['preselectedEmail' => $teacherEmailFromUrl] : []
 );
 
 // --- Configuración del formulario docente ---
@@ -102,6 +101,11 @@ if (!isset($docenteConfigForm)) {
         'selectedEmailInputId' => 'selectedDocenteEmail',
         'searchInputId' => 'docenteSearch',
     ];
+}
+
+// Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
+if (isset($teacherEmailFromUrl) && $teacherEmailFromUrl) {
+    $docenteConfig['preselectedEmail'] = $teacherEmailFromUrl;
 }
 @endphp
 <!DOCTYPE html>
@@ -348,6 +352,11 @@ body.dark-mode [id^="btn3_"] {
 body.dark-mode [id^="btn3_"]:hover {
     background-color: #6a5b9f;
 }
+
+.edit-button{
+    margin-top: 20rem!important;
+    right: 28rem!important;
+}
 </style>
 
 <script>
@@ -385,7 +394,7 @@ $user_identity = $user->id;
 
     <main class="container">
         <!--Form for Part 3_1 -->
-        <form id="form3_1" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}">
+        <form id="form3_1" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}" data-custom-url="true">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
