@@ -1,7 +1,7 @@
 @props(['formId', 'hasData' => false, 'userType' => null])
 
 <button id="edit-btn-{{ $formId }}"
-        class="edit-button printButtonClass"
+        class="edit-button printButtonClass".
         style="{{ $hasData ? 'display:block;' : 'display:none;' }}">
     Editar
 </button>
@@ -43,21 +43,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById(formId);
         if (!form) return null;
         const dictaminadorId = form.querySelector('input[name="dictaminador_id"]')?.value;
-        const userId = form.querySelector('input[name="user_id"]')?.value;
-
-        if (!dictaminadorId || !userId) {
-            // si no hay userId, intentar fallback por email oculto
-            const email = form.querySelector('input[name="email"]')?.value || '';
-            if (!dictaminadorId || !email) return null;
-            // intentar resolver user_id sin bloquear: (opcional, se puede implementar)
-            // return null; // fallback: no resolver aquí para no duplicar lógica
-            return null;
-        }
+        let userId = form.querySelector('input[name="user_id"]')?.value;
+        const email = form.querySelector('input[name="email"]')?.value || '';
 
         const numericPart = formId.replace(/[^\d]/g, '');
         let url = `/formato-evaluacion/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+
         if (form.dataset.customUrl === "true") {
-            url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+            // Para URLs custom, priorizamos el email si el user_id no está presente,
+            // que es el caso cuando se selecciona un docente por primera vez.
+            if (email && !userId) {
+                url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&email=${encodeURIComponent(email)}`;
+            } else {
+                url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+            }
         }
 
         try {
@@ -154,22 +153,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // reaccionar a docenteSelected (cuando el usuario selecciona otro docente)
-    document.addEventListener('docenteSelected', async (e) => {
-        console.log('[edit-button] docenteSelected event received', e && e.detail);
-        // docente-autocomplete hará el fetch dictaminador y pondrá window.existingDictData y escribirá campos en DOM
-        // esperamos microtick para que docente-autocomplete escriba datos
-        setTimeout(async () => {
-            if (window.existingDictData) {
-                console.log('[edit-button] docenteSelected -> window.existingDictData present -> showEdit');
-                showEdit();
-                return;
-            }
-            const data = await getExistingData();
-            console.log('[edit-button] docenteSelected -> getExistingData result', data);
-            if (data) showEdit();
-            else showSubmit();
-        }, 50);
+    // Reaccionar al evento que indica si se encontraron datos de evaluación.
+    // Este evento será despachado por docente-autocomplete.blade.php
+    document.addEventListener('evaluationDataLoaded', (e) => {
+        const hasData = e.detail.hasData;
+        console.log('[edit-button] evaluationDataLoaded event received', { hasData });
+        if (hasData) {
+            showEdit();
+        } else {
+            showSubmit();
+        }
     });
 
 });

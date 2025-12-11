@@ -272,10 +272,17 @@
                             // Set global flag for existing data
                             window.existingDictData = selected;
 
+                            // Notificar a otros componentes (como edit-button) si se encontraron datos.
+                            document.dispatchEvent(new CustomEvent('evaluationDataLoaded', {
+                                detail: { hasData: !!selected }
+                            }));
+
                             if (selected && config.dictMappings) {
                                 Object.entries(config.dictMappings).forEach(([target, propPath]) => {
                                     setValue(target, readProp(selected, propPath));
                                 });
+
+
 
                                 if (config.fillHiddenFromDict) {
                                     Object.entries(config.fillHiddenFromDict).forEach(([inputName, propPath]) => {

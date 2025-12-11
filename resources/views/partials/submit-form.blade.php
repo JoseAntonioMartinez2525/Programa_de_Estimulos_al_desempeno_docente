@@ -22,7 +22,8 @@
         let url = `/formato-evaluacion/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
 
         if (form.dataset.customUrl === "true") {
-            url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&email=${encodeURIComponent(docenteEmail)}`;
+            const email = form.querySelector('input[name="email"]')?.value || '';
+            url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&email=${encodeURIComponent(email)}`;
 
         }
 
