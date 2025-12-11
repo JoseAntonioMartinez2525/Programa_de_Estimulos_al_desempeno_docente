@@ -272,7 +272,7 @@
 
             // Form duplicado tradicional
             if (!isUpdate && (json.existing === true || json.message?.includes('existente'))) {
-                showMessage(json.message || 'El formulario ya existe', 'red');
+                showMessage('El formulario ya existe', '#F0E68C');
                 return;
             }
 
