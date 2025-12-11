@@ -278,7 +278,7 @@
 
             // Errores generales
             if (!response.ok || json.success === false) {
-                showMessage(json.message || 'Error al enviar', 'red');
+                showMessage('Error al enviar', 'red');
                 return;
             }
 

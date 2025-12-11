@@ -120,7 +120,7 @@ body.dark-mode nav.nav.flex-column a:hover {
 
 .edit-button {
     margin-top: 2rem!important;
-    right: 28rem!important;
+    margin-left: 20rem!important;
 }
 
 </style>  
@@ -143,6 +143,17 @@ body.dark-mode nav.nav.flex-column a:hover {
 $user = Auth::user();
 $userType = $user->user_type;
 $user_identity = $user->id; 
+
+    $hasData = false;
+    $checkFields = ['actv2Comision'];
+    foreach($checkFields as $f) {
+        if (!empty($docenteConfig[$f] ?? null)) {
+            $hasData = true;
+            break;
+        }
+    }
+
+$formId = $docenteConfigForm['formId'] ?? 'form2_2';
 @endphp
 <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 
@@ -241,8 +252,11 @@ $user_identity = $user->id;
                                     caso
                                 </th>
                                 <th>
-                                    @if($userType != 'secretaria')
-                                        <button type="submit" class="btn custom-btn printButtonClass" id="form2_2Button">Enviar</button>
+                                    {{-- Lógica de botones --}}
+                                    <x-edit-button formId="{{ $formId }}" :has-data="$hasData" :user-type="$userType" />
+                                    {{-- y el botón Enviar sólo se muestra por JS/Blade según la lógica; si quieres mantener fallback: --}}
+                                    @if(!$hasData && $userType != 'secretaria')
+                                    <button type="submit" class="btn custom-btn printButtonClass" id="{{ $formId }}Button">Enviar</button>
                                     @endif
                                 </th>
                             </tr>
