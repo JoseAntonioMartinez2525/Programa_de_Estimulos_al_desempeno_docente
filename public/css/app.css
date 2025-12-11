@@ -289,8 +289,12 @@ body.dark-mode [id^="btn3_"]:hover , body.dark-mode .dynamicBtn:hover{
 }
 
 button.edit-button{
-    color: #FFFFFF !important;
-    margin-right: 70rem;
+    color: whitesmoke!important;
+    background-color: #146775!important;
+    border-radius: 90px 90px 90px 90px;
+    padding: .5rem 2rem .5rem 2rem;
+    border: none thin transparent;
+    margin-left: 50rem;
 }
 
 button#btn3_15 {

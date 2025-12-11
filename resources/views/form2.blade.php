@@ -65,6 +65,7 @@ $logo = 'https://www.uabcs.mx/transparencia/assets/images/logo_uabcs.png';
         'exposeAs' => 'submitForm',
         'selectedEmailInputId' => 'selectedDocenteEmail',
         'searchInputId' => 'docenteSearch',
+        'formId' => 'form2',
     ];
 
     // Si se recibe un email desde la URL, se lo pasamos a la configuración del autocompletado.
@@ -158,11 +159,6 @@ body.dark-mode .table-header {
     
 }
 
-.edit-button {
-    margin-top: 2rem!important;
-    right: 25rem!important;
-}
-  
 </style>
 <script>
     window.isDarkModeGlobal = {{ $darkMode ?? false ? 'true' : 'false' }};
@@ -182,6 +178,16 @@ body.dark-mode .table-header {
 $user = Auth::user();
 $userType = $user->user_type;
 $user_identity = $user->id; 
+    $hasData = false;
+    $checkFields = ['comision1'];
+    foreach($checkFields as $f) {
+        if (!empty($docenteConfig[$f] ?? null)) {
+            $hasData = true;
+            break;
+        }
+    }
+
+$formId = $docenteConfigForm['formId'] ?? 'form2';
 @endphp
 <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
 <div class="container mt-4 printButtonClass">
@@ -311,11 +317,20 @@ $user_identity = $user->id;
                     </tr>
                 </thead>
             </table>
-            @if($userType != 'secretaria')
-                <button type="submit" class="btn custom-btn printButtonClass" id="form2_1Button">Enviar</button>
-            @else
-                <span></span>
-            @endif
+               {{-- Debug temporal visible en la vista (quítalo después)
+                <div style="background:#ffd; padding:6px; margin-bottom:8px;">
+                    <strong>DEBUG:</strong>
+                    hasData = {{ $hasData ? 'true' : 'false' }} |
+                    userType = {{ $userType ?? 'NULL' }} |
+                    formId = {{ $formId }}
+                </div> --}}
+
+                {{-- Lógica de botones --}}
+                <x-edit-button formId="{{ $formId }}" :has-data="$hasData" :user-type="$userType" />
+                {{-- y el botón Enviar sólo se muestra por JS/Blade según la lógica; si quieres mantener fallback: --}}
+                @if(!$hasData && $userType != 'secretaria')
+                    <button type="submit" class="btn custom-btn printButtonClass" id="{{ $formId }}_1Button">Enviar</button>
+                @endif
         </form>
     </main>
 

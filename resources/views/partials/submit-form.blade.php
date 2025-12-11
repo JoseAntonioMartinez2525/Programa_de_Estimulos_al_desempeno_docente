@@ -6,6 +6,34 @@
     // -----------------------------------------
     const config = @json($config ?? []);
 
+    // =====================================================
+    // ===== DETECTAR SI EXISTE REGISTRO EN EL SERVIDOR =====
+    // =====================================================
+    async function hasExistingData(formId) {
+        const form = document.getElementById(formId);
+        if (!form) return false;
+
+        const dictaminadorId = form.querySelector('input[name="dictaminador_id"]')?.value;
+        const userId = form.querySelector('input[name="user_id"]')?.value;
+
+        if (!dictaminadorId || !userId) return false;
+
+        const numericPart = formId.replace(/[^\d]/g, '');
+        let url = `/formato-evaluacion/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
+
+        if (form.dataset.customUrl === "true") {
+            url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&email=${encodeURIComponent(docenteEmail)}`;
+
+        }
+
+        try {
+            const resp = await fetch(url);
+            const json = await resp.json();
+            return json.success && json.data;
+        } catch {
+            return false;
+        }
+    }
 
     // =========================================
     // =========== FUNCIÓN PRINCIPAL ===========
@@ -259,10 +287,12 @@
             // Cambiar el estilo del botón si es una actualización
             if (isUpdate && submitButton) {
                 submitButton.style.backgroundColor = '#00D1B2';
-                submitButton.textContent = 'Editar';
+                // El botón ahora dirá "Actualizar", no se cambia a "Editar"
+                // submitButton.textContent = 'Editar';
             }
 
-            // Replace submit with edit button after sending
+            // Lógica de reemplazo de botón eliminada.
+            /*
             const forms = document.querySelectorAll('form[id^="form"]');
 
             for (const form of forms) {
@@ -271,7 +301,7 @@
                     replaceSubmitWithEdit(submitBtn);
                 }
             }
-
+            */
 
         } catch (error) {
             console.error('Error de red:', error);
@@ -286,167 +316,6 @@
     // ============================================
     if (config.exposeAs) {
         window[config.exposeAs] = submitForm;
-    }
-
-
-    // ===================================================
-    // ========== FUNCIONES PARA EDIT BUTTON ============
-    // ===================================================
-    async function hasExistingData(formId) {
-        const form = document.getElementById(formId);
-        if (!form) return false;
-
-        const dictaminadorId = form.querySelector('input[name="dictaminador_id"]')?.value;
-        const userId = form.querySelector('input[name="user_id"]')?.value;
-
-        console.log('Checking existing data for formId:', formId, 'dictaminadorId:', dictaminadorId, 'userId:', userId);
-
-        if (!dictaminadorId || !userId) return false;
-
-        try {
-            const match = formId.match(/^form(\d+(?:_\d+)*)$/);
-            if (!match) return false;
-            const numericPart = match[1].replace(/_/g, '');
-            let url = `/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
-
-            // Check if the form requires a custom URL
-            if (form.dataset.customUrl === "true") {
-                url = `/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
-            }
-
-            console.log('Fetching existing data from:', url);
-
-            const response = await fetch(url);
-            const json = await response.json();
-            console.log('Response:', json);
-            return json.success && json.data;
-        } catch (err) {
-            console.warn('Error checking existing data:', err);
-            return false;
-        }
-    }
-
-    async function fetchExistingData(formId) {
-        const form = document.getElementById(formId);
-        if (!form) return null;
-
-        const dictaminadorId = form.querySelector('input[name="dictaminador_id"]')?.value;
-        const userId = form.querySelector('input[name="user_id"]')?.value;
-
-        if (!dictaminadorId || !userId) return null;
-
-        try {
-            const match = formId.match(/^form(\d+(?:_\d+)*)$/);
-            if (!match) return null;
-            const numericPart = match[1].replace(/_/g, '');
-            let url = `/formato-evaluacion/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
-
-            // Check if the form requires a custom URL
-            if (form.dataset.customUrl === "true") {
-                url = `/formato-evaluacion/get-form-data${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
-            }
-
-            const response = await fetch(url);
-            const json = await response.json();
-            return json.success ? json.data : null;
-        } catch (err) {
-            console.warn('Error fetching existing data:', err);
-            return null;
-        }
-    }
-
-    function populateFormWithData(data, formElement) {
-        if (!data || !formElement) return;
-
-        console.log('Populating form with data:', data);
-
-        // Populate commission fields
-        formElement.querySelectorAll('input[name^="com"]').forEach(input => {
-            if (data[input.name] !== undefined) {
-                input.value = data[input.name] || '0';
-            }
-        });
-
-        // Populate other inputs like obs3_8_1
-        formElement.querySelectorAll('input[name], textarea[name], select[name]').forEach(el => {
-            const name = el.name || el.id;
-            if (data[name] !== undefined) {
-                el.value = data[name] || '';
-            }
-        });
-
-        // Populate spans/tds if any
-        // Assuming ids like comision3_8, score3_8, etc.
-        Object.keys(data).forEach(key => {
-            const el = document.getElementById(key);
-            if (el && (el.tagName === 'SPAN' || el.tagName === 'TD')) {
-                el.textContent = data[key] || '0';
-            }
-        });
-    }
-
-    function replaceSubmitWithEdit(submitBtn) {
-        console.log('Replacing submit with edit');
-        const isButton = submitBtn.tagName.toLowerCase() === 'button';
-        const editBtn = document.createElement(isButton ? 'button' : 'input');
-        if (!isButton) {
-            editBtn.style.backgroundColor = '#54BDAD';
-            editBtn.style.borderColor = 'transparent';
-            editBtn.style.borderRadius = '90px 90px 90px 90px';
-            editBtn.style.padding = '0.5rem 4rem 0.5rem 4rem';
-            editBtn.style.fontWeight = 'bold';
-            editBtn.style.marginRight = '70rem';
-            editBtn.style.setProperty('color', '#FFFFFF', 'important'); // Asegurar que el estilo no sea sobrescrito
-            editBtn.type = 'button';
-            editBtn.value = 'Editar';
-
-        } else {
-            editBtn.textContent = 'Editar';
-        }
-        editBtn.className = submitBtn.className;
-        editBtn.style.cssText = submitBtn.style.cssText;
-        // Change color to green for edit
-        editBtn.style.backgroundColor = '#00D1B2';
-        editBtn.style.borderColor = 'transparent';
-        editBtn.classList.add('edit-button'); // Aplicar clase específica para estilos
-        editBtn.style.color = '#FFFFFF'; // Aplicar color blanco directamente
-        editBtn.style.position = 'absolute';
-        editBtn.style.right = '30rem';
-        editBtn.addEventListener('click', async () => {
-            console.log('Edit button clicked');
-            // Fetch existing data and populate form
-            const form = submitBtn.closest('form');
-            if (form) {
-                const data = await fetchExistingData(form.id);
-                if (data) {
-                    populateFormWithData(data, form);
-                    console.log('Form populated with data');
-                } else {
-                    console.log('No data to populate');
-                }
-            }
-            // When clicked, replace with submit button for updating
-            // Cuando se hace clic, reemplazar con el botón de envío para actualizar
-            const newSubmitBtn = document.createElement(isButton ? 'button' : 'input');
-            if (!isButton) {
-                newSubmitBtn.type = 'submit'; // Debe ser 'submit' para activar el formulario
-                newSubmitBtn.value = 'Actualizar';
-            } else {
-                newSubmitBtn.textContent = 'Actualizar';
-                newSubmitBtn.type = 'submit'; // Debe ser 'submit'
-            }
-            newSubmitBtn.className = editBtn.className;
-            newSubmitBtn.style.cssText = editBtn.style.cssText;
-            // Reset color
-            newSubmitBtn.style.backgroundColor = '#00D1B2';
-            newSubmitBtn.style.borderColor = '';
- 
-            // No es necesario un listener de 'click'. El 'submit' listener del formulario se encargará.
-            // El botón de tipo 'submit' activará el evento 'submit' del formulario automáticamente.
- 
-            editBtn.parentNode.replaceChild(newSubmitBtn, editBtn);
-        });
-        submitBtn.parentNode.replaceChild(editBtn, submitBtn);
     }
 
     // ===================================================
@@ -465,23 +334,6 @@
             }
         });
 
-        // Check for existing data and replace submit with edit if needed
-        setTimeout(async () => {
-            console.log('Checking for existing data on load');
-            const submitBtn = document.querySelector('input[type="submit"], button[type="submit"]');
-            if (submitBtn) {
-                const form = submitBtn.closest('form');
-                console.log('Form id:', form?.id);
-                if (form && await hasExistingData(form.id)) {
-                    console.log('Existing data found, replacing with edit');
-                    replaceSubmitWithEdit(submitBtn);
-                } else {
-                    console.log('No existing data or form not found');
-                }
-            } else {
-                console.log('Submit button not found');
-            }
-        }, 500); // increased delay to ensure docente is loaded
     });
 
 })();

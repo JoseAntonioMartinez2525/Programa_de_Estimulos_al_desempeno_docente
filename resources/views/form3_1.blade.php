@@ -355,7 +355,8 @@ body.dark-mode [id^="btn3_"]:hover {
 
 .edit-button{
     margin-top: 20rem!important;
-    right: 28rem!important;
+    position: absolute;
+    right: 10rem;
 }
 </style>
 
@@ -394,7 +395,7 @@ $user_identity = $user->id;
 
     <main class="container">
         <!--Form for Part 3_1 -->
-        <form id="form3_1" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}">
+        <form id="form3_1" method="POST" data-teacher-email="{{ $teacherEmailFromUrl ?? '' }}" data-custom-url="true">
             @csrf
             <input type="hidden" name="dictaminador_email" value="{{ Auth::user()->email }}">
             <input type="hidden" name="dictaminador_id" value="{{ Auth::user()->id }}">
@@ -589,6 +590,7 @@ $user_identity = $user->id;
                                 </table>
                             @if ($userType != 'secretaria')
                                 <button id="btn3_1" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
+                                <x-edit-button formId="form3_1" />
                             @endif
                     <!--Convocatoria 2-->
                                 <div class="avoid-page-break" style="display: flex; justify-content: space-between;padding-top: 15px;">
