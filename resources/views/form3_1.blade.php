@@ -354,9 +354,9 @@ body.dark-mode [id^="btn3_"]:hover {
 }
 
 .edit-button{
-    margin-top: 20rem!important;
-    position: absolute;
-    right: 10rem;
+    margin-top: 5rem!important;
+    margin-left: 65rem!important;
+    
 }
 </style>
 
@@ -381,7 +381,16 @@ body.dark-mode [id^="btn3_"]:hover {
 $user = Auth::user();
 $userType = $user->user_type;
 $user_identity = $user->id;
+    $hasData = false;
+    $checkFields = ['actv3Comision'];
+    foreach($checkFields as $f) {
+        if (!empty($docenteConfig[$f] ?? null)) {
+            $hasData = true;
+            break;
+        }
+    }
 
+$formId = $docenteConfigForm['formId'] ?? 'form3_1';
 @endphp
 
 <button id="toggle-dark-mode" class="btn btn-secondary printButtonClass"><i class="fa-solid fa-moon"></i>&nbspModo Obscuro</button>
@@ -588,9 +597,11 @@ $user_identity = $user->id;
                             </tr>
                         </thead>
                                 </table>
-                            @if ($userType != 'secretaria')
-                                <button id="btn3_1" type="submit" class="btn custom-btn printButtonClass">Enviar</button>
-                                <x-edit-button formId="form3_1" />
+                            {{-- Lógica de botones --}}
+                            <x-edit-button formId="{{ $formId }}" :has-data="$hasData" :user-type="$userType" />
+                            {{-- y el botón Enviar sólo se muestra por JS/Blade según la lógica; si quieres mantener fallback: --}}
+                            @if(!$hasData && $userType != 'secretaria')
+                                <button type="submit" class="btn custom-btn printButtonClass" id="{{ $formId }}Button">Enviar</button>
                             @endif
                     <!--Convocatoria 2-->
                                 <div class="avoid-page-break" style="display: flex; justify-content: space-between;padding-top: 15px;">
