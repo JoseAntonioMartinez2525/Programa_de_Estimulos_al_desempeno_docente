@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let submitBtn = document.querySelector(`#${formId} button[type="submit"], #${formId} input[type="submit"]`);
     if (!submitBtn) submitBtn = document.getElementById(`${formId}_1Button`);
 
+    /**Verificar casos especiales form3_1, form3_2, form3_3,...,form3_19**/
+
     console.log('[edit-button] init', { formId, initialHasData, userType, foundEditBtn: !!editBtn, foundSubmitBtn: !!submitBtn, windowExisting: !!window.existingDictData });
 
     if (!editBtn) {
