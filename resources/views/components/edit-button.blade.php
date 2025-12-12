@@ -48,7 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let userId = form.querySelector('input[name="user_id"]')?.value;
         const email = form.querySelector('input[name="email"]')?.value || '';
 
-        const numericPart = formId.replace(/[^\d]/g, '');
+        const numericPart = formId.replace('form', '');
+
         let url = `/formato-evaluacion/get-form${numericPart}?dictaminador_id=${dictaminadorId}&user_id=${userId}`;
 
         if (form.dataset.customUrl === "true") {
